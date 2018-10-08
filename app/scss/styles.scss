@@ -1,0 +1,27 @@
+.container {
+  text-align: center;
+
+  .user_list {
+    padding: 20px;
+
+  }
+
+  .score_list {
+    padding: 20px;
+
+    .score_item{
+      border: 1px solid #000000;
+    }
+
+  }
+
+  img {
+    width: 100%;
+  }
+
+  p {
+    display: inline;
+    margin: 10px;
+  }
+}
+

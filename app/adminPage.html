@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<script lang="en"></script>
+<head>
+    <script src="js/userLogIn.js"></script>
+    <script>
+        let userEmail = getCookie('userEmail')
+        getUser(userEmail).then(function(user) {
+            if (!user.success || !isAuthorised(user.data, "1")) {
+                window.location.replace("index.html")
+            }
+        })
+    </script>
+    <meta charset="UTF-8">
+    <link href="css/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="css/styles.css" type="text/css" rel="stylesheet">
+    <script src="js/handlebars-v4.0.11.js"></script>
+    <script src="js/validateUserAdditions.js" defer></script>
+    <script src="js/ajaxHandlebarsTemplate.js" defer></script>
+    <script src="js/handlebarsUserTable.js" defer></script>
+    <script src="js/createUserObject.js" defer></script>
+    <script src="js/handlebarsScoreTable.js" defer></script>
+    <script src="js/aptitudeTestHelpers.js" defer></script>
+    <title>Admin Page</title>
+</head>
+<body>
+<section class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>Welcome To The Admin Page</h1>
+                <h2>Add New User</h2>
+                <form class="container_controls" id="addNewUserForm">
+                    <div class="container_input">
+                        <input type="text" id="name" name="name" placeholder="Type new user's name" required>
+                        <input type="text" id="email" name="email" placeholder="Type new user's email" required>
+                    </div>
+                    <div class="container_submit">
+                        <input type="submit" value="Add User">
+                    </div>
+                </form>
+                <div id='error' class='title_input'></div>
+            <div>
+                <h2>Registered Users</h2>
+                <div class="user_list"></div>
+            </div>
+            <div>
+                <h2>Scores</h2>
+                <div class="score_list"></div>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<div class="question q_{{id}}">
+    <div>
+        <h2 class="description_label_{{id}}"></h2>
+        <p class="description_text_{{id}}"></p>
+    </div>
+    <p>{{text}}</p>
+    <div class="img_{{id}}"></div>
+    <div class="answers">
+        {{#if option1}}
+        <p>
+            <input type="radio" name="answer_{{id}}" value="1">{{option1}}
+        </p>
+        {{/if}}
+        {{#if option2}}
+        <p>
+            <input type="radio" name="answer_{{id}}" value="2">{{option2}}
+        </p>
+        {{/if}}
+        {{#if option3}}
+        <p>
+            <input type="radio" name="answer_{{id}}" value="3">{{option3}}
+        </p>
+        {{/if}}
+        {{#if option4}}
+        <p>
+            <input type="radio" name="answer_{{id}}" value="4">{{option4}}
+        </p>
+        {{/if}}
+        {{#if option5}}
+        <p>
+            <input type="radio" name="answer_{{id}}" value="5">{{option5}}
+        </p>
+        {{/if}}
+    </div>
+</div>

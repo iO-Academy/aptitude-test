@@ -1,0 +1,39 @@
+.container {
+  text-align: center; }
+
+.question {
+  position: relative;
+  background-color: white;
+  width: 100%;
+  padding: 30px;
+  text-align: left;
+  display: none; }
+
+.question-container {
+  height: 100%; }
+
+.active {
+  display: block; }
+
+img {
+  max-width: 100%; }
+
+.answers input {
+  margin: 0 10px; }
+
+.prev {
+  display: none;
+  width: 60%;
+  margin: 50px auto; }
+
+.next {
+  width: 60%;
+  margin: 50px auto; }
+
+.finish {
+  width: 50%;
+  margin: 50px 0; }
+
+.error_message {
+  text-align: center;
+  font-size: large; }
