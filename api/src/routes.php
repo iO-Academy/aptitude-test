@@ -52,18 +52,19 @@ $app->post('/user/edit', function ($request, $response, $args) {
     $data = ['success' => false, 'message' => 'An unexpected error occured.', 'data' => []];
     $user = $request->getParsedBody();
 
-    if (empty($user['email']) || empty($user['name']) || empty($user['id'])) {
-        $data['message'] = 'Invalid parameters, please provide both email and name.';
+    if (empty($user['email']) || empty($user['name']) || empty($user['id']) || !isset($user['canRetake'])) {
+        $data['message'] = 'Invalid parameters.';
         $data['data'] = $user;
         $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
         return $response->withJson($data, 400);
     }
 
     try {
-        $query = "UPDATE `user` SET `email` = :email, `name` = :name WHERE `id` = :id;";
+        $query = "UPDATE `user` SET `email` = :email, `name` = :name, `canRetake` = :retake WHERE `id` = :id;";
         $query = $this->db->prepare($query);
         $query->bindParam(':email', $user['email']);
         $query->bindParam(':name', $user['name']);
+        $query->bindParam(':retake', $user['canRetake']);
         $query->bindParam(':id', $user['id']);
         $query->execute();
     } catch(Exception $e) {
@@ -85,7 +86,7 @@ $app->get('/user', function ($request, $response, $args) {
 
     if (empty($email)) {
         try {
-            $query = "SELECT `id`, `email`, `name`, `dateCreated`, `isAdmin`, `deleted` from `user` ORDER BY `dateCreated` DESC;";
+            $query = "SELECT `id`, `email`, `name`, `dateCreated`, `isAdmin`, `canRetake`, `deleted` from `user` ORDER BY `dateCreated` DESC;";
             $query = $this->db->prepare($query);
             $query->execute();
             $result = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -100,7 +101,7 @@ $app->get('/user', function ($request, $response, $args) {
     } else {
 
         try {
-            $query = "SELECT `id`, `email`, `name`, `dateCreated`, `isAdmin` from `user` WHERE `email` = :email AND `deleted` <> 1";
+            $query = "SELECT `id`, `email`, `name`, `dateCreated`, `isAdmin`, `canRetake`, from `user` WHERE `email` = :email AND `deleted` <> 1";
             $query = $this->db->prepare($query);
             $query->bindParam(':email', $email);
             $query->execute();

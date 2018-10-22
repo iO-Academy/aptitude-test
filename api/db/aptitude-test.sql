@@ -7,7 +7,7 @@
 #
 # Host: ec2-34-242-116-149.eu-west-1.compute.amazonaws.com (MySQL 5.6.34)
 # Database: aptitude-test
-# Generation Time: 2018-10-22 10:17:28 +0000
+# Generation Time: 2018-10-22 10:55:30 +0000
 # ************************************************************
 
 
@@ -115,6 +115,7 @@ CREATE TABLE `user` (
   `name` varchar(255) NOT NULL DEFAULT '',
   `dateCreated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `isAdmin` tinyint(1) NOT NULL DEFAULT '0',
+  `canRetake` tinyint(1) DEFAULT NULL,
   `deleted` tinyint(1) DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -122,14 +123,14 @@ CREATE TABLE `user` (
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 
-INSERT INTO `user` (`id`, `email`, `name`, `dateCreated`, `isAdmin`, `deleted`)
+INSERT INTO `user` (`id`, `email`, `name`, `dateCreated`, `isAdmin`, `canRetake`, `deleted`)
 VALUES
-	(1,'mike.oram@mayden.co.uk','Mike','2018-01-11 11:35:20',1,0),
-	(2,'test@test.co.uk','Test User','2017-11-21 10:53:45',0,0),
-	(3,'j@mayden.com','josh','2018-05-14 08:58:15',0,0),
-	(4,'barry@barry.com','barry','2018-05-14 08:58:16',0,0),
-	(5,'test@example.com','test','2018-05-14 08:58:17',0,0),
-	(6,'tryOut@tryoout.com','Mr Tryout','2018-05-14 08:59:53',0,0);
+	(1,'mike.oram@mayden.co.uk','Mike','2018-01-11 11:35:20',1,NULL,0),
+	(2,'test@test.co.uk','Test User','2017-11-21 10:53:45',0,NULL,0),
+	(3,'j@mayden.com','josh','2018-05-14 08:58:15',0,NULL,0),
+	(4,'barry@barry.com','barry','2018-05-14 08:58:16',0,NULL,0),
+	(5,'test@example.com','test','2018-05-14 08:58:17',0,NULL,0),
+	(6,'tryOut@tryoout.com','Mr Tryout','2018-05-14 08:59:53',0,NULL,0);
 
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
