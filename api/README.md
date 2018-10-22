@@ -16,7 +16,7 @@
 
 POST
 - Create new user.
-- `{'email':'example@email.com', 'name':'Fred Smith'}`
+- `{"email":"example@email.com", "name":"Fred Smith"}`
 - Returns user object.
 
 GET 
@@ -41,7 +41,7 @@ POST
 
 POST
 - Update a user.
-- `{'email':'example@email.com', 'name':'Fred Smith', 'id':'1'}` - all required
+- `{"email":"example@email.com", "name":"Fred Smith", "canRetake":"0", "id":"1"}` - all required
 - Returns result of user update.
 
 **/question**
@@ -60,7 +60,7 @@ GET
 
 POST
 - Save question answers.
-- `{'uid':'1', 'answers': {'1': '4', '2': '3'}, 'score':'24', 'time':'29.55'}`.
+- `{"uid":"1", "answers": {"1": "4", "2": "3"}, "score":"24", "time":"29.55"}`.
 - Returns success/fail state.
 
 **/answer/{qid}**
