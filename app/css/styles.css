@@ -1,11 +1,13 @@
 .container {
   text-align: center; }
-    .container .user_list .user_item p {
-      display: inline;
-      margin: 10px; }
+  .container .user_list {
+    padding: 20px; }
+  .container .score_list {
+    padding: 20px; }
+    .container .score_list .score_item {
+      border: 1px solid #000000; }
   .container img {
     width: 100%; }
-  .score_item p {
-    width: 10%;
-    display: inline-block;
-  }
+  .container p {
+    display: inline;
+    margin: 10px; }
