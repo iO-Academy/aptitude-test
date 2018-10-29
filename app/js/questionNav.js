@@ -54,3 +54,21 @@ function prev() {
 
 document.querySelector(".next").addEventListener("click", next)
 document.querySelector(".prev").addEventListener("click", prev)
+
+async function fillNav(HBTemplate) {
+    let template = Handlebars.compile(HBTemplate)
+    fetch("http://localhost:8080/question")
+        .then(function(result) {
+            return result.json()
+        })
+        .then(function(result) {
+            result.data.forEach(function(question) {
+                let html = template(question)
+                document.querySelector("#question-nav").innerHTML += html
+            })
+        })
+}
+
+getTemplateAjax('js/templates/navigation.hbs').then(function(HBTemplate) {
+    fillNav(HBTemplate)
+})
