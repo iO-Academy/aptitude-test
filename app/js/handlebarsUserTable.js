@@ -15,7 +15,8 @@ function fillUserTable(HBTemplate) {
             user_list.innerHTML = ""
 
             if (result.success) {
-                result.data.forEach(function(userData) {if (userData.deleted === "0") {
+                result.data.forEach(function(userData) {
+                    if (userData.deleted === "0") {
                     let html = template(userData)
                     user_list.innerHTML += html
                 }
