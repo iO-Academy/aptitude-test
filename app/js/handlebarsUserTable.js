@@ -45,6 +45,13 @@ function updateUserTable() {
     })
 }
 
-
+// This asynchronous function accepts a numeric id as a parameter which is unique to each user
+// it then posts the delete line and changes the entry in the database from a zero to a one
+async function deleteUser(userId) {
+    let url = "http://localhost:8080/user/delete/" + userId
+    let deleteRequest = await fetch(url, {
+        "method": "post"
+    })
+}
 
 updateUserTable()
