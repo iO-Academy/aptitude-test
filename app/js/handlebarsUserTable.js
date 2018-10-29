@@ -15,9 +15,10 @@ function fillUserTable(HBTemplate) {
             user_list.innerHTML = ""
 
             if (result.success) {
-                result.data.forEach(function(userData) {
+                result.data.forEach(function(userData) {if (userData.deleted === "0") {
                     let html = template(userData)
                     user_list.innerHTML += html
+                }
                 })
                 let userItems = document.querySelectorAll(".user_item")
                 userItems.forEach(function (userItem) {
