@@ -54,10 +54,8 @@ function changeQuestion(destinationPage) {
             nextButton.style.display = "block"
     }
 
-    if (destinationQuestion !== null) {
-        document.querySelector("#questions .active").classList.remove("active")
-        destinationQuestion.classList.add("active")
-    }
+    document.querySelector("#questions .active").classList.remove("active")
+    destinationQuestion.classList.add("active")
 }
 
 document.querySelector(".next").addEventListener("click", next)
