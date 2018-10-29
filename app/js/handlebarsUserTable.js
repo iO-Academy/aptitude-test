@@ -21,7 +21,8 @@ function fillUserTable(HBTemplate) {
                 })
                 let userItems = document.querySelectorAll(".user_item")
                 userItems.forEach(function (userItem) {
-                    userItem.addEventListener('click', function () {
+                    let deleteButton = userItem.querySelector('.btn-danger')
+                    deleteButton.addEventListener('click', function () {
                         console.log(userItem)
                     })
                 })
