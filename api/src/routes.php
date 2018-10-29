@@ -101,7 +101,7 @@ $app->get('/user', function ($request, $response, $args) {
     } else {
 
         try {
-            $query = "SELECT `id`, `email`, `name`, `dateCreated`, `isAdmin`, `canRetake`, from `user` WHERE `email` = :email AND `deleted` <> 1";
+            $query = "SELECT `id`, `email`, `name`, `dateCreated`, `isAdmin`, `canRetake` from `user` WHERE `email` = :email AND `deleted` <> 1";
             $query = $this->db->prepare($query);
             $query->bindParam(':email', $email);
             $query->execute();
