@@ -28,6 +28,8 @@ function next() {
         document.querySelector(".active").classList.remove("active")
         document.querySelector(".q_" + current).classList.add("active")
     }
+    updateFlagStatus()
+
 }
 
 /**
@@ -50,6 +52,13 @@ function prev() {
         document.querySelector(".active").classList.remove("active")
         document.querySelector(".q_" + current).classList.add("active")
     }
+    updateFlagStatus()
+}
+
+function updateFlagStatus() {
+    let qid  = document.querySelector('#questions .question.active').dataset.questionid
+     document.querySelector('#flag-checkbox').checked = flaggedQuestions[qid]
+
 }
 
 document.querySelector(".next").addEventListener("click", next)

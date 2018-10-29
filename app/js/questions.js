@@ -1,3 +1,7 @@
+
+const flaggedQuestions = {}
+
+
 /**
  * fills handlebars template by getting the user data from the api and inserts into the user_list div
  *
@@ -11,10 +15,12 @@ function fillUserTable(HBTemplate) {
             return result.json()
         })
         .then(function(result) {
-            result.data.forEach(function(userData) {
-                let html = template(userData)
+            result.data.forEach(function(question) {
+                flaggedQuestions[question.id] = false
+                let html = template(question)
                 document.querySelector("#questions").innerHTML += html
             })
+            console.log(flaggedQuestions)
             counter = result.data.length
         })
         .then(function() {
@@ -25,4 +31,9 @@ function fillUserTable(HBTemplate) {
 
 getTemplateAjax('js/templates/questions.hbs').then(function(HBTemplate) {
     fillUserTable(HBTemplate)
+})
+
+document.querySelector('#flag-checkbox').addEventListener('change', function() {
+    let qid  = document.querySelector('#questions .question.active').dataset.questionid
+    flaggedQuestions[qid] = document.querySelector('#flag-checkbox').checked
 })
