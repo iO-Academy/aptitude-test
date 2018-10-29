@@ -57,7 +57,7 @@ function prev() {
 
 function updateFlagStatus() {
     let qid  = document.querySelector('#questions .question.active').dataset.questionid
-     document.querySelector('#flag-checkbox').checked = flaggedQuestions[qid]
+    document.querySelector('#flag-checkbox').checked = flaggedQuestions[qid]
 
 }
 

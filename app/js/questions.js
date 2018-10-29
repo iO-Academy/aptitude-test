@@ -20,7 +20,6 @@ function fillUserTable(HBTemplate) {
                 let html = template(question)
                 document.querySelector("#questions").innerHTML += html
             })
-            console.log(flaggedQuestions)
             counter = result.data.length
         })
         .then(function() {
