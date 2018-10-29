@@ -1,0 +1,64 @@
+html {
+  font-size: 62.5%; }
+
+body {
+  background-color: #d7d6d4;
+  font-size: 14px;
+  font-size: 1.4rem;
+  font-family: 'Roboto', sans-serif; }
+
+#result_page {
+  display: none; }
+
+.result_card {
+  background-color: #fff;
+  margin: 150px auto;
+  width: 700px;
+  height: 500px;
+  box-shadow: 0 19px 38px rgba(0, 0, 0, 0.3), 0 15px 12px rgba(0, 0, 0, 0.22); }
+
+.greetings {
+  width: 700px;
+  height: 150px;
+  background-image: url("../images/celeb.jpg");
+  box-shadow: 0 8px 19px rgba(0, 0, 0, 0.3); }
+  .greetings p {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    line-height: 150px;
+    background-color: rgba(255, 255, 255, 0.9);
+    color: #2b91ad;
+    font-size: 4rem;
+    font-weight: bold;
+    letter-spacing: 1px; }
+
+.result {
+  padding: 50px;
+  display: flex;
+  justify-content: space-around; }
+  .result .points, .result .percentage, .result .answered {
+    display: inline-block;
+    padding: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 7px rgba(0, 0, 0, 0.3), 0 10px 9px rgba(0, 0, 0, 0.22); }
+    .result .points .points_label, .result .percentage .points_label, .result .answered .points_label, .result .percentage .percentage_label, .result .answered .answered_label {
+      height: 70px;
+      width: 100%;
+      background-color: #2b91ad;
+      box-shadow: 0 3px 7px rgba(0, 0, 0, 0.22); }
+      .result .points .points_label h3, .result .percentage .points_label h3, .result .answered .points_label h3, .result .percentage .percentage_label h3, .result .answered .answered_label h3 {
+        margin: 0;
+        line-height: 70px;
+        text-align: center;
+        color: #fff; }
+    .result .points .points_number, .result .percentage .points_number, .result .answered .points_number, .result .percentage .percentage_number, .result .answered .answered_number {
+      height: 180px;
+      width: 100%; }
+      .result .points .points_number p, .result .percentage .points_number p, .result .answered .points_number p, .result .percentage .percentage_number p, .result .answered .answered_number p {
+        line-height: 180px;
+        text-align: center;
+        font-size: 2rem;
+        color: #94ba66; }
+        .result .points .points_number p span, .result .percentage .points_number p span, .result .answered .points_number p span, .result .percentage .percentage_number p span, .result .answered .answered_number p span {
+          font-size: 7rem; }

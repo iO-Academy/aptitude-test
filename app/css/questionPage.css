@@ -37,3 +37,6 @@ img {
 .error_message {
   text-align: center;
   font-size: large; }
+
+.unanswered-nav-box {
+  background-color: #e66060; }
