@@ -129,3 +129,16 @@ function displayResult(earnedPoints, earnedPercentage, answeredQuestions) {
     document.querySelector(".answered_questions").innerHTML = answeredQuestions
     document.querySelector(".score_percentage").innerHTML = earnedPercentage
 }
+
+
+function addInputEventListeners() {
+    document.querySelectorAll('input').forEach(function (input) {
+        input.addEventListener('click', function(e) {
+            let nav = document.querySelector('#question-nav')
+            let id = parseInt(e.target.parentNode.parentNode.dataset['id']) - 1
+            nav.children[id].classList.add('answered')
+        })
+    })
+}
+
+
