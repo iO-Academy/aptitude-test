@@ -10,11 +10,12 @@ function isEmpty (field,event){
     }
 }
 
-//to make sure numbers arent in the name field
+//to make sure numbers or special characters arent in the name field
 function nameValidation (field,event){
-    if(isNaN(field.value) === false) {
+    var regexLetters = /^[A-Za-z]+$/
+    if(field.value.match(regexLetters) ){
+    } else {
         field.style.background = "red"
         event.preventDefault()
     }
 }
-
