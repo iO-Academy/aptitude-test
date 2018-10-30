@@ -57,6 +57,9 @@ function prev() {
     updateFlagStatus()
 }
 
+/*
+ * Updates the the flag status of the current question
+ */
 function updateFlagStatus() {
     let question =  document.querySelector('.question.active')
     let qId  = question.dataset.id
