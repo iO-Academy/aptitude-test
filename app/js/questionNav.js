@@ -55,6 +55,11 @@ function prev() {
 document.querySelector(".next").addEventListener("click", next)
 document.querySelector(".prev").addEventListener("click", prev)
 
+
+
+/*
+ * Fills the question navbar with clickable elements that takes you to the given question number.
+ */
 async function fillNav(HBTemplate) {
     let template = Handlebars.compile(HBTemplate)
     fetch("http://localhost:8080/question")
