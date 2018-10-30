@@ -8,6 +8,7 @@ function active() {
     let questionCount = document.querySelectorAll('#questions .question').length
     document.querySelector(".q_" + current).classList.add("active")
     document.querySelector("h4").textContent = current + "/" + questionCount
+    trackActiveQuestion(current)
 }
 
 /**
@@ -56,9 +57,10 @@ function changeQuestion(destinationPage) {
 
     document.querySelector("#questions .active").classList.remove("active")
     destinationQuestion.classList.add("active")
+    trackActiveQuestion(destinationPage)
 }
 
-/*
+/**
  * Fills the question navbar with clickable elements that takes you to the given question number.
  */
 function fillNav() {
@@ -66,7 +68,7 @@ function fillNav() {
     let questions = document.querySelectorAll('.question')
     let counter = 1
     questions.forEach(function (question) {
-        nav.innerHTML += '<span class="nav-item"><p>' + question.dataset['id'] + '</p></span>'
+        nav.innerHTML += '<span class="nav-item unanswered-nav-box"><p>' + question.dataset['id'] + '</p></span>'
         counter++
     })
 }
