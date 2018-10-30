@@ -14,7 +14,7 @@
 
 .question-nav {
   height: 60px;
-  margin: 20px 0 20px 0;
+  margin: 20px 0 20px;
   background-color: #ffffff; }
 
 .question-nav span {
@@ -77,4 +77,4 @@ img {
 
 .question-nav .current-nav-box {
   border: 1px solid #000000;
-  padding: 7px 0 31px 0; }
+  padding: 7px 0 31px; }
