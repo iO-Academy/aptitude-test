@@ -15,6 +15,12 @@ function fillUserTable(HBTemplate) {
         })
 }
 
+/**
+ *this fills the handlebars template with users that have not been soft deleted
+ *
+ * @param apiResponse
+ * @param template
+ */
 function updateDisplayedUsers(apiResponse, template) {
     let user_list = document.querySelector(".user_list")
     user_list.innerHTML = ""
@@ -31,6 +37,10 @@ function updateDisplayedUsers(apiResponse, template) {
     }
 }
 
+/**
+ * this adds the event listener to the delete button on creation of it the button
+ *
+ */
 function addDeleteEventListeners() {
     let userItems = document.querySelectorAll(".btn-danger")
     userItems.forEach(function (userItem) {
