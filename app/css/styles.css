@@ -18,7 +18,6 @@
     margin: 10px; }
 
 #modal {
-  position: absolute;
   width: 800px;
   display: none;
   height: 800px;
