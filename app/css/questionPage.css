@@ -20,14 +20,13 @@
 .question-nav span {
   position: relative;
   width: 25px;
-  padding: 8px 0 32px 0;
+  padding: 8px 0 32px;
   display: inline-block;
-  color: black;
+  color: #000000;
   text-decoration: none;
   cursor: pointer; }
 
 .flag {
-  display: inline-block;
   position: absolute;
   bottom: 8px;
   top: auto;
