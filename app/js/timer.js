@@ -1,5 +1,3 @@
-
-
 //takes a dateStamp and return the difference between the current dateStamp and
 // the one that is passed into the function
 function timeElapsed(dateStamp){
@@ -13,12 +11,10 @@ function timeElapsed(dateStamp){
 
 //30 minute time limit
 const timeLimit = 1801
-
 let dateStamp = getCookie("dateStamp")
 
 //time remaining is the time limit minus the tme elapsed in seconds
 let timeRemaining = Math.floor((timeLimit*1000 - timeElapsed(dateStamp))/1000)
-
 
 //The timer function presents the time remaining in seconds and counts down the clock when called
 function timer() {
