@@ -60,8 +60,10 @@ document.querySelector(".prev").addEventListener("click", prev)
 /*
  * Fills the question navbar with clickable elements that takes you to the given question number.
  */
-async function fillNav(HBTemplate) {
-    let template = Handlebars.compile(HBTemplate)
+function fillNav() {
+    let template = Handlebars.compile('<span class="nav-item"><p>{{id}}</p></span>')
+    let questions = document.querySelectorAll('.question')
+    console.log(questions)
     fetch("http://localhost:8080/question")
         .then(function(result) {
             return result.json()
@@ -73,7 +75,3 @@ async function fillNav(HBTemplate) {
             })
         })
 }
-
-getTemplateAjax('js/templates/navigation.hbs').then(function(HBTemplate) {
-    fillNav(HBTemplate)
-})
