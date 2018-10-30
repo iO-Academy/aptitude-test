@@ -26,7 +26,8 @@ document.querySelector(".overview").addEventListener("click", function() {
 })
 
 document.querySelector('table').addEventListener('click', function(e) {
-    changeQuestion(e.target.parentNode.firstElementChild.innerText)
+    current = e.target.parentNode.firstElementChild.innerText
+    changeQuestion(current)
     document.querySelector('#overview_page').style.display = 'none';
     document.querySelector('#question_page').style.display = 'block';
 })
