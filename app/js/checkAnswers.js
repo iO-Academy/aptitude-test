@@ -141,4 +141,9 @@ function addInputEventListeners() {
     })
 }
 
+function trackActiveQuestion(id) {
+    let nav = document.querySelector('#question-nav')
+    nav.children[id].classList.add('current-nav-box')
+}
+
 

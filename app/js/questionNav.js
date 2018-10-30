@@ -27,6 +27,7 @@ function next() {
     if (nextQuestion !== null) {
         document.querySelector(".active").classList.remove("active")
         document.querySelector(".q_" + current).classList.add("active")
+        trackActiveQuestion(current)
     }
 }
 
@@ -49,26 +50,24 @@ function prev() {
     if (prevQuestion !== null) {
         document.querySelector(".active").classList.remove("active")
         document.querySelector(".q_" + current).classList.add("active")
+        trackActiveQuestion(current)
     }
 }
 
 document.querySelector(".next").addEventListener("click", next)
 document.querySelector(".prev").addEventListener("click", prev)
 
-async function fillNav(HBTemplate) {
-    let template = Handlebars.compile(HBTemplate)
-    fetch("http://localhost:8080/question")
-        .then(function(result) {
-            return result.json()
-        })
-        .then(function(result) {
-            result.data.forEach(function(question) {
-                let html = template(question)
-                document.querySelector("#question-nav").innerHTML += html
-            })
-        })
-}
 
-getTemplateAjax('js/templates/navigation.hbs').then(function(HBTemplate) {
-    fillNav(HBTemplate)
-})
+
+/*
+ * Fills the question navbar with clickable elements that takes you to the given question number.
+ */
+function fillNav() {
+    let nav = document.querySelector("#question-nav")
+    let questions = document.querySelectorAll('.question')
+    let counter = 1
+    questions.forEach(function (question) {
+        nav.innerHTML += '<span class="nav-item unanswered-nav-box"><p>' + question.dataset['id'] + '</p></span>'
+        counter++
+    })
+}
