@@ -1,7 +1,11 @@
 
 var modal = document.getElementsByClassName("modal")
 
-document.getElementsByClassName("submit").addEventListener('click', function () {
-    //apiPostFunction(edited user data)
+document.getElementById('editUserForm').addEventListener('submit', function() {
+    isEmpty()
+    nameValidation()
+    isEmailValid()
+    postUserEdit(createUserObject('.editUserData'))
     modal.style.display = "none"
     })
+
