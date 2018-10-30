@@ -59,7 +59,15 @@ function updateFlagStatus() {
     let qid  = document.querySelector('#questions .question.active').dataset.questionid
     document.querySelector('#flag-checkbox').checked = flaggedQuestions[qid]
 
+    //('#questions-nav') is a placeholder for the page's number on the navbar
+    if(flaggedQuestions[qid]) {
+        document.querySelector('#questions-nav').classList.add('glyphicon','glyphicon-flag')
+    } else {
+        document.querySelector('#questions-nav').classList.remove('glyphicon','glyphicon-flag')
+    }
 }
 
 document.querySelector(".next").addEventListener("click", next)
 document.querySelector(".prev").addEventListener("click", prev)
+
+document.querySelector('#flag-checkbox').addEventListener('change', updateFlagStatus)
