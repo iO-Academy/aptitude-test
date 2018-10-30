@@ -21,6 +21,7 @@
     <script src="js/createUserObject.js" defer></script>
     <script src="js/handlebarsScoreTable.js" defer></script>
     <script src="js/aptitudeTestHelpers.js" defer></script>
+    <script src="js/displayEditModal.js" defer></script>
     <script src="js/sanitiseAdmin.js" defer></script>
     <script src="js/modalSubmit.js" defer></script>
     <title>Admin Page</title>
@@ -49,8 +50,19 @@
                 <h2>Scores</h2>
                 <div class="score_list"></div>
             </div>
+            <!--Open Modal-->
+            <button id="modalBtn">Open Modal</button>
+
         </div>
     </div>
 </section>
+
+    <div id="modal">
+        <!--Modal For edit-->
+        <div id="edit-Modal">
+            <span class="close">&times;</span>
+            <p>Some text in the Modal..</p>
+        </div>
+    </div>
 </body>
 </html>
