@@ -17,7 +17,6 @@ function active() {
 function next() {
     current++;
     let nextQuestion = document.querySelector(".q_" + current);
-    let overviewButton = document.querySelectorAll(".overview");
     document.querySelector("h4").textContent = current + "/30";
 
     if (current !== 1) {
@@ -25,14 +24,7 @@ function next() {
     }
     if (current === 30) {
         document.querySelector(".next").style.visibility = "hidden";
-        if (overviewButton.length == 0) {
-            document
-                .querySelector(".overview_column")
-                .insertAdjacentHTML(
-                    "beforeEnd",
-                    '<button type="button" class="btn btn-info overview">Overview</button>'
-                );
-        }
+        document.querySelector(".overview").style.visibility = "visible";
     }
     if (nextQuestion !== null) {
         document.querySelector(".active").classList.remove("active");

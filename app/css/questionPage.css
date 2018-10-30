@@ -3,7 +3,7 @@
 
 .question {
   position: relative;
-  background-color: white;
+  background-color: #ffffff;
   width: 100%;
   padding: 30px;
   text-align: left;
@@ -29,6 +29,9 @@ img {
   width: 60%;
   margin: 50px auto; }
 
+.overview {
+  visibility: hidden; }
+
 .finish {
   width: 50%;
   margin: 50px 0; }
@@ -36,3 +39,25 @@ img {
 .error_message {
   text-align: center;
   font-size: large; }
+
+#flag-checkbox {
+  width: 20px;
+  height: 20px; }
+
+#flag-label {
+  font-size: 2rem; }
+
+#overview_page {
+  display: none;
+  margin: 0 auto;
+  width: 50%; }
+
+th, td {
+  border: 1px solid #7c1c1c;
+  width: 150px;
+  padding: 2px;
+  background: #ffffff; }
+
+.glyphicon {
+  top: auto;
+  display: table-cell; }

@@ -1,3 +1,5 @@
+$main-background-color: #ffffff;
+$table-border: #7c1c1c;
 
 .container {
     text-align: center;
@@ -5,7 +7,7 @@
 
 .question {
     position: relative;
-    background-color: white;
+    background-color: $main-background-color;
     width: 100%;
     padding: 30px;
     text-align: left;
@@ -29,13 +31,17 @@ img {
 }
 
 .prev {
-    display: none;
     width: 60%;
     margin: 50px auto;
 }
+
 .next {
     width: 60%;
     margin: 50px auto;
+}
+
+.overview {
+    visibility: hidden;
 }
 
 .finish {
@@ -55,4 +61,22 @@ img {
 
 #flag-label {
     font-size: 2rem;
+}
+
+#overview_page {
+    display: none;
+    margin: 0 auto;
+    width: 50%;
+}
+
+th, td {
+    border: 1px solid $table-border;
+    width: 150px;
+    padding: 2px;
+    background: $main-background-color;
+}
+
+.glyphicon {
+    top: auto;
+    display: table-cell;
 }
