@@ -19,6 +19,7 @@
     <script src="js/handlebars-v4.0.11.js"></script>
     <script src="js/aptitudeTestHelpers.js" async></script>
     <script src="js/ajaxHandlebarsTemplate.js" defer></script>
+    <script src="js/modal.js" async></script>
     <script src="js/questions.js" defer></script>
     <script src="js/question_desc.js" defer></script>
     <script src="js/questionNav.js" defer></script>
@@ -27,6 +28,16 @@
     <script src="js/sendResults.js" defer></script>
 </head>
 <body>
+<!-- Modal -->
+<div class="overlay"></div>
+<div id="modal">
+    <h3 id="modal-title"> </h3>
+    <div id="modal-content">
+    <p>Don't be an idiot, its multiple choice... but mike says you can continue</p>
+    </div>
+    <button id="modal-close">Back</button>
+    <button id="modal-finish">Finish</button>
+</div>
 <!--question number and time -->
 <div id="question_page">
     <div class="container">

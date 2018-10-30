@@ -1,4 +1,22 @@
-const questionAmount = 30   // amount of questions
+const questionAmount = 30// amount of questions
+
+document.querySelector('#finish').addEventListener('click', function(e) {
+    var unanswered = questionAnswered()
+    if (unanswered == false) {
+        showResults()
+    }
+    else {
+        document.getElementById('modal-title').textContent = 'You have ' + unanswered.length + ' unanswered questions.'
+        openDialog()
+        document.querySelector('#modal-close').addEventListener('click', function() {
+            closeDialog()
+        })
+        document.querySelector('#modal-finish').addEventListener('click', function() {
+            showResults()
+            closeDialog()
+        })
+    }
+})
 
 /**
  * checks the users answers against api answers
@@ -59,30 +77,6 @@ function getUserAnswers(questionAmount) {
     })
     return answers
 }
-
-document.querySelector('#finish').addEventListener('click', function(e) {
-    e.preventDefault()
-    const userAnswers= getUserAnswers(questionAmount)
-
-    checkAnswers(userAnswers).then(function(result) {
-        let percentResult
-        let answered
-
-        if (result.score || result.score === 0) {
-            document.querySelector('#question_page').style.display = 'none'
-            document.querySelector('#result_page').style.display = 'block'
-            percentResult = getPercentResult(result.score, questionAmount)
-            answered = getAnswered(userAnswers, questionAmount)
-            displayResult(result.score, percentResult, answered)
-            handleResponseFromAPI(sendUserResults(result))
-        } else {
-            let body = document.querySelector('body')
-            let html = body.innerHTML
-            html += '<p class="error_message text-danger">Please contact admin. Answers cannot be checked at present.</p>'
-            body.innerHTML = html
-        }
-    })
-})
 
 
 /**
@@ -162,4 +156,50 @@ function trackActiveQuestion(id) {
     nav.children[id - 1].classList.add('current-nav-box')
 }
 
+/*
+ *  this get the unanswered questions and puts their question id into an array
+ * @returns the array of question ids that havent been answered
+ */
+function questionAnswered() {
+    const qAmount = document.querySelectorAll('.question').length
+    let answers = getUserAnswers(qAmount)
+    let answersArr = Object.values(answers)
+    let unanswered = []
+    answersArr.forEach(function (value, qid) {
+        qid++
+        if(value == 'unanswered') {
+            unanswered.push(qid)
+        }
+    })
+    if (unanswered.length == 0) {
+        return false
+    }
+    else {
+        return unanswered
+    }
 
+}
+
+/**
+ * this checks the answers and marks them to show the finishing page
+ */
+function showResults() {
+    const userAnswers = getUserAnswers(questionAmount)
+    checkAnswers(userAnswers).then(function (result) {
+        let percentResult
+        let answered
+        if (result.score || result.score === 0) {
+            document.querySelector('#question_page').style.display = 'none'
+            document.querySelector('#result_page').style.display = 'block'
+            percentResult = getPercentResult(result.score, questionAmount)
+            answered = getAnswered(userAnswers, questionAmount)
+            displayResult(result.score, percentResult, answered)
+            handleResponseFromAPI(sendUserResults(result))
+        } else {
+            let body = document.querySelector('body')
+            let html = body.innerHTML
+            html += '<p class="error_message text-danger">Please contact admin. Answers cannot be checked at present.</p>'
+            body.innerHTML = html
+        }
+    })
+}
