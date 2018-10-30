@@ -19,6 +19,7 @@ function fillUserTable(HBTemplate) {
                     if (userData.deleted === "0") {
                     let html = template(userData)
                     user_list.innerHTML += html
+                        console.log (userData)
                 }
                 })
                 let userItems = document.querySelectorAll(".user_item")
@@ -32,7 +33,6 @@ function fillUserTable(HBTemplate) {
                         console.log(userItem)
                     })
                 })
-
             } else {
                 user_list.innerHTML = "Please contact Admin, user list unavailable"
             }
