@@ -10,7 +10,7 @@ const questionAmount = 30   // amount of questions
 async function checkAnswers(userAnswers) {
     let userScore = 0
     let answers = await getAnswers()
-
+    console.log(answers)
     if (answers.success) {
         answers = answers.data
         answers.forEach(function (answerItem) {
@@ -42,22 +42,24 @@ async function getAnswers() {
 /**
  * gets answers the user provided from the DOM
  *
- * @param questionAmount total number of questions
- *
  * @return Object of users answers
  */
-function getUserAnswers(questionAmount) {
-    let checkedInputs = document.querySelectorAll('#questions .question .answers input:checked')
-    let answers = {}
-    for (let i = 1; i <= questionAmount; i++) {
-        answers[i] = 'unanswered'
+function getUserAnswers() {
+    let checkedInputs = document.querySelectorAll(
+        "#questions .question .answers input:checked"
+    );
+    let numOfQuestions = document.querySelectorAll("#questions .question")
+        .length;
+    let answers = {};
+    for (let i = 1; i <= numOfQuestions; i++) {
+        answers[i] = "unanswered";
     }
-    
+
     checkedInputs.forEach(function(input) {
-        let id = input.name.split("_")[1]
-        answers[id] = input.value   
-    })
-    return answers
+        let id = input.name.split("_")[1];
+        answers[id] = input.value;
+    });
+    return answers;
 }
 
 document.querySelector('#finish').addEventListener('click', function(e) {
