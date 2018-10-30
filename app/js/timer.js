@@ -3,7 +3,7 @@
  */
 
 //30 minute time limit
-let timeLimit = 1799
+let timeLimit = 1801
 
 function timer() {
     let minutes = Math.floor(timeLimit / 60);
