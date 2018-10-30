@@ -22,10 +22,19 @@
     <script src="js/handlebarsScoreTable.js" defer></script>
     <script src="js/aptitudeTestHelpers.js" defer></script>
     <script src="js/sanitiseAdmin.js" defer></script>
-    <script src="js/modalSubmit.js" defer></script>
     <title>Admin Page</title>
 </head>
 <body>
+<!-- Modal -->
+<div class="overlay"></div>
+<div id="modal">
+    <h3 id="modal-title"> </h3>
+    <div id="modal-content">
+        <p>Don't be an idiot, its multiple choice... but mike says you can continue</p>
+    </div>
+    <button id="modal-close">Back</button>
+    <button id="modal-finish">Finish</button>
+</div>
 <section class="container">
     <div class="row">
         <div class="col-xs-12">
