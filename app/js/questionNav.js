@@ -31,7 +31,6 @@ function next() {
         trackActiveQuestion(current)
     }
     updateFlagStatus()
-
 }
 
 /**
