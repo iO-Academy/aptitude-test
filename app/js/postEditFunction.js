@@ -9,12 +9,17 @@
 
 function createUserObject(inputClass) {
     let formData = document.querySelectorAll(inputClass)
-    let result = {'canRetake':'0'}
-    formData.forEach(function(input) {
-        result[input.name] = input.value
-    })
-    return result
-}
+    let canRetake = document.getElementById('canRetake')
+    let result = {'canRetake': '0'}
+    if (canRetake.checked) {
+        result = {'canRetake': '1'}
+    }
+        formData.forEach(function (input) {
+            result[input.name] = input.value
+        })
+        return result
+    }
+
 
 /*
     Passes the object returned by createUserObject() and posts to the api as a json string
@@ -35,10 +40,3 @@ async function postUserEdit(formData) {
     }
 
 }
-
-document.getElementById('practiseForm').addEventListener('submit', function (e) {
-    e.preventDefault()
-    postUserEdit(createUserObject('.practise'))
-})
-
-
