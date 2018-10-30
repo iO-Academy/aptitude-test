@@ -31,10 +31,49 @@ function updateDisplayedUsers(apiResponse, template) {
                 user_list.innerHTML += html
             }
         })
+        addEditEventListeners()
         addDeleteEventListeners()
     } else {
         user_list.innerHTML = "Please contact Admin, user list unavailable"
     }
+}
+
+/**
+ * fills handlebars template by passing in object and inserts into the score_list div
+ *
+ * @param HBTemplate the handlebars template
+ * @param ObjFunction the function that creates an object of all fields required in scores page
+ */
+function fillEditModal(HBTemplate, userInfo) {
+    let template = Handlebars.compile(HBTemplate)
+    let modal_content = document.querySelector(".modal-content")
+
+    modal_content.innerHTML = ""
+
+    if (userInfo.success === true) {
+        let html = template(userInfo)
+        modal_content.innerHTML += html
+    } else {
+        modal_content.innerHTML = "Please contact Admin, user list unavailable"
+    }
+}
+
+/**
+ * this adds the event listener to the edit button on creation of it the button
+ *
+ */
+function addEditEventListeners() {
+    let editButtons = document.querySelectorAll(".modalBtn")
+    editButtons.forEach(function (editButton) {
+        editButton.addEventListener('click', function (e) {
+            let parentElement = e.target.parentElement
+            let userInfo = {}
+            userInfo.name = parentElement.getAttribute("dataName")
+            userInfo.email = parentElement.getAttribute("dataEmail")
+            userInfo.id = parentElement.getAttribute("dataId")
+            console.log(userInfo)
+        })
+    })
 }
 
 /**
