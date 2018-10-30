@@ -7,6 +7,7 @@ var current = 1
 function active() {
     document.querySelector(".q_" + current).classList.add("active")
     document.querySelector("h4").textContent = current + "/30"
+    trackActiveQuestion(current)
 }
 
 /**
@@ -27,6 +28,7 @@ function next() {
     if (nextQuestion !== null) {
         document.querySelector(".active").classList.remove("active")
         document.querySelector(".q_" + current).classList.add("active")
+        trackActiveQuestion(current)
     }
     updateFlagStatus()
 
@@ -51,6 +53,7 @@ function prev() {
     if (prevQuestion !== null) {
         document.querySelector(".active").classList.remove("active")
         document.querySelector(".q_" + current).classList.add("active")
+        trackActiveQuestion(current)
     }
     updateFlagStatus()
 }
@@ -80,7 +83,7 @@ function fillNav() {
     let questions = document.querySelectorAll('.question')
     let counter = 1
     questions.forEach(function (question) {
-        nav.innerHTML += '<span class="nav-item"><p>' + question.dataset['id'] + '</p>' + '</span>'
+        nav.innerHTML += '<span class="nav-item unanswered-nav-box"><p>' + question.dataset['id'] + '</p></span>'
         counter++
     })
 }

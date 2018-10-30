@@ -19,7 +19,7 @@
 
 .question-nav span {
   width: 25px;
-  line-height: 60px;
+  padding: 20px 0;
   display: inline-block;
   color: black;
   text-decoration: none;
@@ -60,5 +60,6 @@ img {
 .answered-nav-box {
   background-color: #698dc9; }
 
-.current-nav-box {
-  border: 2px solid #000000; }
+.question-nav .current-nav-box {
+  border: 1px solid #000000;
+  padding: 19px 0; }
