@@ -59,14 +59,14 @@ function prev() {
 
 function updateFlagStatus() {
     let question =  document.querySelector('.question.active')
-    let qid  = question.dataset.id
-    let navitem = document.querySelector('#question-nav').children[qid - 1]
-    document.querySelector('#flag-checkbox').checked = flaggedQuestions[qid]
+    let qId  = question.dataset.id
+    let navItem = document.querySelector('#question-nav').children[qId - 1]
+    document.querySelector('#flag-checkbox').checked = flaggedQuestions[qId]
     //('#questions-nav') is a placeholder for the page's number on the navbar
-    if(flaggedQuestions[qid]) {
-        navitem.querySelector('.flag').classList.add('glyphicon','glyphicon-flag')
+    if(flaggedQuestions[qId]) {
+        navItem.querySelector('.flag').classList.add('glyphicon','glyphicon-flag')
     } else {
-        navitem.querySelector('.flag').classList.remove('glyphicon','glyphicon-flag')
+        navItem.querySelector('.flag').classList.remove('glyphicon','glyphicon-flag')
     }
 }
 
