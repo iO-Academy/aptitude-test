@@ -71,6 +71,9 @@ function fillNav() {
     })
 }
 
+/**
+ * Makes nav-items clickable to jump to specified question
+ */
 function addNavLinks() {
     document.querySelectorAll('.nav-item').forEach(function(button) {
         let qID = button.querySelector('p').textContent
