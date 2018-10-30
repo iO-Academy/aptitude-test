@@ -6,7 +6,18 @@ document.querySelector('#finish').addEventListener('click', function(e) {
         showResults()
     }
     else {
+        let flagList = document.getElementById('flag-list')
         document.getElementById('modal-title').textContent = 'You have ' + unanswered.length + ' unanswered questions.'
+        while (flagList.firstChild) {
+            flagList.removeChild(flagList.firstChild);
+        }
+        let numberOfFlags = 1
+        Object.values(flaggedQuestions).forEach(function(e) {
+            if (e === true) {
+                flagList.innerHTML += "<li>" + numberOfFlags +"</li>"
+            }
+            numberOfFlags++
+        })
         openDialog()
         document.querySelector('#modal-close').addEventListener('click', function() {
             closeDialog()
