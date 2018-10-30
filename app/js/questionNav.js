@@ -61,17 +61,11 @@ document.querySelector(".prev").addEventListener("click", prev)
  * Fills the question navbar with clickable elements that takes you to the given question number.
  */
 function fillNav() {
-    let template = Handlebars.compile('<span class="nav-item"><p>{{id}}</p></span>')
+    let nav = document.querySelector("#question-nav")
     let questions = document.querySelectorAll('.question')
-    console.log(questions)
-    fetch("http://localhost:8080/question")
-        .then(function(result) {
-            return result.json()
-        })
-        .then(function(result) {
-            result.data.forEach(function(question) {
-                let html = template(question)
-                document.querySelector("#question-nav").innerHTML += html
-            })
-        })
+    let counter = 1
+    questions.forEach(function (question) {
+        nav.innerHTML += '<span class="nav-item"><p>' + question.dataset['id'] + '</p></span>'
+        counter++
+    })
 }

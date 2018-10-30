@@ -18,9 +18,9 @@ function fillUserTable(HBTemplate) {
             counter = result.data.length
         })
         .then(function() {
-            fillNav()
             putDescription(counter)
             active()
+            fillNav()
         })
 }
 
