@@ -46,8 +46,8 @@ function updateUserTable() {
 
 // This asynchronous function accepts a numeric id as a parameter which is unique to each user
 // it then posts the delete line and changes the entry in the database from a zero to a one.
-//if succesful the function deletes teh innerHTML of the parent element (as if it is actually deleted) and console logs
-// deletion succesful.
+//if successful the function deletes teh innerHTML of the parent element (as if it is actually deleted) and console logs
+// deletion successful.
 function deleteUser(userId, userEntry) {
     let url = "http://localhost:8080/user/delete/" + userId
     fetch(url, {"method": "post"})
