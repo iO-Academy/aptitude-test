@@ -1,11 +1,17 @@
+function addEditModalSubmitEventListener() {
+    document.getElementById('editSubmit').addEventListener('click', function() {
+        let name = document.getElementById("firstName").value
+        let email = document.getElementById("email").value
 
-var modal = document.getElementsByClassName("modal")
-
-document.getElementById('editUserForm').addEventListener('submit', function() {
-    isEmpty()
-    nameValidation()
-    isEmailValid()
-    postUserEdit(createUserObject('.editUserData'))
-    modal.style.display = "none"
+        if( isEmpty(name) &&
+            isEmpty(email) &&
+            nameValidation(name) &&
+            isEmailValid(email)
+            ){
+            console.log('hi')
+            closeDialog()
+            // postUserEdit(createUserObject('.editUserData'))
+        }
     })
+}
 

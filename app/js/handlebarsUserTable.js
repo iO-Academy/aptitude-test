@@ -74,7 +74,7 @@ function addEditEventListeners() {
             userInfo.id = parentElement.getAttribute("dataId")
             getTemplateAjax('js/templates/editmodal.hbs').then(function (HBTemplate) {
                 fillEditModal(HBTemplate, userInfo)
-            })
+            }).then(addEditModalSubmitEventListener)
         })
     })
 }
