@@ -46,11 +46,11 @@ function updateDisplayedUsers(apiResponse, template) {
  */
 function fillEditModal(HBTemplate, userInfo) {
     let template = Handlebars.compile(HBTemplate)
-    let modal_content = document.querySelector(".modal-content")
+    let modal_content = document.querySelector("#modal-content")
 
     modal_content.innerHTML = ""
 
-    if (userInfo.success === true) {
+    if (userInfo.name && userInfo.email && userInfo.id) {
         let html = template(userInfo)
         modal_content.innerHTML += html
     } else {
@@ -72,7 +72,9 @@ function addEditEventListeners() {
             userInfo.name = parentElement.getAttribute("dataName")
             userInfo.email = parentElement.getAttribute("dataEmail")
             userInfo.id = parentElement.getAttribute("dataId")
-            console.log(userInfo)
+            getTemplateAjax('js/templates/editmodal.hbs').then(function (HBTemplate) {
+                fillEditModal(HBTemplate, userInfo)
+            })
         })
     })
 }
