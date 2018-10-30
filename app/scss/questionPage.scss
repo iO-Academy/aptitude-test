@@ -1,3 +1,4 @@
+@import "imports/variables";
 
 .container {
     text-align: center;
@@ -5,7 +6,7 @@
 
 .question {
     position: relative;
-    background-color: white;
+    background-color: #ffffff;
     width: 100%;
     padding: 30px;
     text-align: left;
@@ -14,6 +15,34 @@
 
 .question-container {
     height: 100%;
+}
+
+.question-nav {
+    height: 60px;
+    margin: 20px 0 20px;
+    background-color: #ffffff;
+}
+
+.question-nav span {
+    position: relative;
+    width: 25px;
+    padding: 8px 0 32px;
+    display: inline-block;
+    color: #000000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.flag {
+    position: absolute;
+    bottom: 8px;
+    top: auto;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.question-nav p {
+    display: inline;
 }
 
 .active {
@@ -46,4 +75,26 @@ img {
 .error_message {
     text-align: center;
     font-size: large;
+}
+
+#flag-checkbox {
+    width: 20px;
+    height: 20px
+}
+
+#flag-label {
+    font-size: 2rem;
+}
+
+.unanswered-nav-box {
+    background-color: $unanswered-color;
+}
+
+.answered-nav-box {
+    background-color: $answered-color;
+}
+
+.question-nav .current-nav-box {
+    border: 1px solid #000000;
+    padding: 7px 0 31px;
 }

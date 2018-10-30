@@ -7,6 +7,7 @@ var current = 1
 function active() {
     document.querySelector(".q_" + current).classList.add("active")
     document.querySelector("h4").textContent = current + "/30"
+    trackActiveQuestion(current)
 }
 
 /**
@@ -27,7 +28,9 @@ function next() {
     if (nextQuestion !== null) {
         document.querySelector(".active").classList.remove("active")
         document.querySelector(".q_" + current).classList.add("active")
+        trackActiveQuestion(current)
     }
+    updateFlagStatus()
 }
 
 /**
@@ -49,8 +52,44 @@ function prev() {
     if (prevQuestion !== null) {
         document.querySelector(".active").classList.remove("active")
         document.querySelector(".q_" + current).classList.add("active")
+        trackActiveQuestion(current)
+    }
+    updateFlagStatus()
+}
+
+/*
+ * Updates the the flag status of the current question
+ */
+function updateFlagStatus() {
+    let question =  document.querySelector('.question.active')
+    let qId  = question.dataset.id
+    let navItem = document.querySelector('#question-nav').children[qId - 1]
+    document.querySelector('#flag-checkbox').checked = flaggedQuestions[qId]
+    //('#questions-nav') is a placeholder for the page's number on the navbar
+    if(flaggedQuestions[qId]) {
+        navItem.querySelector('.flag').classList.add('glyphicon','glyphicon-flag')
+    } else {
+        navItem.querySelector('.flag').classList.remove('glyphicon','glyphicon-flag')
     }
 }
 
 document.querySelector(".next").addEventListener("click", next)
 document.querySelector(".prev").addEventListener("click", prev)
+document.querySelector('#flag-checkbox').addEventListener('change', updateFlagStatus)
+
+
+/*
+ * Fills the question navbar with clickable elements that takes you to the given question number.
+ */
+function fillNav() {
+    let nav = document.querySelector("#question-nav")
+    let questions = document.querySelectorAll('.question')
+    let counter = 1
+    questions.forEach(function (question) {
+        nav.innerHTML += '<span class="nav-item unanswered-nav-box">' +
+            '<p>' + question.dataset['id'] + '</p>' +
+            '<div class="flag"></div>' +
+            '</span>'
+        counter++
+    })
+}
