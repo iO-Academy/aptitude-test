@@ -1,3 +1,4 @@
+@import "imports/variables";
 
 .container {
     text-align: center;
@@ -69,4 +70,16 @@ img {
 .error_message {
     text-align: center;
     font-size: large;
+}
+
+.unanswered-nav-box {
+    background-color: $unanswered-color;
+}
+
+.answered-nav-box {
+    background-color: $answered-color;
+}
+
+.current-nav-box {
+    border: 2px solid #000000;
 }

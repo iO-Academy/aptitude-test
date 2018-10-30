@@ -53,3 +53,12 @@ img {
 .error_message {
   text-align: center;
   font-size: large; }
+
+.unanswered-nav-box {
+  background-color: #e66060; }
+
+.answered-nav-box {
+  background-color: #698dc9; }
+
+.current-nav-box {
+  border: 2px solid #000000; }
