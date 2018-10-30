@@ -19,10 +19,15 @@ function fillUserTable(HBTemplate) {
                     if (userData.deleted === "0") {
                     let html = template(userData)
                     user_list.innerHTML += html
+                        console.log (userData)
                 }
                 })
                 let userItems = document.querySelectorAll(".user_item")
                 userItems.forEach(function (userItem) {
+                    let editButton = userItem.querySelector('.btn-success')
+                    editButton.addEventListener('click', function () {
+                        console.log(userItem)
+                    })
                     let deleteButton = userItem.querySelector('.btn-danger')
                     deleteButton.addEventListener('click', function () {
                         console.log(userItem)
@@ -32,8 +37,6 @@ function fillUserTable(HBTemplate) {
                 user_list.innerHTML = "Please contact Admin, user list unavailable"
             }
         })
-
-
 }
 
 /**
