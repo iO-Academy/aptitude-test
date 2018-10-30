@@ -9,15 +9,21 @@ document.querySelector('#finish').addEventListener('click', function(e) {
         let flagList = document.getElementById('flag-list')
         document.getElementById('modal-title').textContent = 'You have ' + unanswered.length + ' unanswered questions.'
         while (flagList.firstChild) {
-            flagList.removeChild(flagList.firstChild);
+            flagList.removeChild(flagList.firstChild)
         }
         let numberOfFlags = 1
+        let unanswerList = document.getElementById('unanswered-list')
         Object.values(flaggedQuestions).forEach(function(e) {
             if (e === true) {
                 flagList.innerHTML += "<li>" + numberOfFlags +"</li>"
             }
             numberOfFlags++
         })
+
+        unanswered.forEach(function (e) {
+            unanswerList.innerHTML += "<li>" + e +"</li>"
+        })
+
         openDialog()
         document.querySelector('#modal-close').addEventListener('click', function() {
             closeDialog()
