@@ -124,7 +124,6 @@ function displayResult(earnedPoints, earnedPercentage, answeredQuestions) {
     document.querySelector(".score_percentage").innerHTML = earnedPercentage
 }
 
-
 function questionAnswered() {
     const qAmount = document.querySelectorAll('.question').length
     let answers = getUserAnswers(qAmount)
@@ -167,3 +166,37 @@ function showResults() {
     })
 
 }
+
+/**
+ * function adds event listeners to .question and listens for click event within here
+ * it then updates the class of the span containing the question number allowing styling to be applied
+ *
+ */
+function addAnswerEventListeners() {
+    document.querySelectorAll('.question').forEach(function (input) {
+        input.addEventListener('click', function(e) {
+            if (e.target.tagName == 'INPUT') {
+                let nav = document.querySelector('#question-nav')
+                let id = parseInt(this.dataset['id']) - 1
+                nav.children[id].classList.add('answered-nav-box')
+            }
+        })
+    })
+}
+
+/**
+ * function removes current status from all questions and then adds current status
+ * to the current question allowing styling to be applied
+ *
+ * @param id is the id of the active question
+ *
+ */
+function trackActiveQuestion(id) {
+    let nav = document.querySelector('#question-nav')
+    for (let i = 0; i < nav.children.length; i++) {
+        nav.children[i].classList.remove('current-nav-box')
+    }
+    nav.children[id - 1].classList.add('current-nav-box')
+}
+
+
