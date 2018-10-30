@@ -19,7 +19,7 @@ function fillUserTable(HBTemplate) {
         })
         .then(function() {
             putDescription(counter)
-            addInputEventListeners()
+            addAnswerEventListeners()
             fillNav()
             active()
         })

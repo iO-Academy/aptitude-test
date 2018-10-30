@@ -130,13 +130,19 @@ function displayResult(earnedPoints, earnedPercentage, answeredQuestions) {
     document.querySelector(".score_percentage").innerHTML = earnedPercentage
 }
 
-
-function addInputEventListeners() {
+/**
+ * function adds event listeners to .question and listens for click event within here
+ * it then updates the class of the
+ *
+ */
+function addAnswerEventListeners() {
     document.querySelectorAll('.question').forEach(function (input) {
         input.addEventListener('click', function(e) {
-            let nav = document.querySelector('#question-nav')
-            let id = parseInt(this.dataset['id']) - 1
-            nav.children[id].classList.add('answered-nav-box')
+            if (e.target.tagName == 'INPUT') {
+                let nav = document.querySelector('#question-nav')
+                let id = parseInt(this.dataset['id']) - 1
+                nav.children[id].classList.add('answered-nav-box')
+            }
         })
     })
 }
