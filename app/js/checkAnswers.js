@@ -1,4 +1,22 @@
-const questionAmount = 30   // amount of questions
+const questionAmount = 30// amount of questions
+
+document.querySelector('#finish').addEventListener('click', function(e) {
+    var unanswered = questionAnswered()
+    if (unanswered == false) {
+        showResults()
+    }
+    else {
+        document.getElementById('modal-title').textContent = 'You have ' + unanswered.length + ' unanswered questions.'
+        openDialog()
+        document.querySelector('#modal-close').addEventListener('click', function() {
+            closeDialog()
+        })
+        document.querySelector('#modal-finish').addEventListener('click', function() {
+            showResults()
+            closeDialog()
+        })
+    }
+})
 
 /**
  * checks the users answers against api answers
@@ -60,24 +78,6 @@ function getUserAnswers(questionAmount) {
     return answers
 }
 
-document.querySelector('#finish', '#modal-finish').addEventListener('click', function(e) {
-    var unanswered = questionAnswered()
-    if (unanswered == false) {
-        showResults()
-    }
-    else {
-        console.log('yey')
-        document.getElementById('modal-title').textContent = 'You have ' + unanswered.length + ' unanswered questions.'
-        openDialog()
-        document.querySelector('#modal-close').addEventListener('click', function() {
-            closeDialog()
-        })
-        document.querySelector('#modal-finish').addEventListener('click', function() {
-            showResults()
-            closeDialog()
-        })
-    }
-})
 
 /**
  * gets number of answered questions
@@ -126,7 +126,8 @@ function displayResult(earnedPoints, earnedPercentage, answeredQuestions) {
 
 
 function questionAnswered() {
-    let answers = getUserAnswers(30)
+    const qAmount = document.querySelectorAll('.question').length
+    let answers = getUserAnswers(qAmount)
     let answersArr = Object.values(answers)
     let unanswered = []
     answersArr.forEach(function (value, qid) {
