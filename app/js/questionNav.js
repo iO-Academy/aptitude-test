@@ -54,3 +54,18 @@ function prev() {
 
 document.querySelector(".next").addEventListener("click", next)
 document.querySelector(".prev").addEventListener("click", prev)
+
+
+
+/*
+ * Fills the question navbar with clickable elements that takes you to the given question number.
+ */
+function fillNav() {
+    let nav = document.querySelector("#question-nav")
+    let questions = document.querySelectorAll('.question')
+    let counter = 1
+    questions.forEach(function (question) {
+        nav.innerHTML += '<span class="nav-item"><p>' + question.dataset['id'] + '</p></span>'
+        counter++
+    })
+}
