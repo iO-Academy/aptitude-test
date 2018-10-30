@@ -9,14 +9,20 @@ document.querySelector('#finish').addEventListener('click', function(e) {
         document.getElementById('modal-title').textContent = 'You have ' + unanswered.length + ' unanswered questions.'
         openDialog()
         document.querySelector('#modal-close').addEventListener('click', function() {
+            document.querySelector('#modal-finish').removeEventListener('click', finishTest)
             closeDialog()
         })
-        document.querySelector('#modal-finish').addEventListener('click', function() {
-            showResults()
-            closeDialog()
-        })
+        document.querySelector('#modal-finish').addEventListener('click', finishTest)
     }
 })
+
+/**
+ * called when clicking finish button in dialogue box
+ */
+function finishTest() {
+    showResults()
+    closeDialog()
+}
 
 /**
  * checks the users answers against api answers
