@@ -56,15 +56,15 @@ function prev() {
 }
 
 function updateFlagStatus() {
-    let qid  = document.querySelector('#questions .question.active').dataset.questionid
+    let qid  = document.querySelector('.question.active').dataset.id
     document.querySelector('#flag-checkbox').checked = flaggedQuestions[qid]
-
     //('#questions-nav') is a placeholder for the page's number on the navbar
     if(flaggedQuestions[qid]) {
-        document.querySelector('#questions-nav').classList.add('glyphicon','glyphicon-flag')
+        document.querySelector('#question-nav').classList.add('glyphicon','glyphicon-flag')
     } else {
-        document.querySelector('#questions-nav').classList.remove('glyphicon','glyphicon-flag')
+        document.querySelector('#question-nav').classList.remove('glyphicon','glyphicon-flag')
     }
+    console.log(flaggedQuestions)
 }
 
 document.querySelector(".next").addEventListener("click", next)
@@ -80,7 +80,7 @@ function fillNav() {
     let questions = document.querySelectorAll('.question')
     let counter = 1
     questions.forEach(function (question) {
-        nav.innerHTML += '<span class="nav-item"><p>' + question.dataset['id'] + '</p></span>'
+        nav.innerHTML += '<span class="nav-item"><p>' + question.dataset['id'] + '</p>' + '</span>'
         counter++
     })
 }

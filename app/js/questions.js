@@ -34,6 +34,7 @@ getTemplateAjax('js/templates/questions.hbs').then(function(HBTemplate) {
 })
 
 document.querySelector('#flag-checkbox').addEventListener('change', function() {
-    let qid  = document.querySelector('#questions .question.active').dataset.questionid
+    let qid  = document.querySelector('.question.active').dataset.id
+    console.log(qid)
     flaggedQuestions[qid] = document.querySelector('#flag-checkbox').checked
 })
