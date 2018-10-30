@@ -7,9 +7,9 @@
     @return Returns an object that can be used as the parameter in postUserData() func.
  */
 
-async function createUserObject(inputClass) {
+function createUserObject(inputClass) {
     let formData = document.querySelectorAll(inputClass)
-    let result = {}
+    let result = {'canRetake':'0'}
     formData.forEach(function(input) {
         result[input.name] = input.value
     })
@@ -17,16 +17,28 @@ async function createUserObject(inputClass) {
 }
 
 /*
-    Posts edited user data to the API
+    Passes the object returned by createUserObject() and posts to the api as a json string
 
     @param the formData is the object, use the returned result from createUserObject
+
+    @return object apiData stating posts success and whether user data has been updated
  */
 
 async function postUserEdit(formData) {
     if (formData.name && formData.email && formData.id) {
-        await fetch('localhost:8080/user/edit', {
-            method: 'POST',
-            body: JSON.stringify(formData)
+        let apiData = await fetch('http://localhost:8080/user/edit', {
+            method: 'post',
+            body: jsonToFormData(formData)
         })
+        apiData = await apiData.json()
+        return apiData
     }
+
 }
+
+document.getElementById('practiseForm').addEventListener('submit', function (e) {
+    e.preventDefault()
+    postUserEdit(createUserObject('.practise'))
+})
+
+
