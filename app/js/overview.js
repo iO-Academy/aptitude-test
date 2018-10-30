@@ -25,3 +25,8 @@ document.querySelector(".overview").addEventListener("click", function() {
     document.querySelector('#question_page').style.display = 'none';
 })
 
+document.querySelector('table').addEventListener('click', function(e) {
+    changeQuestion(e.target.parentNode.firstElementChild.innerText)
+    document.querySelector('#overview_page').style.display = 'none';
+    document.querySelector('#question_page').style.display = 'block';
+})
