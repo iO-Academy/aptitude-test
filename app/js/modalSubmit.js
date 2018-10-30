@@ -1,7 +1,7 @@
 
 var modal = document.getElementsByClassName("modal")
 
-document.getElementById('editUserForm').addEventListener('submit', function (e) {
+document.getElementById('editUserForm').addEventListener('submit', function() {
     isEmpty()
     nameValidation()
     isEmailValid()
