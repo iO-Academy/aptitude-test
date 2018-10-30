@@ -1,4 +1,5 @@
 var current = 1
+document.querySelector(".prev").style.visibility = "hidden"
 
 /**
 *adds active to the first question
@@ -16,13 +17,18 @@ function active() {
 function next() {
     current++
     let nextQuestion = document.querySelector(".q_" + current)
+    let overviewButton = document.querySelectorAll(".overview")
     document.querySelector("h4").textContent = current + "/30"
 
     if (current !== 1) {
-        document.querySelector(".prev").style.display = "block"
+        document.querySelector(".prev").style.visibility = "visible"
     }
     if (current === 30) {
-        document.querySelector(".next").style.display = "none"
+        document.querySelector(".next").style.visibility = "hidden"
+        if (overviewButton.length == 0) {
+            document.querySelector(".overview_column").insertAdjacentHTML('beforeEnd', '<button type="button" class="btn btn-info overview">Overview</button>')
+        }
+
     }
     if (nextQuestion !== null) {
         document.querySelector(".active").classList.remove("active")
@@ -42,11 +48,11 @@ function prev() {
     document.querySelector("h4").textContent = current + "/30"
 
     if (current === 1) {
-        document.querySelector(".prev").style.display = "none"
-        document.querySelector(".next").style.display = "block"
+        document.querySelector(".prev").style.visibility = "hidden"
+        document.querySelector(".next").style.visibility = "visible"
     }
     if (current !== 30) {
-        document.querySelector(".next").style.display = "block"
+        document.querySelector(".next").style.visibility = "visible"
     }
     if (prevQuestion !== null) {
         document.querySelector(".active").classList.remove("active")
