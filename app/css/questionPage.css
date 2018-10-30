@@ -12,6 +12,22 @@
 .question-container {
   height: 100%; }
 
+.question-nav {
+  height: 60px;
+  margin: 20px 0 20px 0;
+  background-color: #ffffff; }
+
+.question-nav span {
+  width: 25px;
+  padding: 20px 0;
+  display: inline-block;
+  color: black;
+  text-decoration: none;
+  cursor: pointer; }
+
+.question-nav p {
+  display: inline; }
+
 .active {
   display: block; }
 
@@ -39,6 +55,7 @@ img {
 .error_message {
   text-align: center;
   font-size: large; }
+<<<<<<< HEAD
 
 #flag-checkbox {
   width: 20px;
@@ -61,3 +78,16 @@ th, td {
 .glyphicon {
   top: auto;
   display: table-cell; }
+||||||| merged common ancestors
+=======
+
+.unanswered-nav-box {
+  background-color: #e66060; }
+
+.answered-nav-box {
+  background-color: #698dc9; }
+
+.question-nav .current-nav-box {
+  border: 1px solid #000000;
+  padding: 19px 0; }
+>>>>>>> s3-main-question-nav

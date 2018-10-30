@@ -1,5 +1,4 @@
-$main-background-color: #ffffff;
-$table-border: #7c1c1c;
+@import "imports/variables";
 
 .container {
     text-align: center;
@@ -16,6 +15,25 @@ $table-border: #7c1c1c;
 
 .question-container {
     height: 100%;
+}
+
+.question-nav {
+    height: 60px;
+    margin: 20px 0 20px 0;
+    background-color: #ffffff;
+}
+
+.question-nav span {
+    width: 25px;
+    padding: 20px 0;
+    display: inline-block;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.question-nav p {
+    display: inline;
 }
 
 .active {
@@ -79,4 +97,17 @@ th, td {
 .glyphicon {
     top: auto;
     display: table-cell;
+}
+
+.unanswered-nav-box {
+    background-color: $unanswered-color;
+}
+
+.answered-nav-box {
+    background-color: $answered-color;
+}
+
+.question-nav .current-nav-box {
+    border: 1px solid #000000;
+    padding: 19px 0;
 }

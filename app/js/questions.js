@@ -24,6 +24,9 @@ function fillUserTable(HBTemplate) {
         })
         .then(function() {
             putDescription(counter)
+            addAnswerEventListeners()
+            fillNav()
+            addNavLinks()
             active()
         })
 }
@@ -33,6 +36,6 @@ getTemplateAjax('js/templates/questions.hbs').then(function(HBTemplate) {
 })
 
 document.querySelector('#flag-checkbox').addEventListener('change', function() {
-    let qid  = document.querySelector('#questions .question.active').dataset.questionid
+    let qid  = document.querySelector('#questions .question.active').dataset.id
     flaggedQuestions[qid] = document.querySelector('#flag-checkbox').checked
 })
