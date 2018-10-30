@@ -66,6 +66,7 @@ function addEditEventListeners() {
     let editButtons = document.querySelectorAll(".modalBtn")
     editButtons.forEach(function (editButton) {
         editButton.addEventListener('click', function (e) {
+            openDialog()
             let parentElement = e.target.parentElement
             let userInfo = {}
             userInfo.name = parentElement.getAttribute("dataName")
