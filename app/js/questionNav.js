@@ -69,7 +69,6 @@ function updateFlagStatus() {
     } else {
         navitem.querySelector('.flag').classList.remove('glyphicon','glyphicon-flag')
     }
-    console.log(flaggedQuestions)
 }
 
 document.querySelector(".next").addEventListener("click", next)
