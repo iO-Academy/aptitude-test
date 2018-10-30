@@ -4,9 +4,19 @@ document.querySelector("#finish").addEventListener("click", function() {
     for (let i = 1; i <= numOfQuestions; i++) {
         let questionObject = {}
         questionObject['id'] = i
-        questionObject['isFlagged'] = Object.values(flaggedQuestions)[i]
-        questionObject['isAnswered'] = getUserAnswers()[i]
+        questionObject['isFlagged'] = Object.values(flaggedQuestions)[i] ? 'Yes' : 'No'
+        questionObject['isAnswered'] = getUserAnswers()[i] == 'unanswered' ? 'No' : 'Yes'
         questionObject['question'] = document.querySelectorAll(`.q_${i} p`)[1].innerText.substring(0, 20) + '...'
         overviewData.push(questionObject)
     }
+    console.log(overviewData)
+    getTemplateAjax('js/templates/overview.hbs').then(function(HBTemplate) {
+        let template = Handlebars.compile(HBTemplate)
+        let html = ''
+        overviewData.forEach(function(answer) {
+            html += template(answer)
+        })
+        document.querySelector('.overview_table_body').insertAdjacentHTML('afterBegin', html)
+    })
 })
+
