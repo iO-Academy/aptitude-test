@@ -48,16 +48,18 @@ async function getExistingUsers() {
  * validates email using regex code
  *
  * @param email - the email address we want to check for
+ * @param event - the event that's fired off
  *
  * @returns {boolean} - is the email valid
  */
-function isEmailValid(email) {
+function isEmailValid(email, event) {
     const regexEmail = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/
     if (regexEmail.test(email)) {
         return true
+    } else {
+        event.preventDefault()
+        return false
     }
-
-    return false
 }
 
 /**
