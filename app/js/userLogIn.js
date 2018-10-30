@@ -52,9 +52,14 @@ if (document.querySelector('#logInForm')) {
 
         getUser(email.value).then(function(user) {
             if(user.success && user.data.id) {
+                let retakeValue = user.data.canRetake
                 checkIfTestIsTaken(user.data.id).then(function(idData) {
-                    if (idData.success) {
+                    if (idData.success && retakeValue != 1) {
                         email.insertAdjacentHTML('afterend', '<p>The test cannot be done twice</p>')
+                    } else if(idData.success && retakeValue == 1) {
+                        document.cookie = "uid=" + user.data.id
+                        document.cookie = "userEmail=" + user.data.email
+                        redirectUser(user.data)
                     } else {
                         document.cookie = "uid=" + user.data.id
                         document.cookie = "userEmail=" + user.data.email
