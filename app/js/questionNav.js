@@ -7,6 +7,7 @@ var current = 1
 function active() {
     document.querySelector(".q_" + current).classList.add("active")
     document.querySelector("h4").textContent = current + "/30"
+    trackActiveQuestion(current)
 }
 
 /**

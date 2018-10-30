@@ -143,7 +143,10 @@ function addInputEventListeners() {
 
 function trackActiveQuestion(id) {
     let nav = document.querySelector('#question-nav')
-    nav.children[id].classList.add('current-nav-box')
+    for (let i = 0; i < nav.children.length; i++) {
+        nav.children[i].classList.remove('current-nav-box')
+    }
+    nav.children[id - 1].classList.add('current-nav-box')
 }
 
 
