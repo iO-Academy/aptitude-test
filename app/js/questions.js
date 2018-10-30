@@ -21,6 +21,7 @@ function fillUserTable(HBTemplate) {
             putDescription(counter)
             active()
             fillNav()
+            addNavLinks()
         })
 }
 
