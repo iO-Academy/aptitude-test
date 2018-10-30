@@ -132,7 +132,7 @@ function displayResult(earnedPoints, earnedPercentage, answeredQuestions) {
 
 /**
  * function adds event listeners to .question and listens for click event within here
- * it then updates the class of the
+ * it then updates the class of the span containing the question number allowing styling to be applied
  *
  */
 function addAnswerEventListeners() {
@@ -147,6 +147,13 @@ function addAnswerEventListeners() {
     })
 }
 
+/**
+ * function removes current status from all questions and then adds current status
+ * to the current question allowing styling to be applied
+ *
+ * @param id is the id of the active question
+ *
+ */
 function trackActiveQuestion(id) {
     let nav = document.querySelector('#question-nav')
     for (let i = 0; i < nav.children.length; i++) {
