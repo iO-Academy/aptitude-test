@@ -1,11 +1,11 @@
-<div class="question q_{{id}}">
+<div class="question q_{{id}}" data-id="{{id}}">
     <div>
         <h2 class="description_label_{{id}}"></h2>
         <p class="description_text_{{id}}"></p>
     </div>
     <p>{{text}}</p>
     <div class="img_{{id}}"></div>
-    <div class="answers" data-id="{{id}}">
+    <div class="answers">
         {{#if option1}}
         <p>
             <input type="radio" name="answer_{{id}}" value="1">{{option1}}

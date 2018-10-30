@@ -132,11 +132,11 @@ function displayResult(earnedPoints, earnedPercentage, answeredQuestions) {
 
 
 function addInputEventListeners() {
-    document.querySelectorAll('input').forEach(function (input) {
+    document.querySelectorAll('.question').forEach(function (input) {
         input.addEventListener('click', function(e) {
             let nav = document.querySelector('#question-nav')
-            let id = parseInt(e.target.parentNode.parentNode.dataset['id']) - 1
-            nav.children[id].classList.add('answered')
+            let id = parseInt(this.dataset['id']) - 1
+            nav.children[id].classList.add('answered-nav-box')
         })
     })
 }
