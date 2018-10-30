@@ -124,7 +124,10 @@ function displayResult(earnedPoints, earnedPercentage, answeredQuestions) {
     document.querySelector(".score_percentage").innerHTML = earnedPercentage
 }
 
-
+/**
+ *  this get the unanswered questions and puts their question id into an array
+ * @returns the array of question ids that havent been answered
+ */
 function questionAnswered() {
     const qAmount = document.querySelectorAll('.question').length
     let answers = getUserAnswers(qAmount)
@@ -137,8 +140,7 @@ function questionAnswered() {
         }
     })
     if (unanswered.length == 0) {
-        unanswered = false
-        return unanswered
+        return false
     }
     else {
         return unanswered
@@ -146,6 +148,10 @@ function questionAnswered() {
 
 }
 
+
+/**
+ * this checks the answers and marks them to show the finishing page
+ */
 function showResults() {
     const userAnswers = getUserAnswers(questionAmount)
     checkAnswers(userAnswers).then(function (result) {
