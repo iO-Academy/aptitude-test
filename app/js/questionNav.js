@@ -81,6 +81,7 @@ function addNavLinks() {
         let qID = button.querySelector('p').textContent
         button.addEventListener('click', function () {
             changeQuestion(qID)
+            current = qID
         })
     })
 }
