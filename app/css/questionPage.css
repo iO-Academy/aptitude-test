@@ -19,8 +19,15 @@
   padding: 15px;
   z-index: 501; }
 
-.flag-list {
+.list-container {
+  margin: 0 70px 0;
   float: left; }
+
+.modal-button-holder {
+  text-align: right; }
+
+#modal-title {
+  text-align: center; }
 
 .container {
   text-align: center; }
