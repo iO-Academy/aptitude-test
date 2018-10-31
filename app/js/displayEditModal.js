@@ -6,7 +6,6 @@ let closeTag = document.getElementsByClassName('close')[0]
 
 let container = document.getElementsByClassName('container')[0]
 
-
 modalButton.onclick = function () {
     editModal.style.display = "block";
     container.style.backgroundColor = '#808080'
@@ -25,4 +24,3 @@ Window.onclick = function() {
     container.style.backgroundColor = ''
     container.style.opacity = ''
 }
-
