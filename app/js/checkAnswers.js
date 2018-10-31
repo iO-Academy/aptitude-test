@@ -69,7 +69,7 @@ async function getAnswers() {
  *
  * @return Object of users answers
  */
-function getUserAnswers(questionAmount) {
+function getUserAnswers() {
     let checkedInputs = document.querySelectorAll('#questions .question .answers input:checked')
     let answers = {}
     for (let i = 1; i <= questionAmount; i++) {
