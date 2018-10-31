@@ -1,23 +1,28 @@
-//takes a dateStamp and return the difference between the current dateStamp and
-// the one that is passed into the function
+/** function tmeElapsed takes a dateStamp and return the difference between the current dateStamp and
+ *  the one that is passed into the function
+ *
+ * @param dateStamp parameter is the date stamp that is stored in a cookie at the beginning of the test
+ * @return returns the difference between the date stamp of the moment the function is called and the
+ * parameters date stamp value
+ */
 function timeElapsed(dateStamp){
     let timeNow = Date.now()
     return  timeNow - dateStamp
 }
 
 /**
- *  sets a 30 minute timer for taking the test
+ *Function timer() figures out how many seconds and minutes remain and displays this value. When called 1 is
+ * taken off the value of timeRemaining.
+ * If the timeRemaining is less than 0 then the function (not our code) automatically clicks on the
+ * finish button.
  */
-
-//30 minute time limit
-const timeLimit = 1801
-let dateStamp = getCookie("dateStamp")
-
-//time remaining is the time limit minus the tme elapsed in seconds
-let timeRemaining = Math.floor((timeLimit*1000 - timeElapsed(dateStamp))/1000)
-
-//The timer function presents the time remaining in seconds and counts down the clock when called
 function timer() {
+    //30 minute time limit in seconds (plus one second for lag).
+    const timeLimit = 1801
+    let dateStamp = getCookie("dateStamp")
+    //time remaining is the time limit minus the time elapsed in seconds.
+    let timeRemaining = Math.floor((timeLimit*1000 - timeElapsed(dateStamp))/1000)
+
     let minutes = Math.floor(timeRemaining / 60);
     let seconds = Math.floor(timeRemaining - minutes * 60);
 
