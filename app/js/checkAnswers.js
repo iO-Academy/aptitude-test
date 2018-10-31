@@ -4,8 +4,7 @@ document.querySelector('#finish').addEventListener('click', function(e) {
     var unanswered = questionAnswered()
     if (unanswered == false) {
         showResults()
-    }
-    else {
+    } else {
         document.getElementById('modal-title').textContent = 'You have ' + unanswered.length + ' unanswered questions.'
         openDialog()
         document.querySelector('#modal-close').addEventListener('click', function() {
@@ -173,7 +172,7 @@ function questionAnswered() {
     let unanswered = []
     answersArr.forEach(function (value, qid) {
         qid++
-        if(value == 'unanswered') {
+        if (value == 'unanswered') {
             unanswered.push(qid)
         }
     })
