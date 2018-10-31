@@ -7,6 +7,22 @@
     text-align: center;
 }
 
+.question-header {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    padding: 3px;
+    margin: 15px 0 0;
+}
+
+.question-header h3, .question-header h4, .question-header label {
+    display: inline-block;
+    font-weight: normal;
+    font-size: 1.8rem;
+    line-height: 2rem;
+    margin: 0;
+}
+
 .question {
     position: relative;
     background-color: #ffffff;
