@@ -1,7 +1,8 @@
-
+$overlay-background = rgba(0,0,0,0.6);
+$modal-background = #ffffff;
 
 .overlay {
-  background: rgba(0,0,0,0.6);
+  background: $overlay-background;
   position: fixed;
   z-index: 500;
   top: 0;
@@ -13,7 +14,7 @@
 
 #modal {
   display: none;
-  background: #ffffff;
+  background: $modal-background;
   width: 600px;
   position: fixed;
   top: 30px;
