@@ -133,7 +133,7 @@ function updateUserTable() {
  * It then posts the delete line and changes the entry in the database from a zero to a one.
  * if successful calls the updateUserTable() function
  *
- * @param This brings in the id of the user where the delete button has been clicked
+ * @param userId is the object containing user data retrieved from the api
  */
 function deleteUser(userId) {
     let url = "http://localhost:8080/user/delete/" + userId
