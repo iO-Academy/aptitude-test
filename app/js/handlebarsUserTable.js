@@ -42,11 +42,11 @@ function updateDisplayedUsers(apiResponse, template) {
 }
 
 /**
- * Fills handlebars template by passing in object and inserts into the score_list div.
+ * Fills the input fields in the edit modal with the current data for the user stored in the api.
  *
  * @param HBTemplate the handlebars template.
  *
- * @param userInfo the function that creates an object of all fields required in scores page.
+ * @param userInfo the object of all fields required in scores page.
  *
  */
 function fillEditModal(HBTemplate, userInfo) {
@@ -64,12 +64,12 @@ function fillEditModal(HBTemplate, userInfo) {
 }
 
 /**
- * This adds the event listener to the edit button on creation of it the button.
+ * This adds the event listeners to the created edit buttons.
  *
  */
 function addEditEventListeners() {
     let editButtons = document.querySelectorAll(".modalBtn")
-    editButtons.forEach(function (editButton) {
+    editButtons.forEach(function(editButton) {
         editButton.addEventListener('click', function (e) {
             openDialog()
             let userInfo = createObjectFromParentElement(e)
@@ -81,6 +81,7 @@ function addEditEventListeners() {
 /**
  * Turns data from parent element (userTable handlebars template) into an object.
  *
+ * @param event is the event fired off by the function
  */
 function createObjectFromParentElement(event) {
     let parentElement = event.target.parentElement
