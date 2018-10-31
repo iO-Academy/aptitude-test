@@ -39,7 +39,7 @@ async function handleResponseFromAPI (response) {
             messageToTestTaker = 'Error sending your results: Do not close browser! Please find the nearest member of staff and show them this screen'
         }
     })
-    document.querySelector('body').innerHTML += '<p class="error_message text-danger">' + messageToTestTaker +'</p>'
+    document.querySelector('.result').innerHTML += '<p class="error_message text-danger">' + messageToTestTaker +'</p>'
 }
 
 

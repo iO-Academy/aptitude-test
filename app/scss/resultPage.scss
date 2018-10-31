@@ -1,3 +1,6 @@
+@import 'imports/logos';
+@import 'imports/variables';
+
 html {
   font-size: 62.5%;
 }
@@ -18,14 +21,11 @@ body {
   margin: 150px auto;
   width: 700px;
   height: 500px;
-  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
 
 .greetings {
   width: 700px;
   height: 150px;
-  background-image: url("../images/celeb.jpg");
-  box-shadow: 0 8px 19px rgba(0,0,0,0.30);
 
    p {
      display: inline-block;
@@ -33,7 +33,7 @@ body {
      text-align: center;
      line-height: 150px;
      background-color: rgba(255, 255, 255, 0.9);
-     color: #2b91ad;
+     color: $tealblue6-color;
      font-size: 4rem;
      font-weight: bold;
      letter-spacing: 1px;
@@ -41,22 +41,21 @@ body {
 }
 
 .result {
-  padding: 50px;
+  padding: 0 50px 70px;
   display: flex;
   justify-content: space-around;
+  position: relative;
 
   .points {
     display: inline-block;
     padding: 0;
     background-color: #fff;
-    box-shadow: 0 2px 7px rgba(0,0,0,0.30), 0 10px 9px rgba(0,0,0,0.22);
+    border: .25px solid $result-table-border;
 
     .points_label {
       height: 70px;
       width: 100%;
-      background-color: #2b91ad;
-      box-shadow: 0 3px 7px rgba(0,0,0,0.22);
-
+      background-color: $tealblue6-color;
       h3 {
         margin: 0;
         line-height: 70px;
@@ -73,7 +72,7 @@ body {
         line-height: 180px;
         text-align: center;
         font-size: 2rem;
-        color: #94ba66;
+        color: $green4-color;
 
         span {
           font-size: 7rem;
@@ -84,6 +83,7 @@ body {
 
   .percentage {
      @extend .points;
+     border-left: none;
 
      .percentage_label {
        @extend .points_label;
@@ -96,6 +96,7 @@ body {
 
   .answered {
     @extend .points;
+    border-left: none;
 
     .answered_label {
       @extend .points_label;
@@ -105,5 +106,12 @@ body {
       @extend .points_number;
     }
   }
+}
 
+.logo-bottom {
+  width: 100%;
+}
+
+.logo_row {
+  background-color: #fff;
 }
