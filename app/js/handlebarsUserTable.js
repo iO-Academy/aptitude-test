@@ -64,7 +64,7 @@ function fillEditModal(HBTemplate, userInfo) {
 }
 
 /**
- * This adds the event listener to the edit button on creation of it the button.
+ * This adds the event listeners to the created edit buttons.
  *
  */
 function addEditEventListeners() {
