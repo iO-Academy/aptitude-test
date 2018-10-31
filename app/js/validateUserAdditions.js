@@ -1,9 +1,9 @@
 /**
- * save the JSON object using an AJAX request
+ * Save the JSON object using an AJAX request.
  *
- * @param user the JSON object including name and email keys
+ * @param user The JSON object including name and email keys.
  *
- * @returns a promise containing the response, which includes the boolean success property
+ * @returns A promise containing the response, which includes the boolean success property.
  */
 async function saveNewUser(user) {
     let formData = jsonToFormData(user) // API does not work with JSON - needs form data
@@ -21,9 +21,9 @@ async function saveNewUser(user) {
 }
 
 /**
- * performs an AJAX request to retrieve existing users that are not deleted.
+ * Performs an AJAX request to retrieve existing users that are not deleted.
  *
- * @return  an array of user data
+ * @return  An array of user data.
  */
 async function getExistingUsers() {
     let result = []
@@ -45,12 +45,12 @@ async function getExistingUsers() {
 }
 
 /**
- * validates email using regex code
+ * Validates email using regex code.
+ * The event that's fired off.
  *
- * @param email - the email address we want to check for
- * @param event - the event that's fired off
+ * @param email - The email address we want to check for.
  *
- * @returns {boolean} - is the email valid
+ * @returns {boolean} - Is the email valid.
  */
 function isEmailValid(email) {
     const regexEmail = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/
@@ -62,12 +62,12 @@ function isEmailValid(email) {
 }
 
 /**
- * returns true if email to add is identical to an existing user
+ * Returns true if email to add is identical to an existing user.
  *
- * @param emailToAdd  - The email address we want to check for
- * @param existingUsers - The array of existing users data
+ * @param emailToAdd  - The email address we want to check for.
+ * @param existingUsers - The array of existing users data.
  *
- * @returns {boolean} - Does the user already exist
+ * @returns {boolean} - Does the user already exist.
  */
 function userExists(emailToAdd, existingUsers) {
     var result = false
