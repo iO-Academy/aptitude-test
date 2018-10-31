@@ -69,7 +69,7 @@ function fillEditModal(HBTemplate, userInfo) {
  */
 function addEditEventListeners() {
     let editButtons = document.querySelectorAll(".modalBtn")
-    editButtons.forEach(function (editButton) {
+    editButtons.forEach(function(editButton) {
         editButton.addEventListener('click', function (e) {
             openDialog()
             let userInfo = createObjectFromParentElement(e)
