@@ -167,16 +167,15 @@ function trackActiveQuestion(id) {
  */
 function questionAnswered() {
     const qAmount = document.querySelectorAll('.question').length
-    let answers = getUserAnswers(qAmount)
+    let answers = getUserAnswers()
     let answersArr = Object.values(answers)
     let unanswered = []
     //qID refers to the question ID, and is incremented each iteration
-    let qID = 1
-    answersArr.forEach(function (value) {
+    answersArr.forEach(function (value, qID) {
+        qID++
         if (value == 'unanswered') {
             unanswered.push(qID)
         }
-        qID++
     })
     return unanswered
 }
