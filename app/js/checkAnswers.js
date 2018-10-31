@@ -21,13 +21,21 @@ document.querySelector('#finish').addEventListener('click', function() {
         })
         removeDialogList(unansweredList)
         openDialog()
-        document.querySelector('#modal-close').addEventListener('click', closeDialog)
-        document.querySelector('#modal-finish').addEventListener('click', function() {
-            showResults()
+        document.querySelector('#modal-close').addEventListener('click', function() {
+            document.querySelector('#modal-finish').removeEventListener('click', finishTest)
             closeDialog()
         })
+        document.querySelector('#modal-finish').addEventListener('click', finishTest)
     }
 })
+
+/**
+ * called when clicking finish button in dialogue box
+ */
+function finishTest() {
+    showResults()
+    closeDialog()
+}
 
 /**
  * Removes list from dialog box if list is empty
