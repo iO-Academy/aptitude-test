@@ -81,6 +81,7 @@ function addEditEventListeners() {
 /**
  * Turns data from parent element (userTable handlebars template) into an object.
  *
+ * @param event is the event fired off by the function
  */
 function createObjectFromParentElement(event) {
     let parentElement = event.target.parentElement
