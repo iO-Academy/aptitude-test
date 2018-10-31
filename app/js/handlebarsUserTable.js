@@ -67,18 +67,35 @@ function addEditEventListeners() {
     editButtons.forEach(function (editButton) {
         editButton.addEventListener('click', function (e) {
             openDialog()
-            let parentElement = e.target.parentElement
-            let userInfo = {}
-            userInfo.name = parentElement.getAttribute("dataName")
-            userInfo.email = parentElement.getAttribute("dataEmail")
-            userInfo.id = parentElement.getAttribute("dataId")
-            getTemplateAjax('js/templates/editmodal.hbs').then(function (HBTemplate) {
-                fillEditModal(HBTemplate, userInfo)
-            }).then(addEditModalSubmitEventListener)
+            let userInfo = createObjectFromParentElement(e)
+            populateEditModal(userInfo)
         })
     })
 }
 
+/**
+ * Turns data from parent element (userTable handlebars template) into an object
+ *
+ */
+function createObjectFromParentElement(event){
+    let parentElement = event.target.parentElement
+    let userInfo = {}
+    userInfo.name = parentElement.getAttribute("dataName")
+    userInfo.email = parentElement.getAttribute("dataEmail")
+    userInfo.id = parentElement.getAttribute("dataId")
+    return userInfo
+}
+
+/**
+ * Populates the modal with editModal handlebars template and puts userInfo object into that template and triggers off
+ * addEditModalSubmitEventListener
+ */
+
+function populateEditModal(userInfo) {
+    getTemplateAjax('js/templates/editmodal.hbs').then(function (HBTemplate) {
+        fillEditModal(HBTemplate, userInfo)
+    }).then(addEditModalSubmitEventListener)
+}
 /**
  * this adds the event listener to the delete button on creation of it the button
  *
