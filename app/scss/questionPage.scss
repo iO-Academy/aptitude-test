@@ -1,3 +1,5 @@
+@import "imports/variables";
+@import "imports/modal";
 
 .container {
     text-align: center;
@@ -5,7 +7,7 @@
 
 .question {
     position: relative;
-    background-color: white;
+    background-color: #ffffff;
     width: 100%;
     padding: 30px;
     text-align: left;
@@ -14,6 +16,25 @@
 
 .question-container {
     height: 100%;
+}
+
+.question-nav {
+    height: 60px;
+    margin: 20px 0 20px 0;
+    background-color: #ffffff;
+}
+
+.question-nav div {
+    width: 25px;
+    padding: 20px 0;
+    display: inline-block;
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.question-nav p {
+    display: inline;
 }
 
 .active {
@@ -46,4 +67,17 @@ img {
 .error_message {
     text-align: center;
     font-size: large;
+}
+
+.unanswered-nav-box {
+    background-color: $unanswered-color;
+}
+
+.answered-nav-box {
+    background-color: $answered-color;
+}
+
+.question-nav .current-nav-box {
+    border: 1px solid #000000;
+    padding: 19px 0;
 }
