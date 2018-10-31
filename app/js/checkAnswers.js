@@ -153,11 +153,11 @@ function addAnswerEventListeners() {
  *
  */
 function trackActiveQuestion(id) {
-    let nav = document.querySelector('#question-nav')
-    for (let i = 0; i < nav.children.length; i++) {
-        nav.children[i].classList.remove('current-nav-box')
+    let activeQuestion = document.querySelector('.nav-item.current-nav-box')
+    if (activeQuestion) {
+        activeQuestion.classList.remove('current-nav-box')
     }
-    nav.children[id - 1].classList.add('current-nav-box')
+    document.querySelector('#question-nav').children[id - 1].classList.add('current-nav-box')
 }
 
 /*
