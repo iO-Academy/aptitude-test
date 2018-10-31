@@ -170,16 +170,17 @@ function questionAnswered() {
     let answers = getUserAnswers(qAmount)
     let answersArr = Object.values(answers)
     let unanswered = []
-    answersArr.forEach(function (value, qid) {
-        qid++
+    //qID refers to the question ID, and is incremented each iteration
+    let qID = 1
+    answersArr.forEach(function (value) {
         if (value == 'unanswered') {
-            unanswered.push(qid)
+            unanswered.push(qID)
         }
+        qID++
     })
     if (unanswered.length == 0) {
         return false
-    }
-    else {
+    } else {
         return unanswered
     }
 
