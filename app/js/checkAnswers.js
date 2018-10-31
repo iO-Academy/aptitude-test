@@ -12,12 +12,12 @@ document.querySelector('#finish').addEventListener('click', function() {
         unansweredList.innerHTML = ''
         Object.values(flaggedQuestions).forEach(function(isQuestionFlagged, qId) {
             if (isQuestionFlagged) {
-                flagList.innerHTML += "<li>" + (qId + 1) +"</li>"
+                flagList.innerHTML += "<li>" + (qId + 1) + "</li>"
             }
         })
         removeDialogList(flagList)
-        unanswered.forEach(function (isQuestionUnanswered) {
-            unansweredList.innerHTML += "<li>" + isQuestionUnanswered +"</li>"
+        unanswered.forEach(function (qID) {
+            unansweredList.innerHTML += "<li>" + qID + "</li>"
         })
         removeDialogList(unansweredList)
         openDialog()
