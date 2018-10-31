@@ -18,7 +18,7 @@ function isEmpty (field) {
  * @return Will return true if filed has been validated with correct characters else will return false.
  */
 function nameValidation (field) {
-    var regexLetters = /^[A-Za-z]+$/
+    var regexLetters = /[A-Za-z]+$/
     if(field.match(regexLetters) ) {
         return true
     } else {
