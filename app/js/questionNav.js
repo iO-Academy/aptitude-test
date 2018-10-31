@@ -68,7 +68,7 @@ function fillNav() {
     let nav = document.querySelector("#question-nav")
     let questions = document.querySelectorAll('.question')
     questions.forEach(function (question) {
-        nav.innerHTML += '<span class="nav-item unanswered-nav-box"><p>' + question.dataset['id'] + '</p></span>'
+        nav.innerHTML += '<div class="nav-item unanswered-nav-box"><p>' + question.dataset['id'] + '</p></div>'
     })
 }
 
