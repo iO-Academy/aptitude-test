@@ -42,7 +42,7 @@ function updateDisplayedUsers(apiResponse, template) {
 }
 
 /**
- * Fills handlebars template by passing in object and inserts into the score_list div.
+ * Fills the input fields in the edit modal with the current data for the user stored in the api.
  *
  * @param HBTemplate the handlebars template.
  *
