@@ -138,9 +138,8 @@ function addAnswerEventListeners() {
     document.querySelectorAll('.question').forEach(function (input) {
         input.addEventListener('click', function(e) {
             if (e.target.tagName == 'INPUT') {
-                let nav = document.querySelector('#question-nav')
                 let id = parseInt(this.dataset['id']) - 1
-                nav.children[id].classList.add('answered-nav-box')
+                document.querySelector('#question-nav').children[id].classList.add('answered-nav-box')
             }
         })
     })
