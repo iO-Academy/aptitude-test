@@ -21,9 +21,7 @@ document.querySelector('#finish').addEventListener('click', function(e) {
             unansweredList.innerHTML += "<li>" + isQuestionUnanswered +"</li>"
         })
         openDialog()
-        document.querySelector('#modal-close').addEventListener('click', function() {
-            closeDialog()
-        })
+        document.querySelector('#modal-close').addEventListener('click', closeDialog)
         document.querySelector('#modal-finish').addEventListener('click', function() {
             showResults()
             closeDialog()
