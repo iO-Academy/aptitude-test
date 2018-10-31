@@ -69,14 +69,13 @@ async function getAnswers() {
 /**
  * gets answers the user provided from the DOM
  *
- * @param questionAmount total number of questions
- *
  * @return Object of users answers
  */
 function getUserAnswers() {
     let checkedInputs = document.querySelectorAll('#questions .question .answers input:checked')
+    let qAmount = document.querySelectorAll('#questions .question').length
     let answers = {}
-    for (let i = 1; i <= questionAmount; i++) {
+    for (let i = 1; i <= qAmount; i++) {
         answers[i] = 'unanswered'
     }
     
