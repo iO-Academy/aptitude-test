@@ -178,12 +178,7 @@ function questionAnswered() {
         }
         qID++
     })
-    if (unanswered.length == 0) {
-        return false
-    } else {
-        return unanswered
-    }
-
+    return unanswered
 }
 
 /**
