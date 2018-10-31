@@ -125,7 +125,7 @@ function updateUserTable() {
 /**
  * This asynchronous function accepts a numeric id as a parameter which is unique to each user.
  * It then posts the delete line and changes the entry in the database from a zero to a one.
- * If successful the function deletes the innerHTML of the parent element and console logs deletion successful.
+ * if successful calls the updateUserTable() function
  *
  */
 function deleteUser(userId) {
