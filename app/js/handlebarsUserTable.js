@@ -46,7 +46,7 @@ function updateDisplayedUsers(apiResponse, template) {
  *
  * @param HBTemplate the handlebars template.
  *
- * @param userInfo the function that creates an object of all fields required in scores page.
+ * @param userInfo the object of all fields required in scores page.
  *
  */
 function fillEditModal(HBTemplate, userInfo) {
