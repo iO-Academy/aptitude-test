@@ -12,9 +12,9 @@ document.querySelector('#finish').addEventListener('click', function(e) {
         flagList.innerHTML = ''
         unansweredList.innerHTML = ''
         Object.values(flaggedQuestions).forEach(function(isQuestionFlagged, qId) {
-            qId++
+            // qId++
             if (isQuestionFlagged) {
-                flagList.innerHTML += "<li>" + qId +"</li>"
+                flagList.innerHTML += "<li>" + (qId + 1) +"</li>"
             }
         })
         unanswered.forEach(function (isQuestionUnanswered) {
