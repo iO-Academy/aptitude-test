@@ -96,6 +96,7 @@ function createObjectFromParentElement(event) {
  * Populates the modal with editModal handlebars template and puts userInfo object into that template and triggers off
  * addEditModalSubmitEventListener.
  *
+ * @param userInfo is the object containing user data retrieved from the api
  */
 function populateEditModal(userInfo) {
     getTemplateAjax('js/templates/editmodal.hbs').then(function (HBTemplate) {
