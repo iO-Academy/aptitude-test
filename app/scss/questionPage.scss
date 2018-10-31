@@ -29,7 +29,7 @@
     width: 25px;
     padding: 20px 0;
     display: inline-block;
-    color: black;
+    color: #ffffff;
     text-decoration: none;
     cursor: pointer;
 }
@@ -79,7 +79,8 @@ img {
 }
 
 .unanswered-nav-box:hover,.answered-nav-box:hover {
-    background-color: #f2f2f2
+    background-color: #f2f2f2;
+    color: #2b2c2c;
 }
 
 .question-nav .current-nav-box {
