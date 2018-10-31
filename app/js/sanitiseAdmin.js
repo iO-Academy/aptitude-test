@@ -6,7 +6,6 @@
  */
 function isEmpty (field) {
     if (field.value === "") {
-        field.style.background = "red"
         return false
     } else {
         return true
@@ -25,3 +24,4 @@ function nameValidation (field) {
         return false
     }
 }
+
