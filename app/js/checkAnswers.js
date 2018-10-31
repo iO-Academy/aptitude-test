@@ -5,7 +5,7 @@ document.querySelector('#finish').addEventListener('click', function(e) {
     if (unanswered == false) {
         showResults()
     } else {
-        document.getElementById('modal-title').textContent = 'You have ' + unanswered.length + ' unanswered questions.'
+        document.getElementById('modal-title').textContent = `You have ${unanswered.length} unanswered questions.`
         openDialog()
         document.querySelector('#modal-close').addEventListener('click', function() {
             document.querySelector('#modal-finish').removeEventListener('click', finishTest)
