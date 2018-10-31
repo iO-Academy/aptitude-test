@@ -1,4 +1,33 @@
-const questionAmount = 30   // amount of questions
+const questionAmount = 30// amount of questions
+
+document.querySelector('#finish').addEventListener('click', function(e) {
+    let unanswered = questionAnswered()
+    if (unanswered == false) {
+        showResults()
+    }
+    else {
+        let flagList = document.getElementById('flag-list')
+        let unansweredList = document.getElementById('unanswered-list')
+        document.getElementById('modal-title').textContent = 'You have ' + unanswered.length + ' unanswered questions.'
+        flagList.innerHTML = ''
+        unansweredList.innerHTML = ''
+        Object.values(flaggedQuestions).forEach(function(isQuestionFlagged, qId) {
+            // qId++
+            if (isQuestionFlagged) {
+                flagList.innerHTML += "<li>" + (qId + 1) +"</li>"
+            }
+        })
+        unanswered.forEach(function (isQuestionUnanswered) {
+            unansweredList.innerHTML += "<li>" + isQuestionUnanswered +"</li>"
+        })
+        openDialog()
+        document.querySelector('#modal-close').addEventListener('click', closeDialog)
+        document.querySelector('#modal-finish').addEventListener('click', function() {
+            showResults()
+            closeDialog()
+        })
+    }
+})
 
 /**
  * checks the users answers against api answers
@@ -60,30 +89,6 @@ function getUserAnswers(questionAmount) {
     return answers
 }
 
-document.querySelector('#finish').addEventListener('click', function(e) {
-    e.preventDefault()
-    const userAnswers= getUserAnswers(questionAmount)
-
-    checkAnswers(userAnswers).then(function(result) {
-        let percentResult
-        let answered
-
-        if (result.score || result.score === 0) {
-            document.querySelector('#question_page').style.display = 'none'
-            document.querySelector('#result_page').style.display = 'block'
-            percentResult = getPercentResult(result.score, questionAmount)
-            answered = getAnswered(userAnswers, questionAmount)
-            displayResult(result.score, percentResult, answered)
-            handleResponseFromAPI(sendUserResults(result))
-        } else {
-            let body = document.querySelector('body')
-            let html = body.innerHTML
-            html += '<p class="error_message text-danger">Please contact admin. Answers cannot be checked at present.</p>'
-            body.innerHTML = html
-        }
-    })
-})
-
 
 /**
  * gets number of answered questions
@@ -128,6 +133,49 @@ function displayResult(earnedPoints, earnedPercentage, answeredQuestions) {
     document.querySelector(".score").innerHTML = earnedPoints
     document.querySelector(".answered_questions").innerHTML = answeredQuestions
     document.querySelector(".score_percentage").innerHTML = earnedPercentage
+}
+
+function questionAnswered() {
+    const qAmount = document.querySelectorAll('.question').length
+    let answers = getUserAnswers(qAmount)
+    let answersArr = Object.values(answers)
+    let unanswered = []
+    answersArr.forEach(function (value, qid) {
+        qid++
+        if(value == 'unanswered') {
+            unanswered.push(qid)
+        }
+    })
+    if (unanswered.length == 0) {
+        unanswered = false
+        return unanswered
+    }
+    else {
+        return unanswered
+    }
+
+}
+
+function showResults() {
+    const userAnswers = getUserAnswers(questionAmount)
+    checkAnswers(userAnswers).then(function (result) {
+        let percentResult
+        let answered
+        if (result.score || result.score === 0) {
+            document.querySelector('#question_page').style.display = 'none'
+            document.querySelector('#result_page').style.display = 'block'
+            percentResult = getPercentResult(result.score, questionAmount)
+            answered = getAnswered(userAnswers, questionAmount)
+            displayResult(result.score, percentResult, answered)
+            handleResponseFromAPI(sendUserResults(result))
+        } else {
+            let body = document.querySelector('body')
+            let html = body.innerHTML
+            html += '<p class="error_message text-danger">Please contact admin. Answers cannot be checked at present.</p>'
+            body.innerHTML = html
+        }
+    })
+
 }
 
 /**
