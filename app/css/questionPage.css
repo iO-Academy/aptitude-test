@@ -24,10 +24,13 @@
   float: left; }
 
 .modal-button-holder {
-  text-align: right; }
+  text-align: center; }
 
 #modal-title {
   text-align: center; }
+
+.list-wrapper {
+  overflow: auto; }
 
 .container {
   text-align: center; }
