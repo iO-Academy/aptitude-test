@@ -31,12 +31,71 @@ function updateDisplayedUsers(apiResponse, template) {
                 user_list.innerHTML += html
             }
         })
+        addEditEventListeners()
         addDeleteEventListeners()
     } else {
         user_list.innerHTML = "Please contact Admin, user list unavailable"
     }
 }
 
+/**
+ * fills handlebars template by passing in object and inserts into the score_list div
+ *
+ * @param HBTemplate the handlebars template
+ * @param ObjFunction the function that creates an object of all fields required in scores page
+ */
+function fillEditModal(HBTemplate, userInfo) {
+    let template = Handlebars.compile(HBTemplate)
+    let modal_content = document.querySelector("#modal-content")
+
+    modal_content.innerHTML = ""
+
+    if (userInfo.name && userInfo.email && userInfo.id) {
+        let html = template(userInfo)
+        modal_content.innerHTML += html
+    } else {
+        modal_content.innerHTML = "Please contact Admin, user list unavailable"
+    }
+}
+
+/**
+ * this adds the event listener to the edit button on creation of it the button
+ *
+ */
+function addEditEventListeners() {
+    let editButtons = document.querySelectorAll(".modalBtn")
+    editButtons.forEach(function (editButton) {
+        editButton.addEventListener('click', function (e) {
+            openDialog()
+            let userInfo = createObjectFromParentElement(e)
+            populateEditModal(userInfo)
+        })
+    })
+}
+
+/**
+ * Turns data from parent element (userTable handlebars template) into an object
+ *
+ */
+function createObjectFromParentElement(event){
+    let parentElement = event.target.parentElement
+    let userInfo = {}
+    userInfo.name = parentElement.getAttribute("dataName")
+    userInfo.email = parentElement.getAttribute("dataEmail")
+    userInfo.id = parentElement.getAttribute("dataId")
+    return userInfo
+}
+
+/**
+ * Populates the modal with editModal handlebars template and puts userInfo object into that template and triggers off
+ * addEditModalSubmitEventListener
+ */
+
+function populateEditModal(userInfo) {
+    getTemplateAjax('js/templates/editmodal.hbs').then(function (HBTemplate) {
+        fillEditModal(HBTemplate, userInfo)
+    }).then(addEditModalSubmitEventListener)
+}
 /**
  * this adds the event listener to the delete button on creation of it the button
  *

@@ -52,12 +52,11 @@ async function getExistingUsers() {
  *
  * @returns {boolean} - is the email valid
  */
-function isEmailValid(email, event) {
+function isEmailValid(email) {
     const regexEmail = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/
     if (regexEmail.test(email)) {
         return true
     } else {
-        event.preventDefault()
         return false
     }
 }

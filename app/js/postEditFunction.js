@@ -36,9 +36,5 @@ async function postUserEdit(formData) {
 
 }
 
-document.getElementById('practiseForm').addEventListener('submit', function (e) {
-    e.preventDefault()
-    postUserEdit(createUserObject('.practise'))
-})
 
 

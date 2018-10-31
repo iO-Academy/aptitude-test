@@ -3,19 +3,21 @@
 //add in isEmailValid from validateUserAdditions to validate edit email
 
 //to make sure name and email fields arent empty
-function isEmpty (field,event){
+function isEmpty (field){
     if (field.value === "") {
         field.style.background = "red"
-        event.preventDefault()
+        return false
+    } else {
+        return true
     }
 }
 
 //to make sure numbers or special characters arent in the name field
-function nameValidation (field,event){
+function nameValidation (field){
     var regexLetters = /^[A-Za-z]+$/
-    if(field.value.match(regexLetters) ){
+    if(field.match(regexLetters) ){
+        return true
     } else {
-        field.style.background = "red"
-        event.preventDefault()
+        return false
     }
 }
