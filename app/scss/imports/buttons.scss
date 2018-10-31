@@ -1,0 +1,12 @@
+.btn-mayden {
+  background-color: $main-button-color;
+  color: #ffffff;
+  border-radius: 0;
+  transition: background-color 0.5s ease;
+}
+
+.btn-mayden:hover {
+  background-color: $main-button-hover;
+  color: #ffffff;
+  transition: background-color 0.5s ease;
+}
