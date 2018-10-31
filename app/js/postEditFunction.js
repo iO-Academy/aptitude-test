@@ -2,7 +2,7 @@
  * Creates an object of the user from the data in the input fields
  * Should be called within the submit event listener
  *
- * @param a string in the '.class' format, the class on each of the input fields of the edit user form
+ * @param inputClass string in the '.class' format, the class on each of the input fields of the edit user form
  *
  * @return Returns an object that can be used as the parameter in postUserData() func.
  */
