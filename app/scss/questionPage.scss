@@ -80,23 +80,51 @@ img {
 #flag-label {
     font-size: 2rem;
 }
-
+//======== O V E R V I E W    P A G E ========//
 #overview_page {
     display: none;
     margin: 0 auto;
     width: 50%;
 }
 
+table {
+    width: 100%;
+}
+
 th, td {
     border: 1px solid $table-border;
-    width: 150px;
     padding: 2px;
     background: $main-background-color;
+}
+
+tr:hover {
+    cursor: pointer;
+    font-weight: bold;
+    transition: font-weight 0.5s;
+    & td {
+        background-color: lighten($answered-color, 20%);
+        transition: background-color 0.5s;
+    }
 }
 
 .glyphicon {
     top: auto;
     display: table-cell;
+    &-flag:before {
+        color: $unanswered-color;
+    }
+    &-remove:before {
+        color: $unanswered-color;
+    }
+    &-ok:before {
+        color: $answered-color;
+    }
+}
+
+.overview_footer p {
+    margin: 55px 0 10px;
+    text-align: end;
+    color: $unanswered-color;
 }
 
 .unanswered-nav-box {
