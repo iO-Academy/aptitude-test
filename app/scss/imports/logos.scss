@@ -1,3 +1,7 @@
+html, body {
+  height: 100%;
+}
+
 .academy-logo {
   display: block;
   width: 400px;
@@ -19,4 +23,10 @@
 
 .logo-bar {
   background-color: #ffffff;
+}
+
+.page-wrap {
+  min-height: 100%;
+  /* equal to footer height */
+  margin-bottom: -142px;
 }

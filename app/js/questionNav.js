@@ -43,7 +43,7 @@ function changeQuestion(destinationPage) {
     let prevButton = document.querySelector(".prev")
     document.querySelector("h4").textContent = destinationPage + "/" + questionCount
 
-    switch(destinationPage) {
+    switch(parseInt(destinationPage)) {
         case 1:
             prevButton.style.display = "none"
             nextButton.style.display = "inline-block"
