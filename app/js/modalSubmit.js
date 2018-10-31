@@ -17,7 +17,7 @@ function addEditModalSubmitEventListener() {
                 isEmailValid(email)) {
                 if(originalEmail == email || userExists(email, existingUsers) == false){
                     closeDialog()
-                    postUserEdit(createUserObject('.editUserData'))
+                    postUserEdit(createObjectForDatabase('.editUserData'))
                     updateUserTable()
                 }
             }
