@@ -1,7 +1,7 @@
 const questionAmount = 30// amount of questions
 
 document.querySelector('#finish').addEventListener('click', function(e) {
-    var unanswered = questionAnswered()
+    let unanswered = questionAnswered()
     if (unanswered == false) {
         showResults()
     }
