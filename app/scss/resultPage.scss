@@ -18,20 +18,19 @@ body {
 
 .result_card {
   background-color: #fff;
-  margin: 150px auto;
-  width: 700px;
-  height: 500px;
+  margin: 20px auto;
+  width: 600px;
+  height: 450px;
 }
 
 .greetings {
-  width: 700px;
-  height: 150px;
+  height: 100px;
 
    p {
      display: inline-block;
      width: 100%;
      text-align: center;
-     line-height: 150px;
+     line-height: 120px;
      background-color: rgba(255, 255, 255, 0.9);
      color: $tealblue6-color;
      font-size: 4rem;
@@ -84,6 +83,7 @@ body {
   .percentage {
      @extend .points;
      border-left: none;
+     border-right: none;
 
      .percentage_label {
        @extend .points_label;
@@ -96,7 +96,6 @@ body {
 
   .answered {
     @extend .points;
-    border-left: none;
 
     .answered_label {
       @extend .points_label;
