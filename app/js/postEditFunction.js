@@ -1,10 +1,10 @@
-/*
-    Creates an object of the user from the data in the input fields
-    Should be called within the submit event listener
-
-    @param a string in the '.class' format, the class on each of the input fields of the edit user form
-
-    @return Returns an object that can be used as the parameter in postUserData() func.
+/**
+ * Creates an object of the user from the data in the input fields
+ * Should be called within the submit event listener
+ *
+ * @param a string in the '.class' format, the class on each of the input fields of the edit user form
+ *
+ * @return Returns an object that can be used as the parameter in postUserData() func.
  */
 
 function createUserObject(inputClass) {
@@ -16,12 +16,12 @@ function createUserObject(inputClass) {
     return result
 }
 
-/*
-    Passes the object returned by createUserObject() and posts to the api as a json string
-
-    @param the formData is the object, use the returned result from createUserObject
-
-    @return object apiData stating posts success and whether user data has been updated
+/**
+ * Passes the object returned by createUserObject() and posts to the api as a json string
+ *
+ * @param formData is the object, use the returned result from createUserObject
+ *
+ * @return object apiData stating posts success and whether user data has been updated
  */
 
 async function postUserEdit(formData) {
