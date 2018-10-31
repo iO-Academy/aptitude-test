@@ -12,7 +12,8 @@
     display: flex;
     justify-content: space-between;
     padding: 3px;
-    margin: 15px 0 0;
+    margin: 50px 0 0;
+    height: 32px;
 }
 
 .question-header h3, .question-header h4, .question-header label {
@@ -70,11 +71,11 @@ img {
 .prev {
     display: none;
     width: 60%;
-    margin: 50px auto;
+    margin: 50px 0 0;
 }
 .next {
     width: 60%;
-    margin: 50px auto;
+    margin: 50px 0 0;
 }
 
 .finish {
