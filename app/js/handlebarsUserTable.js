@@ -1,7 +1,8 @@
 /**
- * fills handlebars template by getting the user data from the api and inserts into the user_list div
+ * Fills handlebars template by getting the user data from the api and inserts into the user_list div.
  *
- * @param HBTemplate the handlebars template
+ * @param HBTemplate the handlebars template.
+ *
  */
 function fillUserTable(HBTemplate) {
     let template = Handlebars.compile(HBTemplate)
@@ -16,10 +17,11 @@ function fillUserTable(HBTemplate) {
 }
 
 /**
- *this fills the handlebars template with users that have not been soft deleted
+ * This fills the handlebars template with users that have not been soft deleted.
  *
  * @param apiResponse
  * @param template
+ *
  */
 function updateDisplayedUsers(apiResponse, template) {
     let user_list = document.querySelector(".user_list")
@@ -39,10 +41,11 @@ function updateDisplayedUsers(apiResponse, template) {
 }
 
 /**
- * fills handlebars template by passing in object and inserts into the score_list div
+ * Fills handlebars template by passing in object and inserts into the score_list div.
  *
- * @param HBTemplate the handlebars template
- * @param ObjFunction the function that creates an object of all fields required in scores page
+ * @param HBTemplate the handlebars template.
+ * @param ObjFunction the function that creates an object of all fields required in scores page.
+ *
  */
 function fillEditModal(HBTemplate, userInfo) {
     let template = Handlebars.compile(HBTemplate)
@@ -59,7 +62,7 @@ function fillEditModal(HBTemplate, userInfo) {
 }
 
 /**
- * this adds the event listener to the edit button on creation of it the button
+ * This adds the event listener to the edit button on creation of it the button.
  *
  */
 function addEditEventListeners() {
@@ -74,10 +77,10 @@ function addEditEventListeners() {
 }
 
 /**
- * Turns data from parent element (userTable handlebars template) into an object
+ * Turns data from parent element (userTable handlebars template) into an object.
  *
  */
-function createObjectFromParentElement(event){
+function createObjectFromParentElement(event) {
     let parentElement = event.target.parentElement
     let userInfo = {}
     userInfo.name = parentElement.getAttribute("dataName")
@@ -88,16 +91,16 @@ function createObjectFromParentElement(event){
 
 /**
  * Populates the modal with editModal handlebars template and puts userInfo object into that template and triggers off
- * addEditModalSubmitEventListener
+ * addEditModalSubmitEventListener.
+ *
  */
-
 function populateEditModal(userInfo) {
     getTemplateAjax('js/templates/editmodal.hbs').then(function (HBTemplate) {
         fillEditModal(HBTemplate, userInfo)
     }).then(addEditModalSubmitEventListener)
 }
 /**
- * this adds the event listener to the delete button on creation of it the button
+ * This adds the event listener to the delete button on creation of it the button.
  *
  */
 function addDeleteEventListeners() {
@@ -111,18 +114,20 @@ function addDeleteEventListeners() {
 }
 
 /**
- * get the handlebars template and use this to display the users
+ * Get the handlebars template and use this to display the users.
+ *
  */
 function updateUserTable() {
     getTemplateAjax('js/templates/userTable.hbs').then(function (HBTemplate) {
         fillUserTable(HBTemplate)
     })
 }
-
-// This asynchronous function accepts a numeric id as a parameter which is unique to each user
-// it then posts the delete line and changes the entry in the database from a zero to a one.
-//if succesful the function deletes teh innerHTML of the parent element (as if it is actually deleted) and console logs
-// deletion succesful.
+/**
+ * This asynchronous function accepts a numeric id as a parameter which is unique to each user.
+ * It then posts the delete line and changes the entry in the database from a zero to a one.
+ * If successful the function deletes the innerHTML of the parent element and console logs deletion successful.
+ *
+ */
 function deleteUser(userId) {
     let url = "http://localhost:8080/user/delete/" + userId
     fetch(url, {"method": "post"})
