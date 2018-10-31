@@ -11,17 +11,10 @@ function timeElapsed(dateStamp){
 }
 
 /**
- *  sets a 30 minute timer for taking the test
+ * The timer function presents the time remaining in seconds and counts down the clock (taking one second
+ * from the time remaining) when called
  */
-
-//30 minute time limit
-const timeLimit = 1801
-let dateStamp = getCookie("dateStamp")
-
-//time remaining is the time limit minus the tme elapsed in seconds
-let timeRemaining = Math.floor((timeLimit*1000 - timeElapsed(dateStamp))/1000)
-
-//The timer function presents the time remaining in seconds and counts down the clock when called
+//
 function timer() {
     let minutes = Math.floor(timeRemaining / 60);
     let seconds = Math.floor(timeRemaining - minutes * 60);
@@ -47,4 +40,9 @@ function getTimeForApi() {
     return time
 }
 
+//30 minute time limit
+const timeLimit = 1801
+let dateStamp = getCookie("dateStamp")
+//time remaining is the time limit minus the tme elapsed in seconds
+let timeRemaining = Math.floor((timeLimit*1000 - timeElapsed(dateStamp))/1000)
 let interval = setInterval(timer, 1000)
