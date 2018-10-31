@@ -13,7 +13,7 @@ function timer() {
     timeLimit--
     if (timeLimit < 0){
         clearInterval(interval)
-        document.querySelector('#finish').click()
+        showResults()
     }
 }
 
