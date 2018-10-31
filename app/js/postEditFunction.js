@@ -6,7 +6,7 @@
  *
  * @return Returns an object that can be used as the parameter in postUserData() function.
  */
-function createUserObject(inputClass) {
+function createObjectForDatabase(inputClass) {
     let formData = document.querySelectorAll(inputClass)
     let result = {'canRetake':'0'}
     formData.forEach(function(input) {
