@@ -1,6 +1,6 @@
 /**
- * this is an event listener on the submit button (listens for click), it sends the object values through our validation functions.
- * If all are returned as true, then modal closes, the data is stored in the database and the table on the frontend is updated.
+ * An event listener on the submit button, sends the object values through our validation functions.
+ * If all returned as true, modal closes, the data is stored in the database and the table on the frontend is updated.
  *
  */
 
