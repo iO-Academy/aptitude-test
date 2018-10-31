@@ -1,8 +1,9 @@
 var current = 1
 
 /**
- * adds active to the first question
- * function in called when questions are inserted into html
+ * adds the active class to the first question
+ * function is called when questions are inserted into html and calls trackActiveQuestion() to update
+ * the active question in the navbar
  */
 function active() {
     let questionCount = document.querySelectorAll('#questions .question').length

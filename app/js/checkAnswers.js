@@ -160,9 +160,10 @@ function trackActiveQuestion(id) {
     document.querySelector('#question-nav').children[id - 1].classList.add('current-nav-box')
 }
 
-/*
- *  this get the unanswered questions and puts their question id into an array
- * @returns the array of question ids that havent been answered
+/**
+ *  this gets the unanswered questions and puts their question id into an array
+ *
+ *  @returns the array of question ids that havent been answered
  */
 function questionAnswered() {
     const qAmount = document.querySelectorAll('.question').length
