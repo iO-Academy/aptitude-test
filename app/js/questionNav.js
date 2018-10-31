@@ -45,7 +45,6 @@ function updateFlagStatus() {
     }
 }
 
-
 /**
  * Takes you to any question based on parameter
  *
