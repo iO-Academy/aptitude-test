@@ -1,7 +1,6 @@
 /**
  * An event listener on the submit button, sends the object values through our validation functions.
  * If all returned as true, modal closes, the data is stored in the database and the table on the frontend is updated.
- *
  */
 
 function addEditModalSubmitEventListener() {
