@@ -4,8 +4,7 @@ document.querySelector('#finish').addEventListener('click', function() {
     let unanswered = questionAnswered()
     if (unanswered == false && !Object.values(flaggedQuestions).includes(true)) {
         showResults()
-    }
-    else {
+    } else {
         let flagList = document.getElementById('flag-list')
         let unansweredList = document.getElementById('unanswered-list')
         document.getElementById('modal-title').textContent = 'You have ' + unanswered.length + ' unanswered questions.'
