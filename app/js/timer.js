@@ -1,5 +1,10 @@
-//takes a dateStamp and return the difference between the current dateStamp and
-// the one that is passed into the function
+/**
+ *  Function that works out how much time (in milliseconds, has elapsed between when the function is called
+ *  and a given date Stamp
+ *
+ *  @param dateStamp The date stamp made at the start of the test
+ *  @return returns the time elapsed in milliseconds
+ */
 function timeElapsed(dateStamp){
     let timeNow = Date.now()
     return  timeNow - dateStamp
