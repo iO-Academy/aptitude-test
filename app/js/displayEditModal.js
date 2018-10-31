@@ -10,7 +10,6 @@ modalButton.onclick = function () {
     editModal.style.display = "block";
     container.style.backgroundColor = '#808080'
     container.style.opacity = '0.5'
-
 }
 
 closeTag.onclick = function () {
