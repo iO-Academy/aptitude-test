@@ -19,8 +19,9 @@ function fillUserTable(HBTemplate) {
 /**
  * This fills the handlebars template with users that have not been soft deleted.
  *
- * @param apiResponse
- * @param template
+ * @param apiResponse is the data object retrieved from the api
+ *
+ * @param template is the hbs template that the user table is updated from
  *
  */
 function updateDisplayedUsers(apiResponse, template) {
@@ -44,7 +45,8 @@ function updateDisplayedUsers(apiResponse, template) {
  * Fills handlebars template by passing in object and inserts into the score_list div.
  *
  * @param HBTemplate the handlebars template.
- * @param ObjFunction the function that creates an object of all fields required in scores page.
+ *
+ * @param userInfo the function that creates an object of all fields required in scores page.
  *
  */
 function fillEditModal(HBTemplate, userInfo) {
