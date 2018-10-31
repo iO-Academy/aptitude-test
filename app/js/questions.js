@@ -1,6 +1,4 @@
-
 const flaggedQuestions = {}
-
 
 /**
  * fills handlebars template by getting the user data from the api and inserts into the user_list div
@@ -17,8 +15,7 @@ function fillUserTable(HBTemplate) {
         .then(function(result) {
             result.data.forEach(function(question) {
                 flaggedQuestions[question.id] = false
-                let html = template(question)
-                document.querySelector("#questions").innerHTML += html
+                document.querySelector("#questions").innerHTML += template(question)
             })
             counter = result.data.length
         })
