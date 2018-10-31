@@ -68,22 +68,18 @@ function fillNav() {
     let nav = document.querySelector("#question-nav")
     let questions = document.querySelectorAll('.question')
     questions.forEach(function (question) {
-        nav.innerHTML += '<div class="nav-item unanswered-nav-box"><p>' + question.dataset['id'] + '</p></div>'
+        let navItem = document.createElement('div')
+        navItem.classList.add('nav-item')
+        navItem.classList.add('unanswered-nav-box')
+        navItem.textContent = question.dataset['id']
+        navItem.addEventListener('click', function () {
+            changeQuestion(question.dataset['id'])
+            current = question.dataset['id']
+        })
+        nav.appendChild(navItem)
     })
 }
 
-/**
- * Makes nav-items clickable to jump to specified question
- */
-function addNavLinks() {
-    document.querySelectorAll('.nav-item').forEach(function(button) {
-        let qID = button.querySelector('p').textContent
-        button.addEventListener('click', function () {
-            changeQuestion(qID)
-            current = qID
-        })
-    })
-}
 
 document.querySelector(".next").addEventListener("click", next)
 document.querySelector(".prev").addEventListener("click", prev)
