@@ -7,7 +7,7 @@ document.querySelector('#finish').addEventListener('click', function() {
     } else {
         let flagList = document.getElementById('flag-list')
         let unansweredList = document.getElementById('unanswered-list')
-        document.getElementById('modal-title').textContent = 'You have ' + unanswered.length + ' unanswered questions.'
+        document.getElementById('modal-title').textContent = `You have ${unanswered.length} unanswered questions.`
         flagList.innerHTML = ''
         unansweredList.innerHTML = ''
         Object.values(flaggedQuestions).forEach(function(isQuestionFlagged, qId) {
@@ -15,9 +15,11 @@ document.querySelector('#finish').addEventListener('click', function() {
                 flagList.innerHTML += "<li>" + (qId + 1) +"</li>"
             }
         })
+        removeDialogList(flagList)
         unanswered.forEach(function (isQuestionUnanswered) {
             unansweredList.innerHTML += "<li>" + isQuestionUnanswered +"</li>"
         })
+        removeDialogList(unansweredList)
         openDialog()
         document.querySelector('#modal-close').addEventListener('click', closeDialog)
         document.querySelector('#modal-finish').addEventListener('click', function() {
@@ -26,6 +28,19 @@ document.querySelector('#finish').addEventListener('click', function() {
         })
     }
 })
+
+/**
+ * Removes list from dialog box if list is empty
+ *
+ * @param listName is the list's DOM element
+ */
+function removeDialogList(listName) {
+    if (listName.innerHTML === '') {
+        listName.parentElement.style.display = 'none'
+    } else {
+        listName.parentElement.style.display = 'block'
+    }
+}
 
 /**
  * checks the users answers against api answers
@@ -153,7 +168,6 @@ function addAnswerEventListeners() {
  * to the current question allowing styling to be applied
  *
  * @param id is the id of the active question
- *
  */
 function trackActiveQuestion(id) {
     let activeQuestion = document.querySelector('.nav-item.current-nav-box')
