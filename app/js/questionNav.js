@@ -36,6 +36,7 @@ function prev() {
  * @param destinationPage is question to load
  */
 function changeQuestion(destinationPage) {
+    current = destinationPage
     let destinationQuestion = document.querySelector(".q_" + destinationPage)
     let questionCount = document.querySelectorAll('#questions .question').length
     let nextButton = document.querySelector(".next")
@@ -69,12 +70,10 @@ function fillNav() {
     let questions = document.querySelectorAll('.question')
     questions.forEach(function (question) {
         let navItem = document.createElement('div')
-        navItem.classList.add('nav-item')
-        navItem.classList.add('unanswered-nav-box')
-        navItem.textContent = question.dataset['id']
+        navItem.classList.add('nav-item', 'unanswered-nav-box')
+        navItem.textContent = question.dataset.id
         navItem.addEventListener('click', function () {
-            changeQuestion(question.dataset['id'])
-            current = question.dataset['id']
+            changeQuestion(question.dataset.id)
         })
         nav.appendChild(navItem)
     })
