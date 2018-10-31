@@ -10,7 +10,6 @@ const questionAmount = 30   // amount of questions
 async function checkAnswers(userAnswers) {
     let userScore = 0
     let answers = await getAnswers()
-    console.log(answers)
     if (answers.success) {
         answers = answers.data
         answers.forEach(function (answerItem) {
