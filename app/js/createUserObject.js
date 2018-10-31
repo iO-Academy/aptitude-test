@@ -60,9 +60,11 @@ async function createUsersObject () {
                 obj['score'] = score.score
                 obj['percentage'] = score.percent
                 obj['time'] = score.time
-
+                obj['dateCreated'] = score.dateCreated
+                console.log(score.dateCreated)
                 userDisplayArray.push(obj)
             }
+
         })
     })
 
