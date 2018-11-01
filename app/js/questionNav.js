@@ -31,6 +31,21 @@ function prev() {
 }
 
 /**
+ * Updates the the flag status of the current question
+ */
+function updateFlagStatus() {
+    let question =  document.querySelector('.question.active')
+    let qId  = question.dataset.id
+    let navItem = document.querySelector('#question-nav').children[qId - 1]
+    document.querySelector('#flag-checkbox').checked = flaggedQuestions[qId]
+    if (flaggedQuestions[qId]) {
+        navItem.querySelector('.flag').classList.add('glyphicon','glyphicon-flag')
+    } else {
+        navItem.querySelector('.flag').classList.remove('glyphicon','glyphicon-flag')
+    }
+}
+
+/**
  * Takes you to any question based on parameter
  *
  * @param destinationPage is question to load
@@ -60,6 +75,7 @@ function changeQuestion(destinationPage) {
     document.querySelector("#questions .active").classList.remove("active")
     destinationQuestion.classList.add("active")
     trackActiveQuestion(destinationPage)
+    updateFlagStatus()
 }
 
 /**
@@ -70,8 +86,10 @@ function fillNav() {
     let questions = document.querySelectorAll('.question')
     questions.forEach(function (question) {
         let navItem = document.createElement('div')
+        let qNumber = '<p>' + question.dataset['id'] + '</p>'
+        let flagBox = '<span class="flag"></span>'
         navItem.classList.add('nav-item', 'unanswered-nav-box')
-        navItem.textContent = question.dataset.id
+        navItem.innerHTML += qNumber + flagBox
         navItem.addEventListener('click', function () {
             changeQuestion(question.dataset.id)
         })
@@ -79,6 +97,6 @@ function fillNav() {
     })
 }
 
-
 document.querySelector(".next").addEventListener("click", next)
 document.querySelector(".prev").addEventListener("click", prev)
+document.querySelector('#flag-checkbox').addEventListener('change', updateFlagStatus)
