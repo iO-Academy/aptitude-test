@@ -74,11 +74,6 @@ img {
     letter-spacing: 2px;
 }
 
-.finish {
-    width: 50%;
-    margin: 50px 0;
-}
-
 .error_message {
     text-align: center;
     font-size: large;
@@ -107,6 +102,14 @@ img {
     th, td {
         border: 1px solid $table-border;
         padding: 2px;
+    }
+
+    .question_id {
+        width: 130px;
+    }
+
+    .question_column {
+        width: 200px;
     }
 
     tr:hover {
@@ -138,6 +141,11 @@ img {
     margin: 55px 0 10px;
     text-align: end;
     color: $unanswered-color;
+}
+
+.finish {
+    width: 100%;
+    margin: 50px 0;
 }
 
 .unanswered-nav-box {
