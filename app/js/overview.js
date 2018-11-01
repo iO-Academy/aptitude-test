@@ -4,11 +4,12 @@ document.querySelector(".overview").addEventListener("click", function() {
     tableBody.innerHTML = ''
     let overviewData = []
     let numOfQuestions = document.querySelectorAll('#questions .question').length
+    let isAnswered = getUserAnswers()
     for (let i = 1; i <= numOfQuestions; i++) {
         let questionObject = {}
         questionObject['id'] = i
         questionObject['isFlagged'] = flaggedQuestions[i]
-        questionObject['isAnswered'] = getUserAnswers()[i] !== 'unanswered'
+        questionObject['isAnswered'] = isAnswered[i] !== 'unanswered'
         questionObject['question'] = document.querySelectorAll(`.q_${i} p`)[1].innerText.substring(0, 20) + '...'
         overviewData.push(questionObject)
     }
