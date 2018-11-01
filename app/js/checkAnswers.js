@@ -1,24 +1,13 @@
 const questionAmount = 30// amount of questions
 
+document.querySelector('#finish').addEventListener('click', finishTest)
 /**
  * called when clicking finish button in dialogue box
  */
 function finishTest() {
     showResults()
-    closeDialog()
-}
-
-/**
- * Removes list from dialog box if list is empty
- *
- * @param listName is the list's DOM element
- */
-function removeDialogList(listName) {
-    if (listName.innerHTML === '') {
-        listName.parentElement.style.display = 'none'
-    } else {
-        listName.parentElement.style.display = 'block'
-    }
+    document.querySelector('#overview_page').style.display = 'none'
+    document.querySelector('#result_page').style.display = 'none'
 }
 
 /**
@@ -154,25 +143,6 @@ function trackActiveQuestion(id) {
         activeQuestion.classList.remove('current-nav-box')
     }
     document.querySelector('#question-nav').children[id - 1].classList.add('current-nav-box')
-}
-
-/**
- * this gets the unanswered questions and puts their question id into an array
- *
- * @returns the array of question ids that havent been answered
- */
-function questionAnswered() {
-    let answers = getUserAnswers()
-    let answersArr = Object.values(answers)
-    let unanswered = []
-    //qID refers to the question ID, and is incremented each iteration
-    answersArr.forEach(function (value, qID) {
-        qID++
-        if (value == 'unanswered') {
-            unanswered.push(qID)
-        }
-    })
-    return unanswered
 }
 
 /**
