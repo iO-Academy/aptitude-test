@@ -10,7 +10,7 @@ function createObjectForDatabase(inputClass) {
     let formData = document.querySelectorAll(inputClass)
     let canRetake = document.getElementById('canRetake')
     let result = {'canRetake': '0'}
-    if (canRetake.checked == 1) {
+    if (canRetake.checked) {
         result = {'canRetake': '1'}
     }
         formData.forEach(function (input) {
