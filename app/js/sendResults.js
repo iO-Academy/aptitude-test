@@ -34,8 +34,24 @@ async function handleResponseFromAPI (response) {
         if (data.success) {
             messageToTestTaker = 'Your results have been successfully logged'
         } else {
-            messageToTestTaker = 'Error sending your results: Do not close browser! Please find the nearest member of staff and show them this screen'
+            messageToTestTaker = 'Error sending your results: Do not close browser! Please find the' +
+                ' nearest member of staff and show them this screen'
         }
     })
     document.querySelector('body').innerHTML += '<p class="error_message text-danger">' + messageToTestTaker +'</p>'
+}
+
+function resetReapplyCounter() {
+    let email = getCookie('userEmail')
+    fetch('http://localhost:8080/user?email=' + email)
+        .then(function(result){
+            result.json().then(function(object){
+                object.data.canRetake = 0
+                console.log(object.data)
+                fetch('http://localhost:8080/user/edit', {
+                    method: "post",
+                    body: jsonToFormData(object.data)
+                })
+            })
+        })
 }
