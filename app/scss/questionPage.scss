@@ -1,4 +1,5 @@
 @import "imports/variables";
+@import "imports/modal";
 
 .container {
     text-align: center;
@@ -19,17 +20,26 @@
 
 .question-nav {
     height: 60px;
-    margin: 20px 0 20px 0;
+    margin: 20px 0 20px;
     background-color: #ffffff;
 }
 
-.question-nav span {
+.question-nav div {
+    position: relative;
     width: 25px;
-    padding: 20px 0;
+    padding: 8px 0 32px;
     display: inline-block;
-    color: black;
+    color: #000000;
     text-decoration: none;
     cursor: pointer;
+}
+
+.flag {
+    position: absolute;
+    bottom: 8px;
+    top: auto;
+    left: 50%;
+    transform: translate(-50%);
 }
 
 .question-nav p {
@@ -80,6 +90,7 @@ img {
 #flag-label {
     font-size: 2rem;
 }
+
 //======== O V E R V I E W    P A G E ========//
 #overview_page {
     display: none;
@@ -87,37 +98,37 @@ img {
     width: 50%;
 }
 
-table {
+.overview_page_table {
     width: 100%;
     box-shadow: 0 19px 38px $table-box-shadow, 0 15px 12px $table-box-shadow;
-}
 
-th, td {
-    border: 1px solid $table-border;
-    padding: 2px;
-}
+    th, td {
+        border: 1px solid $table-border;
+        padding: 2px;
+    }
 
-tr:hover {
-    cursor: pointer;
-    font-weight: bold;
-    transition: font-weight 0.5s;
-    & td {
-        background-color: lighten($answered-color, 20%);
-        transition: background-color 0.5s;
+    tr:hover {
+        cursor: pointer;
+        font-weight: bold;
+        transition: font-weight 0.5s;
+        & td {
+            background-color: lighten($answered-color, 20%);
+            transition: background-color 0.5s;
+        }
     }
-}
 
-.glyphicon {
-    top: auto;
-    display: table-cell;
-    &-flag:before {
-        color: $unanswered-color;
-    }
-    &-remove:before {
-        color: $unanswered-color;
-    }
-    &-ok:before {
-        color: $answered-color;
+    .glyphicon {
+        top: auto;
+        display: table-cell;
+        &-flag:before {
+            color: $unanswered-color;
+        }
+        &-remove:before {
+            color: $unanswered-color;
+        }
+        &-ok:before {
+            color: $answered-color;
+        }
     }
 }
 
@@ -138,4 +149,5 @@ tr:hover {
 .question-nav .current-nav-box {
     border: 1px solid #000000;
     padding: 19px 0;
+    padding: 7px 0 31px; //Check this one later
 }

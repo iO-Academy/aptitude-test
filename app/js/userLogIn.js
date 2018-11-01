@@ -58,6 +58,8 @@ if (document.querySelector('#logInForm')) {
                     } else {
                         document.cookie = "uid=" + user.data.id
                         document.cookie = "userEmail=" + user.data.email
+                        const dateStarted = Date.now()
+                        document.cookie = "dateStamp=" + dateStarted.toString()
                         redirectUser(user.data)
                     }
                 })

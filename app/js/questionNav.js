@@ -2,8 +2,9 @@ var current = 1;
 document.querySelector(".prev").style.visibility = "hidden";
 
 /**
- * adds active to the first question
- * function in called when questions are inserted into html
+ * adds the active class to the first question
+ * function is called when questions are inserted into html and calls trackActiveQuestion() to update
+ * the active question in the navbar
  */
 function active() {
     let questionCount = document.querySelectorAll('#questions .question').length
@@ -31,11 +32,27 @@ function prev() {
 }
 
 /**
+ * Updates the the flag status of the current question
+ */
+function updateFlagStatus() {
+    let question =  document.querySelector('.question.active')
+    let qId  = question.dataset.id
+    let navItem = document.querySelector('#question-nav').children[qId - 1]
+    document.querySelector('#flag-checkbox').checked = flaggedQuestions[qId]
+    if (flaggedQuestions[qId]) {
+        navItem.querySelector('.flag').classList.add('glyphicon','glyphicon-flag')
+    } else {
+        navItem.querySelector('.flag').classList.remove('glyphicon','glyphicon-flag')
+    }
+}
+
+/**
  * Takes you to any question based on parameter
  *
  * @param destinationPage is question to load
  */
 function changeQuestion(destinationPage) {
+    current = destinationPage
     let destinationQuestion = document.querySelector(".q_" + destinationPage)
     let questionCount = document.querySelectorAll('#questions .question').length
     let nextButton = document.querySelector(".next")
@@ -43,7 +60,7 @@ function changeQuestion(destinationPage) {
     let overviewButton = document.querySelector(".overview")
     document.querySelector("h4").textContent = destinationPage + "/" + questionCount
 
-    switch(destinationPage) {
+    switch(parseInt(destinationPage)) { // parseInt() in case a string is passed
         case 1:
             prevButton.style.visibility = "hidden"
             nextButton.style.visibility = "visible"
@@ -56,12 +73,12 @@ function changeQuestion(destinationPage) {
         default:
             prevButton.style.visibility = "visible"
             nextButton.style.visibility = "visible"
-
     }
-    updateFlagStatus()
+
     document.querySelector("#questions .active").classList.remove("active")
     destinationQuestion.classList.add("active")
     trackActiveQuestion(destinationPage)
+    updateFlagStatus()
 }
 
 /**
@@ -70,30 +87,24 @@ function changeQuestion(destinationPage) {
 function fillNav() {
     let nav = document.querySelector("#question-nav")
     let questions = document.querySelectorAll('.question')
-    let counter = 1
     questions.forEach(function (question) {
-        nav.innerHTML += '<span class="nav-item unanswered-nav-box"><p>' + question.dataset['id'] + '</p></span>'
-        counter++
-    })
-}
-
-/**
- * Makes nav-items clickable to jump to specified question
- */
-function addNavLinks() {
-    document.querySelectorAll('.nav-item').forEach(function(button) {
-        let qID = button.querySelector('p').textContent
-        button.addEventListener('click', function () {
-            changeQuestion(qID)
-            current = qID
+        let navItem = document.createElement('div')
+        let qNumber = '<p>' + question.dataset['id'] + '</p>'
+        let flagBox = '<span class="flag"></span>'
+        navItem.classList.add('nav-item', 'unanswered-nav-box')
+        navItem.innerHTML += qNumber + flagBox
+        navItem.addEventListener('click', function () {
+            changeQuestion(question.dataset.id)
         })
+        nav.appendChild(navItem)
     })
 }
 
-function updateFlagStatus() {
-    document.querySelector('#flag-checkbox').checked = flaggedQuestions[current]
-}
+// function updateFlagStatus() {
+//     document.querySelector('#flag-checkbox').checked = flaggedQuestions[current]
+// }
 
 
 document.querySelector(".next").addEventListener("click", next)
 document.querySelector(".prev").addEventListener("click", prev)
+document.querySelector('#flag-checkbox').addEventListener('change', updateFlagStatus)

@@ -31,6 +31,7 @@ GET
 
 
 **/user/delete/{userID}**
+
 POST
 - Deletes a user.
 - Send user id in the url like: /user/delete/{id}
@@ -47,7 +48,7 @@ POST
 **/question**
 
 GET
-- Get all questions an options.
+- Get all questions and options.
 - No request data.
 - Returns all questions and question options.
 
