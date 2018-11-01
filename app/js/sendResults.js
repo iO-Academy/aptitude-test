@@ -41,17 +41,20 @@ async function handleResponseFromAPI (response) {
     document.querySelector('body').innerHTML += '<p class="error_message text-danger">' + messageToTestTaker +'</p>'
 }
 
-function resetReapplyCounter() {
+
+/**
+ *
+ *
+ *
+ */
+async function resetReapplyCounter() {
     let email = getCookie('userEmail')
-    fetch('http://localhost:8080/user?email=' + email)
-        .then(function(result){
-            result.json().then(function(object){
-                object.data.canRetake = 0
-                console.log(object.data)
-                fetch('http://localhost:8080/user/edit', {
-                    method: "post",
-                    body: jsonToFormData(object.data)
-                })
-            })
-        })
+    let response = await fetch('http://localhost:8080/user?email=' + email)
+
+    let userObject = await response.json()
+    userObject.data.canRetake = 0
+    await fetch('http://localhost:8080/user/edit', {
+        method: "post",
+        body: jsonToFormData(userObject.data)
+    })
 }
