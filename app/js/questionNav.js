@@ -100,11 +100,6 @@ function fillNav() {
     })
 }
 
-// function updateFlagStatus() {
-//     document.querySelector('#flag-checkbox').checked = flaggedQuestions[current]
-// }
-
-
 document.querySelector(".next").addEventListener("click", next)
 document.querySelector(".prev").addEventListener("click", prev)
 document.querySelector('#flag-checkbox').addEventListener('change', updateFlagStatus)
