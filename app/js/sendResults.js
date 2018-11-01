@@ -43,9 +43,9 @@ async function handleResponseFromAPI (response) {
 
 
 /**
- *
- *
- *
+ * Function resetReapplyCounter() loads the test takers information in an object, it sets the
+ * canRetake property to "0" and then sends the object back through the API which edits the
+ * user input.
  */
 async function resetReapplyCounter() {
     let email = getCookie('userEmail')
