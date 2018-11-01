@@ -6,7 +6,7 @@
 async function sortUsersObjectByDate() {
     let testUserData = await createUsersObject()
     await testUserData.data.sort(function(a, b){
-        var dateA=new Date(a.dateCreated), dateB=new Date(b.dateCreated)
+        var dateA=new Date(Date.parse(a.dateCreated)), dateB=new Date(Date.parse(b.dateCreated))
         return dateB-dateA //sort by date descending
     })
     return await testUserData
