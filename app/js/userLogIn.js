@@ -45,6 +45,12 @@ function redirectUser(user) {
     }
 }
 
+/**
+ *this redirects admins to the admin page
+ *
+ * @param user - checks to see status , user or admin.
+ *
+ */
 function redirectAdmin(user) {
     if (user.isAdmin == "1") {
         document.cookie = "userEmail=" + user.email
