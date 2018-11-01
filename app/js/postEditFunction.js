@@ -23,7 +23,7 @@ function createObjectForDatabase(inputClass) {
 /**
  * Passes the object returned by createUserObject() and posts to the api as a json string.
  *
- * @param formData Is the object, use the returned result from createUserObject.
+ * @param formData Is the object, use the returned result from createUserObject().
  *
  * @return object apiData stating posts success and whether user data has been updated.
  */
