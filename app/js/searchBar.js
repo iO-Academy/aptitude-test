@@ -40,7 +40,7 @@ function fillSearchResultsTable(HBTemplate, results) {
 }
 
 function updateDisplayedSearchResults(result, template) {
-    let search_result = document.querySelector("searchResults")
+    let search_result = document.getElementById("searchResults")
 
     let html = template(result)
     search_result.innerHTML += html
