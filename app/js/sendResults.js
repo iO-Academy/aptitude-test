@@ -1,4 +1,3 @@
-
 /**
  * send user results to be submitted to the db
  *
@@ -23,7 +22,6 @@ function sendUserResults(userResults) {
     return resultsResponse
 }
 
-
 /**
  * assigning user message depending on API response Object
  *
@@ -41,5 +39,4 @@ async function handleResponseFromAPI (response) {
     })
     document.querySelector('.result').innerHTML += '<p class="error_message text-danger">' + messageToTestTaker +'</p>'
 }
-
 

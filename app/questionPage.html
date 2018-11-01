@@ -28,15 +28,28 @@
     <script src="js/sendResults.js" defer></script>
 </head>
 <body>
-<!-- Modal -->
 <div class="overlay"></div>
+
+<!-- Modal -->
 <div id="modal">
-    <h3 id="modal-title"> </h3>
+    <h3 id="modal-title-1" class="modal-title"> </h3>
+    <h3 id="modal-title-2" class="modal-title"> </h3>
     <div id="modal-content">
-    <p>Are you sure you want to finish?</p>
+        <div class="list-wrapper">
+            <div class="list-container">
+                <p>Flagged questions:</p>
+                <ul id="flag-list"></ul>
+            </div>
+            <div class="list-container">
+                <p>Unanswered questions:</p>
+                <ul id="unanswered-list"></ul>
+            </div>
+        </div>
+        <div class="modal-button-holder">
+            <button id="modal-close">Back</button>
+            <button id="modal-finish">Finish anyway</button>
+        </div>
     </div>
-    <button id="modal-close">Back</button>
-    <button id="modal-finish">Finish</button>
 </div>
 <!--question number and time -->
 <div id="question_page">
@@ -45,9 +58,11 @@
             <div class="col-md-2">
                 <h3>Question number</h3>
                 <h4></h4>
+                <label for="flag-checkbox" id="flag-label">Flag</label>
+                <input type="checkbox" id="flag-checkbox">
             </div>
             <div class="col-md-offset-8 col-md-2">
-                <h3 id="timer"> 30m 00s </h3>
+                <h3 id="timer"></h3>
             </div>
         </div>
         <!--question body and nav-->

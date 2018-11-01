@@ -20,17 +20,26 @@
 
 .question-nav {
     height: 60px;
-    margin: 20px 0 20px 0;
+    margin: 20px 0 20px;
     background-color: #ffffff;
 }
 
 .question-nav div {
+    position: relative;
     width: 25px;
-    padding: 20px 0;
+    padding: 8px 0 32px;
     display: inline-block;
-    color: black;
+    color: #000000;
     text-decoration: none;
     cursor: pointer;
+}
+
+.flag {
+    position: absolute;
+    bottom: 8px;
+    top: auto;
+    left: 50%;
+    transform: translate(-50%);
 }
 
 .question-nav p {
@@ -73,6 +82,15 @@ img {
     color: $error-message;
 }
 
+#flag-checkbox {
+    width: 20px;
+    height: 20px
+}
+
+#flag-label {
+    font-size: 2rem;
+}
+
 .unanswered-nav-box {
     background-color: $unanswered-color;
 }
@@ -83,5 +101,5 @@ img {
 
 .question-nav .current-nav-box {
     border: 1px solid #000000;
-    padding: 19px 0;
+    padding: 7px 0 31px;
 }

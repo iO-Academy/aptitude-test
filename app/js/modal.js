@@ -1,4 +1,3 @@
-
 /**
  * Opens the modal dialog box.
  */
