@@ -2,12 +2,23 @@ const questionAmount = 30// amount of questions
 
 document.querySelector('#finish').addEventListener('click', function() {
     let unanswered = questionAnswered()
-    if (unanswered == false && !Object.values(flaggedQuestions).includes(true)) {
+    let flaggedNumber = 0
+    Object.values(flaggedQuestions).forEach(function(question) {
+        if (question) {
+            flaggedNumber++
+        }
+    })
+    if (unanswered == false && flaggedNumber == false) {
         showResults()
     } else {
         let flagList = document.getElementById('flag-list')
         let unansweredList = document.getElementById('unanswered-list')
-        document.getElementById('modal-title').textContent = `You have ${unanswered.length} unanswered questions.`
+        if (unanswered.length) {
+            document.getElementById('modal-title-1').textContent = `You have ${unanswered.length} unanswered questions.`
+        }
+        if (Object.values(flaggedQuestions).includes(true)) {
+            document.getElementById('modal-title-2').textContent = `You have ${flaggedNumber} flagged questions.`
+        }
         flagList.innerHTML = ''
         unansweredList.innerHTML = ''
         Object.values(flaggedQuestions).forEach(function(isQuestionFlagged, qId) {
