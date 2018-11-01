@@ -38,7 +38,7 @@ function updateFlagStatus() {
     let qId  = question.dataset.id
     let navItem = document.querySelector('#question-nav').children[qId - 1]
     document.querySelector('#flag-checkbox').checked = flaggedQuestions[qId]
-    if(flaggedQuestions[qId]) {
+    if (flaggedQuestions[qId]) {
         navItem.querySelector('.flag').classList.add('glyphicon','glyphicon-flag')
     } else {
         navItem.querySelector('.flag').classList.remove('glyphicon','glyphicon-flag')
