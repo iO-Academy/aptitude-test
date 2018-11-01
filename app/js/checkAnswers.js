@@ -1,45 +1,5 @@
 const questionAmount = 30// amount of questions
 
-document.querySelector('#finish').addEventListener('click', function() {
-    let unanswered = questionAnswered()
-    let flaggedNumber = 0
-    Object.values(flaggedQuestions).forEach(function(question) {
-        if (question) {
-            flaggedNumber++
-        }
-    })
-    if (unanswered == false && flaggedNumber == false) {
-        showResults()
-    } else {
-        let flagList = document.getElementById('flag-list')
-        let unansweredList = document.getElementById('unanswered-list')
-        if (unanswered.length) {
-            document.getElementById('modal-title-1').textContent = `You have ${unanswered.length} unanswered question(s).`
-        }
-        if (Object.values(flaggedQuestions).includes(true)) {
-            document.getElementById('modal-title-2').textContent = `You have ${flaggedNumber} flagged question(s).`
-        }
-        flagList.innerHTML = ''
-        unansweredList.innerHTML = ''
-        Object.values(flaggedQuestions).forEach(function(isQuestionFlagged, qId) {
-            if (isQuestionFlagged) {
-                flagList.innerHTML += "<li>" + (qId + 1) + "</li>"
-            }
-        })
-        removeDialogList(flagList)
-        unanswered.forEach(function (qID) {
-            unansweredList.innerHTML += "<li>" + qID + "</li>"
-        })
-        removeDialogList(unansweredList)
-        openDialog()
-        document.querySelector('#modal-close').addEventListener('click', function() {
-            document.querySelector('#modal-finish').removeEventListener('click', finishTest)
-            closeDialog()
-        })
-        document.querySelector('#modal-finish').addEventListener('click', finishTest)
-    }
-})
-
 /**
  * called when clicking finish button in dialogue box
  */
