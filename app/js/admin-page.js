@@ -1,6 +1,7 @@
 
 
 
-document.querySelector('#drop-down').addEventListener('click', function() {
-    document.getElementById('addNewUserForm').classList.toggle("show")
+$('#drop-down').on('click', function() {
+    $('#addNewUserForm').collapse('toggle')
+
 })
