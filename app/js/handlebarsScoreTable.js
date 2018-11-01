@@ -1,9 +1,22 @@
+/**
+ * Function sortUsersObjectByDate sorts an array of objects by their 'dateCreated' in descending order (newest at the top)
+ *
+ * @return array of Objects is the array but in the correct order
+ */
+async function sortUsersObjectByDate() {
+    let testUserData = await createUsersObject()
+    await testUserData.data.sort(function(a, b){
+        var dateA = new Date(a.dateCreated), dateB=new Date(b.dateCreated)
+        return dateB - dateA //sort by date descending
+    })
+    return await testUserData
+}
 
 /**
  * get the handlebars template (scoreTable.hbs) and add userInfo (Email, Name and Scores) to the template
  */
 function updateScoreTable() {
-    let users = createUsersObject()
+    let users = sortUsersObjectByDate()
 
     users.then(function (userInfo) {
         getTemplateAjax('js/templates/scoreTable.hbs').then(function (HBTemplate) {

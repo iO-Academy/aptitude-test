@@ -1,4 +1,5 @@
-/** function tmeElapsed takes a dateStamp and return the difference between the current dateStamp and
+
+/** function timeElapsed takes a dateStamp and return the difference between the current dateStamp and
  *  the one that is passed into the function
  *
  * @param dateStamp parameter is the date stamp that is stored in a cookie at the beginning of the test

@@ -67,5 +67,5 @@ async function createUsersObject () {
         })
     })
 
-    return {success: true, data: userDisplayArray}
+    return await {success: true, data: userDisplayArray}
 }
