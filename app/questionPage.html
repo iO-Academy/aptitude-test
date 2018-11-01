@@ -56,10 +56,13 @@
                 </div>
                 <div class="col-md-2 overview_column">
                     <button type="button" class="btn btn-info next">Next</button>
-                    <button type="button" class="btn btn-info overview">Overview</button>
+                    <!-- <button type="button" class="btn btn-info overview">Overview</button> -->
                 </div>
                 <div class="col-md-2">
                 </div>
+            </div>
+            <div class="row">
+                <button type="button" class="btn btn-info overview">Overview</button>
             </div>
         </div>
     </div>
@@ -95,34 +98,29 @@
                 <div class="greetings">
                     <p>Your score</p>
                 </div>
-                <div class="result_card">
-                    <div class="greetings">
-                        <p>Your score</p>
+                <div class="result">
+                    <div class="points col-xs-4">
+                        <div class="points_label">
+                            <h3>Points</h3>
+                        </div>
+                        <div class="points_number">
+                            <p><span class="score"></span></p>
+                        </div>
                     </div>
-                    <div class="result">
-                        <div class="points col-xs-4">
-                            <div class="points_label">
-                                <h3>Points</h3>
-                            </div>
-                            <div class="points_number">
-                                <p><span class="score"></span></p>
-                            </div>
+                    <div class="percentage col-xs-4">
+                        <div class="percentage_label">
+                            <h3>Percentage</h3>
                         </div>
-                        <div class="percentage col-xs-4">
-                            <div class="percentage_label">
-                                <h3>Percentage</h3>
-                            </div>
-                            <div class="percentage_number">
-                                <p><span class="score_percentage"></span>%</p>
-                            </div>
+                        <div class="percentage_number">
+                            <p><span class="score_percentage"></span>%</p>
                         </div>
-                        <div class="answered col-xs-4">
-                            <div class="answered_label">
-                                <h3>Answered</h3>
-                            </div>
-                            <div class="answered_number">
-                                <p><span class="answered_questions"></span></p>
-                            </div>
+                    </div>
+                    <div class="answered col-xs-4">
+                        <div class="answered_label">
+                            <h3>Answered</h3>
+                        </div>
+                        <div class="answered_number">
+                            <p><span class="answered_questions"></span></p>
                         </div>
                     </div>
                 </div>
