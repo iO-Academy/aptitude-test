@@ -1,49 +1,54 @@
 
-document.getElementById("searchSubmit").addEventListener("click", function () {
-    let search = document.getElementById("search")
-    getExistingUsers().then(function (exitingUsers) {
-        let result = []
-        exitingUsers.forEach(function (user) {
-            if(search.value == user.name || search.value == user.email){
-                result.push({
-                    id: user.id,
-                    name: user.name,
-                    email: user.email,
-                    score: user.score,
-                    percentage: user.percentage,
-                    time: user.time
-                })
-            }
-        })
-        updateSearchResultsTable({data: result})
+document.getElementById("searchReset").addEventListener("click",function () {
+    let currentResult = document.querySelectorAll(".scoreEntry")
+    currentResult.forEach(function (element) {
+        element.style.display = "block"
     })
 })
 
-/**
- * get the handlebars template (scoreTable.hbs) and add userInfo (Email, Name and Scores) to the template
- */
-function updateSearchResultsTable(results) {
-    getTemplateAjax('js/templates/scoreTable.hbs').then(function (HBTemplate) {
-        fillSearchResultsTable(HBTemplate, results)
+document.getElementById("searchSubmit").addEventListener("click", function () {
+    getExistingUsers().then(function (existingUsers) {
+        matchExistingUsersBySearchTerm(existingUsers)
+    })
+})
+
+function matchExistingUsersBySearchTerm(existingUsers) {
+    let search = document.getElementById("search")
+    let result = []
+    existingUsers.forEach(function (user) {
+        if(nameValidation(search.value)) {
+        if(search.value == user.name || search.value == user.email){
+            result.push({
+                id: user.id,
+                name: user.name,
+                email: user.email,
+                score: user.score,
+                percentage: user.percentage,
+                time: user.time
+            })
+        }
+        searchResults(result)
+    }
     })
 }
 
 /**
- * fills handlebars template by getting the user data from the api and inserts into the user_list div
+ * gets all users name and email from API
  *
- * @param HBTemplate the handlebars template
+ * @param
+ *
+ * @return Array - containing the user info (Name and Email)
  */
-function fillSearchResultsTable(HBTemplate, results) {
-    let template = Handlebars.compile(HBTemplate)
-
-    updateDisplayedSearchResults(results, template)
+function searchResults (result) {
+    let currentResult = document.querySelectorAll(".scoreEntry")
+    currentResult.forEach(function (element) {
+        let currentId = element.getAttribute("dataId")
+        result.forEach(function (row) {
+            if(row.id !== currentId) {
+                element.style.display = "none"
+            } else {
+                element.style.display = "block"
+            }
+        })
+    })
 }
-
-function updateDisplayedSearchResults(result, template) {
-    let search_result = document.getElementById("searchResults")
-
-    let html = template(result)
-    search_result.innerHTML += html
-
-}
-
