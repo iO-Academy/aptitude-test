@@ -36,6 +36,12 @@ html, body {
 #drop-down {
   width: 300px;
   margin: auto;
+  text-decoration: none;
+  color: $main-button-color;
+}
+
+#drop-down:hover {
+  color: $main-button-hover;
 }
 
 #name {
