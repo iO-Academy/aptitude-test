@@ -40,14 +40,14 @@
     <div class="row">
         <div class="col-xs-12">
             <h1>Welcome To The Admin Page</h1>
-                <h2 id="toggle-title"><a href="#" id="drop-down" >Add New User &#x21E9;</a></h2>
+                <h2 id="toggle-title"><a role="button" id="drop-down" >Add New User <span>&#x2193;</span></a></h2>
             <form class="container_controls collapse" id="addNewUserForm">
                 <div class="container_input">
                     <input type="text" id="name" name="name" placeholder="Name" required>
                     <input type="text" id="email" name="email" placeholder="Email Address" required>
                 </div>
-                <div class="container_submit">
-                    <input class="btn-mayden" type="submit" value="Add User">
+                <div>
+                    <input class="btn-mayden no-border" type="submit" value="Add User">
                 </div>
             </form>
                 <div id='error' class='title_input'></div>
@@ -59,15 +59,13 @@
                 <h2>Scores</h2>
                 <div class="score_list"></div>
             </div>
+
         </div>
     </div>
+
 </section>
-<div class="container-fluid logo-bottom">
-    <div class="row">
-        <div class="col-xs-12">
-            <img class="mayden-logo" src="images/logo-mayden.svg">
-        </div>
-    </div>
-</div>
+<footer>
+    <img class="mayden-logo" src="images/logo-mayden.svg">
+</footer>
 </body>
 </html>
