@@ -1,11 +1,36 @@
 const questionAmount = 30// amount of questions
 
-document.querySelector('#finish').addEventListener('click', function(e) {
-    var unanswered = questionAnswered()
-    if (unanswered == false) {
+document.querySelector('#finish').addEventListener('click', function() {
+    let unanswered = questionAnswered()
+    let flaggedNumber = 0
+    Object.values(flaggedQuestions).forEach(function(question) {
+        if (question) {
+            flaggedNumber++
+        }
+    })
+    if (unanswered == false && flaggedNumber == false) {
         showResults()
     } else {
-        document.getElementById('modal-title').textContent = `You have ${unanswered.length} unanswered questions.`
+        let flagList = document.getElementById('flag-list')
+        let unansweredList = document.getElementById('unanswered-list')
+        if (unanswered.length) {
+            document.getElementById('modal-title-1').textContent = `You have ${unanswered.length} unanswered question(s).`
+        }
+        if (Object.values(flaggedQuestions).includes(true)) {
+            document.getElementById('modal-title-2').textContent = `You have ${flaggedNumber} flagged question(s).`
+        }
+        flagList.innerHTML = ''
+        unansweredList.innerHTML = ''
+        Object.values(flaggedQuestions).forEach(function(isQuestionFlagged, qId) {
+            if (isQuestionFlagged) {
+                flagList.innerHTML += "<li>" + (qId + 1) + "</li>"
+            }
+        })
+        removeDialogList(flagList)
+        unanswered.forEach(function (qID) {
+            unansweredList.innerHTML += "<li>" + qID + "</li>"
+        })
+        removeDialogList(unansweredList)
         openDialog()
         document.querySelector('#modal-close').addEventListener('click', function() {
             document.querySelector('#modal-finish').removeEventListener('click', finishTest)
@@ -21,6 +46,19 @@ document.querySelector('#finish').addEventListener('click', function(e) {
 function finishTest() {
     showResults()
     closeDialog()
+}
+
+/**
+ * Removes list from dialog box if list is empty
+ *
+ * @param listName is the list's DOM element
+ */
+function removeDialogList(listName) {
+    if (listName.innerHTML === '') {
+        listName.parentElement.style.display = 'none'
+    } else {
+        listName.parentElement.style.display = 'block'
+    }
 }
 
 /**
@@ -65,14 +103,13 @@ async function getAnswers() {
 /**
  * gets answers the user provided from the DOM
  *
- * @param questionAmount total number of questions
- *
  * @return Object of users answers
  */
 function getUserAnswers() {
     let checkedInputs = document.querySelectorAll('#questions .question .answers input:checked')
+    let qAmount = document.querySelectorAll('#questions .question').length
     let answers = {}
-    for (let i = 1; i <= questionAmount; i++) {
+    for (let i = 1; i <= qAmount; i++) {
         answers[i] = 'unanswered'
     }
     
@@ -150,7 +187,6 @@ function addAnswerEventListeners() {
  * to the current question allowing styling to be applied
  *
  * @param id is the id of the active question
- *
  */
 function trackActiveQuestion(id) {
     let activeQuestion = document.querySelector('.nav-item.current-nav-box')
@@ -161,12 +197,11 @@ function trackActiveQuestion(id) {
 }
 
 /**
- *  this gets the unanswered questions and puts their question id into an array
+ * this gets the unanswered questions and puts their question id into an array
  *
- *  @returns the array of question ids that havent been answered
+ * @returns the array of question ids that havent been answered
  */
 function questionAnswered() {
-    const qAmount = document.querySelectorAll('.question').length
     let answers = getUserAnswers()
     let answersArr = Object.values(answers)
     let unanswered = []
