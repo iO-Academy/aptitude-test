@@ -24,7 +24,7 @@ async function getUser(userEmail) {
  */
 async function checkIfTestIsTaken(userId) {
     let idData = await fetch(
-        'http://localhost:8080/result?id=' + userId,
+        'http://localhost:8080/result?uid=' + userId,
         {method: 'get'}
     )
     idData = await idData.json()
@@ -45,6 +45,19 @@ function redirectUser(user) {
     }
 }
 
+/**
+ *this redirects admins to the admin page
+ *
+ * @param user - checks to see status , user or admin.
+ *
+ */
+function redirectAdmin(user) {
+    if (user.isAdmin == "1") {
+        document.cookie = "userEmail=" + user.email
+        window.location.replace("adminPage.html")
+    }
+}
+
 if (document.querySelector('#logInForm')) {
     document.querySelector('#logInForm').addEventListener('submit', function(e) {
         e.preventDefault()
@@ -52,9 +65,11 @@ if (document.querySelector('#logInForm')) {
 
         getUser(email.value).then(function(user) {
             if(user.success && user.data.id) {
+                let retakeValue = user.data.canRetake
+                redirectAdmin(user.data)
                 checkIfTestIsTaken(user.data.id).then(function(idData) {
-                    if (idData.success) {
-                        email.insertAdjacentHTML('afterend', '<p>The test cannot be done twice</p>')
+                    if (idData.success && retakeValue == 0) {
+                        email.insertAdjacentHTML('afterend', '<p>You cannot take the test twice!</p>')
                     } else {
                         document.cookie = "uid=" + user.data.id
                         document.cookie = "userEmail=" + user.data.email

@@ -219,6 +219,7 @@ function questionAnswered() {
  * this checks the answers and marks them to show the finishing page
  */
 function showResults() {
+    resetReapplyCounter()
     const userAnswers = getUserAnswers(questionAmount)
     checkAnswers(userAnswers).then(function (result) {
         let percentResult
