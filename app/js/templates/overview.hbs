@@ -1,14 +1,14 @@
-<tr>
+<tr data-id="{{id}}">
     <td class="question_id">{{id}}</td>
     <td class="question_column">{{question}}</td>
-    {{#if isAnswered}}
-    <td class="glyphicon glyphicon-ok"></td>
-    {{else}}
-    <td class="glyphicon glyphicon-remove"></td>
-    {{/if}}
-    {{#if isFlagged}}
-    <td class="glyphicon glyphicon-flag"></td>
-    {{else}}
-    <td></td>
-    {{/if}}
+        {{#if isAnswered}}
+            <td class="glyphicon glyphicon-ok"></td>
+        {{else}}
+            <td class="glyphicon glyphicon-remove"></td>
+        {{/if}}
+        {{#if isFlagged}}
+            <td class="glyphicon glyphicon-flag"></td>
+        {{else}}
+            <td></td>
+        {{/if}}
 </tr>

@@ -68,7 +68,6 @@ function getUserAnswers() {
     return answers
 }
 
-
 /**
  * gets number of answered questions
  *
