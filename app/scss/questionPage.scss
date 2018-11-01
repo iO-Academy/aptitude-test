@@ -116,7 +116,7 @@ img {
         cursor: pointer;
         font-weight: bold;
         transition: font-weight 0.5s;
-        & td {
+        td {
             background-color: lighten($answered-color, 20%);
             transition: background-color 0.5s;
         }
