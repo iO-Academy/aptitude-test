@@ -25,7 +25,7 @@
     <script src="js/sanitiseAdmin.js" defer></script>
     <script src="js/modalSubmit.js" defer></script>
     <script src="js/postEditFunction.js" defer></script>
-    <script src="js/searchBar.js"></script>
+    <script src="js/searchBar.js" defer></script>
     <title>Admin Page</title>
 </head>
 <body>
@@ -57,8 +57,9 @@
             </div>
             <div>
                 <h2>Scores</h2>
-                <input id="search" type="text" placeholder="">
-                <button class="searchSubmit" type="submit"> Search Results </button>
+                <input id="search" type="text">
+                <button id="searchSubmit" type="button"> Search Results </button>
+                <div id="searchResults"></div>
                 <div class="score_list"></div>
             </div>
           

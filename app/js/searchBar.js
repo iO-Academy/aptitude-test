@@ -9,6 +9,9 @@ document.getElementById("searchSubmit").addEventListener("click", function () {
                     id: user.id,
                     name: user.name,
                     email: user.email,
+                    score: user.score,
+                    percentage: user.percentage,
+                    time: user.time
                 })
             }
         })
@@ -37,24 +40,10 @@ function fillSearchResultsTable(HBTemplate, results) {
 }
 
 function updateDisplayedSearchResults(result, template) {
-    let search_result = document.querySelector("#searchResult")
-    search_result.innerHTML = ""
+    let search_result = document.querySelector("searchResults")
 
     let html = template(result)
     search_result.innerHTML += html
 
-    addEditEventListeners()
-    addDeleteEventListeners()
 }
 
-//hbs
-// {{#each data}}
-// <div class="entry">
-//     <div class="user_item" dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}">
-//     <p class="name">Name: {{name}}</p>
-// <p class="email">Email: {{email}}</p>
-// <button class="btn btn-success btn-height modalBtn">Edit User</button>
-// <button type="button" class="btn btn-danger btn-height">Delete entry?</button>
-// </div>
-// </div>
-// {{/each}}
