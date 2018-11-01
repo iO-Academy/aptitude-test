@@ -7,7 +7,7 @@
 
 .question {
     position: relative;
-    background-color: #ffffff;
+    background-color: $main-background-color;
     width: 100%;
     padding: 30px;
     text-align: left;
@@ -59,18 +59,19 @@ img {
 }
 
 .prev {
-    display: none;
     width: 60%;
     margin: 50px auto;
 }
+
 .next {
     width: 60%;
     margin: 50px auto;
 }
 
-.finish {
-    width: 50%;
-    margin: 50px 0;
+.overview {
+    visibility: hidden;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
 
 .error_message {
@@ -85,6 +86,66 @@ img {
 
 #flag-label {
     font-size: 2rem;
+}
+
+//======== O V E R V I E W    P A G E ========//
+#overview_page {
+    display: none;
+    margin: 0 auto;
+    width: 50%;
+}
+
+.overview_page_table {
+    width: 100%;
+    box-shadow: 0 19px 38px $table-box-shadow, 0 15px 12px $table-box-shadow;
+
+    th, td {
+        border: 1px solid $table-border;
+        padding: 2px;
+    }
+
+    .question_id {
+        width: 130px;
+    }
+
+    .question_column {
+        width: 200px;
+    }
+
+    tr:hover {
+        cursor: pointer;
+        font-weight: bold;
+        transition: font-weight 0.5s;
+        td {
+            background-color: lighten($answered-color, 20%);
+            transition: background-color 0.5s;
+        }
+    }
+
+    .glyphicon {
+        top: auto;
+        display: table-cell;
+        &-flag:before {
+            color: $unanswered-color;
+        }
+        &-remove:before {
+            color: $unanswered-color;
+        }
+        &-ok:before {
+            color: $answered-color;
+        }
+    }
+}
+
+.overview_footer p {
+    margin: 55px 0 10px;
+    text-align: end;
+    color: $unanswered-color;
+}
+
+.finish {
+    width: 100%;
+    margin: 50px 0;
 }
 
 .unanswered-nav-box {

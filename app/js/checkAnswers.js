@@ -1,64 +1,13 @@
 const questionAmount = 30// amount of questions
 
-document.querySelector('#finish').addEventListener('click', function() {
-    let unanswered = questionAnswered()
-    let flaggedNumber = 0
-    Object.values(flaggedQuestions).forEach(function(question) {
-        if (question) {
-            flaggedNumber++
-        }
-    })
-    if (unanswered == false && flaggedNumber == false) {
-        showResults()
-    } else {
-        let flagList = document.getElementById('flag-list')
-        let unansweredList = document.getElementById('unanswered-list')
-        if (unanswered.length) {
-            document.getElementById('modal-title-1').textContent = `You have ${unanswered.length} unanswered question(s).`
-        }
-        if (Object.values(flaggedQuestions).includes(true)) {
-            document.getElementById('modal-title-2').textContent = `You have ${flaggedNumber} flagged question(s).`
-        }
-        flagList.innerHTML = ''
-        unansweredList.innerHTML = ''
-        Object.values(flaggedQuestions).forEach(function(isQuestionFlagged, qId) {
-            if (isQuestionFlagged) {
-                flagList.innerHTML += "<li>" + (qId + 1) + "</li>"
-            }
-        })
-        removeDialogList(flagList)
-        unanswered.forEach(function (qID) {
-            unansweredList.innerHTML += "<li>" + qID + "</li>"
-        })
-        removeDialogList(unansweredList)
-        openDialog()
-        document.querySelector('#modal-close').addEventListener('click', function() {
-            document.querySelector('#modal-finish').removeEventListener('click', finishTest)
-            closeDialog()
-        })
-        document.querySelector('#modal-finish').addEventListener('click', finishTest)
-    }
-})
-
+document.querySelector('#finish').addEventListener('click', finishTest)
 /**
  * called when clicking finish button in dialogue box
  */
 function finishTest() {
     showResults()
-    closeDialog()
-}
-
-/**
- * Removes list from dialog box if list is empty
- *
- * @param listName is the list's DOM element
- */
-function removeDialogList(listName) {
-    if (listName.innerHTML === '') {
-        listName.parentElement.style.display = 'none'
-    } else {
-        listName.parentElement.style.display = 'block'
-    }
+    document.querySelector('#overview_page').style.display = 'none'
+    document.querySelector('#result_page').style.display = 'none'
 }
 
 /**
@@ -71,7 +20,6 @@ function removeDialogList(listName) {
 async function checkAnswers(userAnswers) {
     let userScore = 0
     let answers = await getAnswers()
-
     if (answers.success) {
         answers = answers.data
         answers.forEach(function (answerItem) {
@@ -112,14 +60,13 @@ function getUserAnswers() {
     for (let i = 1; i <= qAmount; i++) {
         answers[i] = 'unanswered'
     }
-    
+
     checkedInputs.forEach(function(input) {
         let id = input.name.split("_")[1]
-        answers[id] = input.value   
+        answers[id] = input.value
     })
     return answers
 }
-
 
 /**
  * gets number of answered questions
@@ -194,25 +141,6 @@ function trackActiveQuestion(id) {
         activeQuestion.classList.remove('current-nav-box')
     }
     document.querySelector('#question-nav').children[id - 1].classList.add('current-nav-box')
-}
-
-/**
- * this gets the unanswered questions and puts their question id into an array
- *
- * @returns the array of question ids that havent been answered
- */
-function questionAnswered() {
-    let answers = getUserAnswers()
-    let answersArr = Object.values(answers)
-    let unanswered = []
-    //qID refers to the question ID, and is incremented each iteration
-    answersArr.forEach(function (value, qID) {
-        qID++
-        if (value == 'unanswered') {
-            unanswered.push(qID)
-        }
-    })
-    return unanswered
 }
 
 /**

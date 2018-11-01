@@ -1,4 +1,5 @@
 var current = 1
+document.querySelector(".prev").style.visibility = "hidden"
 
 /**
  * adds the active class to the first question
@@ -56,20 +57,22 @@ function changeQuestion(destinationPage) {
     let questionCount = document.querySelectorAll('#questions .question').length
     let nextButton = document.querySelector(".next")
     let prevButton = document.querySelector(".prev")
+    let overviewButton = document.querySelector(".overview")
     document.querySelector("h4").textContent = destinationPage + "/" + questionCount
 
     switch(parseInt(destinationPage)) { // parseInt() in case a string is passed
         case 1:
-            prevButton.style.display = "none"
-            nextButton.style.display = "block"
+            prevButton.style.visibility = "hidden"
+            nextButton.style.visibility = "visible"
             break;
         case questionCount:
-            prevButton.style.display = "block"
-            nextButton.style.display = "none"
+            prevButton.style.visibility = "visible"
+            nextButton.style.visibility = "hidden"
+            overviewButton.style.visibility = "visible"
             break;
         default:
-            prevButton.style.display = "block"
-            nextButton.style.display = "block"
+            prevButton.style.visibility = "visible"
+            nextButton.style.visibility = "visible"
     }
 
     document.querySelector("#questions .active").classList.remove("active")
