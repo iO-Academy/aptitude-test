@@ -56,12 +56,21 @@
 }
 
 .question-nav div {
+    position: relative;
     width: 25px;
     padding: 6px 0;
     display: inline-block;
     color: #ffffff;
     text-decoration: none;
     cursor: pointer;
+}
+
+.flag {
+    position: absolute;
+    bottom: 8px;
+    top: auto;
+    left: 50%;
+    transform: translate(-50%);
 }
 
 .question-nav p {
@@ -99,6 +108,19 @@ img {
 .error_message {
     text-align: center;
     font-size: large;
+    position: absolute;
+    bottom: 0;
+    z-index: 10;
+    color: $error-message;
+}
+
+#flag-checkbox {
+    width: 20px;
+    height: 20px
+}
+
+#flag-label {
+    font-size: 2rem;
 }
 
 .unanswered-nav-box {

@@ -5,12 +5,16 @@ $slateblue3-color: #accddd;
 $slateblue4-color: #085e8e;
 $tealblue5-color: #0b7384;
 $grey2-color: #d6d6d6;
+$gray3-color: #ababab;
+$purple5-color: #8d0377;
+$tealblue6-color: #045866;
+$green4-color: #53a00a;
 
 
-
-$unanswered-color: #C63806;
-
+$unanswered-color: $orange5-color;
 $answered-color: $slateblue4-color;
 
 $main-button-color: $purple5-color;
 $main-button-hover: $orange5-color;
+$result-table-border: $gray3-color;
+$error-message: $orange5-color;
