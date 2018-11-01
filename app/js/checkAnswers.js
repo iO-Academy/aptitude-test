@@ -53,7 +53,6 @@ async function getAnswers() {
  *
  * @return Object of users answers
  */
-
 function getUserAnswers() {
     let checkedInputs = document.querySelectorAll('#questions .question .answers input:checked')
     let qAmount = document.querySelectorAll('#questions .question').length
