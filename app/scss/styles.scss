@@ -2,6 +2,10 @@
 @import 'imports/variables';
 @import 'imports/buttons';
 
+html, body {
+  font-family: 'Asap', sans-serif;
+}
+
 .container {
   text-align: center;
 
@@ -29,3 +33,11 @@
   }
 }
 
+#name {
+  display: block;
+  margin: 0 auto 5px auto;
+}
+
+#email {
+  margin-bottom: 10px;
+}
