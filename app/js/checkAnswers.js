@@ -14,10 +14,10 @@ document.querySelector('#finish').addEventListener('click', function() {
         let flagList = document.getElementById('flag-list')
         let unansweredList = document.getElementById('unanswered-list')
         if (unanswered.length) {
-            document.getElementById('modal-title-1').textContent = `You have ${unanswered.length} unanswered questions.`
+            document.getElementById('modal-title-1').textContent = `You have ${unanswered.length} unanswered question(s).`
         }
         if (Object.values(flaggedQuestions).includes(true)) {
-            document.getElementById('modal-title-2').textContent = `You have ${flaggedNumber} flagged questions.`
+            document.getElementById('modal-title-2').textContent = `You have ${flaggedNumber} flagged question(s).`
         }
         flagList.innerHTML = ''
         unansweredList.innerHTML = ''
