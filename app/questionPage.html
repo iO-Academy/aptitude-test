@@ -19,6 +19,7 @@
     <script src="js/handlebars-v4.0.11.js"></script>
     <script src="js/aptitudeTestHelpers.js" async></script>
     <script src="js/ajaxHandlebarsTemplate.js" defer></script>
+    <script src="js/modal.js" async></script>
     <script src="js/questions.js" defer></script>
     <script src="js/question_desc.js" defer></script>
     <script src="js/questionNav.js" defer></script>
@@ -27,71 +28,97 @@
     <script src="js/sendResults.js" defer></script>
 </head>
 <body>
-<!--question number and time -->
-<div id="question_page">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-2">
-                <h3>Question number</h3>
-                <h4></h4>
+    <div class="overlay"></div>
+
+    <!-- Modal -->
+    <div id="modal">
+        <h3 id="modal-title-1" class="modal-title"> </h3>
+        <h3 id="modal-title-2" class="modal-title"> </h3>
+        <div id="modal-content">
+            <div class="list-wrapper">
+                <div class="list-container">
+                    <p>Flagged questions:</p>
+                    <ul id="flag-list"></ul>
+                </div>
+                <div class="list-container">
+                    <p>Unanswered questions:</p>
+                    <ul id="unanswered-list"></ul>
+                </div>
             </div>
-            <div class="col-md-offset-8 col-md-2">
-                <h3 id="timer"></h3>
-            </div>
-        </div>
-        <!--question body and nav-->
-        <div class="row">
-            <div class="col-md-2">
-                <button type="button" class="btn btn-info prev">Previous</button>
-            </div>
-            <div class="question-container col-md-8">
-                <div id="questions"></div>
-                <button type="button" id="finish" class="btn btn-success finish">Finish</button>
-            </div>
-            <div class="col-md-2">
-                <button type="button" class="btn btn-info next">Next</button>
-            </div>
-            <div class="col-md-2">
+            <div class="modal-button-holder">
+                <button id="modal-close">Back</button>
+                <button id="modal-finish">Finish anyway</button>
             </div>
         </div>
     </div>
-</div>
-<div id="result_page">
-    <div class="container">
-        <div class="userMessage">
-        </div>
-        <div class="result_card">
-            <div class="greetings">
-                <p>Your score</p>
+    <!--question number and time -->
+    <div id="question_page">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <h3>Question number</h3>
+                    <h4></h4>
+                    <label for="flag-checkbox" id="flag-label">Flag</label>
+                    <input type="checkbox" id="flag-checkbox">
+                </div>
+                <div class="col-md-offset-8 col-md-2">
+                    <h3 id="timer"></h3>
+                </div>
             </div>
-            <div class="result">
-                <div class="points col-xs-4">
-                    <div class="points_label">
-                        <h3>Points</h3>
-                    </div>
-                    <div class="points_number">
-                        <p><span class="score"></span></p>
-                    </div>
+            <!--question body and nav-->
+            <div class="row">
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-info prev">Previous</button>
                 </div>
-                <div class="percentage col-xs-4">
-                    <div class="percentage_label">
-                        <h3>Percentage</h3>
-                    </div>
-                    <div class="percentage_number">
-                        <p><span class="score_percentage"></span>%</p>
-                    </div>
+                <div class="question-container col-md-8">
+                    <div id="questions"></div>
+                    <div id="question-nav" class="question-nav"></div>
+                    <button type="button" id="finish" class="btn btn-success finish">Finish</button>
                 </div>
-                <div class="answered col-xs-4">
-                    <div class="answered_label">
-                        <h3>Answered</h3>
-                    </div>
-                    <div class="answered_number">
-                        <p><span class="answered_questions"></span></p>
-                    </div>
+                <div class="col-md-2">
+                    <button type="button" class="btn btn-info next">Next</button>
+                </div>
+                <div class="col-md-2">
                 </div>
             </div>
         </div>
     </div>
-</div>
+    <div id="result_page">
+        <div class="container">
+            <div class="userMessage">
+            </div>
+            <div class="result_card">
+                <div class="greetings">
+                    <p>Your score</p>
+                </div>
+                <div class="result">
+                    <div class="points col-xs-4">
+                        <div class="points_label">
+                            <h3>Points</h3>
+                        </div>
+                        <div class="points_number">
+                            <p><span class="score"></span></p>
+                        </div>
+                    </div>
+                    <div class="percentage col-xs-4">
+                        <div class="percentage_label">
+                            <h3>Percentage</h3>
+                        </div>
+                        <div class="percentage_number">
+                            <p><span class="score_percentage"></span>%</p>
+                        </div>
+                    </div>
+                    <div class="answered col-xs-4">
+                        <div class="answered_label">
+                            <h3>Answered</h3>
+                        </div>
+                        <div class="answered_number">
+                            <p><span class="answered_questions"></span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
