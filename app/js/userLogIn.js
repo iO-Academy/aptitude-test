@@ -45,6 +45,13 @@ function redirectUser(user) {
     }
 }
 
+function redirectAdmin(user) {
+    if (user.isAdmin == "1") {
+        document.cookie = "userEmail=" + user.email
+        window.location.replace("adminPage.html")
+    }
+}
+
 if (document.querySelector('#logInForm')) {
     document.querySelector('#logInForm').addEventListener('submit', function(e) {
         e.preventDefault()
@@ -53,8 +60,9 @@ if (document.querySelector('#logInForm')) {
         getUser(email.value).then(function(user) {
             if(user.success && user.data.id) {
                 let retakeValue = user.data.canRetake
+                redirectAdmin(user.data)
                 checkIfTestIsTaken(user.data.id).then(function(idData) {
-                    if (idData.success && retakeValue != 1) {
+                    if (idData.success && retakeValue == 0) {
                         email.insertAdjacentHTML('afterend', '<p>You cannot take the test twice!</p>')
                     } else {
                         document.cookie = "uid=" + user.data.id
