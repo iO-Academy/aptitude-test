@@ -12,6 +12,13 @@ document.getElementById("searchSubmit").addEventListener("click", function () {
     })
 })
 
+/**
+ * sanitises the search and creates and object dependent on your search
+ *
+ * @param existingUsers - all users that arent deleted
+ *
+ * @return result - and object containing info of the searched user
+ */
 function matchExistingUsersBySearchTerm(existingUsers) {
     let search = document.getElementById("search")
     let result = []
@@ -33,11 +40,11 @@ function matchExistingUsersBySearchTerm(existingUsers) {
 }
 
 /**
- * gets all users name and email from API
+ * gets the user id and current object id and then displays the object id that matches the searched object id
  *
- * @param
+ * @param result - object of terms searched
  *
- * @return Array - containing the user info (Name and Email)
+ * @return object - containing the user results
  */
 function searchResults (result) {
     let currentResult = document.querySelectorAll(".scoreEntry")
@@ -46,8 +53,6 @@ function searchResults (result) {
         result.forEach(function (row) {
             if(row.id !== currentId) {
                 element.style.display = "none"
-            } else {
-                element.style.display = "block"
             }
         })
     })
