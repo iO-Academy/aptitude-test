@@ -22,13 +22,13 @@ document.querySelector(".overview").addEventListener("click", function() {
         })
         tableBody.insertAdjacentHTML('afterBegin', html)
     })
-    document.querySelector('#overview_page').style.display = 'block';
-    document.querySelector('#question_page').style.display = 'none';
+    document.querySelector('#overview_page').style.display = 'block'
+    document.querySelector('#question_page').style.display = 'none'
 })
 
 document.querySelector('table').addEventListener('click', function(e) {
     current = e.target.parentNode.dataset.id
     changeQuestion(current)
-    document.querySelector('#overview_page').style.display = 'none';
-    document.querySelector('#question_page').style.display = 'block';
+    document.querySelector('#overview_page').style.display = 'none'
+    document.querySelector('#question_page').style.display = 'block'
 })

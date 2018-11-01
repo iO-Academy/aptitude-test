@@ -1,5 +1,5 @@
-var current = 1;
-document.querySelector(".prev").style.visibility = "hidden";
+var current = 1
+document.querySelector(".prev").style.visibility = "hidden"
 
 /**
  * adds the active class to the first question
