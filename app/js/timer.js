@@ -12,21 +12,23 @@ function timeElapsed(dateStamp){
 }
 
 /**
+ * Function timeRemainingCalc() works out the time remaining to complete the test in seconds by taking the
+ * time elapsed from the time limit.
+ */
+function timeRemainingCalc () {
+    let dateStamp = getCookie("dateStamp")
+    return Math.floor((timeLimit*1000 - timeElapsed(dateStamp))/1000)
+}
+
+/**
  *Function timer() figures out how many seconds and minutes remain and displays this value. When called 1 is
  * taken off the value of timeRemaining.
  * If the timeRemaining is less than 0 then the function (not our code) automatically clicks on the
  * finish button.
  */
 function timer() {
-    //30 minute time limit in seconds (plus one second for lag).
-    const timeLimit = 1801
-    let dateStamp = getCookie("dateStamp")
-    //time remaining is the time limit minus the time elapsed in seconds.
-    let timeRemaining = Math.floor((timeLimit*1000 - timeElapsed(dateStamp))/1000)
-
     let minutes = Math.floor(timeRemaining / 60);
     let seconds = Math.floor(timeRemaining - minutes * 60);
-
     document.querySelector("#timer").innerHTML = minutes + "m " + seconds + "s ";
     timeRemaining--
     if (timeRemaining < 0){
@@ -48,9 +50,7 @@ function getTimeForApi() {
     return time
 }
 
-//30 minute time limit
+//30 minute time limit in seconds (plus one second for lag).
 const timeLimit = 1801
-let dateStamp = getCookie("dateStamp")
-//time remaining is the time limit minus the tme elapsed in seconds
-let timeRemaining = Math.floor((timeLimit*1000 - timeElapsed(dateStamp))/1000)
+let timeRemaining = timeRemainingCalc()
 let interval = setInterval(timer, 1000)
