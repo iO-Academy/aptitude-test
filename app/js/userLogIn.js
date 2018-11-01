@@ -24,7 +24,7 @@ async function getUser(userEmail) {
  */
 async function checkIfTestIsTaken(userId) {
     let idData = await fetch(
-        'http://localhost:8080/result?id=' + userId,
+        'http://localhost:8080/result?uid=' + userId,
         {method: 'get'}
     )
     idData = await idData.json()
@@ -55,8 +55,7 @@ if (document.querySelector('#logInForm')) {
                 let retakeValue = user.data.canRetake
                 checkIfTestIsTaken(user.data.id).then(function(idData) {
                     if (idData.success && retakeValue != 1) {
-                        email.insertAdjacentHTML('afterend', '<p>The test cannot be done twice</p>')
-                        redirectUser(user.data)
+                        email.insertAdjacentHTML('afterend', '<p>You cannot take the test twice!</p>')
                     } else {
                         document.cookie = "uid=" + user.data.id
                         document.cookie = "userEmail=" + user.data.email
