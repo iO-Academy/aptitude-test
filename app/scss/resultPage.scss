@@ -18,9 +18,14 @@ body {
 
 .result_card {
   background-color: #fff;
-  margin: 20px auto;
+  margin: auto;
   width: 600px;
   height: 450px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 }
 
 .greetings {
