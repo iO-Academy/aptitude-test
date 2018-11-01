@@ -62,10 +62,10 @@ function getUserAnswers() {
     }
 
     checkedInputs.forEach(function(input) {
-        let id = input.name.split("_")[1];
-        answers[id] = input.value;
-    });
-    return answers;
+        let id = input.name.split("_")[1]
+        answers[id] = input.value
+    })
+    return answers
 }
 
 
