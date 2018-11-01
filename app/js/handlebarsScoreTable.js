@@ -37,7 +37,6 @@ function fillScoreTable(HBTemplate, userInfo) {
             })
            return ({data: newResultObject})
         }).then(function (finalObject) {
-            console.log(finalObject)
         let template = Handlebars.compile(HBTemplate)
         let score_list = document.querySelector(".score_list")
 
