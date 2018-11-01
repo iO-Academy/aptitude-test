@@ -17,13 +17,24 @@
     <script src="js/handlebars-v4.0.11.js"></script>
     <script src="js/validateUserAdditions.js" defer></script>
     <script src="js/ajaxHandlebarsTemplate.js" defer></script>
+    <script src="js/modal.js" defer></script>
     <script src="js/handlebarsUserTable.js" defer></script>
     <script src="js/createUserObject.js" defer></script>
     <script src="js/handlebarsScoreTable.js" defer></script>
     <script src="js/aptitudeTestHelpers.js" defer></script>
+    <script src="js/sanitiseAdmin.js" defer></script>
+    <script src="js/modalSubmit.js" defer></script>
+    <script src="js/postEditFunction.js" defer></script>
     <title>Admin Page</title>
 </head>
 <body>
+<!-- Modal -->
+<div class="overlay"></div>
+<div id="modal">
+    <h3 id="modal-title"> </h3>
+    <div id="modal-content">
+    </div>
+</div>
 <section class="container">
     <div class="row">
         <div class="col-xs-12">
@@ -47,6 +58,7 @@
                 <h2>Scores</h2>
                 <div class="score_list"></div>
             </div>
+          
         </div>
     </div>
 </section>
