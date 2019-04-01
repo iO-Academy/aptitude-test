@@ -52,7 +52,12 @@ $app->post('/user/edit', function ($request, $response, $args) {
     $data = ['success' => false, 'message' => 'An unexpected error occured.', 'data' => []];
     $user = $request->getParsedBody();
 
-    if (empty($user['email']) || empty($user['name']) || empty($user['id']) || !isset($user['canRetake'])) {
+    if (
+        empty($user['email']) ||
+        empty($user['name']) ||
+        empty($user['id']) ||
+        !isset($user['canRetake'])
+    ) {
         $data['message'] = 'Invalid parameters.';
         $data['data'] = $user;
         $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
@@ -60,11 +65,15 @@ $app->post('/user/edit', function ($request, $response, $args) {
     }
 
     try {
-        $query = "UPDATE `user` SET `email` = :email, `name` = :name, `canRetake` = :retake WHERE `id` = :id;";
+
+        $user['time'] = $user['time'] ?? 1800;
+
+        $query = "UPDATE `user` SET `email` = :email, `name` = :name, `canRetake` = :retake, `time` = :time WHERE `id` = :id;";
         $query = $this->db->prepare($query);
         $query->bindParam(':email', $user['email']);
         $query->bindParam(':name', $user['name']);
         $query->bindParam(':retake', $user['canRetake']);
+        $query->bindParam(':time', $user['time']);
         $query->bindParam(':id', $user['id']);
         $query->execute();
     } catch(Exception $e) {
@@ -86,7 +95,7 @@ $app->get('/user', function ($request, $response, $args) {
 
     if (empty($email)) {
         try {
-            $query = "SELECT `id`, `email`, `name`, `dateCreated`, `isAdmin`, `canRetake`, `deleted` from `user` ORDER BY `dateCreated` DESC;";
+            $query = "SELECT `id`, `email`, `name`, `dateCreated`, `isAdmin`, `canRetake`, `time`, `deleted` from `user` ORDER BY `dateCreated` DESC;";
             $query = $this->db->prepare($query);
             $query->execute();
             $result = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -101,7 +110,7 @@ $app->get('/user', function ($request, $response, $args) {
     } else {
 
         try {
-            $query = "SELECT `id`, `email`, `name`, `dateCreated`, `isAdmin`, `canRetake` from `user` WHERE `email` = :email AND `deleted` <> 1";
+            $query = "SELECT `id`, `email`, `name`, `dateCreated`, `isAdmin`, `canRetake`, `time` from `user` WHERE `email` = :email AND `deleted` <> 1";
             $query = $this->db->prepare($query);
             $query->bindParam(':email', $email);
             $query->execute();
@@ -152,7 +161,7 @@ $app->get('/question', function ($request, $response, $args) {
     $data = ['success' => false, 'message' => 'An unexpected error occured.', 'data' => []];
 
     try {
-        $query = "SELECT `id`, `text`, `option1`, `option2`, `option3`, `option4`, `option5` from `question`";
+        $query = "SELECT `id`, `text`, `option1`, `option2`, `option3`, `option4`, `option5` FROM `question` WHERE `deleted` <> 0";
         $query = $this->db->prepare($query);
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -168,6 +177,150 @@ $app->get('/question', function ($request, $response, $args) {
     $data['data'] = $result;
     $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
     return $response->withJson($data);
+});
+
+$app->post('/question', function ($request, $response, $args) {
+    $data = ['success' => false, 'message' => 'An unexpected error occured.', 'data' => []];
+
+    $question = $request->getParsedBody();
+
+    if (
+        !empty($question['text']) &&
+        !empty($question['option1']) &&
+        !empty($question['option2']) &&
+        !empty($question['answer'])
+    ) {
+
+        try {
+
+            $question['option3'] = $question['option3'] ?? NULL;
+            $question['option4'] = $question['option4'] ?? NULL;
+            $question['option5'] = $question['option5'] ?? NULL;
+
+            $query = "INSERT INTO `question`
+                        (`text`, `option1`, `option2`, `option3`, `option4`, `option5`, `answer`)
+                          VALUES
+                        (:text, :option1, :option2, :option3, :option4, :option5, :answer)";
+            $query = $this->db->prepare($query);
+
+            $query->bindParam(':text', $question['text']);
+            $query->bindParam(':option1', $question['option1']);
+            $query->bindParam(':option2', $question['option2']);
+            $query->bindParam(':option3', $question['option3']);
+            $query->bindParam(':option4', $question['option4']);
+            $query->bindParam(':option5', $question['option5']);
+            $query->bindParam(':answer', $question['answer']);
+
+            $data['success'] = $query->execute();
+            $data['data']['id'] = $this->db->lastInsertId();
+            $data['message'] = 'Question added successfully';
+            $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+            return $response->withJson($data);
+
+        } catch (Exception $e) {
+            $data['message'] = $e->getMessage();
+            $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+            return $response->withJson($data, 500);
+        }
+    }
+
+    $data['message'] = 'Missing data.';
+    $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+    return $response->withJson($data, 400);
+
+});
+
+$app->post('/question/{id}/edit', function ($request, $response, $args) {
+    $data = ['success' => false, 'message' => 'An unexpected error occured.', 'data' => []];
+
+    $question = $request->getParsedBody();
+
+    if (
+        !empty($question['text']) &&
+        !empty($question['option1']) &&
+        !empty($question['option2']) &&
+        !empty($question['answer']) &&
+        !empty($args['id'])
+    ) {
+
+        try {
+
+            $question['option3'] = $question['option3'] ?? NULL;
+            $question['option4'] = $question['option4'] ?? NULL;
+            $question['option5'] = $question['option5'] ?? NULL;
+
+            $query = "UPDATE `question` SET
+                        `text` = :text,
+                        `option1` = :option1,
+                        `option2` = :option2,
+                        `option3` = :option3,
+                        `option4` = :option4,
+                        `option5` = :option5,
+                        `answer` = :answer
+                        WHERE `id` = :id";
+
+            $query = $this->db->prepare($query);
+
+            $query->bindParam(':text', $question['text']);
+            $query->bindParam(':option1', $question['option1']);
+            $query->bindParam(':option2', $question['option2']);
+            $query->bindParam(':option3', $question['option3']);
+            $query->bindParam(':option4', $question['option4']);
+            $query->bindParam(':option5', $question['option5']);
+            $query->bindParam(':answer', $question['answer']);
+            $query->bindParam(':id', $args['id']);
+
+            $data['success'] = $query->execute();
+            $data['message'] = 'Question updated successfully';
+            $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+            return $response->withJson($data);
+
+        } catch (Exception $e) {
+            $data['message'] = $e->getMessage();
+            $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+            return $response->withJson($data, 500);
+        }
+    }
+
+    $data['message'] = 'Missing data.';
+    $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+    return $response->withJson($data, 400);
+
+});
+
+$app->post('/question/{id}/delete', function ($request, $response, $args) {
+    $data = ['success' => false, 'message' => 'An unexpected error occured.', 'data' => []];
+
+    $question = $request->getParsedBody();
+
+    if (!empty($args['id'])) {
+
+        try {
+
+            $query = "UPDATE `question` SET
+                        `deleted` = 1
+                        WHERE `id` = :id";
+
+            $query = $this->db->prepare($query);
+
+            $query->bindParam(':id', $args['id']);
+
+            $data['success'] = $query->execute();
+            $data['message'] = 'Question deleted successfully';
+            $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+            return $response->withJson($data);
+
+        } catch (Exception $e) {
+            $data['message'] = $e->getMessage();
+            $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+            return $response->withJson($data, 500);
+        }
+    }
+
+    $data['message'] = 'Missing data.';
+    $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+    return $response->withJson($data, 400);
+
 });
 
 $app->get('/answer/{id}', function ($request, $response, $args) {

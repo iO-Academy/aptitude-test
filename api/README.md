@@ -52,6 +52,25 @@ GET
 - No request data.
 - Returns all questions and question options.
 
+POST
+- Create new question.
+- `{"text":"Question example", "option1":"Answer 1", "option2":"Answer 2", "option3":"Answer 3", "option4":"Answer 4", "option5":"Answer 4", "answer":"2"}`
+- Returns id of question created.
+
+**/question/{id}/edit**
+
+POST
+- Edit existing question.
+- `{"text":"Question example", "option1":"Answer 1", "option2":"Answer 2", "option3":"Answer 3", "option4":"Answer 4", "option5":"Answer 4", "answer":"2"}`
+- Returns success state of edited question.
+
+**/question/{id}/delete**
+
+POST
+- Delete existing question.
+- No request data
+- Returns success state of deleted question.
+
 **/answer**
 
 GET
