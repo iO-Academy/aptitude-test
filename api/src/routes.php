@@ -22,8 +22,15 @@ $app->post('/user', function ($request, $response, $args) {
     }
 
     try {
-        $query = "INSERT INTO `user` (`email`, `name`) VALUES (:email, :name);";
-        $query = $this->db->prepare($query);
+        if (!empty($user['time'])) {
+            $query = "INSERT INTO `user` (`email`, `name`, `time`) VALUES (:email, :name, :time);";
+            $query = $this->db->prepare($query);
+            $query->bindParam(':time', $user['time']);
+        } else {
+            $query = "INSERT INTO `user` (`email`, `name`) VALUES (:email, :name);";
+            $query = $this->db->prepare($query);
+        }
+
         $query->bindParam(':email', $user['email']);
         $query->bindParam(':name', $user['name']);
         $query->execute();

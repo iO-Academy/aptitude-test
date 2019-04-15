@@ -7,3 +7,4 @@ node_modules
 !app/css/bootstrap.css.map
 !app/css/bootstrap.min.css
 !app/css/bootstrap.min.css.map
+api/db/aptitude-test-backup.sql

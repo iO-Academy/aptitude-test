@@ -17,7 +17,7 @@
 POST
 - Create new user.
 - `{"email":"example@email.com", "name":"Fred Smith", "time":"1800"}`
-- Time is optional
+- Time is optional, will default to 1800
 - Returns user object.
 
 GET 
