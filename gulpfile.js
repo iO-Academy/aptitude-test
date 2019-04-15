@@ -9,7 +9,7 @@ gulp.task('sass', function(done) {
     done()
 })
 
-gulp.task('watch', ['sass'], function (done){
+gulp.task('watch', gulp.series('sass', function (done){
     gulp.watch('app/scss/**/*.scss', gulp.series('sass'))
     done()
-})
+}))
