@@ -16,7 +16,8 @@
 
 POST
 - Create new user.
-- `{"email":"example@email.com", "name":"Fred Smith"}`
+- `{"email":"example@email.com", "name":"Fred Smith", "time":"1800"}`
+- Time is optional
 - Returns user object.
 
 GET 
