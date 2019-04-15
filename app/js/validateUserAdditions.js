@@ -91,19 +91,17 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
     getExistingUsers().then(function(existingUsers) {
         if (!isEmailValid(emailField.value) || userExists(emailField.value, existingUsers)) {
             errorField.innerHTML = "Your email is not valid or already exists: Please provide a correct email"
-        } else if (timeField.value <=1 || timeField.value == null) {
+        } else if (timeField.value <=1 || timeField.value == null || isNaN(timeField.value) === true ) {
             errorFieldTime.innerHTML = 'This is not a good number!'
         } else {
             errorField.innerHTML = ''
+            errorFieldTime.innerHTML = ''
             var setTime = timeField.value * 60
             saveNewUser({'name': nameField.value, 'email': emailField.value, 'time': setTime}).then(function(response) {
-                console.log('saveNewUser has happeneded')
                 if (response.success) {
                     nameField.value = ''
                     emailField.value = ''
                     timeField.value = 30
-                    errorField.innerHTML = ''
-                    errorFieldTime.innerHTML = ''
                     updateUserTable()
                 } else {
                     errorField.innerHTML = response.message
