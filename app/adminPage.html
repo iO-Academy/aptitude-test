@@ -25,6 +25,7 @@
     <script src="js/sanitiseAdmin.js" defer></script>
     <script src="js/modalSubmit.js" defer></script>
     <script src="js/postEditFunction.js" defer></script>
+    <script src="js/validateQuestionsFormData.js" defer></script>
     <title>Admin Page</title>
 </head>
 <body>
@@ -56,7 +57,7 @@
             </div>
             <div>
                 <h2>Add New Test-Question</h2>
-                <div class="add_question">
+                <form class="add_question">
                     <textarea rows="4" cols="70" id="question" placeholder="Add new question" required></textarea>
                     <div>
                         <textarea rows="2" cols="50" id="answer1" placeholder="Please enter answer 1" required></textarea>
@@ -84,14 +85,15 @@
                         <input type="radio" name="answer_radio_button" value="5">
                     </div>
                     <div>
-                        <input type="submit" class="btn btn-primary">
+                        <input type="submit" class="btn btn-primary" id="addNewQuestionsForm">
                     </div>
+                </form>
                 <div>
                 <h2>Scores</h2>
                 <div class="score_list"></div>
-            </div>
+                </div>
           
-        </div>
+
     </div>
 </section>
 </body>
