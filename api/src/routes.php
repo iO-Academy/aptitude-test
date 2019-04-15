@@ -168,7 +168,7 @@ $app->get('/question', function ($request, $response, $args) {
     $data = ['success' => false, 'message' => 'An unexpected error occured.', 'data' => []];
 
     try {
-        $query = "SELECT `id`, `text`, `option1`, `option2`, `option3`, `option4`, `option5` FROM `question` WHERE `deleted` = 0";
+        $query = "SELECT `id`, `text`, `option1`, `option2`, `option3`, `option4`, `option5` FROM `question` WHERE `deleted` <> 1";
         $query = $this->db->prepare($query);
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
