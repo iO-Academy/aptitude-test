@@ -85,18 +85,22 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
     var emailField = document.getElementById("email")
     var nameField = document.getElementById('name')
     var errorField = document.getElementById('error')
+    var errorFieldTime = document.getElementById('error')
+    var timeField = document.getElementById('time')
 
     getExistingUsers().then(function(existingUsers) {
         if (!isEmailValid(emailField.value) || userExists(emailField.value, existingUsers)) {
-            var errorMessage = "Your email is not valid or already exists: Please provide a correct email"
-            errorField.innerHTML = errorMessage
+            errorField.innerHTML = "Your email is not valid or already exists: Please provide a correct email"
+        } else if (timeField.value <=0 || timeField.value == null || typeof timeField.value !== 'number') {
+            errorFieldTime.innerHTML = 'This is not a good number!'
         } else {
             errorField.innerHTML = ''
-
-            saveNewUser({'name': nameField.value, 'email': emailField.value}).then(function(response) {
+            var setTime = timeField.value * 60
+            saveNewUser({'name': nameField.value, 'email': emailField.value, 'time': setTime}).then(function(response) {
                 if (response.success) {
                     nameField.value = ''
                     emailField.value = ''
+                    timeField.value = 30
                     updateUserTable()
                 } else {
                     errorField.innerHTML = response.message
