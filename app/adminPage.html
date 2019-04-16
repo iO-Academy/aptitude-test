@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-<script lang="en"></script>
 <head>
+    <script lang="en"></script>
     <script src="js/userLogIn.js"></script>
     <script>
         let userEmail = getCookie('userEmail')
@@ -26,6 +26,8 @@
     <script src="js/modalSubmit.js" defer></script>
     <script src="js/postEditFunction.js" defer></script>
     <script src="js/validateQuestionsFormData.js" defer></script>
+    <script src="js/searchFunction.js" defer></script>
+    <script src="js/searchAndFilter.js" defer></script>
     <title>Admin Page</title>
 </head>
 <body>
@@ -110,8 +112,13 @@
                 </form>
                 <div>
                 <h2>Scores</h2>
+                <input type="text" id="searchInput" placeholder="Type name or email">
+                <input type="submit" id="searchSubmit" value="Search">
+                <input type="submit" id="searchReset" value="Clear">
                 <div class="score_list"></div>
                 </div>
+            </div>
+        </div>
     </div>
 </section>
 </body>
