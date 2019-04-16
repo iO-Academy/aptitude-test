@@ -38,20 +38,20 @@ function sanitizeInput (input) {
  * @returns array of objects
  */
 
-function search (copy) {
-    let newCopy = []
+function search (resultArray) {
+    let newResultArray = []
     let searchInput = document.getElementById('searchInput').value
     let regex = '[\\w@]*' + searchInput + '[\\w@]*'
     let regexSearch = new RegExp(regex)
     if (searchInput.length !== 0) {
-        copy.forEach(data => {
+        resultArray.forEach(data => {
             if (regexSearch.test(data.name) || regexSearch.test(data.email)) {
-               newCopy.push(data)
+               newResultArray.push(data)
             }
         })
-        return newCopy
+        return newResultArray
     }   else {
-        return copy
+        return resultArray
     }
 }
 
