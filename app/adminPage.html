@@ -57,11 +57,27 @@
             </div>
             <div>
                 <h2>Scores</h2>
+                <section>
+                    <h4>Search Results</h4>
                     <form id="searchForm">
                         <input type="text" id="searchInput" placeholder="Type name or email">
                         <input type="submit" id="searchSubmit" value="Search">
-                        <input type="submit" id="searchReset" value="Clear">
+                        <input type="submit" id="searchReset" value="Clear Search">
                     </form>
+                    <div class="filterContainer">
+                        <h4>Filter Results</h4>
+                        <label for="filterScorePercentage" class="labelDropdown">Score percentage:</label>
+                        <select name="filterScorePercentage" id="filterScorePercentage" class="dropdown">
+                            <option value="3">-none-</option>
+                            <option value="1">+70%</option>
+                            <option value="2">-69%</option>
+                        </select>
+                        <label for="startDate">Start:</label>
+                        <input id="startDate" type="date">
+                        <label for="endDate">End:</label>
+                        <input id="endDate" type="date">
+                    </div>
+                </section>
                 <div class="score_list"></div>
             </div>
         </div>
