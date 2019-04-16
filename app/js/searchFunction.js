@@ -29,14 +29,24 @@ function sanitizeInput (input) {
     return input.trim()
 }
 
+/**
+ *
+ * returns the results from the search input as an array, allows partial search
+ *
+ * @param array from AJAX request
+ *
+ * @returns array of objects
+ */
+
 function search (copy) {
     let newCopy = []
-    let searchInput = document.getElementById('searchForm').value
-    let regexSearch = '[\\w@]*' + searchInput + '[\\w@]*'
+    let searchInput = document.getElementById('searchInput').value
+    let regex = '[\\w@]*' + searchInput + '[\\w@]*'
+    let regexSearch = new RegExp(regex)
     if (searchInput.length !== 0) {
         copy.forEach(data => {
             if (regexSearch.test(data.name) || regexSearch.test(data.email)) {
-                newCopy.push(data)
+               newCopy.push(data)
             }
         })
         return newCopy
