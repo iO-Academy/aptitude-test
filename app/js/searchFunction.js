@@ -1,10 +1,10 @@
 function search (copy) {
     let newCopy = []
     let searchInput = document.getElementById('searchForm').value
-    let regexSearch = new RegExp('/*' + searchInput + '*/i')
+    let regexSearch = '[\\w@]*' + searchInput + '[\\w@]*'
     if (searchInput.length !== 0) {
-        copy.forEach(copy => {
-            if (regexSearch.test(copy.name) || regexSearch.test(copy.email)) {
+        copy.forEach(data => {
+            if (regexSearch.test(data.name) || regexSearch.test(data.email)) {
                 newCopy.push(data)
             }
         })
