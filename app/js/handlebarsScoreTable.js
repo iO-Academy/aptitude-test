@@ -32,7 +32,7 @@ function updateScoreTable() {
  * @param HBTemplate the handlebars template
  * @param ObjFunction the function that creates an object of all fields required in scores page
  */
-function fillScoreTable(HBTemplate, userInfo) {
+function fillScoreTable(userInfo, HBTemplate) {
     fetch("http://localhost:8080/user")
         .then(function(result) {
             return result.json()
@@ -49,21 +49,15 @@ function fillScoreTable(HBTemplate, userInfo) {
                 }
             })
            return ({data: newResultObject})
-        }).then(function (finalObject) {
-        let template = Handlebars.compile(HBTemplate)
-        let score_list = document.querySelector(".score_list")
+        })
+    }
 
-        score_list.innerHTML = ""
-
-        if (userInfo.success === true) {
-            let html = template(finalObject)
-            score_list.innerHTML += html
-        } else {
-            score_list.innerHTML = "Please contact Admin, user list unavailable"
-        }
-    })
-
-
-}
+function produceTable (HBTemplate, scoresDataObject) {
+    let template = Handlebars.compile(HBTemplate)
+    let score_list = document.querySelector(".score_list")
+    score_list.innerHTML = ""
+    let html = template(scoresDataObject)
+    score_list.innerHTML += html
+    }
 
 updateScoreTable()
