@@ -1,16 +1,33 @@
-var startDate = document.querySelector('.startDate')
-var endDate = document.querySelector('.endDate')
-
-startDate.addEventListener("focusout", ()=>{
-    if (startDate.value <= endDate.value) {
+document.getElementById('startDate').addEventListener("focusout", ()=>{
+    var startDateInput = document.getElementById('startDate').value
+    var startDate = '1970-01-01'
+    var endDateInput = document.getElementById('endDate').value
+    var endDate = '2099-12-31'
+    if (startDateInput !== "") {
+        startDate = startDateInput
+    }
+    if (endDateInput !== "") {
+        endDate = endDateInput
+    }
+    if (startDate <= endDate) {
         searchAndFilter()
     } else {
         alert("Please enter a valid date range")
     }
 })
 
-endDate.addEventListener("focusout", ()=>{
-    if (endDate.value >= startDate.value) {
+document.getElementById('endDate').addEventListener("focusout", ()=>{
+    var startDateInput = document.getElementById('startDate').value
+    var startDate = '1970-01-01'
+    var endDateInput = document.getElementById('endDate').value
+    var endDate = '2099-12-31'
+    if (startDateInput !== "") {
+        startDate = startDateInput
+    }
+    if (endDateInput !== "") {
+        endDate = endDateInput
+    }
+    if (startDate <= endDate) {
         searchAndFilter()
     } else {
         alert("Please enter a valid date range")
