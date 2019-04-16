@@ -1,29 +1,15 @@
-// function isEmpty(value) {
-//     if (!value) {
-//         return true
-//     } else {
-//         return false;
-//     }
-// }
-
-// var isArray = Array.isArray || function (value) {
-//     return value && typeof value === 'object' ? toString.call(value) === '[object Array]' : false;
-// }
+let newQuestion = {
+    "text": null,
+    "option1": null,
+    "option2": null,
+    "option3": null,
+    "option4": null,
+    "option5": null,
+    "answer": null
+}
 
 document.querySelector('.add_question').addEventListener('submit', function(event) {
     event.preventDefault()
-
-    let newQuestion = {
-        "text": question,
-        "option1": answer1,
-        "option2": answer2,
-        "option3": answer3,
-        "option4": answer4,
-        "option5": answer5,
-        // "answer": answer
-    }
-
-    let answers = [answer1, answer2, answer3, answer4, answer5]
 
     question = document.getElementById('question').value
     answer1 = document.getElementById('answer1').value
@@ -31,6 +17,9 @@ document.querySelector('.add_question').addEventListener('submit', function(even
     answer3 = document.getElementById('answer3').value
     answer4 = document.getElementById('answer4').value
     answer5 = document.getElementById('answer5').value
+    let correctAnswer = document.getElementsByName('answer_radio_button')
+
+    // console.log(correctAnswer)
 
     if (question.trim().length !==0) {
         newQuestion.text = question
@@ -40,16 +29,18 @@ document.querySelector('.add_question').addEventListener('submit', function(even
     }
 
     if (answer1.trim().length !==0 && answer2.trim().length !==0) {
-        newQuestion.option1 = answers[0].value
-        newQuestion.option2 = answers[1].value
+        newQuestion.option1 = answer1
+        newQuestion.option2 = answer2
         document.querySelector('#answer1-error').classList.add('hidden')
         document.querySelector('#answer2-error').classList.add('hidden')
     } else if ((answer1.trim().length === 0) && (answer2.trim().length !==0)) {
         document.querySelector('#answer1-error').classList.remove('hidden')
+        newQuestion.option2 = answer2
         if (!document.querySelector('#answer2-error').classList.contains('hidden')) {
             document.querySelector('#answer2-error').classList.add('hidden')
         }
     } else if ((answer1.trim().length !==0) && (answer2.trim().length ===0)) {
+        newQuestion.option1 = answer1
         if (!document.querySelector('#answer1-error').classList.contains('hidden')) {
             document.querySelector('#answer1-error').classList.add('hidden')
         }
@@ -58,4 +49,33 @@ document.querySelector('.add_question').addEventListener('submit', function(even
         document.querySelector('#answer1-error').classList.remove('hidden')
         document.querySelector('#answer2-error').classList.remove('hidden')
     }
+
+    if (answer3.trim().length !==0) {
+        newQuestion.option3 = answer3
+    } else {
+        newQuestion.option3 = null
+    }
+
+    if (answer4.trim().length !==0) {
+        newQuestion.option4 = answer4
+    } else {
+        newQuestion.option4 = null
+    }
+
+    if (answer5.trim().length !==0) {
+        newQuestion.option5 = answer5
+    } else {
+        newQuestion.option5 = null
+    }
+
+    correctAnswer.forEach( function(answer) {
+        if (answer.checked) {
+            document.querySelector('#correct-answer-error').classList.add('hidden')
+            newQuestion.answer = answer.value
+        } else if (newQuestion.answer === null) {
+            document.querySelector('#correct-answer-error').classList.remove('hidden')
+        }
+    })
+
+     console.log(newQuestion)
 })
