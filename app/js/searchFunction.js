@@ -60,5 +60,6 @@ document.getElementById('searchForm').addEventListener( 'submit',(e)=>{
 })
 
 document.getElementById('searchSubmit').addEventListener('click', ()=>{
+    updateScoreTable()
 })
 
