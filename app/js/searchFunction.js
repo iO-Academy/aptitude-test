@@ -1,5 +1,5 @@
 /**
- * Takes the input from the search box and checks if it is an illegal character
+ * Takes the input from the search box and checks if it has an illegal character
  *
  * @param input value from the search box
  *
