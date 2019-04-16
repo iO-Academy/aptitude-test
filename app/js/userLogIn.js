@@ -73,6 +73,7 @@ if (document.querySelector('#logInForm')) {
                     } else {
                         document.cookie = "uid=" + user.data.id
                         document.cookie = "userEmail=" + user.data.email
+                        document.cookie = "userTime=" + user.data.time
                         const dateStarted = Date.now()
                         document.cookie = "dateStamp=" + dateStarted.toString()
                         redirectUser(user.data)
@@ -103,15 +104,3 @@ function isAuthorised(user, needsAdmin = null) {
     return false
 }
 
-/**
- * gets the value of a given cookie by name
- *
- * @param String name the name of the cookie
- *
- * @return String the value of the cookie
- */
-function getCookie(name) {
-    var value = "; " + document.cookie;
-    var parts = value.split("; " + name + "=");
-    if (parts.length == 2) return parts.pop().split(";").shift();
-}
