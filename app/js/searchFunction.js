@@ -34,5 +34,6 @@ document.getElementById('searchSubmit').addEventListener('click', ()=>{
 })
 
 document.getElementById('searchReset').addEventListener('click', ()=>{
-
+    const input = document.getElementById('searchInput')
+    input.value=''
 })
