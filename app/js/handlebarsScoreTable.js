@@ -38,19 +38,19 @@ function fillScoreTable(HBTemplate, userInfo) {
             return result.json()
         })
         .then(function (result) {
-            let newResultArray = []
+            let resultArray = []
             result.data.forEach(function (existingUser) {
                 if (existingUser.deleted != 1) {
                     userInfo.data.forEach(function (scoreUser) {
                         if (scoreUser.email === existingUser.email) {
-                            newResultObject.push(scoreUser)
+                            resultArray.push(scoreUser)
                         }
                     })
                 }
             })
-            return newResultArray
+            return resultArray
         })
-        .then(searchAndFilter(newResultArray))
+        .then(searchAndFilter(resultArray))
 }
 
 updateScoreTable()
