@@ -69,7 +69,6 @@ function printFilteredResultsToScreen(HBTemplate, scoresDataArray) {
     } else {
         produceTable(HBTemplate,{data: scoresDataArray})
     }
->>>>>>> story2SearchResults
 }
 
 function produceTable (HBTemplate, scoresDataObject) {
