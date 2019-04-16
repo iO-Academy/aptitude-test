@@ -12,8 +12,6 @@ function fillUserTable(HBTemplate) {
             return result.json()
         })
         .then(function(result) {
-            console.log(result)
-
             result.data.forEach(function(user){
                 user.time = user.time / 60
             })
