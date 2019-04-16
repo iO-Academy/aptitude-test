@@ -32,7 +32,7 @@ function updateScoreTable() {
  * @param HBTemplate the handlebars template
  * @param ObjFunction the function that creates an object of all fields required in scores page
  */
-function fillScoreTable(userInfo, HBTemplate) {
+function fillScoreTable(HBTemplate, userInfo) {
     fetch("http://localhost:8080/user")
         .then(function(result) {
             return result.json()
@@ -48,9 +48,27 @@ function fillScoreTable(userInfo, HBTemplate) {
                     })
                 }
             })
-           return ({data: newResultObject})
+           return newResultObject
         })
+}
+
+/**
+ * Checks the length of an array of data objects, if greater than 0 calls function to print to screen, if 0, gives 'no valid results message'
+ *
+ * @param HBTemplate the handlebars template for creating a table of results
+ * @param scoresDataArray an array of data objects returned from the API and filtered by user settings
+ *
+ * @returns Void Sends results to produceTablefunction to print table to screen, or prints no results found message
+ */
+function printFilteredResultsToScreen(HBTemplate, scoresDataArray) {
+    if (scoresDataArray.length < 1) {
+        let score_list = document.querySelector('.score_list')
+        score_list.innerHTML = ''
+        score_list.innerHTML = 'No results!'
+    } else {
+        produceTable(HBTemplate,{data: scoresDataArray})
     }
+}
 
 function produceTable (HBTemplate, scoresDataObject) {
     let template = Handlebars.compile(HBTemplate)
