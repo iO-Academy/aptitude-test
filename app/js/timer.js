@@ -51,6 +51,6 @@ function getTimeForApi() {
 }
 
 //30 minute time limit in seconds (plus one second for lag).
-const timeLimit = 1801
+let timeLimit = getCookie("userTime")
 let timeRemaining = timeRemainingCalc()
 let interval = setInterval(timer, 1000)
