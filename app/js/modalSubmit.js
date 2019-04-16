@@ -6,11 +6,7 @@
 
 function isTimeValid(time) {
     let intTime = parseInt(time)
-    if (intTime <=1 || intTime == null) {
-        return false
-     } else {
-        	return true
-     }
+    return !(intTime <= 1 || intTime == null)
 }
 
 /**
