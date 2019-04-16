@@ -1,10 +1,14 @@
-function isEmpty(value) {
-    if (!value && value !== 0) {
-        return true;
-    } else {
-        return false;
-    }
-}
+// function isEmpty(value) {
+//     if (!value) {
+//         return true
+//     } else {
+//         return false;
+//     }
+// }
+
+// var isArray = Array.isArray || function (value) {
+//     return value && typeof value === 'object' ? toString.call(value) === '[object Array]' : false;
+// }
 
 document.querySelector('.add_question').addEventListener('submit', function(event) {
     event.preventDefault()
@@ -28,24 +32,24 @@ document.querySelector('.add_question').addEventListener('submit', function(even
     answer4 = document.getElementById('answer4').value
     answer5 = document.getElementById('answer5').value
 
-    if (!isEmpty(question)) {
+    if (question.trim().length !==0) {
         newQuestion.text = question
         document.querySelector('#question-error').classList.add('hidden')
     } else {
         document.querySelector('#question-error').classList.remove('hidden')
     }
 
-    if (!isEmpty(answers[0]) && !isEmpty(answers[1])) {
-        newQuestion.option1 = answers[0]
-        newQuestion.option2 = answers[1]
+    if (answer1.trim().length !==0 && answer2.trim().length !==0) {
+        newQuestion.option1 = answers[0].value
+        newQuestion.option2 = answers[1].value
         document.querySelector('#answer1-error').classList.add('hidden')
         document.querySelector('#answer2-error').classList.add('hidden')
-    } else if (isEmpty(answers[0]) && !isEmpty(answers[1])) {
+    } else if ((answer1.trim().length === 0) && (answer2.trim().length !==0)) {
         document.querySelector('#answer1-error').classList.remove('hidden')
         if (!document.querySelector('#answer2-error').classList.contains('hidden')) {
             document.querySelector('#answer2-error').classList.add('hidden')
         }
-    } else if (!isEmpty(answers[0]) && isEmpty(answers[1])) {
+    } else if ((answer1.trim().length !==0) && (answer2.trim().length ===0)) {
         if (!document.querySelector('#answer1-error').classList.contains('hidden')) {
             document.querySelector('#answer1-error').classList.add('hidden')
         }
