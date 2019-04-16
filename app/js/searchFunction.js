@@ -55,12 +55,13 @@ function search (resultArray) {
     }
 }
 
-document.getElementById('searchForm').addEventListener( 'submit',(e)=>{
-    e.preventDefault()
-})
-
 document.getElementById('searchSubmit').addEventListener('click', ()=>{
-    updateScoreTable()
+    let searchContent = document.getElementById('searchInput').value
+    if (validateInput(searchContent)) {
+        updateScoreTable()
+    } else {
+        alert('Invalid search input, please only use letters, numbers, @\'s or .\'s, underscores and hyphens!')
+    }
 })
 
 document.getElementById('searchReset').addEventListener('click', ()=>{
