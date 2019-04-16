@@ -2,14 +2,15 @@
 <html lang="en">
 
 <head>
+    <script src="js/cookies.js"></script>
     <script src="js/userLogIn.js"></script>
     <script>
         let userEmail = getCookie('userEmail')
-        getUser(userEmail).then(function (user) {
-            if (!user.success || !isAuthorised(user.data)) {
-                window.location.replace("index.html")
-            }
-        })
+        // getUser(userEmail).then(function (user) {
+        //     if (!user.success || !isAuthorised(user.data)) {
+        //         window.location.replace("index.html")
+        //     }
+        // })
     </script>
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
@@ -27,6 +28,7 @@
     <script src="js/checkAnswers.js" defer></script>
     <script src="js/sendResults.js" defer></script>
     <script src="js/overview.js" defer></script>
+
 </head>
 
 <body>
