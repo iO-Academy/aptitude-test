@@ -14,6 +14,14 @@ document.querySelectorAll('.answer').forEach(function(answer, index) {
     })
 })
 
+document.querySelectorAll('.answer').forEach(function (answer) {
+    answer.addEventListener('blur', () => {
+        if (!event.target.value.trim()) {
+            event.target.nextElementSibling.innerHTML = ''
+        }
+    })
+})
+
 document.querySelector('.add_question').addEventListener('submit', function(event) {
     event.preventDefault()
 
