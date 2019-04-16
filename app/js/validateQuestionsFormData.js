@@ -8,6 +8,12 @@ let newQuestion = {
     "answer": null
 }
 
+document.querySelectorAll('.answer').forEach(function(answer, index) {
+    answer.addEventListener('input', () => {
+        event.target.nextElementSibling.innerHTML = "<input type=\"radio\" name=\"answer_radio_button\" value=" + (index + 1) +  "><p>Correct Answer</p>"
+    })
+})
+
 document.querySelector('.add_question').addEventListener('submit', function(event) {
     event.preventDefault()
 
