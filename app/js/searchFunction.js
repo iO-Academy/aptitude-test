@@ -8,7 +8,7 @@
  *
  * @returns {boolean} true or false if the input is valid or not
  */
-function validateInput (input) {
+function validateSearchInput (input) {
     const checkValue = /^[\w-_.@ ]*$/
     if (!input.match(checkValue)) {
         return false
@@ -38,7 +38,7 @@ function sanitizeInput (input) {
  * @returns array of objects
  */
 
-function search (resultArray) {
+function searchByTextAndEmail (resultArray) {
     let newResultArray = []
     let searchInput = sanitizeInput(document.getElementById('searchInput').value)
     let regex = '[\\w@]*' + searchInput + '[\\w@]*'
@@ -57,7 +57,7 @@ function search (resultArray) {
 
 document.getElementById('searchSubmit').addEventListener('click', ()=>{
     let searchContent = document.getElementById('searchInput').value
-    if (validateInput(searchContent)) {
+    if (validateSearchInput(searchContent)) {
         updateScoreTable()
     } else {
         alert('Invalid search input, please only use letters, numbers, @\'s or .\'s, underscores and hyphens!')
