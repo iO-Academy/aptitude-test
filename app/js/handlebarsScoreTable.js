@@ -70,12 +70,20 @@ function printFilteredResultsToScreen(HBTemplate, scoresDataArray) {
     }
 }
 
+/**
+ * Compiles the data object with the handlebars template to display in browser
+ *
+ * @param HBTemplate the handlebars template for creating a table of results
+ * @param scoresDataObject an array of data objects returned from the API and filtered by user settings
+ *
+ * @returns void
+ */
 function produceTable (HBTemplate, scoresDataObject) {
     let template = Handlebars.compile(HBTemplate)
     let score_list = document.querySelector(".score_list")
     score_list.innerHTML = ""
     let html = template(scoresDataObject)
     score_list.innerHTML += html
-    }
+}
 
 updateScoreTable()
