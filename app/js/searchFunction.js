@@ -8,8 +8,8 @@
  *
  * @returns {boolean} true or false if the input is valid or not
  */
-function validateInput (input) {
-    const checkValue = /^[\w-_.@ ]*$/
+function validateSearchInput (input) {
+    const checkValue = /^[\w-_.@' ]*$/
     if (!input.match(checkValue)) {
         return false
     } else {
@@ -33,14 +33,14 @@ function sanitizeInput (input) {
  *
  * returns the results from the search input as an array, allows partial search
  *
- * @param array from AJAX request
+ * @param resultArray from AJAX request
  *
  * @returns array of objects
  */
 
-function search (resultArray) {
+function searchByTextAndEmail (resultArray) {
     let newResultArray = []
-    let searchInput = document.getElementById('searchInput').value
+    let searchInput = sanitizeInput(document.getElementById('searchInput').value)
     let regex = '[\\w@]*' + searchInput + '[\\w@]*'
     let regexSearch = new RegExp(regex)
     if (searchInput.length !== 0) {
@@ -55,12 +55,13 @@ function search (resultArray) {
     }
 }
 
-document.getElementById('searchForm').addEventListener( 'submit',(e)=>{
-    e.preventDefault()
-})
-
 document.getElementById('searchSubmit').addEventListener('click', ()=>{
-    updateScoreTable()
+    let searchContent = document.getElementById('searchInput').value
+    if (validateSearchInput(searchContent)) {
+        updateScoreTable()
+    } else {
+        alert('Invalid search input, please only use letters, numbers, @\'s or .\'s, underscores and hyphens!')
+    }
 })
 
 document.getElementById('searchReset').addEventListener('click', ()=>{
