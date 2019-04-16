@@ -30,7 +30,8 @@ function updateScoreTable() {
  * in database
  *
  * @param HBTemplate the handlebars template
- * @param ObjFunction the function that creates an object of all fields required in scores page
+ *
+ * @param userInfo users information from the users object
  */
 function fillScoreTable(HBTemplate, userInfo) {
     fetch("http://localhost:8080/user")
@@ -50,7 +51,7 @@ function fillScoreTable(HBTemplate, userInfo) {
             })
             return resultArray
         })
-        .then(searchAndFilter(resultArray))
+        .then((resultArray) => searchAndFilter(HBTemplate, resultArray))
 }
 
 /**

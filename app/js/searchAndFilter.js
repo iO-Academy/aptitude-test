@@ -6,10 +6,9 @@
  *
  * @param resultArray an array full of objects of testee's info and scores
  */
-function searchAndFilter(resultArray) {
-    //call search function
+function searchAndFilter(HBTemplate, resultArray) {
+    resultArray = search(resultArray)
+    printFilteredResultsToScreen(HBTemplate, resultArray)
     //call date function
     //call score function
-    //put newResultArray into an object so it can be passed to handlebars function
-    //call handlebars function
 }
