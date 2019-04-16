@@ -59,15 +59,30 @@
                 <h2>Add New Test-Question</h2>
                 <form class="add_question">
                     <textarea rows="4" cols="70" id="question" placeholder="Add new question"></textarea>
+                    <div id="question-error" class="alert alert-danger hidden" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        Enter a valid question
+                    </div>
                     <div>
                         <textarea rows="2" cols="50" id="answer1" placeholder="Please enter answer 1"></textarea>
                         <p>Correct answer</p>
                         <input type="radio" name="answer_radio_button" value="1">
                     </div>
+                    <div id="answer1-error" class="alert alert-danger hidden" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        Required field, please provide an answer
+                    </div>
                     <div>
                         <textarea rows="2" cols="50" id="answer2" placeholder="Please enter answer 2"></textarea>
                         <p>Correct answer</p>
                         <input type="radio" name="answer_radio_button" value="2">
+                    </div>
+                    <div id="answer2-error" class="alert alert-danger hidden" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        Required field, please provide an answer
                     </div>
                     <div>
                         <textarea rows="2" cols="50" id="answer3" placeholder="Please enter answer 3"></textarea>
