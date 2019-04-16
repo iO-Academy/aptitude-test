@@ -9,7 +9,7 @@
  * @returns {boolean} true or false if the input is valid or not
  */
 function validateSearchInput (input) {
-    const checkValue = /^[\w-_.@ ]*$/
+    const checkValue = /^[\w-_.@' ]*$/
     if (!input.match(checkValue)) {
         return false
     } else {
