@@ -31,6 +31,10 @@ document.querySelector('.add_question').addEventListener('submit', function(even
     if (answer1.trim().length !==0 && answer2.trim().length !==0) {
         newQuestion.option1 = answer1
         newQuestion.option2 = answer2
+        // if (!document.querySelector('#correct-answer-error').classList.contains('hidden')) {
+            document.querySelector('#correct-answer-error').classList.add('hidden')
+            setCorrectAnswer()
+        // }
         document.querySelector('#answer1-error').classList.add('hidden')
         document.querySelector('#answer2-error').classList.add('hidden')
     } else if ((answer1.trim().length === 0) && (answer2.trim().length !==0)) {
@@ -68,14 +72,19 @@ document.querySelector('.add_question').addEventListener('submit', function(even
         newQuestion.option5 = null
     }
 
-    correctAnswer.forEach( function(answer) {
-        if (answer.checked) {
-            document.querySelector('#correct-answer-error').classList.add('hidden')
-            newQuestion.answer = answer.value
-        } else if (newQuestion.answer === null) {
-            document.querySelector('#correct-answer-error').classList.remove('hidden')
-        }
-    })
+
+    function setCorrectAnswer() {
+        correctAnswer.forEach( function(answer) {
+            if (answer.checked) {
+                document.querySelector('#correct-answer-error').classList.add('hidden')
+                newQuestion.answer = answer.value
+            } else if (newQuestion.answer === null) {
+                document.querySelector('#correct-answer-error').classList.remove('hidden')
+            }
+        })
+    }
+
+    document.querySelector('#correct-answer-error').classList.remove('hidden')
 
      console.log(newQuestion)
 })
