@@ -1,25 +1,17 @@
-
-
-// function isTimeValid (time) {
-//     if (!time <=1 || !time == null || isNaN(time) === false ) {
-//         return true
-//     }
-// }
-
+/**
+ * Takes time and returns true if passed validation or false otherwise.
+ * @param time
+ * @returns {boolean}
+ */
 
 function isTimeValid(time) {
-    // console.log(typeof(time))
     let intTime = parseInt(time)
-    console.log(typeof(intTime))
-
     if (intTime <=1 || intTime == null) {
-
         return false
      } else {
         	return true
      }
 }
-
 
 /**
  * this is an event listener on the submit button (listens for click), it sends the object values through our validation functions.
@@ -39,8 +31,6 @@ function addEditModalSubmitEventListener() {
                 isEmpty(email) &&
                 nameValidation(name) &&
                 isTimeValid (time) &&
-
-
                 isEmailValid(email)) {
                 if(originalEmail == email || userExists(email, existingUsers) == false){
                     closeDialog()
