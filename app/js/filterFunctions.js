@@ -59,25 +59,25 @@ document.getElementById('endDate').addEventListener("focusout", ()=> {
  *
  * @returns will return the result based on the chosen percentage
  */
-function score (resultArray){
+function percentageFilter (resultArray){
     let filterScorePercentage = document.getElementById('filterScorePercentage')
-    let newCopy =[]
+    let newResultArray =[]
     if (parseInt(filterScorePercentage.value) === 1){
         resultArray.forEach((data)=>{
             if(data.percentage >= 70){
-                newCopy.push(data)
+                newResultArray.push(data)
             }
         })
     } else if (parseInt(filterScorePercentage.value) === 2){
         resultArray.forEach((data)=>{
             if(data.percentage < 70){
-                newCopy.push(data)
+                newResultArray.push(data)
             }
         })
     } else {
         return resultArray
     }
-    return newCopy
+    return newResultArray
 }
 
 
