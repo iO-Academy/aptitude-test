@@ -5,7 +5,7 @@ const flaggedQuestions = {}
  *
  * @param HBTemplate the handlebars template
  */
-function fillUserTable(HBTemplate) {
+function populateQuestions(HBTemplate) {
     let template = Handlebars.compile(HBTemplate)
     let counter = 0;
     fetch("http://localhost:8080/question")
@@ -13,9 +13,12 @@ function fillUserTable(HBTemplate) {
             return result.json()
         })
         .then(function(result) {
+            let counter = 1;
             result.data.forEach(function(question) {
+                question.id = counter;
                 flaggedQuestions[question.id] = false
                 document.querySelector("#questions").innerHTML += template(question)
+                counter++
             })
             counter = result.data.length
         })
@@ -28,7 +31,7 @@ function fillUserTable(HBTemplate) {
 }
 
 getTemplateAjax('js/templates/questions.hbs').then(function(HBTemplate) {
-    fillUserTable(HBTemplate)
+    populateQuestions(HBTemplate)
 })
 
 document.querySelector('#flag-checkbox').addEventListener('change', function() {

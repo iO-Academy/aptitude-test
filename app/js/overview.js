@@ -5,6 +5,8 @@ document.querySelector(".overview").addEventListener("click", function() {
     let overviewData = []
     let numOfQuestions = document.querySelectorAll('#questions .question').length
     let isAnswered = getUserAnswers()
+
+
     for (let i = 1; i <= numOfQuestions; i++) {
         let questionObject = {}
         questionObject['id'] = i
