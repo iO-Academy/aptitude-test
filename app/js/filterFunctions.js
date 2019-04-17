@@ -29,7 +29,6 @@ function setDate() {
  */
 document.getElementById('startDate').addEventListener("change", ()=>{
     let dates = setDate()
-    console.log(dates)
     if (dates[0] <= dates[1]) {
         updateScoreTable()
     } else {
@@ -64,7 +63,8 @@ function dateFilter(resultArray) {
     let dates = setDate()
     let newResultArray = []
     resultArray.forEach(data => {
-        if (data.dateCreated >= dates[0] && data.dateCreated <= dates[1]) {
+        let dateCreated = data.dateCreated.slice(0,10)
+        if (dateCreated >= dates[0] && dateCreated <= dates[1]) {
             newResultArray.push(data)
         }
     })
