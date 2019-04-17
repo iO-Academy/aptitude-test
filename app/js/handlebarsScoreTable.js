@@ -20,6 +20,7 @@ function updateScoreTable() {
 
     users.then(function (userInfo) {
         getTemplateAjax('js/templates/scoreTable.hbs').then(function (HBTemplate) {
+
             fillScoreTable(HBTemplate, userInfo)
         })
     })
