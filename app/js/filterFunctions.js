@@ -51,6 +51,13 @@ document.getElementById('endDate').addEventListener("focusout", ()=> {
     }
 })
 
+/**
+ * filters the resultArray to display scores between two specified dates
+ *
+ * @param resultArray of scores
+ *
+ * @return newResultArray containing the filtered data
+ */
 function date(resultArray) {
     let newResultArray = []
     let startDate = document.getElementById('startDate').value
