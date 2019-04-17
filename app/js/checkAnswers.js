@@ -78,8 +78,6 @@ function getUserAnswers() {
  */
 function getAnswered(userAnswers) {
     let questionAmount = document.querySelectorAll('.question').length
-    console.log(questionAmount)
-
     let userAnswersArray = Object.values(userAnswers)
     let unanswered = 0
     userAnswersArray.forEach(function(answerItem) {
@@ -115,7 +113,6 @@ function displayResult(earnedPoints, earnedPercentage, answeredQuestions) {
     document.querySelector(".score").innerHTML = earnedPoints
     document.querySelector(".answered_questions").innerHTML = answeredQuestions
     document.querySelector(".score_percentage").innerHTML = earnedPercentage
-    console.log("answered questions "+answeredQuestions)
 }
 
 /**
@@ -139,7 +136,6 @@ function addAnswerEventListeners() {
  */
 function showResults() {
     let questionAmount = document.querySelectorAll('.question').length
-    console.log(questionAmount)
     resetReapplyCounter()
     const userAnswers = getUserAnswers(questionAmount)
     checkAnswers(userAnswers).then(function (result) {

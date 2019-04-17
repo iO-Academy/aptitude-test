@@ -12,6 +12,7 @@ async function postQuestionsEdit (obj) {
         var responseBox = document.querySelector("#response")
         if (response.success){
             responseBox.textContent = response.message
+            responseBox.classList.remove("alert-danger")
             responseBox.classList.add("alert-success")
         } else {
             responseBox.textContent = "unexpected error, please try again"
@@ -19,6 +20,7 @@ async function postQuestionsEdit (obj) {
         }
     }).catch(error => {
         responseBox.textContent = "unexpected error, please try again"
+        responseBox.classList.remove("alert-success")
         responseBox.classList.add("alert-danger")
     })
 }

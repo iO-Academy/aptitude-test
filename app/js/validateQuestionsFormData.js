@@ -19,6 +19,7 @@ document.querySelector('.add_question').addEventListener('submit', function(even
 
     let newQuestion = {}
     let question = document.getElementById('question').value
+    let allAnswers = document.querySelectorAll('.answer')
     let answer1 = allAnswers[0].value
     let answer2 = allAnswers[1].value
     let answer3 = allAnswers[2].value
@@ -34,7 +35,7 @@ document.querySelector('.add_question').addEventListener('submit', function(even
      * Validates question field and populates newQuestion object with correct question data, otherwise shows error
      */
     function validateQuestionText() {
-        if (question.trim().length !==0) {
+        if (question.trim().length !== 0) {
             newQuestion.text = question
             questionError.classList.add('hidden')
         } else {
@@ -45,11 +46,11 @@ document.querySelector('.add_question').addEventListener('submit', function(even
     let oneIsWrong = true
     let twoIsWrong = true
 
-    if(answer1.trim().length !==0) {
+    if(answer1.trim().length !== 0) {
         oneIsWrong = false
     }
 
-    if(answer2.trim().length !==0) {
+    if(answer2.trim().length !== 0) {
         twoIsWrong = false
     }
 
