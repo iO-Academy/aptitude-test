@@ -168,7 +168,7 @@ document.querySelector('.add_question').addEventListener('submit', function(even
             correctAnswerError.classList.add('hidden')
         }
     }
-
+  
     validateQuestionText()
     validAnswer1and2()
     invalidAnswer1()
