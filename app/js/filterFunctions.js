@@ -51,4 +51,14 @@ document.getElementById('endDate').addEventListener("focusout", ()=> {
     }
 })
 
-
+function date(resultArray) {
+    let newResultArray = []
+    let startDate = document.getElementById('startDate').value
+    let endDate = document.getElementById('endDate').value
+    resultArray.forEach((data) => {
+        if (data.dateCreated > startDate && data.dateCreated < endDate) {
+            newResultArray.push(data)
+        }
+    })
+    return newResultArray
+}
