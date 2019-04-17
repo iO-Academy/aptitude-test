@@ -1,5 +1,5 @@
 
-document.getElementById('filterScorePercentage').addEventListener('change', (e) => {
+document.getElementById('filterScorePercentage').addEventListener('change', () => {
     updateScoreTable()
 })
 
@@ -59,7 +59,7 @@ document.getElementById('endDate').addEventListener("change", ()=> {
  *
  * @return newResultArray containing the filtered data
  */
-function date(resultArray) {
+function dateFilter(resultArray) {
     let dates = setDate()
     let newResultArray = []
     resultArray.forEach(data => {
