@@ -1,7 +1,7 @@
-let startDateInput = document.getElementById('startDate').value
-let startDate = '1970-01-01'
-let endDateInput = document.getElementById('endDate').value
-let endDate = '2099-12-31'
+
+document.getElementById('filterScorePercentage').addEventListener('change', () => {
+    updateScoreTable()
+})
 
 /**
  * checks the start and end date input and assigns a default value if no value set
@@ -10,7 +10,10 @@ let endDate = '2099-12-31'
  * @returns run results function or alert to error
  */
 document.getElementById('startDate').addEventListener("focusout", ()=>{
-
+    let startDateInput = document.getElementById('startDate').value
+    let startDate = '1970-01-01'
+    let endDateInput = document.getElementById('endDate').value
+    let endDate = '2099-12-31'
     if (startDateInput !== "") {
         startDate = startDateInput
     }
@@ -30,8 +33,11 @@ document.getElementById('startDate').addEventListener("focusout", ()=>{
  *
  * @returns run results function or alert to error
  */
-document.getElementById('endDate').addEventListener("focusout", ()=>{
-
+document.getElementById('endDate').addEventListener("focusout", ()=> {
+    let startDateInput = document.getElementById('startDate').value
+    let startDate = '1970-01-01'
+    let endDateInput = document.getElementById('endDate').value
+    let endDate = '2099-12-31'
     if (startDateInput !== "") {
         startDate = startDateInput
     }
@@ -44,3 +50,5 @@ document.getElementById('endDate').addEventListener("focusout", ()=>{
         alert("Please enter a valid date range")
     }
 })
+
+
