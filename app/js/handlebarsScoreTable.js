@@ -22,6 +22,7 @@ function updateScoreTable() {
             fillScoreTable(HBTemplate, userInfo)
         })
     })
+
 }
 
 /**
