@@ -130,20 +130,6 @@ function addAnswerEventListeners() {
 }
 
 /**
- * function removes current status from all questions and then adds current status
- * to the current question allowing styling to be applied
- *
- * @param id is the id of the active question
- */
-function trackActiveQuestion(id) {
-    let activeQuestion = document.querySelector('.nav-item.current-nav-box')
-    if (activeQuestion) {
-        activeQuestion.classList.remove('current-nav-box')
-    }
-    document.querySelector('#question-nav').children[id - 1].classList.add('current-nav-box')
-}
-
-/**
  * this checks the answers and marks them to show the finishing page
  */
 function showResults() {

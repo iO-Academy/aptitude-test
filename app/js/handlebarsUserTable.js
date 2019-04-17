@@ -12,6 +12,9 @@ function fillUserTable(HBTemplate) {
             return result.json()
         })
         .then(function(result) {
+            result.data.forEach(function(user){
+                user.time = user.time / 60
+            })
             updateDisplayedUsers(result, template)
         })
 }
@@ -55,7 +58,7 @@ function fillEditModal(HBTemplate, userInfo) {
 
     modal_content.innerHTML = ""
 
-    if (userInfo.name && userInfo.email && userInfo.id) {
+    if (userInfo.name && userInfo.email && userInfo.id && userInfo.time) {
         let html = template(userInfo)
         modal_content.innerHTML += html
     } else {
@@ -89,6 +92,7 @@ function createObjectFromParentElement(event) {
     userInfo.name = parentElement.getAttribute("dataName")
     userInfo.email = parentElement.getAttribute("dataEmail")
     userInfo.id = parentElement.getAttribute("dataId")
+    userInfo.time = parentElement.getAttribute("dataTime")
     userInfo.canRetake = parseInt(parentElement.getAttribute("dataCanRetake"))
     return userInfo
 }

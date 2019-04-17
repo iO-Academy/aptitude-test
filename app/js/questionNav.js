@@ -2,6 +2,21 @@ var current = 1
 document.querySelector(".prev").style.visibility = "hidden"
 
 /**
+ * function removes current status from all questions and then adds current status
+ * to the current question allowing styling to be applied
+ *
+ * @param id is the id of the active question
+ */
+function trackActiveQuestion(id) {
+
+    let activeQuestion = document.querySelector('.nav-item.current-nav-box')
+    if (activeQuestion) {
+        activeQuestion.classList.remove('current-nav-box')
+    }
+    document.querySelector('#question-nav').children[id - 1].classList.add('current-nav-box')
+}
+
+/**
  * adds the active class to the first question
  * function is called when questions are inserted into html and calls trackActiveQuestion() to update
  * the active question in the navbar
@@ -17,7 +32,7 @@ function active() {
  * adds active class to next question, removes from current question
  * makes the prev and next buttons appear when needed
  */
-function next() {
+async function next() {
     current++
     changeQuestion(current)
 }
