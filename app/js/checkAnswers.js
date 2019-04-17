@@ -1,4 +1,19 @@
-const questionAmount = 30// amount of questions
+/** getting all the questions from API
+ *
+ * @returns {Promise<void>}
+ */
+async function getQuestions() {
+    let response = await fetch("http://localhost:8080/user", {method: 'get'})
+        console.log(response)
+        return response
+    }
+
+
+getQuestions().then(response => {
+    console.log(response.json())
+})
+
+let questionAmount = 30 // amount of questions
 
 document.querySelector('#finish').addEventListener('click', finishTest)
 /**
