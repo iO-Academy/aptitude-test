@@ -1,20 +1,16 @@
-let newQuestion = {
-    "text": null,
-    "option1": null,
-    "option2": null,
-    "option3": null,
-    "option4": null,
-    "option5": null,
-    "answer": null
-}
+//validate the right keys & no null values exist
+//then jsonify
+//then send it
+let newQuestion = {}
+let allAnswers = document.querySelectorAll('.answer')
 
-document.querySelectorAll('.answer').forEach(function(answer, index) {
+allAnswers.forEach(function(answer, index) {
     answer.addEventListener('input', () => {
         event.target.nextElementSibling.innerHTML = "<input type=\"radio\" name=\"answer_radio_button\" value=" + (index + 1) +  "><p>Correct Answer</p>"
     })
 })
 
-document.querySelectorAll('.answer').forEach(function (answer) {
+allAnswers.forEach(function (answer) {
     answer.addEventListener('blur', () => {
         if (!event.target.value.trim()) {
             event.target.nextElementSibling.innerHTML = ''
@@ -25,82 +21,91 @@ document.querySelectorAll('.answer').forEach(function (answer) {
 document.querySelector('.add_question').addEventListener('submit', function(event) {
     event.preventDefault()
 
-    question = document.getElementById('question').value
-    answer1 = document.getElementById('answer1').value
-    answer2 = document.getElementById('answer2').value
-    answer3 = document.getElementById('answer3').value
-    answer4 = document.getElementById('answer4').value
-    answer5 = document.getElementById('answer5').value
+    let question = document.getElementById('question').value
+    let answer1 = allAnswers[0].value
+    let answer2 = allAnswers[1].value
+    let answer3 = allAnswers[2].value
+    let answer4 = allAnswers[3].value
+    let answer5 = allAnswers[4].value
     let correctAnswer = document.getElementsByName('answer_radio_button')
+    let questionError = document.querySelector('#question-error')
+    let answer1Error = document.querySelector('#answer1-error')
+    let answer2Error = document.querySelector('#answer2-error')
+    let correctAnswerError = document.querySelector('#correct-answer-error')
+    let questionJson
 
-    // console.log(correctAnswer)
-
-    if (question.trim().length !==0) {
-        newQuestion.text = question
-        document.querySelector('#question-error').classList.add('hidden')
-    } else {
-        document.querySelector('#question-error').classList.remove('hidden')
+    function validateQuestionText() {
+        if (question.trim().length !==0) {
+            newQuestion.text = question
+            questionError.classList.add('hidden')
+        } else {
+            questionError.classList.remove('hidden')
+        }
     }
 
-    if (answer1.trim().length !==0 && answer2.trim().length !==0) {
-        newQuestion.option1 = answer1
-        newQuestion.option2 = answer2
-        // if (!document.querySelector('#correct-answer-error').classList.contains('hidden')) {
-            document.querySelector('#correct-answer-error').classList.add('hidden')
+    function validateRequiredAnswers() {
+        if (answer1.trim().length !==0 && answer2.trim().length !==0) {
+            newQuestion.option1 = answer1
+            newQuestion.option2 = answer2
+            correctAnswerError.classList.add('hidden')
             setCorrectAnswer()
-        // }
-        document.querySelector('#answer1-error').classList.add('hidden')
-        document.querySelector('#answer2-error').classList.add('hidden')
-    } else if ((answer1.trim().length === 0) && (answer2.trim().length !==0)) {
-        document.querySelector('#answer1-error').classList.remove('hidden')
-        newQuestion.option2 = answer2
-        if (!document.querySelector('#answer2-error').classList.contains('hidden')) {
-            document.querySelector('#answer2-error').classList.add('hidden')
+            answer1Error.classList.add('hidden')
+            answer2Error.classList.add('hidden')
+        } else if ((answer1.trim().length === 0) && (answer2.trim().length !==0)) {
+            answer1Error.classList.remove('hidden')
+            newQuestion.option2 = answer2
+            if (!answer2Error.classList.contains('hidden')) {
+                answer2Error.classList.add('hidden')
+            }
+        } else if ((answer1.trim().length !==0) && (answer2.trim().length ===0)) {
+            newQuestion.option1 = answer1
+            if (!answer1Error.classList.contains('hidden')) {
+                answer1Error.classList.add('hidden')
+            }
+            answer2Error.classList.remove('hidden')
+        } else {
+            answer1Error.classList.remove('hidden')
+            answer2Error.classList.remove('hidden')
         }
-    } else if ((answer1.trim().length !==0) && (answer2.trim().length ===0)) {
-        newQuestion.option1 = answer1
-        if (!document.querySelector('#answer1-error').classList.contains('hidden')) {
-            document.querySelector('#answer1-error').classList.add('hidden')
+    }
+
+    function validateOptionalAnswers() {
+        if (answer3.trim().length !==0) {
+            newQuestion.option3 = answer3
         }
-        document.querySelector('#answer2-error').classList.remove('hidden')
-    } else {
-        document.querySelector('#answer1-error').classList.remove('hidden')
-        document.querySelector('#answer2-error').classList.remove('hidden')
-    }
 
-    if (answer3.trim().length !==0) {
-        newQuestion.option3 = answer3
-    } else {
-        newQuestion.option3 = null
-    }
+        if (answer4.trim().length !==0) {
+            newQuestion.option4 = answer4
+        }
 
-    if (answer4.trim().length !==0) {
-        newQuestion.option4 = answer4
-    } else {
-        newQuestion.option4 = null
+        if (answer5.trim().length !==0) {
+            newQuestion.option5 = answer5
+        }
     }
-
-    if (answer5.trim().length !==0) {
-        newQuestion.option5 = answer5
-    } else {
-        newQuestion.option5 = null
-    }
-
 
     function setCorrectAnswer() {
         correctAnswer.forEach( function(answer) {
             if (answer.checked) {
-                document.querySelector('#correct-answer-error').classList.add('hidden')
+                correctAnswerError.classList.add('hidden')
                 newQuestion.answer = answer.value
             } else if (newQuestion.answer === null) {
-                document.querySelector('#correct-answer-error').classList.remove('hidden')
+                correctAnswerError.classList.remove('hidden')
             }
         })
     }
 
-    if (!document.querySelector('#correct-answer-error').classList.contains('hidden')) {
-        document.querySelector('#correct-answer-error').classList.remove('hidden')
+    if (!correctAnswerError.classList.contains('hidden')) {
+        correctAnswerError.classList.remove('hidden')
     }
 
-     console.log(newQuestion)
+    validateQuestionText()
+    validateRequiredAnswers()
+    validateOptionalAnswers()
+
+    questionJson = JSON.stringify(newQuestion)
+
+    console.log(newQuestion)
+
+    console.log(questionJson)
+
 })
