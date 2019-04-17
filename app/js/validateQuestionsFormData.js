@@ -176,5 +176,5 @@ document.querySelector('.add_question').addEventListener('submit', function(even
     invalidAnswers()
     validateOptionalAnswers()
     validateCorrectAnswer()
-
+    postQuestionsEdit(newQuestion)
 })
