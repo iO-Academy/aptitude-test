@@ -3,6 +3,11 @@ document.getElementById('filterScorePercentage').addEventListener('change', () =
     updateScoreTable()
 })
 
+/**
+ * checks the start and end date input on admin page and assigns a default value if no value set
+ *
+ * @returns array of start and end date
+ */
 function setDate() {
     let startDateInput = document.getElementById('startDate').value
     let startDate = '1970-01-01'
@@ -18,7 +23,6 @@ function setDate() {
 }
 
 /**
- * checks the start and end date input and assigns a default value if no value set
  * checks the start date is earlier than the end date; if it is, runs AJAX request, if not error
  *
  * @returns run results function or alert to error
@@ -33,7 +37,6 @@ document.getElementById('startDate').addEventListener("change", ()=>{
 })
 
 /**
- * checks the start and end date input and assigns a default value if no value set
  * checks the start and end date is earlier than the end date; if it is, runs AJAX request, if not error
  *
  * @returns run results function or alert to error
@@ -64,4 +67,3 @@ function date(resultArray) {
     })
     return newResultArray
 }
-

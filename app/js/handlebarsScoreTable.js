@@ -17,10 +17,8 @@ async function sortUsersObjectByDate() {
  */
 function updateScoreTable() {
     let users = sortUsersObjectByDate()
-
     users.then(function (userInfo) {
         getTemplateAjax('js/templates/scoreTable.hbs').then(function (HBTemplate) {
-
             fillScoreTable(HBTemplate, userInfo)
         })
     })
