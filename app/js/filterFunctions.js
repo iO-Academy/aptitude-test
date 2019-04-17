@@ -12,7 +12,7 @@ function setDate() {
     let startDateInput = document.getElementById('startDate').value
     let startDate = '1970-01-01'
     let endDateInput = document.getElementById('endDate').value
-    let endDate = '2099-12-31'
+    let endDate = new Date().toISOString().slice(0,10)
     if (startDateInput !== "") {
         startDate = startDateInput
     }
@@ -29,6 +29,7 @@ function setDate() {
  */
 document.getElementById('startDate').addEventListener("change", ()=>{
     let dates = setDate()
+    console.log(dates)
     if (dates[0] <= dates[1]) {
         updateScoreTable()
     } else {
