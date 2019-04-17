@@ -61,7 +61,7 @@ function date(resultArray) {
     let dates = setDate()
     let newResultArray = []
     resultArray.forEach(data => {
-        if (data.dateCreated > dates[0] && data.dateCreated < dates[1]) {
+        if (data.dateCreated >= dates[0] && data.dateCreated <= dates[1]) {
             newResultArray.push(data)
         }
     })
