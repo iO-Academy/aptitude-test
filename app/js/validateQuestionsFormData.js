@@ -31,20 +31,24 @@ document.querySelector('.add_question').addEventListener('submit', function(even
     let answer2Error = document.querySelector('#answer2-error')
     let correctAnswerError = document.querySelector('#correct-answer-error')
 
+    let questionIsValidated = false
+    let oneIsWrong = true
+    let twoIsWrong = true
+    let optionalIsCorrect = true
+    let answerSettingIsCorrect = false
+
     /**
      * Validates question field and populates newQuestion object with correct question data, otherwise shows error
      */
     function validateQuestionText() {
         if (question.trim().length !== 0) {
             newQuestion.text = question
+            questionIsValidated = true
             questionError.classList.add('hidden')
         } else {
             questionError.classList.remove('hidden')
         }
     }
-
-    let oneIsWrong = true
-    let twoIsWrong = true
 
     if(answer1.trim().length !== 0) {
         oneIsWrong = false
@@ -129,8 +133,11 @@ document.querySelector('.add_question').addEventListener('submit', function(even
      * @param key - option value (eg: 'option4')
      */
     function validateOptionalField(answer, key) {
-        if (answer.trim().length !==0) {
+        if (answer.trim().length !==0 && optionalIsCorrect) {
             newQuestion[key] = answer
+            optionalIsCorrect = true
+        } else {
+            optionalIsCorrect = false
         }
     }
 
@@ -154,6 +161,7 @@ document.querySelector('.add_question').addEventListener('submit', function(even
         correctAnswers.forEach( function(answer) {
             if (answer.checked) {
                 newQuestion.answer = answer.value
+                answerSettingIsWrong = false
             }
         })
         return newQuestion.answer;
@@ -165,9 +173,24 @@ document.querySelector('.add_question').addEventListener('submit', function(even
     function validateCorrectAnswer() {
         if (!setCorrectAnswer()) {
             correctAnswerError.classList.remove('hidden')
+            answerSettingIsCorrect = true
         } else {
             correctAnswerError.classList.add('hidden')
         }
+    }
+
+
+    /**
+     *
+     * @param questionIsValidated - boolean confirming question has been validated
+     * @param oneIsWrong - boolean confirming answer1 exists
+     * @param twoIsWrong - boolean confirming answer2 exists
+     * @param optionalIsCorrect - boolean confirming all optional answers are valid
+     * @param answerSettingIsCorrect - boolean confirming that a correct answer has been set
+     * @returns whether all of these booleans are true
+     */
+    function isFullyValid(questionIsValidated, oneIsWrong, twoIsWrong, optionalIsCorrect, answerSettingIsCorrect) {
+        return (questionIsValidated && oneIsWrong && twoIsWrong && optionalIsCorrect && answerSettingIsCorrect)
     }
   
     validateQuestionText()
@@ -177,5 +200,9 @@ document.querySelector('.add_question').addEventListener('submit', function(even
     invalidAnswers()
     validateOptionalAnswers()
     validateCorrectAnswer()
-    postQuestionsEdit(newQuestion)
+    isFullyValid(questionIsValidated, oneIsWrong, twoIsWrong, optionalIsCorrect, answerSettingIsCorrect)
+
+    if(isFullyValid()) {
+        postQuestionsEdit(newQuestion)
+    }
 })
