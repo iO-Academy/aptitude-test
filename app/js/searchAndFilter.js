@@ -10,5 +10,6 @@
 function searchAndFilter(HBTemplate, resultArray) {
     resultArray = searchByTextAndEmail(resultArray)
     resultArray = percentageFilter(resultArray)
+    resultArray = date(resultArray)
     printFilteredResultsToScreen(HBTemplate, resultArray)
 }
