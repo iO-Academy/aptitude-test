@@ -102,5 +102,6 @@ document.querySelector('.add_question').addEventListener('submit', function(even
         document.querySelector('#correct-answer-error').classList.remove('hidden')
     }
 
-     console.log(newQuestion)
+    postQuestionsEdit()
+     // console.log(newQuestion)
 })
