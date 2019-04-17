@@ -3,6 +3,7 @@
 <head>
     <script lang="en"></script>
     <script src="js/userLogIn.js"></script>
+    <script src="js/cookies.js"></script>
     <script>
         let userEmail = getCookie('userEmail')
         getUser(userEmail).then(function(user) {
@@ -27,6 +28,7 @@
     <script src="js/postEditFunction.js" defer></script>
     <script src="js/validateQuestionsFormData.js" defer></script>
     <script src="js/searchFunction.js" defer></script>
+    <script src="js/filterFunctions.js" defer></script>
     <script src="js/searchAndFilter.js" defer></script>
     <script src="js/postQuestionsEdit.js" defer></script>
     <title>Admin Page</title>
@@ -46,8 +48,9 @@
                 <h2>Add New User</h2>
                 <form class="container_controls" id="addNewUserForm">
                     <div class="container_input">
-                        <input type="text" id="name" name="name" placeholder="Type new user's name" required>
-                        <input type="text" id="email" name="email" placeholder="Type new user's email" required>
+                        <input type="text" id="name" name="name" placeholder="Type new user's name">
+                        <input type="text" id="email" name="email" placeholder="Type new user's email">
+                        <input type="number" id="time" name="time" value="30">
                     </div>
                     <div class="container_submit">
                         <input type="submit" value="Add User">
@@ -109,9 +112,25 @@
                 </form>
                 <div>
                 <h2>Scores</h2>
-                <input type="text" id="searchInput" placeholder="Type name or email">
-                <input type="submit" id="searchSubmit" value="Search">
-                <input type="submit" id="searchReset" value="Clear">
+                <section>
+                    <h4>Search Results</h4>
+                    <input type="text" id="searchInput" placeholder="Type name or email">
+                    <input type="submit" id="searchSubmit" value="Search">
+                    <input type="submit" id="searchReset" value="Clear Search">
+                    <div class="filterContainer">
+                        <h4>Filter Results</h4>
+                        <label for="filterScorePercentage" class="labelDropdown">Score percentage:</label>
+                        <select name="filterScorePercentage" id="filterScorePercentage" class="dropdown">
+                            <option value="3">-none-</option>
+                            <option value="1">+70%</option>
+                            <option value="2">-69%</option>
+                        </select>
+                        <label for="startDate">Start:</label>
+                        <input id="startDate" type="date">
+                        <label for="endDate">End:</label>
+                        <input id="endDate" type="date">
+                    </div>
+                </section>
                 <div class="score_list"></div>
                 </div>
             </div>
