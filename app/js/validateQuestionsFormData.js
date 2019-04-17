@@ -1,6 +1,3 @@
-//validate the right keys & no null values exist
-//then jsonify
-//then send it
 let newQuestion = {}
 let allAnswers = document.querySelectorAll('.answer')
 
@@ -27,12 +24,11 @@ document.querySelector('.add_question').addEventListener('submit', function(even
     let answer3 = allAnswers[2].value
     let answer4 = allAnswers[3].value
     let answer5 = allAnswers[4].value
-    let correctAnswer = document.getElementsByName('answer_radio_button')
+    let correctAnswers = document.getElementsByName('answer_radio_button')
     let questionError = document.querySelector('#question-error')
     let answer1Error = document.querySelector('#answer1-error')
     let answer2Error = document.querySelector('#answer2-error')
     let correctAnswerError = document.querySelector('#correct-answer-error')
-    let questionJson
 
     function validateQuestionText() {
         if (question.trim().length !==0) {
@@ -47,8 +43,6 @@ document.querySelector('.add_question').addEventListener('submit', function(even
         if (answer1.trim().length !==0 && answer2.trim().length !==0) {
             newQuestion.option1 = answer1
             newQuestion.option2 = answer2
-            correctAnswerError.classList.add('hidden')
-            setCorrectAnswer()
             answer1Error.classList.add('hidden')
             answer2Error.classList.add('hidden')
         } else if ((answer1.trim().length === 0) && (answer2.trim().length !==0)) {
@@ -84,28 +78,27 @@ document.querySelector('.add_question').addEventListener('submit', function(even
     }
 
     function setCorrectAnswer() {
-        correctAnswer.forEach( function(answer) {
+        correctAnswers.forEach( function(answer) {
             if (answer.checked) {
-                correctAnswerError.classList.add('hidden')
                 newQuestion.answer = answer.value
-            } else if (newQuestion.answer === null) {
-                correctAnswerError.classList.remove('hidden')
             }
         })
+        if (newQuestion.answer) {
+            return true
+        }
+        return false
     }
 
-    if (!correctAnswerError.classList.contains('hidden')) {
-        correctAnswerError.classList.remove('hidden')
+    function validateCorrectAnswer() {
+        if (!setCorrectAnswer()) {
+            correctAnswerError.classList.remove('hidden')
+        } else {
+            correctAnswerError.classList.add('hidden')
+        }
     }
 
     validateQuestionText()
     validateRequiredAnswers()
     validateOptionalAnswers()
-
-    questionJson = JSON.stringify(newQuestion)
-
-    console.log(newQuestion)
-
-    console.log(questionJson)
-
+    validateCorrectAnswer()
 })
