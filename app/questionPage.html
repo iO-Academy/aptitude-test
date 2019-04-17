@@ -6,7 +6,7 @@
     <script>
         let userEmail = getCookie('userEmail')
         getUser(userEmail).then(function (user) {
-            if (!user.success || !isAuthorised(user.data)) {
+            if (!user.success || !isAuthorised(user.data) || user.data.canRetake === '0') {
                 window.location.replace("index.html")
             }
         })

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
-<script lang="en"></script>
 <head>
+    <script lang="en"></script>
     <script src="js/userLogIn.js"></script>
     <script>
         let userEmail = getCookie('userEmail')
@@ -25,6 +25,10 @@
     <script src="js/sanitiseAdmin.js" defer></script>
     <script src="js/modalSubmit.js" defer></script>
     <script src="js/postEditFunction.js" defer></script>
+    <script src="js/validateQuestionsFormData.js" defer></script>
+    <script src="js/searchFunction.js" defer></script>
+    <script src="js/searchAndFilter.js" defer></script>
+    <script src="js/postQuestionsEdit.js" defer></script>
     <title>Admin Page</title>
 </head>
 <body>
@@ -56,41 +60,61 @@
             </div>
             <div>
                 <h2>Add New Test-Question</h2>
-                <div class="add_question">
-                    <textarea rows="4" cols="70" id="question" placeholder="Add new question" required></textarea>
-                    <div>
-                        <textarea rows="2" cols="50" id="answer1" placeholder="Please enter answer 1" required></textarea>
-                        <p>Correct answer</p>
-                        <input type="radio" name="answer_radio_button" value="1">
+                <form class="add_question">
+                    <textarea rows="4" cols="70" id="question" placeholder="Add new question"></textarea>
+                    <div id="question-error" class="alert alert-danger hidden" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        Enter a valid question
                     </div>
                     <div>
-                        <textarea rows="2" cols="50" id="answer2" placeholder="Please enter answer 2" required></textarea>
-                        <p>Correct answer</p>
-                        <input type="radio" name="answer_radio_button" value="2">
+                        <textarea rows="2" cols="50" id="answer1" placeholder="Please enter answer 1" class="answer"></textarea>
+                        <span class="correct-answer"></span>
+                    </div>
+                    <div id="answer1-error" class="alert alert-danger hidden" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        Required field, please provide an answer
                     </div>
                     <div>
-                        <textarea rows="2" cols="50" id="answer3" placeholder="Please enter answer 3" required></textarea>
-                        <p>Correct answer</p>
-                        <input type="radio" name="answer_radio_button" value="3">
-                        </div>
-                    <div>
-                        <textarea rows="2" cols="50" id="answer4" placeholder="Please enter answer 4" required></textarea>
-                        <p>Correct answer</p>
-                        <input type="radio" name="answer_radio_button" value="4">
+                        <textarea rows="2" cols="50" id="answer2" placeholder="Please enter answer 2" class="answer"></textarea>
+                        <span class="correct-answer"></span>
+                    </div>
+                    <div id="answer2-error" class="alert alert-danger hidden" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        Required field, please provide an answer
                     </div>
                     <div>
-                        <textarea rows="2" cols="50" id="answer5" placeholder="Please enter answer 5" required></textarea>
-                        <p>Correct answer</p>
-                        <input type="radio" name="answer_radio_button" value="5">
+                        <textarea rows="2" cols="50" id="answer3" placeholder="Please enter answer 3" class="answer"></textarea>
+                        <span class="correct-answer"></span>
                     </div>
                     <div>
-                        <input type="submit" class="btn btn-primary">
+                        <textarea rows="2" cols="50" id="answer4" placeholder="Please enter answer 4" class="answer"></textarea>
+                        <span class="correct-answer"></span>
                     </div>
+                    <div>
+                        <textarea rows="2" cols="50" id="answer5" placeholder="Please enter answer 5" class="answer"></textarea>
+                        <span class="correct-answer"></span>
+                    </div>
+                    <div id="correct-answer-error" class="alert alert-danger hidden" role="alert">
+                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                        <span class="sr-only">Error:</span>
+                        Please select the correct answer
+                    </div>
+                    <div>
+                        <input type="submit" class="btn btn-primary" id="addNewQuestionsForm">
+                    </div>
+                    <div class="alert" id="response"></div>
+                </form>
                 <div>
                 <h2>Scores</h2>
+                <input type="text" id="searchInput" placeholder="Type name or email">
+                <input type="submit" id="searchSubmit" value="Search">
+                <input type="submit" id="searchReset" value="Clear">
                 <div class="score_list"></div>
+                </div>
             </div>
-          
         </div>
     </div>
 </section>
