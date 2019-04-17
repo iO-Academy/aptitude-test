@@ -1,3 +1,8 @@
+let startDateInput = document.getElementById('startDate').value
+let startDate = '1970-01-01'
+let endDateInput = document.getElementById('endDate').value
+let endDate = '2099-12-31'
+
 /**
  * checks the start and end date input and assigns a default value if no value set
  * checks the start date is earlier than the end date; if it is, runs AJAX request, if not error
@@ -5,10 +10,7 @@
  * @returns run results function or alert to error
  */
 document.getElementById('startDate').addEventListener("focusout", ()=>{
-    var startDateInput = document.getElementById('startDate').value
-    var startDate = '1970-01-01'
-    var endDateInput = document.getElementById('endDate').value
-    var endDate = '2099-12-31'
+
     if (startDateInput !== "") {
         startDate = startDateInput
     }
@@ -29,10 +31,7 @@ document.getElementById('startDate').addEventListener("focusout", ()=>{
  * @returns run results function or alert to error
  */
 document.getElementById('endDate').addEventListener("focusout", ()=>{
-    var startDateInput = document.getElementById('startDate').value
-    var startDate = '1970-01-01'
-    var endDateInput = document.getElementById('endDate').value
-    var endDate = '2099-12-31'
+
     if (startDateInput !== "") {
         startDate = startDateInput
     }
