@@ -9,5 +9,6 @@
  */
 function searchAndFilter(HBTemplate, resultArray) {
     resultArray = searchByTextAndEmail(resultArray)
+    resultArray = percentageFilter(resultArray)
     printFilteredResultsToScreen(HBTemplate, resultArray)
 }
