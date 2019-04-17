@@ -1,21 +1,6 @@
-/** getting all the questions from API
- *
- * @returns {Promise<void>}
- */
-async function getQuestions() {
-    let response = await fetch("http://localhost:8080/user", {method: 'get'})
-        console.log(response)
-        return response
-    }
-
-
-getQuestions().then(response => {
-    console.log(response.json())
-})
-
-let questionAmount = 30 // amount of questions
 
 document.querySelector('#finish').addEventListener('click', finishTest)
+
 /**
  * called when clicking finish button in dialogue box
  */
@@ -34,7 +19,7 @@ function finishTest() {
  */
 async function checkAnswers(userAnswers) {
     let userScore = 0
-    let answers = await getAnswers()
+    let answers = await getAnswers(userAnswers)
     if (answers.success) {
         answers = answers.data
         answers.forEach(function (answerItem) {
@@ -91,7 +76,10 @@ function getUserAnswers() {
  *
  * @return Integer number of answered questions
  */
-function getAnswered(userAnswers, questionAmount) {
+function getAnswered(userAnswers) {
+    let questionAmount = document.querySelectorAll('.question').length
+    console.log(questionAmount)
+
     let userAnswersArray = Object.values(userAnswers)
     let unanswered = 0
     userAnswersArray.forEach(function(answerItem) {
@@ -111,7 +99,8 @@ function getAnswered(userAnswers, questionAmount) {
  *
  * @return Integer percentage of user score
  */
-function getPercentResult(userScore, questionAmount) {
+function getPercentResult(userScore) {
+    let questionAmount = document.querySelectorAll('.question').length
     return Math.round(userScore / questionAmount * 100)
 }
 
@@ -126,6 +115,7 @@ function displayResult(earnedPoints, earnedPercentage, answeredQuestions) {
     document.querySelector(".score").innerHTML = earnedPoints
     document.querySelector(".answered_questions").innerHTML = answeredQuestions
     document.querySelector(".score_percentage").innerHTML = earnedPercentage
+    console.log("answered questions "+answeredQuestions)
 }
 
 /**
@@ -148,6 +138,8 @@ function addAnswerEventListeners() {
  * this checks the answers and marks them to show the finishing page
  */
 function showResults() {
+    let questionAmount = document.querySelectorAll('.question').length
+    console.log(questionAmount)
     resetReapplyCounter()
     const userAnswers = getUserAnswers(questionAmount)
     checkAnswers(userAnswers).then(function (result) {
