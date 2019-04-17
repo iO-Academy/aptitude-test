@@ -190,7 +190,7 @@ document.querySelector('.add_question').addEventListener('submit', function(even
      * @returns whether all of these booleans are true
      */
     function isFullyValid(questionIsValidated, oneIsWrong, twoIsWrong, optionalIsCorrect, answerSettingIsCorrect) {
-        return (questionIsValidated && oneIsWrong && twoIsWrong && optionalIsCorrect && answerSettingIsCorrect)
+        return (questionIsValidated && !oneIsWrong && !twoIsWrong && optionalIsCorrect && answerSettingIsCorrect)
     }
   
     validateQuestionText()
