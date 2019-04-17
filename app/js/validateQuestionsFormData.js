@@ -1,4 +1,3 @@
-let newQuestion = {}
 let allAnswers = document.querySelectorAll('.answer')
 
 allAnswers.forEach(function(answer, index) {
@@ -18,6 +17,7 @@ allAnswers.forEach(function (answer) {
 document.querySelector('.add_question').addEventListener('submit', function(event) {
     event.preventDefault()
 
+    let newQuestion = {}
     let question = document.getElementById('question').value
     let answer1 = allAnswers[0].value
     let answer2 = allAnswers[1].value
@@ -176,4 +176,5 @@ document.querySelector('.add_question').addEventListener('submit', function(even
     invalidAnswers()
     validateOptionalAnswers()
     validateCorrectAnswer()
+    postQuestionsEdit(newQuestion)
 })
