@@ -33,6 +33,7 @@ document.getElementById('startDate').addEventListener("change", ()=>{
         updateScoreTable()
     } else {
         alert("Please enter a valid date range")
+        document.getElementById('startDate').value = ''
     }
 })
 
@@ -47,6 +48,7 @@ document.getElementById('endDate').addEventListener("change", ()=> {
         updateScoreTable()
     } else {
         alert("Please enter a valid date range")
+        document.getElementById('endDate').value = ''
     }
 })
 
