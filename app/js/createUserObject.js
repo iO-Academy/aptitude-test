@@ -31,10 +31,11 @@ async function getNameAndEmail() {
     let usersArray = []
     users.data.forEach(function(user) {
         let obj = {}
-        let {id, email, name} = user
+        let {id, email, name, time} = user
         obj['id'] = id
         obj['name'] = name
         obj['email'] = email
+        obj['timeAllowed'] = time
         usersArray.push(obj)
     })
     return usersArray
@@ -57,6 +58,7 @@ async function createUsersObject () {
 
                 obj['name'] = user.name
                 obj['email'] = user.email
+                obj['timeAllowed'] = user.timeAllowed
                 obj['score'] = score.score
                 obj['percentage'] = score.percent
                 obj['time'] = score.time
