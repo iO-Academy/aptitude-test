@@ -42,8 +42,7 @@
 <section class="container">
     <div class="row">
         <div class="col-xs-12">
-            <h1>Welcome To The Admin Page</h1>
-                <h2>Add New User</h2>
+                <h2 class="second-heading">Add New User</h2>
                 <form class="container_controls" id="addNewUserForm">
                     <div class="container_input">
                         <input type="text" id="name" name="name" placeholder="Type new user's name">
@@ -51,10 +50,29 @@
                         <input type="number" id="time" name="time" value="30">
                     </div>
                     <div class="container_submit">
-                        <input type="submit" value="Add User">
+                        <input type="submit" value="Add User" class="primary-button">
                     </div>
                 </form>
                 <div id='error' class='title_input'></div>
+                <h4 class="search-heading">Search User</h4>
+                    <input type="text" id="searchInput" placeholder="Type name or email">
+                    <input type="submit" id="searchSubmit" value="Search" class="primary-button">
+                    <input type="submit" id="searchReset" value="Clear Search" class="primary-button">
+                <div class="filterContainer">
+                    <h4 class="search-heading">Filter Results</h4>
+<!--                    <label for="filterScorePercentage" class="labelDropdown">Score percentage:</label>-->
+                    <!--want to delete the label but will wait until peer reviewed-->
+                    <select name="filterScorePercentage" id="filterScorePercentage" class="dropdown">
+                        <option value="" disabled selected>Score Percentage</option>
+                        <option value="3">-none-</option>
+                        <option value="1">+70%</option>
+                        <option value="2">-69%</option>
+                    </select>
+                    <label for="startDate">Start:</label>
+                    <input id="startDate" type="date">
+                    <label for="endDate">End:</label>
+                    <input id="endDate" type="date">
+                </div>
             <div>
                 <h2>Registered Users</h2>
                 <div class="user_list"></div>
@@ -62,26 +80,13 @@
             <div>
                 <h2>Scores</h2>
                 <section>
-                    <h4>Search Results</h4>
-                    <input type="text" id="searchInput" placeholder="Type name or email">
-                    <input type="submit" id="searchSubmit" value="Search">
-                    <input type="submit" id="searchReset" value="Clear Search">
-                    <div class="filterContainer">
-                        <h4>Filter Results</h4>
-                        <label for="filterScorePercentage" class="labelDropdown">Score percentage:</label>
-                        <select name="filterScorePercentage" id="filterScorePercentage" class="dropdown">
-                            <option value="3">-none-</option>
-                            <option value="1">+70%</option>
-                            <option value="2">-69%</option>
-                        </select>
-                        <label for="startDate">Start:</label>
-                        <input id="startDate" type="date">
-                        <label for="endDate">End:</label>
-                        <input id="endDate" type="date">
-                    </div>
+
+
                 </section>
                 <div class="score_list"></div>
             </div>
+
+
         </div>
     </div>
 </section>

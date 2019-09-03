@@ -1,31 +1,65 @@
 @import "imports/modal";
+@import "imports/variables";
 
-.container {
-  text-align: center;
+* {
+  font-size: 62.5%;
 
-  .user_list {
-    padding: 20px;
-  .btn_height {
-    padding: 0 1px 0 1px;
-  }
-  }
-
-  .score_list {
-    padding: 20px;
-
-    .score_item{
-      border: 1px solid #000000;
+  body {
+    color: $font-color;
+    h1, h2, h3, h4 {
+      color: $font-color;
     }
 
-  }
+    .container {
 
-  img {
-    width: 100%;
-  }
+      input {
+        font-size: 2rem;
+      }
 
-  p {
-    display: inline;
-    margin: 10px;
+      .labelDropdown {
+        font-size: 2rem;
+      }
+
+      .dropdown {
+        font-size: 1.5rem;
+      }
+
+      .user_list {
+        padding: 20px;
+      .btn_height {
+        padding: 0 1px 0 1px;
+      }
+      }
+
+      .score_list {
+        padding: 20px;
+
+        .score_item{
+          border: 1px solid #000000;
+        }
+
+      }
+
+      img {
+        width: 100%;
+      }
+
+      p {
+        display: inline;
+        margin: 10px;
+      }
+
+      .primary-button {
+        background-color: $primary-button;
+        color: $main-background-color;
+        &:hover {
+          background-color: $primary-button-hover;
+        }
+      }
+
+      .search-heading {
+          font-size: 1.5rem;
+      }
+    }
   }
 }
-
