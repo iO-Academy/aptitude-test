@@ -114,6 +114,7 @@ function populateEditModal(userInfo) {
  */
 function addDeleteEventListeners() {
     let userItems = document.querySelectorAll(".btn-danger")
+    console.log(userItems)
     userItems.forEach(function (userItem) {
         userItem.addEventListener('click', function (e) {
             let userId = e.target.parentElement.getAttribute("dataId")
