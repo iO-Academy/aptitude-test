@@ -5,6 +5,7 @@
 body {
   font-family: asap, sans-serif;
 }
+
 .left {
   float: left
 }
@@ -22,6 +23,7 @@ body {
 #timer {
   height: 100%;
 }
+
 .test-top-row {
   display: flex;
   justify-content: space-between;
@@ -35,9 +37,11 @@ body {
   text-align: left;
   display: none;
 }
+
 h4 {
   font-size: 24px;
 }
+
 .question-container {
   height: 100%;
   border: $primary-button solid 2px;
@@ -137,16 +141,23 @@ img {
 }
 
 #flag-checkbox {
-display: none;
+  display: none;
 }
 
-#flag-label {
-  font-size: 2rem;
+#flag-button {
+  color: $flag-color;
 }
 
 .pressed {
-  background-color: $primary-button-hover;
-  color: white;
+  background-color: $flag-color;
+
+  i {
+    color: $flag-pressed;
+  }
+}
+
+.pressed:hover {
+  color: darken($flag-pressed, 10%);
 }
 
 //======== O V E R V I E W    P A G E ========//
