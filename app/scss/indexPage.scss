@@ -2,26 +2,31 @@
 
 * {
   box-sizing: border-box;
+
   body {
     font-family: 'Asap', sans-serif;
+
     .logo {
       width: 300px;
       float: right;
       margin: 2%;
     }
+
     .start-button {
       width: 110px;
       background: $primary-button;
-      border: 1px solid #fff;
-      color: #fff;
+      border: 1px solid $main-background-color;
+      color: $main-background-color;
       font-size: 15px;
       padding: 6px 20px;
       text-decoration: none;
       transition: .5s;
+
       &:hover {
         background-color: $primary-button-hover;
       }
     }
+
     @media only screen and (max-width: 767px) {
       .header {
         margin-top: 85px;
