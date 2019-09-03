@@ -33,12 +33,12 @@
 .test-not-taken {
   background-color: $light-red;
 }
-.test-less-than-70 {
+.dubious-grade {
   background-color: $light-orange;
 }
-.test-more-than-70 {
+.passing-grade {
   background-color: $light-green;
 }
-.test-more-than-97 {
+.top-grade {
   background-color: $light-purple;
 }
