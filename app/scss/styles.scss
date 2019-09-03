@@ -11,6 +11,19 @@
     }
 
     .container {
+
+      input {
+        font-size: 2rem;
+      }
+
+      .labelDropdown {
+        font-size: 2rem;
+      }
+
+      .dropdown {
+        font-size: 1.5rem;
+      }
+
       .user_list {
         padding: 20px;
       .btn_height {
@@ -45,7 +58,7 @@
       }
 
       .search-heading {
-
+          font-size: 1.5rem;
       }
     }
   }
