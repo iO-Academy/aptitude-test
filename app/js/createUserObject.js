@@ -22,6 +22,10 @@ function calculatePercentage(score, numOfQuestions) {
     return ((score / numOfQuestions) * 100).toFixed(2)
 }
 
+function secondsToMinutes(time) {
+    return time / 60
+}
+
 /**
  * gets all users name and email from API
  *
@@ -37,7 +41,7 @@ async function getNameAndEmail() {
         obj['id'] = id
         obj['name'] = name
         obj['email'] = email
-        obj['timeAllowed'] = time
+        obj['timeAllowed'] = secondsToMinutes(time)
         usersArray.push(obj)
     })
     return usersArray
