@@ -1,15 +1,15 @@
 {{#each data}}
-<div class="entry" dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}" dataTime="{{time}}" dataCanRetake="{{canRetake}}">
-    <div class="score_item" dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}" dataTime="{{time}}" dataCanRetake="{{canRetake}}">
-        <button class="btn btn-primary btn_height modalBtn">Edit User</button>
-        <button type="button" class="btn btn-danger btn_height">Delete User</button>
-        <p class="name">Name: {{this.name}}</p>
-        <p class="email">Email: {{this.email}}</p>
-        <p class="score">Score: {{this.score}}</p>
-        <p class="percentage">Percentage: {{this.percentage}}</p>
-        <p class="time">Time: {{this.timeAllowed}}</p>
-        <p class="time">Time: {{this.time}}</p>
-        <p class="date">Date Test Taken: {{this.dateCreated}}</p>
-    </div>
-</div>
+<tr class="entry">
+        <td dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}" dataTime="{{time}}" dataCanRetake="{{canRetake}}">
+            <button class="btn edit-user-button btn_height modalBtn">Edit User</button>
+            <button class="btn delete-user-button btn_height">Delete User</button>
+        </td>
+        <td class="name">{{this.name}}</td>
+        <td class="email">{{this.email}}</td>
+        <td class="score">{{this.score}}</td>
+        <td class="percentage">{{this.percentage}}</td>
+        <td class="time">{{this.timeAllowed}}</td>
+        <td class="time">{{this.time}}</td>
+        <td class="date">{{this.dateCreated}}</td>
+</tr>
 {{/each}}
