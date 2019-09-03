@@ -96,16 +96,6 @@ function produceTable (HBTemplate, scoresDataObject) {
                 break
         }
     })
-    Handlebars.registerHelper('gt', function (a, b, options) {
-        if (arguments.length === 2) {
-            options = b;
-            b = options.hash.compare;
-        }
-        if (a > b) {
-            return options.fn(this);
-        }
-        return options.inverse(this);
-    })
     let template = Handlebars.compile(HBTemplate)
     let score_list = document.querySelector(".score_list")
     score_list.innerHTML = ""
