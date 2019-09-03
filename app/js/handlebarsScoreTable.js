@@ -22,8 +22,6 @@ function updateScoreTable() {
             fillScoreTable(HBTemplate, userInfo)
         })
     })
-
-
 }
 
 /**
@@ -54,6 +52,7 @@ function fillScoreTable(HBTemplate, userInfo) {
         })
         .then((resultArray) => searchAndFilter(HBTemplate, resultArray))
 }
+
 
 /**
  * Checks the length of an array of data objects, if greater than 0 calls function to print to screen, if 0, gives 'no valid results message'
