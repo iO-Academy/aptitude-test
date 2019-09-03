@@ -1,21 +1,25 @@
 @import "imports/variables";
 @import "imports/modal";
 
-.left{
+.left {
   float: left
 }
+
 .right {
   float: right;
 }
+
 .logo {
-  height:60px;
+  height: 60px;
   float: right;
   margin-top: 10px;
 }
+
 .test-top-row {
   display: flex;
   justify-content: space-between;
 }
+
 .question {
   position: relative;
   background-color: $main-background-color;
@@ -27,7 +31,7 @@
 
 .question-container {
   height: 100%;
-  border: $primary-button solid 2px
+  border: $primary-button solid 2px;
 }
 
 .question-nav {
@@ -93,8 +97,14 @@ img {
 .question-nav-row {
   display: flex;
   justify-content: space-between;
+  width: 100%;
 }
-
+.nav-buttons{
+  width:20%;
+  button {
+    width:100%
+  }
+}
 .overview {
   visibility: hidden;
   text-transform: uppercase;
