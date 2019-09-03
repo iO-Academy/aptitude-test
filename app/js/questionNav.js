@@ -35,14 +35,14 @@ function prev() {
  * Updates the the flag status of the current question
  */
 function updateFlagStatus() {
-    let question =  document.querySelector('.question.active')
-    let qId  = question.dataset.id
+    let question = document.querySelector('.question.active')
+    let qId = question.dataset.id
     let navItem = document.querySelector('#question-nav').children[qId - 1]
     document.querySelector('#flag-checkbox').checked = flaggedQuestions[qId]
     if (flaggedQuestions[qId]) {
-        navItem.querySelector('.flag').classList.add('glyphicon','glyphicon-flag')
+        navItem.querySelector('.flag').classList.add('glyphicon', 'glyphicon-flag')
     } else {
-        navItem.querySelector('.flag').classList.remove('glyphicon','glyphicon-flag')
+        navItem.querySelector('.flag').classList.remove('glyphicon', 'glyphicon-flag')
     }
 }
 
@@ -60,7 +60,7 @@ function changeQuestion(destinationPage) {
     let overviewButton = document.querySelector(".overview")
     document.querySelector("h4").textContent = destinationPage + "/" + questionCount
 
-    switch(parseInt(destinationPage)) { // parseInt() in case a string is passed
+    switch (parseInt(destinationPage)) { // parseInt() in case a string is passed
         case 1:
             prevButton.style.visibility = "hidden"
             nextButton.style.visibility = "visible"
@@ -102,4 +102,13 @@ function fillNav() {
 
 document.querySelector(".next").addEventListener("click", next)
 document.querySelector(".prev").addEventListener("click", prev)
-document.querySelector('#flag-checkbox').addEventListener('change', updateFlagStatus)
+document.querySelector('#flag-checkbox').addEventListener('input', updateFlagStatus)
+document.querySelector('#flag-button').addEventListener('click', () => {
+    console.log('clicked')
+    let flagCheckbox = document.querySelector('#flag-checkbox')
+    if (flagCheckbox.checked === true) {
+        flagCheckbox.checked = false
+    } else {
+        flagCheckbox.checked = true
+    }
+})
