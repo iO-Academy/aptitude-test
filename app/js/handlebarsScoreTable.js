@@ -19,40 +19,23 @@ function updateScoreTable() {
     let users = sortUsersObjectByDate()
     users.then(function (userInfo) {
         getTemplateAjax('js/templates/mergeTable.hbs').then(function (HBTemplate) {
-            fillScoreTable(HBTemplate, userInfo)
+            sendToSearchAndFilter(HBTemplate, userInfo)
         })
     })
 }
 
 /**
- * fills handlebars template by passing in object and inserts into the score_list div and checks for deleted
- * in database
- *
- * @param HBTemplate the handlebars template
- *
- * @param userInfo users information from the users object
+ * Sends the user info to the search and filtering function
  */
-function fillScoreTable(HBTemplate, userInfo) {
-    fetch("http://localhost:8080/user")
-        .then(function (result) {
-            return result.json()
-        })
-        .then(function (result) {
-            let resultArray = []
-            result.data.forEach(function (existingUser) {
-                if (existingUser.deleted != 1) {
-                    userInfo.data.forEach(function (scoreUser) {
-                        if (scoreUser.email === existingUser.email) {
-                            resultArray.push(scoreUser)
-                        }
-                    })
-                }
-            })
-            return resultArray
-        })
-        .then((resultArray) => searchAndFilter(HBTemplate, resultArray))
+function sendToSearchAndFilter(template, userInfo) {
+    let userArray = []
+    userInfo.data.forEach(function (scoreUser) {
+        userArray.push(scoreUser)
+    })
+    console.log('userarray')
+    console.log(userArray)
+    searchAndFilter(template, userArray)
 }
-
 
 /**
  * Checks the length of an array of data objects, if greater than 0 calls function to print to screen, if 0, gives 'no valid results message'
