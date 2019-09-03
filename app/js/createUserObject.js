@@ -53,8 +53,19 @@ async function createUsersObject() {
     let users = await getNameAndEmail()
     let userDisplayArray = []
 
-    results.forEach(function(result) {
-        users.forEach(function(user) {
+    users.forEach( function(user) {
+        let obj = {}
+        obj['id'] = user.id
+        obj['name'] = user.name
+        obj['email'] = user.email
+        obj['score'] = ""
+        obj['percentage'] = ""
+        obj['time'] = ""
+        obj['timeAllowed'] = user.timeAllowed
+        obj['dateCreated'] = results[1].dateCreated
+        userDisplayArray.push(obj)
+        /*
+        results.forEach(function(result) {
             if (result.id === user.id ) {
                 let obj = {}
 
@@ -67,8 +78,22 @@ async function createUsersObject() {
                 obj['timeAllowed'] = user.timeAllowed
                 obj['dateCreated'] = result.dateCreated
                 userDisplayArray.push(obj)
+            } else {
+                let obj = {}
+                obj['id'] = user.id
+                obj['name'] = user.name
+                obj['email'] = user.email
+                obj['score'] = ""
+                obj['percentage'] = ""
+                obj['time'] = ""
+                obj['timeAllowed'] = user.timeAllowed
+                obj['dateCreated'] = ""
+                userDisplayArray.push(obj)
             }
+        */
         })
-    })
+
+    console.log('Return of createUsersObject is ')
+    console.log(userDisplayArray)
     return await {success: true, data: userDisplayArray}
 }
