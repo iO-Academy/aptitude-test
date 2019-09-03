@@ -1,3 +1,5 @@
+@import "imports/variables";
+
 * {
   box-sizing: border-box;
   body {
@@ -12,8 +14,8 @@
 }
 
 .start-button {
-  width: 130px;
-  background: #8d0377;
+  width: 110px;
+  background: $primary-button;
   border: 1px solid #fff;
   color: #fff;
   font-size: 15px;
@@ -23,8 +25,10 @@
 }
 
 .start-button:hover {
-  background-color: #f27324;
+  $secondary-button-hover: #f27324;
 }
+
+
 
 
 
