@@ -3,12 +3,31 @@
 body {
   .container {
 
-    input {
+    .display-flex {
+      display: flex;
+      align-items: center;
 
-      &.primary-button {
-        font-size: 1.4rem;
-        color: $main-background-color;
+      input {
+        margin: 0 0.5rem;
+
+        &.primary-button {
+          font-size: 1.4rem;
+          color: $main-background-color;
+        }
       }
+    }
+
+    .filterContainer {
+
+      label {
+        font-weight: 400;
+        font-size: 1.5rem;
+      }
+    }
+
+    .dropdown {
+      height: 34px;
+      margin-right: 0.5rem;
     }
 
     table {
