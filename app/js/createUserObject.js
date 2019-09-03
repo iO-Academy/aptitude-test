@@ -47,23 +47,23 @@ async function getNameAndEmail() {
  * @return Object - containing the user info and user results including percentage
  */
 async function createUsersObject () {
-    let scores = await applyPercent()
+    let results = await applyPercent()
     let users = await getNameAndEmail()
     let userDisplayArray = []
 
-    scores.forEach(function(score) {
+    results.forEach(function(result) {
         users.forEach(function(user) {
-            if (score.id === user.id ) {
+            if (result.id === user.id ) {
                 let obj = {}
 
                 obj['id'] = user.id
                 obj['name'] = user.name
                 obj['email'] = user.email
                 obj['timeAllowed'] = user.timeAllowed
-                obj['score'] = score.score
-                obj['percentage'] = score.percent
-                obj['time'] = score.time
-                obj['dateCreated'] = score.dateCreated
+                obj['score'] = result.score
+                obj['percentage'] = result.percent
+                obj['time'] = result.time
+                obj['dateCreated'] = result.dateCreated
                 userDisplayArray.push(obj)
             }
 

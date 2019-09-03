@@ -22,6 +22,8 @@ function updateScoreTable() {
             fillScoreTable(HBTemplate, userInfo)
         })
     })
+
+
 }
 
 /**
@@ -85,6 +87,9 @@ function produceTable (HBTemplate, scoresDataObject) {
     score_list.innerHTML = ""
     let html = template(scoresDataObject)
     score_list.innerHTML += html
+
+    addEditEventListeners()
+    addDeleteEventListeners()
 }
 
 updateScoreTable()
