@@ -1,11 +1,20 @@
 @import "imports/variables";
 @import "imports/modal";
 
-
+.left{
+  float: left
+}
+.right {
+  float: right;
+}
 .logo {
   height:60px;
   float: right;
   margin-top: 10px;
+}
+.test-top-row {
+  display: flex;
+  justify-content: space-between;
 }
 .question {
   position: relative;
@@ -24,6 +33,7 @@
 .question-nav {
   height: 60px;
   margin: 20px 0 20px;
+  text-align: center;
 }
 
 .question-nav div {
