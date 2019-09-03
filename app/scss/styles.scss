@@ -1,4 +1,5 @@
 @import "imports/modal";
+@import "imports/variables";
 
 .container {
   text-align: center;
@@ -29,3 +30,15 @@
   }
 }
 
+.test-not-taken {
+  background-color: $light-red;
+}
+.test-less-than-70 {
+  background-color: $light-orange;
+}
+.test-more-than-70 {
+  background-color: $light-green;
+}
+.test-more-than-97 {
+  background-color: $light-purple;
+}
