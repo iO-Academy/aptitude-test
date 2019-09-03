@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <link href="css/bootstrap.css" type="text/css" rel="stylesheet">
     <link href="css/styles.css" type="text/css" rel="stylesheet">
+    <link href="css/adminPage.css" type="text/css" rel="stylesheet">
     <script src="js/handlebars-v4.0.11.js"></script>
     <script src="js/userLogIn.js"></script>
     <script src="js/cookies.js"></script>
@@ -74,16 +75,22 @@
                     <input id="endDate" type="date">
                 </div>
             <div>
-                <h2>Registered Users</h2>
-                <div class="user_list"></div>
-            </div>
-            <div>
                 <h2>Scores</h2>
-                <section>
-
-
-                </section>
-                <div class="score_list user-table"></div>x
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Score (num)</th>
+                            <th>Percentage (%)</th>
+                            <th>Time Allowed</th>
+                            <th>Time Taken</th>
+                            <th>Date of Test</th>
+                        </tr>
+                    </thead>
+                    <tbody class="score_list user-table"></tbody>
+                </table>
             </div>
 
 
