@@ -9,7 +9,7 @@ document.querySelector(".prev").style.visibility = "hidden"
 function active() {
     let questionCount = document.querySelectorAll('#questions .question').length
     document.querySelector(".q_" + current).classList.add("active")
-    document.querySelector("h4").textContent = current + "/" + questionCount
+    document.querySelector("#question-counter").textContent = current + "/" + questionCount
     trackActiveQuestion(current)
 }
 

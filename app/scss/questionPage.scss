@@ -15,6 +15,9 @@
   margin-top: 10px;
 }
 
+#timer {
+  height: 100%;
+}
 .test-top-row {
   display: flex;
   justify-content: space-between;
@@ -28,7 +31,9 @@
   text-align: left;
   display: none;
 }
-
+h4 {
+  font-size: 24px;
+}
 .question-container {
   height: 100%;
   border: $primary-button solid 2px;
@@ -98,6 +103,7 @@ img {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  margin-top: 30px;
 }
 
 .nav-buttons {
