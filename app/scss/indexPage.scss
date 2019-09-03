@@ -23,16 +23,19 @@
         }
       }
 
-      .text-center {
-        p {
-          margin: 10px;
-        }
+      .text-center p {
+        display: block;
+        margin-top: 10px;
       }
-    }
 
-    @media only screen and (max-width: 767px) {
-      .header {
-        margin-top: 85px;
+      #email {
+        margin-top: 5%;
+      }
+
+      @media only screen and (max-width: 767px) {
+        .header {
+          margin-top: 85px;
+        }
       }
     }
   }
