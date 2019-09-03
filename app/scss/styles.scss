@@ -1,45 +1,52 @@
 @import "imports/modal";
 @import "imports/variables";
 
-body {
-  color: $font-color;
-  h1, h2, h3, h4 {
+* {
+  font-size: 62.5%;
+
+  body {
     color: $font-color;
-  }
-
-  .container {
-    .user_list {
-      padding: 20px;
-    .btn_height {
-      padding: 0 1px 0 1px;
-    }
+    h1, h2, h3, h4 {
+      color: $font-color;
     }
 
-    .score_list {
-      padding: 20px;
-
-      .score_item{
-        border: 1px solid #000000;
+    .container {
+      .user_list {
+        padding: 20px;
+      .btn_height {
+        padding: 0 1px 0 1px;
+      }
       }
 
-    }
+      .score_list {
+        padding: 20px;
 
-    img {
-      width: 100%;
-    }
+        .score_item{
+          border: 1px solid #000000;
+        }
 
-    p {
-      display: inline;
-      margin: 10px;
-    }
+      }
 
-    .primary-button {
-      background-color: $primary-button;
-      color: $main-background-color;
-      &:hover {
-        background-color: $primary-button-hover;
+      img {
+        width: 100%;
+      }
+
+      p {
+        display: inline;
+        margin: 10px;
+      }
+
+      .primary-button {
+        background-color: $primary-button;
+        color: $main-background-color;
+        &:hover {
+          background-color: $primary-button-hover;
+        }
+      }
+
+      .search-heading {
+
       }
     }
   }
 }
-
