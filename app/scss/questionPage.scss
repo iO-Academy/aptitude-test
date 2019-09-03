@@ -61,6 +61,12 @@ img {
 .prev {
   width: 60%;
   margin: 50px auto;
+  background-color: $primary-button;
+  border: none;
+}
+
+.prev:hover {
+  background-color: $primary-button-hover;
 }
 
 .next {
