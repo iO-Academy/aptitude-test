@@ -2,6 +2,11 @@
 @import "imports/modal";
 
 
+.logo {
+  height:60px;
+  float: right;
+  margin-top: 10px;
+}
 .question {
   position: relative;
   background-color: $main-background-color;
