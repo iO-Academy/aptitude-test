@@ -1,15 +1,30 @@
 @import "imports/variables";
 
 body {
-  table {
-    font-size: 5.5rem;
-    .edit-user-button {
-      background-color: $edit-button;
-      color: $main-background-color;
+  .container {
+
+    input {
+
+      &.primary-button {
+        font-size: 1.4rem;
+        color: $main-background-color;
+      }
     }
-    .delete-user-button {
-      background-color: $primary-button-hover;
-      color: $main-background-color;
+
+    table {
+      font-size: 5.5rem;
+
+      .edit-user-button, .delete-user-button {
+        color: $main-background-color;
+      }
+
+      .edit-user-button {
+        background-color: $edit-button;
+      }
+
+      .delete-user-button {
+        background-color: $primary-button-hover;
+      }
     }
   }
 }
