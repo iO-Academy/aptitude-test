@@ -41,8 +41,10 @@ function updateFlagStatus() {
     document.querySelector('#flag-checkbox').checked = flaggedQuestions[qId]
     if (flaggedQuestions[qId]) {
         navItem.querySelector('.flag').classList.add('glyphicon', 'glyphicon-flag')
+        document.querySelector('#flag-button').classList.add('pressed')
     } else {
         navItem.querySelector('.flag').classList.remove('glyphicon', 'glyphicon-flag')
+        document.querySelector('#flag-button').classList.remove('pressed')
     }
 }
 

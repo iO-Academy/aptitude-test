@@ -144,6 +144,11 @@ display: none;
   font-size: 2rem;
 }
 
+.pressed {
+  background-color: $primary-button-hover;
+  color: white;
+}
+
 //======== O V E R V I E W    P A G E ========//
 #overview_page {
   display: none;
