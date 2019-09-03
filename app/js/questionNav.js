@@ -58,7 +58,7 @@ function changeQuestion(destinationPage) {
     let nextButton = document.querySelector(".next")
     let prevButton = document.querySelector(".prev")
     let overviewButton = document.querySelector(".overview")
-    document.querySelector("h4").textContent = destinationPage + "/" + questionCount
+    document.querySelector("#question-counter").textContent = destinationPage + "/" + questionCount
 
     switch (parseInt(destinationPage)) { // parseInt() in case a string is passed
         case 1:
