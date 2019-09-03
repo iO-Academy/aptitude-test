@@ -99,16 +99,25 @@ img {
   justify-content: space-between;
   width: 100%;
 }
-.nav-buttons{
-  width:20%;
+
+.nav-buttons {
+  width: 20%;
+
   button {
-    width:100%
+    width: 100%
   }
 }
+
 .overview {
   visibility: hidden;
   text-transform: uppercase;
   letter-spacing: 2px;
+  border: none;
+  background-color: $overview-button;
+}
+
+.overview:hover {
+  background-color: $overview-button-hover;
 }
 
 .error_message {
