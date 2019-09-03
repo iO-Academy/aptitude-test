@@ -1,9 +1,6 @@
 @import "imports/variables";
 @import "imports/modal";
 
-.container {
-  text-align: center;
-}
 
 .question {
   position: relative;
@@ -76,6 +73,11 @@ img {
 
 .next:hover {
   background-color: $primary-button-hover;
+}
+
+.question-nav-row {
+  display: flex;
+  justify-content: space-between;
 }
 
 .overview {
