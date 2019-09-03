@@ -56,6 +56,7 @@ async function createUsersObject () {
             if (score.id === user.id ) {
                 let obj = {}
 
+                obj['id'] = user.id
                 obj['name'] = user.name
                 obj['email'] = user.email
                 obj['timeAllowed'] = user.timeAllowed
