@@ -114,13 +114,18 @@ img {
   bottom: 0;
   padding: 20px 0;
   width: 100%;
+
+  .container {
+    border: solid 2px $primary-button;
+    padding: 20px 0;
+  }
 }
 
 .nav-buttons {
   text-align: center;
 
   button {
-    width: 100%
+    width: 90%
   }
 }
 
