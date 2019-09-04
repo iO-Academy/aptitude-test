@@ -58,6 +58,34 @@ function printFilteredResultsToScreen(HBTemplate, scoresDataArray) {
 }
 
 /**
+ * Adds event listener to the edit buttons.
+ */
+function addEditEventListeners() {
+    let editButtons = document.querySelectorAll(".modalBtn")
+    editButtons.forEach(function(editButton) {
+        editButton.addEventListener('click', function (e) {
+            openDialog()
+            let userInfo = createObjectFromParentElement(e)
+            populateEditModal(userInfo)
+        })
+    })
+}
+
+/**
+ * Adds event listener to the delete buttons.
+ */
+function addDeleteEventListeners() {
+    let userItems = document.querySelectorAll(".btn-danger")
+    //console.log(userItems)
+    userItems.forEach(function (userItem) {
+        userItem.addEventListener('click', function (e) {
+            let userId = e.target.parentElement.getAttribute("dataId")
+            deleteUser(userId)
+        })
+    })
+}
+
+/**
  * Compiles the data object with the handlebars template
  *
  * @param HBTemplate the handlebars template for creating a table of results
