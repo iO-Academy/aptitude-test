@@ -58,6 +58,44 @@ function printFilteredResultsToScreen(HBTemplate, scoresDataArray) {
 }
 
 /**
+ * Turns data from parent element (userTable handlebars template) into an object.
+ *
+ * @param event is the event fired off by the function
+ */
+function createObjectFromParentElement(event) {
+    let parentElement = event.target.parentElement
+    let userInfo = {}
+    userInfo.name = parentElement.getAttribute("dataName")
+    userInfo.email = parentElement.getAttribute("dataEmail")
+    userInfo.id = parentElement.getAttribute("dataId")
+    userInfo.time = parentElement.getAttribute("dataTime")
+    userInfo.canRetake = parseInt(parentElement.getAttribute("dataCanRetake"))
+    return userInfo
+}
+
+/**
+ * Fills the input fields in the edit modal with the current data for the user stored in the api.
+ *
+ * @param HBTemplate the handlebars template.
+ *
+ * @param userInfo the object of all fields required in scores page.
+ *
+ */
+function fillEditModal(HBTemplate, userInfo) {
+    let template = Handlebars.compile(HBTemplate)
+    let modal_content = document.querySelector("#modal-content")
+
+    modal_content.innerHTML = ""
+
+    if (userInfo.name && userInfo.email && userInfo.id && userInfo.time) {
+        let html = template(userInfo)
+        modal_content.innerHTML += html
+    } else {
+        modal_content.innerHTML = "Please contact Admin, user list unavailable"
+    }
+}
+
+/**
  * Adds event listener to the edit buttons.
  */
 function addEditEventListeners() {
@@ -83,6 +121,33 @@ function addDeleteEventListeners() {
             deleteUser(userId)
         })
     })
+}
+
+/**
+ * Populates the modal with editModal handlebars template, 
+ * and puts userInfo object into that template and triggers
+ * addEditModalSubmitEventListener.
+ *
+ * @param userInfo
+ */
+function populateEditModal(userInfo) {
+    console.log('populating edit modal')
+    getTemplateAjax('js/templates/editmodal.hbs').then(function (HBTemplate) {
+        fillEditModal(HBTemplate, userInfo)
+    }).then(addEditModalSubmitEventListener)
+}
+
+/**
+ * Sends the API call to delete a user with the specified ID
+ *
+ * @param userId 
+ */
+function deleteUser(userId) {
+    let url = "http://localhost:8080/user/delete/" + userId
+    fetch(url, {"method": "post"})
+        .then(function () {
+            updateScoreTable()
+        })
 }
 
 /**
