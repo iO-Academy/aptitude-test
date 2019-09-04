@@ -5,11 +5,14 @@
  */
 async function sortUsersObjectByDate() {
     let testUserData = await createUsersObject()
+    console.log(testUserData)
     await testUserData.data.sort(function(a, b){
         var dateA = new Date(a.dateCreated), dateB=new Date(b.dateCreated)
         return dateB - dateA //sort by date descending
     })
     return await testUserData
+    console.log(testUserData)
+
 }
 
 /**
