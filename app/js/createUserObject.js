@@ -56,9 +56,12 @@ async function createUsersObject() {
     let results = await getResults()
     let users = await getNameAndEmail()
     let userDisplayArray = []
+    let didTest = []
 
-    results.forEach(function(result) {
-        users.forEach(function(user) {
+    users.forEach(function(user) {
+        results.forEach(function(result) {
+            didTest = []
+
             if (result.id === user.id ) {
                 let obj = {}
 
@@ -66,13 +69,33 @@ async function createUsersObject() {
                 obj['name'] = user.name
                 obj['email'] = user.email
                 obj['score'] = result.score
-                obj['percentage'] = calculatePercentage(result.score, numberOfQuestions)
+                obj['percentage'] = result.percentage
                 obj['time'] = result.time
                 obj['timeAllowed'] = user.timeAllowed
                 obj['dateCreated'] = result.dateCreated
                 userDisplayArray.push(obj)
+                didTest.push('yes')
+
             }
+
         })
+        
+        if (didTest.length === 0) {
+
+            let obj = {}
+
+            obj['id'] = user.id
+            obj['name'] = user.name
+            obj['email'] = user.email
+            obj['score'] = ''
+            obj['percentage'] = ''
+            obj['time'] = ''
+            obj['timeAllowed'] = user.timeAllowed
+            obj['dateCreated'] = results[0].dateCreated
+            userDisplayArray.push(obj)
+        }
+
     })
+    console.log({data: userDisplayArray})
     return await {success: true, data: userDisplayArray}
 }
