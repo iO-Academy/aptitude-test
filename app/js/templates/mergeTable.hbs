@@ -1,6 +1,14 @@
 {{#each data}}
 <div class="entry" dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}" dataTime="{{time}}" dataCanRetake="{{canRetake}}">
-    <div class="score_item" dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}" dataTime="{{time}}" dataTimeAllowed={{timeAllowed}} dataCanRetake="{{canRetake}}">
+    <div dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}" dataTime="{{time}}" dataTimeAllowed={{timeAllowed}} dataCanRetake="{{canRetake}}" {{#if this.topGrade}}
+         class="score_item top-grade"
+    {{else if this.passingGrade}}
+         class="score_item passing-grade"
+    {{else if this.fail}}
+         class="score_item dubious-grade"
+    {{else if this.notTakenYet}}
+         class="score_item test-not-taken"
+    {{/if}}>
         <button class="btn btn-primary btn_height modalBtn">Edit User</button>
         <button type="button" class="btn btn-danger btn_height">Delete User</button>
         <p class="name">Name: {{this.name}}</p>
