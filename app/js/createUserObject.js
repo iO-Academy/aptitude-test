@@ -76,7 +76,7 @@ async function createUsersObject() {
                 obj['name'] = user.name
                 obj['email'] = user.email
                 obj['score'] = result.score
-                obj['percentage'] = result.percentage
+                obj['percentage'] = calculatePercentage(result.score, numberOfQuestions)
                 obj['time'] = result.time
                 obj['timeAllowed'] = user.timeAllowed
                 obj['dateCreated'] = result.dateCreated
