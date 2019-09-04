@@ -228,14 +228,26 @@ img {
 }
 
 .overview_footer p {
-  margin: 55px 0 10px;
-  text-align: end;
+  text-align: center;
   color: $unanswered-color;
+  margin-top: 50px;
 }
 
 .finish {
   width: 100%;
   margin: 50px 0;
+  background-color: $primary-button-hover;
+  color: $flag-pressed;
+}
+
+.finish:hover {
+  background-color: $primary-button;
+  color: $flag-pressed;
+}
+
+.footer-row{
+  display: flex;
+  justify-content: center;
 }
 
 .unanswered-nav-box {
