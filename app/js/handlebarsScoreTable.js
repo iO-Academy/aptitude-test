@@ -82,7 +82,7 @@ function addEditEventListeners() {
         editButton.addEventListener('click', function (e) {
             openDialog()
             let userInfo = createObjectFromParentElement(e)
-            populateEditModal(userInfo)
+            createEditModal(userInfo)
         })
     })
 }
