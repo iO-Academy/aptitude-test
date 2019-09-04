@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+
+  .container {
+    border: 5px solid red;
+
+    .question {
+      margin: 5%;
+      width: 90%;
+    }
+
+    .option {
+      margin: 5%;
+      width: 90%;
+    }
+  }
+
+}
+
+
