@@ -178,7 +178,7 @@ img {
   border: solid 2px $primary-button;
 
   th, td {
-    border: 1px solid $table-border;
+    border: 1px solid darken($table-border, 10%);
     padding: 2px;
   }
 
