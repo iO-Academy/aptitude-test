@@ -3,6 +3,10 @@
 body {
   .container {
 
+    .new-user-container {
+      margin-top: 3rem;
+    }
+
     .display-flex {
       display: flex;
       align-items: center;
@@ -20,13 +24,23 @@ body {
     .score-container {
       margin-top: 5rem;
 
-      .filterContainer {
+      .search-filter-container {
+        margin-top: 3rem;
+        display: flex;
+        height: 180px;
+        flex-direction: column;
+        justify-content: space-between;
 
-        label {
-          font-weight: 400;
-          font-size: 1.5rem;
+        .filterContainer {
+
+          label {
+            font-weight: 400;
+            font-size: 1.5rem;
+          }
         }
       }
+
+
     }
 
     .dropdown {
