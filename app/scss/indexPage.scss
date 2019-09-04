@@ -1,0 +1,42 @@
+@import "imports/variables";
+
+* {
+  box-sizing: border-box;
+  font-size: 100%;
+
+  body {
+    font-family: 'Asap', sans-serif;
+
+    .container {
+      .start-button {
+        width: 110px;
+        background: $primary-button;
+        border: 1px solid $main-background-color;
+        color: $main-background-color;
+        font-size: 15px;
+        padding: 6px 20px;
+        text-decoration: none;
+        transition: .5s;
+
+        &:hover {
+          background-color: $primary-button-hover;
+        }
+      }
+
+      .text-center p {
+        display: block;
+        margin-top: 10px;
+      }
+
+      #email {
+        margin-top: 5%;
+      }
+
+      @media only screen and (max-width: 767px) {
+        .header {
+          margin-top: 85px;
+        }
+      }
+    }
+  }
+}

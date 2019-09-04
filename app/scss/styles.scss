@@ -6,6 +6,7 @@
 
   body {
     color: $font-color;
+
     h1, h2, h3, h4 {
       color: $font-color;
     }
@@ -26,15 +27,16 @@
 
       .user_list {
         padding: 20px;
-      .btn_height {
-        padding: 0 1px 0 1px;
-      }
+
+        .btn_height {
+          padding: 0 1px 0 1px;
+        }
       }
 
       .score_list {
         padding: 20px;
 
-        .score_item{
+        .score_item {
           border: 1px solid #000000;
         }
 
@@ -42,6 +44,12 @@
 
       img {
         width: 100%;
+      }
+
+      .logo {
+        width: 300px;
+        float: right;
+        margin: 2%;
       }
 
       p {
@@ -52,14 +60,18 @@
       .primary-button {
         background-color: $primary-button;
         color: $main-background-color;
+
         &:hover {
           background-color: $primary-button-hover;
         }
       }
 
       .search-heading {
-          font-size: 1.5rem;
+        font-size: 1.5rem;
       }
     }
   }
 }
+
+
+
