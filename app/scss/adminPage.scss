@@ -30,7 +30,7 @@ body {
       margin-right: 0.5rem;
     }
 
-    table {
+    .table {
       font-size: 5.5rem;
 
       .edit-user-button, .delete-user-button {
@@ -47,6 +47,19 @@ body {
 
       .email {
         border-right: 1px solid $table-border;
+      }
+
+      &.reset-vertical-align {
+
+        tbody {
+
+          tr {
+
+            td {
+              vertical-align: middle;
+            }
+          }
+        }
       }
     }
   }
