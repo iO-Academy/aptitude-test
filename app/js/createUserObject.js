@@ -82,15 +82,11 @@ async function createUsersObject() {
                 obj['dateCreated'] = result.dateCreated
                 userDisplayArray.push(obj)
                 didTest.push('yes')
-
             }
-
         })
-        
+
         if (didTest.length === 0) {
-
             let obj = {}
-
             obj['id'] = user.id
             obj['name'] = user.name
             obj['email'] = user.email
@@ -101,7 +97,6 @@ async function createUsersObject() {
             obj['dateCreated'] = results[0].dateCreated
             userDisplayArray.push(obj)
         }
-
     })
     console.log({data: userDisplayArray})
     return await {success: true, data: userDisplayArray}
