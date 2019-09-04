@@ -122,6 +122,23 @@ function deleteUser(userId) {
  * and filtered by user settings
  */
 function produceTable (HBTemplate, scoresDataObject) {
+    scoresDataObject.data.forEach(function (scoreData) {
+        switch (true) {
+            case scoreData.percentage > 97:
+                scoreData.topGrade = true
+                break
+            case scoreData.percentage >= 70:
+                scoreData.passingGrade = true
+                break
+            case scoreData.percentage < 70:
+                scoreData.fail = true
+                break
+            default:
+                scoreData.notTakenYet = true
+                break
+        }
+        console.log(scoreData)
+    })
     let template = Handlebars.compile(HBTemplate)
     let score_list = document.querySelector(".score_list")
     score_list.innerHTML = ""
