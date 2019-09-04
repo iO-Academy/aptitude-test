@@ -9,13 +9,21 @@ async function getResults() {
     return resultsArr.data
 }
 
+/**
+ * Gets users from the API.
+ * Filters out users that have been soft-deleted from the database.
+ * 
+ * @return Array of user objects
+ */
 async function getUsers() {
     let users = await fetch("http://localhost:8080/user", {method: 'get'})
-    .then(function (data) {
-        return data.json()
+        .then(function (data) {
+            return data.json()
+        })
+    let filteredUsersArray = users.data.filter( function(value, index, arr) {
+        return value.deleted == 0;
     })
-    //console.log(users.data)
-    return users.data
+    return filteredUsersArray
 }
 
 function calculatePercentage(score, numOfQuestions) {
@@ -27,14 +35,13 @@ function secondsToMinutes(time) {
 }
 
 /**
- * gets all users name and email from API
+ * Prepares user objects for next step, createUserObject
  *
- * @return Array - containing the user info (Name and Email)
+ * @return Array - containing the user objects
  */
 async function getNameAndEmail() {
     let users = await getUsers()
-
-    let usersArray = []
+    let userObjectArray = []
     users.forEach(function(user) {
         let obj = {}
         let {id, email, name, time} = user
@@ -42,9 +49,9 @@ async function getNameAndEmail() {
         obj['name'] = name
         obj['email'] = email
         obj['timeAllowed'] = secondsToMinutes(time)
-        usersArray.push(obj)
+        userObjectArray.push(obj)
     })
-    return usersArray
+    return userObjectArray
 }
 
 /**
