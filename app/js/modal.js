@@ -16,14 +16,17 @@ function closeDialog() {
 
 /**
  * Creates the modal with editModal handlebars template. 
- * and puts userInfo object into that template and adds
- * addEditModalSubmitEventListener.
- * @param userInfo
+ * Then calls function to fill modal fields with the users' data.
+ * Then adds the submit button's event listener.
+ * @param userInfo Object containing info of the user to edit.
  */
 function createEditModal(userInfo) {
     getTemplateAjax('js/templates/editmodal.hbs').then(function (HBTemplate) {
         fillEditModalFields(HBTemplate, userInfo)
-    }).then(addEditModalSubmitEventListener)
+    })
+    .then(() => {
+        addEditModalSubmitEventListener()
+    })
 }
 
 /**
@@ -72,12 +75,14 @@ function addEditModalSubmitEventListener() {
                 nameValidation(name) &&
                 isTimeValid (time) &&
                 isEmailValid(email)) {
-                if(originalEmail == email || userExists(email, existingUsers) == false){
+                if(originalEmail == email || userExists(email, existingUsers) == false) {
+                    console.log('Validated!')
                     closeDialog()
                     postUserEdit(createObjectForDatabase('.editUserData'))
-                    updateUserTable()
+                    updateScoreTable()
                 }
             }
         })
+        console.log('Not validated??')
     })
 }
