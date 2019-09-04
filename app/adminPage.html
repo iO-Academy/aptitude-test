@@ -1,7 +1,11 @@
 <!DOCTYPE html>
-<html>
-<script lang="en"></script>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <link href="css/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="css/styles.css" type="text/css" rel="stylesheet">
+    <link href="css/adminPage.css" type="text/css" rel="stylesheet">
+    <script src="js/handlebars-v4.0.11.js"></script>
     <script src="js/userLogIn.js"></script>
     <script src="js/cookies.js"></script>
     <script>
@@ -12,80 +16,79 @@
             }
         })
     </script>
-    <meta charset="UTF-8">
-    <link href="css/bootstrap.css" type="text/css" rel="stylesheet">
-    <link href="css/styles.css" type="text/css" rel="stylesheet">
-    <script src="js/handlebars-v4.0.11.js"></script>
     <script src="js/validateUserAdditions.js" defer></script>
     <script src="js/ajaxHandlebarsTemplate.js" defer></script>
-    <script src="js/modal.js" defer></script>
-    <script src="js/handlebarsUserTable.js" defer></script>
     <script src="js/createUserObject.js" defer></script>
-    <script src="js/handlebarsScoreTable.js" defer></script>
     <script src="js/aptitudeTestHelpers.js" defer></script>
     <script src="js/sanitiseAdmin.js" defer></script>
-    <script src="js/modalSubmit.js" defer></script>
     <script src="js/postEditFunction.js" defer></script>
     <script src="js/searchFunction.js" defer></script>
     <script src="js/filterFunctions.js" defer></script>
     <script src="js/searchAndFilter.js" defer></script>
+    <script src="js/handlebarsScoreTable.js" defer></script>
+    <script src="js/modal.js" defer></script>
     <title>Admin Page</title>
 </head>
 <body>
 <!-- Modal -->
 <div class="overlay"></div>
 <div id="modal">
-    <h3 id="modal-title"> </h3>
-    <div id="modal-content">
-    </div>
+    <h3 id="modal-title"></h3>
+    <div id="modal-content"></div>
 </div>
 <section class="container">
+    <img class="logo" alt="Mayden Logo" src="images/branding-icons/mayden_academy_logotype_2018_500px_colour.png">
     <div class="row">
         <div class="col-xs-12">
-                <h2 class="second-heading">Add New User</h2>
-                <form class="container_controls" id="addNewUserForm">
-                    <div class="container_input">
+                <h2>Add new user</h2>
+                <form class="container_controls new-user-container" id="addNewUserForm">
+                    <div class="container_input display-flex">
                         <input type="text" id="name" name="name" placeholder="Type new user's name">
                         <input type="text" id="email" name="email" placeholder="Type new user's email">
                         <input type="number" id="time" name="time" value="30">
-                    </div>
-                    <div class="container_submit">
-                        <input type="submit" value="Add User" class="primary-button">
+                        <input type="submit" value="Add User" class="btn primary-button">
                     </div>
                 </form>
                 <div id='error' class='title_input'></div>
-                <h4 class="search-heading">Search User</h4>
-                    <input type="text" id="searchInput" placeholder="Type name or email">
-                    <input type="submit" id="searchSubmit" value="Search" class="primary-button">
-                    <input type="submit" id="searchReset" value="Clear Search" class="primary-button">
-                <div class="filterContainer">
-                    <h4 class="search-heading">Filter Results</h4>
-                    <label for="filterScorePercentage" class="labelDropdown">Score percentage:</label>
-                    <select name="filterScorePercentage" id="filterScorePercentage" class="dropdown">
-                        <option value="" disabled selected>Score Percentage</option>
-                        <option value="3">-none-</option>
-                        <option value="1">+70%</option>
-                        <option value="2">-69%</option>
-                    </select>
-                    <label for="startDate">Start:</label>
-                    <input id="startDate" type="date">
-                    <label for="endDate">End:</label>
-                    <input id="endDate" type="date">
-                </div>
-            <div>
-                <h2>Registered Users</h2>
-                <div class="user_list"></div>
-            </div>
-            <div>
+            <div class="score-container">
                 <h2>Scores</h2>
-                <section>
-
-
-                </section>
-                <div class="score_list"></div>
+                <div class="search-filter-container">
+                    <h4 class="search-heading">Search User</h4>
+                    <div class="display-flex">
+                        <input type="text" id="searchInput" placeholder="Type name or email">
+                        <input type="submit" id="searchSubmit" value="Search" class="btn primary-button">
+                        <input type="submit" id="searchReset" value="Clear Search" class="btn primary-button">
+                    </div>
+                        <h4 class="search-heading">Filter Results</h4>
+                        <div class="display-flex">
+                            <select name="filterScorePercentage" id="filterScorePercentage" class="dropdown">
+                                <option value="" disabled selected>Score Percentage</option>
+                                <option value="3">-none-</option>
+                                <option value="1">+70%</option>
+                                <option value="2">-69%</option>
+                            </select>
+                            <label for="startDate">Start</label>
+                            <input id="startDate" type="date">
+                            <label for="endDate">End</label>
+                            <input id="endDate" type="date">
+                        </div>
+                </div>
+                <table class="table user-score-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Score (num)</th>
+                            <th>Percentage (%)</th>
+                            <th>Time Allowed</th>
+                            <th>Time Taken</th>
+                            <th>Date of Test</th>
+                        </tr>
+                    </thead>
+                    <tbody class="score_list user-table"></tbody>
+                </table>
             </div>
-
-
         </div>
     </div>
 </section>

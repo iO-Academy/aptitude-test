@@ -1,0 +1,106 @@
+@import "imports/variables";
+
+body {
+
+  .container {
+
+    .new-user-container {
+      margin-top: 3rem;
+    }
+
+    .display-flex {
+      display: flex;
+      align-items: center;
+
+      label {
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin: 0 0.5rem 0 0;
+      }
+
+      input {
+        margin-right: 1rem;
+
+        &.primary-button {
+          font-size: 1.4rem;
+          color: $main-background-color;
+        }
+      }
+    }
+
+    .score-container {
+      margin-top: 5rem;
+
+      .search-filter-container {
+        margin-top: 3rem;
+        display: flex;
+        height: 180px;
+        flex-direction: column;
+        justify-content: space-between;
+
+        .filterContainer {
+
+          label {
+            font-weight: 400;
+            font-size: 1.5rem;
+          }
+        }
+      }
+
+    }
+
+    select:not([multiple]) {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-position: right 50%;
+      background-repeat: no-repeat;
+      background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAMCAYAAABSgIzaAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6NDZFNDEwNjlGNzFEMTFFMkJEQ0VDRTM1N0RCMzMyMkIiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6NDZFNDEwNkFGNzFEMTFFMkJEQ0VDRTM1N0RCMzMyMkIiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo0NkU0MTA2N0Y3MUQxMUUyQkRDRUNFMzU3REIzMzIyQiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo0NkU0MTA2OEY3MUQxMUUyQkRDRUNFMzU3REIzMzIyQiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PuGsgwQAAAA5SURBVHjaYvz//z8DOYCJgUxAf42MQIzTk0D/M+KzkRGPoQSdykiKJrBGpOhgJFYTWNEIiEeAAAMAzNENEOH+do8AAAAASUVORK5CYII=);
+      padding: .5rem;
+      padding-right: 1.5rem;
+      background-color: $main-background-color;
+    }
+
+    .dropdown {
+      height: 34px;
+      margin-right: 0.5rem;
+      border-radius: 0;
+
+      option {
+        font-size: 1.5rem;
+      }
+    }
+
+    .table {
+      font-size: 1.5rem;
+
+      .edit-user-button, .delete-user-button {
+        color: $main-background-color;
+      }
+
+      .edit-user-button {
+        background-color: $edit-button;
+      }
+
+      .delete-user-button {
+        background-color: $primary-button-hover;
+      }
+
+      .email {
+        border-right: 1px solid $table-border;
+      }
+
+      &.user-score-table {
+          margin-top: 4rem;
+        tbody {
+
+          tr {
+
+            td {
+              vertical-align: middle;
+            }
+          }
+        }
+      }
+    }
+  }
+}
