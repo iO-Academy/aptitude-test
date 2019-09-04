@@ -1,7 +1,10 @@
 <!DOCTYPE html>
-<html>
-<script lang="en"></script>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <link href="css/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="css/styles.css" type="text/css" rel="stylesheet">
+    <script src="js/handlebars-v4.0.11.js"></script>
     <script src="js/userLogIn.js"></script>
     <script src="js/cookies.js"></script>
     <script>
@@ -12,23 +15,17 @@
             }
         })
     </script>
-    <meta charset="UTF-8">
-    <link href="css/bootstrap.css" type="text/css" rel="stylesheet">
-    <link href="css/styles.css" type="text/css" rel="stylesheet">
-    <script src="js/handlebars-v4.0.11.js"></script>
     <script src="js/validateUserAdditions.js" defer></script>
     <script src="js/ajaxHandlebarsTemplate.js" defer></script>
-    <script src="js/modal.js" defer></script>
-    <script src="js/handlebarsUserTable.js" defer></script>
     <script src="js/createUserObject.js" defer></script>
-    <script src="js/handlebarsScoreTable.js" defer></script>
     <script src="js/aptitudeTestHelpers.js" defer></script>
     <script src="js/sanitiseAdmin.js" defer></script>
-    <script src="js/modalSubmit.js" defer></script>
     <script src="js/postEditFunction.js" defer></script>
     <script src="js/searchFunction.js" defer></script>
     <script src="js/filterFunctions.js" defer></script>
     <script src="js/searchAndFilter.js" defer></script>
+    <script src="js/handlebarsScoreTable.js" defer></script>
+    <script src="js/modal.js" defer></script>
     <title>Admin Page</title>
 </head>
 <body>
@@ -80,7 +77,7 @@
                         <input id="endDate" type="date">
                     </div>
                 </section>
-                <div class="score_list"></div>
+                <div class="score_list user-table"></div>x
             </div>
         </div>
     </div>
