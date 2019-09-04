@@ -44,6 +44,10 @@ body {
       .delete-user-button {
         background-color: $primary-button-hover;
       }
+
+      .email {
+        border-right: 1px solid $table-border;
+      }
     }
   }
 }
