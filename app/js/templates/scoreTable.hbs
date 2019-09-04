@@ -1,6 +1,16 @@
 {{#each data}}
 <div class="entry">
-    <div class="score_item">
+    <div
+        {{#if this.topGrade}}
+            class="score_item top-grade"
+        {{else if this.passingGrade}}
+            class="score_item passing-grade"
+        {{else if this.fail}}
+            class="score_item dubious-grade"
+        {{else if this.notTakenYet}}
+         class="score_item test-not-taken"
+        {{/if}}
+    >
         <p class="name">Name: {{this.name}}</p>
         <p class="email">Email: {{this.email}}</p>
         <p class="score">Score: {{this.score}}</p>
