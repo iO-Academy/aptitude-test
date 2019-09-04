@@ -1,6 +1,3 @@
-
-
-
 /**
  * Takes the input from the search box and checks if it has an illegal character
  *
@@ -37,7 +34,6 @@ function sanitizeInput (input) {
  *
  * @returns array of objects
  */
-
 function searchByTextAndEmail (resultArray) {
     let newResultArray = []
     let searchInput = sanitizeInput(document.getElementById('searchInput').value)
