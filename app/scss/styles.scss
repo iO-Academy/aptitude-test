@@ -6,6 +6,7 @@
 
   body {
     color: $font-color;
+    font-family: 'Asap', sans-serif;
 
     h1, h2, h3, h4 {
       color: $font-color;
@@ -60,6 +61,8 @@
       .primary-button {
         background-color: $primary-button;
         color: $main-background-color;
+        transition: .5s;
+        border-radius: 0;
 
         &:hover {
           background-color: $primary-button-hover;
