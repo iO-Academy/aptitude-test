@@ -1,18 +1,19 @@
 const numberOfQuestions = 30
 
+/**
+ * Get all the test results from the API.
+ */
 async function getResults() {
     let resultsArr = await fetch("http://localhost:8080/result", {method: 'get'})
     .then(function (data) {
         return data.json()
     })
-    //console.log(resultsArr.data)
     return resultsArr.data
 }
 
 /**
  * Gets users from the API.
  * Filters out users that have been soft-deleted from the database.
- * 
  * @return Array of user objects
  */
 async function getUsers() {
@@ -26,10 +27,20 @@ async function getUsers() {
     return filteredUsersArray
 }
 
+/**
+ * Take a score and a total number of questions and calculate the score 
+ * as a percentage.
+ * @param score 
+ * @param numOfQuestions 
+ */
 function calculatePercentage(score, numOfQuestions) {
     return ((score / numOfQuestions) * 100).toFixed(2)
 }
 
+/**
+ * Take a time in seconds and convert it into minutes and seconds.
+ * @param time 
+ */
 function secondsToMinutes(time) {
     return (time / 60).toFixed(2)
 }
@@ -55,24 +66,21 @@ async function getNameAndEmail() {
 }
 
 /**
- * combines user info (name and email) and result scores into the a new object
+ * Combines the information used in a table row into a new object.
+ * Returns a list of all of these user-result objects readyt o be put into table rows.
  *
- * @return Object - containing the user info and user results including percentage
+ * @return Object containing a success/fail state and an array of the user-result objects.
  */
 async function createUsersObject() {
     let results = await getResults()
     let users = await getNameAndEmail()
     let userDisplayArray = []
-
     users.forEach(function(user) {
-
         let didTest = []
         results.forEach(function(result) {
             let testEntryFound = []
-
             if (result.id === user.id ) {
                 let obj = {}
-
                 obj['id'] = user.id
                 obj['name'] = user.name
                 obj['email'] = user.email
@@ -83,16 +91,11 @@ async function createUsersObject() {
                 obj['dateCreated'] = result.dateCreated
                 userDisplayArray.push(obj)
                 testEntryFound.push('yes')
-
             }
-
             if (testEntryFound.length !== 0) {
                 didTest.push(testEntryFound)
             }
-            console.log(didTest)
-
         })
-
         if (didTest.length === 0) {
             let obj = {}
             obj['id'] = user.id
@@ -106,6 +109,5 @@ async function createUsersObject() {
             userDisplayArray.push(obj)
         }
     })
-    console.log({data: userDisplayArray})
     return await {success: true, data: userDisplayArray}
 }
