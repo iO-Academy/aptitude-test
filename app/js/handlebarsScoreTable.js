@@ -5,12 +5,15 @@
  * @return array of user objects in the desired order
  */
 async function sortUsersObjectByDate() {
+
     let usersObject = await createUsersObject()
-    usersObject.data.sort(function(a, b) {
-        let dateA = new Date(a.dateCreated)
-        let dateB= new Date(b.dateCreated)
-        return dateB - dateA //sort by date descending
+    console.log(usersObject)
+    usersObject.data.sort(function(a, b){
+            let dateA = a.dateCreated
+            let dateB = b.dateCreated
+            return dateB - dateA //sort by date descending
     })
+
     return usersObject
 }
 
