@@ -1,20 +1,22 @@
 /**
- * Function sortUsersObjectByDate sorts an array of objects by their 'dateCreated' in descending order (newest at the top)
+ * Sorts the array of user objects by their 'dateCreated' with the 
+ * newest at the top
  *
- * @return array of Objects is the array but in the correct order
+ * @return array of user objects in the desired order
  */
 async function sortUsersObjectByDate() {
-    let testUserData = await createUsersObject()
-    console.log(testUserData)
-    await testUserData.data.sort(function(a, b){
-        var dateA = new Date(a.dateCreated), dateB=new Date(b.dateCreated)
+    let usersObject = await createUsersObject()
+    usersObject.data.sort(function(a, b) {
+        let dateA = new Date(a.dateCreated)
+        let dateB= new Date(b.dateCreated)
         return dateB - dateA //sort by date descending
     })
-    return await testUserData
+    return usersObject
 }
 
 /**
- * get the handlebars template (scoreTable.hbs) and add userInfo (Email, Name and Scores) to the template
+ * Get the handlebars template for table rows (mergeTable.hbs), combine 
+ * with user objects and send this to searching and filtering.
  */
 function updateScoreTable() {
     let users = sortUsersObjectByDate()
@@ -37,12 +39,13 @@ function sendToSearchAndFilter(template, userInfo) {
 }
 
 /**
- * Checks the length of an array of data objects, if greater than 0 calls function to print to screen, if 0, gives 'no valid results message'
+ * Checks the length of an array of data objects. 
+ * If greater than 0, calls function to print them to the table
+ * If 0, gives 'no valid results message'
  *
  * @param HBTemplate the handlebars template for creating a table of results
- * @param scoresDataArray an array of data objects returned from the API and filtered by user settings
- *
- * @returns Void Sends results to produceTablefunction to print table to screen, or prints no results found message
+ * @param scoresDataArray an array of data objects returned from the API 
+ * and filtered by user settings
  */
 function printFilteredResultsToScreen(HBTemplate, scoresDataArray) {
     if (scoresDataArray.length < 1) {
@@ -55,12 +58,11 @@ function printFilteredResultsToScreen(HBTemplate, scoresDataArray) {
 }
 
 /**
- * Compiles the data object with the handlebars template to display in browser
+ * Compiles the data object with the handlebars template
  *
  * @param HBTemplate the handlebars template for creating a table of results
- * @param scoresDataObject an array of data objects returned from the API and filtered by user settings
- *
- * @returns void
+ * @param scoresDataObject an array of data objects returned from the API 
+ * and filtered by user settings
  */
 function produceTable (HBTemplate, scoresDataObject) {
     let template = Handlebars.compile(HBTemplate)

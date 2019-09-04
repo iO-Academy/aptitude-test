@@ -105,7 +105,7 @@ async function createUsersObject() {
             obj['percentage'] = ''
             obj['time'] = ''
             obj['timeAllowed'] = user.timeAllowed
-            obj['dateCreated'] = '2011-11-11 11:11:11'
+            obj['dateCreated'] = 'Never'
             userDisplayArray.push(obj)
         }
     })
