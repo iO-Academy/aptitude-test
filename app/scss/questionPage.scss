@@ -4,6 +4,7 @@
 
 body {
   font-family: asap, sans-serif;
+  padding-bottom: 114px;
 }
 
 .left {
@@ -107,15 +108,15 @@ img {
   background-color: $primary-button-hover;
 }
 
-.question-nav-row {
-  display: flex;
-  justify-content: space-between;
+.question-nav-controls {
+  position: fixed;
+  background-color: white;
+  bottom: 0;
+  padding: 20px 0;
   width: 100%;
-  margin-top: 30px;
 }
 
 .nav-buttons {
-  width: 20%;
   text-align: center;
 
   button {
