@@ -21,7 +21,6 @@ function closeDialog() {
  * @param userInfo
  */
 function createEditModal(userInfo) {
-    console.log('populating edit modal')
     getTemplateAjax('js/templates/editmodal.hbs').then(function (HBTemplate) {
         fillEditModalFields(HBTemplate, userInfo)
     }).then(addEditModalSubmitEventListener)
