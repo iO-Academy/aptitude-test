@@ -11,8 +11,6 @@ async function sortUsersObjectByDate() {
         return dateB - dateA //sort by date descending
     })
     return await testUserData
-    console.log(testUserData)
-
 }
 
 /**
