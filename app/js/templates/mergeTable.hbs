@@ -1,6 +1,6 @@
 {{#each data}}
 <div class="entry" dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}" dataTime="{{time}}" dataCanRetake="{{canRetake}}">
-    <div class="score_item" dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}" dataTime="{{time}}" dataCanRetake="{{canRetake}}">
+    <div class="score_item" dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}" dataTime="{{time}}" dataTimeAllowed={{timeAllowed}} dataCanRetake="{{canRetake}}">
         <button class="btn btn-primary btn_height modalBtn">Edit User</button>
         <button type="button" class="btn btn-danger btn_height">Delete User</button>
         <p class="name">Name: {{this.name}}</p>
