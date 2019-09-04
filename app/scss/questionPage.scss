@@ -91,6 +91,10 @@ img {
   width: 60%;
   background-color: $primary-button;
   border: none;
+
+  &:hover {
+    background-color: $primary-button-hover;
+  }
 }
 
 .prev:hover {
@@ -101,10 +105,10 @@ img {
   width: 60%;
   background-color: $primary-button;
   border: none;
-}
 
-.next:hover {
-  background-color: $primary-button-hover;
+  &:hover {
+    background-color: $primary-button-hover;
+  }
 }
 
 .question-nav-controls {
@@ -134,10 +138,10 @@ img {
   letter-spacing: 2px;
   border: none;
   background-color: $overview-button;
-}
 
-.overview:hover {
-  background-color: $overview-button-hover;
+  &:hover {
+    background-color: $overview-button-hover;
+  }
 }
 
 .error_message {
@@ -160,10 +164,10 @@ img {
   i {
     color: $flag-pressed;
   }
-}
 
-.pressed:hover {
-  color: darken($flag-pressed, 10%);
+  &:hover {
+    color: darken($flag-pressed, 10%);
+  }
 }
 
 //======== O V E R V I E W    P A G E ========//
@@ -238,11 +242,11 @@ img {
   margin: 50px 0;
   background-color: $primary-button-hover;
   color: $flag-pressed;
-}
 
-.finish:hover {
-  background-color: $primary-button;
-  color: $flag-pressed;
+  &:hover {
+    background-color: $primary-button;
+    color: $flag-pressed;
+  }
 }
 
 .footer-row {
