@@ -1,3 +1,5 @@
+@import 'imports/variables';
+
 * {
   box-sizing: border-box;
 
@@ -6,6 +8,10 @@
 
     textarea {
       resize: vertical;
+    }
+
+    .dropdown {
+      margin: 2% 0;
     }
 
     .question {
@@ -17,8 +23,27 @@
       margin: 1% 5%;
       width: 90%;
     }
-  }
 
+    .submit-button {
+      text-align: center;
+      .addQuestion {
+        border-style: none;
+        margin: 3%;
+      }
+    }
+
+    .addQuestion{
+      width: 10%;
+      background-color: $primary-button;
+      color: #fff;
+      transition: .5s;
+
+      &:hover {
+        background-color: $primary-button-hover;
+      }
+    }
+
+  }
 }
 
 
