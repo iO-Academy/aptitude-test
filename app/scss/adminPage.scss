@@ -11,6 +11,12 @@ body {
       display: flex;
       align-items: center;
 
+      label {
+        font-size: 1.5rem;
+        font-weight: 400;
+        margin: 0 0.5rem 0 0;
+      }
+
       input {
         margin-right: 1rem;
 
