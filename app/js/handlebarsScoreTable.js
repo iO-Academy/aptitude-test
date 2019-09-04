@@ -33,8 +33,6 @@ function sendToSearchAndFilter(template, userInfo) {
     userInfo.data.forEach(function (scoreUser) {
         userArray.push(scoreUser)
     })
-    console.log('userarray')
-    console.log(userArray)
     searchAndFilter(template, userArray)
 }
 
