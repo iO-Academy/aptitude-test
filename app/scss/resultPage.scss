@@ -1,4 +1,5 @@
 @import "imports/variables";
+
 html {
   font-size: 62.5%;
 }
@@ -11,29 +12,30 @@ body {
 }
 
 #result_page {
+  display: none;
 }
+
 
 .result_card {
   background-color: #fff;
-  margin: 50px auto;
+  margin: 0 auto;
   width: 700px;
   height: 700px;
-  border: 2px solid $primary-button;
-  padding: 50px;
 }
 
 .greetings {
   text-align: center;
 
-   p {
-     display: inline-block;
-     width: 100%;
-     text-align: center;
-     color: $primary-button;
-     font-size: 4rem;
-     font-weight: bold;
-     letter-spacing: 1px;
-   }
+  p {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    color: $font-color;
+    font-size: 4rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    margin-bottom: 30px;
+  }
 }
 
 .result {
@@ -44,7 +46,7 @@ body {
     display: inline-block;
     padding: 0;
     background-color: #fff;
-    border: 2px solid $primary-button;
+    border: 2px solid black;
 
     .points_label {
       height: 70px;
@@ -77,16 +79,16 @@ body {
   }
 
   .percentage {
-     @extend .points;
+    @extend .points;
 
-     .percentage_label {
-       @extend .points_label;
-     }
+    .percentage_label {
+      @extend .points_label;
+    }
 
-     .percentage_number {
-       @extend .points_number;
-     }
-   }
+    .percentage_number {
+      @extend .points_number;
+    }
+  }
 
   .answered {
     @extend .points;
