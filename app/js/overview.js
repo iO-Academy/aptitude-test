@@ -10,7 +10,7 @@ document.querySelector(".overview").addEventListener("click", function() {
         questionObject['id'] = i
         questionObject['isFlagged'] = flaggedQuestions[i]
         questionObject['isAnswered'] = isAnswered[i] !== 'unanswered'
-        questionObject['question'] = document.querySelectorAll(`.q_${i} p`)[1].innerText.substring(0, 20) + '...'
+        questionObject['question'] = document.querySelectorAll(`.q_${i} p`)[1].innerText.substring(0, 80) + '...'
         overviewData.push(questionObject)
     }
 

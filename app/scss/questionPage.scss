@@ -175,7 +175,7 @@ img {
 
 .overview_page_table {
   width: 100%;
-  box-shadow: 0 19px 38px $table-box-shadow, 0 15px 12px $table-box-shadow;
+  border: solid 2px $primary-button;
 
   th, td {
     border: 1px solid $table-border;
@@ -183,11 +183,11 @@ img {
   }
 
   .question_id {
-    width: 130px;
+    width: 50px;
   }
 
   .question_column {
-    width: 200px;
+    width: 1000px;
   }
 
   tr:hover {
