@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <script src="js/cookies.js"></script>
     <script src="js/userLogIn.js"></script>
@@ -28,103 +27,141 @@
     <script src="js/checkAnswers.js" defer></script>
     <script src="js/sendResults.js" defer></script>
     <script src="js/overview.js" defer></script>
-
+    <script src="https://kit.fontawesome.com/2373a66060.js" defer></script>
 </head>
-
 <body>
-    <!--question number and time -->
-    <div id="question_page">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-2">
-                    <h3>Question number</h3>
-                    <h4></h4>
-                    <label for="flag-checkbox" id="flag-label">Flag</label>
-                    <input type="checkbox" id="flag-checkbox">
-                </div>
-                <div class="col-md-offset-8 col-md-2">
-                    <h3 id="timer"></h3>
-                </div>
+<!--question number and time -->
+<div id="question_page">
+    <div class="container">
+        <div class="row">
+            <img class="logo" src="images/branding-icons/maydenacademy_logotype_05.18_web.svg">
+        </div>
+        <div class="row">
+            <div class="left">
+                <h4>Question:</h4>
             </div>
-            <!--question body and nav-->
-            <div class="row">
-                <div class="col-md-2">
+            <div class="left">
+                <h4 id="question-counter"></h4>
+            </div>
+            <div class="col-md-2 right">
+                <h4 class="timer"></h4>
+            </div>
+        </div>
+        <!-- question body -->
+        <div class="row">
+            <div class="question-container col-md-12">
+                <div id="questions"></div>
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
+        <div class="row">
+            <div id="question-nav" class="question-nav"></div>
+        </div>
+    </div>
+    <div class="question-nav-controls">
+        <div class="container">
+            <div class="question-nav-row row">
+                <div class="nav-buttons col-xs-3">
                     <button type="button" class="btn btn-info prev">Previous</button>
                 </div>
-                <div class="question-container col-md-8">
-                    <div id="questions"></div>
-                    <div id="question-nav" class="question-nav"></div>
-                </div>
-                <div class="col-md-2 overview_column">
-                    <button type="button" class="btn btn-info next">Next</button>
+                <div class="nav-buttons col-xs-3">
                     <button type="button" class="btn btn-success overview">Overview</button>
                 </div>
-                <div class="col-md-2">
+                <div class="nav-buttons col-xs-3">
+                    <input type="checkbox" id="flag-checkbox">
+                    <button type="button" id="flag-button" class="btn"><i class="fas fa-flag"></i></button>
+                </div>
+                <div class="nav-buttons col-xs-3">
+                    <button type="button" class="btn btn-info next">Next</button>
                 </div>
             </div>
         </div>
     </div>
-    <div id="overview_page">
-        <h1>Test Overview</h1>
-        <table class="overview_page_table">
-            <thead>
+</div>
+<div id="overview_page">
+    <div class="container">
+        <div class="row">
+            <img class="logo" src="images/branding-icons/maydenacademy_logotype_05.18_web.svg">
+        </div>
+        <div class="row">
+            <div class="left">
+                <h4>Test Overview</h4>
+            </div>
+            <div class="col-md-2 right">
+                <h4 class="timer"></h4>
+            </div>
+        </div>
+        <div class="row">
+            <table class="overview_page_table">
+                <thead>
                 <tr>
-                    <th>Question Id</th>
+                    <th>Question Number</th>
                     <th>Question</th>
                     <th>Answered</th>
                     <th>Flagged</th>
+                    <th>Return to Question</th>
                 </tr>
-            </thead>
-            <tbody class="overview_table_body"></tbody>
-        </table>
+                </thead>
+                <tbody class="overview_table_body"></tbody>
+            </table>
+        </div>
         <footer class="overview_footer">
-            <div class="row">
-                <div class="col-xs-10">
+            <div class="row footer-row">
+                <div class="col-md-4">
                     <p>Clicking this button submits the test once and for all there is no turning back!</p>
                 </div>
-                <div class="col-xs-2">
-                    <button type="button" id="finish" class="btn btn-danger finish">Finish</button>
+            </div>
+            <div class="row footer-row">
+                <div class="col-md-3">
+                    <button type="button" id="finish" class="btn finish">Finish</button>
                 </div>
             </div>
         </footer>
     </div>
-    <div id="result_page">
-        <div class="container">
-            <div class="userMessage">
+</div>
+<div id="result_page">
+    <div class="container">
+        <div class="userMessage">
+        </div>
+        <div class="row">
+            <img class="logo" src="images/branding-icons/maydenacademy_logotype_05.18_web.svg">
+        </div>
+        <div class="result_card">
+            <div class="greetings">
+                <p>Your score</p>
             </div>
-            <div class="result_card">
-                <div class="greetings">
-                    <p>Your score</p>
-                </div>
-                <div class="result">
-                    <div class="points col-xs-4">
-                        <div class="points_label">
-                            <h3>Points</h3>
-                        </div>
-                        <div class="points_number">
-                            <p><span class="score"></span></p>
-                        </div>
+            <div class="result">
+                <div class="answered col-xs-6">
+                    <div class="answered_label">
+                        <h3>Answered</h3>
                     </div>
-                    <div class="percentage col-xs-4">
-                        <div class="percentage_label">
-                            <h3>Percentage</h3>
-                        </div>
-                        <div class="percentage_number">
-                            <p><span class="score_percentage"></span>%</p>
-                        </div>
-                    </div>
-                    <div class="answered col-xs-4">
-                        <div class="answered_label">
-                            <h3>Answered</h3>
-                        </div>
-                        <div class="answered_number">
-                            <p><span class="answered_questions"></span></p>
-                        </div>
+                    <div class="answered_number">
+                        <p><span class="answered_questions"></span></p>
                     </div>
                 </div>
+                <div class="points col-xs-6">
+                    <div class="points_label">
+                        <h3>Points</h3>
+                    </div>
+                    <div class="points_number">
+                        <p><span class="score"></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="result">
+                <div class="percentage col-xs-12">
+                    <div class="percentage_label">
+                        <h3>Percentage</h3>
+                    </div>
+                    <div class="percentage_number">
+                        <p><span class="score_percentage"></span>%</p>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
+</div>
 </body>
-
 </html>

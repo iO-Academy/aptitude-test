@@ -1,162 +1,268 @@
 @import "imports/variables";
 @import "imports/modal";
 
-.container {
-    text-align: center;
+body {
+  font-family: asap, sans-serif;
+  padding-bottom: 150px;
+}
+
+.left {
+  float: left
+}
+
+.right {
+  float: right;
+}
+
+.logo {
+  height: 60px;
+  float: right;
+  margin-top: 10px;
+}
+
+.timer {
+  float: right;
+}
+
+.test-top-row {
+  display: flex;
+  justify-content: space-between;
 }
 
 .question {
-    position: relative;
-    background-color: $main-background-color;
-    width: 100%;
-    padding: 30px;
-    text-align: left;
-    display: none;
+  position: relative;
+  background-color: $main-background-color;
+  width: 100%;
+  padding: 30px;
+  text-align: left;
+  display: none;
+}
+
+h4 {
+  font-size: 24px;
 }
 
 .question-container {
-    height: 100%;
+  height: 100%;
+  border: $primary-button solid 2px;
 }
 
 .question-nav {
-    height: 60px;
-    margin: 20px 0 20px;
-    background-color: #ffffff;
+  height: 60px;
+  margin: 20px 0 20px;
+  text-align: center;
 }
 
 .question-nav div {
-    position: relative;
-    width: 25px;
-    padding: 8px 0 32px;
-    display: inline-block;
-    color: #000000;
-    text-decoration: none;
-    cursor: pointer;
+  position: relative;
+  width: 25px;
+  padding: 8px 0 32px;
+  display: inline-block;
+  color: #000000;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .flag {
-    position: absolute;
-    bottom: 8px;
-    top: auto;
-    left: 50%;
-    transform: translate(-50%);
+  position: absolute;
+  bottom: 8px;
+  top: auto;
+  left: 50%;
+  transform: translate(-50%);
 }
 
 .question-nav p {
-    display: inline;
+  display: inline;
 }
 
 .active {
-    display: block;
+  display: block;
 }
 
 img {
-    max-width: 100%;
+  max-width: 100%;
 }
 
 .answers input {
-    margin: 0 10px;
+  margin: 0 10px;
 }
 
 .prev {
-    width: 60%;
-    margin: 50px auto;
+  width: 60%;
+  background-color: $primary-button;
+  border: none;
+
+  &:hover {
+    background-color: $primary-button-hover;
+  }
+}
+
+.prev:hover {
+  background-color: $primary-button-hover;
 }
 
 .next {
-    width: 60%;
-    margin: 50px auto;
+  width: 60%;
+  background-color: $primary-button;
+  border: none;
+
+  &:hover {
+    background-color: $primary-button-hover;
+  }
+}
+
+.question-nav-controls {
+  position: fixed;
+  background-color: white;
+  bottom: 0;
+  padding: 20px 0;
+  width: 100%;
+
+  .container {
+    border:  2px solid $primary-button;
+    padding: 20px 0;
+  }
+}
+
+.nav-buttons {
+  text-align: center;
+
+  button {
+    width: 90%
+  }
 }
 
 .overview {
-    visibility: hidden;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+  visibility: hidden;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: none;
+  background-color: $overview-button;
+
+  &:hover {
+    background-color: $overview-button-hover;
+  }
 }
 
 .error_message {
-    text-align: center;
-    font-size: large;
+  text-align: center;
+  font-size: large;
 }
 
 #flag-checkbox {
-    width: 20px;
-    height: 20px
+  display: none;
 }
 
-#flag-label {
-    font-size: 2rem;
+#flag-button {
+  color: $flag-color;
+  border: 2px solid $flag-color
+}
+
+.pressed {
+  background-color: $flag-color;
+
+  i {
+    color: $flag-pressed;
+  }
+
+  &:hover {
+    color: darken($flag-pressed, 10%);
+  }
 }
 
 //======== O V E R V I E W    P A G E ========//
 #overview_page {
-    display: none;
-    margin: 0 auto;
-    width: 50%;
+  display: none;
+  margin: 0 auto;
 }
 
 .overview_page_table {
-    width: 100%;
-    box-shadow: 0 19px 38px $table-box-shadow, 0 15px 12px $table-box-shadow;
+  width: 100%;
+  border: solid 2px $primary-button;
 
-    th, td {
-        border: 1px solid $table-border;
-        padding: 2px;
+  th, td {
+    border: 1px solid darken($table-border, 10%);
+    padding: 2px;
+  }
+
+  .question_id {
+    width: 50px;
+  }
+
+  .question_column {
+    width: 1000px;
+  }
+
+  tr:hover {
+    cursor: pointer;
+    font-weight: bold;
+    transition: font-weight 0.5s;
+
+    td {
+      background-color: lighten($answered-color, 20%);
+      transition: background-color 0.5s;
+    }
+  }
+
+  .glyphicon {
+    top: auto;
+    display: table-cell;
+
+    &-flag:before {
+      color: $unanswered-color;
     }
 
-    .question_id {
-        width: 130px;
+    &-remove:before {
+      color: $unanswered-color;
     }
 
-    .question_column {
-        width: 200px;
+    &-ok:before {
+      color: $answered-color;
     }
+  }
+}
 
-    tr:hover {
-        cursor: pointer;
-        font-weight: bold;
-        transition: font-weight 0.5s;
-        td {
-            background-color: lighten($answered-color, 20%);
-            transition: background-color 0.5s;
-        }
-    }
-
-    .glyphicon {
-        top: auto;
-        display: table-cell;
-        &-flag:before {
-            color: $unanswered-color;
-        }
-        &-remove:before {
-            color: $unanswered-color;
-        }
-        &-ok:before {
-            color: $answered-color;
-        }
-    }
+.return-to-question {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: $primary-button;
+  color: $flag-pressed;
+  pointer-events: none;
 }
 
 .overview_footer p {
-    margin: 55px 0 10px;
-    text-align: end;
-    color: $unanswered-color;
+  text-align: center;
+  color: $primary-button-hover;
+  margin-top: 50px;
 }
 
 .finish {
-    width: 100%;
-    margin: 50px 0;
+  width: 100%;
+  margin: 50px 0;
+  background-color: $primary-button-hover;
+  color: $flag-pressed;
+
+  &:hover {
+    background-color: $primary-button;
+    color: $flag-pressed;
+  }
+}
+
+.footer-row {
+  display: flex;
+  justify-content: center;
 }
 
 .unanswered-nav-box {
-    background-color: $unanswered-color;
+  background-color: $unanswered-color;
 }
 
 .answered-nav-box {
-    background-color: $answered-color;
+  background-color: $answered-color;
 }
 
 .question-nav .current-nav-box {
-    border: 1px solid #000000;
-    padding: 7px 0 31px;
+  border: 1px solid $question-nav-border;
+  padding: 7px 0 31px;
 }
