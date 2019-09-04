@@ -17,19 +17,18 @@ body {
   background-color: #fff;
   margin: 50px auto;
   width: 700px;
-  height: 500px;
+  height: 700px;
   border: 2px solid $primary-button;
+  padding: 50px;
 }
 
 .greetings {
-  width: 700px;
-  height: 150px;
+  text-align: center;
 
    p {
      display: inline-block;
      width: 100%;
      text-align: center;
-     line-height: 150px;
      color: $primary-button;
      font-size: 4rem;
      font-weight: bold;
@@ -45,13 +44,12 @@ body {
     display: inline-block;
     padding: 0;
     background-color: #fff;
-    box-shadow: 0 2px 7px rgba(0,0,0,0.30), 0 10px 9px rgba(0,0,0,0.22);
+    border: 2px solid $primary-button;
 
     .points_label {
       height: 70px;
       width: 100%;
-      background-color: #2b91ad;
-      box-shadow: 0 3px 7px rgba(0,0,0,0.22);
+      background-color: $results-headings;
 
       h3 {
         margin: 0;
