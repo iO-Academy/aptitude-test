@@ -1,7 +1,9 @@
 @import "imports/variables";
+@import url('https://fonts.googleapis.com/css?family=Asap&display=swap');
 
 html {
   font-size: 62.5%;
+  font-family: asap, sans-serif;
 }
 
 body {
@@ -20,7 +22,6 @@ body {
   background-color: #fff;
   margin: 0 auto;
   width: 700px;
-  height: 700px;
 }
 
 .greetings {
@@ -32,7 +33,6 @@ body {
     text-align: center;
     color: $font-color;
     font-size: 4rem;
-    font-weight: bold;
     letter-spacing: 1px;
     margin-bottom: 30px;
   }
@@ -41,12 +41,14 @@ body {
 .result {
   display: flex;
   justify-content: space-around;
+  height: 250px;
 
   .points {
     display: inline-block;
     padding: 0;
     background-color: #fff;
     border: 2px solid black;
+    margin: 4px;
 
     .points_label {
       height: 70px;
@@ -68,7 +70,7 @@ body {
       p {
         line-height: 180px;
         text-align: center;
-        font-size: 2rem;
+        font-size: 4rem;
         color: #94ba66;
 
         span {
