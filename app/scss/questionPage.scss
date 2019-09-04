@@ -218,6 +218,15 @@ img {
   }
 }
 
+.return-to-question {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: $primary-button;
+  color: $flag-pressed;
+  pointer-events: none;
+}
+
 .overview_footer p {
   margin: 55px 0 10px;
   text-align: end;

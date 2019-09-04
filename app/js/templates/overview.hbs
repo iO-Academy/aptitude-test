@@ -1,4 +1,4 @@
-<tr data-id="{{id}}">
+<tr class="hello" data-id="{{id}}">
     <td class="question_id">{{id}}</td>
     <td class="question_column">{{question}}</td>
     {{#if isAnswered}}
@@ -11,4 +11,5 @@
     {{else}}
         <td></td>
     {{/if}}
+    <td><button class="btn return-to-question"><i class="glyphicon glyphicon-arrow-left"></i> </button></td>
 </tr>
