@@ -15,6 +15,7 @@
 
       input {
         font-size: 1.5rem;
+        padding: 3.5px 0;
       }
 
       .labelDropdown {
@@ -60,6 +61,7 @@
       .primary-button {
         background-color: $primary-button;
         color: $main-background-color;
+        padding: 6px 12px;
 
         &:hover {
           background-color: $primary-button-hover;
