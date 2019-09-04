@@ -31,7 +31,7 @@ function calculatePercentage(score, numOfQuestions) {
 }
 
 function secondsToMinutes(time) {
-    return time / 60
+    return (time / 60).toFixed(2)
 }
 
 /**
