@@ -31,7 +31,7 @@ function updateScoreTable() {
 }
 
 /**
- * Sends the user info to the search and filtering function
+ * Transforms and sends the user info to the search and filtering function
  */
 function sendToSearchAndFilter(template, userInfo) {
     let userArray = []
@@ -58,6 +58,63 @@ function printFilteredResultsToScreen(HBTemplate, scoresDataArray) {
     } else {
         produceTable(HBTemplate,{data: scoresDataArray})
     }
+}
+
+/**
+ * Turns data from parent element (userTable handlebars template) into an object.
+ *
+ * @param event is the event fired off by the function
+ */
+function createObjectFromParentElement(event) {
+    let parentElement = event.target.parentElement
+    let userInfo = {}
+    userInfo.name = parentElement.getAttribute("dataName")
+    userInfo.email = parentElement.getAttribute("dataEmail")
+    userInfo.id = parentElement.getAttribute("dataId")
+    userInfo.time = parentElement.getAttribute("dataTime")
+    userInfo.canRetake = parseInt(parentElement.getAttribute("dataCanRetake"))
+    return userInfo
+}
+
+/**
+ * Adds event listener to the edit buttons.
+ */
+function addEditEventListeners() {
+    let editButtons = document.querySelectorAll(".modalBtn")
+    editButtons.forEach(function(editButton) {
+        editButton.addEventListener('click', function (e) {
+            openDialog()
+            let userInfo = createObjectFromParentElement(e)
+            createEditModal(userInfo)
+        })
+    })
+}
+
+/**
+ * Adds event listener to the delete buttons.
+ */
+function addDeleteEventListeners() {
+    let userItems = document.querySelectorAll(".btn-danger")
+    //console.log(userItems)
+    userItems.forEach(function (userItem) {
+        userItem.addEventListener('click', function (e) {
+            let userId = e.target.parentElement.getAttribute("dataId")
+            deleteUser(userId)
+        })
+    })
+}
+
+/**
+ * Sends the API call to delete a user with the specified ID
+ *
+ * @param userId 
+ */
+function deleteUser(userId) {
+    let url = "http://localhost:8080/user/delete/" + userId
+    fetch(url, {"method": "post"})
+        .then(function () {
+            updateScoreTable()
+        })
 }
 
 /**
