@@ -4,13 +4,17 @@
   .container {
     border: 5px solid red;
 
+    textarea {
+      resize: vertical;
+    }
+
     .question {
       margin: 5%;
       width: 90%;
     }
 
     .option {
-      margin: 5%;
+      margin: 1% 5%;
       width: 90%;
     }
   }
