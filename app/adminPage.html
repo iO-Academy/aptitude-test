@@ -42,10 +42,9 @@
 </div>
 <section class="container">
     <img class="logo" alt="Mayden Logo" src="images/branding-icons/mayden_academy_logotype_2018_500px_colour.png">
-
     <div class="row">
         <div class="col-xs-12">
-                <h2 class="second-heading">Add New User</h2>
+                <h2>Add new user</h2>
                 <form class="container_controls" id="addNewUserForm">
                     <div class="container_input display-flex">
                         <input type="text" id="name" name="name" placeholder="Type new user's name">
@@ -55,31 +54,31 @@
                     </div>
                 </form>
                 <div id='error' class='title_input'></div>
+            <div class="score-container">
+                <h2>Scores</h2>
                 <h4 class="search-heading">Search User</h4>
                 <div class="display-flex">
                     <input type="text" id="searchInput" placeholder="Type name or email">
                     <input type="submit" id="searchSubmit" value="Search" class="btn primary-button">
                     <input type="submit" id="searchReset" value="Clear Search" class="btn primary-button">
-                 </div>
+                </div>
                 <div class="filterContainer">
                     <h4 class="search-heading">Filter Results</h4>
-<!--                    <label for="filterScorePercentage" class="labelDropdown">Score percentage:</label>-->
+                    <!--                    <label for="filterScorePercentage" class="labelDropdown">Score percentage:</label>-->
                     <!--want to delete the label but will wait until peer reviewed-->
                     <div class="display-flex">
-                    <select name="filterScorePercentage" id="filterScorePercentage" class="dropdown">
-                        <option value="" disabled selected>Score Percentage</option>
-                        <option value="3">-none-</option>
-                        <option value="1">+70%</option>
-                        <option value="2">-69%</option>
-                    </select>
-                    <label for="startDate">Start</label>
-                    <input id="startDate" type="date">
-                    <label for="endDate">End</label>
-                    <input id="endDate" type="date">
+                        <select name="filterScorePercentage" id="filterScorePercentage" class="dropdown">
+                            <option value="" disabled selected>Score Percentage</option>
+                            <option value="3">-none-</option>
+                            <option value="1">+70%</option>
+                            <option value="2">-69%</option>
+                        </select>
+                        <label for="startDate">Start</label>
+                        <input id="startDate" type="date">
+                        <label for="endDate">End</label>
+                        <input id="endDate" type="date">
                     </div>
                 </div>
-            <div>
-                <h2>Scores</h2>
                 <table class="table reset-vertical-align">
                     <thead>
                         <tr>

@@ -17,11 +17,15 @@ body {
       }
     }
 
-    .filterContainer {
+    .score-container {
+      margin-top: 5rem;
 
-      label {
-        font-weight: 400;
-        font-size: 1.5rem;
+      .filterContainer {
+
+        label {
+          font-weight: 400;
+          font-size: 1.5rem;
+        }
       }
     }
 
