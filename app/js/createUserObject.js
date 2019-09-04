@@ -56,11 +56,12 @@ async function createUsersObject() {
     let results = await getResults()
     let users = await getNameAndEmail()
     let userDisplayArray = []
-    let didTest = []
 
     users.forEach(function(user) {
+
+        let didTest = []
         results.forEach(function(result) {
-            didTest = []
+            let testEntryFound = []
 
             if (result.id === user.id ) {
                 let obj = {}
@@ -74,12 +75,17 @@ async function createUsersObject() {
                 obj['timeAllowed'] = user.timeAllowed
                 obj['dateCreated'] = result.dateCreated
                 userDisplayArray.push(obj)
-                didTest.push('yes')
+                testEntryFound.push('yes')
 
             }
 
+            if (testEntryFound.length !== 0) {
+                didTest.push(testEntryFound)
+            }
+            console.log(didTest)
+
         })
-        
+
         if (didTest.length === 0) {
 
             let obj = {}
@@ -91,7 +97,7 @@ async function createUsersObject() {
             obj['percentage'] = ''
             obj['time'] = ''
             obj['timeAllowed'] = user.timeAllowed
-            obj['dateCreated'] = results[0].dateCreated
+            obj['dateCreated'] = '2011-11-11 11:11:11'
             userDisplayArray.push(obj)
         }
 
