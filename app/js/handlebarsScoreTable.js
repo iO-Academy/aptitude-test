@@ -5,9 +5,7 @@
  * @return array of user objects in the desired order
  */
 async function sortUsersObjectByDate() {
-
     let usersObject = await createUsersObject()
-    console.log(usersObject)
     usersObject.data.sort(function(a, b){
             let dateA = a.dateCreated
             let dateB = b.dateCreated
@@ -95,7 +93,6 @@ function addEditEventListeners() {
  */
 function addDeleteEventListeners() {
     let userItems = document.querySelectorAll(".btn-danger")
-    //console.log(userItems)
     userItems.forEach(function (userItem) {
         userItem.addEventListener('click', function (e) {
             let userId = e.target.parentElement.getAttribute("dataId")
