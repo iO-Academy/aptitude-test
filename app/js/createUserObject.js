@@ -42,7 +42,7 @@ function calculatePercentage(score, numOfQuestions) {
  * @param time 
  */
 function secondsToMinutes(time) {
-    return (time / 60).toFixed(2)
+    return String(Math.floor(time / 60)) + ':' + String((time % 60)).padStart(2,'0')
 }
 
 /**
@@ -59,7 +59,7 @@ async function getNameAndEmail() {
         obj['id'] = id
         obj['name'] = name
         obj['email'] = email
-        obj['timeAllowed'] = secondsToMinutes(time)
+        obj['timeAllowed'] = time
         userObjectArray.push(obj)
     })
     return userObjectArray
@@ -87,7 +87,7 @@ async function createUsersObject() {
                 obj['score'] = result.score
                 obj['percentage'] = calculatePercentage(result.score, numberOfQuestions)
                 obj['time'] = result.time
-                obj['timeAllowed'] = user.timeAllowed
+                obj['timeAllowed'] = secondsToMinutes(user.timeAllowed)
                 obj['dateCreated'] = result.dateCreated
                 userDisplayArray.push(obj)
                 testEntryFound.push('yes')
@@ -104,7 +104,7 @@ async function createUsersObject() {
             obj['score'] = ''
             obj['percentage'] = ''
             obj['time'] = ''
-            obj['timeAllowed'] = user.timeAllowed
+            obj['timeAllowed'] = secondsToMinutes(user.timeAllowed)
             obj['dateCreated'] = '1970-01-01 00:00:01'
             obj['testNotTaken'] = 'Not Taken'
             userDisplayArray.push(obj)
