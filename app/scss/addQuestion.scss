@@ -4,7 +4,6 @@
   box-sizing: border-box;
 
   .container {
-    border: 5px solid red;
 
     textarea {
       resize: vertical;
@@ -27,6 +26,7 @@
     .submit-button {
       text-align: center;
       .addQuestion {
+        font-size: 2rem;
         border-style: none;
         margin: 3%;
       }
