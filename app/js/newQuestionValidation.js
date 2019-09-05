@@ -1,13 +1,13 @@
 let form = document.querySelector('form')
 document.getElementById('submit').addEventListener('click', (event) => {
     event.preventDefault()
-    if (formHasQuestion(form) && formHasBetweenOneAndFiveAnswers(form) && answerHasValidValue(form) && onlyOneCheckBoxIsChecked(form)) {
+    if (formHasQuestion(form) && formHasBetweenOneAndFiveAnswers(form) && answerHasValidValue(form)) {
         console.log('success')
     } else {
-        console.log(formHasQuestion(form))
-        console.log(formHasBetweenOneAndFiveAnswers(form))
-        console.log(answerHasValidValue(form))
-        console.log(onlyOneCheckBoxIsChecked(form))
+        // console.log(formHasQuestion(form))
+        // console.log(formHasBetweenOneAndFiveAnswers(form))
+        // console.log(answerHasValidValue(form))
+        // console.log(onlyOneCheckBoxIsChecked(form))
     }
 })
 
@@ -36,27 +36,13 @@ function formHasBetweenOneAndFiveAnswers(form) {
 }
 
 function answerHasValidValue(form) {
+    let result = false
     form.querySelectorAll('.answer-check').forEach((checkbox) => {
         if (checkbox.previousElementSibling.value.length > 0 && checkbox.checked === true) {
-            return true
+            result = true
         } else {
-            return false
+            result = false
         }
     })
-}
-
-function onlyOneCheckBoxIsChecked(form) {
-    let i = 0
-    form.querySelectorAll('.answer-check').forEach((checkbox) => {
-        if (checkbox.checked) {
-            i++
-        }
-    })
-    if (i === 0) {
-        return false
-    } else if (i > 1) {
-        return false
-    } else {
-        return true
-    }
+    return result
 }
