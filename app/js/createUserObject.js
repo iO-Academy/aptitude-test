@@ -67,7 +67,7 @@ async function getNameAndEmail() {
 
 /**
  * Combines the information used in a table row into a new object.
- * Returns a list of all of these user-result objects readyt o be put into table rows.
+ * Returns a list of all of these user-result objects ready to be put into table rows.
  *
  * @return Object containing a success/fail state and an array of the user-result objects.
  */
