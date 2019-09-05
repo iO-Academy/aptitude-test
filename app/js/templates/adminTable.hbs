@@ -1,0 +1,24 @@
+{{#each data}}
+<tr
+    {{#if this.topGrade}}
+         class="top-grade"
+    {{else if this.passingGrade}}
+         class="passing-grade"
+    {{else if this.fail}}
+         class="dubious-grade"
+    {{else if this.notTakenYet}}
+         class="test-not-taken"
+    {{/if}}>
+        <td dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}" dataTime="{{time}}" dataTimeAllowed="{{timeAllowed}}" dataCanRetake="{{canRetake}}">
+            <button class="btn edit-user-button btn_height modalBtn">Edit User</button>
+            <button class="btn delete-user-button btn_height">Delete User</button>
+        </td>
+        <td class="name">{{this.name}}</td>
+        <td class="email">{{this.email}}</td>
+        <td class="score">{{this.score}}</td>
+        <td class="percentage">{{this.percentage}}</td>
+        <td class="time">{{this.timeAllowed}}</td>
+        <td class="time">{{this.time}}</td>
+        <td class="date">{{this.dateCreated}}</td>
+</tr>
+{{/each}}

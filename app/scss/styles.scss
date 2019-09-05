@@ -1,31 +1,90 @@
 @import "imports/modal";
+@import "imports/variables";
 
-.container {
-  text-align: center;
+html {
+  font-size: 62.5%;
 
-  .user_list {
-    padding: 20px;
-  .btn_height {
-    padding: 0 1px 0 1px;
-  }
-  }
+  body {
+    color: $font-color;
+    font-family: 'Asap', sans-serif;
 
-  .score_list {
-    padding: 20px;
-
-    .score_item{
-      border: 1px solid #000000;
+    h1, h2, h3, h4 {
+      color: $font-color;
     }
 
-  }
+    .container {
 
-  img {
-    width: 100%;
-  }
+      input {
+        font-size: 1.5rem;
+        padding: 3.5px 0;
+      }
 
-  p {
-    display: inline;
-    margin: 10px;
+      .labelDropdown {
+        font-size: 2rem;
+      }
+
+      .dropdown {
+        font-size: 1.5rem;
+      }
+
+      .user_list {
+        padding: 20px;
+
+        .btn_height {
+          padding: 0 1px 0 1px;
+        }
+      }
+
+      .score_list {
+        padding: 20px;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      .logo {
+        width: 300px;
+        height: 100px;
+        padding: 25px;
+        float: right;
+        margin: 10px;
+      }
+
+      p {
+        display: inline;
+        margin: 10px;
+      }
+
+      .primary-button {
+        background-color: $primary-button;
+        color: $main-background-color;
+        transition: .5s;
+        border-radius: 0;
+        padding: 6px 12px;
+
+        &:hover {
+          background-color: $primary-button-hover;
+        }
+      }
+
+      .search-heading {
+        font-size: 1.5rem;
+        margin: 0;
+      }
+    }
   }
 }
 
+.test-not-taken {
+  background-color: $light-red;
+}
+.dubious-grade {
+  background-color: $light-orange;
+}
+.passing-grade {
+  background-color: $light-green;
+}
+.top-grade {
+  background-color: $light-purple;
+}

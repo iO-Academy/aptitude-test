@@ -29,9 +29,11 @@ function timeRemainingCalc () {
 function timer() {
     let minutes = Math.floor(timeRemaining / 60);
     let seconds = Math.floor(timeRemaining - minutes * 60);
-    document.querySelector("#timer").innerHTML = minutes + "m " + seconds + "s ";
-    timeRemaining--
-    if (timeRemaining < 0){
+    document.querySelectorAll(".timer").forEach(function (timer) {
+        timer.innerHTML = minutes + "m " + seconds + "s ";
+        timeRemaining--
+    })
+    if (timeRemaining < 0) {
         clearInterval(interval)
         showResults()
     }
