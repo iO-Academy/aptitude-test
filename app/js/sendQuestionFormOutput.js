@@ -18,7 +18,7 @@ let formData = new FormData(form);
 form.addEventListener('submit', function(event) {
     event.preventDefault()
     if(!authorised) {
-        console.log('you\'re not alexander')
+        console.log('You are not authorized')
         return
     }
     var questionData = {}
