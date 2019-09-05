@@ -7,10 +7,10 @@ let formData = new FormData(form);
  * it for the database.
  */
 form.addEventListener('submit', function(event) {
+    event.preventDefault()
     if(!(user.isAdmin == "1")) {
         return
     }
-    event.preventDefault()
     var questionData = {}
     questionData.text = form.question.value
     questionData.option1 = form.option1.value
