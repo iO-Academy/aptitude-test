@@ -92,8 +92,9 @@ function addEditEventListeners() {
  * Adds event listener to the delete buttons.
  */
 function addDeleteEventListeners() {
-    let userItems = document.querySelectorAll(".btn-danger")
+    let userItems = document.querySelectorAll(".delete-user-button")
     userItems.forEach(function (userItem) {
+        console.log('hi')
         userItem.addEventListener('click', function (e) {
             let userId = e.target.parentElement.getAttribute("dataId")
             deleteUser(userId)
@@ -137,7 +138,7 @@ function produceTable (HBTemplate, scoresDataObject) {
                 scoreData.notTakenYet = true
                 break
         }
-        console.log(scoreData)
+        //console.log(scoreData)
     })
     let template = Handlebars.compile(HBTemplate)
     let score_list = document.querySelector(".score_list")
