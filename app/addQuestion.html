@@ -6,6 +6,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link href="css/styles.css" type="text/css" rel="stylesheet">
+    <link href="css/adminPage.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/addQuestion.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script defer src="js/newQuestionValidation.js"></script>
@@ -16,20 +18,20 @@
 <body>
 <section>
     <div class="container">
-        <img class="logo" alt="Mayden Logo" src="images/branding-icons/mayden_academy_logotype_2018_500px_colour.png">
+        <img class="logo" alt="Mayden Logo" src="images/branding-icons/maydenacademy_logotype_05.18_web.svg">
         <div class="form">
             <h3>Add new question</h3>
             <h4 class="search-heading">Current Question Count: <span id="question-count"></span></h4>
-            <p>
-                After writing your question and possible answers ensure you check the correct answer before submitting.
-            </p>
+            <h4 class="page-text">
+                Enter new question text below
+            </h4>
             <form>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1">Question:</label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="question"></textarea>
                 </div>
                 <div class="answers">
-                    <p>Insert upto 5 answers below</p>
+                    <h4 class="page-text">Enter up to 5 answers below (min 2) then tick corresponding checkbox to indicate correct answer before submitting</h4>
                     <div class="form-group">
                         <label for="option1">Option 1:</label>
                         <textarea class="form-control answer" id="option1" rows="2" name="option1"></textarea>
