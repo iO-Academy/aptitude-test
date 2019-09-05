@@ -4,10 +4,8 @@
   box-sizing: border-box;
   font-size: 100%;
 
-  body {
-    font-family: 'Asap', sans-serif;
-
     .container {
+
       .start-button {
         width: 110px;
         background: $primary-button;
@@ -39,4 +37,4 @@
       }
     }
   }
-}
+
