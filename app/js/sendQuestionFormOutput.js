@@ -6,7 +6,7 @@ let formData = new FormData(form);
 form.addEventListener('submit', function(event) {
     event.preventDefault()
     var questionData = {}
-    questionData.question = form.option1
+    questionData.question = form.option1.value
 })
 
 /**
