@@ -1,0 +1,79 @@
+@import 'imports/variables';
+
+* {
+  box-sizing: border-box;
+
+  .container {
+
+    .form {
+      margin-top: 100px;
+    }
+
+    .logo {
+      margin: 2%;
+      width: 300px;
+      float: right;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    .answers {
+      margin-top: 5%;
+      width: 97%;
+    }
+
+    .question {
+      margin: 5%;
+      width: 90%;
+    }
+
+    .option {
+      margin: 1% 5%;
+      width: 90%;
+    }
+
+    .answer-check {
+      margin-top: -40px;
+      margin-right: -30px;
+      height: 20px;
+      width: 20px;
+      padding: 5px;
+      float: right;
+    }
+
+    .buttons {
+      text-align: center;
+
+      .return {
+        width: 10%;
+        background-color: $primary-button;
+        color: #fff;
+        transition: .5s;
+        font-size: 1.5rem;
+        border-style: none;
+        margin: 3%;
+
+        &:hover {
+          background-color: $primary-button-hover;
+        }
+      }
+
+      .submit {
+        width: 10%;
+        background-color: $primary-button;
+        color: #fff;
+        transition: .5s;
+        font-size: 1.5rem;
+        border-style: none;
+        margin: 3%;
+
+        &:hover {
+          background-color: $primary-button-hover;
+        }
+      }
+    }
+  }
+}
+
