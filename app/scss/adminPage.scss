@@ -39,14 +39,12 @@ body {
         justify-content: space-between;
 
         .filterContainer {
-
           label {
             font-weight: 400;
             font-size: 1.5rem;
           }
         }
       }
-
     }
 
     select:not([multiple]) {
@@ -90,11 +88,10 @@ body {
       }
 
       &.user-score-table {
-          margin-top: 4rem;
+        margin-top: 4rem;
+
         tbody {
-
           tr {
-
             td {
               vertical-align: middle;
             }
