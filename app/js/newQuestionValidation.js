@@ -4,7 +4,7 @@ document.getElementById('submit').addEventListener('click', (event) => {
     if (formHasQuestion(form) && formHasBetweenOneAndFiveAnswers(form) && answerHasValidValue(form)) {
         document.getElementById('message-target').innerHTML = '<p class="success-message">Question input accepted</p>'
     } else {
-        document.getElementById('message-target').innerHTML = '<p class="success-message">Error with question input. Please try again</p>'
+        document.getElementById('message-target').innerHTML = '<p class="failure-message">Error with question input. Please try again</p>'
     }
 })
 

@@ -85,3 +85,17 @@
 #exampleFormControlTextarea1 {
   width: 96.5%;
 }
+
+#message-target {
+  margin: 0 auto;
+  width: 30%;
+  text-align: center;
+}
+
+.failure-message {
+  color: $failure-message;
+}
+
+.success-message {
+  color: $success-message
+}
