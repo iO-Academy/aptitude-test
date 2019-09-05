@@ -7,6 +7,9 @@ let formData = new FormData(form);
  *
  * */
 form.addEventListener('submit', function(event) {
+    if(!(user.isAdmin == "1")) {
+        return
+    }
     event.preventDefault()
     var questionData = {}
     questionData.text = form.question.value
