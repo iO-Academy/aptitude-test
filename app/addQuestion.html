@@ -15,6 +15,7 @@
     <script defer src="js/userLogIn.js"></script>
     <script defer src="js/cookies.js"></script>
     <script defer src="js/questionCount.js"></script>
+    <script defer src="js/newQuestionValidation.js"></script>
     <script defer src="js/sendQuestionFormOutput.js"></script>
     <title>Add Question</title>
 </head>
@@ -34,39 +35,43 @@
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="question"></textarea>
                 </div>
                 <div class="answers">
-                    <h4 class="page-text">Enter up to 5 answers below (min 2) then tick corresponding checkbox to indicate correct answer before submitting</h4>
+                    <h4 class="page-text">Enter up to 5 answers below (min 2) then tick corresponding checkbox to
+                        indicate correct answer before submitting</h4>
                     <div class="form-group">
                         <label for="option1">Option 1:</label>
-                        <textarea class="form-control" id="option1" rows="2" name="option1"></textarea>
-                        <input class="answer-check" type="checkbox" name="answer-check1">
+                        <textarea class="form-control answer" id="option1" rows="2" name="option1"></textarea>
+                        <input class="answer-check" type="radio" name="answer-check">
                     </div>
                     <div class="form-group">
-                        <label for="option2">Option 2:</label>
-                        <textarea class="form-control" id="option2" rows="2" name="option2"></textarea>
-                        <input class="answer-check" type="checkbox" name="answer-check2">
+                        <label for="exampleFormControlTextarea1">Option 2:</label>
+                        <textarea class="form-control answer" id="option2" rows="2" name="option2"></textarea>
+                        <input class="answer-check" type="radio" name="answer-check">
                     </div>
                     <div class="form-group">
-                        <label for="option3">Option 3:</label>
-                        <textarea class="form-control" id="option3" rows="2" name="option3"></textarea>
-                        <input class="answer-check" type="checkbox" name="answer-check3">
+                        <label for="exampleFormControlTextarea1">Option 3:</label>
+                        <textarea class="form-control answer" id="option3" rows="2" name="option3"></textarea>
+                        <input class="answer-check" type="radio" name="answer-check">
                     </div>
                     <div class="form-group">
-                        <label for="option4">Option 4:</label>
-                        <textarea class="form-control" id="option4" rows="2" name="option4"></textarea>
-                        <input class="answer-check" type="checkbox" name="answer-check4">
+                        <label for="exampleFormControlTextarea1">Option 4:</label>
+                        <textarea class="form-control answer" id="option4" rows="2" name="option4"></textarea>
+                        <input class="answer-check" type="radio" name="answer-check">
                     </div>
                     <div class="form-group">
-                        <label for="option5">Option 5:</label>
-                        <textarea class="form-control" id="option5" rows="2" name="option5"></textarea>
-                        <input class="answer-check" type="checkbox" name="answer-check5">
+                        <label for="exampleFormControlTextarea1">Option 5:</label>
+                        <textarea class="form-control answer" id="option5" rows="2" name="option5"></textarea>
+                        <input class="answer-check" type="radio" name="answer-check">
                     </div>
                 </div>
+                <div id="message-target"></div>
                 <div class="buttons">
                     <div class="messageArea">
                         <span id="message"></span>
                     </div>
-                    <a  href="adminPage.html"><button class="return">Back</button></a>
-                    <button class="submit" type="submit">Submit</button>
+                    <a href="adminPage.html">
+                        <div class="return btn">Back</div>
+                    </a>
+                    <input id="submit" class="submit" type="submit" value="submit">
                 </div>
             </form>
         </div>
