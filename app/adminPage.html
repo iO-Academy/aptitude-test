@@ -27,6 +27,7 @@
     <script src="js/searchAndFilter.js" defer></script>
     <script src="js/handlebarsScoreTable.js" defer></script>
     <script src="js/modal.js" defer></script>
+    <script src="js/questionCount.js" defer></script>
     <title>Admin Page</title>
 </head>
 <body>
@@ -88,6 +89,11 @@
                     </thead>
                     <tbody class="score_list user-table"></tbody>
                 </table>
+            </div>
+            <div class="new-question-container">
+                <h2>Add new question</h2>
+                <h4 class="search-heading">Current Question Count: <span id="question-count"></span></h4>
+                <a href="addQuestion.html"><button class="btn primary-button new-question-button">Add new question</button></a>
             </div>
         </div>
     </div>
