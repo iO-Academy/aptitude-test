@@ -16,11 +16,14 @@ function formHasQuestion(form) {
 function formHasBetweenOneAndFiveAnswers(form) {
     let answers = form.querySelectorAll('.answer')
     let fieldsThatHaveValues = 0
-    answers.forEach(function(answer)
-    {
-        if(answer.value.length > 0) {
+    answers.forEach( (answer) => {
+        if (answer.value.length > 0) {
             fieldsThatHaveValues++
         }
     })
-    console.log(fieldsThatHaveValues)
+    if (fieldsThatHaveValues >= 2) {
+        return true
+    } else {
+        return false
+    }
 }
