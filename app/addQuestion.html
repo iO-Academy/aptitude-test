@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script src="js/questionCount.js" defer></script>
+    <script defer src="js/sendQuestionFormOutput.js"></script>
     <title>Add Question</title>
 </head>
 <body>
@@ -56,8 +57,11 @@
                     </div>
                 </div>
                 <div class="buttons">
-                    <a href="adminPage.html"><button class="return">Back</button></a>
-                    <input class="submit" type="submit" value="submit">
+                    <div class="messageArea">
+                        <span id="message"></span>
+                    </div>
+                    <a  href="adminPage.html"><button class="return">Back</button></a>
+                    <button class="submit" type="submit">Submit</button>
                 </div>
             </div>
         </form>
