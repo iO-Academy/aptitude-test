@@ -80,7 +80,6 @@ async function createUsersObject() {
             if (result.id === user.id ) {
                 let answers = JSON.parse(JSON.parse(result.answers))
                 let numberOfQuestionsTaken = Object.keys(answers).length
-                console.log(answers)
                 let obj = {}
                 obj['id'] = user.id
                 obj['name'] = user.name
