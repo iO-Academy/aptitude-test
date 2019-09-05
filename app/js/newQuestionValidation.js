@@ -28,7 +28,6 @@ function formHasBetweenOneAndFiveAnswers(form) {
         return true
     } else {
         return false
-
     }
 }
 
