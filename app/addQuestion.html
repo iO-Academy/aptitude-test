@@ -22,44 +22,45 @@
             <p>
                 After writing your question and possible answers ensure you check the correct answer before submitting.
             </p>
-            <div class="form-group">
-                <label for="exampleFormControlTextarea1">Question:</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+            <form>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Question:</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5"></textarea>
+                </div>
+                <div class="answers">
+                    <p>Insert upto 5 answers below</p>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Option 1:</label>
+                        <textarea class="form-control" id="option1" rows="2" name="option1"></textarea>
+                        <input class="answer-check" type="checkbox" name="answer-check1">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Option 2:</label>
+                        <textarea class="form-control" id="option2" rows="2" name="option2"></textarea>
+                        <input class="answer-check" type="checkbox" name="answer-check2">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Option 3:</label>
+                        <textarea class="form-control" id="option3" rows="2" name="option3"></textarea>
+                        <input class="answer-check" type="checkbox" name="answer-check3">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Option 4:</label>
+                        <textarea class="form-control" id="option4" rows="2" name="option4"></textarea>
+                        <input class="answer-check" type="checkbox" name="answer-check4">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Option 5:</label>
+                        <textarea class="form-control" id="option5" rows="2" name="option5"></textarea>
+                        <input class="answer-check" type="checkbox" name="answer-check5">
+                    </div>
+                </div>
+                <div class="buttons">
+                    <a href="adminPage.html"><button class="return">Back</button></a>
+                    <input class="submit" type="submit" value="submit">
+                </div>
             </div>
-            <div class="answers">
-                <p>Insert upto 5 answers below</p>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Option 1:</label>
-                    <textarea class="form-control" id="option1" rows="2"></textarea>
-                    <input class="answer-check" type="checkbox">
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Option 2:</label>
-                    <textarea class="form-control" id="option2" rows="2"></textarea>
-                    <input class="answer-check" type="checkbox">
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Option 3:</label>
-                    <textarea class="form-control" id="option3" rows="2"></textarea>
-                    <input class="answer-check" type="checkbox">
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Option 4:</label>
-                    <textarea class="form-control" id="option4" rows="2"></textarea>
-                    <input class="answer-check" type="checkbox">
-                </div>
-                <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Option 5:</label>
-                    <textarea class="form-control" id="option5" rows="2"></textarea>
-                    <input class="answer-check" type="checkbox">
-                </div>
-            </div>
-            <div class="buttons">
-                <a  href="adminPage.html"><button class="return">Back</button></a>
-                <button class="submit" type="submit">Submit</button>
-            </div>
-        </div>
-    </div>
+        </form>
     </div>
 </section>
 </body>
