@@ -1,15 +1,9 @@
 function getQuestionCount() {
     fetch("http://localhost:8080/question")
         .then(result => result.json())
-        .then(data => {
-            console.log(data)
-            return data
+        .then(questions => {
+            document.querySelector('#question-count').innerText = questions.data.length
         })
-        .then(data => {
-            console.log(data)
-            console.log(data.data.length)
-        })
-
 }
 
 getQuestionCount()
