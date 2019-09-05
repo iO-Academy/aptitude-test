@@ -1,9 +1,14 @@
 let form = document.querySelector('form')
 document.getElementById('submit').addEventListener('click', (event) => {
     event.preventDefault()
-    formHasQuestion(form)
-    formHasBetweenOneAndFiveAnswers(form)
-    answerHasValidValue(form)
+    if (formHasQuestion(form) && formHasBetweenOneAndFiveAnswers(form) && answerHasValidValue(form) && onlyOneCheckBoxIsChecked(form)) {
+        console.log('success')
+    } else {
+        console.log(formHasQuestion(form))
+        console.log(formHasBetweenOneAndFiveAnswers(form))
+        console.log(answerHasValidValue(form))
+        console.log(onlyOneCheckBoxIsChecked(form))
+    }
 })
 
 function formHasQuestion(form) {
@@ -26,6 +31,7 @@ function formHasBetweenOneAndFiveAnswers(form) {
         return true
     } else {
         return false
+
     }
 }
 
@@ -47,8 +53,10 @@ function onlyOneCheckBoxIsChecked(form) {
         }
     })
     if (i === 0) {
-        return 'No answer selected'
+        return false
     } else if (i > 1) {
-        return 'Please just select one answer'
+        return false
+    } else {
+        return true
     }
 }
