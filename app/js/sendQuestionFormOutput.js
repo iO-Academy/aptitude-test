@@ -1,8 +1,18 @@
+let submit = document.getElementsByClassName("submit");
+let form = document.querySelector("form");
+let formData = new FormData(form);
+
 /**
- * send new question to be submitted to the db
+ * Convert addQuestion form data into JSON
  *
- * @return object - question
+ * @return newQuestionJson
  */
+let newQuestion = {}
+formData.forEach((value, key) => {newQuestion[key] = value})
+const newQuestionJson = JSON.stringify(newQuestion)
+
+
+
 function sendNewQuestion(newQuestion) {
     let addQuestionForm = jsonToFormData(newQuestion)
 
