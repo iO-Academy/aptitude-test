@@ -3,11 +3,11 @@ document.getElementById('submit').addEventListener('click', (event) => {
     event.preventDefault()
     formHasQuestion(form)
     formHasBetweenOneAndFiveAnswers(form)
-    console.log(form)
+    answerHasValidValue(form)
 })
 
 function formHasQuestion(form) {
-    if (form.questionField.value.length === 0) {
+    if (form.question.value.length === 0) {
         return false
     } else {
         return true
@@ -29,10 +29,13 @@ function formHasBetweenOneAndFiveAnswers(form) {
     }
 }
 function answerHasValidValue(form) {
-    if(form.input.previousElementSibling.length === 0) {
-        console.log('empty field')
-    }
-    else{
-        console.log('good to go')
-    }
+    form.querySelectorAll('.answer-check').forEach((checkbox) =>{
+        if(checkbox.previousElementSibling.value.length > 0 && checkbox.checked === true) {
+            console.log('answer is valid')
+        }
+        else{
+            console.log('answer is invalid')
+        }
+    })
+
 }
