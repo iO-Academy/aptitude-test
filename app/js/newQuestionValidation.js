@@ -1,1 +1,2 @@
-let question = document.getElementById()
+let question = document.getElementById(questionFied)
+console.log(question)
