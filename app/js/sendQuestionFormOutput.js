@@ -15,8 +15,9 @@ form.addEventListener('submit', function(event) {
     questionData.option3 = form.option3.value
     questionData.option4 = form.option4.value
     questionData.option5 = form.option5.value
-    var json = JSON.stringify(questionData)
-    sendNewQuestion(json)
+    questionData.answer = 1
+    let questionDataToSend = jsonToFormData(questionData);
+    sendNewQuestion(questionDataToSend)
 })
 
 /**
@@ -24,13 +25,9 @@ form.addEventListener('submit', function(event) {
  *
  * @return object - addedQuestionResponse
  */
-function sendNewQuestion(newQuestionJson) {
+function sendNewQuestion(questionData) {
     let addedQuestionResponse = fetch("http://localhost:8080/question", {
         method: 'POST',
-        credentials: 'same-origin',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: newQuestionJson
+        body: questionData
     })
 }
