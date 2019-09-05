@@ -1,5 +1,5 @@
-let question = document.getElementById('questionField')
+let form = document.querySelector('form')
 document.getElementById('submit').addEventListener('click',(event) => {
     event.preventDefault()
-    console.log(question.value)
+    console.log(form.questionField.value)
 })
