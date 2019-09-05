@@ -4,10 +4,7 @@ document.getElementById('submit').addEventListener('click', (event) => {
     if (formHasQuestion(form) && formHasBetweenOneAndFiveAnswers(form) && answerHasValidValue(form)) {
         console.log('success')
     } else {
-        // console.log(formHasQuestion(form))
-        // console.log(formHasBetweenOneAndFiveAnswers(form))
-        // console.log(answerHasValidValue(form))
-        // console.log(onlyOneCheckBoxIsChecked(form))
+        console.log('error')
     }
 })
 
@@ -40,8 +37,6 @@ function answerHasValidValue(form) {
     form.querySelectorAll('.answer-check').forEach((checkbox) => {
         if (checkbox.previousElementSibling.value.length > 0 && checkbox.checked === true) {
             result = true
-        } else {
-            result = false
         }
     })
     return result
