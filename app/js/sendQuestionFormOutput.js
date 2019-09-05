@@ -24,8 +24,9 @@ function sendNewQuestion(newQuestion) {
 
 /**
  * Display message based on API response
+ * @apiResponseJson The JSON returned in the API response
  */
-function showConfirmationMessage(apiResponse) {
-    let parsedResponse = JSON.parse(apiResponse)
+function showConfirmationMessage(apiResponseJson) {
+    let parsedResponse = JSON.parse(apiResponseJson)
     document.querySelector('#message').innerText = parsedResponse.message
 }
