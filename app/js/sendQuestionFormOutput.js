@@ -21,3 +21,11 @@ function sendNewQuestion(newQuestion) {
 
     return addedQuestionResponse
 }
+
+/**
+ * Display message based on API response
+ */
+function showConfirmationMessage(apiResponse) {
+    let parsedResponse = JSON.parse(apiResponse)
+    document.querySelector('#message').innerText = parsedResponse.message
+}
