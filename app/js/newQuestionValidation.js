@@ -2,9 +2,9 @@ let form = document.querySelector('form')
 document.getElementById('submit').addEventListener('click', (event) => {
     event.preventDefault()
     if (formHasQuestion(form) && formHasBetweenOneAndFiveAnswers(form) && answerHasValidValue(form)) {
-        console.log('success')
+        document.getElementById('message-target').innerHTML = '<p class="success-message">Question input accepted</p>'
     } else {
-        console.log('error')
+        document.getElementById('message-target').innerHTML = '<p class="success-message">Error with question input. Please try again</p>'
     }
 })
 
