@@ -3,9 +3,9 @@ let form = document.querySelector("form");
 let formData = new FormData(form);
 
 /**
- * get form value and convert it into json
- *
- * */
+ * When the user clicks the submit button, will get form value and prepare 
+ * it for the database.
+ */
 form.addEventListener('submit', function(event) {
     if(!(user.isAdmin == "1")) {
         return
@@ -24,12 +24,12 @@ form.addEventListener('submit', function(event) {
 })
 
 /**
- * send new question to be submitted to the db
+ * Send the new question to the database API
  *
  * @return object - addedQuestionResponse
  */
 function sendNewQuestion(questionData) {
-    let addedQuestionResponse = fetch("http://localhost:8080/question", {
+    fetch("http://localhost:8080/question", {
         method: 'POST',
         body: questionData
     })
