@@ -1,13 +1,13 @@
 {{#each data}}
 <tr
     {{#if this.topGrade}}
-         class="score_item top-grade"
+         class="top-grade"
     {{else if this.passingGrade}}
-         class="score_item passing-grade"
+         class="passing-grade"
     {{else if this.fail}}
          class="entry dubious-grade"
     {{else if this.notTakenYet}}
-         class="score_item test-not-taken"
+         class="test-not-taken"
     {{/if}}>
         <td dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}" dataTime="{{time}}" dataCanRetake="{{canRetake}}">
             <button class="btn edit-user-button btn_height modalBtn">Edit User</button>
