@@ -138,8 +138,8 @@ function produceTable (HBTemplate, scoresDataObject) {
                 scoreData.notTakenYet = true
                 break
         }
-        //console.log(scoreData)
     })
+
     let template = Handlebars.compile(HBTemplate)
     let score_list = document.querySelector(".score_list")
     score_list.innerHTML = ""
