@@ -80,6 +80,8 @@ async function createUsersObject() {
         results.forEach(function(result) {
             let testEntryFound = []
             if (result.id === user.id ) {
+                let answers = JSON.parse(JSON.parse(result.answers))
+                console.log(answers)
                 let obj = {}
                 obj['id'] = user.id
                 obj['name'] = user.name
