@@ -43,7 +43,9 @@ function sendNewQuestion(questionData) {
         method: 'POST',
         body: questionData
     }).then( response => {
-        showConfirmationMessage(response.data)
+        return response.json()
+    }) .then ( blob => {
+        showConfirmationMessage(blob)
     })
 }
 
@@ -52,6 +54,5 @@ function sendNewQuestion(questionData) {
  * @apiResponseJson The JSON returned in the API response
  */
 function showConfirmationMessage(apiResponseJson) {
-    let parsedResponse = JSON.parse(apiResponseJson)
-    document.querySelector('#message').innerText = parsedResponse.message
+    document.querySelector('#message').innerText = apiResponseJson.message
 }
