@@ -101,3 +101,12 @@ body {
     }
   }
 }
+
+.new-question-container {
+  margin-top: 3rem;
+  display: flex;
+  height: 150px;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}

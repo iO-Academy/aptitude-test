@@ -31,3 +31,12 @@ function sendNewQuestion(questionData) {
         body: questionData
     })
 }
+
+/**
+ * Display message based on API response
+ * @apiResponseJson The JSON returned in the API response
+ */
+function showConfirmationMessage(apiResponseJson) {
+    let parsedResponse = JSON.parse(apiResponseJson)
+    document.querySelector('#message').innerText = parsedResponse.message
+}
