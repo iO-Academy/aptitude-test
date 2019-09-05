@@ -130,7 +130,7 @@ function produceTable (HBTemplate, scoresDataObject) {
             case scoreData.percentage >= 70:
                 scoreData.passingGrade = true
                 break
-            case scoreData.percentage < 70:
+            case scoreData.percentage === '0.00' || scoreData.percentage > 0:
                 scoreData.fail = true
                 break
             default:
