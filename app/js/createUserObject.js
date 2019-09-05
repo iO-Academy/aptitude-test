@@ -1,5 +1,3 @@
-const numberOfQuestions = 30
-
 /**
  * Get all the test results from the API.
  */
@@ -30,8 +28,9 @@ async function getUsers() {
 /**
  * Take a score and a total number of questions and calculate the score 
  * as a percentage.
- * @param score 
- * @param numOfQuestions 
+ * @param {number} score The user's test score
+ * @param {number} numOfQuestions The number of questions on the test
+ * @return {number} The score represented as a percentage
  */
 function calculatePercentage(score, numOfQuestions) {
     return ((score / numOfQuestions) * 100).toFixed(2)
@@ -39,7 +38,8 @@ function calculatePercentage(score, numOfQuestions) {
 
 /**
  * Take a time in seconds and convert it into minutes and seconds.
- * @param time 
+ * @param {number} time time in seconds
+ * @return {number} Time in MM:SS format
  */
 function secondsToMinutes(time) {
     return String(Math.floor(time / 60)) + ':' + String((time % 60)).padStart(2,'0')
@@ -80,12 +80,14 @@ async function createUsersObject() {
         results.forEach(function(result) {
             let testEntryFound = []
             if (result.id === user.id ) {
+                let answers = JSON.parse(JSON.parse(result.answers))
+                let numberOfQuestionsTaken = Object.keys(answers).length
                 let obj = {}
                 obj['id'] = user.id
                 obj['name'] = user.name
                 obj['email'] = user.email
                 obj['score'] = result.score
-                obj['percentage'] = calculatePercentage(result.score, numberOfQuestions)
+                obj['percentage'] = calculatePercentage(result.score, numberOfQuestionsTaken)
                 obj['time'] = result.time
                 obj['timeAllowed'] = secondsToMinutes(user.timeAllowed)
                 obj['dateCreated'] = result.dateCreated

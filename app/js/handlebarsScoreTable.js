@@ -16,13 +16,13 @@ async function sortUsersObjectByDate() {
 }
 
 /**
- * Get the handlebars template for table rows (mergeTable.hbs), combine 
+ * Get the handlebars template for table rows (adminTable.hbs), combine
  * with user objects and send this to searching and filtering.
  */
 function updateScoreTable() {
     let users = sortUsersObjectByDate()
     users.then(function (userInfo) {
-        getTemplateAjax('js/templates/mergeTable.hbs').then(function (HBTemplate) {
+        getTemplateAjax('js/templates/adminTable.hbs').then(function (HBTemplate) {
             sendToSearchAndFilter(HBTemplate, userInfo)
         })
     })
@@ -138,8 +138,8 @@ function produceTable (HBTemplate, scoresDataObject) {
                 scoreData.notTakenYet = true
                 break
         }
-        //console.log(scoreData)
     })
+
     let template = Handlebars.compile(HBTemplate)
     let score_list = document.querySelector(".score_list")
     score_list.innerHTML = ""
