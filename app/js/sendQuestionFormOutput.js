@@ -2,42 +2,29 @@ let submit = document.getElementsByClassName("submit");
 let form = document.querySelector("form");
 let formData = new FormData(form);
 
-
+/**
+ * get form value and convert it into json
+ *
+ * */
 form.addEventListener('submit', function(event) {
     event.preventDefault()
     var questionData = {}
-    questionData.question = form.option1.value
+    questionData.text = form.question.value
+    questionData.option1 = form.option1.value
+    questionData.option2 = form.option2.value
+    questionData.option3 = form.option3.value
+    questionData.option4 = form.option4.value
+    questionData.option5 = form.option5.value
+    var json = JSON.stringify(questionData)
+    sendNewQuestion(json)
 })
 
-/**
- * Convert addQuestion form data into JSON
- *
- * @return newQuestionJson
- */
-let newQuestion = {}
-formData.forEach((value, key) => {newQuestion[key] = value})
-const newQuestionJson = JSON.stringify(newQuestion)
-
-console.log(newQuestionJson)
 /**
  * send new question to be submitted to the db
  *
  * @return object - addedQuestionResponse
  */
-// (async () => {
-//     const rawResponse = await fetch('http://localhost:8080/question', {
-//         method: 'POST',
-//         body: newQuestionJson
-//     })
-//     const content = await rawResponse.json()
-//
-//     console.log(content)
-// })();
-
-
-function sendNewQuestion(event, newQuestionJson) {
-    event.preventDefault();
-
+function sendNewQuestion(newQuestionJson) {
     let addQuestionForm = jsonToFormData(newQuestionJson)
 
     let addedQuestionResponse = fetch("http://localhost:8080/question", {
