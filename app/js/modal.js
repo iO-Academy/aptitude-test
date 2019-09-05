@@ -50,7 +50,7 @@ function fillEditModalFields(HBTemplate, userInfo) {
 /**
  * Takes time and returns true if passed validation or false otherwise.
  * @param time
- * @returns {boolean}
+ * @returns boolean
  */
 function isTimeValid(time) {
     let intTime = parseInt(time)
@@ -83,6 +83,5 @@ function addEditModalSubmitEventListener() {
                 }
             }
         })
-        console.log('Not validated??')
     })
 }
