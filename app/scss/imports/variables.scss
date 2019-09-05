@@ -1,12 +1,23 @@
-$unanswered-color: #e66060;
-$answered-color: #698dc9;
+@import url('https://fonts.googleapis.com/css?family=Asap&display=swap');
+$unanswered-color: #298fb0;
+$answered-color: #94ba66;
 $main-background-color: #ffffff;
-$table-border: #ccc;
+$table-border: #8d0377;
+$score-table-border: #f2f2f2;
 $table-box-shadow: #000;
-
+$light-red: #ff6340;
+$light-orange: #f27324;
+$light-green: #94ba66;
+$light-purple: #d2b4f9;
 $primary-button: #8d0377;
 $primary-button-hover: #c63806;
 $secondary-button: #94ba66;
 $secondary-button-hover: #f27324;
+$overview-button: #53a00a;
+$overview-button-hover: #94ba66;
+$flag-color: #f27324;
+$flag-pressed: #ffffff;
+$results-headings:  #085e8e;
 $font-color: #2b2c2c;
-
+$question-nav-border: #000000;
+$edit-button: #085e8e;
