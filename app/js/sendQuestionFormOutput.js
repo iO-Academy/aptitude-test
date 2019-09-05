@@ -25,22 +25,12 @@ form.addEventListener('submit', function(event) {
  * @return object - addedQuestionResponse
  */
 function sendNewQuestion(newQuestionJson) {
-    let addQuestionForm = jsonToFormData(newQuestionJson)
-
     let addedQuestionResponse = fetch("http://localhost:8080/question", {
-        method: 'post',
-        body: addQuestionForm
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: newQuestionJson
     })
-        .then(function(response) {
-            return response.json()
-        })
-        .then(function(data) {
-            return data
-        })
-        .catch(function(err) {
-        })
-
-    console.log(addedQuestionResponse)
 }
-
-submit.addEventListener('click', sendNewQuestion(newQuestionJson))
