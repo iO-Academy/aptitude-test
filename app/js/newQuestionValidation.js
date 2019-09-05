@@ -3,6 +3,7 @@ document.getElementById('submit').addEventListener('click', (event) => {
     event.preventDefault()
     formHasQuestion(form)
     formHasBetweenOneAndFiveAnswers(form)
+    console.log(form)
 })
 
 function formHasQuestion(form) {
@@ -25,5 +26,13 @@ function formHasBetweenOneAndFiveAnswers(form) {
         return true
     } else {
         return false
+    }
+}
+function answerHasValidValue(form) {
+    if(form.input.previousElementSibling.length === 0) {
+        console.log('empty field')
+    }
+    else{
+        console.log('good to go')
     }
 }
