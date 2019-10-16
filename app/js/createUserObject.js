@@ -4,7 +4,8 @@ const numberOfQuestions = 30
  * Get all the test results from the API.
  */
 async function getResults() {
-    let resultsArr = await fetch("http://localhost:8080/result", {method: 'get'})
+    let baseUrl = getBaseUrl()
+    let resultsArr = await fetch(baseUrl + "result", {method: 'get'})
     .then(function (data) {
         return data.json()
     })
@@ -17,7 +18,8 @@ async function getResults() {
  * @return Array of user objects
  */
 async function getUsers() {
-    let users = await fetch("http://localhost:8080/user", {method: 'get'})
+    let baseUrl = getBaseUrl()
+    let users = await fetch(baseUrl + "user", {method: 'get'})
         .then(function (data) {
             return data.json()
         })

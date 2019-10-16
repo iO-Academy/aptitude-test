@@ -108,7 +108,8 @@ function addDeleteEventListeners() {
  * @param userId 
  */
 function deleteUser(userId) {
-    let url = "http://localhost:8080/user/delete/" + userId
+    let baseUrl = getBaseUrl()
+    let url = baseUrl + "user/delete/" + userId
     fetch(url, {"method": "post"})
         .then(function () {
             updateScoreTable()

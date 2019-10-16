@@ -4,9 +4,10 @@
  * @return object - user results
  */
 function sendUserResults(userResults) {
-   let userResultsForm = jsonToFormData(userResults)
+    let baseUrl = getBaseUrl()
+    let userResultsForm = jsonToFormData(userResults)
 
-    let resultsResponse = fetch("http://localhost:8080/answer", {
+    let resultsResponse = fetch(baseUrl + "answer", {
         method: 'post',
         body: userResultsForm
     })
@@ -48,12 +49,13 @@ async function handleResponseFromAPI (response) {
  * user input.
  */
 async function resetReapplyCounter() {
+    let baseUrl = getBaseUrl()
     let email = getCookie('userEmail')
-    let response = await fetch('http://localhost:8080/user?email=' + email)
+    let response = await fetch(baseUrl + 'user?email=' + email)
 
     let userObject = await response.json()
     userObject.data.canRetake = 0
-    await fetch('http://localhost:8080/user/edit', {
+    await fetch(baseUrl + 'user/edit', {
         method: "post",
         body: jsonToFormData(userObject.data)
     })

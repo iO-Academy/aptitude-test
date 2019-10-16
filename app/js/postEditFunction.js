@@ -28,9 +28,13 @@ function createObjectForDatabase(inputClass) {
  * @return object apiData stating posts success and whether user data has been updated.
  */
 async function postUserEdit(formData) {
+    let baseUrl = getBaseUrl()
     formData.time *= 60
+    console.log(formData)
+
     if (formData.name && formData.email && formData.id && formData.time) {
-        let apiData = await fetch('http://localhost:8080/user/edit', {
+        console.log('sending')
+        let apiData = await fetch(baseUrl + 'user/edit', {
             method: 'post',
             body: jsonToFormData(formData)
         })
