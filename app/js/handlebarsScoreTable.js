@@ -94,7 +94,6 @@ function addEditEventListeners() {
 function addDeleteEventListeners() {
     let userItems = document.querySelectorAll(".delete-user-button")
     userItems.forEach(function (userItem) {
-        console.log('hi')
         userItem.addEventListener('click', function (e) {
             let userId = e.target.parentElement.getAttribute("dataId")
             deleteUser(userId)

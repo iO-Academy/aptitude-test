@@ -75,7 +75,6 @@ newQuestionForm.addEventListener('submit', function(event) {
  */
 function sendNewQuestion(questionData) {
     let baseUrl = getBaseUrl()
-    console.log(baseUrl)
     fetch(baseUrl + "question", {
         method: 'POST',
         body: questionData
