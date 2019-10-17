@@ -6,9 +6,10 @@ const flaggedQuestions = {}
  * @param HBTemplate the handlebars template
  */
 function fillUserTable(HBTemplate) {
+    let baseUrl = getBaseUrl()
     let template = Handlebars.compile(HBTemplate)
     let counter = 0;
-    fetch("http://localhost:8080/question")
+    fetch(baseUrl + "question")
         .then(function(result) {
             return result.json()
         })

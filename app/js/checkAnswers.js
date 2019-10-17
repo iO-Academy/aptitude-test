@@ -44,7 +44,8 @@ async function checkAnswers(userAnswers) {
  * @return Promise - containing the correct answers
  */
 async function getAnswers() {
-    let data = await fetch("http://localhost:8080/answer", {method: 'get'})
+    let baseUrl = getBaseUrl()
+    let data = await fetch(baseUrl + "answer", {method: 'get'})
     return data.json()
 }
 

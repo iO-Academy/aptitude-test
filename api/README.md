@@ -7,6 +7,7 @@
 - Install the aptitude-test.sql file from /api/db into your vagrant box database named `aptitude-test`
 - cd into the api/public folder
 - Run: `php -S localhost:8080` - DO NOT CLOSE THIS TAB OR TURN THE SERVER OFF
+- Set `isProd` in app/js/utils to `false`
 
 
 ### Routes

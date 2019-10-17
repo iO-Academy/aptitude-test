@@ -6,8 +6,9 @@
  * @return a promise with the user object requested
  */
 async function getUser(userEmail) {
+    let baseUrl = getBaseUrl()
     let apiData = await fetch(
-        'http://localhost:8080/user?email=' + userEmail,
+        baseUrl + 'user?email=' + userEmail,
         {method: 'get'}
     )
     apiData = await apiData.json()
@@ -23,8 +24,9 @@ async function getUser(userEmail) {
  * @return Promise containing data on whether the test has been taken before
  */
 async function checkIfTestIsTaken(userId) {
+    let baseUrl = getBaseUrl()
     let idData = await fetch(
-        'http://localhost:8080/result?uid=' + userId,
+        baseUrl +'result?uid=' + userId,
         {method: 'get'}
     )
     idData = await idData.json()

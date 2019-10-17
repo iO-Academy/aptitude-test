@@ -74,7 +74,8 @@ newQuestionForm.addEventListener('submit', function(event) {
  * @return object - addedQuestionResponse
  */
 function sendNewQuestion(questionData) {
-    fetch("http://localhost:8080/question", {
+    let baseUrl = getBaseUrl()
+    fetch(baseUrl + "question", {
         method: 'POST',
         body: questionData
     }).then( response => {

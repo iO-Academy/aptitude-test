@@ -6,10 +6,10 @@
  * @returns A promise containing the response, which includes the boolean success property.
  */
 async function saveNewUser(user) {
+    let baseUrl = getBaseUrl()
     let formData = jsonToFormData(user) // API does not work with JSON - needs form data
-
     let apiData = await fetch(
-        'http://localhost:8080/user',
+        baseUrl + 'user',
         {
             method: 'post',
             body: formData
@@ -26,9 +26,10 @@ async function saveNewUser(user) {
  * @return  An array of user data.
  */
 async function getExistingUsers() {
+    let baseUrl = getBaseUrl()
     let result = []
     let apiData = await fetch(
-        'http://localhost:8080/user',
+        baseUrl +  'user',
         {method: 'get'}
     )
     apiData = await apiData.json()
