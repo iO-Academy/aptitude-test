@@ -1,5 +1,6 @@
 function getQuestionCount() {
-    fetch("http://localhost:8080/question")
+    let baseUrl = getBaseUrl()
+    fetch(baseUrl + "question")
         .then(result => result.json())
         .then(questions => {
             document.querySelector('#question-count').innerText = questions.data.length
