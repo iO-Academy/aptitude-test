@@ -9,72 +9,67 @@
     <link href="css/styles.css" type="text/css" rel="stylesheet">
     <link href="css/adminPage.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/addQuestion.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script defer src="js/aptitudeTestHelpers.js"></script>
-    <script defer src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     <script defer src="js/userLogIn.js"></script>
     <script defer src="js/cookies.js"></script>
     <script defer src="js/questionCount.js"></script>
-    <script defer src="js/newQuestionValidation.js"></script>
     <script defer src="js/sendQuestionFormOutput.js"></script>
     <title>Add Question</title>
 </head>
 <body>
-<section>
-    <div class="container">
-        <img class="logo" alt="Mayden Logo" src="images/branding-icons/maydenacademy_logotype_05.18_web.svg">
-        <div class="form">
-            <h3>Add new question</h3>
-            <h4 class="search-heading">Current Question Count: <span id="question-count"></span></h4>
-            <h4 class="page-text">
-                Enter new question text below
-            </h4>
-            <form>
+<div class="container">
+    <img class="logo" alt="Mayden Logo" src="images/branding-icons/maydenacademy_logotype_05.18_web.svg">
+    <div class="form">
+        <h3>Add new question</h3>
+        <h4 class="search-heading">Current Question Count: <span id="question-count"></span></h4>
+        <h4 class="page-text">
+            Enter new question text below
+        </h4>
+        <form id="new-question">
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Question:</label>
+                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="question"></textarea>
+            </div>
+            <div class="answers">
+                <h4 class="page-text">Enter up to 5 answers below (min 2) then tick corresponding checkbox to
+                    indicate correct answer before submitting</h4>
                 <div class="form-group">
-                    <label for="exampleFormControlTextarea1">Question:</label>
-                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="question"></textarea>
+                    <label for="option1">Option 1:</label>
+                    <textarea class="form-control answer" id="option1" rows="2" name="option1"></textarea>
+                    <input class="answer-check" type="radio" name="answer-check">
                 </div>
-                <div class="answers">
-                    <h4 class="page-text">Enter up to 5 answers below (min 2) then tick corresponding checkbox to
-                        indicate correct answer before submitting</h4>
-                    <div class="form-group">
-                        <label for="option1">Option 1:</label>
-                        <textarea class="form-control answer" id="option1" rows="2" name="option1"></textarea>
-                        <input class="answer-check" type="radio" name="answer-check">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Option 2:</label>
-                        <textarea class="form-control answer" id="option2" rows="2" name="option2"></textarea>
-                        <input class="answer-check" type="radio" name="answer-check">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Option 3:</label>
-                        <textarea class="form-control answer" id="option3" rows="2" name="option3"></textarea>
-                        <input class="answer-check" type="radio" name="answer-check">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Option 4:</label>
-                        <textarea class="form-control answer" id="option4" rows="2" name="option4"></textarea>
-                        <input class="answer-check" type="radio" name="answer-check">
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleFormControlTextarea1">Option 5:</label>
-                        <textarea class="form-control answer" id="option5" rows="2" name="option5"></textarea>
-                        <input class="answer-check" type="radio" name="answer-check">
-                    </div>
+                <div class="form-group">
+                    <label for="option2">Option 2:</label>
+                    <textarea class="form-control answer" id="option2" rows="2" name="option2"></textarea>
+                    <input class="answer-check" type="radio" name="answer-check">
                 </div>
-                <div id="message-target"></div>
-                <div class="buttons">
-                    <div class="messageArea">
-                        <span id="message"></span>
-                    </div>
-                    <a href="adminPage.html">
-                        <div class="return btn">Back</div>
-                    </a>
-                    <input id="submit" class="submit" type="submit" value="submit">
+                <div class="form-group">
+                    <label for="option3">Option 3:</label>
+                    <textarea class="form-control answer" id="option3" rows="2" name="option3"></textarea>
+                    <input class="answer-check" type="radio" name="answer-check">
                 </div>
-            </form>
-        </div>
+                <div class="form-group">
+                    <label for="option4">Option 4:</label>
+                    <textarea class="form-control answer" id="option4" rows="2" name="option4"></textarea>
+                    <input class="answer-check" type="radio" name="answer-check">
+                </div>
+                <div class="form-group">
+                    <label for="option5">Option 5:</label>
+                    <textarea class="form-control answer" id="option5" rows="2" name="option5"></textarea>
+                    <input class="answer-check" type="radio" name="answer-check">
+                </div>
+            </div>
+            <div id="message-target"></div>
+            <div class="buttons">
+                <div class="messageArea">
+                    <span id="message"></span>
+                </div>
+                <a href="adminPage.html">
+                    <div class="return btn">Back</div>
+                </a>
+                <input class="submit" type="submit" value="submit">
+            </div>
+        </form>
     </div>
-</section>
+</div>
 </body>

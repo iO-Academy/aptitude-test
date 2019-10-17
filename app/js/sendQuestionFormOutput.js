@@ -1,36 +1,71 @@
 let authorised = false
 let user = getCookie('userEmail')
 getUser(user).then(function(user) {
-    console.log(user)
     if ( user.data.isAdmin == '1' ) {
         authorised = true
     }
 })
 
-let submit = document.getElementsByClassName("submit");
-let form = document.querySelector("form");
-let formData = new FormData(form);
+function formHasQuestion(form) {
+    if (form.question.value.length === 0) {
+        return false
+    } else {
+        return true
+    }
+}
+
+function formHasBetweenOneAndFiveAnswers(form) {
+    let answers = form.querySelectorAll('.answer')
+    let fieldsThatHaveValues = 0
+    answers.forEach((answer) => {
+        if (answer.value.length > 0) {
+            fieldsThatHaveValues++
+        }
+    })
+    if (fieldsThatHaveValues >= 2) {
+        return true
+    } else {
+        return false
+    }
+}
+
+function answerHasValidValue(form) {
+    let result = false
+    form.querySelectorAll('.answer-check').forEach((checkbox) => {
+        if (checkbox.previousElementSibling.value.length > 0 && checkbox.checked === true) {
+            result = true
+        }
+    })
+    return result
+}
+
+let newQuestionForm = document.getElementById("new-question")
 
 /**
  * When the user clicks the submit button, will get form value and prepare 
  * it for the database.
  */
-form.addEventListener('submit', function(event) {
+newQuestionForm.addEventListener('submit', function(event) {
     event.preventDefault()
-    if(!authorised) {
-        console.log('You are not authorized')
-        return
+    if (formHasQuestion(newQuestionForm) && formHasBetweenOneAndFiveAnswers(newQuestionForm) && answerHasValidValue(newQuestionForm)) {
+        if(!authorised) {
+            console.log('You are not authorized')
+            return
+        }
+
+        var questionData = {}
+        questionData.text = newQuestionForm.question.value
+        questionData.option1 = newQuestionForm.option1.value
+        questionData.option2 = newQuestionForm.option2.value
+        questionData.option3 = newQuestionForm.option3.value
+        questionData.option4 = newQuestionForm.option4.value
+        questionData.option5 = newQuestionForm.option5.value
+        questionData.answer = 1
+        let questionDataToSend = jsonToFormData(questionData);
+        sendNewQuestion(questionDataToSend)
+    } else {
+        document.getElementById('message-target').innerHTML = '<p class="failure-message">Error with question input. Please try again</p>'
     }
-    var questionData = {}
-    questionData.text = form.question.value
-    questionData.option1 = form.option1.value
-    questionData.option2 = form.option2.value
-    questionData.option3 = form.option3.value
-    questionData.option4 = form.option4.value
-    questionData.option5 = form.option5.value
-    questionData.answer = 1
-    let questionDataToSend = jsonToFormData(questionData);
-    sendNewQuestion(questionDataToSend)
 })
 
 /**
