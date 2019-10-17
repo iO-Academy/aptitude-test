@@ -52,6 +52,12 @@ newQuestionForm.addEventListener('submit', function(event) {
             console.log('You are not authorized')
             return
         }
+        let answer
+        document.querySelectorAll('.answer-check').forEach((answerCheck, index) => {
+            if(answerCheck.checked) {
+                answer = index + 1
+            }
+        })
 
         var questionData = {}
         questionData.text = newQuestionForm.question.value
@@ -60,7 +66,7 @@ newQuestionForm.addEventListener('submit', function(event) {
         questionData.option3 = newQuestionForm.option3.value
         questionData.option4 = newQuestionForm.option4.value
         questionData.option5 = newQuestionForm.option5.value
-        questionData.answer = 1
+        questionData.answer = answer
         let questionDataToSend = jsonToFormData(questionData);
         sendNewQuestion(questionDataToSend)
     } else {
