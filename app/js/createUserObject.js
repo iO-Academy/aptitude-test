@@ -1,5 +1,3 @@
-const numberOfQuestions = 30
-
 /**
  * Get all the test results from the API.
  */
@@ -82,12 +80,14 @@ async function createUsersObject() {
         results.forEach(function(result) {
             let testEntryFound = []
             if (result.id === user.id ) {
+                let answers = JSON.parse(JSON.parse(result.answers))
+                let numberOfQuestionsTaken = Object.keys(answers).length
                 let obj = {}
                 obj['id'] = user.id
                 obj['name'] = user.name
                 obj['email'] = user.email
                 obj['score'] = result.score
-                obj['percentage'] = calculatePercentage(result.score, numberOfQuestions)
+                obj['percentage'] = calculatePercentage(result.score, numberOfQuestionsTaken)
                 obj['time'] = result.time
                 obj['timeAllowed'] = secondsToMinutes(user.timeAllowed)
                 obj['dateCreated'] = result.dateCreated
