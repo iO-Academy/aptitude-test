@@ -110,3 +110,16 @@ body {
   justify-content: space-between;
   margin-bottom: 30px;
 }
+
+.test-not-taken {
+  background-color: #ffffff;
+}
+.dubious-grade {
+  background-color: $light-orange;
+}
+.passing-grade {
+  background-color: $light-green;
+}
+.top-grade {
+  background-color: $light-purple;
+}

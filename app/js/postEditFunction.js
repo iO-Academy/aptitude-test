@@ -29,11 +29,9 @@ function createObjectForDatabase(inputClass) {
  */
 async function postUserEdit(formData) {
     let baseUrl = getBaseUrl()
-    formData.time *= 60
-    console.log(formData)
+    formData.time = parseInt(formData.time) * 60
 
     if (formData.name && formData.email && formData.id && formData.time) {
-        console.log('sending')
         let apiData = await fetch(baseUrl + 'user/edit', {
             method: 'post',
             body: jsonToFormData(formData)

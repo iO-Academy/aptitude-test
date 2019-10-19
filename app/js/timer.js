@@ -31,8 +31,8 @@ function timer() {
     let seconds = Math.floor(timeRemaining - minutes * 60);
     document.querySelectorAll(".timer").forEach(function (timer) {
         timer.innerHTML = minutes + "m " + seconds + "s ";
-        timeRemaining--
     })
+    timeRemaining--
     if (timeRemaining < 0) {
         clearInterval(interval)
         showResults()

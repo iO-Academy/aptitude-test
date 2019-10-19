@@ -32,7 +32,11 @@ function formHasBetweenOneAndFiveAnswers(form) {
 function answerHasValidValue(form) {
     let result = false
     form.querySelectorAll('.answer-check').forEach((checkbox) => {
-        if (checkbox.previousElementSibling.value.length > 0 && checkbox.checked === true) {
+        if (
+            typeof checkbox.previousElementSibling.value != 'undefined' &&
+            checkbox.previousElementSibling.value.length > 0 &&
+            checkbox.checked === true
+        ) {
             result = true
         }
     })
@@ -49,7 +53,6 @@ newQuestionForm.addEventListener('submit', function(event) {
     event.preventDefault()
     if (formHasQuestion(newQuestionForm) && formHasBetweenOneAndFiveAnswers(newQuestionForm) && answerHasValidValue(newQuestionForm)) {
         if(!authorised) {
-            console.log('You are not authorized')
             return
         }
         let answer

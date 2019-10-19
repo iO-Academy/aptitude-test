@@ -89,9 +89,9 @@ function changeQuestion(destinationPage) {
 function fillNav() {
     let nav = document.querySelector("#question-nav")
     let questions = document.querySelectorAll('.question')
-    questions.forEach(function (question) {
+    questions.forEach(function (question, id) {
         let navItem = document.createElement('div')
-        let qNumber = '<p>' + question.dataset['id'] + '</p>'
+        let qNumber = '<p>' + ++id + '</p>'
         let flagBox = '<span class="flag"></span>'
         navItem.classList.add('nav-item', 'unanswered-nav-box')
         navItem.innerHTML += qNumber + flagBox

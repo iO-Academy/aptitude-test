@@ -110,7 +110,7 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
                     nameField.value = ''
                     emailField.value = ''
                     timeField.value = 30
-                    updateUserTable()
+                    updateScoreTable()
                 } else {
                     errorField.innerHTML = response.message
                 }

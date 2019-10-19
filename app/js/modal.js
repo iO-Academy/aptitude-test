@@ -76,7 +76,6 @@ function addEditModalSubmitEventListener() {
                 isTimeValid (time) &&
                 isEmailValid(email)) {
                 if(originalEmail == email || userExists(email, existingUsers) == false) {
-                    console.log('Validated!')
                     closeDialog()
                     postUserEdit(createObjectForDatabase('.editUserData'))
                     updateScoreTable()
