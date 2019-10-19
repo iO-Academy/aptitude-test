@@ -22,15 +22,18 @@ $app->post('/user', function ($request, $response, $args) {
     }
 
     try {
+        $user['test_id'] = $user['test_id'] ?? 1;
+
         if (!empty($user['time'])) {
-            $query = "INSERT INTO `user` (`email`, `name`, `time`) VALUES (:email, :name, :time);";
+            $query = "INSERT INTO `user` (`email`, `name`, `time`, `test_id`) VALUES (:email, :name, :time, :testId);";
             $query = $this->db->prepare($query);
             $query->bindParam(':time', $user['time']);
         } else {
-            $query = "INSERT INTO `user` (`email`, `name`) VALUES (:email, :name);";
+            $query = "INSERT INTO `user` (`email`, `name`, `test_id`) VALUES (:email, :name, :testId);";
             $query = $this->db->prepare($query);
         }
 
+        $query->bindParam(':testId', $user['test_id']);
         $query->bindParam(':email', $user['email']);
         $query->bindParam(':name', $user['name']);
         $query->execute();
@@ -167,9 +170,16 @@ $app->post('/user/delete/{id}', function ($request, $response, $args) {
 $app->get('/question', function ($request, $response, $args) {
     $data = ['success' => false, 'message' => 'An unexpected error occured.', 'data' => []];
 
+    $get = $request->getQueryParams();
+
     try {
-        $query = "SELECT `id`, `text`, `option1`, `option2`, `option3`, `option4`, `option5` FROM `question` WHERE `deleted` <> 1";
+        $query = "SELECT `id`, `text`, `option1`, `option2`, `option3`, `option4`, `option5`, `test_id` FROM `question` WHERE `deleted` <> 1 AND `test_id` = :testId;";
+
+        $testId = $get['test_id'] ?? 1;
+
         $query = $this->db->prepare($query);
+        $query->bindParam(':testId', $testId);
+
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
@@ -203,11 +213,12 @@ $app->post('/question', function ($request, $response, $args) {
             $question['option3'] = $question['option3'] ?? NULL;
             $question['option4'] = $question['option4'] ?? NULL;
             $question['option5'] = $question['option5'] ?? NULL;
+            $question['test_id'] = $question['test_id'] ?? 1;
 
             $query = "INSERT INTO `question`
-                        (`text`, `option1`, `option2`, `option3`, `option4`, `option5`, `answer`)
+                        (`text`, `option1`, `option2`, `option3`, `option4`, `option5`, `answer`, `test_id`)
                           VALUES
-                        (:text, :option1, :option2, :option3, :option4, :option5, :answer)";
+                        (:text, :option1, :option2, :option3, :option4, :option5, :answer, :testId)";
             $query = $this->db->prepare($query);
 
             $query->bindParam(':text', $question['text']);
@@ -217,6 +228,7 @@ $app->post('/question', function ($request, $response, $args) {
             $query->bindParam(':option4', $question['option4']);
             $query->bindParam(':option5', $question['option5']);
             $query->bindParam(':answer', $question['answer']);
+            $query->bindParam(':testId', $question['test_id']);
 
             $data['success'] = $query->execute();
             $data['data']['id'] = $this->db->lastInsertId();
@@ -256,15 +268,29 @@ $app->post('/question/{id}/edit', function ($request, $response, $args) {
             $question['option4'] = $question['option4'] ?? NULL;
             $question['option5'] = $question['option5'] ?? NULL;
 
-            $query = "UPDATE `question` SET
+
+            if (empty($question['test_id'])) {
+                $query = "UPDATE `question` SET
                         `text` = :text,
                         `option1` = :option1,
                         `option2` = :option2,
                         `option3` = :option3,
                         `option4` = :option4,
                         `option5` = :option5,
-                        `answer` = :answer
+                        `answer` = :answer,
                         WHERE `id` = :id";
+            } else {
+                $query = "UPDATE `question` SET
+                        `text` = :text,
+                        `option1` = :option1,
+                        `option2` = :option2,
+                        `option3` = :option3,
+                        `option4` = :option4,
+                        `option5` = :option5,
+                        `answer` = :answer,
+                        `test_id` = :testId
+                        WHERE `id` = :id";
+            }
 
             $query = $this->db->prepare($query);
 
@@ -276,6 +302,10 @@ $app->post('/question/{id}/edit', function ($request, $response, $args) {
             $query->bindParam(':option5', $question['option5']);
             $query->bindParam(':answer', $question['answer']);
             $query->bindParam(':id', $args['id']);
+
+            if (!empty($question['test_id'])) {
+                $query->bindParam(':testId', $question['test_id']);
+            }
 
             $data['success'] = $query->execute();
             $data['message'] = 'Question updated successfully';
@@ -362,9 +392,15 @@ $app->get('/answer/{id}', function ($request, $response, $args) {
 $app->get('/answer', function ($request, $response, $args) {
     $data = ['success' => false, 'message' => 'An unexpected error occured.', 'data' => []];
 
+    $get = $request->getQueryParams();
+
     try {
-        $query = "SELECT `id`, `answer` from `question`";
+        $testId = $get['test_id'] ?? 1;
+
+        $query = "SELECT `id`, `answer` from `question` WHERE `test_id` = :testId";
         $query = $this->db->prepare($query);
+
+        $query->bindParam(':testId', $testId);
         $query->execute();
         $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
@@ -463,6 +499,112 @@ $app->get('/result', function ($request, $response, $args) {
     $data['success'] = true;
     $data['message'] = 'Successfully retrieved results.';
     $data['data'] = $result;
+    $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+    return $response->withJson($data);
+});
+
+
+$app->get('/setting', function ($request, $response, $args) {
+    $data = ['success' => false, 'message' => 'An unexpected error occured.', 'data' => []];
+
+    try {
+        $query = "SELECT `name`, `value` FROM setting;";
+        $query = $this->db->prepare($query);
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    } catch(Exception $e) {
+        $data['message'] = $e->getMessage();
+        $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+        return $response->withJson($data, 500);
+    }
+
+    $data['success'] = true;
+    $data['message'] = 'Successfully retrieved settings.';
+    $data['data'] = $result;
+    $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+    return $response->withJson($data);
+});
+
+$app->post('/setting', function ($request, $response, $args) {
+    $data = ['success' => false, 'message' => 'An unexpected error occured.', 'data' => []];
+    $postData = $request->getParsedBody();
+
+    if (
+        empty($postData['settings']) ||
+        empty($postData['settings'][0]['name']) ||
+        empty($postData['settings'][0]['value'])
+    ) {
+        $data['message'] = 'Must provide a valid settings with a name and value';
+        $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+        return $response->withJson($data, 200);
+    }
+
+    try {
+
+        foreach($postData['settings'] as $setting) {
+            $query = "INSERT INTO setting (`name`, `value`) VALUES (:name, :value) ON DUPLICATE KEY UPDATE `value` = :value";
+            $query = $this->db->prepare($query);
+            $query->execute($setting);
+        }
+
+    } catch(Exception $e) {
+        $data['message'] = $e->getMessage();
+        $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+        return $response->withJson($data, 500);
+    }
+
+    $data['success'] = true;
+    $data['message'] = 'Successfully updated settings.';
+    $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+    return $response->withJson($data);
+});
+
+$app->get('/test', function ($request, $response, $args) {
+    $data = ['success' => false, 'message' => 'An unexpected error occured.', 'data' => []];
+
+    try {
+        $query = "SELECT * FROM test;";
+        $query = $this->db->prepare($query);
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+    } catch(Exception $e) {
+        $data['message'] = $e->getMessage();
+        $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+        return $response->withJson($data, 500);
+    }
+
+    $data['success'] = true;
+    $data['message'] = 'Successfully retrieved test data.';
+    $data['data'] = $result;
+    $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+    return $response->withJson($data);
+});
+
+$app->post('/test', function ($request, $response, $args) {
+    $data = ['success' => false, 'message' => 'An unexpected error occured.', 'data' => []];
+    $postData = $request->getParsedBody();
+
+    if (empty($postData['name']) && count($postData['name']) < 256) {
+        $data['message'] = 'Must provide a valid test name';
+        $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+        return $response->withJson($data, 200);
+    }
+
+    try {
+        $query = "INSERT INTO test (`name`) VALUES (?)";
+        $query = $this->db->prepare($query);
+        $query->execute([$postData['name']]);
+
+    } catch(Exception $e) {
+        $data['message'] = $e->getMessage();
+        $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+        return $response->withJson($data, 500);
+    }
+
+    $data['success'] = true;
+    $data['message'] = 'Successfully added test.';
     $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
     return $response->withJson($data);
 });
