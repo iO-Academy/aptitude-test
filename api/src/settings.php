@@ -16,9 +16,9 @@ return [
             'level' => \Monolog\Logger::DEBUG,
         ],
         'db' => [
-            'host' => '192.168.20.20',
+            'host' => 'db',
             'user' => 'root',
-            'pass' => '',
+            'pass' => 'password',
             'dbname' => 'aptitude-test'
         ]
     ],
