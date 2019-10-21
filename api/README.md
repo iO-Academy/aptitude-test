@@ -5,8 +5,8 @@
 - Clone this Repo
 - cd into api and run `composer install` or `php composer.phar install` if no composer installed
 - Install the aptitude-test.sql file from /api/db into your vagrant box database named `aptitude-test`
-- cd into the api/public folder
-- Run: `php -S localhost:8080` - DO NOT CLOSE THIS TAB OR TURN THE SERVER OFF
+- cd into the api folder
+- Run: `php -S localhost:8080 -t public/ public/index.php` - DO NOT CLOSE THIS TAB OR TURN THE SERVER OFF
 - Set `isProd` in app/js/utils to `false`
 
 
