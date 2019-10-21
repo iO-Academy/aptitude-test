@@ -16,9 +16,9 @@
     <script defer src="js/cookies.js"></script>
     <script defer src="js/questionCount.js"></script>
     <script defer src="js/sendQuestionFormOutput.js"></script>
+    <script defer src="js/getTests.js"></script>
     <title>Add Question</title>
     <script id="testTemplate" type="text/x-handlebars-template">
-        <option selected>Choose test</option>
         <option value="{{1}}">{{name}}</option>
     </script>
 </head>
@@ -67,7 +67,6 @@
                 <div class="form-group">
                     <label for="test_id">Assign to test:</label>
                     <select class="custom-select" id="test_id">
-                       
                     </select>
                 </div>
             </div>
