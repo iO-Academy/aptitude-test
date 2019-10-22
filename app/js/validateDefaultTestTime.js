@@ -1,37 +1,26 @@
-document.querySelector('#addNewUserForm').addEventListener('submit', function(event) {
+document.querySelector('#setDefaultTime').addEventListener('submit', function(event) {
     event.preventDefault()
-    var emailField = document.getElementById("email")
-    var nameField = document.getElementById('name')
-    var errorField = document.getElementById('error')
-    var timeField = document.getElementById('time')
+    var defaultMinutesField = document.getElementById('defaultMinutes')
+    var defaultSecondsField = document.getElementById('defaultSeconds')
+    var errorField = document.getElementById('defaultTimeError')
 
-    getExistingUsers().then(function(existingUsers) {
+        let defaultTimeIsValid = true
 
-        let emailIsValid = true
-        let timeIsValid = true
-
-        if (!isEmailValid(emailField.value) || userExists(emailField.value, existingUsers)) {
-            emailIsValid = false
-            errorField.innerHTML = "Your email is not valid or already exists: Please provide a correct email"
+        if (defaultMinutesField.value <=1 || defaultMinutesField.value == null || isNaN(defaultMinutesField.value) === true ) {
+            defaultTimeIsValid = false
+            errorField.innerHTML += 'This is not a good number!'
         }
-        if (timeField.value <=1 || timeField.value == null || isNaN(timeField.value) === true ) {
-            timeIsValid = false
+        if (defaultSecondsField.value <=0 || defaultSecondsField.value == null || isNaN(defaultSecondsField.value) === true ) {
+            defaultTimeIsValid = false
             errorField.innerHTML += 'This is not a good number!'
         }
 
-        if(emailIsValid && timeIsValid) {
+        if(defaultTimeIsValid === true) {
             errorField.innerHTML = ''
-            var setTime = timeField.value * 60
-            saveNewUser({'name': nameField.value, 'email': emailField.value, 'time': setTime}).then(function(response) {
-                if (response.success) {
-                    nameField.value = ''
-                    emailField.value = ''
-                    timeField.value = 30
-                    updateScoreTable()
-                } else {
-                    errorField.innerHTML = response.message
-                }
-            })
+            var defaultMinsToSeconds = defaultMinutesField.value * 60
+            var setDefaultTime = parseInt(defaultMinsToSeconds) + parseInt(defaultSecondsField.value)
+            return setDefaultTime
         }
-    })
+
 })
+
