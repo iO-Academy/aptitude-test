@@ -49,13 +49,15 @@
       text-align: center;
 
       .return {
+        align-content: center;
         width: 10%;
         background-color: $primary-button;
         color: #fff;
         transition: .5s;
         font-size: 1.5rem;
         border-style: none;
-        margin: 3%;
+        //margin: 3%;
+        padding: 1rem;
 
         &:hover {
           background-color: $primary-button-hover;
@@ -70,6 +72,7 @@
         font-size: 1.5rem;
         border-style: none;
         margin: 3%;
+        padding: 1rem;
 
         &:hover {
           background-color: $primary-button-hover;
@@ -98,4 +101,9 @@
 
 .success-message {
   color: $success-message
+}
+
+.custom-select {
+  display: block;
+  min-width: 25%;
 }
