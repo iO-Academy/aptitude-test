@@ -60,7 +60,6 @@ newQuestionForm.addEventListener('submit', function(event) {
             if(answerCheck.checked) {
                 answer = index + 1
             }
-            // return answer
         })
 
         var questionData = {}
