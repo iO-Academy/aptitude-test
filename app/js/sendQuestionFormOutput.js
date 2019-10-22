@@ -70,10 +70,12 @@ newQuestionForm.addEventListener('submit', function(event) {
         questionData.option4 = newQuestionForm.option4.value
         questionData.option5 = newQuestionForm.option5.value
         questionData.answer = answer
+        questionData.test_id = newQuestionForm.test_id.value
         let questionDataToSend = jsonToFormData(questionData);
         sendNewQuestion(questionDataToSend)
+        document.querySelector('.failure-message').style.display = 'none'
     } else {
-        document.getElementById('message-target').innerHTML = '<p class="failure-message">Error with question input. Please try again</p>'
+        document.querySelector('#message-target').innerHTML = '<p class="failure-message">Error with question input. Please try again</p>'
     }
 })
 
@@ -101,3 +103,6 @@ function sendNewQuestion(questionData) {
 function showConfirmationMessage(apiResponseJson) {
     document.querySelector('#message').innerText = apiResponseJson.message
 }
+
+// populate dropdown menu with available tests
+populateHandlebars('#test_id', 'js/templates/testDropdown.hbs', 'test')
