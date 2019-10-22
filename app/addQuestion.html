@@ -19,7 +19,9 @@
     <script defer src="js/getTests.js"></script>
     <title>Add Question</title>
     <script id="testTemplate" type="text/x-handlebars-template">
-        <option value="{{1}}">{{name}}</option>
+        {{#each data}}
+        <option value="{{id}}">{{name}}</option>
+        {{/each}}
     </script>
 </head>
 <body>
