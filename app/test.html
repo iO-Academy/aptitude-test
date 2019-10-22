@@ -5,17 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Testing</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link href="css/styles.css" type="text/css" rel="stylesheet">
+    <link href="css/adminPage.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/addQuestion.css">
     <script defer src="js/aptitudeTestHelpers.js"></script>
+    <script src="js/utils.js"></script>
+    <script defer src="js/userLogIn.js"></script>
+    <script defer src="js/cookies.js"></script>
+    <script defer src="js/sendData.js"></script>
     <script defer src="js/test.js"></script>
 </head>
 <body>
 
-    <p>hello</p>
+    <p>Add test</p>
 
-    <form id="form" method="post">
+    <form id="testForm" method="post">
         <input type="text" name="testName" id="testName">
-        <input id="btn" type="submit" value="add test" style="background: lightblue">
+        <div id="message-target"></div>
+        <div class="buttons">
+            <div class="messageArea">
+                <span id="message"></span>
+            </div>
+            <a href="adminPage.html">
+                <div class="return btn">Back</div></a>
+            <input class="submit" type="submit" value="submit">
+        </div>
     </form>
-    
+
 </body>
 </html>
