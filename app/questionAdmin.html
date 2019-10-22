@@ -1,7 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="js/userLogIn.js"></script>
+    <script src="js/cookies.js"></script>
+    <script>
+        let userEmail = getCookie('userEmail')
+        getUser(userEmail).then(function(user) {
+            if (!user.success || !isAuthorised(user.data, "1")) {
+                window.location.replace("index.html")
+            }
+        })
+    </script>
     <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="css/questionAdmin.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
@@ -10,6 +25,15 @@
     <title>Question Admin</title>
 </head>
 <body>
-
+    <section class="container">
+        <img class="logo" alt="Mayden Logo" src="images/branding-icons/maydenacademy_logotype_05.18_web.svg">
+        <div class="new-question-container">
+            <h2>Add new question</h2>
+            <h4 class="search-heading">Current Question Count: <span id="question-count"></span></h4>
+            <a href="addQuestion.html"><button class="btn primary-button new-question-button">Add new question</button></a>
+        </div>
+        <div class="overlay"></div>
+        <div id="modal"></div>
+    </section>
 </body>
 </html>
