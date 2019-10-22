@@ -30,6 +30,7 @@
     <script src="js/modal.js" defer></script>
     <script src="js/questionCount.js" defer></script>
     <script src="js/newTest.js" defer></script>
+    <script src="js/aptitudeTestHelpers.js"></script>
     <title>Admin Page</title>
 </head>
 <body>
@@ -92,16 +93,17 @@
                     <tbody class="score_list user-table"></tbody>
                 </table>
             </div>
-            <div class="new-test-container">
+            <form class="new-test-container">
                 <h2>Add new test</h2>
                 <input type="text" id="addTestName" placeholder="Test name">
                 <button class="btn primary-button new-test-button">Add new test</button>
-            </div>
-            <div class="new-question-container">
+                <p class="successMsg"></p>
+            </form>
+            <form class="new-question-container">
                 <h2>Add new question</h2>
                 <h4 class="search-heading">Current Question Count: <span id="question-count"></span></h4>
                 <a href="addQuestion.html"><button class="btn primary-button new-question-button">Add new question</button></a>
-            </div>
+            </form>
         </div>
     </div>
 </section>
