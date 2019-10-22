@@ -14,5 +14,3 @@ async function populateHandlebars(targetElement, handlebarsPath, APIpath) {
 }
 
 
-
-

@@ -1,0 +1,20 @@
+{{#each data}}
+<div class="accordion" id="accordionExample">
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{id}}" aria-expanded="true" aria-controls="collapse{{id}}">
+                    {{name}}
+                </button>
+            </h2>
+        </div>
+        <div id="collapse{{id}}" class="collapse" aria-labelledby="heading{{id}}" data-parent="#accordionExample">
+            <div class="card-body">
+                <ul>
+                    <p>name, score</p>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+{{/each}}
