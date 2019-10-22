@@ -1,4 +1,5 @@
 let baseUrl = getBaseUrl()
+let questionsTable = {}
 
 /**
  * Fetch request to populate questionAdmin.html with questions from questions API, using questionDisplay.hbs template
@@ -7,7 +8,7 @@ let baseUrl = getBaseUrl()
 fetch(baseUrl + 'question')
     .then(data => data.json())
     .then(data => {
-
+        questionsTable = data
         fetch('questionDisplay.hbs')
             .then(template => template.text())
             .then(template => {
