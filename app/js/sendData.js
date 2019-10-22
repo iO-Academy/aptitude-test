@@ -6,16 +6,13 @@
  *
  * @return object Success or fail API response message
  */
-function sendData(data, path) {
+async function sendData(data, path) {
     let baseUrl = getBaseUrl()
-    fetch(baseUrl + path, {
+    let response =  await fetch(baseUrl + path, {
         method: 'POST',
         body: data
-    }).then( response => {
-        return response.json()
-    }).then( blob => {
-        showConfirmationMessage(blob)
     })
+    return await response.json()
 }
 
 /**
