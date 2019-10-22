@@ -9,13 +9,13 @@ fetch(baseUrl + 'question')
     .then(data => data.json())
     .then(data => {
         questionsTable = data
-        fetch('questionDisplay.hbs')
+        fetch('js/templates/questionDisplay.hbs')
             .then(template => template.text())
             .then(template => {
                 console.log(template)
                 var hbsTemplate = Handlebars.compile(template)
                 var html = hbsTemplate(data)
-                document.querySelector('body').innerHTML += html
+                document.querySelector('.container').innerHTML += html
             })
 
     })
