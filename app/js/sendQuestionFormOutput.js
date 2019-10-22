@@ -70,6 +70,7 @@ newQuestionForm.addEventListener('submit', function(event) {
         questionData.option4 = newQuestionForm.option4.value
         questionData.option5 = newQuestionForm.option5.value
         questionData.answer = answer
+        questionData.test_id = newQuestionForm.test_id.value
         let questionDataToSend = jsonToFormData(questionData);
         sendNewQuestion(questionDataToSend)
     } else {
