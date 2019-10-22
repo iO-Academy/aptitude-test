@@ -10,6 +10,6 @@ testForm.addEventListener('submit', function(e) {
         const testPath = "test"
         sendData(testData, testPath)
     } else {
-        document.getElementById('message').innerHTML = '<p class="failure-message">Test name must be between 1 and 255 characters</p>'
+        document.querySelector('#message').innerHTML = '<p class="failure-message">Test name must be between 1 and 255 characters</p>'
     }
 })
