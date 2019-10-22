@@ -1,6 +1,16 @@
 * {
   box-sizing: border-box;
 }
+
+.new-question-container {
+  margin-top: 3rem;
+  display: flex;
+  height: 150px;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
 .overlay {
   background: rgba(0, 0, 0, 0.6);
   position: fixed;
