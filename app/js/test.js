@@ -1,20 +1,20 @@
 var submit = document.querySelector('#btn')
 var url = 'http://localhost:8080/test'
 
-postData(url, submit)
-
 async function postData(url, submit) {
     submit.addEventListener('click', async function (e) {
         e.preventDefault()
-        var testName = document.querySelector('#testName').value
-        testName = { "name": testName }
-        testName = jsonToFormData(testName)
+        var test_id = document.querySelector('#test_id').value
+        test_id = { "name": test_id }
+        test_id = jsonToFormData(test_id)
+        console.log(test_id);
         var response = await fetch(url, {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: testName
+            body: test_id
         })
         response = await response.json();
         return await response.json();
     });
 }
+
+postData(url, submit)
