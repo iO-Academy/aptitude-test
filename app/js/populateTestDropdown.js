@@ -1,4 +1,8 @@
-
+/**
+ * Populates dropdown menu of available tests
+ *
+ * @returns {Promise<void>}
+ */
 async function populateTestDropdown() {
     let availableTests = await getData('test')
     let HBTemplate = await getTemplateAjax('js/templates/testDropdown.hbs')
