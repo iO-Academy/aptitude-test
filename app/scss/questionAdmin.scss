@@ -6,6 +6,10 @@
     float: left;
     margin: 20px;
 
+    .btn {
+      !important margin: 5px;
+    }
+
     .display-flex {
       display: flex;
       align-items: center;
@@ -24,15 +28,15 @@
   .table {
     font-size: 1.5rem;
 
-    .edit-user-button, .delete-user-button {
+    .edit-question-button, .delete-question-button {
       color: $main-background-color;
     }
 
-    .edit-user-button {
+    .edit-question-button {
       background-color: $edit-button;
     }
 
-    .delete-user-button {
+    .delete-question-button {
       background-color: $primary-button-hover;
     }
 
