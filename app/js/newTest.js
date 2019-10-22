@@ -26,6 +26,7 @@ async function postData(url, submit) {
         }   else {
             document.querySelector('.successMsg').style.color = "red"
         }
+        document.querySelector('#addTestName').value = ''
     });
 }
 
