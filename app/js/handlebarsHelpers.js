@@ -25,3 +25,8 @@ Handlebars.registerHelper('ifCond', function (v1, operator, v2, options) {
             return options.inverse(this);
     }
 });
+
+Handlebars.registerHelper('ifeq', function (a, b, options) {
+    if (a == b) { return options.fn(this); }
+    return options.inverse(this);
+});

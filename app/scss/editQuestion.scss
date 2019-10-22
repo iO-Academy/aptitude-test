@@ -22,7 +22,6 @@
     }
 
     .answers {
-      margin-top: 5%;
       width: 97%;
     }
 
@@ -98,4 +97,19 @@
 
 .success-message {
   color: $success-message
+}
+
+.answers {
+  margin: 0;
+
+
+  h4 {
+    margin: 0;
+    text-align:center;
+  }
+}
+
+#modal .container {
+  height: 90vh;
+  overflow: auto;
 }
