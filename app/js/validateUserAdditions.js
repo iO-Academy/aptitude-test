@@ -109,8 +109,8 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
 
         if(emailIsValid && timeIsValid) {
             errorField.innerHTML = ''
-            var minsToSeconds = (minutesField.value * 60)
-            var setTime = minsToSeconds + secondsField
+            var minsToSeconds = minutesField.value * 60
+            var setTime = parseInt(minsToSeconds) + parseInt(secondsField.value)
             console.log(setTime)
             saveNewUser({'name': nameField.value, 'email': emailField.value, 'time': setTime}).then(function(response) {
                 if (response.success) {
