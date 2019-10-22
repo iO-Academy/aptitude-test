@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="js/userLogIn.js"></script>
+    <script src="js/cookies.js"></script>
+    <script>
+        let userEmail = getCookie('userEmail')
+        getUser(userEmail).then(function(user) {
+            if (!user.success || !isAuthorised(user.data, "1")) {
+                window.location.replace("index.html")
+            }
+        })
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -18,5 +28,9 @@
     <h4 class="search-heading">Current Question Count: <span id="question-count"></span></h4>
     <a href="addQuestion.html"><button class="btn primary-button new-question-button">Add new question</button></a>
 </div>
+
+<div class="overlay"></div>
+<div id="modal"></div>
+
 </body>
 </html>
