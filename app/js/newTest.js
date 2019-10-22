@@ -3,7 +3,7 @@ let testForm = document.querySelector('#testForm')
 testForm.addEventListener('submit', function(e) {
     e.preventDefault()
     let inputLength = document.querySelector('#testName').value.length
-    if (inputLength > 0 && inputLengthk < 256) {
+    if (inputLength > 0 && inputLength < 256) {
         let testData = {}
         testData.name = testForm.testName.value
         testData = jsonToFormData(testData)
