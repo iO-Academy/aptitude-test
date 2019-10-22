@@ -7,10 +7,10 @@
  * @returns {Promise<void>}
  */
 async function populateHandlebars(targetElement, handlebarsPath, APIpath) {
-    let availableTests = await getData(APIpath)
+    let dataToInsert = await getData(APIpath)
     let HBTemplate = await getTemplateAjax(handlebarsPath)
     let template = Handlebars.compile(HBTemplate)
-    document.querySelector(targetElement).innerHTML = template(availableTests)
+    document.querySelector(targetElement).innerHTML = template(dataToInsert)
 }
 
 
