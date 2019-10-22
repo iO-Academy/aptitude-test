@@ -10,7 +10,7 @@ function sendData(data, path) {
         body: data
     }).then( response => {
         return response.json()
-    }) .then ( blob => {
+    }).then( blob => {
         showConfirmationMessage(blob)
     })
 }
