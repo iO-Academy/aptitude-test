@@ -29,6 +29,8 @@
     <script src="js/handlebarsScoreTable.js" defer></script>
     <script src="js/modal.js" defer></script>
     <script src="js/questionCount.js" defer></script>
+    <script src="js/newTest.js" defer></script>
+    <script src="js/sendData.js" defer></script>
     <title>Admin Page</title>
 </head>
 <body>
@@ -91,11 +93,22 @@
                     <tbody class="score_list user-table"></tbody>
                 </table>
             </div>
-            <div class="new-question-container">
+            <form class="new-test-container" id="testForm" method="post">
+                <h2>Add new test</h2>
+                <input name="testName" type="text" id="testName" placeholder="Test name">
+                <input type="submit" class="btn primary-button new-test-button submit" value="Add new test">
+                <div id="message-target"></div>
+                <div class="buttons">
+                    <div class="messageArea">
+                        <span id="message"></span>
+                    </div>
+                </div>
+            </form>
+            <form class="new-question-container">
                 <h2>Add new question</h2>
                 <h4 class="search-heading">Current Question Count: <span id="question-count"></span></h4>
                 <a href="addQuestion.html"><button class="btn primary-button new-question-button">Add new question</button></a>
-            </div>
+            </form>
         </div>
     </div>
 </section>

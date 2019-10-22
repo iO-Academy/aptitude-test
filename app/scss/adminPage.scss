@@ -103,7 +103,6 @@ body {
 }
 
 .new-question-container {
-  margin-top: 3rem;
   display: flex;
   height: 150px;
   flex-direction: column;
@@ -122,4 +121,16 @@ body {
 }
 .top-grade {
   background-color: $light-purple;
+}
+
+.new-test-container {
+  margin: 30px 0 0 0;
+}
+
+#addTestName {
+  margin: 0px 0 10px 0;
+}
+
+.new-test-button {
+  margin-top: -4px;
 }

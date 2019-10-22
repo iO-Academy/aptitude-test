@@ -1,5 +1,12 @@
 let testForm = document.querySelector('#testForm')
 
+testForm.addEventListener('click', function (e) {
+    let inputLength = document.querySelector('#addTestName').value.length
+    if (inputLength < 1 || inputLength > 255) {
+        alert('Test name must be less than 250 characters')
+    } 
+    e.preventDefault()
+})
 
 testForm.addEventListener('submit', function(e) {
     e.preventDefault()
@@ -14,5 +21,3 @@ testForm.addEventListener('submit', function(e) {
         document.getElementById('message-target').innerHTML = '<p class="failure-message">Error with test input. Please try again</p>'
     }
 })
-
-
