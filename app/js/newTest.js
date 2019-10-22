@@ -20,12 +20,6 @@ async function postData(url, submit) {
             body: test_id
         })
         response = await response.json();
-        document.querySelector('.successMsg').innerText = response.message
-        if (response.success) {
-            document.querySelector('.successMsg').style.color = "green"
-        }   else {
-            document.querySelector('.successMsg').style.color = "red"
-        }
     });
 }
 
