@@ -1,10 +1,10 @@
-<section class="container">
+
     <img class="logo" alt="Mayden Logo" src="images/branding-icons/maydenacademy_logotype_05.18_web.svg">
     <div class="row">
         <div class="col-xs-12">
             <div class="container_input display-flex">
-                <input type="submit" id="back" value="&#8592; Back"/>
-                <input type="submit" id="addQuestion" value="Add Question"/>
+                <input class="primary-button" type="submit" id="back" value="&#8592; Back"/>
+                <input class="primary-button" type="submit" id="addQuestion" value="Add Question"/>
             </div>
             <table class="table question-table">
                 <thead>
@@ -20,7 +20,7 @@
                         <tr>
                             <td dataId="{{id}}" dataQuestion="{{this.text}}">
                                 <button class="btn edit-question-button btn_height modalBtn" id="{{this.id}}">Edit Question</button>
-                                <button class="btn delete-question-button btn_height" id="{{this.id}}>Delete Question</button>
+                                <button class="btn delete-question-button btn_height" id="{{this.id}}">Delete Question</button>
                             </td>
                             <td class="question_id">{{this.id}}</td>
                             <td class="question">{{this.text}}</td>
@@ -31,4 +31,3 @@
             </table>
         </div>
     </div>
-</section>
