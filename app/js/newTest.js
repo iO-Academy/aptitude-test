@@ -9,7 +9,9 @@ testForm.addEventListener('submit', function(e) {
         testData = jsonToFormData(testData)
         const testPath = "test"
         sendData(testData, testPath)
+        document.querySelector('#message').className = ''
     } else {
-        document.querySelector('#message').innerHTML = '<p class="failure-message">Test name must be between 1 and 255 characters</p>'
+        document.querySelector('#message').className = 'failure-message'
+        document.querySelector('#message').innerHTML = 'Test name must be between 1 and 255 characters'
     }
 })
