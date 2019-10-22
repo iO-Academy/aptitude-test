@@ -1,5 +1,53 @@
-* {
-  box-sizing: border-box;
+@import "imports/variables";
+
+.container {
+
+  .container_input {
+    float: left;
+    margin: 20px;
+
+    .display-flex {
+      display: flex;
+      align-items: center;
+
+      input {
+        margin-right: 1rem;
+
+        &.primary-button {
+          font-size: 1.4rem;
+          color: $main-background-color;
+        }
+      }
+    }
+  }
+
+  .table {
+    font-size: 1.5rem;
+
+    .edit-user-button, .delete-user-button {
+      color: $main-background-color;
+    }
+
+    .edit-user-button {
+      background-color: $edit-button;
+    }
+
+    .delete-user-button {
+      background-color: $primary-button-hover;
+    }
+
+    &.question-table {
+      margin-top: 4rem;
+
+      tbody {
+        tr {
+          td {
+            vertical-align: middle;
+          }
+        }
+      }
+    }
+  }
 }
 
 .new-question-container {
