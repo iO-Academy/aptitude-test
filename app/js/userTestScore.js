@@ -16,32 +16,31 @@ async function accordionTesting() {
     // console.log(resultData.data)
     // console.log(userData.data)
 
+    //
+    // resultData.data.map(function (result) {
+    //     var resultID = result.id.toString()
+    //     var resultScore = result.score
+    //     userData.data.map(function (user) {
+    //         // console.log(result)
+    //         // console.log(user)
+    //         user.score = ''
+    //         if (resultID == user.id.toString()) {
+    //             user.score = resultScore
+    //         }
+    //     })
+    // })
 
-    resultData.data.map(function (result) {
-        var resultID = result.id.toString()
-        var resultScore = result.score
-        userData.data.map(function (user) {
-            // console.log(result)
-            // console.log(user)
-            user.score = ''
-            if (resultID == user.id.toString()) {
-                user.score = resultScore
+
+    userData.data.forEach(function (user) {
+        resultData.data.map(function (result) {
+            if ((result.id.toString() === user.id.toString()) && (user.score !== '')) {
+                user.score = result.score
             }
         })
     })
 
     console.log(userData.data)
 
-    // userData.data.forEach(function (user) {
-    //     resultData.data.forEach(function (result) {
-    //         // console.log(result)
-    //         // console.log(user)
-    //         user.score = 'N/A'
-    //         if (result.id.toString() === user.id.toString()) {
-    //             user.score = result.score
-    //         }
-    //     })
-    // })
 
 
     // console.log(userData.data)
