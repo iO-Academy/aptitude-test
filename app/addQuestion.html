@@ -12,13 +12,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.js"></script>
     <script src="js/aptitudeTestHelpers.js" defer></script>
     <script src="js/utils.js"></script>
-    <script src="js/userLogIn.js" defer></script>
-    <script src="js/cookies.js" defer></script>
-    <script src="js/questionCount.js" defer></script>
-    <script src="js/getData.js" defer ></script>
-    <script src="js/populateHandlebars.js" defer></script>
-    <script src="js/sendQuestionFormOutput.js" defer></script>
-    <script src="js/ajaxHandlebarsTemplate.js" defer></script>
+    <script defer src="js/userLogIn.js"></script>
+    <script defer src="js/cookies.js"></script>
+    <script defer src="js/questionCount.js"></script>
+    <script defer src="js/sendData.js"></script>
+    <script async src="js/getData.js"></script>
+    <script async src="js/populateHandlebars.js"></script>
+    <script defer src="js/sendQuestionFormOutput.js"></script>
+    <script defer src="js/ajaxHandlebarsTemplate.js"></script>
     <title>Add Question</title>
 </head>
 <body>
@@ -72,7 +73,7 @@
             <div id="message-target"></div>
             <div class="buttons">
                 <div class="messageArea">
-                    <span id="message"></span>
+                    <span id="inputSubmissionConfirmation" class="alert" role="alert"></span>
                 </div>
                 <a href="adminPage.html">
                     <div class="return btn">Back</div>
