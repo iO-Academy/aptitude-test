@@ -32,7 +32,16 @@ function addEditEventListeners() {
         editButton.addEventListener('click', function (e) {
             e.stopImmediatePropagation()
             openDialog()
-            createQuestionModal(questionsTable.data[e.target.id])
+            // createQuestionModal(questionsTable.data[e.target.id])
+            let handlebarsTempl = 'js/templates/editmodalquestions.hbs'
+            populateHandlebarsObject('#modal', handlebarsTempl, questionsTable.data[e.target.id])
+                .then(() => {
+                    getData('answer/' + questionsTable.data[e.target.id].id)
+                        .then(response => {
+                            let questionAnswer = response.data.answer;
+                            document.getElementById('ans' + questionAnswer).setAttribute('checked', true);
+                        })
+                })
 
         })
     })
