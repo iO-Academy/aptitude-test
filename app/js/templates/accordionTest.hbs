@@ -1,20 +1,19 @@
-{{#each tests}}
-<div class="accordion" id="accordionExample-{{test.id}}">
-    <div class="card">
-        <div class="card-header" id="headingOne">
-            <h2 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{@index}}" aria-expanded="true" aria-controls="collapse{{@index}}">
-                    {{each testname[]}}
-                </button>
-            </h2>
-        </div>
-        <div id="collapse{{@index}}" class="collapse" aria-labelledby="heading{{@index}}" data-parent="#accordionExample">
-            <div class="card-body">
-                <ul>
-                    <p>{{@index}}, {{@index}}</p>
-                </ul>
+{{#each data}}
+ <div class="accordion" id="accordionExample">
+        <div class="card">
+            <div class="card-header" id="heading{{id}}">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse{{id}}" aria-expanded="true" aria-controls="collapse{{id}}">
+                        {{name}}
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapse{{id}}" class="collapse show" aria-labelledby="heading{{id}}" data-parent="#accordionExample">
+                <div class="card-body test-{{id}}">
+                    INSERT HERE
+                </div>
             </div>
         </div>
     </div>
-</div>
 {{/each}}
