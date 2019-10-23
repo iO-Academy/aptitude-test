@@ -134,3 +134,11 @@ body {
 .new-test-button {
   margin-top: -4px;
 }
+
+.success-message {
+  color: $success-message;
+}
+
+.failure-message {
+  color: $failure-message
+}
