@@ -120,8 +120,8 @@ GET
 
 POST
 - Edit the application settings.
-- Send an array of settings objects to be added/updated.
-    - `{"settings": [{"name": "default_time","value": "1800"}]}`
+- Send an settings objects to be added/updated. To update multiple settings send multiple requests.
+    - `{"name": "default_time","value": "1800"}`
     - Time must be provided in seconds
 - Returns success/fail state.
 

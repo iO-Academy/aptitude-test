@@ -277,7 +277,7 @@ $app->post('/question/{id}/edit', function ($request, $response, $args) {
                         `option3` = :option3,
                         `option4` = :option4,
                         `option5` = :option5,
-                        `answer` = :answer,
+                        `answer` = :answer
                         WHERE `id` = :id";
             } else {
                 $query = "UPDATE `question` SET
@@ -531,9 +531,8 @@ $app->post('/setting', function ($request, $response, $args) {
     $postData = $request->getParsedBody();
 
     if (
-        empty($postData['settings']) ||
-        empty($postData['settings'][0]['name']) ||
-        empty($postData['settings'][0]['value'])
+        empty($postData['name']) ||
+        empty($postData['value'])
     ) {
         $data['message'] = 'Must provide a valid settings with a name and value';
         $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
@@ -541,13 +540,9 @@ $app->post('/setting', function ($request, $response, $args) {
     }
 
     try {
-
-        foreach($postData['settings'] as $setting) {
-            $query = "INSERT INTO setting (`name`, `value`) VALUES (:name, :value) ON DUPLICATE KEY UPDATE `value` = :value";
-            $query = $this->db->prepare($query);
-            $query->execute($setting);
-        }
-
+        $query = "INSERT INTO setting (`name`, `value`) VALUES (:name, :value) ON DUPLICATE KEY UPDATE `value` = :value";
+        $query = $this->db->prepare($query);
+        $query->execute($postData);
     } catch(Exception $e) {
         $data['message'] = $e->getMessage();
         $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
