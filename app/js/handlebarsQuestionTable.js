@@ -40,6 +40,8 @@ function addEditEventListeners() {
                         .then(response => {
                             let questionAnswer = response.data.answer;
                             document.getElementById('ans' + questionAnswer).setAttribute('checked', true);
+                            // populate dropdown menu with available tests
+                            populateHandlebars('#test_id', 'js/templates/testDropdown.hbs', 'test')
                         })
                 })
         })
