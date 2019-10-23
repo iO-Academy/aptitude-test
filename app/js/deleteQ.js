@@ -14,16 +14,16 @@ function addDeleteQEventListeners() {
 }
 //delete the question
 /**
- * Sends the API call to delete a question with the specified ID
+ * Sends the API call to delete a question with the specified ID, reset the html and repopulate question table
  *
  * @param questionId
  */
 function deleteQuestion(questionId) {
     let baseUrl = getBaseUrl()
-    let url = baseUrl + "question/delete/" + userId
+    let url = baseUrl + "question/" + questionId + "/delete"
     fetch(url, {"method": "post"})
         .then(function () {
-            populateHandlebarsObject()
+            populateQuestionTable()
         })
 }
 
