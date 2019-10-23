@@ -49,7 +49,7 @@ let newQuestionForm = document.getElementById("new-question")
  * When the user clicks the submit button, will get form value and prepare 
  * it for the database.
  */
-newQuestionForm.addEventListener('submit', function(e) {
+newQuestionForm.addEventListener('submit',  async function(e) {
     e.preventDefault()
     if (formHasQuestion(newQuestionForm) && formHasBetweenOneAndFiveAnswers(newQuestionForm) && answerHasValidValue(newQuestionForm)) {
         if(!authorised) {
@@ -70,11 +70,15 @@ newQuestionForm.addEventListener('submit', function(e) {
         questionData.option4 = newQuestionForm.option4.value
         questionData.option5 = newQuestionForm.option5.value
         questionData.answer = answer
-        let questionDataToSend = jsonToFormData(questionData);
+        questionData.test_id = newQuestionForm.test_id.value
+        let questionDataToSend = await jsonToFormData(questionData);
         const questionPath = "question"
-        sendData(questionDataToSend, questionPath)
-    } else {
-        document.getElementById('message-target').innerHTML = '<p class="failure-message">Error with question input. Please try again</p>'
+        let response = await sendData(questionDataToSend, questionPath)
+        console.log(response)
+        showConfirmationMessage(response)
     }
 })
+
+// populate dropdown menu with available tests
+populateHandlebars('#test_id', 'js/templates/testDropdown.hbs', 'test')
 
