@@ -1,3 +1,5 @@
+populateHandlebars('#test_id', 'js/templates/testDropdown.hbs', 'test')
+
 /**
  * Save the JSON object using an AJAX request.
  *
@@ -6,6 +8,7 @@
  * @returns A promise containing the response, which includes the boolean success property.
  */
 async function saveNewUser(user) {
+    console.log(user)
     let baseUrl = getBaseUrl()
     let formData = jsonToFormData(user) // API does not work with JSON - needs form data
     let apiData = await fetch(
@@ -83,10 +86,11 @@ function userExists(emailToAdd, existingUsers) {
 
 document.querySelector('#addNewUserForm').addEventListener('submit', function(event) {
     event.preventDefault()
-    var emailField = document.getElementById("email")
-    var nameField = document.getElementById('name')
-    var errorField = document.getElementById('error')
-    var timeField = document.getElementById('time')
+    let emailField = document.getElementById("email")
+    let nameField = document.getElementById('name')
+    let testField = document.getElementById('test_id')
+    let errorField = document.getElementById('error')
+    let timeField = document.getElementById('time')
 
     getExistingUsers().then(function(existingUsers) {
 
@@ -105,7 +109,7 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
         if(emailIsValid && timeIsValid) {
             errorField.innerHTML = ''
             var setTime = timeField.value * 60
-            saveNewUser({'name': nameField.value, 'email': emailField.value, 'time': setTime}).then(function(response) {
+            saveNewUser({'name': nameField.value, 'email': emailField.value,  'test_id': testField.value, 'time': setTime}).then(function(response) {
                 if (response.success) {
                     nameField.value = ''
                     emailField.value = ''
