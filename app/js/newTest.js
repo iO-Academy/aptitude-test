@@ -11,13 +11,13 @@ testForm.addEventListener('submit', async function(e) {
         let response = await sendData(testData, testPath)
         showConfirmationMessage(response)
         if (response.success) {
-            document.querySelector('#message').className = 'success-message'
+            document.querySelector('#testSubmitConfirmation').className = 'success-message'
             document.querySelector('#testName').value = ''
         } else {
-            document.querySelector('#message').className = 'failure-message'
+            document.querySelector('#testSubmitConfirmation').className = 'failure-message'
         }
     } else {
-        document.querySelector('#message').className = 'failure-message'
-        document.querySelector('#message').innerHTML = 'Test name must be between 1 and 255 characters.'
+        document.querySelector('#testSubmitConfirmation').className = 'failure-message'
+        document.querySelector('#testSubmitConfirmation').innerHTML = 'Test name must be between 1 and 255 characters.'
     }
 })
