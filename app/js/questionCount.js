@@ -9,7 +9,3 @@ function getQuestionCount() {
 
 getQuestionCount()
 
-document.getElementById('question').addEventListener('submit', function(e) {
-    e.preventDefault()
-    getQuestionCount()
-})
