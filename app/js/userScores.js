@@ -36,7 +36,6 @@ function categoriseData(userScores){
         }
     })
     let categorisedScores = [highscore, pass, notPass]
-    console.log(categorisedScores)
     return categorisedScores
 }
 
