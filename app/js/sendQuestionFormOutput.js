@@ -44,7 +44,7 @@ function answerHasValidValue(form) {
 }
 
 let newQuestionForm = document.getElementById("new-question")
-
+let responseMsg = document.querySelector('#inputSubmissionConfirmation')
 /**
  * When the user clicks the submit button, will get form value and prepare 
  * it for the database.
@@ -74,15 +74,18 @@ newQuestionForm.addEventListener('submit',  async function(e) {
         let questionDataToSend = await jsonToFormData(questionData);
         const questionPath = "question"
         let response = await sendData(questionDataToSend, questionPath)
-        document.querySelector('#inputSubmissionConfirmation').innerText = response.message
+        responseMsg.innerText = response.message
         if (response.success){
-            document.querySelector('#inputSubmissionConfirmation').className = 'alert-success'
+            responseMsg.classList.add('alert-success')
+            responseMsg.classList.remove('alert-danger')
         } else {
-            document.querySelector('#inputSubmissionConfirmation').className = 'alert-danger'
+            responseMsg.classList.remove('alert-success')
+            responseMsg.classList.add('alert-danger')
         }
     } else {
-        document.querySelector('#inputSubmissionConfirmation').className = 'alert-danger'
-        document.querySelector('#inputSubmissionConfirmation').innerHTML = 'Error: Please ensure you have filled out the question form correctly.'
+        responseMsg.classList.remove('alert-success')
+        responseMsg.classList.add('alert-danger')
+        responseMsg.innerHTML = 'Error: Please ensure you have filled out the question form correctly.'
     }
 })
 
