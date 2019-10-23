@@ -20,8 +20,8 @@
                     {{#each data}}
                         <tr>
                             <td dataId="{{id}}" dataQuestion="{{this.text}}">
-                                <button class="btn edit-question-button btn_height modalBtn" id="{{this.id}}">Edit Question</button>
-                                <button class="btn delete-question-button btn_height" id="{{this.id}}">Delete Question</button>
+                                <button form="submit" class="btn edit-question-button btn_height modalBtn" id="{{this.id}}">Edit Question</button>
+                                <button form="submit" class="btn delete-question-button btn_height" id="{{this.id}}">Delete Question</button>
                             </td>
                             <td class="question_id">{{this.id}}</td>
                             <td class="question">{{this.text}}</td>
