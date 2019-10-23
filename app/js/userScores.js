@@ -8,6 +8,7 @@ async function userScores(){
     let usersData = usersObject.data
     let percentagesArray = []
     usersData.forEach(function (element) {
+        if (element.percentage !== "")
         percentagesArray.push(element.percentage)
     })
     categoriseData(percentagesArray)
@@ -35,6 +36,7 @@ function categoriseData(userScores){
         }
     })
     let categorisedScores = [highscore, pass, notPass]
+    console.log(categorisedScores)
     return categorisedScores
 }
 
