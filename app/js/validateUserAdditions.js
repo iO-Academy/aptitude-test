@@ -86,7 +86,8 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
     var emailField = document.getElementById("email")
     var nameField = document.getElementById('name')
     var errorField = document.getElementById('error')
-    var timeField = document.getElementById('time')
+    var minutesField = document.getElementById('minutes')
+    var secondsField = document.getElementById('seconds')
 
     getExistingUsers().then(function(existingUsers) {
 
@@ -97,19 +98,26 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
             emailIsValid = false
             errorField.innerHTML = "Your email is not valid or already exists: Please provide a correct email"
         }
-        if (timeField.value <=1 || timeField.value == null || isNaN(timeField.value) === true ) {
+        if (minutesField.value <=1 || minutesField.value == null || isNaN(minutesField.value) === true ) {
+            timeIsValid = false
+            errorField.innerHTML += 'This is not a good number!'
+        }
+        if (secondsField.value <=0 || secondsField.value == null || isNaN(secondsField.value) === true ) {
             timeIsValid = false
             errorField.innerHTML += 'This is not a good number!'
         }
 
         if(emailIsValid && timeIsValid) {
             errorField.innerHTML = ''
-            var setTime = timeField.value * 60
+            var minsToSeconds = minutesField.value * 60
+            var setTime = parseInt(minsToSeconds) + parseInt(secondsField.value)
+            console.log(setTime)
             saveNewUser({'name': nameField.value, 'email': emailField.value, 'time': setTime}).then(function(response) {
                 if (response.success) {
                     nameField.value = ''
                     emailField.value = ''
-                    timeField.value = 30
+                    minutesField.value = 30
+                    secondsField.value = 0
                     updateScoreTable()
                 } else {
                     errorField.innerHTML = response.message
