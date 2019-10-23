@@ -74,8 +74,15 @@ newQuestionForm.addEventListener('submit',  async function(e) {
         let questionDataToSend = await jsonToFormData(questionData);
         const questionPath = "question"
         let response = await sendData(questionDataToSend, questionPath)
-        console.log(response)
         showConfirmationMessage(response)
+        if (response.success){
+            document.querySelector('#message').className = 'success-message'
+        } else {
+            document.querySelector('#message').className = 'failure-message'
+        }
+    } else {
+        document.querySelector('#message').className = 'failure-message'
+        document.querySelector('#message').innerHTML = 'Error: Please ensure you have filled out the question form correctly.'
     }
 })
 
