@@ -14,6 +14,7 @@ fetch(baseUrl + 'question')
         fetch('js/templates/questionDisplay.hbs')
             .then(template => template.text())
             .then(template => {
+
                 var hbsTemplate = Handlebars.compile(template)
                 var html = hbsTemplate(response)
                 document.querySelector('.container').innerHTML += html
@@ -41,7 +42,6 @@ function addEditEventListeners() {
                             document.getElementById('ans' + questionAnswer).setAttribute('checked', true);
                         })
                 })
-
         })
     })
 }
