@@ -6,21 +6,21 @@
 //     co
 // }
 
-var testUserScoreObject = {}
-
-getData('test').then(function(data) {
-    var testData = data.data
-    console.log(testData)
-})
-
-
-getData('user').then(function(data) {
-    var userData = data.data
-    console.log(userData)
-})
-
-
-getData('result').then(function(data) {
-    var resultData = data.data
-    console.log(resultData)
-})
+// var testUserScoreObject = {}
+//
+// getData('test').then(function(data) {
+//     var testData = data.data
+//     console.log(testData)
+// })
+//
+//
+// getData('user').then(function(data) {
+//     var userData = data.data
+//     console.log(userData)
+// })
+//
+//
+// getData('result').then(function(data) {
+//     var resultData = data.data
+//     console.log(resultData)
+// })
