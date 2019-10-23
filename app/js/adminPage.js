@@ -85,11 +85,11 @@ function userExists(emailToAdd, existingUsers) {
 
 document.querySelector('#addNewUserForm').addEventListener('submit', function(event) {
     event.preventDefault()
-    let emailField = document.getElementById('email')
-    let nameField = document.getElementById('name')
-    let testField = document.getElementById('test_id')
-    let errorField = document.getElementById('error')
-    let timeField = document.getElementById('time')
+    let emailField = document.querySelector('#email')
+    let nameField = document.querySelector('#name')
+    let testField = document.querySelector('#test_id')
+    let errorField = document.querySelector('#error')
+    let timeField = document.querySelector('#time')
 
     getExistingUsers().then(function(existingUsers) {
 
