@@ -102,7 +102,7 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
             timeIsValid = false
             errorField.innerHTML += 'This is not a good number!'
         }
-        if (secondsField.value <=1 || secondsField.value == null || isNaN(secondsField.value) === true ) {
+        if (secondsField.value <=0 || secondsField.value == null || isNaN(secondsField.value) === true ) {
             timeIsValid = false
             errorField.innerHTML += 'This is not a good number!'
         }
