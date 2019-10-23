@@ -32,7 +32,6 @@ function addEditEventListeners() {
         editButton.addEventListener('click', function (e) {
             e.stopImmediatePropagation()
             openDialog()
-            // createQuestionModal(questionsTable.data[e.target.id])
             let handlebarsTempl = 'js/templates/editmodalquestions.hbs'
             populateHandlebarsObject('#modal', handlebarsTempl, questionsTable.data[e.target.id])
                 .then(() => {
