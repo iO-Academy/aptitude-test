@@ -17,15 +17,9 @@ async function populateHandlebars(targetElement, handlebarsPath, APIpath) {
  * Same function as above but passes in an object instead of an API Path
  * Used in populating edit question dialog
  */
-
 async function populateHandlebarsObject(targetElement, handlebarsPath, data) {
     let dataToInsert = data
     let HBTemplate = await getTemplateAjax(handlebarsPath)
     let template = Handlebars.compile(HBTemplate)
     document.querySelector(targetElement).innerHTML = template(dataToInsert)
 }
-
-
-
-
-

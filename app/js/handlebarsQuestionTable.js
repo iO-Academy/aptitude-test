@@ -2,27 +2,26 @@ let baseUrl = getBaseUrl()
 let questionsTable = {data: []}
 
 /**
- * Fetch request to populate questionAdmin.html with questions from questions API, using questionDisplay.hbs template
+ * Function which uses fetch request to populate questionAdmin.html with questions from questions API, using questionDisplay.hbs template
  */
 
-fetch(baseUrl + 'question')
-    .then(data => data.json())
-    .then(response => {
-        response.data.forEach(function (question) {
-            questionsTable.data[question.id] = question;
-        })
-        fetch('js/templates/questionDisplay.hbs')
-            .then(template => template.text())
-            .then(template => {
-
-                var hbsTemplate = Handlebars.compile(template)
-                var html = hbsTemplate(response)
-                document.querySelector('.container').innerHTML += html
-                addEditEventListeners()
-
+function populateQuestionTable () {
+    document.querySelector('.container').innerHTML = ""
+    fetch(baseUrl + 'question')
+        .then(data => data.json())
+        .then(response => {
+            response.data.forEach(function (question) {
+                questionsTable.data[question.id] = question;
             })
-
-    })
+            populateHandlebarsObject('.container', 'js/templates/questionDisplay.hbs', response).then(response => {
+                let questionItems = document.querySelectorAll(".delete-question-button")
+                addDeleteQEventListeners(questionItems)
+            })
+            addEditEventListeners()
+            getQuestionCount()
+        })
+}
+populateQuestionTable()
 
 function drawTable() {
     document.querySelector('.container').innerHTML = ''
@@ -63,6 +62,8 @@ function addEditEventListeners() {
                         .then(response => {
                             let questionAnswer = response.data.answer;
                             document.getElementById('ans' + questionAnswer).setAttribute('checked', true);
+                            // populate dropdown menu with available tests
+                            populateHandlebars('#test_id', 'js/templates/testDropdown.hbs', 'test')
                         })
 
                     let response = {
@@ -94,7 +95,7 @@ function addEditEventListeners() {
                         response.option5 = document.getElementById("option5").value
                         closeDialog()
                         postQuestionEdit(response, e.target.dataset.id)
-                        drawTable()
+                        populateQuestionTable()
 
                     })
                 })
