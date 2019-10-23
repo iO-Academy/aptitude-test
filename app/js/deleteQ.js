@@ -1,3 +1,5 @@
+//listen for click on delete button 
+
 /**
  * Adds event listener to the delete Q buttons.
  */
@@ -10,7 +12,7 @@ function addDeleteQEventListeners() {
         })
     })
 }
-//check the params carefully
+//delete the question
 /**
  * Sends the API call to delete a question with the specified ID
  *
@@ -24,3 +26,5 @@ function deleteQuestion(questionId) {
             updateScoreTable()
         })
 }
+
+//need to repopulate with updated list of questions
