@@ -17,7 +17,9 @@
             }
         })
     </script>
-    <script src="js/validateUserAdditions.js" defer></script>
+    <script src="js/getData.js" async></script>
+    <script src="js/populateHandlebars.js" async></script>
+    <script src="js/adminPage.js" defer></script>
     <script src="js/ajaxHandlebarsTemplate.js" defer></script>
     <script src="js/createUserObject.js" defer></script>
     <script src="js/aptitudeTestHelpers.js" defer></script>
@@ -47,6 +49,10 @@
                     <div class="container_input display-flex">
                         <input type="text" id="name" name="name" placeholder="Type new user's name">
                         <input type="text" id="email" name="email" placeholder="Type new user's email">
+                            <label for="test_id">Assign to test:</label>
+                            <select class="custom-select" id="test_id">
+                            </select>
+                        <label for="time">Test Duration (m):</label>
                         <input type="number" id="time" name="time" value="30">
                         <input type="submit" value="Add User" class="btn primary-button">
                     </div>
