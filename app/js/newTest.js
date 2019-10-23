@@ -7,7 +7,7 @@ testForm.addEventListener('submit', async function(e) {
         let testData = {}
         testData.name = testForm.testName.value
         testData = jsonToFormData(testData)
-        const testPath = "test"
+        let testPath = "test"
         let response = await sendData(testData, testPath)
         showConfirmationMessage(response)
         if (response.success) {
