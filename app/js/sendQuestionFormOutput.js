@@ -74,7 +74,7 @@ newQuestionForm.addEventListener('submit',  async function(e) {
         let questionDataToSend = await jsonToFormData(questionData);
         const questionPath = "question"
         let response = await sendData(questionDataToSend, questionPath)
-        showConfirmationMessage(response)
+        document.querySelector('#inputSubmissionConfirmation').innerText = response.message
         if (response.success){
             document.querySelector('#inputSubmissionConfirmation').className = 'alert-success'
         } else {

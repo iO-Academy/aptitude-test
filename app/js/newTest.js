@@ -9,7 +9,7 @@ testForm.addEventListener('submit', async function(e) {
         testData = jsonToFormData(testData)
         let testPath = "test"
         let response = await sendData(testData, testPath)
-        showConfirmationMessage(response)
+        document.querySelector('#inputSubmissionConfirmation').innerText = response.message
         if (response.success) {
             document.querySelector('#inputSubmissionConfirmation').className = 'alert-success'
             document.querySelector('#testName').value = ''

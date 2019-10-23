@@ -14,11 +14,3 @@ async function sendData(data, path) {
     })
     return await response.json()
 }
-
-/**
- * Display message based on API response
- * @apiResponseJson The JSON returned in the API response
- */
-function showConfirmationMessage(apiResponseJson) {
-    document.querySelector('#inputSubmissionConfirmation').innerText = apiResponseJson.message
-}
