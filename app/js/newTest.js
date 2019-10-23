@@ -12,6 +12,7 @@ testForm.addEventListener('submit', async function(e) {
         showConfirmationMessage(response)
         if (response.success) {
             document.querySelector('#message').className = 'success-message'
+            document.querySelector('#testName').value = ''
         } else {
             document.querySelector('#message').className = 'failure-message'
         }
