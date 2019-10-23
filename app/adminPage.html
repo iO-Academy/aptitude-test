@@ -12,7 +12,7 @@
     <script src="js/cookies.js"></script>
     <script>
         let userEmail = getCookie('userEmail')
-        getUser(userEmail).then(function (user) {
+        getUser(userEmail).then(function(user) {
             if (!user.success || !isAuthorised(user.data, "1")) {
                 window.location.replace("index.html")
             }
@@ -108,8 +108,7 @@
                 <div class="new-question-container">
                     <h2>Add new question</h2>
                     <h4 class="search-heading">Current Question Count: <span id="question-count"></span></h4>
-                    <a href="addQuestion.html"><button class="btn primary-button new-question-button">Add new
-                            question</button></a>
+                    <a class="btn primary-button new-question-button" href="addQuestion.html">Add new question</a>
                 </div>
             </div>
         </div>
