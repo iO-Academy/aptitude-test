@@ -100,11 +100,11 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
         }
         if (minutesField.value <=1 || minutesField.value == null || isNaN(minutesField.value) === true ) {
             timeIsValid = false
-            errorField.innerHTML += 'This is not a good number!'
+            errorField.innerHTML = 'This is not a good number!'
         }
-        if (secondsField.value <=0 || secondsField.value == null || isNaN(secondsField.value) === true ) {
+        if (secondsField.value <0 || secondsField.value == null || isNaN(secondsField.value) === true ) {
             timeIsValid = false
-            errorField.innerHTML += 'This is not a good number!'
+            errorField.innerHTML = 'This is not a good number!'
         }
 
         if(emailIsValid && timeIsValid) {
