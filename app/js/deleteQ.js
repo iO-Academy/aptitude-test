@@ -23,7 +23,7 @@ function deleteQuestion(questionId) {
     let url = baseUrl + "question/delete/" + userId
     fetch(url, {"method": "post"})
         .then(function () {
-            updateScoreTable()
+            populateHandlebarsObject()
         })
 }
 
