@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="js/utils.js"></script>
     <script src="js/userLogIn.js"></script>
     <script src="js/cookies.js"></script>
     <script>
@@ -18,22 +19,14 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="css/questionAdmin.css">
-    <script src="js/handlebars-v4.0.11.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="js/userLogIn.js"></script>
-    <script src="js/cookies.js"></script>
-    <script src="handlebarsHelpers.js"></script>
-    <script src="js/questionCount.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <script src="js/handlebars-v4.0.11.js" defer></script>
+    <script src="js/handlebarsQuestionTable.js" defer></script>
+    <script src="js/questionCount.js" defer></script>
     <title>Question Admin</title>
 </head>
 <body>
     <section class="container">
-        <img class="logo" alt="Mayden Logo" src="images/branding-icons/maydenacademy_logotype_05.18_web.svg">
-        <div class="new-question-container">
-            <h2>Add new question</h2>
-            <h4 class="search-heading">Current Question Count: <span id="question-count"></span></h4>
-            <a href="addQuestion.html"><button class="btn primary-button new-question-button">Add new question</button></a>
-        </div>
         <div class="overlay"></div>
         <div id="modal"></div>
     </section>
