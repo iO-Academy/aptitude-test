@@ -33,5 +33,6 @@ function addEditEventListeners() {
     })
 }
 
+// populate dropdown menu with available tests
 populateHandlebars('#test_id', 'js/templates/editmodalquestions.hbs', 'test')
 
