@@ -21,4 +21,3 @@ document.querySelector('#setDefaultTime').addEventListener('submit', function (e
         }
         return setDefaultTime
     })
-
