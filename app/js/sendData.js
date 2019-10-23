@@ -20,5 +20,5 @@ async function sendData(data, path) {
  * @apiResponseJson The JSON returned in the API response
  */
 function showConfirmationMessage(apiResponseJson) {
-    document.querySelector('#testSubmitConfirmation').innerText = apiResponseJson.message
+    document.querySelector('#inputSubmissionConfirmation').innerText = apiResponseJson.message
 }
