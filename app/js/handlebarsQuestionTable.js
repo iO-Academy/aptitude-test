@@ -33,3 +33,5 @@ function addEditEventListeners() {
     })
 }
 
+populateHandlebars('#test_id', 'js/templates/editmodalquestions.hbs', 'test')
+

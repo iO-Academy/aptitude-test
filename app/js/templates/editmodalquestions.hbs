@@ -40,6 +40,11 @@
             <div class="messageArea">
                 <span id="message"></span>
             </div>
+            <div id="test_id">
+                {{#each data}}
+                    <option value="{{id}}">{{name}}</option>
+                {{/each}}
+            </div>
             <input class="submit" type="submit" value="Submit">
         </div>
     </form>
