@@ -277,7 +277,7 @@ $app->post('/question/{id}/edit', function ($request, $response, $args) {
                         `option3` = :option3,
                         `option4` = :option4,
                         `option5` = :option5,
-                        `answer` = :answer,
+                        `answer` = :answer
                         WHERE `id` = :id";
             } else {
                 $query = "UPDATE `question` SET
