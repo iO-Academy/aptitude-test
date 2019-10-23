@@ -1,20 +1,17 @@
-//listen for click on delete button 
-
 /**
  * Adds event listener to the delete Q buttons.
  */
-function addDeleteQEventListeners() {
-    let questionItems = document.querySelectorAll(".delete-question-button ")
+function addDeleteQEventListeners(questionItems) {
     questionItems.forEach(function (questionItem) {
         questionItem.addEventListener('click', function (e) {
+            e.preventDefault()
             let questionId = e.target.parentElement.getAttribute("dataId")
             deleteQuestion(questionId)
         })
     })
 }
-//delete the question
 /**
- * Sends the API call to delete a question with the specified ID, reset the html and repopulate question table
+ * Sends the API call to delete a question with the specified ID and repopulate question table
  *
  * @param questionId
  */
@@ -26,5 +23,3 @@ function deleteQuestion(questionId) {
             populateQuestionTable()
         })
 }
-
-//need to repopulate with updated list of questions

@@ -13,10 +13,12 @@ function populateQuestionTable () {
             response.data.forEach(function (question) {
                 questionsTable.data[question.id] = question;
             })
-            populateHandlebarsObject('.container', 'js/templates/questionDisplay.hbs', response)
+            populateHandlebarsObject('.container', 'js/templates/questionDisplay.hbs', response).then(response => {
+                let questionItems = document.querySelectorAll(".delete-question-button")
+                addDeleteQEventListeners(questionItems)
+            })
             addEditEventListeners()
-            addDeleteQEventListeners()
-                })
+        })
 }
 populateQuestionTable()
 
@@ -42,4 +44,3 @@ function addEditEventListeners() {
         })
     })
 }
-
