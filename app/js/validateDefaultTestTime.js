@@ -10,7 +10,7 @@ document.querySelector('#setDefaultTime').addEventListener('submit', function(ev
             defaultTimeIsValid = false
             errorField.innerHTML += 'This is not a good number!'
         }
-        if (defaultSecondsField.value <=0 || defaultSecondsField.value == null || isNaN(defaultSecondsField.value) === true ) {
+        if (defaultSecondsField.value <0 || defaultSecondsField.value == null || isNaN(defaultSecondsField.value) === true ) {
             defaultTimeIsValid = false
             errorField.innerHTML += 'This is not a good number!'
         }
