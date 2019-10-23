@@ -13,17 +13,10 @@ function populateQuestionTable () {
             response.data.forEach(function (question) {
                 questionsTable.data[question.id] = question;
             })
-            fetch('js/templates/questionDisplay.hbs')
-                .then(template => template.text())
-                .then(template => {
-
-                    var hbsTemplate = Handlebars.compile(template)
-                    var html = hbsTemplate(response)
-                    document.querySelector('.container').innerHTML += html
-                    addEditEventListeners()
-                    addDeleteQEventListeners()
+            populateHandlebarsObject('.container', 'js/templates/questionDisplay.hbs', response)
+            addEditEventListeners()
+            addDeleteQEventListeners()
                 })
-        })
 }
 populateQuestionTable()
 
