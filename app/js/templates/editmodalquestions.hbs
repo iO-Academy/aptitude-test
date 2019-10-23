@@ -35,15 +35,15 @@
                 <input id="ans5" class="answer-check" type="radio" name="answer-check" value="5">
             </div>
         </div>
+        <div id="test_id">
+            {{#each data}}
+                <option value="{{id}}">{{name}}</option>
+            {{/each}}
+        </div>
         <div id="message-target"></div>
         <div class="buttons">
             <div class="messageArea">
                 <span id="message"></span>
-            </div>
-            <div id="test_id">
-                {{#each data}}
-                    <option value="{{id}}">{{name}}</option>
-                {{/each}}
             </div>
             <input class="submit" type="submit" value="Submit">
         </div>
