@@ -76,12 +76,12 @@ newQuestionForm.addEventListener('submit',  async function(e) {
         let response = await sendData(questionDataToSend, questionPath)
         showConfirmationMessage(response)
         if (response.success){
-            document.querySelector('#inputSubmissionConfirmation').className = 'success-message'
+            document.querySelector('#inputSubmissionConfirmation').className = 'alert-success'
         } else {
-            document.querySelector('#inputSubmissionConfirmation').className = 'failure-message'
+            document.querySelector('#inputSubmissionConfirmation').className = 'alert-danger'
         }
     } else {
-        document.querySelector('#inputSubmissionConfirmation').className = 'failure-message'
+        document.querySelector('#inputSubmissionConfirmation').className = 'alert-danger'
         document.querySelector('#inputSubmissionConfirmation').innerHTML = 'Error: Please ensure you have filled out the question form correctly.'
     }
 })
