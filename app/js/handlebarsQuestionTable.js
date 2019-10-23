@@ -18,6 +18,7 @@ function populateQuestionTable () {
                 addDeleteQEventListeners(questionItems)
             })
             addEditEventListeners()
+            getQuestionCount()
         })
 }
 populateQuestionTable()

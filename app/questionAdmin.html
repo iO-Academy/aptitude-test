@@ -1,39 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="js/utils.js"></script>
-    <script src="js/userLogIn.js"></script>
-    <script src="js/cookies.js"></script>
-    <script>
-        let userEmail = getCookie('userEmail')
-        getUser(userEmail).then(function(user) {
-            if (!user.success || !isAuthorised(user.data, "1")) {
-                window.location.replace("index.html")
-            }
-        })
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/styles.css">
     <link rel="stylesheet" type="text/css" href="css/questionAdmin.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/editQuestion.css">
+    <script src="js/utils.js"></script>
+    <script src="js/userLogIn.js"></script>
+    <script src="js/cookies.js"></script>
+    <script>
+    getUser(userEmail).then(function(user) {
+    if (!user.success || !isAuthorised(user.data, "1")) {
+    window.location.replace("index.html")
+    }
+    })
+    let userEmail = getCookie('userEmail')
+    </script>
     <script src="js/handlebars-v4.0.11.js" defer></script>
+    <script src="js/questionCount.js" defer></script>
     <script src="js/getData.js" defer></script>
     <script src="js/populateHandlebars.js" defer></script>
     <script src="js/ajaxHandlebarsTemplate.js" defer></script>
-    <script src="js/modalQuestion.js" defer></script>
-    <script src="js/questionCount.js" defer></script>
-    <script src="js/deleteQ.js" defer></script>
     <script src="js/handlebarsQuestionTable.js" defer></script>
+    <script src="js/modalQuestion.js" defer></script>
+    <script src="js/deleteQ.js" defer></script>
 
     <title>Question Admin</title>
 </head>
 <body>
     <section class="container">
+        <h4 class="search-heading">Current Question Count: <span id="question-count"></span></h4>
         <div class="overlay"></div>
         <div id="modal"></div>
     </section>
