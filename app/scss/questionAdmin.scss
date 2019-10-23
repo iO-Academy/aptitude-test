@@ -6,6 +6,10 @@
     float: left;
     margin: 20px;
 
+    .btn {
+      margin: 5px;
+    }
+
     .display-flex {
       display: flex;
       align-items: center;
@@ -73,7 +77,7 @@
 #modal {
   display: none;
   background: #ffffff;
-  width: 600px;
+  width: 1200px;
   position: fixed;
   top: 30px;
   left: 50%;
