@@ -39,7 +39,6 @@ function populateQuestionTable () {
 function addEditEventListeners() {
     let editButtons = document.querySelectorAll(".modalBtn")
     editButtons.forEach(function(editButton) {
-        console.log(editButton)
         editButton.addEventListener('click', function (e) {
             e.stopImmediatePropagation()
             openDialog()
