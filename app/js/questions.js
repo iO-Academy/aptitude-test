@@ -7,6 +7,7 @@ let nonDeletedQuestions = []
  * @param HBTemplate the handlebars template
  */
 function fillUserTable(HBTemplate) {
+    nonDeletedQuestions = []
     let baseUrl = getBaseUrl()
     let template = Handlebars.compile(HBTemplate)
     let counter = 0
@@ -23,6 +24,11 @@ function fillUserTable(HBTemplate) {
                     nonDeletedQuestions[questionCounter] = question
                 }
             })
+
+            if(nonDeletedQuestions.length == 1) {
+                checkIfOneQuestion();
+            }
+
             if (nonDeletedQuestions.length != 0) {
                 nonDeletedQuestions.forEach(function(question) {
                     console.log(question.id)

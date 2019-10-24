@@ -1,6 +1,19 @@
 var current = 1
 document.querySelector(".prev").style.visibility = "hidden"
 
+function checkIfOneQuestion(){
+    let questionCount = document.querySelectorAll('#questions .question').length
+    let nextButton = document.querySelector(".next")
+    let prevButton = document.querySelector(".prev")
+    let overviewButton = document.querySelector(".overview")
+
+    prevButton.style.visibility = "hidden"
+    nextButton.style.visibility = "hidden"
+    overviewButton.style.visibility = "visible"
+
+}
+
+
 /**
  * adds the active class to the first question
  * function is called when questions are inserted into html and calls trackActiveQuestion() to update
@@ -8,6 +21,9 @@ document.querySelector(".prev").style.visibility = "hidden"
  */
 function active() {
     let questionCount = document.querySelectorAll('#questions .question').length
+    if (questionCount == 1) {
+        checkIfOneQuestion();
+    }
     document.querySelector(".q_" + current).classList.add("active")
     document.querySelector("#question-counter").textContent = current + "/" + questionCount
     trackActiveQuestion(current)
