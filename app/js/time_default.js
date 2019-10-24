@@ -16,27 +16,25 @@ function getTimeDefault() {
 // Sets the current default test time from the API, takes number as param, returns success/fail state as bool
 function sendTimeDefault(time) {
     let data = {
-        settings: [{
         name: 'default_time',
         value: time
-    }
-    ]};
+    };
 
     let settings = {
         method:'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
         body: JSON.stringify(data)
     }
 
-    let state = false
+    console.log(settings.body)
+
+    let state = null;
 
     fetch(base_url + '/setting', settings)
         .then(response => response.json())
         .then(response => {
-            return response.success;
-        }).then(success => state = success)
+            console.log(response)
+        })
 
     return state
+
 }
