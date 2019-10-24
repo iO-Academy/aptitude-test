@@ -52,6 +52,7 @@ var ctx = document.getElementById('performanceChart');
 
 let data = {
     datasets: [{
+        type: 'pie',
         data: categoriseData(percentagesArray),
         backgroundColor: ['red', 'blue', 'yellow']
     }],
@@ -62,10 +63,4 @@ let data = {
         '>70%: pass',
         '<70%: fail'
     ]
-};
-
-// For a pie chart
-var myPieChart = new Chart(ctx, {
-    type: 'pie',
-    data: data
-});
+}
