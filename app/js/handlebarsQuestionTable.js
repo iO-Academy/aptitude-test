@@ -27,13 +27,10 @@ function populateQuestionTable () {
                 addDeleteQEventListeners(questionItems)
                 addEditEventListeners()
             })
-
             getQuestionCount()
         })
 }
 populateQuestionTable()
-
-
 
 /**
  * Function that will trigger a modal with the question that you selected clicking on edit button

@@ -13,16 +13,7 @@
     <script src="js/utils.js"></script>
     <script src="js/userLogIn.js"></script>
     <script src="js/cookies.js"></script>
-<!--    <script>-->
-<!--    getUser(userEmail).then(function(user) {-->
-<!--    if (!user.success || !isAuthorised(user.data, "1")) {-->
-<!--    window.location.replace("index.html")-->
-<!--    }-->
-<!--    })-->
-<!--    let userEmail = getCookie('userEmail')-->
-<!--    </script>-->
     <script src="js/handlebars-v4.0.11.js" defer></script>
-<!--    <script src="js/questionCount.js" defer></script>-->
     <script src="js/getData.js" defer></script>
     <script src="js/populateHandlebars.js" defer></script>
     <script src="js/ajaxHandlebarsTemplate.js" defer></script>
@@ -32,6 +23,13 @@
     <script src="js/modalQuestion.js" defer></script>
     <script src="js/postEditFunction.js" defer></script>
     <script src="js/questionCount.js" defer></script>
+    <script defer>
+    getUser(userEmail).then(function(user) {
+    if (!user.success || !isAuthorised(user.data, "1")) {
+    window.location.replace("index.html")
+    }
+    })
+    let userEmail = getCookie('userEmail')
     <script src="js/deleteQ.js" defer></script>
 
     <title>Question Admin</title>
@@ -41,7 +39,6 @@
 <div class="overlay"></div>
 <div id="modal"></div>
     <section class="container">
-
     </section>
 </body>
 </html>
