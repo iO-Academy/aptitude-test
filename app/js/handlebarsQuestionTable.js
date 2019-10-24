@@ -15,13 +15,8 @@ function returnQuestionEdited() {
     return questionEdited
 }
 
-/**
- * Function which creates questionsTable object. Enables this object to be used anywhere in the project
- */
-function returnQuestionsTable() {
-    let questionsTable = {data: []}
-    return questionsTable
-}
+let questionsTable = {data: []}
+
 /**
  * Function which uses fetch request to populate questionAdmin.html with questions from questions API, using questionDisplay.hbs template
  */
@@ -31,14 +26,14 @@ function populateQuestionTable () {
         .then(data => data.json())
         .then(response => {
             response.data.forEach(function (question) {
-                returnQuestionsTable().data[question.id] = question;
+                questionsTable.data[question.id] = question;
             })
             populateHandlebarsObject('.container', 'js/templates/questionDisplay.hbs', response).then(response => {
                 let questionItems = document.querySelectorAll(".delete-question-button")
                 addDeleteQEventListeners(questionItems)
                 addEditEventListeners()
-                getQuestionCount()
             })
+            getQuestionCount()
         })
 }
 
@@ -65,7 +60,7 @@ function modalEditedQuestion(e){
     populateHandlebarsObject('#modal', 'js/templates/editmodalquestions.hbs', questionsTable.data[e.target.id])
         .then(() => {
             let questionAnswer = null;
-            getData('answer/' + returnQuestionsTable().data[e.target.id].id)
+            getData('answer/' + questionsTable.data[e.target.id].id)
                 .then(response => {
                     questionAnswer = response.data.answer;
                     //takes the id and concatenate with answer to target the question with the correct answer
