@@ -1,3 +1,6 @@
+let categorisedScoresOut = null
+let percentagesArray = userScores()
+
 /**
  * This function gets the user data and grabs all the percentage scores
  *
@@ -12,12 +15,32 @@ function userScores(){
                 if (element.percentage !== "")
                     percentagesArray.push(element.percentage)
             })
-        })
-      return percentagesArray
+            categoriseData(percentagesArray)
+            console.log(categorisedScoresOut)
+            var ctx = document.getElementById('performanceChart');
 
+            let data = {
+                datasets: [{
+                    data: categorisedScoresOut,
+                    backgroundColor: ['red', 'blue', 'yellow']
+                }],
+
+                // These labels appear in the legend and in the tooltips when hovering different arcs
+                labels: [
+                    '>97%: high pass',
+                    '>70%: pass',
+                    '<70%: fail'
+                ]
+            };
+
+// For a pie chart
+            var myPieChart = new Chart(ctx, {
+                type: 'pie',
+                data: data
+            });
+        })
 }
-    let percentagesArray = userScores()
-console.log(percentagesArray)
+
 
 /**
  * This function divides user scores into three categories
@@ -32,7 +55,6 @@ function categoriseData(userScores){
     let pass = 0
     let notPass = 0
     userScores.forEach(function (element) {
-        console.log(parseFloat(element))
         if (parseFloat(element) >= 97){
             highscore += 1
         } else if (parseFloat(element) >= 70 && parseFloat(element) < 97) {
@@ -43,7 +65,7 @@ function categoriseData(userScores){
     })
     let categorisedScores = [highscore, pass, notPass]
     console.log(categorisedScores)
-    return categorisedScores
+    categorisedScoresOut =  categorisedScores
 }
 
 
