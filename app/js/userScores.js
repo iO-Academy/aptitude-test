@@ -17,26 +17,27 @@ function userScores(){
             })
             categoriseData(percentagesArray)
             console.log(categorisedScoresOut)
-            var ctx = document.getElementById('performanceChart');
-
-            let data = {
-                datasets: [{
-                    data: categorisedScoresOut,
-                    backgroundColor: ['red', 'blue', 'yellow']
-                }],
-
-                // These labels appear in the legend and in the tooltips when hovering different arcs
-                labels: [
-                    '>97%: high pass',
-                    '>70%: pass',
-                    '<70%: fail'
-                ]
-            };
-
-// For a pie chart
-            var myPieChart = new Chart(ctx, {
+            var ctx = document.getElementById('performanceChart').getContext('2d');
+            var myChart = new Chart(ctx, {
                 type: 'pie',
-                data: data
+                data: {
+                    labels: ['97+', '70-97', '>70'],
+                    datasets: [{
+                        label: '# of Votes',
+                        data: [10,15,9],
+                        backgroundColor: [
+                            'rgba(255, 0, 0, .5)',
+                            'rgba(0, 255, 0, 0.5)',
+                            'rgba(0, 0, 255, 0.5)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+
             });
         })
 }
@@ -68,21 +69,6 @@ function categoriseData(userScores){
     categorisedScoresOut =  categorisedScores
 }
 
-
-
 var ctx = document.getElementById('performanceChart');
 
-let data = {
-    datasets: [{
-        type: 'pie',
-        data: categoriseData(percentagesArray),
-        backgroundColor: ['red', 'blue', 'yellow']
-    }],
 
-    // These labels appear in the legend and in the tooltips when hovering different arcs
-    labels: [
-        '>97%: high pass',
-        '>70%: pass',
-        '<70%: fail'
-    ]
-}
