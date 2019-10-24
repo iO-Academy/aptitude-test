@@ -24,10 +24,22 @@
     <script src="js/userTestScore.js" async></script>
     <script src="js/handlebarsScoreTable.js" async></script>
     <script src="js/handlebars-v4.0.11.js"></script>
-    <script src="js/userLogIn.js" defer></script>
-    <script src="js/cookies.js" defer></script>
-    <script src="js/testUserScoreObject.js" defer></script>
-    <script src="js/validateUserAdditions.js" defer></script>
+    <script src="js/utils.js"></script>
+    <script src="js/userLogIn.js"></script>
+    <script src="js/cookies.js"></script>
+    <script>
+        let userEmail = getCookie('userEmail')
+        getUser(userEmail).then(function (user) {
+            if (!user.success || !isAuthorised(user.data, "1")) {
+                window.location.replace("index.html")
+            }
+        })
+    </script>
+    <script src="js/getData.js"></script>
+    <script src="js/populateHandlebars.js"></script>
+    <script src="js/adminPage.js" defer></script>
+    <script src="js/ajaxHandlebarsTemplate.js" defer></script>
+    <script src="js/createUserObject.js" defer></script>
     <script src="js/aptitudeTestHelpers.js" defer></script>
     <script src="js/sanitiseAdmin.js" defer></script>
     <script src="js/postEditFunction.js" defer></script>
@@ -36,7 +48,8 @@
     <script src="js/searchAndFilter.js" defer></script>
     <script src="js/modal.js" defer></script>
     <script src="js/questionCount.js" defer></script>
-    <script src="js/inputTestAccordion.js" defer></script>
+    <script src="js/newTest.js" defer></script>
+    <script src="js/sendData.js" defer></script>
     <title>Admin Page</title>
 </head>
 
@@ -56,6 +69,10 @@
                     <div class="container_input display-flex">
                         <input type="text" id="name" name="name" placeholder="Type new user's name">
                         <input type="text" id="email" name="email" placeholder="Type new user's email">
+                        <label for="test_id">Assign to test:</label>
+                        <select class="custom-select" id="test_id">
+                        </select>
+                        <label for="time">Test Duration (m):</label>
                         <input type="number" id="time" name="time" value="30">
                         <input type="submit" value="Add User" class="btn primary-button">
                     </div>
@@ -86,21 +103,16 @@
                     </div>
                     <div class="accordionContainer"></div>
                 </div>
-                </div>
-                <div class="new-question-container">
-                    <h2>Add new question</h2>
-                    <h4 class="search-heading">Current Question Count: <span id="question-count"></span></h4>
-                    <a href="addQuestion.html"><button class="btn primary-button new-question-button">Add new
-                            question</button></a>
-                </div>
+            </div>
+            <div class="new-question-container">
+                <h2>Add new question</h2>
+                <h4 class="search-heading">Current Question Count: <span id="question-count"></span></h4>
+                <a href="addQuestion.html"><button class="btn primary-button new-question-button">Add new
+                        question</button></a>
             </div>
         </div>
+        </div>
     </section>
-
-
-
-
-
 </body>
 
 </html>
