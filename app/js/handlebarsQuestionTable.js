@@ -1,4 +1,3 @@
-let questionsTable = {data: []}
 let questionEdited = {
     text: null,
     option1: null,
@@ -19,6 +18,7 @@ function populateQuestionTable () {
         .then(data => data.json())
         .then(response => {
             response.data.forEach(function (question) {
+                let questionsTable = {data: []}
                 questionsTable.data[question.id] = question;
             })
             populateHandlebarsObject('.container', 'js/templates/questionDisplay.hbs', response).then(response => {
