@@ -3,21 +3,16 @@
  *
  * @returns will return an array of strings of percentage scores and passes it as a param in within a function call for categoriseData
  */
-function userScores(){
+async function userScores(){
+    let usersObject = await createUsersObject()
+    let usersData = usersObject.data
     let percentagesArray = []
-    createUsersObject()
-        .then(usersObject => usersObject.data)
-        .then(usersData => {
-            usersData.forEach(function (element) {
-                if (element.percentage !== "")
-                    percentagesArray.push(element.percentage)
-            })
-        })
-      return percentagesArray
-
+    usersData.forEach(function (element) {
+        if (element.percentage !== "")
+        percentagesArray.push(element.percentage)
+    })
+    categoriseData(percentagesArray)
 }
-    let percentagesArray = userScores()
-console.log(percentagesArray)
 
 /**
  * This function divides user scores into three categories
@@ -32,40 +27,16 @@ function categoriseData(userScores){
     let pass = 0
     let notPass = 0
     userScores.forEach(function (element) {
-        console.log(parseFloat(element))
-        if (parseFloat(element) >= 97){
+        if (parseInt(element) >= 97){
             highscore += 1
-        } else if (parseFloat(element) >= 70 && parseFloat(element) < 97) {
+        } else if (parseInt(element) >= 70 && parseInt(element) < 97) {
             pass += 1
         } else {
             notPass += 1
         }
     })
     let categorisedScores = [highscore, pass, notPass]
-    console.log(categorisedScores)
     return categorisedScores
 }
 
-
-
-var ctx = document.getElementById('performanceChart');
-
-let data = {
-    datasets: [{
-        data: categoriseData(percentagesArray),
-        backgroundColor: ['red', 'blue', 'yellow']
-    }],
-
-    // These labels appear in the legend and in the tooltips when hovering different arcs
-    labels: [
-        '>97%: high pass',
-        '>70%: pass',
-        '<70%: fail'
-    ]
-};
-
-// For a pie chart
-var myPieChart = new Chart(ctx, {
-    type: 'pie',
-    data: data
-});
+userScores()
