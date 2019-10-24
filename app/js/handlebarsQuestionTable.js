@@ -2,7 +2,7 @@
  * Function which creates questionEdited object. Enables this object to be used anywhere in the project
  */
 function returnQuestionEdited() {
-    let questionEdited = {
+    return {
         text: null,
         option1: null,
         option2: null,
@@ -12,7 +12,6 @@ function returnQuestionEdited() {
         answer: null,
         test_id: null
     }
-    return questionEdited
 }
 
 /**
