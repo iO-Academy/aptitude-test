@@ -16,7 +16,8 @@ function userScores(){
                     percentagesArray.push(element.percentage)
             })
             categoriseData(percentagesArray)
-            console.log(categorisedScoresOut)
+
+
             var ctx = document.getElementById('performanceChart').getContext('2d');
             var myChart = new Chart(ctx, {
                 type: 'pie',
@@ -24,17 +25,14 @@ function userScores(){
                     labels: ['97+', '70-97', '>70'],
                     datasets: [{
                         label: '# of Votes',
-                        data: [10,15,9],
+                        data: categorisedScoresOut,
                         backgroundColor: [
                             'rgba(255, 0, 0, .5)',
                             'rgba(0, 255, 0, 0.5)',
                             'rgba(0, 0, 255, 0.5)'
                         ],
-                        borderColor: [
-                            'rgba(255, 99, 132, 1)',
-                            'rgba(54, 162, 235, 1)',
-                        ],
-                        borderWidth: 1
+                        borderColor: ['rgba(255, 99, 132, 1)',],
+                        borderWidth: 3
                     }]
                 },
 
@@ -65,10 +63,6 @@ function categoriseData(userScores){
         }
     })
     let categorisedScores = [highscore, pass, notPass]
-    console.log(categorisedScores)
     categorisedScoresOut =  categorisedScores
 }
-
-var ctx = document.getElementById('performanceChart');
-
 
