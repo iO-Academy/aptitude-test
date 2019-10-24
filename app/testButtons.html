@@ -12,11 +12,11 @@
     <script defer src="js/testButtons.js"></script>
 
     <script id="paginationTemplate" type="text/x-handlebars-template">
-        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item" id="prev"><a class="page-link" href="#">Previous</a></li>
         {{#each pageNo}}
-        <li class="page-item"><a class="page-link" href="#">{{this}}</a></li>
+        <li class="page-item"><a class="page-link" href="#" value="{{this}}">{{this}}</a></li>
         {{/each}}
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        <li class="page-item" id="next"><a class="page-link" href="#">Next</a></li>
     </script>
 
     <title>Title</title>
@@ -24,7 +24,6 @@
 <body>
     <nav aria-label="Page navigation">
         <ul class="pagination" id="numberButtons">
-
         </ul>
     </nav>
 </body>
