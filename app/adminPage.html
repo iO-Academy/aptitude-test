@@ -34,7 +34,6 @@
     <script src="js/time_default.js" defer></script>
     <script src="js/handlebarsScoreTable.js" defer></script>
     <script src="js/timeConversion.js" defer></script>
-    <script src="js/time_default.js" defer></script>
     <script src="js/modal.js" defer></script>
     <script src="js/questionCount.js" defer></script>
     <script src="js/newTest.js" defer></script>
@@ -58,18 +57,21 @@
                     <h2>Add new user</h2>
                     <form class="container_controls new-user-container" id="addNewUserForm">
                         <div class="container_input display-flex">
-                            <input type="text" id="name" name="name" placeholder="Type new user's name">
-                            <input type="text" id="email" name="email" placeholder="Type new user's email">
-                            <input type="number" id="minutes" name="timeMinutes" placeholder="Minutes" value="30" min="0">
-                            <input type="number" id="seconds" name="timeSeconds" placeholder="Seconds" min="0" max="59">
+                            <input type="text" id="name" name="name" placeholder="Type new user's name" required>
+                            <input type="text" id="email" name="email" placeholder="Type new user's email" required>
+                            <input type="number" id="minutesField" name="timeMinutes" placeholder="Minutes" value="30" min="0" required>
+                            <input type="number" id="secondsField" name="timeSeconds" placeholder="Seconds" min="0" max="59" required>
                             <input type="submit" value="Add User" class="btn primary-button">
                         </div>
                     </form>
                     <div id='error' class='title_input'></div>
                 <h2>Set default test time</h2>
+                <p id="defaultTimeError"></p>
                 <form id="setDefaultTime">
-                    <input id="defaultMinutes" type="number" placeholder="Minutes" min="0">
-                    <input id="defaultSeconds" type="number" placeholder="Seconds" min="0" max="59">
+                    <label for="defaultMinutes">Minutes: </label>
+                    <input id="defaultMinutes" type="number" placeholder="Minutes" min="0" value="0" required>
+                    <label for="defaultSeconds">Seconds: </label>
+                    <input id="defaultSeconds" type="number" placeholder="Seconds" min="0" max="59" value="0" required>
                     <input type="submit" class="btn primary-button">
                 </form>
                 <div class="score-container">

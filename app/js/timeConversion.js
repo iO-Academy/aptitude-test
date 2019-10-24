@@ -8,7 +8,7 @@
  * @return time formatted in seconds
  */
 function minsAndSecsToSecs(minutes, seconds) {
-     var convertedSeconds = (minutes * 60) + (seconds)
+     let convertedSeconds = parseInt(minutes * 60) + parseInt(seconds)
      convertedSeconds = parseInt(convertedSeconds)
     return convertedSeconds
 }
@@ -19,8 +19,8 @@ function minsAndSecsToSecs(minutes, seconds) {
  * @param timeInSeconds - time in seconds
  */
 function secsToMinsAndSecs(timeInSeconds) {
-    var minutes = Math.floor(timeInSeconds / 60);
-    var seconds = timeInSeconds - (minutes * 60)
+    let minutes = Math.floor(timeInSeconds / 60);
+    let seconds = timeInSeconds - (minutes * 60)
     return [minutes, seconds]
 }
 

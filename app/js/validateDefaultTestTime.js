@@ -1,8 +1,8 @@
 document.querySelector('#setDefaultTime').addEventListener('submit', function (event) {
         event.preventDefault()
-        var defaultMinutesField = document.getElementById('defaultMinutes')
-        var defaultSecondsField = document.getElementById('defaultSeconds')
-        var errorField = document.getElementById('defaultTimeError')
+        let defaultMinutesField = document.getElementById('defaultMinutes')
+        let defaultSecondsField = document.getElementById('defaultSeconds')
+        let errorField = document.getElementById('defaultTimeError')
 
         let defaultTimeIsValid = true
 
@@ -16,8 +16,9 @@ document.querySelector('#setDefaultTime').addEventListener('submit', function (e
         }
 
         if (defaultTimeIsValid === true) {
-            errorField.innerHTML = ''
-            var setDefaultTime = minsAndSecsToSecs(defaultMinutesField.value, defaultSecondsField.value)
+            errorField.innerHTML = 'Default time set'
+            let setDefaultTime = minsAndSecsToSecs(defaultMinutesField.value, defaultSecondsField.value)
+            sendTimeDefault(setDefaultTime)
         }
         return setDefaultTime
     })
