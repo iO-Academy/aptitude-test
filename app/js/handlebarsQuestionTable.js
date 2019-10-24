@@ -58,7 +58,7 @@ function modalEditedQuestion(e){
             getData('answer/' + questionsTable.data[e.target.id].id)
                 .then(response => {
                     questionAnswer = response.data.answer;
-                    //takes the id and concatonate with ans to target the question with the corrent answer
+                    //takes the id and concatenate with answer to target the question with the correct answer
                     document.getElementById('ans' + questionAnswer).setAttribute('checked', true);
                     // populate dropdown menu with available tests
                     populateHandlebars('#test_id_box', 'js/templates/testDropdown.hbs', 'test')
