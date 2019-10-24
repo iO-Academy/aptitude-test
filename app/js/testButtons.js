@@ -5,7 +5,8 @@ let source = document.querySelector('#paginationTemplate').innerHTML
 let template = Handlebars.compile(source)
 let data = {pageNo : []}
 for (let i=1; i<=buttonAmount; i++) {
-    data.pageNo.push(i)
+    data.pageNo.push(String(i))
+    console.log(data.pageNo)
 }
 let html = template(data)
 document.querySelector('#numberButtons').innerHTML += html

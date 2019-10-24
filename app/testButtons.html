@@ -10,13 +10,15 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.js"></script>
     <script async src="js/populateHandlebars.js"></script>
     <script defer src="js/testButtons.js"></script>
+
     <script id="paginationTemplate" type="text/x-handlebars-template">
         <li class="page-item"><a class="page-link" href="#">Previous</a></li>
         {{#each pageNo}}
-        <li class="page-item"><a class="page-link" href="#">{{pageNo}}</a></li>
+        <li class="page-item"><a class="page-link" href="#">{{this}}</a></li>
         {{/each}}
         <li class="page-item"><a class="page-link" href="#">Next</a></li>
     </script>
+
     <title>Title</title>
 </head>
 <body>
