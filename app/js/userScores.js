@@ -27,11 +27,11 @@ function userScores(){
                         label: '# of Votes',
                         data: categorisedScoresOut,
                         backgroundColor: [
-                            'rgba(255, 0, 0, .5)',
-                            'rgba(0, 255, 0, 0.5)',
-                            'rgba(0, 0, 255, 0.5)'
+                            'rgba(40, 250, 40, .7)',
+                            'rgba(250, 250, 40, 0.7)',
+                            'rgba(250, 40, 40, 0.7)'
                         ],
-                        borderColor: ['rgba(255, 99, 132, 1)',],
+                        borderColor: ['rgba(255, 99, 132, 1)'],
                         borderWidth: 3
                     }]
                 },
