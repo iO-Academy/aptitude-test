@@ -9,15 +9,17 @@
     <link href="css/styles.css" type="text/css" rel="stylesheet">
     <link href="css/adminPage.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/addQuestion.css">
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.js" defer></script>
-    <script defer src="js/aptitudeTestHelpers.js"></script>
+    <script src="js/aptitudeTestHelpers.js" defer></script>
     <script src="js/utils.js"></script>
     <script src="js/cookies.js" defer></script>
     <script src="js/userLogIn.js" defer></script>
     <script src="js/adminProtect.js" defer></script>
     <script defer src="js/questionCount.js"></script>
-    <script defer src="js/getData.js"></script>
-    <script defer src="js/populateHandlebars.js"></script>
+    <script defer src="js/sendData.js"></script>
+    <script async src="js/getData.js"></script>
+    <script async src="js/populateHandlebars.js"></script>
     <script defer src="js/sendQuestionFormOutput.js"></script>
     <script defer src="js/ajaxHandlebarsTemplate.js"></script>
     <title>Add Question</title>
@@ -73,7 +75,7 @@
             <div id="message-target"></div>
             <div class="buttons">
                 <div class="messageArea">
-                    <span id="message"></span>
+                    <span id="inputSubmissionConfirmation" class="alert" role="alert"></span>
                 </div>
                 <a href="questionAdmin.html">
                     <div class="return btn">&#8592; Back</div>
