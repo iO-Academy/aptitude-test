@@ -13,7 +13,6 @@ let questionEdited = {
 /**
  * Function which uses fetch request to populate questionAdmin.html with questions from questions API, using questionDisplay.hbs template
  */
-
 function populateQuestionTable () {
     document.querySelector('.container').innerHTML = ""
     fetch(baseUrl + 'question')
@@ -35,7 +34,6 @@ function populateQuestionTable () {
 /**
  * Function that will trigger a modal with the question that you selected clicking on edit button
  */
-
 function addEditEventListeners() {
     let editButtons = document.querySelectorAll(".modalBtn")
     editButtons.forEach(function(editButton) {
