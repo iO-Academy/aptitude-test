@@ -1,13 +1,20 @@
-let questionEdited = {
-    text: null,
-    option1: null,
-    option2: null,
-    option3: null,
-    option4: null,
-    option5: null,
-    answer: null,
-    test_id: null
+/**
+ * Function which creates questionEdited object. Enables this object to be used anywhere in the project
+ */
+function returnQuestionEdited() {
+    let questionEdited = {
+        text: null,
+        option1: null,
+        option2: null,
+        option3: null,
+        option4: null,
+        option5: null,
+        answer: null,
+        test_id: null
+    }
+    return questionEdited
 }
+
 /**
  * Function which uses fetch request to populate questionAdmin.html with questions from questions API, using questionDisplay.hbs template
  */
@@ -65,12 +72,12 @@ function modalEditedQuestion(e){
                 answersRadio.forEach(function (radioButton) {
                     radioButton.addEventListener('click', function (e) {
                         radioButton.setAttribute('checked', true)
-                        questionEdited.answer = radioButton.getAttribute('value')
+                        returnQuestionEdited().answer = radioButton.getAttribute('value')
 
                     })
                 })
-                if(questionEdited.answer === null) {
-                    questionEdited.answer = questionAnswer
+                if(returnQuestionEdited().answer === null) {
+                    returnQuestionEdited().answer = questionAnswer
                 }
                 submitEditedQuestion()
             })
@@ -82,12 +89,12 @@ function modalEditedQuestion(e){
  */
 function submitEditedQuestion(){
     document.getElementById('question-edit').addEventListener('submit', function (e) {
-        questionEdited.text = document.getElementById("question-text").value
-        questionEdited.option1 = document.getElementById("option1").value
-        questionEdited.option2 = document.getElementById("option2").value
-        questionEdited.option3 = document.getElementById("option3").value
-        questionEdited.option4 = document.getElementById("option4").value
-        questionEdited.option5 = document.getElementById("option5").value
+        returnQuestionEdited().text = document.getElementById("question-text").value
+        returnQuestionEdited().option1 = document.getElementById("option1").value
+        returnQuestionEdited().option2 = document.getElementById("option2").value
+        returnQuestionEdited().option3 = document.getElementById("option3").value
+        returnQuestionEdited().option4 = document.getElementById("option4").value
+        returnQuestionEdited().option5 = document.getElementById("option5").value
         if(document.getElementById("test_id").value != null){
             questionEdited.test_id = document.getElementById("test_id").value
         }
