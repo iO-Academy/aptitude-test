@@ -19,8 +19,7 @@ function returnQuestionEdited() {
  * Function which creates questionsTable object. Enables this object to be used anywhere in the project
  */
 function returnQuestionsTable() {
-    let questionsTable = {data: []}
-    return questionsTable
+    return  {data: []}
 }
 
 /**
