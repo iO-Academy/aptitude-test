@@ -1,4 +1,7 @@
-
+/**
+ * Function which creates questionEdited object. Enables this object to be used anywhere in the project
+ */
+function returnQuestionEdited() {
     let questionEdited = {
         text: null,
         option1: null,
@@ -9,7 +12,8 @@
         answer: null,
         test_id: null
     }
-
+    return questionEdited
+}
 
 let questionsTable = {data: []}
 
@@ -66,17 +70,18 @@ function modalEditedQuestion(e){
                 }).then(function () {
                 let answersRadio = document.querySelectorAll(".answer-check")
                 //iterates to catch the question answer that is clicked
+                let questionEdited = returnQuestionEdited()
                 answersRadio.forEach(function (radioButton) {
                     radioButton.addEventListener('click', function (e) {
                         radioButton.setAttribute('checked', true)
-                        questionEdited.answer = radioButton.getAttribute('value')
+                            questionEdited.answer = radioButton.getAttribute('value')
 
                     })
                 })
                 if(questionEdited.answer === null) {
                     questionEdited.answer = questionAnswer
                 }
-                submitEditedQuestion()
+                submitEditedQuestion(questionEdited)
             })
         })
 }
@@ -84,7 +89,7 @@ function modalEditedQuestion(e){
 /**
  *Takes all the value from the fields, they are stored in a empty object and sends it to the api to update the database with the new changes
  */
-function submitEditedQuestion(){
+function submitEditedQuestion(questionEdited){
     document.getElementById('question-edit').addEventListener('submit', function (e) {
         questionEdited.text = document.getElementById("question-text").value
         questionEdited.option1 = document.getElementById("option1").value
