@@ -34,6 +34,8 @@ async function accordionTesting() {
     testData.data.forEach(test => {
         console.log(test.id)
 
+        
+
         users[0].id === test.id
         users[1].id === test.id
         users[2].id === test.id
