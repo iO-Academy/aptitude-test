@@ -58,12 +58,18 @@
                         <div class="container_input display-flex">
                             <input type="text" id="name" name="name" placeholder="Type new user's name" required>
                             <input type="text" id="email" name="email" placeholder="Type new user's email" required>
+
+
+                            <label for="test_id">Assign to test:</label>
+                            <select class="custom-select" id="test_id">
+                            </select>
+                            <label for="time">Test Duration:</label>
                             <input type="number" id="minutesField" name="timeMinutes" placeholder="Minutes" value="30" min="0" required>
                             <input type="number" id="secondsField" name="timeSeconds" placeholder="Seconds" min="0" max="59" required>
                             <input type="submit" value="Add User" class="btn primary-button">
                         </div>
                     </form>
-                    <div id='error' class='title_input'></div>
+                <div id='error' class='title_input'></div>
                 <h2>Set default test time</h2>
                 <p id="defaultTimeError"></p>
                 <form id="setDefaultTime">
@@ -73,6 +79,9 @@
                     <input id="defaultSeconds" type="number" placeholder="Seconds" min="0" max="59" value="0" required>
                     <input type="submit" class="btn primary-button">
                 </form>
+
+
+
                 <div class="score-container">
                     <h2>Scores</h2>
                     <div class="search-filter-container">
