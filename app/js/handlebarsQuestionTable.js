@@ -21,7 +21,7 @@ function populateQuestionTable () {
             getQuestionCount()
         })
 }
-populateQuestionTable()
+
 
 /**
  * Function that will trigger a modal with the question that you selected clicking on edit button
@@ -30,6 +30,7 @@ populateQuestionTable()
 function addEditEventListeners() {
     let editButtons = document.querySelectorAll(".modalBtn")
     editButtons.forEach(function(editButton) {
+        console.log(editButton)
         editButton.addEventListener('click', function (e) {
             e.stopImmediatePropagation()
             openDialog()
@@ -47,3 +48,5 @@ function addEditEventListeners() {
         })
     })
 }
+
+populateQuestionTable()
