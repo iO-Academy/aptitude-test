@@ -1,5 +1,6 @@
 let base_url = getBaseUrl();
 let time_return = null;
+let state_return = null;
 
 // Gets the current default test time from the API, returns number
 function getTimeDefault() {
@@ -22,19 +23,21 @@ function sendTimeDefault(time) {
 
     let settings = {
         method:'POST',
-        body: JSON.stringify(data)
+        body: jsonToFormData(data)
     }
 
-    console.log(settings.body)
-
-    let state = null;
+    // let fetchData = await fetch(base_url + '/setting', settings).then(data => data)
+    // await fetchData
+    // let fetchJson = await fetchData.json()
+    // await fetchJson
+    // return fetchJson;
 
     fetch(base_url + '/setting', settings)
         .then(response => response.json())
         .then(response => {
-            console.log(response)
-        })
+            state_return = response.success;
+    })
 
-    return state
+    return state_return
 
 }
