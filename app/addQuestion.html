@@ -9,11 +9,12 @@
     <link href="css/styles.css" type="text/css" rel="stylesheet">
     <link href="css/adminPage.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/addQuestion.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.js" defer></script>
     <script defer src="js/aptitudeTestHelpers.js"></script>
     <script src="js/utils.js"></script>
-    <script defer src="js/userLogIn.js"></script>
-    <script defer src="js/cookies.js"></script>
+    <script src="js/cookies.js" defer></script>
+    <script src="js/userLogIn.js" defer></script>
+    <script src="js/adminProtect.js" defer></script>
     <script defer src="js/questionCount.js"></script>
     <script defer src="js/getData.js"></script>
     <script defer src="js/populateHandlebars.js"></script>
@@ -31,7 +32,7 @@
             Enter new question text below
         </h4>
         <form id="new-question">
-            <div class="form-group">
+            <div class="form-group">s
                 <label for="exampleFormControlTextarea1">Question:</label>
                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="question"></textarea>
             </div>
@@ -82,4 +83,5 @@
         </form>
     </div>
 </div>
+
 </body>
