@@ -1,3 +1,5 @@
+populateHandlebars('#test_id', 'js/templates/testDropdown.hbs', 'test')
+
 /**
  * Save the JSON object using an AJAX request.
  *
@@ -83,11 +85,13 @@ function userExists(emailToAdd, existingUsers) {
 
 document.querySelector('#addNewUserForm').addEventListener('submit', function(event) {
     event.preventDefault()
-    var emailField = document.getElementById("email")
-    var nameField = document.getElementById('name')
-    var errorField = document.getElementById('error')
-    var minutesField = document.getElementById('minutes')
-    var secondsField = document.getElementById('seconds')
+
+    let emailField = document.querySelector('#email')
+    let nameField = document.querySelector('#name')
+    let testField = document.querySelector('#test_id')
+    let errorField = document.querySelector('#error')
+    let timeField = document.querySelector('#time')
+
 
     getExistingUsers().then(function(existingUsers) {
 
@@ -107,12 +111,10 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
             errorField.innerHTML = 'This is not a good number!'
         }
 
-        if(emailIsValid && timeIsValid) {
+        if (emailIsValid && timeIsValid) {
             errorField.innerHTML = ''
-            var minsToSeconds = minutesField.value * 60
-            var setTime = parseInt(minsToSeconds) + parseInt(secondsField.value)
-            console.log(setTime)
-            saveNewUser({'name': nameField.value, 'email': emailField.value, 'time': setTime}).then(function(response) {
+            var setTime = timeField.value * 60
+            saveNewUser({'name': nameField.value, 'email': emailField.value, 'test_id': testField.value, 'time': setTime}).then(function(response) {
                 if (response.success) {
                     nameField.value = ''
                     emailField.value = ''
