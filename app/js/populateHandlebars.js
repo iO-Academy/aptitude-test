@@ -19,7 +19,7 @@ async function populateHandlebars(targetElement, handlebarsPath, APIpath) {
  */
 
 async function populateAccordion(targetElement, handlebarsPath, data) {
-    let dataToInsert =data
+    let dataToInsert = data
     let HBTemplate = await getTemplateAjax(handlebarsPath)
     let template = Handlebars.compile(HBTemplate)
     document.querySelector(targetElement).innerHTML = template(dataToInsert)

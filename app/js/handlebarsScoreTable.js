@@ -122,7 +122,7 @@ function deleteUser(userId) {
  * @param scoresDataObject an array of data objects returned from the API 
  * and filtered by user settings
  */
-function produceTable (HBTemplate, scoresDataObject) {
+async function produceTable (HBTemplate, scoresDataObject) {
     scoresDataObject.data.forEach(function (scoreData) {
         switch (true) {
             case scoreData.percentage > 97:

@@ -9,9 +9,23 @@
                 </h2>
             </div>
 
-            <div id="collapse{{id}}" class="collapse show" aria-labelledby="heading{{id}}" data-parent="#accordionExample">
-                <div class="card-body test-{{id}}">
-                    INSERT HERE
+            <div id="collapse{{id}}" class="collapse" aria-labelledby="heading{{id}}" data-parent="#accordionExample">
+            <div class="card-body">
+                     <table class="table user-score-table">
+                                         <thead>
+                                         <tr>
+                                             <th></th>
+                                             <th>Name</th>
+                                             <th>Email</th>
+                                             <th>Score (num)</th>
+                                             <th>Percentage (%)</th>
+                                             <th>Time Allowed</th>
+                                             <th>Time Taken</th>
+                                             <th>Date of Test</th>
+                                         </tr>
+                                         </thead>
+                                         <tbody class="score_list user-table test-{{id}}"></tbody>
+                                     </table>
                 </div>
             </div>
         </div>
