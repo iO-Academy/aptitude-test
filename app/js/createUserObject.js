@@ -107,12 +107,12 @@ async function createUsersObject() {
             obj['id'] = user.id
             obj['name'] = user.name
             obj['email'] = user.email
-            obj['score'] = ''
-            obj['percentage'] = ''
+            obj['score'] = 'Test not yet taken'
+            obj['percentage'] = 'Test not yet taken'
             obj['time'] = ''
             obj['timeAllowed'] = secondsToMinutes(user.timeAllowed)
             obj['dateCreated'] = '1970-01-01 00:00:01'
-            obj['test_id'] = '999'
+            obj['test_id'] = user.test_id
             userDisplayArray.push(obj)
         }
     })
