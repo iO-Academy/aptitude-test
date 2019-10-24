@@ -1,24 +1,27 @@
 let baseUrl = getBaseUrl()
-let questionsTable = {}
+let questionsTable = {data: []}
 
 /**
- * Fetch request to populate questionAdmin.html with questions from questions API, using questionDisplay.hbs template
+ * Function which uses fetch request to populate questionAdmin.html with questions from questions API, using questionDisplay.hbs template
  */
 
-fetch(baseUrl + 'question')
-    .then(data => data.json())
-    .then(data => {
-        questionsTable = data
-        fetch('js/templates/questionDisplay.hbs')
-            .then(template => template.text())
-            .then(template => {
-                console.log(template)
-                var hbsTemplate = Handlebars.compile(template)
-                var html = hbsTemplate(data)
-                document.querySelector('.container').innerHTML += html
+function populateQuestionTable () {
+    document.querySelector('.container').innerHTML = ""
+    fetch(baseUrl + 'question')
+        .then(data => data.json())
+        .then(response => {
+            response.data.forEach(function (question) {
+                questionsTable.data[question.id] = question;
             })
-
-    })
+            populateHandlebarsObject('.container', 'js/templates/questionDisplay.hbs', response).then(response => {
+                let questionItems = document.querySelectorAll(".delete-question-button")
+                addDeleteQEventListeners(questionItems)
+            })
+            addEditEventListeners()
+            getQuestionCount()
+        })
+}
+populateQuestionTable()
 
 /**
  * Function that will trigger a modal with the question that you selected clicking on edit button
@@ -28,8 +31,19 @@ function addEditEventListeners() {
     let editButtons = document.querySelectorAll(".modalBtn")
     editButtons.forEach(function(editButton) {
         editButton.addEventListener('click', function (e) {
+            e.stopImmediatePropagation()
             openDialog()
+            let handlebarsTempl = 'js/templates/editmodalquestions.hbs'
+            populateHandlebarsObject('#modal', handlebarsTempl, questionsTable.data[e.target.id])
+                .then(() => {
+                    getData('answer/' + questionsTable.data[e.target.id].id)
+                        .then(response => {
+                            let questionAnswer = response.data.answer;
+                            document.getElementById('ans' + questionAnswer).setAttribute('checked', true);
+                            // populate dropdown menu with available tests
+                            populateHandlebars('#test_id', 'js/templates/testDropdown.hbs', 'test')
+                        })
+                })
         })
     })
 }
-
