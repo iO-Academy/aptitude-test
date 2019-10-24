@@ -13,3 +13,10 @@ function searchAndFilter(HBTemplate, resultArray) {
     resultArray = dateFilter(resultArray)
     printFilteredResultsToScreen(HBTemplate, resultArray)
 }
+
+function searchAndFilter2(resultArray) {
+    resultArray = searchByTextAndEmail(resultArray)
+    resultArray += percentageFilter(resultArray)
+    resultArray += dateFilter(resultArray)
+    return resultArray
+}

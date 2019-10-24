@@ -54,7 +54,20 @@ function searchByTextAndEmail (resultArray) {
 document.getElementById('searchSubmit').addEventListener('click', ()=>{
     let searchContent = document.getElementById('searchInput').value
     if (validateSearchInput(searchContent)) {
-        updateScoreTable()
+        // updateScoreTable()
+
+        document.querySelectorAll('table tr td:first-child').forEach(row => {
+
+            let regex = '[\\w@]*' + searchContent + '[\\w@]*'
+            let regexSearch = new RegExp(regex)
+            if (!regexSearch.test(row.getAttribute("dataname")) && !regexSearch.test(row.getAttribute("dataemail"))) {
+                row.parentElement.classList.add('hidden')
+            } else {
+                row.parentElement.classList.remove('hidden')
+            }
+
+        })
+
     } else {
         alert('Invalid search input, please only use letters, numbers, @\'s or .\'s, underscores and hyphens!')
     }
@@ -63,5 +76,7 @@ document.getElementById('searchSubmit').addEventListener('click', ()=>{
 document.getElementById('searchReset').addEventListener('click', ()=>{
     const input = document.getElementById('searchInput')
     input.value = ''
-    updateScoreTable()
+    document.querySelectorAll('table tr').forEach(row => {
+        row.classList.remove('hidden')
+    })
 })

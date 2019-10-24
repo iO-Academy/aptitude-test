@@ -20,6 +20,7 @@ async function accordionTestTitles() {
  */
 
 async function accordionUsersByTest() {
+
     await accordionTestTitles()
     let testData = await getData('test')
     let userInfo = await createUsersObject()
@@ -41,13 +42,19 @@ async function accordionUsersByTest() {
         }
     })
 
-    testData.data.forEach(test => {
+    displayUsersByTest(userInfo.data, testData.data)
+
+}
+
+function displayUsersByTest(users, tests) {
+
+    tests.forEach(test => {
         let usersByTest = {}
-        userInfo.data.forEach(user => {
-        if (user.test_id === test.id) {
-            usersByTest[user.id] = user
-        }
-    })
+        users.forEach(user => {
+            if (user.test_id === test.id) {
+                usersByTest[user.id] = user
+            }
+        })
         usersByTest = {data: usersByTest}
         populateAccordion(
             '.test-'+test.id,
@@ -57,3 +64,7 @@ async function accordionUsersByTest() {
 }
 
 accordionUsersByTest()
+
+
+
+

@@ -28,6 +28,27 @@ function updateScoreTable() {
     })
 }
 
+
+// async function updateScoreTable() {
+//     let users = sortUsersObjectByDate()
+//     let tests = await getData('test')
+//
+//     console.log(tests.data)
+//     tests.data.forEach(test => {
+//         users.then(function (userInfo) {
+//
+//
+//             getTemplateAjax('js/templates/adminTable.hbs').then(function (HBTemplate) {
+//                 sendToSearchAndFilter(HBTemplate, userInfo)
+//             })
+//         })
+//     })
+//
+//
+//
+// }
+
+
 /**
  * Transforms and sends the user info to the search and filtering function
  */
@@ -141,6 +162,16 @@ async function produceTable (HBTemplate, scoresDataObject) {
     })
 
     let template = Handlebars.compile(HBTemplate)
+
+    // let testData = await getData('test')
+    //
+    // testData.data.forEach(test => {
+    //     let score_list = document.querySelector('.test-'+test.id)
+    //     score_list.innerHTML = ""
+    //     let html = template(scoresDataObject)
+    //     score_list.innerHTML += html
+    // })
+
     let score_list = document.querySelector(".score_list")
     score_list.innerHTML = ""
     let html = template(scoresDataObject)
