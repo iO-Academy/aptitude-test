@@ -1,4 +1,3 @@
-let baseUrl = getBaseUrl()
 let questionsTable = {data: []}
 let questionEdited = {
     text: null,
@@ -15,7 +14,7 @@ let questionEdited = {
  */
 function populateQuestionTable () {
     document.querySelector('.container').innerHTML = ""
-    fetch(baseUrl + 'question')
+    fetch(getBaseUrl() + 'question')
         .then(data => data.json())
         .then(response => {
             response.data.forEach(function (question) {
