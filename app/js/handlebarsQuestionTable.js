@@ -7,7 +7,7 @@ let questionEdited = {
     option4: null,
     option5: null,
     answer: null,
-    test_id:null
+    test_id: null
 }
 /**
  * Function which uses fetch request to populate questionAdmin.html with questions from questions API, using questionDisplay.hbs template
