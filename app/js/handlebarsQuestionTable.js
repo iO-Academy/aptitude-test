@@ -15,12 +15,19 @@ function returnQuestionEdited() {
     return questionEdited
 }
 
-let questionsTable = {data: []}
+/**
+ * Function which creates questionsTable object. Enables this object to be used anywhere in the project
+ */
+function returnQuestionsTable() {
+    let questionsTable = {data: []}
+    return questionsTable
+}
 
 /**
  * Function which uses fetch request to populate questionAdmin.html with questions from questions API, using questionDisplay.hbs template
  */
 function populateQuestionTable () {
+    let questionsTable = returnQuestionsTable()
     document.querySelector('.container').innerHTML = ""
     fetch(getBaseUrl() + 'question')
         .then(data => data.json())
@@ -31,7 +38,7 @@ function populateQuestionTable () {
             populateHandlebarsObject('.container', 'js/templates/questionDisplay.hbs', response).then(response => {
                 let questionItems = document.querySelectorAll(".delete-question-button")
                 addDeleteQEventListeners(questionItems)
-                addEditEventListeners()
+                addEditEventListeners(questionsTable)
             })
             getQuestionCount()
         })
@@ -41,13 +48,13 @@ function populateQuestionTable () {
 /**
  * Function that will trigger a modal with the question that you selected clicking on edit button
  */
-function addEditEventListeners() {
+function addEditEventListeners(questionsTable) {
     let editButtons = document.querySelectorAll(".modalBtn")
     editButtons.forEach(function(editButton) {
         editButton.addEventListener('click', function (e) {
             e.stopImmediatePropagation()
             openDialog()
-            modalEditedQuestion(e)
+            modalEditedQuestion(e, questionsTable)
         })
     })
 }
@@ -55,8 +62,10 @@ function addEditEventListeners() {
 /**
  * Populates the template with the question that are selected
  * @param e Is the data of the question that you clicked
+ *
+ * @param questionsTable contains the list of questions
  */
-function modalEditedQuestion(e){
+function modalEditedQuestion(e, questionsTable){
     populateHandlebarsObject('#modal', 'js/templates/editmodalquestions.hbs', questionsTable.data[e.target.id])
         .then(() => {
             let questionAnswer = null;
