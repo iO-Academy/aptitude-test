@@ -6,12 +6,11 @@ let questionEdited = {
     option4: null,
     option5: null,
     answer: null,
-    test_id:null
+    test_id: null
 }
 /**
  * Function which uses fetch request to populate questionAdmin.html with questions from questions API, using questionDisplay.hbs template
  */
-
 function populateQuestionTable () {
     document.querySelector('.container').innerHTML = ""
     fetch(getBaseUrl() + 'question')
@@ -34,7 +33,6 @@ function populateQuestionTable () {
 /**
  * Function that will trigger a modal with the question that you selected clicking on edit button
  */
-
 function addEditEventListeners() {
     let editButtons = document.querySelectorAll(".modalBtn")
     editButtons.forEach(function(editButton) {
