@@ -40,3 +40,15 @@ async function postUserEdit(formData) {
         return apiData
     }
 }
+
+async function postQuestionEdit(response , id) {
+    let baseUrl = getBaseUrl()
+    if (response.text && response.option1 && response.option2 && response.option3 && response.option4 && response.option5 && response.answer && response.test_id) {
+        let apiData = await fetch(baseUrl + 'question/' + id + '/edit', {
+            method: 'post',
+            body: jsonToFormData(response)
+        })
+        apiData = await apiData.json()
+        return apiData
+    }
+}

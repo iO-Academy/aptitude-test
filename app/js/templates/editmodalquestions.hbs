@@ -1,13 +1,15 @@
 <!-- handlebarsHelpers.js is required for ifCond-->
 <!-- needs editQuestion.css for styles-->
 <div class="container">
-    <form id="question" data-id="{{id}}">
+    <form id="question-edit" data-id="{{id}}">
+
 
         <div class="answers">
             <h4 class="page-text">Edit the question below</h4>
             <div class="form-group">
                 <label for="exampleFormControlTextarea1">Question:</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="question" required>{{text}}</textarea>
+                <textarea class="form-control" id="question-text" rows="5" name="question" required>{{text}}</textarea>
+
             </div>
             <div class="form-group">
                 <label for="option1">Option 1:</label>
@@ -35,14 +37,15 @@
                 <input id="ans5" class="answer-check" type="radio" name="answer-check" value="5">
             </div>
         </div>
-        <div id="test_id">
+        <div id="test_id_box">
+
         </div>
         <div id="message-target"></div>
         <div class="buttons">
             <div class="messageArea">
                 <span id="message"></span>
             </div>
-            <input class="submit" type="submit" value="Submit">
+            <input class="submit" id="app/questionAdmin.html" type="submit" value="Submit">
         </div>
     </form>
 </div>
