@@ -6,4 +6,3 @@ function getQuestionCount() {
             document.querySelector('#question-count').innerText = questions.data.length
         })
 }
-getQuestionCount()

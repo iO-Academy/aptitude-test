@@ -24,8 +24,8 @@ function populateQuestionTable () {
                 let questionItems = document.querySelectorAll(".delete-question-button")
                 addDeleteQEventListeners(questionItems)
                 addEditEventListeners()
+                getQuestionCount()
             })
-            getQuestionCount()
         })
 }
 
