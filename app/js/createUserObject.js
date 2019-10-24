@@ -112,7 +112,6 @@ async function createUsersObject() {
             obj['time'] = ''
             obj['timeAllowed'] = secondsToMinutes(user.timeAllowed)
             obj['dateCreated'] = '1970-01-01 00:00:01'
-            obj['dateCreated'] = '1970-01-01 00:00:01'
             obj['test_id'] = '999'
             userDisplayArray.push(obj)
         }

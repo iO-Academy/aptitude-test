@@ -1,3 +1,8 @@
+/**
+ * The below function will loop through the tests API, and produce an accordion
+ * for each test. 
+ */
+
 async function accordionTestTitles() {
     populateHandlebars(
         '.accordionContainer',
@@ -5,10 +10,17 @@ async function accordionTestTitles() {
         'test')
 }
 
+/**
+ * The below function will call the above function, and then loop through each
+ * piece of user info, and push each user to an array which is delineated by
+ * their test_id. 
+ * 
+ * This function will then populate the test accordions according to the user's 
+ * test_id, and display user information.
+ */
 
 async function accordionUsersByTest() {
     await accordionTestTitles()
-    // await produceTable()
     let testData = await getData('test')
     let userInfo = await createUsersObject()
 
