@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link href="css/bootstrap.css" type="text/css" rel="stylesheet">
@@ -19,6 +20,9 @@
     </script>
     <script src="js/validateUserAdditions.js" defer></script>
     <script src="js/validateDefaultTestTime.js" defer></script>
+    <script src="js/getData.js" async></script>
+    <script src="js/populateHandlebars.js" async></script>
+    <script src="js/adminPage.js" defer></script>
     <script src="js/ajaxHandlebarsTemplate.js" defer></script>
     <script src="js/createUserObject.js" defer></script>
     <script src="js/aptitudeTestHelpers.js" defer></script>
@@ -30,40 +34,42 @@
     <script src="js/time_default.js" defer></script>
     <script src="js/handlebarsScoreTable.js" defer></script>
     <script src="js/timeConversion.js" defer></script>
+    <script src="js/time_default.js" defer></script>
     <script src="js/modal.js" defer></script>
     <script src="js/userScores.js" defer></script>
+    <script src="js/questionCount.js" defer></script>
+    <script src="js/newTest.js" defer></script>
+    <script src="js/sendData.js" defer></script>
     <title>Admin Page</title>
 </head>
+
 <body>
-<!-- Modal -->
-<div class="overlay"></div>
-<div id="modal">
-    <h3 id="modal-title"></h3>
-    <div id="modal-content"></div>
-</div>
+    <!-- Modal -->
+    <div class="overlay"></div>
+    <div id="modal">
+        <h3 id="modal-title"></h3>
+        <div id="modal-content"></div>
+    </div>
     <section class="container">
         <img class="logo" alt="Mayden Logo" src="images/branding-icons/maydenacademy_logotype_05.18_web.svg">
         <div class="row">
             <div class="col-xs-12">
                 <a href="questionAdmin.html"><button class="btn primary-button">View Questions</button></a>
-                    <h2>Add new user</h2>
-                    <form class="container_controls new-user-container" id="addNewUserForm">
-                        <div class="container_input display-flex">
-                            <input type="text" id="name" name="name" placeholder="Type new user's name">
-                            <input type="text" id="email" name="email" placeholder="Type new user's email">
-                            <input type="number" id="minutes" name="timeMinutes" placeholder="Minutes" value="30" min="0">
-                            <input type="number" id="seconds" name="timeSeconds" placeholder="Seconds" min="0" max="59">
-                            <input type="submit" value="Add User" class="btn primary-button">
-                        </div>
-                    </form>
-                    <div id='error' class='title_input'></div>
-                <h2>Set default test time</h2>
-                <form id="setDefaultTime">
-                    <input id="defaultMinutes" type="number" placeholder="Minutes" min="0">
-                    <input id="defaultSeconds" type="number" placeholder="Seconds" min="0" max="59">
-                    <input type="submit" class="btn primary-button">
+                <h2>Add new user</h2>
+                <form class="container_controls new-user-container" id="addNewUserForm">
+                    <div class="container_input display-flex">
+                        <input type="text" id="name" name="name" placeholder="Type new user's name">
+                        <input type="text" id="email" name="email" placeholder="Type new user's email">
+                            <label for="test_id">Assign to test:</label>
+                            <select class="custom-select" id="test_id">
+                            </select>
+                        Test Duration:
+                        <input type="number" id="minutes" name="timeMinutes" placeholder="Minutes" value="30" min="0">
+                        <input type="number" id="seconds" name="timeSeconds" placeholder="Seconds" min="0" max="59">
+                        <input type="submit" value="Add User" class="btn primary-button">
+                    </div>
                 </form>
-                <div id='defaultTimeError' class='title_input'></div>
+                <div id='error' class='title_input'></div>
                 <div class="score-container">
                     <h2>Scores</h2>
                     <div class="search-filter-container">
@@ -73,7 +79,7 @@
                             <input type="submit" id="searchSubmit" value="Search" class="btn primary-button">
                             <input type="submit" id="searchReset" value="Clear Search" class="btn primary-button">
                         </div>
-                            <h4 class="search-heading">Filter Results</h4>
+                        <h4 class="search-heading">Filter Results</h4>
                         <div class="display-flex">
                             <select name="filterScorePercentage" id="filterScorePercentage" class="dropdown">
                                 <option value="" disabled selected>Score Percentage</option>
@@ -103,6 +109,16 @@
                         <tbody class="score_list user-table"></tbody>
                     </table>
                 </div>
+                <form class="new-test-container" id="testForm" method="post">
+                    <h2>Add new test</h2>
+                    <div class="display-flex">
+                        <input name="testName" type="text" id="testName" placeholder="Test name">
+                        <input type="submit" class="btn primary-button new-test-button submit" value="Add new test">
+                    </div>
+                    <div id="message-target">
+                        <div id="inputSubmissionConfirmation" class="alert" role="alert"></div>
+                    </div>
+                </form>
             </div>
                 <canvas id="performanceChart" width="600" height="600">
 
@@ -110,4 +126,5 @@
         </div>
     </section>
 </body>
+
 </html>

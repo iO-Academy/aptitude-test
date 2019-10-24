@@ -18,6 +18,10 @@ body {
         margin: 0 0.5rem 0 0;
       }
 
+      select {
+        margin-right: 10px;
+      }
+
       input {
         margin-right: 1rem;
 
@@ -103,12 +107,13 @@ body {
 }
 
 .new-question-container {
-  margin-top: 3rem;
-  display: flex;
+  overflow: auto;
   height: 150px;
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 30px;
+
+  a{margin-top: 20px;}
 }
 
 .test-not-taken {
@@ -122,4 +127,24 @@ body {
 }
 .top-grade {
   background-color: $light-purple;
+}
+
+.new-test-container {
+  margin-top: 30px;
+}
+
+#message-target {
+  margin-top: 10px;
+}
+
+#addTestName {
+  margin-bottom: 10px;
+}
+
+.success-message {
+  color: $success-message;
+}
+
+.failure-message {
+  color: $failure-message
 }
