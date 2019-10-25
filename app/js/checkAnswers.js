@@ -1,4 +1,4 @@
-const questionAmount = 30// amount of questions
+
 
 document.querySelector('#finish').addEventListener('click', finishTest)
 /**
@@ -22,10 +22,24 @@ async function checkAnswers(userAnswers) {
     let answers = await getAnswers()
     if (answers.success) {
         answers = answers.data
-        answers.forEach(function (answerItem) {
-            if (answerItem.answer == userAnswers[answerItem.id]) {
-                userScore++
-            }
+        console.log(userAnswers)
+        console.log(answers)
+
+        delete nonDeletedQuestions[0]
+        console.log(nonDeletedQuestions)
+        nonDeletedQuestions.slice(1,nonDeletedQuestions.length - 1).forEach(function (question) {
+            answers.forEach(function (answer) {
+                if(question.id === answer.id) {
+                    userAnswers.forEach(function (userAnswer) {
+                        console.log(userAnswer)
+                        if (answer.answer == parseInt(userAnswer)) {
+                            userScore++
+                        }
+                    })
+
+                }
+            })
+
         })
         let result = {
             uid: parseInt(getCookie('uid'), 10),
@@ -56,7 +70,7 @@ async function getAnswers() {
  */
 function getUserAnswers() {
     let checkedInputs = document.querySelectorAll('#questions .question .answers input:checked')
-    let qAmount = document.querySelectorAll('#questions .question').length
+    let qAmount = nonDeletedQuestions.length - 1
     let answers = {}
     for (let i = 1; i <= qAmount; i++) {
         answers[i] = 'unanswered'
@@ -148,6 +162,8 @@ function trackActiveQuestion(id) {
  * this checks the answers and marks them to show the finishing page
  */
 function showResults() {
+    const questionAmount = nonDeletedQuestions.length - 1
+    console.log(questionAmount)
     resetReapplyCounter()
     const userAnswers = getUserAnswers(questionAmount)
     checkAnswers(userAnswers).then(function (result) {
