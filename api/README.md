@@ -116,12 +116,12 @@ GET
 - Get all application settings
 - No request data
 - Returns array of settings objects.
-    - `[{"name": "default_time","value": "1800"}]`
+    - `[{"name": "default_time", "value": "1800"}]`
 
 POST
 - Edit the application settings.
 - Send an settings objects to be added/updated. To update multiple settings send multiple requests.
-    - `{"name": "default_time","value": "1800"}`
+    - `{"name": "default_time", "value": "1800"}`
     - Time must be provided in seconds
 - Returns success/fail state.
 
