@@ -19,6 +19,16 @@ function fillUserTable(HBTemplate) {
                 document.querySelector("#questions").innerHTML += template(question)
             })
             counter = result.data.length
+
+            // console.log(counter)
+
+            let questionNoAssign = 1
+            document.querySelectorAll('.question').forEach((question)=>{
+                question.classList.add(`q_${questionNoAssign}`)
+                question.dataset.questionOrderId = questionNoAssign
+                questionNoAssign++
+            })
+
         })
         .then(function() {
             putDescription(counter)
@@ -33,6 +43,6 @@ getTemplateAjax('js/templates/questions.hbs').then(function(HBTemplate) {
 })
 
 document.querySelector('#flag-checkbox').addEventListener('change', function() {
-    let qid  = document.querySelector('#questions .question.active').dataset.id
+    let qid  = document.querySelector('#questions .question.active').dataset.questionOrderId
     flaggedQuestions[qid] = document.querySelector('#flag-checkbox').checked
 })

@@ -27,7 +27,7 @@ document.querySelector(".overview").addEventListener("click", function() {
 })
 
 document.querySelector('table').addEventListener('click', function(e) {
-    current = e.target.parentNode.dataset.id
+    current = e.target.parentNode.dataset.questionOrderId
     changeQuestion(current)
     document.querySelector('#overview_page').style.display = 'none'
     document.querySelector('#question_page').style.display = 'block'
