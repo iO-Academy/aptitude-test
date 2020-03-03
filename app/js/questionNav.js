@@ -65,6 +65,10 @@ function changeQuestion(destinationPage) {
     document.querySelector("#question-counter").textContent = destinationPage + "/" + questionCount
 
     switch (parseInt(destinationPage)) { // parseInt() in case a string is passed
+        case 1 && questionCount:
+            overviewButton.style.visibility = "visible"
+            nextButton.style.visibility = "hidden"
+            break;
         case 1:
             prevButton.style.visibility = "hidden"
             nextButton.style.visibility = "visible"
