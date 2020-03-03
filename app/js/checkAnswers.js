@@ -1,4 +1,4 @@
-const questionAmount = 30// amount of questions
+var questionAmount
 
 document.querySelector('#finish').addEventListener('click', finishTest)
 /**
@@ -55,10 +55,11 @@ async function getAnswers() {
  * @return Object of users answers
  */
 function getUserAnswers() {
+    questionAmount = document.querySelectorAll('#questions .question').length
+    console.log(questionAmount)
     let checkedInputs = document.querySelectorAll('#questions .question .answers input:checked')
-    let qAmount = document.querySelectorAll('#questions .question').length
     let answers = {}
-    for (let i = 1; i <= qAmount; i++) {
+    for (let i = 1; i <= questionAmount; i++) {
         answers[i] = 'unanswered'
     }
 
@@ -66,6 +67,7 @@ function getUserAnswers() {
         let id = input.name.split("_")[1]
         answers[id] = input.value
     })
+    console.log(answers)
     return answers
 }
 
