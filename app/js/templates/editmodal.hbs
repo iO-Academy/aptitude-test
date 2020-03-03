@@ -1,9 +1,15 @@
 <div class="editmodal" dataId="{{id}}">
+    <label>Name:</label>
     <input id="firstName" class="editUserData" type="text" name="name" value="{{name}}">
+    <label>Email:</label>
     <input id="email" class="editUserData" type="text" name="email" value="{{email}}">
+    <label>Time allowed for test:</label>
     <input id="time" class="editUserData" type="text" name="time" value="{{time}}">
+
     <input id="id" class="editUserData" type="hidden" name="id" value="{{id}}">
     <input id="originalEmail" type="hidden" name="originalEmail" value="{{email}}">
+
+    <label>Allow retake (tick to allow):</label>
     <input id="canRetake" type="checkbox" {{#if canRetake}}checked{{/if}}>
     <button id="editSubmit">Submit changes</button>
 </div>
