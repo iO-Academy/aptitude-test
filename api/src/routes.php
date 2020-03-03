@@ -397,7 +397,7 @@ $app->get('/answer', function ($request, $response, $args) {
     try {
         $testId = $get['test_id'] ?? 1;
 
-        $query = "SELECT `id`, `answer` from `question` WHERE `test_id` = :testId";
+        $query = "SELECT `id`, `answer` from `question` WHERE `deleted` <> 1 AND `test_id` = :testId";
         $query = $this->db->prepare($query);
 
         $query->bindParam(':testId', $testId);
