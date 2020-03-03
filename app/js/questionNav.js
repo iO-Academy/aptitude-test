@@ -67,7 +67,6 @@ function changeQuestion(destinationPage) {
     switch (parseInt(destinationPage)) { // parseInt() in case a string is passed
         case 1 && questionCount:
             overviewButton.style.visibility = "visible"
-            prevButton.style.visibility = "hidden"
             nextButton.style.visibility = "hidden"
             break;
         case 1:
