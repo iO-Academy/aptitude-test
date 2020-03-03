@@ -10,6 +10,8 @@ function active() {
     let questionCount = document.querySelectorAll('#questions .question').length
     document.querySelector(".q_" + current).classList.add("active")
     document.querySelector("#question-counter").textContent = current + "/" + questionCount
+    console.log(document.querySelector(".q_" + current))
+    console.log(document.querySelector("#question-counter"))
     trackActiveQuestion(current)
 }
 
@@ -63,6 +65,9 @@ function changeQuestion(destinationPage) {
     document.querySelector("#question-counter").textContent = destinationPage + "/" + questionCount
 
     switch (parseInt(destinationPage)) { // parseInt() in case a string is passed
+        case 1 && questionCount:
+            overviewButton.style.visibility = "visible"
+            break;
         case 1:
             prevButton.style.visibility = "hidden"
             nextButton.style.visibility = "visible"
