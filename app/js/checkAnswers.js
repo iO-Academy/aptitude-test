@@ -125,7 +125,7 @@ function addAnswerEventListeners() {
     document.querySelectorAll('.question').forEach(function (input) {
         input.addEventListener('click', function(e) {
             if (e.target.tagName == 'INPUT') {
-                let id = parseInt(this.dataset['id']) - 1
+                let id = parseInt(this.dataset['questionOrderId']) - 1
                 document.querySelector('#question-nav').children[id].classList.add('answered-nav-box')
             }
         })
