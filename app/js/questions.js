@@ -14,23 +14,15 @@ function fillUserTable(HBTemplate) {
             return result.json()
         })
         .then(function(result) {
+            let questionNoAssign = 1
             result.data.forEach(function(question) {
                 flaggedQuestions[question.id] = false
+                question['questionOrderId'] = questionNoAssign
                 document.querySelector("#questions").innerHTML += template(question)
+                questionNoAssign++
             })
             counter = result.data.length
 
-            // console.log(counter)
-
-            let questionNoAssign = 1
-            document.querySelectorAll('.question').forEach((question)=>{
-                question.classList.add(`q_${questionNoAssign}`)
-                question.dataset.questionOrderId = questionNoAssign
-                questionNoAssign++
-            })
-
-        })
-        .then(function() {
             putDescription(counter)
             addAnswerEventListeners()
             fillNav()
