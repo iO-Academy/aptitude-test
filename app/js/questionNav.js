@@ -36,7 +36,7 @@ function prev() {
  */
 function updateFlagStatus() {
     let question = document.querySelector('.question.active')
-    let qId = question.dataset.id
+    let qId = question.dataset.questionOrderId
     let navItem = document.querySelector('#question-nav').children[qId - 1]
     document.querySelector('#flag-checkbox').checked = flaggedQuestions[qId]
     if (flaggedQuestions[qId]) {
@@ -96,7 +96,7 @@ function fillNav() {
         navItem.classList.add('nav-item', 'unanswered-nav-box')
         navItem.innerHTML += qNumber + flagBox
         navItem.addEventListener('click', function () {
-            changeQuestion(question.dataset.id)
+            changeQuestion(question.dataset.questionOrderId)
         })
         nav.appendChild(navItem)
     })
