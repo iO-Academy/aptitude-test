@@ -10,8 +10,6 @@ function active() {
     let questionCount = document.querySelectorAll('#questions .question').length
     document.querySelector(".q_" + current).classList.add("active")
     document.querySelector("#question-counter").textContent = current + "/" + questionCount
-    console.log(document.querySelector(".q_" + current))
-    console.log(document.querySelector("#question-counter"))
     trackActiveQuestion(current)
 }
 
