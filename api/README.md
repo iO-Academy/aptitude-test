@@ -88,7 +88,7 @@ GET
 
 POST
 - Save question answers.
-- `{"uid":"1", "answers": {"1": "4", "2": "3"}, "score":"24", "time":"29.55"}`.
+- `{"uid":"1", "answers": {"1": "4", "2": "3"}, "score":"24", "testLength":"30", "time":"29.55"}`.
 - Returns success/fail state.
 
 **/answer/{qid}**
