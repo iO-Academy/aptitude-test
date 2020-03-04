@@ -1,4 +1,4 @@
-const questionAmount = 30// amount of questions
+var questionAmount
 
 document.querySelector('#finish').addEventListener('click', finishTest)
 /**
@@ -20,6 +20,7 @@ function finishTest() {
 async function checkAnswers(userAnswers) {
     let userScore = 0
     let answers = await getAnswers()
+
     if (answers.success) {
         answers = answers.data
         answers.forEach(function (answerItem) {
@@ -55,6 +56,7 @@ async function getAnswers() {
  * @return Object of users answers
  */
 function getUserAnswers() {
+    questionAmount = document.querySelectorAll('#questions .question').length
     let checkedInputs = document.querySelectorAll('#questions .question .answers input:checked')
     let answers = {}
 
@@ -62,27 +64,8 @@ function getUserAnswers() {
         let id = input.name.split("_")[1]
         answers[id] = input.value
     })
+
     return answers
-}
-
-/**
- * gets number of answered questions
- *
- * @param userAnswers answers provided by user
- * @param questionAmount total number of questions
- *
- * @return Integer number of answered questions
- */
-function getAnswered(userAnswers, questionAmount) {
-    let userAnswersArray = Object.values(userAnswers)
-    let unanswered = 0
-    userAnswersArray.forEach(function(answerItem) {
-
-            if (answerItem == "unanswered") {
-                unanswered++
-            }
-        })
-    return questionAmount - unanswered
 }
 
 /**
@@ -153,7 +136,7 @@ function showResults() {
             document.querySelector('#question_page').style.display = 'none'
             document.querySelector('#result_page').style.display = 'block'
             percentResult = getPercentResult(result.score, questionAmount)
-            answered = getAnswered(userAnswers, questionAmount)
+            answered = document.querySelectorAll('#questions .question .answers input:checked').length
             displayResult(result.score, percentResult, answered)
             handleResponseFromAPI(sendUserResults(result))
         } else {

@@ -27,6 +27,7 @@ function fillUserTable(HBTemplate) {
             addAnswerEventListeners()
             fillNav()
             active()
+            changeQuestion(current)
         })
 }
 
