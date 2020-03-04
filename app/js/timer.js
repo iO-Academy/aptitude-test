@@ -35,6 +35,7 @@ function timer() {
     timeRemaining--
     if (timeRemaining < 0) {
         clearInterval(interval)
+        document.querySelector('#overview_page').style.display = 'none'
         showResults()
     }
 }
