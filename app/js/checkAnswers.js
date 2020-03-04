@@ -33,7 +33,9 @@ async function checkAnswers(userAnswers) {
             answers: userAnswers,
             score: userScore,
             time: parseFloat(getTimeForApi()),
+            testLength: questionAmount
         }
+        console.log(result)
         return result
     }
     return answers
