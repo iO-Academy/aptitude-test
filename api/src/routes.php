@@ -467,7 +467,7 @@ $app->get('/result', function ($request, $response, $args) {
 
     if (!empty($uid)) {
         try {
-            $query = "SELECT `uid` as 'id', `answers`, `score`, `time`, `dateCreated` from `result` WHERE `uid` = :uid;";
+            $query = "SELECT `uid` as 'id', `answers`, `score`, `testLength`, `time`, `dateCreated` from `result` WHERE `uid` = :uid;";
             $query = $this->db->prepare($query);
             $query->bindParam(':uid', $uid);
             $query->execute();
@@ -480,7 +480,7 @@ $app->get('/result', function ($request, $response, $args) {
         }
     } else {
         try {
-            $query = "SELECT `uid` as 'id', `answers`, `score`, `time`, `dateCreated` from `result`;";
+            $query = "SELECT `uid` as 'id', `answers`, `score`, `testLength`, `time`, `dateCreated` from `result`;";
             $query = $this->db->prepare($query);
             $query->execute();
             $result = $query->fetchAll(PDO::FETCH_ASSOC);
