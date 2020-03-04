@@ -15,7 +15,7 @@ document.querySelector(".overview").addEventListener("click", function() {
         if (objAnswers.hasOwnProperty(questionDbId)) {
             questionObject['isAnswered'] = true
         }
-        questionObject['question'] = document.querySelectorAll(`.q_${i} p`)[1].innerText.substring(0, 110) + '...'
+        questionObject['question'] = document.querySelector(`.q_${i} .question_text`).innerText.substring(0, 110) + '...'
         overviewData.push(questionObject)
     }
 
