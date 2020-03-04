@@ -95,8 +95,6 @@ async function createUsersObject() {
                 obj['dateCreated'] = result.dateCreated
                 userDisplayArray.push(obj)
                 testEntryFound.push('yes')
-                console.log(obj)
-                console.log(result)
             }
             if (testEntryFound.length !== 0) {
                 didTest.push(testEntryFound)
