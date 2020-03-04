@@ -136,6 +136,7 @@ function showResults() {
         let answered
         if (result.score || result.score === 0) {
             document.querySelector('#question_page').style.display = 'none'
+            document.querySelector('#overview_page').style.display = 'none'
             document.querySelector('#result_page').style.display = 'block'
             percentResult = getPercentResult(result.score, questionAmount)
             answered = document.querySelectorAll('#questions .question .answers input:checked').length
