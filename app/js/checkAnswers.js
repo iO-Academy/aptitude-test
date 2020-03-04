@@ -56,11 +56,7 @@ async function getAnswers() {
  */
 function getUserAnswers() {
     let checkedInputs = document.querySelectorAll('#questions .question .answers input:checked')
-    let qAmount = document.querySelectorAll('#questions .question').length
     let answers = {}
-    for (let i = 1; i <= qAmount; i++) {
-        answers[i] = 'unanswered'
-    }
 
     checkedInputs.forEach(function(input) {
         let id = input.name.split("_")[1]
