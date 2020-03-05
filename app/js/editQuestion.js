@@ -6,6 +6,7 @@ async function getEditData() {
     let selectedQuestion = params.get('selectedQuestionId');
 
     populateQuestionToEdit(selectedTest, selectedQuestion);
+
 }
 
 
@@ -29,6 +30,8 @@ async function populateQuestionToEdit(selectedTest, selectedQuestion) {
         answer.value = questionObj[`${answer.id}`]
 
     })
+
+    await populateHandlebars('test_id', 'js/templates/testDropdown.hbs', 'test');
 
     document.getElementById('test_id').value = questionObj.test_id;
 
