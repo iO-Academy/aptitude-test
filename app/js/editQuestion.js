@@ -15,9 +15,10 @@ async function populateQuestionToEdit(selectedTest, selectedQuestion) {
     let questionObj;
     const questions = await getData(`question?test_id=${selectedTest}`);
 
+
     questions.data.forEach((question) => {
         if (question.id === selectedQuestion) {
-            questionObj = question;
+            questionObj = decodeSpecialChars(question);
         }
     })
 
@@ -34,7 +35,7 @@ async function populateQuestionToEdit(selectedTest, selectedQuestion) {
     document.getElementById('new-question').dataset.questionDbId = questionObj.id;
 
 
-    await populateHandlebars('test_id', 'js/templates/testDropdown.hbs', 'test');
+    await populateHandlebars('#test_id', 'js/templates/testDropdown.hbs', 'test');
 
     document.getElementById('test_id').value = questionObj.test_id;
 
