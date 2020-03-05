@@ -31,11 +31,13 @@ async function populateQuestionToEdit(selectedTest, selectedQuestion) {
 
     })
 
+    document.getElementById('new-question').dataset.questionDbId = questionObj.id;
+
+
     await populateHandlebars('test_id', 'js/templates/testDropdown.hbs', 'test');
 
     document.getElementById('test_id').value = questionObj.test_id;
 
-    document.getElementById('new-question').dataset.questionDbId = questionObj.id;
 }
 
 getEditData();
