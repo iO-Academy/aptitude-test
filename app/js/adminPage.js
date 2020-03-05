@@ -92,7 +92,7 @@ function userExists(emailToAdd, existingUsers) {
 document.getElementById('selectTest').addEventListener('change', function () {
     let selectorTestId = this.value
     populateHandlebars('#selectQuestion', 'js/templates/questionDropdown.hbs', `question?test_id=${selectorTestId}`)
-    getQuestionCount(selectorTestId, this.textContent)
+    getQuestionCount(selectorTestId)
 })
 
 //Within manage question section, an event listener on the test dropdown which populates the DELETE question dropdown, when selected

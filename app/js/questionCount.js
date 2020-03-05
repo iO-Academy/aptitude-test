@@ -1,10 +1,9 @@
-function getQuestionCount(testId, testName) {
+function getQuestionCount(testId) {
     let baseUrl = getBaseUrl()
     fetch(baseUrl + `question?test_id=${testId}`)
         .then(result => result.json())
         .then(questions => {
             document.querySelector('#question-count').innerText = questions.data.length
-            document.getElementById('test-title').innerText = testName
         })
 }
 
@@ -16,7 +15,6 @@ function getFirstTestId() {
         .then(result => result.json())
         .then((tests) => {
             firstTestId = tests.data[0].id
-            console.log(firstTestId)
             getQuestionCount(firstTestId)
         })
 }
