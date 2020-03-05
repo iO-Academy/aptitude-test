@@ -111,3 +111,4 @@ async function questionFormSubmit(submitMode) {
 // populate dropdown menu with available tests
 populateHandlebars('#test_id', 'js/templates/testDropdown.hbs', 'test')
 
+
