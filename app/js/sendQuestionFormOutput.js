@@ -1,5 +1,6 @@
 let authorised = false
 let user = getCookie('userEmail')
+
 getUser(user).then(function(user) {
     if ( user.data.isAdmin == '1' ) {
         authorised = true
@@ -45,12 +46,22 @@ function answerHasValidValue(form) {
 
 let newQuestionForm = document.getElementById("new-question")
 let responseMsg = document.querySelector('#inputSubmissionConfirmation')
-/**
- * When the user clicks the submit button, will get form value and prepare 
- * it for the database.
- */
-newQuestionForm.addEventListener('submit',  async function(e) {
+
+
+document.querySelector('input[type=submit]').addEventListener('submit', (e)=>{
     e.preventDefault()
+    let submitMode
+    if (e.target.id === 'btnSubmitNewQuestion') {
+        submitMode = 'new'
+        questionFormSubmit(submitMode)
+    } else if (e.target.id === 'btnSubmitEdit') {
+        submitMode = 'edit'
+        questionFormSubmit(submitMode)
+    }
+})
+
+
+async function questionFormSubmit(submitMode) {
     if (formHasQuestion(newQuestionForm) && formHasBetweenOneAndFiveAnswers(newQuestionForm) && answerHasValidValue(newQuestionForm)) {
         if(!authorised) {
             return
@@ -72,7 +83,14 @@ newQuestionForm.addEventListener('submit',  async function(e) {
         questionData.answer = answer
         questionData.test_id = newQuestionForm.test_id.value
         let questionDataToSend = await jsonToFormData(questionData);
-        const questionPath = "question"
+        let questionPath
+
+        if (submitMode === 'new') {
+            questionPath = 'question'
+        } else if (submitMode === 'edit') {
+            questionPath = `question/${newQuestionForm.dataset.questionDbId}/edit`
+        }
+
         let response = await sendData(questionDataToSend, questionPath)
         responseMsg.innerText = response.message
         if (response.success){
@@ -87,7 +105,7 @@ newQuestionForm.addEventListener('submit',  async function(e) {
         responseMsg.classList.add('alert-danger')
         responseMsg.innerHTML = 'Error: Please ensure you have filled out the question form correctly.'
     }
-})
+}
 
 // populate dropdown menu with available tests
 populateHandlebars('#test_id', 'js/templates/testDropdown.hbs', 'test')
