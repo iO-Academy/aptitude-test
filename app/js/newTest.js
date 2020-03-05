@@ -23,4 +23,8 @@ testForm.addEventListener('submit', async function(e) {
         responseMsg.classList.add('alert-danger')
         responseMsg.innerHTML = 'Test name must be between 1 and 255 characters.'
     }
+    populateHandlebars('#selectTest', 'js/templates/testDropdown.hbs', 'test')
+    populateHandlebars('#selectTestDelete', 'js/templates/testDropdown.hbs', 'test')
+    populateHandlebars('#selectQuestion', 'js/templates/questionDropdown.hbs', 'question')
+    populateHandlebars('#selectQuestionDelete', 'js/templates/questionDropdown.hbs', 'question')
 })
