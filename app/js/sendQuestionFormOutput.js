@@ -74,8 +74,6 @@ async function questionFormSubmit(submitMode) {
             }
         })
 
-
-
         let questionData = {}
         questionData.text = replaceSpecialChars(newQuestionForm.question.value)
         questionData.option1 = replaceSpecialChars(newQuestionForm.option1.value)
