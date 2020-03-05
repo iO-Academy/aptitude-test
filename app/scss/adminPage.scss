@@ -108,12 +108,21 @@ body {
 
 .new-question-container {
   overflow: auto;
-  height: 150px;
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 30px;
+}
 
-  a{margin-top: 20px;}
+.new-question-container form {
+  margin: 20px 0 ;
+}
+
+.new-question-container select {
+  margin: 0 10px 0 3px;
+}
+
+#current-question-count {
+  margin-bottom: 15px;
 }
 
 .test-not-taken {
@@ -144,4 +153,27 @@ body {
 .editmodal label, #editSubmit {
   display: block;
   margin-top: 30px;
+}
+
+.new-question-button, .edit-question-button, .delete-question-button {
+  margin: 0;
+}
+
+.container .edit-question-button {
+  color: $main-background-color;
+  background-color: $edit-button;
+  padding: 6px 12px;
+
+  &:hover {
+    color: $main-background-color;
+  }
+}
+
+.delete-question-button {
+  color: $main-background-color;
+  background-color: $primary-button-hover;
+
+  &:hover {
+    color: $main-background-color;
+  }
 }
