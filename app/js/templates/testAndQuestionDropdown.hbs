@@ -1,0 +1,7 @@
+{{#each test}}
+    <option value="{{id}}">{{name}}</option>
+{{/each}}
+
+{{#each question}}
+    <option value="{{id}}" id="questionId_{{test_id}}">{{text}}</option>
+{{/each}}
