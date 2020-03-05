@@ -2,7 +2,7 @@ let authorised = false
 let user = getCookie('userEmail')
 
 getUser(user).then(function(user) {
-    if ( user.data.isAdmin == '1' ) {
+    if (user.data.isAdmin == '1') {
         authorised = true
     }
 })
@@ -47,8 +47,7 @@ function answerHasValidValue(form) {
 let newQuestionForm = document.getElementById("new-question")
 let responseMsg = document.querySelector('#inputSubmissionConfirmation')
 
-
-document.querySelector('input[type=submit]').addEventListener('submit', (e)=>{
+document.querySelector('input[type=submit]').addEventListener('click', (e)=>{
     e.preventDefault()
     let submitMode
     if (e.target.id === 'btnSubmitNewQuestion') {
