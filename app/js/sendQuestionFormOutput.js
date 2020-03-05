@@ -8,6 +8,7 @@ getUser(user).then(function(user) {
 })
 
 function formHasQuestion(form) {
+    form.question.value = form.question.value.trim()
     if (form.question.value.length === 0) {
         return false
     } else {
@@ -19,6 +20,7 @@ function formHasBetweenOneAndFiveAnswers(form) {
     let answers = form.querySelectorAll('.answer')
     let fieldsThatHaveValues = 0
     answers.forEach((answer) => {
+        answer.value = answer.value.trim()
         if (answer.value.length > 0) {
             fieldsThatHaveValues++
         }
@@ -72,13 +74,15 @@ async function questionFormSubmit(submitMode) {
             }
         })
 
+
+
         let questionData = {}
-        questionData.text = newQuestionForm.question.value
-        questionData.option1 = newQuestionForm.option1.value
-        questionData.option2 = newQuestionForm.option2.value
-        questionData.option3 = newQuestionForm.option3.value
-        questionData.option4 = newQuestionForm.option4.value
-        questionData.option5 = newQuestionForm.option5.value
+        questionData.text = replaceSpecialChars(newQuestionForm.question.value)
+        questionData.option1 = replaceSpecialChars(newQuestionForm.option1.value)
+        questionData.option2 = replaceSpecialChars(newQuestionForm.option2.value)
+        questionData.option3 = replaceSpecialChars(newQuestionForm.option3.value)
+        questionData.option4 = replaceSpecialChars(newQuestionForm.option4.value)
+        questionData.option5 = replaceSpecialChars(newQuestionForm.option5.value)
         questionData.answer = answer
         questionData.test_id = newQuestionForm.test_id.value
         let questionDataToSend = await jsonToFormData(questionData);
