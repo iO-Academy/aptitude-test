@@ -108,10 +108,17 @@ body {
 
 .new-question-container {
   overflow: auto;
-  height: 150px;
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 30px;
+}
+
+.new-question-container form {
+  margin: 20px 0 ;
+}
+
+.new-question-container select {
+  margin: 0 10px 0 3px;
 }
 
 #current-question-count {
@@ -152,13 +159,10 @@ body {
   margin: 0;
 }
 
-.new-question-button {
-  margin-left: 10px;
-}
-
-.edit-question-button {
+.container .edit-question-button {
   color: $main-background-color;
   background-color: $edit-button;
+  padding: 6px 12px;
 
   &:hover {
     color: $main-background-color;
