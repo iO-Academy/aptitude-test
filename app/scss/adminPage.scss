@@ -112,8 +112,10 @@ body {
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 30px;
+}
 
-  a{margin-top: 20px;}
+#current-question-count {
+  margin-bottom: 15px;
 }
 
 .test-not-taken {
@@ -144,4 +146,30 @@ body {
 .editmodal label, #editSubmit {
   display: block;
   margin-top: 30px;
+}
+
+.new-question-button, .edit-question-button, .delete-question-button {
+  margin: 0;
+}
+
+.new-question-button {
+  margin-left: 10px;
+}
+
+.edit-question-button {
+  color: $main-background-color;
+  background-color: $edit-button;
+
+  &:hover {
+    color: $main-background-color;
+  }
+}
+
+.delete-question-button {
+  color: $main-background-color;
+  background-color: $primary-button-hover;
+
+  &:hover {
+    color: $main-background-color;
+  }
 }

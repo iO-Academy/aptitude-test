@@ -111,10 +111,17 @@
                         <div id="inputSubmissionConfirmation" class="alert" role="alert"></div>
                     </div>
                 </form>
+
                 <div class="new-question-container">
-                    <h2>Add new question</h2>
-                    <h4 class="search-heading">Current Question Count: <span id="question-count"></span></h4>
-                    <a class="btn primary-button new-question-button" href="addQuestion.html">Add new question</a>
+                    <h2>Manage Questions</h2>
+                    <h4 class="search-heading" id="current-question-count">Current Question Count: <span id="question-count"></span></h4>
+                    <label for="test_id">Test:</label>
+                    <select class="custom-select" id="select-test"></select>
+                    <label for="test_id">Question:</label>
+                    <select class="custom-select" id="select-question"></select>
+                    <a class="btn primary-button new-question-button" id="addQuestion" href="addQuestion.html">Add new question</a>
+                    <div class="btn edit-user-button btn_height modalBtn edit-question-button" id="btnQuestionEdit">Edit</div>
+                    <div class="btn delete-user-button delete-question-button" id="btnQuestionDelete">Delete</div>
                 </div>
             </div>
         </div>
