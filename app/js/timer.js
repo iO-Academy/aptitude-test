@@ -34,7 +34,6 @@ function timer() {
     })
     timeRemaining--
     if (timeRemaining < 0) {
-        clearInterval(interval)
         showResults()
     }
 }

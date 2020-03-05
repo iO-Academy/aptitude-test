@@ -129,6 +129,7 @@ function trackActiveQuestion(id) {
  */
 function showResults() {
     resetReapplyCounter()
+    clearInterval(interval)
     const userAnswers = getUserAnswers(questionAmount)
     checkAnswers(userAnswers).then(function (result) {
         let percentResult
