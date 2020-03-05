@@ -1,10 +1,10 @@
-<div class="question q_{{id}}" data-id="{{id}}">
+<div class="question q_{{questionOrderId}}" data-id="{{id}}" data-question-order-id="{{questionOrderId}}">
     <div>
-        <h2 class="description_label_{{id}}"></h2>
-        <p class="description_text_{{id}}"></p>
+        <h2 class="description_label_{{questionOrderId}}"></h2>
+        <p class="description_text_{{questionOrderId}}"></p>
     </div>
-    <p>{{text}}</p>
-    <div class="img_{{id}}"></div>
+    <p class="question_text">{{text}}</p>
+    <div class="img_{{questionOrderId}}"></div>
     <div class="answers">
         {{#if option1}}
         <p>

@@ -423,6 +423,7 @@ $app->post('/answer', function ($request, $response, $args) {
 
     if (
         empty($postData['answers']) ||
+        empty($postData['testLength']) ||
         empty($postData['uid']) ||
         !(
             isset($postData['score']) && // allows 0 score
@@ -430,7 +431,7 @@ $app->post('/answer', function ($request, $response, $args) {
         ) ||
         empty($postData['time'])
     ) {
-        $data['message'] = 'Missing post data, required keys: answers, uid, score, time.';
+        $data['message'] = 'Missing post data, required keys: answers, uid, score, testLength, time.';
         $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
         return $response->withJson($data, 400);
     }
@@ -438,11 +439,12 @@ $app->post('/answer', function ($request, $response, $args) {
     $answers = json_encode($postData['answers']);
 
     try {
-        $query = "INSERT INTO `result` (`uid`, `answers`, `score`, `time`) VALUES (:uid, :answers, :score, :time);";
+        $query = "INSERT INTO `result` (`uid`, `answers`, `score`, `testLength`, `time`) VALUES (:uid, :answers, :score, :testLength, :time);";
         $query = $this->db->prepare($query);
         $query->bindParam(':uid', $postData['uid']);
         $query->bindParam(':answers', $answers);
         $query->bindParam(':score', $postData['score']);
+        $query->bindParam(':testLength', $postData['testLength']);
         $query->bindParam(':time', $postData['time']);
         $query->execute();
 
@@ -465,7 +467,7 @@ $app->get('/result', function ($request, $response, $args) {
 
     if (!empty($uid)) {
         try {
-            $query = "SELECT `uid` as 'id', `answers`, `score`, `time`, `dateCreated` from `result` WHERE `uid` = :uid;";
+            $query = "SELECT `uid` as 'id', `answers`, `score`, `testLength`, `time`, `dateCreated` from `result` WHERE `uid` = :uid;";
             $query = $this->db->prepare($query);
             $query->bindParam(':uid', $uid);
             $query->execute();
@@ -478,7 +480,7 @@ $app->get('/result', function ($request, $response, $args) {
         }
     } else {
         try {
-            $query = "SELECT `uid` as 'id', `answers`, `score`, `time`, `dateCreated` from `result`;";
+            $query = "SELECT `uid` as 'id', `answers`, `score`, `testLength`, `time`, `dateCreated` from `result`;";
             $query = $this->db->prepare($query);
             $query->execute();
             $result = $query->fetchAll(PDO::FETCH_ASSOC);

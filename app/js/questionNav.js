@@ -36,7 +36,7 @@ function prev() {
  */
 function updateFlagStatus() {
     let question = document.querySelector('.question.active')
-    let qId = question.dataset.id
+    let qId = question.dataset.questionOrderId
     let navItem = document.querySelector('#question-nav').children[qId - 1]
     document.querySelector('#flag-checkbox').checked = flaggedQuestions[qId]
     if (flaggedQuestions[qId]) {
@@ -64,8 +64,13 @@ function changeQuestion(destinationPage) {
 
     switch (parseInt(destinationPage)) { // parseInt() in case a string is passed
         case 1:
-            prevButton.style.visibility = "hidden"
-            nextButton.style.visibility = "visible"
+            if(questionCount === 1){
+                overviewButton.style.visibility = "visible"
+                nextButton.style.visibility = "hidden"
+            } else {
+                prevButton.style.visibility = "hidden"
+                nextButton.style.visibility = "visible"
+            }
             break;
         case questionCount:
             prevButton.style.visibility = "visible"
@@ -96,7 +101,7 @@ function fillNav() {
         navItem.classList.add('nav-item', 'unanswered-nav-box')
         navItem.innerHTML += qNumber + flagBox
         navItem.addEventListener('click', function () {
-            changeQuestion(question.dataset.id)
+            changeQuestion(question.dataset.questionOrderId)
         })
         nav.appendChild(navItem)
     })

@@ -1,4 +1,4 @@
-const questionAmount = 30// amount of questions
+var questionAmount
 
 document.querySelector('#finish').addEventListener('click', finishTest)
 /**
@@ -20,6 +20,7 @@ function finishTest() {
 async function checkAnswers(userAnswers) {
     let userScore = 0
     let answers = await getAnswers()
+
     if (answers.success) {
         answers = answers.data
         answers.forEach(function (answerItem) {
@@ -32,6 +33,7 @@ async function checkAnswers(userAnswers) {
             answers: userAnswers,
             score: userScore,
             time: parseFloat(getTimeForApi()),
+            testLength: questionAmount
         }
         return result
     }
@@ -55,38 +57,16 @@ async function getAnswers() {
  * @return Object of users answers
  */
 function getUserAnswers() {
+    questionAmount = document.querySelectorAll('#questions .question').length
     let checkedInputs = document.querySelectorAll('#questions .question .answers input:checked')
-    let qAmount = document.querySelectorAll('#questions .question').length
     let answers = {}
-    for (let i = 1; i <= qAmount; i++) {
-        answers[i] = 'unanswered'
-    }
 
     checkedInputs.forEach(function(input) {
         let id = input.name.split("_")[1]
         answers[id] = input.value
     })
+
     return answers
-}
-
-/**
- * gets number of answered questions
- *
- * @param userAnswers answers provided by user
- * @param questionAmount total number of questions
- *
- * @return Integer number of answered questions
- */
-function getAnswered(userAnswers, questionAmount) {
-    let userAnswersArray = Object.values(userAnswers)
-    let unanswered = 0
-    userAnswersArray.forEach(function(answerItem) {
-
-            if (answerItem == "unanswered") {
-                unanswered++
-            }
-        })
-    return questionAmount - unanswered
 }
 
 /**
@@ -123,7 +103,7 @@ function addAnswerEventListeners() {
     document.querySelectorAll('.question').forEach(function (input) {
         input.addEventListener('click', function(e) {
             if (e.target.tagName == 'INPUT') {
-                let id = parseInt(this.dataset['id']) - 1
+                let id = parseInt(this.dataset['questionOrderId']) - 1
                 document.querySelector('#question-nav').children[id].classList.add('answered-nav-box')
             }
         })
@@ -149,15 +129,17 @@ function trackActiveQuestion(id) {
  */
 function showResults() {
     resetReapplyCounter()
+    clearInterval(interval)
     const userAnswers = getUserAnswers(questionAmount)
     checkAnswers(userAnswers).then(function (result) {
         let percentResult
         let answered
         if (result.score || result.score === 0) {
             document.querySelector('#question_page').style.display = 'none'
+            document.querySelector('#overview_page').style.display = 'none'
             document.querySelector('#result_page').style.display = 'block'
             percentResult = getPercentResult(result.score, questionAmount)
-            answered = getAnswered(userAnswers, questionAmount)
+            answered = document.querySelectorAll('#questions .question .answers input:checked').length
             displayResult(result.score, percentResult, answered)
             handleResponseFromAPI(sendUserResults(result))
         } else {

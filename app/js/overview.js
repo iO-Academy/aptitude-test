@@ -4,13 +4,18 @@ document.querySelector(".overview").addEventListener("click", function() {
     tableBody.innerHTML = ''
     let overviewData = []
     let numOfQuestions = document.querySelectorAll('#questions .question').length
-    let isAnswered = getUserAnswers()
+    let objAnswers = getUserAnswers()
+    let questionDbId
+    let questionObject
     for (let i = 1; i <= numOfQuestions; i++) {
-        let questionObject = {}
+        questionDbId = document.querySelector(`.q_${i}`).dataset.id
+        questionObject = {}
         questionObject['id'] = i
         questionObject['isFlagged'] = flaggedQuestions[i]
-        questionObject['isAnswered'] = isAnswered[i] !== 'unanswered'
-        questionObject['question'] = document.querySelectorAll(`.q_${i} p`)[1].innerText.substring(0, 110) + '...'
+        if (objAnswers.hasOwnProperty(questionDbId)) {
+            questionObject['isAnswered'] = true
+        }
+        questionObject['question'] = document.querySelector(`.q_${i} .question_text`).innerText.substring(0, 110) + '...'
         overviewData.push(questionObject)
     }
 
