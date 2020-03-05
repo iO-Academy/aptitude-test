@@ -15,3 +15,10 @@ async function sendData(data, path) {
     })
     return await response.json()
 }
+
+
+
+
+
+
+

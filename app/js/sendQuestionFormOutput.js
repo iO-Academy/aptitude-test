@@ -92,3 +92,4 @@ newQuestionForm.addEventListener('submit',  async function(e) {
 // populate dropdown menu with available tests
 populateHandlebars('#test_id', 'js/templates/testDropdown.hbs', 'test')
 
+
