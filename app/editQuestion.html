@@ -12,8 +12,16 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.4.2/handlebars.js"></script>
     <script src="js/aptitudeTestHelpers.js" defer></script>
     <script src="js/utils.js"></script>
-    <script defer src="js/userLogIn.js"></script>
-    <script defer src="js/cookies.js"></script>
+    <script src="js/userLogIn.js"></script>
+    <script src="js/cookies.js"></script>
+    <script>
+        let userEmail = getCookie('userEmail')
+        getUser(userEmail).then(function(user) {
+            if (!user.success || !isAuthorised(user.data, "1")) {
+                window.location.replace("index.html")
+            }
+        })
+    </script>
     <script defer src="js/questionCount.js"></script>
     <script defer src="js/sendData.js"></script>
     <script src="js/getData.js"></script>
