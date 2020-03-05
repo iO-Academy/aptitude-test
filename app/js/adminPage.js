@@ -1,9 +1,13 @@
 //Populate drop down options on page load in 'add new user' and 'manage questions' sections
-populateHandlebars('#test_id', 'js/templates/testDropdown.hbs', 'test')
-populateHandlebars('#selectTest', 'js/templates/testDropdown.hbs', 'test')
-populateHandlebars('#selectQuestion', 'js/templates/questionDropdown.hbs', 'question')
-populateHandlebars('#selectTestDelete', 'js/templates/testDropdown.hbs', 'test')
-populateHandlebars('#selectQuestionDelete', 'js/templates/questionDropdown.hbs', 'question')
+function populateDropDownsOnPageLoad(){
+    populateHandlebars('#test_id', 'js/templates/testDropdown.hbs', 'test')
+    populateHandlebars('#selectTest', 'js/templates/testDropdown.hbs', 'test')
+    populateHandlebars('#selectQuestion', 'js/templates/questionDropdown.hbs', 'question')
+    populateHandlebars('#selectTestDelete', 'js/templates/testDropdown.hbs', 'test')
+    populateHandlebars('#selectQuestionDelete', 'js/templates/questionDropdown.hbs', 'question')
+}
+
+populateDropDownsOnPageLoad()
 
 /**
  * Save the JSON object using an AJAX request.
