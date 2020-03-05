@@ -1,4 +1,9 @@
+//Populate drop down options on page load in 'add new user' and 'manage questions' sections
 populateHandlebars('#test_id', 'js/templates/testDropdown.hbs', 'test')
+populateHandlebars('#selectTest', 'js/templates/testDropdown.hbs', 'test')
+populateHandlebars('#selectQuestion', 'js/templates/questionDropdown.hbs', 'question')
+populateHandlebars('#selectTestDelete', 'js/templates/testDropdown.hbs', 'test')
+populateHandlebars('#selectQuestionDelete', 'js/templates/questionDropdown.hbs', 'question')
 
 /**
  * Save the JSON object using an AJAX request.
@@ -82,6 +87,19 @@ function userExists(emailToAdd, existingUsers) {
 
     return result
 }
+
+//Within manage question section, an event listener on the test dropdown which populates the EDIT question dropdown, when selected
+document.getElementById('selectTest').addEventListener('change', function () {
+    let selectorTestId = this.value
+    populateHandlebars('#selectQuestion', 'js/templates/questionDropdown.hbs', `question?test_id=${selectorTestId}`)
+    getQuestionCount(selectorTestId)
+})
+
+//Within manage question section, an event listener on the test dropdown which populates the DELETE question dropdown, when selected
+document.getElementById('selectTestDelete').addEventListener('change', function () {
+    let selectorTestId = this.value
+    populateHandlebars('#selectQuestionDelete', 'js/templates/questionDropdown.hbs', `question?test_id=${selectorTestId}`)
+})
 
 document.querySelector('#addNewUserForm').addEventListener('submit', function(event) {
     event.preventDefault()
