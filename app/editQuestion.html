@@ -14,14 +14,7 @@
     <script src="js/utils.js"></script>
     <script src="js/userLogIn.js"></script>
     <script src="js/cookies.js"></script>
-    <script>
-        let userEmail = getCookie('userEmail')
-        getUser(userEmail).then(function(user) {
-            if (!user.success || !isAuthorised(user.data, "1")) {
-                window.location.replace("index.html")
-            }
-        })
-    </script>
+    <script src="js/adminAccess.js"></script>
     <script defer src="js/questionCount.js"></script>
     <script defer src="js/sendData.js"></script>
     <script src="js/getData.js"></script>

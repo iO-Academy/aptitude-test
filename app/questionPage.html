@@ -4,14 +4,7 @@
     <script src="js/utils.js" async></script>
     <script src="js/cookies.js"></script>
     <script src="js/userLogIn.js"></script>
-    <script>
-        let userEmail = getCookie('userEmail')
-        getUser(userEmail).then(function (user) {
-            if (!user.success || !isAuthorised(user.data) || user.data.canRetake === '0') {
-                window.location.replace("index.html")
-            }
-        })
-    </script>
+    <script src="js/adminAccess.js"></script>
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <title>Mayden Aptitude Test</title>
