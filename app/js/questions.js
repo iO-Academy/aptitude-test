@@ -17,6 +17,7 @@ function fillUserTable(HBTemplate) {
             let questionNoAssign = 1
             result.data.forEach(function(question) {
                 question['questionOrderId'] = questionNoAssign
+                decodeSpecialChars(question)
                 flaggedQuestions[question.questionOrderId] = false
                 document.querySelector("#questions").innerHTML += template(question)
                 questionNoAssign++
@@ -39,3 +40,4 @@ document.querySelector('#flag-checkbox').addEventListener('change', function() {
     let qid  = document.querySelector('#questions .question.active').dataset.questionOrderId
     flaggedQuestions[qid] = document.querySelector('#flag-checkbox').checked
 })
+

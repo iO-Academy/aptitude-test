@@ -14,10 +14,10 @@
     <script src="js/utils.js"></script>
     <script defer src="js/userLogIn.js"></script>
     <script defer src="js/cookies.js"></script>
-    <script defer src="js/questionCount.js"></script>
     <script defer src="js/sendData.js"></script>
     <script src="js/getData.js"></script>
     <script src="js/populateHandlebars.js"></script>
+    <script src="js/sanitisation.js"></script>
     <script defer src="js/sendQuestionFormOutput.js"></script>
     <script defer src="js/ajaxHandlebarsTemplate.js"></script>
     <script defer src="js/editQuestion.js"></script>
@@ -63,6 +63,11 @@
                     <label for="option5">Option 5:</label>
                     <textarea class="form-control answer" id="option5" rows="2" name="option5"></textarea>
                     <input class="answer-check" type="radio" name="answer-check">
+                </div>
+                <div class="form-group">
+                    <label for="test_id">Assign to test:</label>
+                    <select class="custom-select" id="test_id">
+                    </select>
                 </div>
             </div>
             <div id="message-target"></div>
