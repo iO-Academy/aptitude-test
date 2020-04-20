@@ -1,1 +1,20 @@
 @import "imports/variables";
+
+table {
+  table-layout: fixed;
+  width: 100%
+}
+
+.questionText {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.column1{
+  width: 160px;
+}
+
+.tHeadNumb{
+  width: max-content;
+}
