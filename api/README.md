@@ -4,7 +4,7 @@
 
 - Clone this Repo
 - cd into api and run `composer install` or `php composer.phar install` if no composer installed
-- Install the aptitude-test.sql file from /api/db into your vagrant box database named `aptitude-test`
+- Install the aptitude-test.sql file from /api/db into your docker box database named `aptitude-test`
 - cd into the api folder
 - Run: `php -S localhost:8080 -t public/ public/index.php` - DO NOT CLOSE THIS TAB OR TURN THE SERVER OFF
 - Set `isProd` in app/js/utils to `false`
@@ -135,6 +135,7 @@ GET
 
 POST
 - Add new test
-- Send an object containing the test name
+- Send an object containing the test name, optionally including the test time in seconds
     - `{"name": "Example"}`
+    - `{"name": "Example", "time": 2100}`
 - Returns success/fail state.

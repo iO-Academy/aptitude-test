@@ -589,10 +589,17 @@ $app->post('/test', function ($request, $response, $args) {
         return $response->withJson($data, 200);
     }
 
+
     try {
-        $query = "INSERT INTO test (`name`) VALUES (?)";
-        $query = $this->db->prepare($query);
-        $query->execute([$postData['name']]);
+        if (!empty($postData['time']) && is_numeric($postData['time'])) {
+            $query = "INSERT INTO test (`name`, `time`) VALUES (?, ?)";
+            $query = $this->db->prepare($query);
+            $query->execute([$postData['name'], $postData['time']]);
+        } else {
+            $query = "INSERT INTO test (`name`) VALUES (?)";
+            $query = $this->db->prepare($query);
+            $query->execute([$postData['name']]);
+        }
 
     } catch(Exception $e) {
         $data['message'] = $e->getMessage();
