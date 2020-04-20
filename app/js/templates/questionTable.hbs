@@ -1,0 +1,10 @@
+{{#each data}}
+    <tr>
+    <td dataId="{{id}}" dataQuestion="{{text}}">
+        <button class="btn edit-user-button btn_height modalBtn">Edit User</button>
+        <button class="btn delete-user-button btn_height">Delete User</button>
+    </td>
+    <td class="questionNumber">{{this.id}}</td>
+    <td class="questionText">{{this.text}}</td>
+    </tr>
+{{/each}}

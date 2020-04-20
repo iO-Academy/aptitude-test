@@ -5,8 +5,14 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <title>Edit Questions</title>
     <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
-    <link href="css/questionPage.css" type="text/css" rel="stylesheet">
+    <link href="css/adminPage.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="css/resultPage.css">
+    <script src="js/handlebars-v4.0.11.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/getData.js" defer></script>
+    <script src="js/ajaxHandlebarsTemplate.js" defer></script>
+    <script src="js/populateHandlebars.js" defer></script>
+    <script src="js/editQuestionsPage.js" defer></script>
 </head>
 <body>
 <section class="container">
@@ -20,9 +26,7 @@
                     <div class="display-flex">
                         <select name="filterScorePercentage" id="filterScorePercentage" class="dropdown">
                             <option value="" disabled selected>Test Name</option>
-                            <option value="3">-none-</option>
-                            <option value="1">+70%</option>
-                            <option value="2">-69%</option>
+                            <option value="1">Test 1</option>
                         </select>
                     </div>
                     <h3>Questions</h3>
