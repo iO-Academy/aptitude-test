@@ -2,9 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <title>Edit Questions</title>
+    <link href="css/bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="css/questionPage.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="css/resultPage.css">
 </head>
 <body>
+<section class="container">
+    <img class="logo" alt="Mayden Logo" src="images/branding-icons/maydenacademy_logotype_05.18_web.svg">
+    <div class="row">
+        <div class="col-xs-12">
+            <div id='error' class='title_input'></div>
+            <div class="score-container">
+                <h2>Test</h2>
+                <div class="search-filter-container">
+                    <div class="display-flex">
+                        <select name="filterScorePercentage" id="filterScorePercentage" class="dropdown">
+                            <option value="" disabled selected>Test Name</option>
+                            <option value="3">-none-</option>
+                            <option value="1">+70%</option>
+                            <option value="2">-69%</option>
+                        </select>
+                    </div>
+                    <h3>Questions</h3>
+                </div>
+                <table class="table user-score-table">
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Number</th>
+                        <th>Question</th>
+                    </tr>
+                    </thead>
+                    <tbody class="score_list user-table"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
 
 </body>
 </html>
