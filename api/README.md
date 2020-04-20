@@ -131,7 +131,7 @@ GET
 - Get all test data
 - No request data
 - Returns array of test objects.
-    - `[{"id" : "1", "name": "example","created": "2019-10-19 12:24:35"}]`
+    - `[{"id" : "1", "name": "example","time": 1800, "created": "2019-10-19 12:24:35"}]`
 
 POST
 - Add new test
