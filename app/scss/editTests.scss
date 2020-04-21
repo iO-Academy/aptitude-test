@@ -3,6 +3,14 @@
 .logoContainer{
   justify-content: flex-end;
 }
+
+.tableContainer {
+
+  .search-filter-container {
+    height: 120px;
+  }
+}
+
 table {
   table-layout: fixed;
   width: 100%
