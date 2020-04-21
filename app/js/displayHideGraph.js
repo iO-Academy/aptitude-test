@@ -15,13 +15,13 @@ function toggleGraphDisplay() {
     viewTableButton.classList.toggle('hidden');
 }
 
-var displayGraphButton = document.querySelector('#viewGraph')
+var displayGraphButton = document.querySelector('#viewGraph');
 displayGraphButton.addEventListener ('click', function(e) {
     e.preventDefault();
     toggleGraphDisplay();
 });
 
-var displayTableButton = document.querySelector('#viewTable')
+var displayTableButton = document.querySelector('#viewTable');
 displayTableButton.addEventListener ('click', function(e) {
     e.preventDefault();
     toggleGraphDisplay();
