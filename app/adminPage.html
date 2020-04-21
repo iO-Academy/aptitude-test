@@ -72,18 +72,23 @@
                             <input type="submit" id="searchReset" value="Clear Search" class="btn primary-button">
                         </div>
                         <h4 class="search-heading">Filter Results</h4>
-                        <div class="display-flex">
-                            <select name="filterScorePercentage" id="filterScorePercentage" class="dropdown">
-                                <option value="" disabled selected>Score Percentage</option>
-                                <option value="3">-none-</option>
-                                <option value="1">+70%</option>
-                                <option value="2">-69%</option>
-                            </select>
-                            <label for="startDate">Start</label>
-                            <input id="startDate" type="date">
-                            <label for="endDate">End</label>
-                            <input id="endDate" type="date">
-                        </div>
+                            <div class="display-flex">
+                                <div class="test-container">
+                                    <select name="filterScorePercentage" id="filterScorePercentage" class="dropdown">
+                                        <option value="" disabled selected>Score Percentage</option>
+                                        <option value="3">-none-</option>
+                                        <option value="1">+70%</option>
+                                        <option value="2">-69%</option>
+                                    </select>
+                                    <label for="startDate">Start</label>
+                                    <input id="startDate" type="date">
+                                    <label for="endDate">End</label>
+                                    <input id="endDate" type="date">
+                                </div>
+                                <div class="test">
+                                        <button id="viewGraph" class="btn primary-button">View Graph</button>
+                                </div>
+                            </div>
                     </div>
                     <table class="table user-score-table">
                         <thead>
@@ -100,6 +105,9 @@
                         </thead>
                         <tbody class="score_list user-table"></tbody>
                     </table>
+                    <div class="show-graph hidden">
+                        <p>HELLO WORLD!</p>
+                    </div>
                 </div>
                 <form class="new-test-container" id="testForm" method="post">
                     <h2>Add new test</h2>
