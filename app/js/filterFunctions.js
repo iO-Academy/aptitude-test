@@ -3,6 +3,10 @@ document.getElementById('filterScorePercentage').addEventListener('change', () =
     updateScoreTable()
 })
 
+document.getElementById('testAllocated').addEventListener('change', () => {
+    updateScoreTable()
+})
+
 /**
  * checks the start and end date input on admin page and assigns a default value if no value set
  *
