@@ -6,12 +6,15 @@
  *
  * @returns A multi-dimensional array of the smaller arrays
  */
-function splitArray (initialArray, newArrayLength) {
+function splitArray(initialArray, newArrayLength) {
     const numOfNewArrays = Math.ceil(initialArray.length / newArrayLength);
     let newArray = [];
+
     for (let i = 0; i < numOfNewArrays; i++) {
         let smallArray = initialArray.slice((i * newArrayLength), ((i * newArrayLength) + newArrayLength));
+
         newArray.push(smallArray);
     }
+
     return newArray;
 }
