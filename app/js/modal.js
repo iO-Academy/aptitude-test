@@ -96,6 +96,7 @@ function addEditModalSubmitEventListener() {
         let email = document.getElementById("email").value
         let time = document.getElementById('time').value
         let originalEmail = document.getElementById("originalEmail").value
+        let testId = document.getElementById("testID").value
         getExistingUsers().then(function (existingUsers) {
             if (isEmpty(name) &&
                 isEmpty(email) &&
