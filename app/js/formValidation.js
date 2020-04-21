@@ -8,7 +8,7 @@ function formHasBetweenTwoAndFiveAnswers(form) {
 
     answers.forEach((answer) => {
         if (answer.value.length > 0) {
-            fieldsThatHaveValues++
+            fieldsThatHaveValues++;
         }
     });
 
@@ -24,7 +24,7 @@ function answerHasValidValue(form) {
         const isChecked = checkbox.checked === true;
 
         if (isOptionNotEmpty && optionHasLength && isChecked) {
-            result = true
+            result = true;
         }
     });
 
