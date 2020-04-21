@@ -104,7 +104,12 @@ function percentageFilter (resultArray){
 }
 
 /**
+ * This function filters the list of users to be displayed in the table based on the test
+ * allocated to that user
  * 
+ * @param {resultArray} Array array of users to be filtered
+ * 
+ * @return Array the filtered array of users
  */
 function testAllocatedFilter(resultArray) {
     let filterTestAllocated = document.getElementById('testAllocated')
