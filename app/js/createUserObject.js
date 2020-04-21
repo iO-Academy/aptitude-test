@@ -97,6 +97,7 @@ async function getNameAndEmail() {
         obj['email'] = email
         obj['timeAllowed'] = time
         obj['testAllocated'] = testName
+        obj['testId'] = test_id
         userObjectArray.push(obj)
     })
     return userObjectArray
@@ -126,6 +127,7 @@ async function createUsersObject() {
                 obj['score'] = result.score
                 obj['percentage'] = calculatePercentage(result.score, result.testLength)
                 obj['testAllocated'] = user.testAllocated
+                obj['testId'] = user.testId
                 obj['time'] = result.time
                 obj['timeAllowed'] = secondsToMinutes(user.timeAllowed)
                 obj['dateCreated'] = result.dateCreated
