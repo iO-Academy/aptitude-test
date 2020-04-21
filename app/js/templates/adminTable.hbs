@@ -9,7 +9,7 @@
     {{else if this.notTakenYet}}
          class="test-not-taken"
     {{/if}}>
-        <td dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}" dataTime="{{time}}" dataTimeAllowed="{{timeAllowed}}" dataCanRetake="{{canRetake}}" dataTestId="1">
+        <td dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}" dataTime="{{time}}" dataTimeAllowed="{{timeAllowed}}" dataCanRetake="{{canRetake}}" dataTestId="{{this.testId}}">
             <button class="btn edit-user-button btn_height modalBtn">Edit User</button>
             <button class="btn delete-user-button btn_height">Delete User</button>
         </td>
@@ -17,9 +17,17 @@
         <td class="email">{{this.email}}</td>
         <td class="score">{{this.score}}</td>
         <td class="percentage">{{this.percentage}}</td>
-        <td class="testAllocated" data-testId="{{this.testId}}">{{this.testAllocated}}</td>
+        <td class="testAllocated">{{this.testAllocated}}</td>
         <td class="time">{{this.timeAllowed}}</td>
         <td class="time">{{this.time}}</td>
         <td class="date">{{#if this.testNotTaken}}{{this.testNotTaken}}{{else}}{{this.dateCreated}}{{/if}}</td>
 </tr>
 {{/each}}
+
+
+
+
+
+
+
+

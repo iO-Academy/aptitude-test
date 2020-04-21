@@ -1,3 +1,12 @@
+// Handlebars.registerHelper('equal', function(lvalue, rvalue) {
+   
+//     if( lvalue!=rvalue ) {
+//         return true;
+//     } else {
+//         return false;
+//     }
+// });
+
 /** 
  * Opens the modal dialog box.
  */
@@ -20,9 +29,23 @@ function closeDialog() {
  * Then adds the submit button's event listener.
  * @param userInfo Object containing info of the user to edit.
  */
-function createEditModal(userInfo) {
+function createEditModal(userInfo, tests) {
+    infoForTemplate={
+        tests: tests,
+        user: userInfo,
+        defaultTest: {}
+    }
+
+    infoForTemplate.tests.forEach(test => {
+        const index = infoForTemplate.tests.indexOf(test)
+        if(test.id == infoForTemplate.user.dataTestId){
+            infoF
+        }
+        console.log(infoForTemplate.defaultTest)
+    });
+
     getTemplateAjax('js/templates/editmodal.hbs').then(function (HBTemplate) {
-        fillEditModalFields(HBTemplate, userInfo)
+        fillEditModalFields(HBTemplate, infoForTemplate)
     })
     .then(() => {
         addEditModalSubmitEventListener()
@@ -39,7 +62,7 @@ function fillEditModalFields(HBTemplate, userInfo) {
     let template = Handlebars.compile(HBTemplate)
     let modal_content = document.querySelector("#modal-content")
     modal_content.innerHTML = ""
-    if (userInfo.name && userInfo.email && userInfo.id && userInfo.time) {
+    if (userInfo.user.name && userInfo.user.email && userInfo.user.id && userInfo.user.time) {
         let html = template(userInfo)
         modal_content.innerHTML += html
     } else {

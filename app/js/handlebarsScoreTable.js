@@ -72,7 +72,7 @@ function createObjectFromParentElement(event) {
     userInfo.id = parentElement.getAttribute("dataId")
     userInfo.time = parentElement.getAttribute("dataTimeAllowed")
     userInfo.canRetake = parseInt(parentElement.getAttribute("dataCanRetake"))
-    userInfo.test_ID = parentElement.getAttribute('datatestId')
+    userInfo.dataTestId = parentElement.getAttribute('dataTestId')
     return userInfo
 }
 
@@ -85,7 +85,9 @@ function addEditEventListeners() {
         editButton.addEventListener('click', function (e) {
             openDialog()
             let userInfo = createObjectFromParentElement(e)
-            createEditModal(userInfo)
+            getData("test").then((data) => {
+                createEditModal(userInfo, data.data)
+            })
         })
     })
 }
