@@ -57,11 +57,12 @@ async function getNameAndEmail() {
     let userObjectArray = []
     users.forEach(function(user) {
         let obj = {}
-        let {id, email, name, time} = user
+        let {id, email, name, time, test_id} = user
         obj['id'] = id
         obj['name'] = name
         obj['email'] = email
         obj['timeAllowed'] = time
+        obj['testAllocated'] = test_id
         userObjectArray.push(obj)
     })
     return userObjectArray
@@ -90,6 +91,7 @@ async function createUsersObject() {
                 obj['email'] = user.email
                 obj['score'] = result.score
                 obj['percentage'] = calculatePercentage(result.score, result.testLength)
+                obj['testAllocated'] = user.testAllocated
                 obj['time'] = result.time
                 obj['timeAllowed'] = secondsToMinutes(user.timeAllowed)
                 obj['dateCreated'] = result.dateCreated
@@ -107,6 +109,7 @@ async function createUsersObject() {
             obj['email'] = user.email
             obj['score'] = ''
             obj['percentage'] = ''
+            obj['testAllocated'] = user.testAllocated
             obj['time'] = ''
             obj['timeAllowed'] = secondsToMinutes(user.timeAllowed)
             obj['dateCreated'] = '1970-01-01 00:00:01'
