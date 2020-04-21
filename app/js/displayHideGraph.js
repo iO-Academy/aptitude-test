@@ -1,14 +1,13 @@
-function displayGraph() {
+
+function toggleGraphDisplay() {
     let graphOnPage = document.querySelector('.show-graph');
-    graphOnPage.classList.remove('hidden');
+    graphOnPage.classList.toggle('hidden');
     let tableOnPage = document.querySelector('.user-score-table');
-    tableOnPage.classList.add('hidden');
+    tableOnPage.classList.toggle('hidden');
 }
 
-function displayTable() {
-    let graphOnPage = document.querySelector('.show-graph');
-    graphOnPage.classList.add('hidden');
-    let tableOnPage = document.querySelector('.user-score-table');
-    tableOnPage.classList.remove('hidden');
-}
-
+var displayButton = document.querySelector('#viewGraph')
+displayButton.addEventListener ('click', function(e) {
+    e.preventDefault();
+    toggleGraphDisplay();
+});
