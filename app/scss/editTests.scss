@@ -11,9 +11,21 @@
   }
 }
 
-table {
+.table {
   table-layout: fixed;
-  width: 100%
+  width: 100%;
+
+  .edit-question, .delete-question {
+    color: $main-background-color;
+  }
+
+  .edit-question {
+    background-color: $edit-button;
+  }
+
+  .delete-question {
+    background-color: $primary-button-hover;
+  }
 }
 
 .questionText {
@@ -23,7 +35,7 @@ table {
 }
 
 .colBtn {
-  width: 270px;
+  width: 150px;
 }
 
 .colNum {
