@@ -1,4 +1,5 @@
 populateHandlebars('#test_id', 'js/templates/testDropdown.hbs', 'test')
+populateHandlebars('#testAllocated', 'js/templates/testAllocatedFilter.hbs', 'test')
 
 /**
  * Save the JSON object using an AJAX request.
