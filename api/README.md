@@ -45,7 +45,7 @@ POST
 
 POST
 - Update a user.
-- `{"email":"example@email.com", "name":"Fred Smith", "canRetake":"0", "id":"1"}` - all required
+- `{"email":"example@email.com", "name":"Fred Smith", "canRetake":"0", "id":"1", "test_id":"1"}` - all required
 - Returns result of user update.
 
 **/question**
