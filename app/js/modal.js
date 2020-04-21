@@ -1,11 +1,14 @@
-// Handlebars.registerHelper('equal', function(lvalue, rvalue) {
-   
+// Handlebars.registerHelper('equal', function(lvalue, rvalue, options) {
+//     
 //     if( lvalue!=rvalue ) {
-//         return true;
+//         return options.inverse(this);
 //     } else {
-//         return false;
+//         return options.fn(this);
 //     }
 // });
+
+// {{#equal lvalue rvalue}}
+// {{/equal}}
 
 /** 
  * Opens the modal dialog box.
@@ -37,9 +40,10 @@ function createEditModal(userInfo, tests) {
     }
 
     infoForTemplate.tests.forEach(test => {
-        const index = infoForTemplate.tests.indexOf(test)
+        let index = infoForTemplate.tests.indexOf(test)
         if(test.id == infoForTemplate.user.dataTestId){
-            infoF
+            infoForTemplate.defaultTest = test
+            infoForTemplate.tests.splice(index, 1)
         }
         console.log(infoForTemplate.defaultTest)
     });
