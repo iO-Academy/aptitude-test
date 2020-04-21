@@ -1,5 +1,4 @@
 const flaggedQuestions = {}
-
 /**
  * fills handlebars template by getting the user data from the api and inserts into the user_list div
  *
@@ -9,26 +8,27 @@ function fillUserTable(HBTemplate) {
     let baseUrl = getBaseUrl()
     let template = Handlebars.compile(HBTemplate)
     let counter = 0;
-    fetch(baseUrl + "question")
+    let cookie = getCookie ('userEmail');
+    getData(`user?email=${cookie}`)
+        .then((data) => {fetch(`${baseUrl}question?test_id=${data.data.test_id}`)
         .then(function(result) {
-            return result.json()
+        return result.json()
+    }).then(function(result) {
+        let questionNoAssign = 1
+        result.data.forEach(function(question) {
+            question['questionOrderId'] = questionNoAssign
+            flaggedQuestions[question.questionOrderId] = false
+            document.querySelector("#questions").innerHTML += template(question)
+            questionNoAssign++
         })
-        .then(function(result) {
-            let questionNoAssign = 1
-            result.data.forEach(function(question) {
-                question['questionOrderId'] = questionNoAssign
-                flaggedQuestions[question.questionOrderId] = false
-                document.querySelector("#questions").innerHTML += template(question)
-                questionNoAssign++
-            })
-            counter = result.data.length
+        counter = result.data.length
 
-            putDescription(counter)
-            addAnswerEventListeners()
-            fillNav()
-            active()
-            changeQuestion(current)
-        })
+        putDescription(counter)
+        addAnswerEventListeners()
+        fillNav()
+        active()
+        changeQuestion(current)
+    })})
 }
 
 getTemplateAjax('js/templates/questions.hbs').then(function(HBTemplate) {

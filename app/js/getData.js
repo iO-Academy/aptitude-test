@@ -10,8 +10,3 @@ async function getData(APIpath) {
     data = await data.json()
     return await data;
 }
-
-
-
-
-
