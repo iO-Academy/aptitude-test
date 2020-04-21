@@ -10,7 +10,7 @@
     <input id="originalEmail" type="hidden" name="originalEmail" value="{{user.email}}">
 
     <label>ID of test allocated</label>
-    <select id="testID" class="editUserData" name="testID">
+    <select id="testID" class="editUserData" name="test_id">
         {{#each tests}}
             {{!-- if test.id == user.dataTestId thenprint a selected option --}}
                 <option value="{{id}}">{{name}}</option>
