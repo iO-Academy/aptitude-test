@@ -20,6 +20,8 @@
     </script>
     <script src="js/getData.js"></script>
     <script src="js/populateHandlebars.js"></script>
+    <script src="js/getTestDuration.js" defer></script>
+    <script src="js/populateUserDuration.js" defer></script>
     <script src="js/adminPage.js" defer></script>
     <script src="js/ajaxHandlebarsTemplate.js" defer></script>
     <script src="js/createUserObject.js" defer></script>
@@ -56,8 +58,10 @@
                             <label for="test_id">Assign to test:</label>
                             <select class="custom-select" id="test_id">
                             </select>
-                        <label for="time">Test Duration (m):</label>
-                        <input type="number" id="time" name="time" value="30">
+                        <label for="test_time_minutes">Test Duration (min/sec) :</label>
+                        <input type="number" id="user_time_minutes" name="time">
+                        :
+                        <input type="number" id="user_time_seconds" name="time">
                         <input type="submit" value="Add User" class="btn primary-button">
                     </div>
                 </form>
