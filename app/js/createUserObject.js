@@ -102,8 +102,6 @@ async function getNameAndEmail() {
     return userObjectArray
 }
 
-
-
 /**
  * Combines the information used in a table row into a new object.
  * Returns a list of all of these user-result objects ready to be put into table rows.
