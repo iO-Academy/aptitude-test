@@ -63,7 +63,7 @@ window.addEventListener("load", async () => {
 
             document.querySelectorAll('.answer-check').forEach((answerCheck, index) => {
                 if (answerCheck.checked) {
-                    answer = index + 1
+                    answer = index + 1;
                 }
             });
 
