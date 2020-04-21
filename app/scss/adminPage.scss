@@ -1,107 +1,99 @@
 @import "imports/variables";
 
-body {
 
-  .container {
 
-    .new-user-container {
-      margin-top: 3rem;
+.new-user-container {
+  margin-top: 3rem;
+}
+
+.display-flex {
+  display: flex;
+  align-items: center;
+
+  label {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 0 0.5rem 0 0;
+  }
+
+  select {
+    margin-right: 10px;
+  }
+
+  input {
+    margin-right: 1rem;
+
+    &.primary-button {
+      font-size: 1.4rem;
+      color: $main-background-color;
     }
+  }
+}
 
-    .display-flex {
-      display: flex;
-      align-items: center;
+select:not([multiple]) {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-position: right 50%;
+  background-repeat: no-repeat;
+  background-image: url("../images/output-onlinepngtools.png");
+  padding: .5rem;
+  padding-right: 1.5rem;
+  background-color: $main-background-color;
+}
 
-      label {
-        font-size: 1.5rem;
-        font-weight: 400;
-        margin: 0 0.5rem 0 0;
-      }
+.dropdown {
+  height: 34px;
+  margin-right: 0.5rem;
+  border-radius: 0;
 
-      select {
-        margin-right: 10px;
-      }
+  option {
+    font-size: 1.5rem;
+  }
+}
 
-      input {
-        margin-right: 1rem;
 
-        &.primary-button {
-          font-size: 1.4rem;
-          color: $main-background-color;
-        }
-      }
-    }
+.tableContainer {
+  margin-top: 5rem;
 
-    .score-container {
-      margin-top: 5rem;
+  .search-filter-container {
+    margin-top: 3rem;
+    display: flex;
+    height: 180px;
+    flex-direction: column;
+    justify-content: space-between;
 
-      .search-filter-container {
-        margin-top: 3rem;
-        display: flex;
-        height: 180px;
-        flex-direction: column;
-        justify-content: space-between;
-
-        .filterContainer {
-          label {
-            font-weight: 400;
-            font-size: 1.5rem;
-          }
-        }
-      }
-    }
-
-    select:not([multiple]) {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      background-position: right 50%;
-      background-repeat: no-repeat;
-      background-image: url("../images/output-onlinepngtools.png");
-      padding: .5rem;
-      padding-right: 1.5rem;
-      background-color: $main-background-color;
-    }
-
-    .dropdown {
-      height: 34px;
-      margin-right: 0.5rem;
-      border-radius: 0;
-
-      option {
-        font-size: 1.5rem;
-      }
-    }
-
-    .table {
+    label {
+      font-weight: 400;
       font-size: 1.5rem;
+    }
 
-      .edit-user-button, .delete-user-button {
-        color: $main-background-color;
-      }
+  }
+}
 
-      .edit-user-button {
-        background-color: $edit-button;
-      }
+.table {
+  font-size: 1.5rem;
 
-      .delete-user-button {
-        background-color: $primary-button-hover;
-      }
+  .edit-user-button, .delete-user-button {
+    color: $main-background-color;
+  }
 
-      .email {
-        border-right: 1px solid $score-table-border;
-      }
+  .edit-user-button {
+    background-color: $edit-button;
+  }
 
-      &.user-score-table {
-        margin-top: 4rem;
+  .delete-user-button {
+    background-color: $primary-button-hover;
+  }
 
-        tbody {
-          tr {
-            td {
-              vertical-align: middle;
-            }
-          }
-        }
-      }
+  .email {
+    border-right: 1px solid $score-table-border;
+  }
+
+  &.tableStyles {
+    margin-top: 4rem;
+
+    td {
+      vertical-align: middle;
     }
   }
 }

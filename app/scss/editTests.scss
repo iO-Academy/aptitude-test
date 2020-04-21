@@ -1,0 +1,32 @@
+@import "imports/variables";
+
+.logoContainer{
+  justify-content: flex-end;
+}
+
+.tableContainer {
+
+  .search-filter-container {
+    height: 120px;
+  }
+}
+
+table {
+  table-layout: fixed;
+  width: 100%
+}
+
+.questionText {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.colBtn {
+  width: 270px;
+}
+
+.colNum {
+ width: 75px;
+}
+
