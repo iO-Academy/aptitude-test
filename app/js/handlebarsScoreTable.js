@@ -140,14 +140,14 @@ function produceTable (HBTemplate, scoresDataObject) {
         }
     })
 
-    let template = Handlebars.compile(HBTemplate)
-    let score_list = document.querySelector(".score_list")
-    score_list.innerHTML = ""
-    let html = template(scoresDataObject)
-    score_list.innerHTML += html
+    let template = Handlebars.compile(HBTemplate);
+    let score_list = document.querySelector(".score_list");
+    score_list.innerHTML = "";
+    let html = template(scoresDataObject);
+    score_list.innerHTML += html;
 
-    addEditEventListeners()
+    addEditEventListeners();
     addDeleteEventListeners()
 }
 
-updateScoreTable()
+updateScoreTable();

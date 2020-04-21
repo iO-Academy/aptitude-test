@@ -8,10 +8,10 @@
  */
 
 async function sendData(data, path) {
-    let baseUrl = getBaseUrl()
+    let baseUrl = getBaseUrl();
     let response =  await fetch(baseUrl + path, {
         method: 'POST',
         body: data
-    })
+    });
     return await response.json()
 }
