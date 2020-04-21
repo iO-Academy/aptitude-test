@@ -6,52 +6,15 @@ getUser(user).then(function(user) {
     }
 })
 
-function formHasQuestion(form) {
-    if (form.question.value.length === 0) {
-        return false
-    } else {
-        return true
-    }
-}
-
-function formHasBetweenOneAndFiveAnswers(form) {
-    let answers = form.querySelectorAll('.answer')
-    let fieldsThatHaveValues = 0
-    answers.forEach((answer) => {
-        if (answer.value.length > 0) {
-            fieldsThatHaveValues++
-        }
-    })
-    if (fieldsThatHaveValues >= 2) {
-        return true
-    } else {
-        return false
-    }
-}
-
-function answerHasValidValue(form) {
-    let result = false
-    form.querySelectorAll('.answer-check').forEach((checkbox) => {
-        if (
-            typeof checkbox.previousElementSibling.value != 'undefined' &&
-            checkbox.previousElementSibling.value.length > 0 &&
-            checkbox.checked === true
-        ) {
-            result = true
-        }
-    })
-    return result
-}
-
 let newQuestionForm = document.getElementById("new-question")
 let responseMsg = document.querySelector('#inputSubmissionConfirmation')
 /**
- * When the user clicks the submit button, will get form value and prepare 
+ * When the user clicks the submit button, will get form value and prepare
  * it for the database.
  */
 newQuestionForm.addEventListener('submit',  async function(e) {
     e.preventDefault()
-    if (formHasQuestion(newQuestionForm) && formHasBetweenOneAndFiveAnswers(newQuestionForm) && answerHasValidValue(newQuestionForm)) {
+    if (formHasQuestion(newQuestionForm) && formHasBetweenTwoAndFiveAnswers(newQuestionForm) && answerHasValidValue(newQuestionForm)) {
         if(!authorised) {
             return
         }
