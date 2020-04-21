@@ -87,7 +87,7 @@ function percentageFilter (resultArray){
                 newResultArray.push(data)
             }
         })
-    } else if (parseInt(filterScorePercentage.value) === 1){
+    } else if (parseInt(filterScorePercentage.value) === 3){
         resultArray.forEach((data)=>{
             if((data.percentage >= 70) && (data.percentage < 97)){
                 newResultArray.push(data)
