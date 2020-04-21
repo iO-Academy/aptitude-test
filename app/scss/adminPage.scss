@@ -52,7 +52,7 @@ select:not([multiple]) {
 }
 
 
-.score-container {
+.tableContainer {
   margin-top: 5rem;
 
   .search-filter-container {
@@ -89,7 +89,7 @@ select:not([multiple]) {
     border-right: 1px solid $score-table-border;
   }
 
-  &.user-score-table {
+  &.tableStyles {
     margin-top: 4rem;
 
     td {

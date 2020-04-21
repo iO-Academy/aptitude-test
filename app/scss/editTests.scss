@@ -1,5 +1,8 @@
 @import "imports/variables";
 
+.logoContainer{
+  justify-content: flex-end;
+}
 table {
   table-layout: fixed;
   width: 100%
@@ -12,9 +15,10 @@ table {
 }
 
 .colBtn {
-  width: 190px;
+  width: 200px;
 }
 
 .colNum {
  width: 75px;
 }
+

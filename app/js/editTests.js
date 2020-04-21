@@ -1,1 +1,1 @@
-populateHandlebars('.user-table', 'js/templates/questionTable.hbs', 'question');
+populateHandlebars('.tableBody', 'js/templates/questionTable.hbs', 'question');
