@@ -2,7 +2,7 @@ let authorised = false;
 let user = getCookie('userEmail');
 
 getUser(user).then((user) => {
-    if (user.data.isAdmin === '1' ) {
+    if (user.data.isAdmin === '1') {
         authorised = true;
     }
 });
@@ -30,6 +30,7 @@ async function getAnswerByQuestionId(id) {
     return data.answer;
 }
 
+// We are listening to the load event so that we can use async/await.
 window.addEventListener("load", async () => {
     const form = document.querySelector("#edit-question");
     const questionId = location.hash.replace("#", "") || 1;
@@ -48,6 +49,7 @@ window.addEventListener("load", async () => {
     form.addEventListener("submit", async (event) => {
        event.preventDefault();
 
+       const responseMsg = document.querySelector('#inputSubmissionConfirmation');
        const hasQuestions = formHasQuestion(form);
        const hasAnswers = formHasBetweenTwoAndFiveAnswers(form);
        const isValid = answerHasValidValue(form);
@@ -65,7 +67,7 @@ window.addEventListener("load", async () => {
                 }
             });
 
-            const { success } = await editQuestion(questionId,{
+            const { success, message } = await editQuestion(questionId,{
                 text: document.querySelector("#question-to-edit").value,
                 option1: document.querySelector("#option1").value,
                 option2: document.querySelector("#option2").value,
@@ -76,7 +78,19 @@ window.addEventListener("load", async () => {
                 answer
             });
 
-            alert(`Worked? ${success}`);
+            responseMsg.textContent = message;
+
+            if (success){
+                responseMsg.classList.add('alert-success');
+                responseMsg.classList.remove('alert-danger');
+            } else {
+                responseMsg.classList.remove('alert-success');
+                responseMsg.classList.add('alert-danger');
+            }
+        } else {
+            responseMsg.classList.remove('alert-success');
+            responseMsg.classList.add('alert-danger');
+            responseMsg.textContent = 'Error: Please ensure you have filled out the question form correctly.';
         }
     });
 });
