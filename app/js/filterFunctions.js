@@ -81,9 +81,15 @@ function dateFilter(resultArray) {
 function percentageFilter (resultArray){
     let filterScorePercentage = document.getElementById('filterScorePercentage')
     let newResultArray =[]
-    if (parseInt(filterScorePercentage.value) === 1){
+    if (parseInt(filterScorePercentage.value) === 4){
         resultArray.forEach((data)=>{
-            if(data.percentage >= 70){
+            if(data.percentage >= 97){
+                newResultArray.push(data)
+            }
+        })
+    } else if (parseInt(filterScorePercentage.value) === 1){
+        resultArray.forEach((data)=>{
+            if((data.percentage >= 70) && (data.percentage < 97)){
                 newResultArray.push(data)
             }
         })
