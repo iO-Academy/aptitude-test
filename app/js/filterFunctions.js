@@ -113,16 +113,15 @@ function percentageFilter (resultArray){
  */
 function testAllocatedFilter(resultArray) {
     let filterTestAllocated = document.getElementById('testAllocated')
-    let newResultArray = []
+    let newResultArray = resultArray
     let chosenTestAllocated = filterTestAllocated.value
-    if (chosenTestAllocated != "") {
+    if (chosenTestAllocated) {
+        newResultArray = []
         resultArray.forEach((data)=>{
             if(data.testAllocated == chosenTestAllocated) {
                 newResultArray.push(data)
             }
         })
-    } else {
-        return resultArray
     }
     return newResultArray
 }
