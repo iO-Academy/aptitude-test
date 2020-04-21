@@ -112,48 +112,49 @@ async function getNameAndEmail() {
  * @return Object containing a success/fail state and an array of the user-result objects.
  */
 async function createUsersObject() {
-    let results = await getResults()
-    let users = await getNameAndEmail()
-    let userDisplayArray = []
+    let results = await getResults();
+    let users = await getNameAndEmail();
+    let userDisplayArray = [];
     users.forEach(function(user) {
-        let didTest = []
+        let didTest = [];
         results.forEach(function(result) {
-            let testEntryFound = []
+            let testEntryFound = [];
             if (result.id === user.id ) {
-                let answers = JSON.parse(JSON.parse(result.answers))
-                let numberOfQuestionsTaken = Object.keys(answers).length
-                let obj = {}
-                obj['id'] = user.id
-                obj['name'] = user.name
-                obj['email'] = user.email
-                obj['score'] = result.score
-                obj['percentage'] = calculatePercentage(result.score, result.testLength)
-                obj['testAllocated'] = user.testAllocated
-                obj['testId'] = user.testId
-                obj['time'] = result.time
-                obj['timeAllowed'] = secondsToMinutes(user.timeAllowed)
-                obj['dateCreated'] = result.dateCreated
-                userDisplayArray.push(obj)
+                let answers = JSON.parse(JSON.parse(result.answers));
+                let numberOfQuestionsTaken = Object.keys(answers).length;
+                let obj = {};
+                obj['id'] = user.id;
+                obj['name'] = user.name;
+                obj['email'] = user.email;
+                obj['score'] = result.score;
+                obj['percentage'] = calculatePercentage(result.score, result.testLength);
+                obj['testAllocated'] = user.testAllocated;
+                obj['testId'] = user.testId;
+                obj['time'] = result.time;
+                obj['timeAllowed'] = secondsToMinutes(user.timeAllowed);
+                obj['dateCreated'] = result.dateCreated;
+                userDisplayArray.push(obj);
                 testEntryFound.push('yes')
             }
             if (testEntryFound.length !== 0) {
                 didTest.push(testEntryFound)
             }
-        })
+        });
         if (didTest.length === 0) {
-            let obj = {}
-            obj['id'] = user.id
-            obj['name'] = user.name
-            obj['email'] = user.email
-            obj['score'] = ''
-            obj['percentage'] = ''
-            obj['testAllocated'] = user.testAllocated
-            obj['time'] = ''
-            obj['timeAllowed'] = secondsToMinutes(user.timeAllowed)
-            obj['dateCreated'] = '1970-01-01 00:00:01'
-            obj['testNotTaken'] = 'Not Taken'
+            let obj = {};
+            obj['id'] = user.id;
+            obj['name'] = user.name;
+            obj['email'] = user.email;
+            obj['score'] = '';
+            obj['percentage'] = '';
+            obj['testAllocated'] = user.testAllocated;
+            obj['testId'] = user.testId;
+            obj['time'] = '';
+            obj['timeAllowed'] = secondsToMinutes(user.timeAllowed);
+            obj['dateCreated'] = '1970-01-01 00:00:01';
+            obj['testNotTaken'] = 'Not Taken';
             userDisplayArray.push(obj)
         }
-    })
+    });
     return await {success: true, data: userDisplayArray}
 }
