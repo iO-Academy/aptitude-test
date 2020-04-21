@@ -9,6 +9,9 @@
     <input id="id" class="editUserData" type="hidden" name="id" value="{{id}}">
     <input id="originalEmail" type="hidden" name="originalEmail" value="{{email}}">
 
+    <label>ID of test allocated</label>
+    <input id="testID" class="editUserData" type="text" name="testID" value="{{test_ID}}">
+
     <label>Allow retake (tick to allow):</label>
     <input id="canRetake" type="checkbox" {{#if canRetake}}checked{{/if}}>
     <button id="editSubmit">Submit changes</button>
