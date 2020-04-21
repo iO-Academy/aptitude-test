@@ -1,15 +1,3 @@
-// Handlebars.registerHelper('equal', function(lvalue, rvalue, options) {
-//     
-//     if( lvalue!=rvalue ) {
-//         return options.inverse(this);
-//     } else {
-//         return options.fn(this);
-//     }
-// });
-
-// {{#equal lvalue rvalue}}
-// {{/equal}}
-
 /** 
  * Opens the modal dialog box.
  */
@@ -45,7 +33,6 @@ function createEditModal(userInfo, tests) {
             infoForTemplate.defaultTest = test
             infoForTemplate.tests.splice(index, 1)
         }
-        console.log(infoForTemplate.defaultTest)
     });
 
     getTemplateAjax('js/templates/editmodal.hbs').then(function (HBTemplate) {
