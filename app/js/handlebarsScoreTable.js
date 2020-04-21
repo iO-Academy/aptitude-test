@@ -65,12 +65,14 @@ function printFilteredResultsToScreen(HBTemplate, scoresDataArray) {
  */
 function createObjectFromParentElement(event) {
     let parentElement = event.target.parentElement
+    console.log(parentElement);
     let userInfo = {}
     userInfo.name = parentElement.getAttribute("dataName")
     userInfo.email = parentElement.getAttribute("dataEmail")
     userInfo.id = parentElement.getAttribute("dataId")
     userInfo.time = parentElement.getAttribute("dataTimeAllowed")
     userInfo.canRetake = parseInt(parentElement.getAttribute("dataCanRetake"))
+    // userInfo.test_ID = parentElement.getAttribute("test_id"))
     return userInfo
 }
 
