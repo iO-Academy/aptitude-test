@@ -8,9 +8,12 @@ testForm.addEventListener('submit', async function(e) {
     let testTimeSeconds = parseInt(document.querySelector('#test_time_seconds').value);
     let totalTime = testTimeMinutes * 60 + testTimeSeconds;
 
-    if ((inputLength > 0 && inputLength < 256) &&
-        (testTimeMinutes < 60 && testTimeMinutes > 0) &&
-        (testTimeSeconds < 60  && testTimeSeconds > 0)) {
+    const inputLengthIsValid = inputLength > 0 && inputLength < 256;
+    const inputTotalTimeIsValid = totalTime <= 3600 && totalTime >= 0;
+    const inputMinutesIsValid = testTimeMinutes <= 60 && testTimeMinutes >= 0;
+    const inputSecondsIsValid = testTimeSeconds < 60 && testTimeSeconds >= 0;
+
+    if (inputLengthIsValid && inputTotalTimeIsValid && inputMinutesIsValid && inputSecondsIsValid) {
         let testData = {};
 
         testData.name = testForm.testName.value;
@@ -30,7 +33,7 @@ testForm.addEventListener('submit', async function(e) {
     } else if (inputLength > 0 && inputLength < 256) {
         responseMsg.classList.remove('alert-success');
         responseMsg.classList.add('alert-danger');
-        responseMsg.innerHTML = 'Test duration minutes and seconds must be between 0 and 60.'
+        responseMsg.innerHTML = 'Test duration must be below an hour and minutes and seconds must be between 0 and 60.'
     } else {
         responseMsg.classList.remove('alert-success');
         responseMsg.classList.add('alert-danger');
