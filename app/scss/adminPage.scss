@@ -43,6 +43,10 @@ body {
         justify-content: space-between;
 
         .filterContainer {
+          display: flex;
+          justify-content: space-between;
+          flex-direction: row;
+
           label {
             font-weight: 400;
             font-size: 1.5rem;
