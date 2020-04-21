@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <title>Edit Questions</title>
+    <link href="css/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="css/styles.css" type="text/css" rel="stylesheet">
+    <link href="css/adminPage.css" type="text/css" rel="stylesheet">
+    <link href="css/editTests.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="css/resultPage.css">
+    <script src="js/handlebars-v4.0.11.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/getData.js" defer></script>
+    <script src="js/ajaxHandlebarsTemplate.js" defer></script>
+    <script src="js/populateHandlebars.js" defer></script>
+    <script src="js/editTests.js" defer></script>
+</head>
+<body>
+<section class="container">
+    <div class="row logoContainer">
+        <img class="logo" alt="Mayden Logo" src="images/branding-icons/maydenacademy_logotype_05.18_web.svg">
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="tableContainer">
+                <h2>Select Test</h2>
+                <div class="search-filter-container">
+                    <div class="display-flex">
+                        <select name="testFilter" id="filterTests" class="dropdown">
+                            <option value="" disabled selected>Select Test Name</option>
+                            <option value="1">Test 1</option>
+                        </select>
+                    </div>
+                    <h2>Questions</h2>
+                </div>
+                <table class="table tableStyles">
+                    <thead>
+                    <tr>
+                        <th class="colBtn">Modify Question</th>
+                        <th class="colNum">Number</th>
+                        <th>Question</th>
+                    </tr>
+                    </thead>
+                    <tbody class="tableBody tableList"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
