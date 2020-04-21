@@ -14,28 +14,23 @@
     <script src="js/utils.js"></script>
     <script defer src="js/userLogIn.js"></script>
     <script defer src="js/cookies.js"></script>
-    <script defer src="js/questionCount.js"></script>
     <script defer src="js/sendData.js"></script>
     <script src="js/getData.js"></script>
     <script src="js/populateHandlebars.js"></script>
-    <script src="js/formValidation.js"></script>
-    <script defer src="js/sendQuestionFormOutput.js"></script>
     <script defer src="js/ajaxHandlebarsTemplate.js"></script>
-    <title>Add Question</title>
+    <script defer src="js/formValidation.js"></script>
+    <script defer src="js/editQuestion.js"></script>
+    <title>Edit Question</title>
 </head>
 <body>
 <div class="container">
     <img class="logo" alt="Mayden Logo" src="images/branding-icons/maydenacademy_logotype_05.18_web.svg">
     <div class="form">
-        <h3>Add new question</h3>
-        <h4 class="search-heading">Current Question Count: <span id="question-count"></span></h4>
-        <h4 class="page-text">
-            Enter new question text below
-        </h4>
-        <form id="new-question">
+        <h3>Edit question</h3>
+        <form id="edit-question">
             <div class="form-group">
-                <label for="exampleFormControlTextarea1">Question:</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="question"></textarea>
+                <label for="question-to-edit">Question:</label>
+                <textarea class="form-control" id="question-to-edit" rows="5" name="question"></textarea>
             </div>
             <div class="answers">
                 <h4 class="page-text">Enter up to 5 answers below (minimum 2) then tick corresponding checkbox to
@@ -43,27 +38,27 @@
                 <div class="form-group">
                     <label for="option1">Option 1:</label>
                     <textarea class="form-control answer" id="option1" rows="2" name="option1"></textarea>
-                    <input class="answer-check" type="radio" name="answer-check">
+                    <input class="answer-check" type="radio" name="answer-check" data-question-id="1">
                 </div>
                 <div class="form-group">
                     <label for="option2">Option 2:</label>
                     <textarea class="form-control answer" id="option2" rows="2" name="option2"></textarea>
-                    <input class="answer-check" type="radio" name="answer-check">
+                    <input class="answer-check" type="radio" name="answer-check" data-question-id="2">
                 </div>
                 <div class="form-group">
                     <label for="option3">Option 3:</label>
                     <textarea class="form-control answer" id="option3" rows="2" name="option3"></textarea>
-                    <input class="answer-check" type="radio" name="answer-check">
+                    <input class="answer-check" type="radio" name="answer-check" data-question-id="3">
                 </div>
                 <div class="form-group">
                     <label for="option4">Option 4:</label>
                     <textarea class="form-control answer" id="option4" rows="2" name="option4"></textarea>
-                    <input class="answer-check" type="radio" name="answer-check">
+                    <input class="answer-check" type="radio" name="answer-check" data-question-id="4">
                 </div>
                 <div class="form-group">
                     <label for="option5">Option 5:</label>
                     <textarea class="form-control answer" id="option5" rows="2" name="option5"></textarea>
-                    <input class="answer-check" type="radio" name="answer-check">
+                    <input class="answer-check" type="radio" name="answer-check" data-question-id="5">
                 </div>
                 <div class="form-group">
                     <label for="test_id">Assign to test:</label>
