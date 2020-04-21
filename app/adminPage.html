@@ -103,8 +103,13 @@
                 </div>
                 <form class="new-test-container" id="testForm" method="post">
                     <h2>Add new test</h2>
-                    <div class="display-flex">
-                        <input name="testName" type="text" id="testName" placeholder="Test name">
+                    <div>
+                        <label for="testName">Test Name :</label>
+                        <input name="testName" type="text" id="testName">
+                        <label for="test_time_minutes">Test Duration (min/sec) :</label>
+                        <input type="number" id="test_time_minutes" name="time" value="30">
+                        :
+                        <input type="number" id="test_time_seconds" name="time" value="00">
                         <input type="submit" class="btn primary-button new-test-button submit" value="Add new test">
                     </div>
                     <div id="message-target">
