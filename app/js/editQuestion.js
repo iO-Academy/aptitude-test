@@ -20,11 +20,21 @@ async function editQuestion(id, newQuestionData) {
     return await sendData(jsonToFormData(newQuestionData), `/question/${id}/edit`);
 }
 
+/**
+ * Get a question from the database
+ * @param {string} id The question you want to get
+ * @returns {Promise<object>} the question data
+ **/
 async function getQuestionById(id) {
     const { data } = await getData("/question");
     return data.filter(question => question.id === String(id));
 }
 
+/**
+ * Get the answer of a specific question
+ * @param {string} id The question you would like the answer of
+ * @returns {Promise<string>} the answer number
+ */
 async function getAnswerByQuestionId(id) {
     const { data } = await getData(`/answer/${id}`);
     return data.answer;
