@@ -10,7 +10,7 @@ function openDialog() {
  * Closes the modal dialog box.
  */
 function closeDialog() {
-    document.querySelector('#modal').style.display = 'none'
+    document.querySelector('#modal').style.display = 'none';
     document.querySelector('.overlay').style.display = 'none'
 }
 
@@ -22,7 +22,7 @@ function closeDialog() {
  */
 function createEditModal(userInfo) {
     getTemplateAjax('js/templates/editmodal.hbs').then(function (HBTemplate) {
-        fillEditModalFields(HBTemplate, userInfo)
+        fillEditModalFields(HBTemplate, userInfo);
     })
     .then(() => {
         addEditModalSubmitEventListener()
@@ -36,14 +36,16 @@ function createEditModal(userInfo) {
  * @param userInfo the object of all fields required in scores page.
  */
 function fillEditModalFields(HBTemplate, userInfo) {
-    let template = Handlebars.compile(HBTemplate)
-    let modal_content = document.querySelector("#modal-content")
-    modal_content.innerHTML = ""
-    if (userInfo.name && userInfo.email && userInfo.id && userInfo.time) {
-        let html = template(userInfo)
-        modal_content.innerHTML += html
+    let template = Handlebars.compile(HBTemplate);
+    let modal_content = document.querySelector("#modal-content");
+
+    modal_content.innerHTML = "";
+
+    if (userInfo.name && userInfo.email && userInfo.id && userInfo.timeMinutes && userInfo.timeSeconds) {
+        let html = template(userInfo);
+        modal_content.innerHTML += html;
     } else {
-        modal_content.innerHTML = "Please contact Admin, user list unavailable"
+        modal_content.innerHTML = "Please contact Admin, user list unavailable";
     }
 }
 
@@ -52,10 +54,31 @@ function fillEditModalFields(HBTemplate, userInfo) {
  * @param time
  * @returns boolean
  */
-function isTimeValid(time) {
-    let intTime = parseInt(time)
-    return !(intTime <= 1 || intTime == null)
+function isTimeTotalValid(time) {
+    let intTime = parseInt(time);
+    return (intTime > 0 && intTime <= 3600);
 }
+
+/**
+ * Takes time and returns true if passed validation or false otherwise.
+ * @param time
+ * @returns boolean
+ */
+function isTimeMinutesValid(time) {
+    let intTime = parseInt(time);
+    return (intTime > 0 && intTime <= 60);
+}
+
+/**
+ * Takes time and returns true if passed validation or false otherwise.
+ * @param time
+ * @returns boolean
+ */
+function isTimeSecondsValid(time) {
+    let intTime = parseInt(time);
+    return (intTime <= 1 && intTime < 60);
+}
+
 
 /**
  * this is an event listener on the submit button (listens for click), 
@@ -64,22 +87,41 @@ function isTimeValid(time) {
  * matches current or email does not exist is db then user data is updated.
  */
 function addEditModalSubmitEventListener() {
-    document.getElementById('editSubmit').addEventListener('click', function() {
-        let name = document.getElementById("firstName").value
-        let email = document.getElementById("email").value
-        let time = document.getElementById('time').value
-        let originalEmail = document.getElementById("originalEmail").value
+    document.querySelector('#editSubmit').addEventListener('click', function() {
+        let name = document.getElementById("firstName").value;
+        let email = document.getElementById("email").value;
+        let timeMinutes = document.getElementById('userMinutes').value;
+        let timeSeconds = document.getElementById('userSeconds').value;
+        let timeTotal = document.querySelector('#time');
+        let originalEmail = document.getElementById("originalEmail").value;
+        let errorField = document.querySelector('#modal_error');
+
+        timeTotal.value = parseInt(timeMinutes * 60) + parseInt(timeSeconds);
+
         getExistingUsers().then(function (existingUsers) {
             if (isEmpty(name) &&
                 isEmpty(email) &&
                 nameValidation(name) &&
-                isTimeValid (time) &&
+                isTimeTotalValid(timeTotal.value) &&
+                isTimeMinutesValid(timeMinutes) &&
+                isTimeSecondsValid(timeSeconds) &&
                 isEmailValid(email)) {
                 if(originalEmail == email || userExists(email, existingUsers) == false) {
-                    closeDialog()
-                    postUserEdit(createObjectForDatabase('.editUserData'))
+                    errorField.innerHTML = '';
+                    errorField.classList.add('alert-success');
+                    errorField.classList.remove('alert-danger');
+                    closeDialog();
+                    postUserEdit(createObjectForDatabase('.editUserData'));
                     updateScoreTable()
+                } else {
+                    errorField.classList.remove('alert-success');
+                    errorField.classList.add('alert-danger');
+                    errorField.innerHTML = "Your email is not valid or already exists: Please provide a correct email"
                 }
+            } else {
+                errorField.classList.remove('alert-success');
+                errorField.classList.add('alert-danger');
+                errorField.innerHTML = 'Test duration must be below an hour and minutes and seconds must be between 0 and 60.';
             }
         })
     })
