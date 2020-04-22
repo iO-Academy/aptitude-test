@@ -198,6 +198,39 @@ $app->get('/question', function ($request, $response, $args) {
     return $response->withJson($data);
 });
 
+$app->get('/question/{id}', function ($request, $response, $question) {
+    $data = ['success' => false, 'message' => 'An unexpected error occured.', 'data' => []];
+
+    if (empty($question['id']) || !is_numeric($question['id'])) {
+        $data['message'] = 'Please supply a valid question ID';
+        $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+        return $response->withJson($data, 400);
+    }
+
+    try {
+        $query = "SELECT `id`, `text`, `option1`, `option2`, `option3`, `option4`, `option5`, `answer`, `test_id` FROM `question` WHERE `deleted` <> 1 AND `id` = :questionId;";
+
+        $questionId = $question['id'];
+
+        $query = $this->db->prepare($query);
+        $query->bindParam(':questionId', $questionId);
+
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+
+    } catch(Exception $e) {
+        $data['message'] = $e->getMessage();
+        $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+        return $response->withJson($data, 500);
+    }
+
+    $data['success'] = true;
+    $data['message'] = 'Successfully retrieved question.';
+    $data['data'] = $result;
+    $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+    return $response->withJson($data);
+});
+
 $app->post('/question', function ($request, $response, $args) {
     $data = ['success' => false, 'message' => 'An unexpected error occured.', 'data' => []];
 
