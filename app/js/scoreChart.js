@@ -3,8 +3,6 @@
  */
 
 function updateChart() {
-    document.querySelector('#myChart').remove();
-    document.querySelector('.chartjs-size-monitor').remove();
     document.querySelector('.show-graph').innerHTML = '<canvas id="myChart"></canvas>';
     drawChart();
 }
