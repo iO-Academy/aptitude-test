@@ -1,14 +1,20 @@
-let ctx = document.getElementById('myChart');
+/**
+ * script for graph using chart.js, links to canvas id=myChart in adminPage.html
+ */
 
+let ctx = document.getElementById('myChart');
+// sets global font size and font family for the chart
 Chart.defaults.global.defaultFontSize = 12;
 Chart.defaults.global.defaultFontFamily = "'Asap', sans-serif";
 let myChart = new Chart(ctx, {
     type: 'bar',
+    // data and settings populating the chart
     data: {
         labels: ['Test One', 'Test Two', 'Test Three'],
         datasets: [{
             label: '<70%',
             data: [8, 7, 8],
+            // background color of individual bars
             backgroundColor: [
                 '#F27324',
                 '#F27324',
@@ -52,6 +58,7 @@ let myChart = new Chart(ctx, {
                 }
             }]
         },
+        // allows graph to be resized according to its container div size
         maintainAspectRatio: false
     }
 });
