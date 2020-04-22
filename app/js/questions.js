@@ -1,26 +1,23 @@
-const flaggedQuestions = {}
-
+let flaggedQuestions = {}
 /**
  * fills handlebars template by getting the user data from the api and inserts into the user_list div
  *
  * @param HBTemplate the handlebars template
  */
 function fillUserTable(HBTemplate) {
-    let baseUrl = getBaseUrl()
     let template = Handlebars.compile(HBTemplate)
     let counter = 0;
-    fetch(baseUrl + "question")
-        .then(function(result) {
-            return result.json()
-        })
-        .then(function(result) {
-            let questionNoAssign = 1
-            result.data.forEach(function(question) {
-                question['questionOrderId'] = questionNoAssign
-                flaggedQuestions[question.questionOrderId] = false
-                document.querySelector("#questions").innerHTML += template(question)
-                questionNoAssign++
-            })
+    let cookie = getCookie ('userEmail');
+    getData(`user?email=${cookie}`)
+        .then((data) => {getData(`question?test_id=${data.data.test_id}`)
+            .then((result) => {
+                let questionNoAssign = 1
+                result.data.forEach((question) => {
+                    question['questionOrderId'] = questionNoAssign
+                    flaggedQuestions[question.questionOrderId] = false
+                    document.querySelector("#questions").innerHTML += template(question)
+                    questionNoAssign++
+                })
             counter = result.data.length
 
             putDescription(counter)
@@ -29,6 +26,7 @@ function fillUserTable(HBTemplate) {
             active()
             changeQuestion(current)
         })
+    })
 }
 
 getTemplateAjax('js/templates/questions.hbs').then(function(HBTemplate) {

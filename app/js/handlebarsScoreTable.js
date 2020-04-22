@@ -75,7 +75,9 @@ function createObjectFromParentElement(event) {
     userInfo.timeMinutes = userTimeMinutes;
     userInfo.timeSeconds = userTimeSeconds;
     userInfo.canRetake = parseInt(parentElement.getAttribute("dataCanRetake"));
-    return userInfo
+    userInfo.dataTestId = parentElement.getAttribute("dataTestId");
+  
+    return userInfo;
 }
 
 /**
@@ -85,9 +87,11 @@ function addEditEventListeners() {
     let editButtons = document.querySelectorAll(".modalBtn");
     editButtons.forEach(function(editButton) {
         editButton.addEventListener('click', function (e) {
-            openDialog();
-            let userInfo = createObjectFromParentElement(e);
-            createEditModal(userInfo)
+            openDialog()
+            let userInfo = createObjectFromParentElement(e)
+            getData("test").then((data) => {
+                createEditModal(userInfo, data.data)
+            })
         })
     })
 }

@@ -92,7 +92,7 @@ async function getNameAndEmail() {
     let userObjectArray = []
     users.forEach(function(user) {
         let obj = {}
-        let {id, email, name, time, test_id} = user
+        let {id, email, name, time, test_id, canRetake} = user
         let testName = findTestName(tests, test_id)
         obj['id'] = id
         obj['name'] = name
@@ -100,6 +100,7 @@ async function getNameAndEmail() {
         obj['timeAllowed'] = time
         obj['testAllocated'] = testName
         obj['testId'] = test_id
+        obj['canRetake'] = canRetake
         userObjectArray.push(obj)
     })
     return userObjectArray
@@ -133,6 +134,7 @@ async function createUsersObject() {
                 obj['time'] = result.time
                 obj['timeAllowed'] = secondsToMinutes(user.timeAllowed)
                 obj['dateCreated'] = result.dateCreated
+                obj['canRetake'] = user.canRetake
                 userDisplayArray.push(obj)
                 testEntryFound.push('yes')
             }
@@ -148,9 +150,11 @@ async function createUsersObject() {
             obj['score'] = ''
             obj['percentage'] = ''
             obj['testAllocated'] = user.testAllocated
+            obj['testId'] = user.testId
             obj['time'] = ''
             obj['timeAllowed'] = secondsToMinutes(user.timeAllowed)
             obj['dateCreated'] = '1970-01-01 00:00:01'
+            obj['canRetake'] = user.canRetake
             obj['testNotTaken'] = 'Not Taken'
             userDisplayArray.push(obj)
         }
