@@ -2,16 +2,6 @@ const queryString = window.location.search;
 const urlParams = new URLSearchParams(queryString);
 const testId = urlParams.get('test_id') || 1;
 
-let authorised = false;
-let user = getCookie('userEmail');
-
-getUser(user).then((user) => {
-    if (user.data.isAdmin === '1') {
-        authorised = true;
-    }
-});
-
-
 populateHandlebars('.tableBody', 'js/templates/questionTable.hbs', `question?test_id=${testId}`).then(() => {
     document.querySelectorAll(".delete-question").forEach((btn) => {
         btn.addEventListener('click', async (clickedBtn) => {

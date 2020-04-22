@@ -1,12 +1,3 @@
-let authorised = false;
-let user = getCookie('userEmail');
-
-getUser(user).then((user) => {
-    if (user.data.isAdmin === '1') {
-        authorised = true;
-    }
-});
-
 // populate dropdown menu with available tests
 populateHandlebars('#test_id', 'js/templates/testDropdown.hbs', 'test');
 
@@ -68,10 +59,6 @@ window.addEventListener("load", async () => {
 
         if (hasQuestions && hasAnswers && isValid) {
             let answer;
-
-            if (!authorised) {
-                return;
-            }
 
             document.querySelectorAll('.answer-check').forEach((answerCheck, index) => {
                 if (answerCheck.checked) {

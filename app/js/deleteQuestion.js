@@ -1,5 +1,5 @@
 /**
- * soft deletes question from database
+ * deletes question from Test
  * @param {number} id the question id
  * @returns {Promise<*>} response from api
  */
