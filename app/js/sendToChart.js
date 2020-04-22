@@ -41,7 +41,7 @@ async function generateDataset(datasetLabel, testLabels, minPercentage, maxPerce
 
         users.forEach(function (user) {
 
-            if (user.percentage >= minPercentage && user.percentage < maxPercentage && user.testAllocated == label) {
+            if (!user.testNotTaken && user.percentage >= minPercentage && user.percentage < maxPercentage && user.testAllocated == label) {
                 
                 amountInRange ++;
 

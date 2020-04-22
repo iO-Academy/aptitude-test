@@ -1,10 +1,12 @@
 
 document.getElementById('filterScorePercentage').addEventListener('change', () => {
     updateScoreTable()
+    updateChart()
 })
 
 document.getElementById('testAllocated').addEventListener('change', () => {
     updateScoreTable()
+    updateChart()
 })
 
 /**
