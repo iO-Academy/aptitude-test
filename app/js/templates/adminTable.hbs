@@ -23,6 +23,10 @@
         <td class="testAllocated">{{testAllocated}}</td>
         <td class="time">{{timeAllowed}}</td>
         <td class="time">{{time}}</td>
-        <td class="date">{{#if testNotTaken}}{{testNotTaken}}{{else}}{{dateCreated}}{{/if}}</td>
+        <td class="date">{{#if testNotTaken}}
+                              {{testNotTaken}}
+                         {{else}}
+                              {{dateCreated}}
+                         {{/if}}</td>
 </tr>
 {{/each}}
