@@ -33,9 +33,7 @@ async function getAnswerByQuestionId(id) {
 
 (async () => {
     const form = document.querySelector("#edit-question");
-    const queryString = window.location.search;
-    const urlParams = new URLSearchParams(queryString);
-    const questionId = urlParams.get('question_id');
+    const questionId = location.hash.replace("#", "");
     const [question] = await getQuestionById(questionId);
     const answer = await getAnswerByQuestionId(questionId);
 
