@@ -1,8 +1,5 @@
 populateHandlebars('#test_id', 'js/templates/testDropdown.hbs', 'test');
 populateHandlebars('#testAllocated', 'js/templates/testAllocatedFilter.hbs', 'test');
-
-
-
 populateUserDuration();
 
 document.querySelector('#test_id').addEventListener('change', () => {
@@ -110,22 +107,32 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
 
         if (!isEmailValid(emailField.value) || userExists(emailField.value, existingUsers)) {
             emailIsValid = false;
-            errorField.innerHTML = "Your email is not valid or already exists: Please provide a correct email"
+            errorField.classList.remove('alert-success');
+            errorField.classList.add('alert-danger');
+            errorField.innerHTML = "Your email is not valid or already exists: Please provide a correct email";
         } else if (timeTotal <=1 || timeTotal > 3600 ||
             (timeMinutes > 60 || timeMinutes < 0) ||
             (timeSeconds > 59 || timeSeconds < 0)) {
             timeIsValid = false;
-            errorField.innerHTML = 'This is not a good number!'
+
+            errorField.classList.remove('alert-success');
+            errorField.classList.add('alert-danger');
+            errorField.innerHTML = 'Test duration must be below an hour and minutes and seconds must be between 0 and 60.';
         } else if (emailIsValid && timeIsValid) {
             errorField.innerHTML = '';
             saveNewUser({'name': nameField.value, 'email': emailField.value, 'test_id': testField.value, 'time': timeTotal}).then(function(response) {
                 if (response.success) {
+                    errorField.classList.add('alert-success');
+                    errorField.classList.remove('alert-danger');
+                    errorField.innerHTML = "User added successfully.";
                     nameField.value = '';
                     emailField.value = '';
                     testField.value = '1';
                     populateUserDuration();
                     updateScoreTable()
                 } else {
+                    errorField.classList.remove('alert-success');
+                    errorField.classList.add('alert-danger');
                     errorField.innerHTML = response.message
                 }
             })

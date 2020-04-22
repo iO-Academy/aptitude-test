@@ -1,5 +1,5 @@
 function populateUserDuration(testFieldValue = 1) {
-    getTestDuration(testFieldValue).then ((userDurationTotal) => {
+    getTestDuration(testFieldValue).then((userDurationTotal) => {
         let userDurationMinutes = userDurationTotal / 60;
         let userDurationSeconds = userDurationTotal % 60;
         let userDurationMinutesField = document.querySelector('#user_time_minutes');

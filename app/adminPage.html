@@ -11,7 +11,7 @@
     <script src="js/userLogIn.js"></script>
     <script src="js/cookies.js"></script>
     <script>
-        let userEmail = getCookie('userEmail')
+        let userEmail = getCookie('userEmail');
         getUser(userEmail).then(function(user) {
             if (!user.success || !isAuthorised(user.data, "1")) {
                 window.location.replace("index.html")
@@ -65,7 +65,9 @@
                         <input type="submit" value="Add User" class="btn primary-button">
                     </div>
                 </form>
-                <div id='error' class='title_input'></div>
+                <div class="message-target">
+                    <div id="error" class="title_input alert" role="alert"></div>
+                </div>
                 <div class="score-container">
                     <h2>Scores</h2>
                     <div class="search-filter-container">
@@ -119,7 +121,7 @@
                         <input type="number" id="test_time_seconds" name="time" value="00">
                         <input type="submit" class="btn primary-button new-test-button submit" value="Add new test">
                     </div>
-                    <div id="message-target">
+                    <div class="message-target">
                         <div id="inputSubmissionConfirmation" class="alert" role="alert"></div>
                     </div>
                 </form>

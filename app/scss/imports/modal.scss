@@ -15,7 +15,7 @@ $modal-background: #ffffff;
 #modal {
   display: none;
   background: $modal-background;
-  width: 600px;
+  width: 650px;
   position: fixed;
   top: 30px;
   left: 50%;
@@ -23,6 +23,7 @@ $modal-background: #ffffff;
   padding: 15px;
   z-index: 501;
 }
+
 
 .list-container {
   margin: 0 70px 0;

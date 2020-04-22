@@ -33,10 +33,10 @@ testForm.addEventListener('submit', async function(e) {
     } else if (inputLength > 0 && inputLength < 256) {
         responseMsg.classList.remove('alert-success');
         responseMsg.classList.add('alert-danger');
-        responseMsg.innerHTML = 'Test duration must be below an hour and minutes and seconds must be between 0 and 60.'
+        responseMsg.innerHTML = 'Test duration must be below an hour and minutes and seconds must be between 0 and 60.';
     } else {
         responseMsg.classList.remove('alert-success');
         responseMsg.classList.add('alert-danger');
-        responseMsg.innerHTML = 'Test name must be between 1 and 255 characters.'
+        responseMsg.innerHTML = 'Test name must be between 1 and 255 characters.';
     }
 });

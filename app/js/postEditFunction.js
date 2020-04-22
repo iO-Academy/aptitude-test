@@ -7,15 +7,16 @@
  * @return Returns an object that can be used as the parameter in postUserData() function.
  */
 function createObjectForDatabase(inputClass) {
-    let formData = document.querySelectorAll(inputClass)
-    let canRetake = document.getElementById('canRetake')
-    let result = {'canRetake': '0'}
+    let formData = document.querySelectorAll(inputClass);
+    let canRetake = document.getElementById('canRetake');
+    let result = {'canRetake': '0'};
+
     if (canRetake.checked) {
         result = {'canRetake': '1'}
     }
         formData.forEach(function (input) {
             result[input.name] = input.value
-        })
+        });
         return result
     }
 
@@ -29,7 +30,6 @@ function createObjectForDatabase(inputClass) {
  */
 async function postUserEdit(formData) {
     let baseUrl = getBaseUrl()
-    formData.time = parseInt(formData.time) * 60
 
     if (formData.name && formData.email && formData.id && formData.time) {
         let apiData = await fetch(baseUrl + 'user/edit', {
