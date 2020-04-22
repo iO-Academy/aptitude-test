@@ -1,12 +1,15 @@
 /**
- * script for graph using chart.js, links to canvas id=myChart in adminPage.html
+ * Function to update the chart. Due to how chart.js works, the only effective way to do
+ * this seems to be completely resetting the graph container every time.
  */
-
 function updateChart() {
     document.querySelector('.show-graph').innerHTML = '<canvas id="myChart"></canvas>';
     drawChart();
 }
 
+/**
+ * script for graph using chart.js, links to canvas id=myChart in adminPage.html
+ */
 function drawChart() {
     sendToChart().then((chartData)=>{
         let ctx = document.getElementById('myChart');
@@ -44,4 +47,5 @@ function drawChart() {
     });
 }
 
+// Draw the chart for the first time when the page loads
 drawChart();
