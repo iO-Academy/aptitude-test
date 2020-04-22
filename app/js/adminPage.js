@@ -122,3 +122,11 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
         }
     })
 })
+
+document.querySelectorAll('.download-user-results-button').forEach((button) => {
+    button.addEventListener('click', (e) => {
+        e.preventDefault()
+    
+    
+    })
+})
