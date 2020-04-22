@@ -125,7 +125,7 @@ function deleteUser(userId) {
 function produceTable (HBTemplate, scoresDataObject) {
     scoresDataObject.data.forEach(function (scoreData) {
         switch (true) {
-            case scoreData.percentage > 97:
+            case scoreData.percentage >= 97:
                 scoreData.topGrade = true
                 break
             case scoreData.percentage >= 70:
