@@ -3,11 +3,11 @@ let responseMsg = document.querySelector('#inputSubmissionConfirmation');
 
 testForm.addEventListener('submit', async function(e) {
     e.preventDefault();
-    let inputLength = document.querySelector('#testName').value.length;
-    let testTimeMinutes = parseInt(document.querySelector('#test_time_minutes').value);
-    let testTimeSeconds = parseInt(document.querySelector('#test_time_seconds').value);
-    let totalTime = testTimeMinutes * 60 + testTimeSeconds;
 
+    const inputLength = document.querySelector('#testName').value.length;
+    const testTimeMinutes = parseInt(document.querySelector('#test_time_minutes').value);
+    const testTimeSeconds = parseInt(document.querySelector('#test_time_seconds').value);
+    const totalTime = testTimeMinutes * 60 + testTimeSeconds;
     const inputLengthIsValid = inputLength > 0 && inputLength < 256;
     const inputTotalTimeIsValid = totalTime <= 3600 && totalTime >= 0;
     const inputMinutesIsValid = testTimeMinutes <= 60 && testTimeMinutes >= 0;

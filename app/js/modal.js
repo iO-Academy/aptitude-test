@@ -27,12 +27,12 @@ function createEditModal(userInfo, tests) {
         tests: tests,
         user: userInfo,
         defaultTest: {}
-    }
+    };
 
     infoForTemplate.tests.forEach(test => {
-        let index = infoForTemplate.tests.indexOf(test)
+        let index = infoForTemplate.tests.indexOf(test);
         if(test.id == infoForTemplate.user.dataTestId){
-            infoForTemplate.defaultTest = test
+            infoForTemplate.defaultTest = test;
             infoForTemplate.tests.splice(index, 1)
         }
     });
@@ -58,7 +58,7 @@ function fillEditModalFields(HBTemplate, userInfo) {
     modal_content.innerHTML = "";
       
     if (userInfo.user.name && userInfo.user.email && userInfo.user.id && userInfo.user.timeMinutes && userInfo.user.timeSeconds) {
-        let html = template(userInfo)
+        let html = template(userInfo);
         modal_content.innerHTML += html
     } else {
         modal_content.innerHTML = "Please contact Admin, user list unavailable";

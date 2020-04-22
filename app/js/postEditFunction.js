@@ -8,14 +8,14 @@
  */
 function createObjectForDatabase(inputClass) {
     let formData = document.querySelectorAll(inputClass);
-    let canRetake = document.getElementById('canRetake');
+    let canRetake = document.querySelector('#canRetake');
     let result = {'canRetake': '0'};
 
     if (canRetake.checked) {
         result = {'canRetake': '1'}
     }
         formData.forEach(function (input) {
-            result[input.name] = input.value
+            result[input.name] = input.value;
         });
         return result
     }
@@ -29,14 +29,14 @@ function createObjectForDatabase(inputClass) {
  * @return object apiData stating posts success and whether user data has been updated.
  */
 async function postUserEdit(formData) {
-    let baseUrl = getBaseUrl()
+    let baseUrl = getBaseUrl();
 
     if (formData.name && formData.email && formData.id && formData.time) {
         let apiData = await fetch(baseUrl + 'user/edit', {
             method: 'post',
             body: jsonToFormData(formData)
-        })
-        apiData = await apiData.json()
+        });
+        apiData = await apiData.json();
         return apiData
     }
 }
