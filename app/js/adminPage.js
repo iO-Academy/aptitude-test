@@ -110,7 +110,7 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
             errorField.classList.remove('alert-success');
             errorField.classList.add('alert-danger');
             errorField.innerHTML = "Your email is not valid or already exists: Please provide a correct email";
-        } else if (timeTotal <=1 || timeTotal > 3600 ||
+        } else if (timeTotal <= 1 || timeTotal > 3600 ||
             (timeMinutes > 60 || timeMinutes < 0) ||
             (timeSeconds > 59 || timeSeconds < 0)) {
             timeIsValid = false;
@@ -120,7 +120,12 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
             errorField.innerHTML = 'Test duration must be below an hour and minutes and seconds must be between 0 and 60.';
         } else if (emailIsValid && timeIsValid) {
             errorField.innerHTML = '';
-            saveNewUser({'name': nameField.value, 'email': emailField.value, 'test_id': testField.value, 'time': timeTotal}).then(function(response) {
+            saveNewUser({
+                    name: nameField.value,
+                    email: emailField.value,
+                    test_id: testField.value,
+                    time: timeTotal
+                }).then(function(response) {
                 if (response.success) {
                     errorField.classList.add('alert-success');
                     errorField.classList.remove('alert-danger');
