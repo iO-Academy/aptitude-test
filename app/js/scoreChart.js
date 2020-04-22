@@ -1,8 +1,8 @@
-var ctx = document.getElementById('myChart');
+let ctx = document.getElementById('myChart');
 
 Chart.defaults.global.defaultFontSize = 12;
 Chart.defaults.global.defaultFontFamily = "'Asap', sans-serif";
-var myChart = new Chart(ctx, {
+let myChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: ['Test One', 'Test Two', 'Test Three'],
@@ -39,7 +39,6 @@ var myChart = new Chart(ctx, {
             display: true,
             text: "Percentage score distribution across different aptitude tests",
             fontSize: 16,
-            fontStyle: 'bold',
         },
         scales: {
             yAxes: [{
