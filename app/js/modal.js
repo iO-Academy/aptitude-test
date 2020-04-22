@@ -19,10 +19,25 @@ function closeDialog() {
  * Then calls function to fill modal fields with the users' data.
  * Then adds the submit button's event listener.
  * @param userInfo Object containing info of the user to edit.
+ * removed the duplicate test from tests array and created default test in order to populate sleceted option on modal pop out.
  */
-function createEditModal(userInfo) {
+function createEditModal(userInfo, tests) {
+    infoForTemplate={
+        tests: tests,
+        user: userInfo,
+        defaultTest: {}
+    }
+
+    infoForTemplate.tests.forEach(test => {
+        let index = infoForTemplate.tests.indexOf(test)
+        if(test.id == infoForTemplate.user.dataTestId){
+            infoForTemplate.defaultTest = test
+            infoForTemplate.tests.splice(index, 1)
+        }
+    });
+
     getTemplateAjax('js/templates/editmodal.hbs').then(function (HBTemplate) {
-        fillEditModalFields(HBTemplate, userInfo)
+        fillEditModalFields(HBTemplate, infoForTemplate)
     })
     .then(() => {
         addEditModalSubmitEventListener()
@@ -39,7 +54,7 @@ function fillEditModalFields(HBTemplate, userInfo) {
     let template = Handlebars.compile(HBTemplate)
     let modal_content = document.querySelector("#modal-content")
     modal_content.innerHTML = ""
-    if (userInfo.name && userInfo.email && userInfo.id && userInfo.time) {
+    if (userInfo.user.name && userInfo.user.email && userInfo.user.id && userInfo.user.time) {
         let html = template(userInfo)
         modal_content.innerHTML += html
     } else {
@@ -69,6 +84,7 @@ function addEditModalSubmitEventListener() {
         let email = document.getElementById("email").value
         let time = document.getElementById('time').value
         let originalEmail = document.getElementById("originalEmail").value
+        let testId = document.getElementById("testID").value
         getExistingUsers().then(function (existingUsers) {
             if (isEmpty(name) &&
                 isEmpty(email) &&

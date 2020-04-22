@@ -148,6 +148,7 @@ async function createUsersObject() {
             obj['score'] = ''
             obj['percentage'] = ''
             obj['testAllocated'] = user.testAllocated
+            obj['testId'] = user.testId
             obj['time'] = ''
             obj['timeAllowed'] = secondsToMinutes(user.timeAllowed)
             obj['dateCreated'] = '1970-01-01 00:00:01'
