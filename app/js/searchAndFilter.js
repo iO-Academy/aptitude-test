@@ -15,4 +15,3 @@ function searchAndFilter(HBTemplate, resultArray) {
     resultArray = splitArray(resultArray, 20);
     printFilteredResultsToScreen(HBTemplate, resultArray[0]);
 }
-
