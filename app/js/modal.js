@@ -76,7 +76,7 @@ function isTimeMinutesValid(time) {
  */
 function isTimeSecondsValid(time) {
     let intTime = parseInt(time);
-    return (intTime <= 1 && intTime < 60);
+    return (intTime > 0 && intTime < 60);
 }
 
 
@@ -88,12 +88,12 @@ function isTimeSecondsValid(time) {
  */
 function addEditModalSubmitEventListener() {
     document.querySelector('#editSubmit').addEventListener('click', function() {
-        let name = document.getElementById("firstName").value;
-        let email = document.getElementById("email").value;
-        let timeMinutes = document.getElementById('userMinutes').value;
-        let timeSeconds = document.getElementById('userSeconds').value;
+        let name = document.querySelector("#firstName").value;
+        let email = document.querySelector("#email").value;
+        let timeMinutes = document.querySelector('#userMinutes').value;
+        let timeSeconds = document.querySelector('#userSeconds').value;
         let timeTotal = document.querySelector('#time');
-        let originalEmail = document.getElementById("originalEmail").value;
+        let originalEmail = document.querySelector("#originalEmail").value;
         let errorField = document.querySelector('#modal_error');
 
         timeTotal.value = parseInt(timeMinutes * 60) + parseInt(timeSeconds);
@@ -116,7 +116,7 @@ function addEditModalSubmitEventListener() {
                 } else {
                     errorField.classList.remove('alert-success');
                     errorField.classList.add('alert-danger');
-                    errorField.innerHTML = "Your email is not valid or already exists: Please provide a correct email"
+                    errorField.innerHTML = "Your email is not valid or already exists: Please provide a correct email";
                 }
             } else {
                 errorField.classList.remove('alert-success');

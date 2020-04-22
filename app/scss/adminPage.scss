@@ -23,7 +23,7 @@ body {
       }
 
       input {
-        margin-right: 1rem;
+        margin: 0 0.5rem;
 
         &.primary-button {
           font-size: 1.4rem;
@@ -152,10 +152,6 @@ input[type="number"] {
 
 #testForm {
   .submit {
-    margin-left: 1rem;
-  }
-
-  label[for="test_time_minutes"] {
     margin-left: 1rem;
   }
 }
