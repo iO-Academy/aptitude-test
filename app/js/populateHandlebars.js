@@ -12,7 +12,3 @@ async function populateHandlebars(targetElement, handlebarsPath, APIpath) {
     let template = Handlebars.compile(HBTemplate)
     document.querySelector(targetElement).innerHTML = template(dataToInsert)
 }
-
-
-
-
