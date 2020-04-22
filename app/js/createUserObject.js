@@ -154,6 +154,7 @@ async function createUsersObject() {
             obj['time'] = ''
             obj['timeAllowed'] = secondsToMinutes(user.timeAllowed)
             obj['dateCreated'] = '1970-01-01 00:00:01'
+            obj['canRetake'] = user.canRetake
             obj['testNotTaken'] = 'Not Taken'
             userDisplayArray.push(obj)
         }
