@@ -92,7 +92,7 @@ async function getNameAndEmail() {
     let userObjectArray = []
     users.forEach(function(user) {
         let obj = {}
-        let {id, email, name, time, test_id} = user
+        let {id, email, name, time, test_id, canRetake} = user
         let testName = findTestName(tests, test_id)
         obj['id'] = id
         obj['name'] = name
@@ -100,6 +100,7 @@ async function getNameAndEmail() {
         obj['timeAllowed'] = time
         obj['testAllocated'] = testName
         obj['testId'] = test_id
+        obj['canRetake'] = canRetake
         userObjectArray.push(obj)
     })
     return userObjectArray
@@ -133,11 +134,12 @@ async function createUsersObject() {
                 obj['time'] = result.time;
                 obj['timeAllowed'] = secondsToMinutes(user.timeAllowed);
                 obj['dateCreated'] = result.dateCreated;
+                obj['canRetake'] = user.canRetake;              
                 userDisplayArray.push(obj);
-                testEntryFound.push('yes')
+                testEntryFound.push('yes');
             }
             if (testEntryFound.length !== 0) {
-                didTest.push(testEntryFound)
+                didTest.push(testEntryFound);
             }
         });
         if (didTest.length === 0) {
@@ -153,7 +155,8 @@ async function createUsersObject() {
             obj['timeAllowed'] = secondsToMinutes(user.timeAllowed);
             obj['dateCreated'] = '1970-01-01 00:00:01';
             obj['testNotTaken'] = 'Not Taken';
-            userDisplayArray.push(obj)
+            obj['canRetake'] = user.canRetake;
+            userDisplayArray.push(obj);
         }
     });
     return await {success: true, data: userDisplayArray}

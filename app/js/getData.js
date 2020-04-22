@@ -9,5 +9,3 @@ async function getData(APIpath) {
     let data = await fetch(getBaseUrl() + APIpath);
     return await data.json();
 }
-
-
