@@ -208,7 +208,7 @@ $app->get('/question/{id}', function ($request, $response, $question) {
     }
 
     try {
-        $query = "SELECT `id`, `text`, `option1`, `option2`, `option3`, `option4`, `option5`, `test_id` FROM `question` WHERE `deleted` <> 1 AND `id` = :questionId;";
+        $query = "SELECT `id`, `text`, `option1`, `option2`, `option3`, `option4`, `option5`, `answer`, `test_id` FROM `question` WHERE `deleted` <> 1 AND `id` = :questionId;";
 
         $questionId = $question['id'];
 
