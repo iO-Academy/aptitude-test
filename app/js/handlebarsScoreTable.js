@@ -71,7 +71,7 @@ function createObjectFromParentElement(event) {
     userInfo.id = parentElement.getAttribute("dataId")
     userInfo.time = parentElement.getAttribute("dataTimeAllowed")
     userInfo.canRetake = parseInt(parentElement.getAttribute("dataCanRetake"))
-    userInfo.dataTestId = parentElement.getAttribute('dataTestId')
+    userInfo.dataTestId = parentElement.getAttribute("dataTestId")
     return userInfo
 }
 

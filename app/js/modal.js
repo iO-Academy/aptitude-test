@@ -19,6 +19,7 @@ function closeDialog() {
  * Then calls function to fill modal fields with the users' data.
  * Then adds the submit button's event listener.
  * @param userInfo Object containing info of the user to edit.
+ * removed the duplicate test from tests array and created default test in order to populate sleceted option on modal pop out.
  */
 function createEditModal(userInfo, tests) {
     infoForTemplate={
