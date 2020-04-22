@@ -3,6 +3,10 @@ document.getElementById('filterScorePercentage').addEventListener('change', () =
     updateScoreTable()
 })
 
+document.getElementById('testAllocated').addEventListener('change', () => {
+    updateScoreTable()
+})
+
 /**
  * checks the start and end date input on admin page and assigns a default value if no value set
  *
@@ -101,6 +105,29 @@ function percentageFilter (resultArray){
         })
     } else {
         return resultArray
+    }
+    return newResultArray
+}
+
+/**
+ * This function filters the list of users to be displayed in the table based on the test
+ * allocated to that user
+ * 
+ * @param {resultArray} Array array of users to be filtered
+ * 
+ * @return Array the filtered array of users
+ */
+function testAllocatedFilter(resultArray) {
+    let filterTestAllocated = document.getElementById('testAllocated')
+    let newResultArray = resultArray
+    let chosenTestAllocated = filterTestAllocated.value
+    if (chosenTestAllocated) {
+        newResultArray = []
+        resultArray.forEach((data)=>{
+            if(data.testAllocated == chosenTestAllocated) {
+                newResultArray.push(data)
+            }
+        })
     }
     return newResultArray
 }
