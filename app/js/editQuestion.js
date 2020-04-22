@@ -45,6 +45,7 @@ async function getAnswerByQuestionId(id) {
     document.querySelector("#option5").value = question.option5;
     document.querySelector("#test_id").value = question.test_id;
     document.querySelector(`input[data-question-id="${answer}"]`).checked = 1;
+    document.querySelector('#questionBackBtn').setAttribute('href',`editTests.html#${question.test_id}`);
 
     form.addEventListener("submit", (event) => {
         sendQuestionForm(event, form, true, questionId);
