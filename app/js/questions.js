@@ -12,7 +12,7 @@ function fillUserTable(HBTemplate) {
         .then((data) => {getData(`question?test_id=${data.data.test_id}`)
             .then(function(result) {
                 let questionNoAssign = 1
-                result.data.forEach(function(question) {
+                result.data.forEach((question) => {
                     question['questionOrderId'] = questionNoAssign
                     flaggedQuestions[question.questionOrderId] = false
                     document.querySelector("#questions").innerHTML += template(question)
