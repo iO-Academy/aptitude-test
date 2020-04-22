@@ -25,7 +25,7 @@ populateHandlebars('.tableBody', 'js/templates/questionTable.hbs', `question?tes
         btn.addEventListener('click', async (clickedBtn) => {
             const { id } = clickedBtn.target.parentElement.dataset;
 
-            window.location.href = `editQuestion.html#${id}`;
+            window.location.href = `editQuestion.html?question_id=${id}`;
         });
     });
 });

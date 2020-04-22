@@ -43,7 +43,9 @@ async function getAnswerByQuestionId(id) {
 // We are listening to the load event so that we can use async/await.
 window.addEventListener("load", async () => {
     const form = document.querySelector("#edit-question");
-    const questionId = location.hash.replace("#", "");
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const questionId = urlParams.get('question_id');
     const [question] = await getQuestionById(questionId);
     const answer = await getAnswerByQuestionId(questionId);
 
