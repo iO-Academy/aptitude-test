@@ -82,7 +82,7 @@ function isTimeTotalValid(time) {
  */
 function isTimeMinutesValid(time) {
     let intTime = parseInt(time);
-    return (intTime > 0 && intTime <= 60);
+    return (intTime >= 0 && intTime <= 60);
 }
 
 /**
@@ -92,9 +92,8 @@ function isTimeMinutesValid(time) {
  */
 function isTimeSecondsValid(time) {
     let intTime = parseInt(time);
-    return (intTime > 0 && intTime < 60);
+    return (intTime >= 0 && intTime < 60);
 }
-
 
 /**
  * this is an event listener on the submit button (listens for click), 
