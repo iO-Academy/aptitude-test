@@ -10,7 +10,7 @@ function fillUserTable(HBTemplate) {
     let cookie = getCookie ('userEmail');
     getData(`user?email=${cookie}`)
         .then((data) => {getData(`question?test_id=${data.data.test_id}`)
-            .then(function(result) {
+            .then((result) => {
                 let questionNoAssign = 1
                 result.data.forEach((question) => {
                     question['questionOrderId'] = questionNoAssign
