@@ -14,3 +14,15 @@ function searchAndFilter(HBTemplate, resultArray) {
     resultArray = testAllocatedFilter(resultArray)
     printFilteredResultsToScreen(HBTemplate, resultArray)
 }
+
+
+function filterForGraph(resultArray) {
+    resultArray = searchByTextAndEmail(resultArray)
+    resultArray = percentageFilter(resultArray)
+    resultArray = dateFilter(resultArray)
+    resultArray = testAllocatedFilter(resultArray)
+
+    return resultArray
+    
+}
+
