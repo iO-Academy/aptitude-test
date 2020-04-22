@@ -12,14 +12,17 @@
         <td dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}" dataTime="{{time}}" dataTimeAllowed="{{timeAllowed}}" dataCanRetake="{{canRetake}}" dataTestId="{{this.testId}}">
             <button class="btn edit-user-button btn_height modalBtn">Edit User</button>
             <button class="btn delete-user-button btn_height">Delete User</button>
+            {{#unless testNotTaken}}
+               <button class="btn download-user-results-button btn_height">Download Results</button>
+            {{/unless}}
         </td>
-        <td class="name">{{this.name}}</td>
-        <td class="email">{{this.email}}</td>
-        <td class="score">{{this.score}}</td>
-        <td class="percentage">{{this.percentage}}</td>
-        <td class="testAllocated">{{this.testAllocated}}</td>
-        <td class="time">{{this.timeAllowed}}</td>
-        <td class="time">{{this.time}}</td>
-        <td class="date">{{#if this.testNotTaken}}{{this.testNotTaken}}{{else}}{{this.dateCreated}}{{/if}}</td>
+        <td class="name">{{name}}</td>
+        <td class="email">{{email}}</td>
+        <td class="score">{{score}}</td>
+        <td class="percentage">{{percentage}}</td>
+        <td class="testAllocated">{{testAllocated}}</td>
+        <td class="time">{{timeAllowed}}</td>
+        <td class="time">{{time}}</td>
+        <td class="date">{{#if testNotTaken}}{{testNotTaken}}{{else}}{{dateCreated}}{{/if}}</td>
 </tr>
 {{/each}}
