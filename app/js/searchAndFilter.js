@@ -8,9 +8,10 @@
  * @param resultArray an array full of objects of testee's info and scores
  */
 function searchAndFilter(HBTemplate, resultArray) {
-    resultArray = searchByTextAndEmail(resultArray)
-    resultArray = percentageFilter(resultArray)
-    resultArray = dateFilter(resultArray)
-    resultArray = testAllocatedFilter(resultArray)
-    printFilteredResultsToScreen(HBTemplate, resultArray)
+    resultArray = searchByTextAndEmail(resultArray);
+    resultArray = percentageFilter(resultArray);
+    resultArray = dateFilter(resultArray);
+    resultArray = testAllocatedFilter(resultArray);
+    resultArray = splitArray(resultArray, 20);
+    printFilteredResultsToScreen(HBTemplate, resultArray[0]);
 }
