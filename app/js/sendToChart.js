@@ -2,9 +2,16 @@
  * function to generate the data object for the chart displayed on the front end.
  * @returns the data object for graph.js
  */
-function sendToChart() {   
+async function sendToChart() {   
+    let dataForChart = {};
+    let labels = await generateLabels();
+    let dubiousGrade = await generateDataset("Under 70%", 0, 70, "#f27324");
+    let passingGrade = await generateDataset("70% to 97%", 70, 97, "#94ba66");
+    let topGrade = await generateDataset("97% and above", 97, 101, "#d2b4f9");
 
-
+    dataForChart.labels = labels;
+    dataForChart.datasets = [dubiousGrade, passingGrade, topGrade];
+    return dataForChart;
 };
 
 async function generateDataset(label, minPercentage, maxPercentage, color) {
