@@ -31,8 +31,7 @@ async function getAnswerByQuestionId(id) {
     return data.answer;
 }
 
-// We are listening to the load event so that we can use async/await.
-window.addEventListener("load", async () => {
+(async () => {
     const form = document.querySelector("#edit-question");
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -50,12 +49,12 @@ window.addEventListener("load", async () => {
     document.querySelector(`input[data-question-id="${answer}"]`).checked = 1;
 
     form.addEventListener("submit", async (event) => {
-       event.preventDefault();
+        event.preventDefault();
 
-       const responseMsg = document.querySelector('#inputSubmissionConfirmation');
-       const hasQuestions = formHasQuestion(form);
-       const hasAnswers = formHasBetweenTwoAndFiveAnswers(form);
-       const isValid = answerHasValidValue(form);
+        const responseMsg = document.querySelector('#inputSubmissionConfirmation');
+        const hasQuestions = formHasQuestion(form);
+        const hasAnswers = formHasBetweenTwoAndFiveAnswers(form);
+        const isValid = answerHasValidValue(form);
 
         if (hasQuestions && hasAnswers && isValid) {
             let answer;
@@ -66,7 +65,7 @@ window.addEventListener("load", async () => {
                 }
             });
 
-            const { success, message } = await editQuestion(questionId,{
+            const {success, message} = await editQuestion(questionId, {
                 text: document.querySelector("#question-to-edit").value,
                 option1: document.querySelector("#option1").value,
                 option2: document.querySelector("#option2").value,
@@ -79,7 +78,7 @@ window.addEventListener("load", async () => {
 
             responseMsg.textContent = message;
 
-            if (success){
+            if (success) {
                 responseMsg.classList.add('alert-success');
                 responseMsg.classList.remove('alert-danger');
             } else {
@@ -92,6 +91,6 @@ window.addEventListener("load", async () => {
             responseMsg.textContent = 'Error: Please ensure you have filled out the question form correctly.';
         }
     });
-});
+})();
 
 
