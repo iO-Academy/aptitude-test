@@ -35,6 +35,8 @@
     <script src="js/questionCount.js" defer></script>
     <script src="js/newTest.js" defer></script>
     <script src="js/sendData.js" defer></script>
+    <script src="node_modules/chart.js/dist/Chart.min.js" defer></script>
+    <script src="js/scoreChart.js" defer></script>
     <title>Admin Page</title>
 </head>
 
@@ -109,7 +111,7 @@
                         <tbody class="score_list user-table"></tbody>
                     </table>
                     <div class="show-graph hidden">
-                        <p>HELLO WORLD!</p>
+                        <canvas id="myChart" width="100" height="100"></canvas>
                     </div>
                 </div>
                 <form class="new-test-container" id="testForm" method="post">
