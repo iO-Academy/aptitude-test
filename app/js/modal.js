@@ -18,11 +18,27 @@ function closeDialog() {
  * Creates the modal with editModal handlebars template. 
  * Then calls function to fill modal fields with the users' data.
  * Then adds the submit button's event listener.
+ * * removed the duplicate test from tests array and created default test in order to populate seleceted option on modal pop out.
  * @param userInfo Object containing info of the user to edit.
+ * @param tests Object containing the array returned by the /test api endpoint
  */
-function createEditModal(userInfo) {
+function createEditModal(userInfo, tests) {
+    let infoForTemplate = {
+        tests: tests,
+        user: userInfo,
+        defaultTest: {}
+    }
+
+    infoForTemplate.tests.forEach(test => {
+        let index = infoForTemplate.tests.indexOf(test)
+        if(test.id == infoForTemplate.user.dataTestId){
+            infoForTemplate.defaultTest = test
+            infoForTemplate.tests.splice(index, 1)
+        }
+    });
+
     getTemplateAjax('js/templates/editmodal.hbs').then(function (HBTemplate) {
-        fillEditModalFields(HBTemplate, userInfo)
+        fillEditModalFields(HBTemplate, infoForTemplate)
     })
     .then(() => {
         addEditModalSubmitEventListener()
@@ -39,7 +55,7 @@ function fillEditModalFields(HBTemplate, userInfo) {
     let template = Handlebars.compile(HBTemplate)
     let modal_content = document.querySelector("#modal-content")
     modal_content.innerHTML = ""
-    if (userInfo.name && userInfo.email && userInfo.id && userInfo.time) {
+    if (userInfo.user.name && userInfo.user.email && userInfo.user.id && userInfo.user.time) {
         let html = template(userInfo)
         modal_content.innerHTML += html
     } else {
