@@ -10,14 +10,7 @@
     <script src="js/utils.js"></script>
     <script src="js/userLogIn.js"></script>
     <script src="js/cookies.js"></script>
-    <script>
-        let userEmail = getCookie('userEmail')
-        getUser(userEmail).then(function(user) {
-            if (!user.success || !isAuthorised(user.data, "1")) {
-                window.location.replace("index.html")
-            }
-        })
-    </script>
+    <script src="js/userAuthorisedCheck.js"></script>
     <script src="js/getData.js"></script>
     <script src="js/populateHandlebars.js"></script>
     <script src="js/adminPage.js" defer></script>
