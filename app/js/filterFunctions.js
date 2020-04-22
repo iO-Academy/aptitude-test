@@ -1,12 +1,12 @@
 
 document.getElementById('filterScorePercentage').addEventListener('change', () => {
     updateScoreTable()
-    updateChart()
+    drawChart()
 })
 
 document.getElementById('testAllocated').addEventListener('change', () => {
     updateScoreTable()
-    updateChart()
+    drawChart()
 })
 
 /**
@@ -37,6 +37,7 @@ document.getElementById('startDate').addEventListener("change", ()=>{
     let dates = setDate()
     if (dates[0] <= dates[1]) {
         updateScoreTable()
+        updateChart()
     } else {
         alert("Please enter a valid date range")
         document.getElementById('startDate').value = ''
@@ -52,6 +53,7 @@ document.getElementById('endDate').addEventListener("change", ()=> {
     let dates = setDate()
     if (dates[0] <= dates[1]) {
         updateScoreTable()
+        updateChart()
     } else {
         alert("Please enter a valid date range")
         document.getElementById('endDate').value = ''

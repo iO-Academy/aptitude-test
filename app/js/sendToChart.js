@@ -30,7 +30,7 @@ async function generateDataset(datasetLabel, testLabels, minPercentage, maxPerce
 
     let dataset = {};
     let users = await createUsersObject();
-    users = filterForGraph(users.data);
+    users = searchAndFilter(users.data);
     dataset.data = [];
     dataset.label = datasetLabel;
     dataset.backgroundColor = [];
