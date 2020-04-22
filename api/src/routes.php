@@ -66,6 +66,7 @@ $app->post('/user/edit', function ($request, $response, $args) {
         empty($user['email']) ||
         empty($user['name']) ||
         empty($user['id']) ||
+        empty($user['test_id']) ||
         !isset($user['canRetake'])
     ) {
         $data['message'] = 'Invalid parameters.';
@@ -78,12 +79,13 @@ $app->post('/user/edit', function ($request, $response, $args) {
 
         $user['time'] = $user['time'] ?? 1800;
 
-        $query = "UPDATE `user` SET `email` = :email, `name` = :name, `canRetake` = :retake, `time` = :time WHERE `id` = :id;";
+        $query = "UPDATE `user` SET `email` = :email, `name` = :name, `canRetake` = :retake, `time` = :time, `test_id` = :test_id WHERE `id` = :id;";
         $query = $this->db->prepare($query);
         $query->bindParam(':email', $user['email']);
         $query->bindParam(':name', $user['name']);
         $query->bindParam(':retake', $user['canRetake']);
         $query->bindParam(':time', $user['time']);
+        $query->bindParam(':test_id', $user['test_id']);
         $query->bindParam(':id', $user['id']);
         $query->execute();
     } catch(Exception $e) {
