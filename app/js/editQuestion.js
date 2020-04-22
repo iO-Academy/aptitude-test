@@ -17,8 +17,8 @@ async function editQuestion(id, newQuestionData) {
  * @returns {Promise<object>} the question data
  **/
 async function getQuestionById(id) {
-    const { data } = await getData("/question");
-    return data.filter(question => question.id === String(id));
+    const { data } = await getData(`/question/${id}`);
+    return data;
 }
 
 /**
@@ -34,7 +34,7 @@ async function getAnswerByQuestionId(id) {
 (async () => {
     const form = document.querySelector("#edit-question");
     const questionId = location.hash.replace("#", "");
-    const [question] = await getQuestionById(questionId);
+    const question = await getQuestionById(questionId);
     const answer = await getAnswerByQuestionId(questionId);
 
     document.querySelector("#questionText").value = question.text;
