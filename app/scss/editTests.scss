@@ -45,3 +45,22 @@
   display: none;
 }
 
+.container .buttons {
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.container .buttons .return {
+  align-content: center;
+  width: 10%;
+  background-color: #8d0377;
+  color: #fff;
+  transition: .5s;
+  font-size: 1.5rem;
+  border-style: none;
+  padding: 1rem;
+}
+
+.container .buttons .return:hover {
+  background-color: #c63806;
+}
