@@ -23,6 +23,8 @@ testForm.addEventListener('submit', async function(e) {
         let response = await sendData(testData, 'test');
         responseMsg.innerText = response.message;
         if (response.success) {
+            populateHandlebars('#test_id', 'js/templates/testDropdown.hbs', 'test');
+            populateHandlebars('#testAllocated', 'js/templates/testAllocatedFilter.hbs', 'test');
             responseMsg.classList.add('alert-success');
             responseMsg.classList.remove('alert-danger');
             document.querySelector('#testName').value = ''
