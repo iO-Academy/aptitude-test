@@ -18,11 +18,12 @@ function closeDialog() {
  * Creates the modal with editModal handlebars template. 
  * Then calls function to fill modal fields with the users' data.
  * Then adds the submit button's event listener.
+ * * removed the duplicate test from tests array and created default test in order to populate seleceted option on modal pop out.
  * @param userInfo Object containing info of the user to edit.
- * removed the duplicate test from tests array and created default test in order to populate sleceted option on modal pop out.
+ * @param tests Object containing the array returned by the /test api endpoint
  */
 function createEditModal(userInfo, tests) {
-    infoForTemplate={
+    let infoForTemplate = {
         tests: tests,
         user: userInfo,
         defaultTest: {}
@@ -84,7 +85,6 @@ function addEditModalSubmitEventListener() {
         let email = document.getElementById("email").value
         let time = document.getElementById('time').value
         let originalEmail = document.getElementById("originalEmail").value
-        let testId = document.getElementById("testID").value
         getExistingUsers().then(function (existingUsers) {
             if (isEmpty(name) &&
                 isEmpty(email) &&
