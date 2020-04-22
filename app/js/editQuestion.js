@@ -46,8 +46,8 @@ async function getAnswerByQuestionId(id) {
     document.querySelector("#test_id").value = question.test_id;
     document.querySelector(`input[data-question-id="${answer}"]`).checked = 1;
 
-    form.addEventListener("submit", async (event) => {
-        await sendQuestionForm(event, form, true, questionId);
+    form.addEventListener("submit", (event) => {
+        sendQuestionForm(event, form, true, questionId);
     });
 })();
 

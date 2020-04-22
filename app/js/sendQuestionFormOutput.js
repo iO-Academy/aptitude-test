@@ -21,8 +21,8 @@ async function addQuestion(newQuestionData) {
  * When the user clicks the submit button, will get form value and prepare
  * it for the database.
  */
-newQuestionForm.addEventListener('submit',  async function(e) {
-    await sendQuestionForm(e, newQuestionForm, false);
+newQuestionForm.addEventListener('submit',function(e) {
+    sendQuestionForm(e, newQuestionForm, false);
 });
 
 // populate dropdown menu with available tests
