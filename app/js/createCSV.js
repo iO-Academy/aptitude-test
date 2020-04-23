@@ -1,4 +1,4 @@
-function download_csv(info, userId) {
+function createCSV(info, userId) {
     var csv = 'Name,Title\n';
     info.data.forEach(function(row) {
         if (row.id == userId) {
@@ -10,17 +10,11 @@ function download_csv(info, userId) {
 
     return csv
  
-    console.log(csv);
-    var hiddenElement = document.createElement('a');
-    hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
-    hiddenElement.target = '_blank';
-    hiddenElement.download = 'people.csv';
-    hiddenElement.click();
 }
 
 
   
-function createCSV() {
+function getInfoForCSV() {
 
     var data = getData("result").then((data) => {
         return data
@@ -29,9 +23,7 @@ function createCSV() {
 
             var result = data
 
-        
-
-        download_csv(result, 2) 
+            createCSV(result, 2) 
     })
 }
 
