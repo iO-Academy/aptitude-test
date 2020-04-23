@@ -1,5 +1,5 @@
-<button class="backBtn">&lt;&lt;&lt;</button>
+<button class="backBtn pageBtn" data-page='back'>&lt;&lt;&lt;</button>
 {{#each pages}}
-    <button class="pageNumber">{{this.pageNumber}}</button>
+    <button class="pageNumber pageBtn" data-page="{{this.pageNumber}}">{{this.pageNumber}}</button>
 {{/each}}
-<button class="nextBtn">&gt;&gt;&gt;</button>
+<button class="nextBtn pageBtn" data-page='next'>&gt;&gt;&gt;</button>

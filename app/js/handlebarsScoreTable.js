@@ -19,17 +19,15 @@ async function sortUsersObjectByDate() {
  * Get the handlebars template for table rows (adminTable.hbs), combine
  * with user objects and send this to searching and filtering.
  */
-function updateScoreTable() {
-    let users = sortUsersObjectByDate();
-    users.then(function (userInfo) {
-        getTemplateAjax('js/templates/adminTable.hbs').then(function (HBTemplate) {
-            let filteredUserArray = searchAndFilter(userInfo.data);
-            let paginatedArrays = splitArray(filteredUserArray, 20);
+async function updateScoreTable() {
+    let userInfo = await sortUsersObjectByDate();
+    let HBTemplate = await getTemplateAjax('js/templates/adminTable.hbs');
+    let filteredUserArray = searchAndFilter(userInfo.data);
+    let paginatedArrays = splitArray(filteredUserArray, 20);
 
-            printFilteredResultsToScreen(HBTemplate, paginatedArrays[0]);
-            displayPageBtns(paginatedArrays);
-        })
-    })
+    printFilteredResultsToScreen(HBTemplate, paginatedArrays[0]);
+    await displayPageBtns(paginatedArrays);
+    pageSelectorFunctionality(HBTemplate, paginatedArrays);
 }
 
 /**
@@ -146,3 +144,4 @@ function produceTable (HBTemplate, scoresDataObject) {
 }
 
 updateScoreTable();
+
