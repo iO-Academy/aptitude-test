@@ -28,6 +28,7 @@ function updateScoreTable() {
 
             printFilteredResultsToScreen(HBTemplate, paginatedArrays[0]);
             displayPageBtns(paginatedArrays);
+            pageSelectorFunctionality();
         })
     })
 }
@@ -146,3 +147,14 @@ function produceTable (HBTemplate, scoresDataObject) {
 }
 
 updateScoreTable();
+
+function pageSelectorFunctionality() {
+    console.log('hello');
+    document.querySelectorAll('.pageBtn').forEach((btn) => {
+        console.log('hi');
+        btn.addEventListener('click', (evt => {
+                let page = btn.dataset.page;
+                console.log(page)
+        }))
+    })
+}
