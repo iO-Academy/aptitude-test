@@ -5,7 +5,10 @@ function populateQuestions(testId) {
         document.querySelectorAll(".delete-question").forEach((btn) => {
             btn.addEventListener('click', async (clickedBtn) => {
                 const {id} = clickedBtn.target.parentElement.dataset;
-                await deleteQuestion(id);
+                const responseMsg = document.querySelector('#error');
+                let response = await deleteQuestion(id);
+
+                ajaxResponseCheck(response.success, response.message, responseMsg, false);
                 location.reload();
             });
         });

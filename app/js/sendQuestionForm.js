@@ -45,16 +45,8 @@ async function sendQuestionForm(event, form, isEdit, questionId) {
             success = result.success;
             message = result.message;
         }
+        ajaxResponseCheck(success, message, responseMsg, false);
 
-        responseMsg.textContent = message;
-
-        if (success) {
-            responseMsg.classList.add('alert-success');
-            responseMsg.classList.remove('alert-danger');
-        } else {
-            responseMsg.classList.remove('alert-success');
-            responseMsg.classList.add('alert-danger');
-        }
     } else {
         responseMsg.classList.remove('alert-success');
         responseMsg.classList.add('alert-danger');
