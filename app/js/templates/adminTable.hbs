@@ -9,7 +9,7 @@
     {{else if this.notTakenYet}}
          class="test-not-taken"
     {{/if}}>
-        <td dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}" dataTime="{{time}}" dataTimeAllowed="{{timeAllowed}}" dataCanRetake="{{canRetake}}" dataTestId="{{this.testId}}">
+        <td dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}" dataPercentage="{{percentage}}" dataTime="{{time}}" dataTimeAllowed="{{timeAllowed}}" dataCanRetake="{{canRetake}}" dataTestId="{{this.testId}}">
             <button class="btn edit-user-button btn_height modalBtn">Edit User</button>
             <button class="btn delete-user-button btn_height">Delete User</button>
             {{#unless testNotTaken}}
