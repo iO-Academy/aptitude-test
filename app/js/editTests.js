@@ -24,11 +24,11 @@ function populateQuestions(testId) {
 populateHandlebars('#filterTests', 'js/templates/testAllocatedFilter.hbs', 'test').then(() => {
     document.querySelector('#filterTests').value = testId;
     document.querySelector('#filterTests').addEventListener('change', (testFilter) => {
-        const {value} = testFilter.target;
+        const {filteredTestId} = testFilter.target;
 
-        window.location.href = `editTests.html#${value}`;
+        window.location.href = `editTests.html#${filteredTestId}`;
         document.querySelector('.tableBody').innerHTML = "";
-        populateQuestions(value);
+        populateQuestions(filteredTestId);
     });
 });
 
