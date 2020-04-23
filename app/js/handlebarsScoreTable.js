@@ -20,23 +20,20 @@ async function sortUsersObjectByDate() {
  * with user objects and send this to searching and filtering.
  */
 function updateScoreTable() {
-    let users = sortUsersObjectByDate()
+    let users = sortUsersObjectByDate();
     users.then(function (userInfo) {
         getTemplateAjax('js/templates/adminTable.hbs').then(function (HBTemplate) {
-            sendToSearchAndFilter(HBTemplate, userInfo)
+            let filteredUserArray = searchAndFilter(userInfo.data);
+            printFilteredResultsToScreen(HBTemplate, filteredUserArray);
+            document.querySelectorAll('.download-user-results-button').forEach((button) => {
+                button.addEventListener('click', (e) => {
+                    e.preventDefault()
+                
+                
+                })
+            })
         })
     })
-}
-
-/**
- * Transforms and sends the user info to the search and filtering function
- */
-function sendToSearchAndFilter(template, userInfo) {
-    let userArray = []
-    userInfo.data.forEach(function (scoreUser) {
-        userArray.push(scoreUser)
-    })
-    searchAndFilter(template, userArray)
 }
 
 /**
