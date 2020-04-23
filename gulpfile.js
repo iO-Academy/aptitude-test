@@ -3,7 +3,7 @@ var sass = require('gulp-sass')
 
 gulp.task('sass', function(done) {
     // Gets all files ending with .scss in app/scss
-    return gulp.src(['app/scss/styles.scss', 'app/scss/questionPage.scss', 'app/scss/resultPage.scss', 'app/scss/adminPage.scss', 'app/scss/indexPage.scss', 'app/scss/addQuestion.scss', 'app/scss/graph.scss'])
+    return gulp.src(['app/scss/styles.scss', 'app/scss/questionPage.scss', 'app/scss/resultPage.scss', 'app/scss/adminPage.scss', 'app/scss/indexPage.scss', 'app/scss/addQuestion.scss', 'app/scss/editTests.scss', 'app/scss/graph.scss'])
         .pipe(sass())
         .pipe(gulp.dest('app/css'))
     done()
