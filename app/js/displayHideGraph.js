@@ -4,7 +4,8 @@
  *
  */
 
-function toggleGraphDisplay() {
+function toggleGraphDisplay(e) {
+    e.preventDefault();
     let graphOnPage = document.querySelector('.show-graph');
     graphOnPage.classList.toggle('hidden');
     let tableOnPage = document.querySelector('.user-score-table');
@@ -16,13 +17,7 @@ function toggleGraphDisplay() {
 }
 
 var displayGraphButton = document.querySelector('#viewGraph');
-displayGraphButton.addEventListener ('click', function(e) {
-    e.preventDefault();
-    toggleGraphDisplay();
-});
+displayGraphButton.addEventListener ('click', toggleGraphDisplay);
 
 var displayTableButton = document.querySelector('#viewTable');
-displayTableButton.addEventListener ('click', function(e) {
-    e.preventDefault();
-    toggleGraphDisplay();
-});
+displayTableButton.addEventListener ('click', toggleGraphDisplay);

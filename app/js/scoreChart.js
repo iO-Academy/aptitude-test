@@ -11,7 +11,7 @@ function updateChart(users) {
  * script for graph using chart.js, links to canvas id=myChart in adminPage.html
  */
 function drawChart(users) {
-    sendToChart(users).then((chartData)=>{
+    sendToChart(users).then((chartData) => {
         let ctx = document.getElementById('myChart');
         // sets global font size and font family for the chart
         Chart.defaults.global.defaultFontSize = 12;
@@ -34,7 +34,8 @@ function drawChart(users) {
                             fontSize: 14
                         },
                         ticks: {
-                            beginAtZero: true
+                            beginAtZero: true,
+                            callback: function(value) {if (value % 1 === 0) {return value;}}
                         }
                     }]
                 },

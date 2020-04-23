@@ -3,14 +3,16 @@
  * @returns the data object for graph.js
  */
 async function sendToChart(users) { 
-    let dataForChart = {};
     let labels = await generateLabels(users);
     let dubiousGrade = await generateDataset("Under 70%", labels, users, 0, 70, "#f27324");
     let passingGrade = await generateDataset("70% to 97%", labels, users,  70, 97, "#94ba66");
     let topGrade = await generateDataset("97% and above", labels, users, 97, 101, "#d2b4f9");
 
-    dataForChart.labels = labels;
-    dataForChart.datasets = [dubiousGrade, passingGrade, topGrade];
+    let dataForChart = {
+        labels: labels,
+        datasets: [dubiousGrade, passingGrade, topGrade]
+    }
+
     return dataForChart;
 };
 
@@ -29,28 +31,23 @@ async function sendToChart(users) {
  */
 async function generateDataset(datasetLabel, testLabels, users, minPercentage, maxPercentage, color) {
 
-    let dataset = {};
-    dataset.data = [];
-    dataset.label = datasetLabel;
-    dataset.backgroundColor = [];
+    let dataset = {
+        data: [],
+        label: datasetLabel,
+        backgroundColor: []
+    }
 
     testLabels.forEach(function (label) {
 
         let amountInRange = 0;
 
         users.forEach(function (user) {
-
             if (!user.testNotTaken && user.percentage >= minPercentage && user.percentage < maxPercentage && user.testAllocated == label) {
-                
                 amountInRange ++;
-
             }
-
         })
-
         dataset.data.push(amountInRange);
         dataset.backgroundColor.push(color);
-
     });
 
     return dataset;   

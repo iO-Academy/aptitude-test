@@ -9,10 +9,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.5",
     "gulp": "^4.0.0",
-    "gulp-babel": "^8.0.0",
     "gulp-sass": "^4.0.0"
-  }
+  },
+  "dependencies": {}
 }
