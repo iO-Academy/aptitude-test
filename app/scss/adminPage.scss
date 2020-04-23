@@ -1,5 +1,9 @@
 @import "imports/variables";
 
+.container {
+  width: 95%;
+}
+
 .new-user-container {
   margin-top: 3rem;
 }
@@ -78,7 +82,10 @@ input {
 
 .table {
   font-size: 1.5rem;
-  margin-top: 4rem;
+
+  button {
+    color: $main-background-color;
+  }
 
   .edit-user-button, .delete-user-button {
     color: $main-background-color;
@@ -86,6 +93,10 @@ input {
 
   .edit-user-button {
     background-color: $edit-button;
+  }
+
+  .download-user-results-button {
+    background-color: $primary-button;
   }
 
   .delete-user-button {
