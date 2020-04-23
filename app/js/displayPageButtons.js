@@ -35,15 +35,20 @@ function pageSelectorFunctionality(HBTemplate, paginatedArrays) {
 }
 
 function pageButtonCheck(page, pages) {
-    if (page === 1) {
-        document.querySelector('.backBtn').classList.add('greyedOutBtn');
+    if (pages === 1) {
+        document.querySelector('.pageSelectors').classList.add('hidden');
     } else {
-        document.querySelector('.backBtn').classList.remove('greyedOutBtn');
-    }
+        document.querySelector('.pageSelectors').classList.remove('hidden');
+        if (page === 1) {
+            document.querySelector('.backBtn').classList.add('greyedOutBtn');
+        } else {
+            document.querySelector('.backBtn').classList.remove('greyedOutBtn');
+        }
 
-    if (page === pages) {
-        document.querySelector('.nextBtn').classList.add('greyedOutBtn');
-    } else {
-        document.querySelector('.nextBtn').classList.remove('greyedOutBtn');
+        if (page === pages) {
+            document.querySelector('.nextBtn').classList.add('greyedOutBtn');
+        } else {
+            document.querySelector('.nextBtn').classList.remove('greyedOutBtn');
+        }
     }
 }
