@@ -46,7 +46,7 @@ function pageSelectorFunctionality(HBTemplate, paginatedArrays) {
  * @param pages
  */
 function pageButtonCheck(page, pages) {
-    if (pages === 1) {
+    if (pages < 2) {
         document.querySelector('.pageSelectors').classList.add('hidden');
     } else {
         document.querySelector('.pageSelectors').classList.remove('hidden');
