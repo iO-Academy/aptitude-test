@@ -12,9 +12,7 @@ function createCSV(info, userId, userName, userPercentage) {
    
     let arrayOfReplaces = [/\\/g, /"/g, /{/g, /}/g,]
         let questionsAndAnswers = info.data.answers
-        console.log(info)
-        console.log(questionsAndAnswers)
-
+       
         arrayOfReplaces.forEach((expression) => {
 
             questionsAndAnswers = questionsAndAnswers.replace(expression, '')
@@ -33,19 +31,40 @@ function createCSV(info, userId, userName, userPercentage) {
 
         console.log(questionNumbersAndAnswers)
         
-        let csv = 'Name,Score,%,' 
+        let csv = 'Name,Score,%,'
+
+        let count = 0
         
         questionNumbersAndAnswers.forEach((eachQuestion) => {
-            csv += eachQuestion[0] + ','
+
+            csv += eachQuestion[0]
+            
+            if(count < questionNumbersAndAnswers.length -1) {
+
+                csv += ','
+
+            }
+
+            count ++
+
          })
         
-         csv += '\n';
-
-
-        csv += `${userName}, ${info.data.score}, ${userPercentage}, ${info.data.answers}`;
-        csv += "\n";
+        csv += '\n';
+         
+        csv += `${userName},${info.data.score},${userPercentage},`
         
+        count = 0
+
+        questionNumbersAndAnswers.forEach((eachQuestion) => {
+            csv += eachQuestion[1]
+            if(count < questionNumbersAndAnswers.length -1) {
+                csv += ','
+                }
+                count ++
+         })
         
+         csv += "\n";
+
     return csv
 }
 
