@@ -10,6 +10,11 @@ async function displayPageBtns(paginatedArray) {
     document.querySelector('.pageSelectors').innerHTML = template({pages});
 }
 
+/**
+ * Adds functionality to the page buttons.
+ * @param HBTemplate
+ * @param paginatedArrays
+ */
 function pageSelectorFunctionality(HBTemplate, paginatedArrays) {
     const pages = paginatedArrays.length;
     let page = 1;
@@ -17,9 +22,9 @@ function pageSelectorFunctionality(HBTemplate, paginatedArrays) {
     pageButtonCheck(page, pages);
 
     document.querySelectorAll('.pageBtn').forEach((btn) => {
-        btn.addEventListener('click', ((evt) => {
+        btn.addEventListener('click', (() => {
             if (page > 0 && page <= pages) {
-                if (Number.isInteger(parseInt(btn.dataset.page))) {
+                if (!isNaN(btn.dataset.page)) {
                     page = parseInt(btn.dataset.page);
                 } else if ((btn.dataset.page === 'next') && (page < pages)) {
                     page++;
@@ -34,6 +39,12 @@ function pageSelectorFunctionality(HBTemplate, paginatedArrays) {
     });
 }
 
+
+/**
+ * Checks if the next or previous buttons are required for the page.
+ * @param page
+ * @param pages
+ */
 function pageButtonCheck(page, pages) {
     if (pages === 1) {
         document.querySelector('.pageSelectors').classList.add('hidden');
