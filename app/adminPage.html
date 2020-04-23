@@ -10,14 +10,7 @@
     <script src="js/utils.js"></script>
     <script src="js/userLogIn.js"></script>
     <script src="js/cookies.js"></script>
-    <script>
-        let userEmail = getCookie('userEmail')
-        getUser(userEmail).then(function(user) {
-            if (!user.success || !isAuthorised(user.data, "1")) {
-                window.location.replace("index.html")
-            }
-        })
-    </script>
+    <script src="js/userAuthorisedCheck.js"></script>
     <script src="js/getData.js"></script>
     <script src="js/populateHandlebars.js"></script>
     <script src="js/adminPage.js" defer></script>
@@ -35,6 +28,7 @@
     <script src="js/newTest.js" defer></script>
     <script src="js/sendData.js" defer></script>
     <script src="js/splitArray.js" defer></script>
+    <script src="js/ajaxResponseCheck.js" defer></script>
     <title>Admin Page</title>
 </head>
 
@@ -63,7 +57,7 @@
                     </div>
                 </form>
                 <div id='error' class='title_input'></div>
-                <div class="score-container">
+                <div class="tableContainer">
                     <h2>Scores</h2>
                     <div class="search-filter-container">
                         <h4 class="search-heading">Search User</h4>
@@ -88,7 +82,7 @@
                             <input id="endDate" type="date">
                         </div>
                     </div>
-                    <table class="table tableStyles">
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th></th>
@@ -102,7 +96,7 @@
                                 <th>Date of Test</th>
                             </tr>
                         </thead>
-                        <tbody class="score_list user-table"></tbody>
+                        <tbody class="tableList user-table score_list"></tbody>
                     </table>
                 </div>
                 <form class="new-test-container" id="testForm" method="post">
@@ -115,10 +109,11 @@
                         <div id="inputSubmissionConfirmation" class="alert" role="alert"></div>
                     </div>
                 </form>
-                <div class="new-question-container">
-                    <h2>Add new question</h2>
+                <div class="modify-question-container">
+                    <h2>Modify questions</h2>
                     <h4 class="search-heading">Current Question Count: <span id="question-count"></span></h4>
                     <a class="btn primary-button new-question-button" href="addQuestion.html">Add new question</a>
+                    <a class="btn primary-button new-question-button" id="linkToEditTestsBtn" href="editTests.html#1">Edit questions</a>
                 </div>
             </div>
         </div>

@@ -66,6 +66,7 @@ $app->post('/user/edit', function ($request, $response, $args) {
         empty($user['email']) ||
         empty($user['name']) ||
         empty($user['id']) ||
+        empty($user['test_id']) ||
         !isset($user['canRetake'])
     ) {
         $data['message'] = 'Invalid parameters.';
@@ -78,12 +79,13 @@ $app->post('/user/edit', function ($request, $response, $args) {
 
         $user['time'] = $user['time'] ?? 1800;
 
-        $query = "UPDATE `user` SET `email` = :email, `name` = :name, `canRetake` = :retake, `time` = :time WHERE `id` = :id;";
+        $query = "UPDATE `user` SET `email` = :email, `name` = :name, `canRetake` = :retake, `time` = :time, `test_id` = :test_id WHERE `id` = :id;";
         $query = $this->db->prepare($query);
         $query->bindParam(':email', $user['email']);
         $query->bindParam(':name', $user['name']);
         $query->bindParam(':retake', $user['canRetake']);
         $query->bindParam(':time', $user['time']);
+        $query->bindParam(':test_id', $user['test_id']);
         $query->bindParam(':id', $user['id']);
         $query->execute();
     } catch(Exception $e) {
@@ -191,6 +193,39 @@ $app->get('/question', function ($request, $response, $args) {
 
     $data['success'] = true;
     $data['message'] = 'Successfully retrieved questions.';
+    $data['data'] = $result;
+    $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+    return $response->withJson($data);
+});
+
+$app->get('/question/{id}', function ($request, $response, $question) {
+    $data = ['success' => false, 'message' => 'An unexpected error occured.', 'data' => []];
+
+    if (empty($question['id']) || !is_numeric($question['id'])) {
+        $data['message'] = 'Please supply a valid question ID';
+        $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+        return $response->withJson($data, 400);
+    }
+
+    try {
+        $query = "SELECT `id`, `text`, `option1`, `option2`, `option3`, `option4`, `option5`, `answer`, `test_id` FROM `question` WHERE `deleted` <> 1 AND `id` = :questionId;";
+
+        $questionId = $question['id'];
+
+        $query = $this->db->prepare($query);
+        $query->bindParam(':questionId', $questionId);
+
+        $query->execute();
+        $result = $query->fetch(PDO::FETCH_ASSOC);
+
+    } catch(Exception $e) {
+        $data['message'] = $e->getMessage();
+        $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+        return $response->withJson($data, 500);
+    }
+
+    $data['success'] = true;
+    $data['message'] = 'Successfully retrieved question.';
     $data['data'] = $result;
     $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
     return $response->withJson($data);

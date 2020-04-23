@@ -45,7 +45,7 @@ POST
 
 POST
 - Update a user.
-- `{"email":"example@email.com", "name":"Fred Smith", "canRetake":"0", "id":"1"}` - all required
+- `{"email":"example@email.com", "name":"Fred Smith", "canRetake":"0", "id":"1", "test_id":"1"}` - all required
 - Returns result of user update.
 
 **/question**
@@ -62,6 +62,16 @@ POST
 4", "option5":"Answer 4", "answer":"2", "test_id":"2"}`
     - `test_id` is optional, will default to test id 1
 - Returns id of question created.
+
+**/question/{id}**
+
+GET
+- Get the data for a specific question based on the question id
+- Returns a single question object
+    - `{"id":1, "text":"Question example", "option1":"Answer 1", "option2":"Answer 2", "option3":"Answer 3", "option4
+    ":"Answer 
+      4", "option5":"Answer 4", "answer":"2", "test_id":"2"}`
+
 
 **/question/{id}/edit**
 

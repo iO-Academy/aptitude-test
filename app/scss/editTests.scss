@@ -1,8 +1,30 @@
 @import "imports/variables";
 
-table {
+.logoContainer {
+  justify-content: flex-end;
+}
+
+.tableContainer {
+
+  .search-filter-container {
+    height: 120px;
+  }
+}
+
+.table {
   table-layout: fixed;
-  width: 100%
+
+  .edit-question, .delete-question {
+    color: $main-background-color;
+  }
+
+  .edit-question {
+    background-color: $edit-button;
+  }
+
+  .delete-question {
+    background-color: $primary-button-hover;
+  }
 }
 
 .questionText {
@@ -12,9 +34,34 @@ table {
 }
 
 .colBtn {
-  width: 190px;
+  width: 150px;
 }
 
 .colNum {
  width: 75px;
+}
+
+.noDisplayOption {
+  display: none;
+}
+
+.container .buttons {
+  text-align: center;
+  padding: 20px 10px;
+}
+
+.container .buttons .btn {
+  align-content: center;
+  width: 15%;
+  background-color: #8d0377;
+  color: #fff;
+  transition: .5s;
+  font-size: 1.5rem;
+  border-style: none;
+  padding: 1rem;
+  margin: 0 1rem;
+}
+
+.container .buttons .return:hover {
+  background-color: #c63806;
 }

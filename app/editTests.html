@@ -3,45 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-    <title>Edit Questions</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>Edit Tests</title>
+    <link href="css/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="css/styles.css" type="text/css" rel="stylesheet">
     <link href="css/adminPage.css" type="text/css" rel="stylesheet">
-    <link href="css/editQuestions.css" type="text/css" rel="stylesheet">
+    <link href="css/editTests.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="css/resultPage.css">
     <script src="js/handlebars-v4.0.11.js"></script>
     <script src="js/utils.js"></script>
+    <script src="js/userLogIn.js"></script>
+    <script src="js/cookies.js"></script>
+    <script src="js/userAuthorisedCheck.js"></script>
     <script src="js/getData.js" defer></script>
+    <script src="js/sendData.js" defer></script>
     <script src="js/ajaxHandlebarsTemplate.js" defer></script>
     <script src="js/populateHandlebars.js" defer></script>
+    <script src="js/deleteQuestion.js" defer></script>
     <script src="js/editTests.js" defer></script>
+    <script src="js/ajaxResponseCheck.js" defer></script>
 </head>
 <body>
 <section class="container">
-    <img class="logo" alt="Mayden Logo" src="images/branding-icons/maydenacademy_logotype_05.18_web.svg">
+    <div class="row logoContainer">
+        <img class="logo" alt="Mayden Logo" src="images/branding-icons/maydenacademy_logotype_05.18_web.svg">
+    </div>
     <div class="row">
         <div class="col-xs-12">
-            <div id='error' class='title_input'></div>
-            <div class="score-container">
-                <h2>Test</h2>
+            <div class="tableContainer">
+                <h2>Select Test</h2>
                 <div class="search-filter-container">
                     <div class="display-flex">
-                        <select name="filterScorePercentage" id="filterTests" class="dropdown">
-                            <option value="" disabled selected>Test Name</option>
-                            <option value="1">Test 1</option>
+                        <select name="testFilter" id="filterTests" class="dropdown">
                         </select>
                     </div>
-                    <h3>Questions</h3>
+                    <h2>Questions</h2>
+                    <div id='error' class='title_input'></div>
                 </div>
-                <table class="table tableStyles">
+                <table class="table">
                     <thead>
                     <tr>
-                        <th class="colBtn"></th>
+                        <th class="colBtn">Modify Question</th>
                         <th class="colNum">Number</th>
                         <th>Question</th>
                     </tr>
                     </thead>
-                    <tbody class="score_list user-table"></tbody>
+                    <tbody class="tableBody tableList"></tbody>
                 </table>
+                <div class="buttons">
+                    <a href="adminPage.html">
+                        <div class="return btn primary-button">Back</div>
+                    </a>
+                    <a class="btn new-question-button primary-button" href="addQuestion.html">Add new question</a>
+                </div>
             </div>
         </div>
     </div>
