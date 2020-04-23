@@ -26,22 +26,7 @@ function updateScoreTable() {
             let filteredUserArray = searchAndFilter(userInfo.data)
             updateChart(filteredUserArray)
             printFilteredResultsToScreen(HBTemplate, filteredUserArray)
-            document.querySelectorAll('.download-user-results-button').forEach((button) => {
-                button.addEventListener('click', (e) => {
-                    e.preventDefault()
-
-                    getData("result?id=" + e.target.parentElement.getAttribute("dataId"))
-
-                    .then((data) => {
-                        let parentElement = e.target.parentElement
-                        let userId = parentElement.getAttribute("dataId")
-                        let userName = parentElement.getAttribute("dataname")
-                        let userPercentage = parentElement.getAttribute("datapercentage")
-                        let result = data
-                        downloadFile(`${userName}_aptitude_test_results`, createCSV(result, userId, userName, userPercentage))
-                    })
-                })
-            })
+            addEventListenersForDownloadButtons()
         })
     })
 }
@@ -100,17 +85,6 @@ function addEditEventListeners() {
             })
         })
     })
-}
-
-function testFunction(e) {
-
-    e.preventDefault()
-
-    let userInfo = createObjectFromParentElement(e)
-            getData("user").then((data) => {
-                return data
-            })
-            console.log(data);
 }
 
 /**
@@ -174,6 +148,23 @@ function produceTable (HBTemplate, scoresDataObject) {
     addEditEventListeners();
     addDeleteEventListeners()
     
+}
+
+function addEventListenersForDownloadButtons(){
+    document.querySelectorAll('.download-user-results-button').forEach((button) => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault()
+
+            getData("result?id=" + e.target.parentElement.getAttribute("dataId"))
+
+            .then((data) => {
+                let parentElement = e.target.parentElement
+                let userName = parentElement.getAttribute("dataname")
+                let userPercentage = parentElement.getAttribute("datapercentage")
+                downloadFile(`${userName}_aptitude_test_results`, createCSV(data, userName, userPercentage))
+            })
+        })
+    })
 }
 
 updateScoreTable();
