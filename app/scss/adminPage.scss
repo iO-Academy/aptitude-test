@@ -1,119 +1,111 @@
 @import "imports/variables";
 
-body {
+.new-user-container {
+  margin-top: 3rem;
+}
 
-  .container {
+.display-flex {
+  display: flex;
+  align-items: center;
 
-    .new-user-container {
-      margin-top: 3rem;
-    }
+  label {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin: 0 0.5rem 0 0;
+  }
 
-    .display-flex {
-      display: flex;
-      align-items: center;
+  select {
+    margin-right: 10px;
+  }
 
-      label {
-        font-size: 1.5rem;
-        font-weight: 400;
-        margin: 0 0.5rem 0 0;
-      }
+  input {
+    margin-right: 1rem;
 
-      select {
-        margin-right: 10px;
-      }
-
-      input {
-        margin-right: 1rem;
-
-        &.primary-button {
-          font-size: 1.4rem;
-          color: $main-background-color;
-        }
-      }
-    }
-
-    .score-container {
-      margin-top: 5rem;
-
-      .search-filter-container {
-        margin-top: 3rem;
-        display: flex;
-        height: 180px;
-        flex-direction: column;
-        justify-content: space-between;
-
-        .filterContainer {
-          label {
-            font-weight: 400;
-            font-size: 1.5rem;
-          }
-        }
-      }
-    }
-
-    select:not([multiple]) {
-      -webkit-appearance: none;
-      -moz-appearance: none;
-      background-position: right 50%;
-      background-repeat: no-repeat;
-      background-image: url("../images/output-onlinepngtools.png");
-      padding: .5rem;
-      padding-right: 1.5rem;
-      background-color: $main-background-color;
-    }
-
-    .dropdown {
-      height: 34px;
-      margin-right: 0.5rem;
-      border-radius: 0;
-
-      option {
-        font-size: 1.5rem;
-      }
-    }
-
-    .table {
-      font-size: 1.5rem;
-
-      .edit-user-button, .delete-user-button {
-        color: $main-background-color;
-      }
-
-      .edit-user-button {
-        background-color: $edit-button;
-      }
-
-      .delete-user-button {
-        background-color: $primary-button-hover;
-      }
-
-      .email {
-        border-right: 1px solid $score-table-border;
-      }
-
-      &.user-score-table {
-        margin-top: 4rem;
-
-        tbody {
-          tr {
-            td {
-              vertical-align: middle;
-            }
-          }
-        }
-      }
+    &.primary-button {
+      font-size: 1.4rem;
+      color: $main-background-color;
     }
   }
 }
 
-.new-question-container {
+select:not([multiple]) {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-position: right 50%;
+  background-repeat: no-repeat;
+  background-image: url("../images/output-onlinepngtools.png");
+  padding: .5rem;
+  padding-right: 1.5rem;
+  background-color: $main-background-color;
+}
+
+.dropdown {
+  height: 34px;
+  margin-right: 0.5rem;
+  border-radius: 0;
+
+  option {
+    font-size: 1.5rem;
+  }
+}
+
+
+.tableContainer {
+  margin-top: 5rem;
+
+  .search-filter-container {
+    margin-top: 3rem;
+    display: flex;
+    height: 180px;
+    flex-direction: column;
+    justify-content: space-between;
+
+    label {
+      font-weight: 400;
+      font-size: 1.5rem;
+    }
+
+  }
+}
+
+.table {
+  font-size: 1.5rem;
+  margin-top: 4rem;
+
+  .edit-user-button, .delete-user-button {
+    color: $main-background-color;
+  }
+
+  .edit-user-button {
+    background-color: $edit-button;
+  }
+
+  .delete-user-button {
+    background-color: $primary-button-hover;
+  }
+
+  .email {
+    border-right: 1px solid $score-table-border;
+  }
+
+  td {
+    vertical-align: middle;
+  }
+
+}
+
+
+.modify-question-container {
   overflow: auto;
   height: 150px;
   flex-direction: column;
   justify-content: space-between;
   margin-bottom: 30px;
 
-  a{margin-top: 20px;}
+  a{
+    margin-top: 20px;
+    margin-right: 1rem;
+  }
 }
 
 .test-not-taken {
