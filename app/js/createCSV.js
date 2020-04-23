@@ -8,13 +8,61 @@
  */
 
 function createCSV(info, userId, userName, userPercentage) {
-    let csv = 'Name,Score,%,Answers\n';
-    info.data.forEach(function(row) {
-        if (row.id == userId) {
-        row.answers = row.answers.replace('/','');
-            csv += `${userName}, ${row.score}, ${userPercentage}, ${row.answers}`;
-            csv += "\n";
-        }
-    });
+    
+   
+    let arrayOfReplaces = [/\\/g, /"/g, /{/g, /}/g,]
+        let questionsAndAnswers = info.data.answers
+       
+        arrayOfReplaces.forEach((expression) => {
+
+            questionsAndAnswers = questionsAndAnswers.replace(expression, '')
+
+        })
+
+        questionsAndAnswers = questionsAndAnswers.split(',');
+
+        let questionNumbersAndAnswers = [];
+
+        questionsAndAnswers.forEach((answer) => {
+
+            questionNumbersAndAnswers.push(answer.split(':'))
+
+        })
+        
+        let csv = 'Name,Score,%,'
+
+        let count = 0
+        
+        questionNumbersAndAnswers.forEach((eachQuestion) => {
+
+            csv += eachQuestion[0]
+            
+            if(count < questionNumbersAndAnswers.length -1) {
+
+                csv += ','
+
+            }
+
+            count ++
+
+         })
+        
+        csv += '\n';
+         
+        csv += `${userName},${info.data.score},${userPercentage},`
+        
+        count = 0
+
+        questionNumbersAndAnswers.forEach((eachQuestion) => {
+            csv += eachQuestion[1]
+            if(count < questionNumbersAndAnswers.length -1) {
+                csv += ','
+                }
+                count ++
+         })
+        
+         csv += "\n";
+
     return csv
 }
+
