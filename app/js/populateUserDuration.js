@@ -11,7 +11,7 @@ function populateUserDuration(test_option, testFieldValue) {
             let userDurationMinutesField = document.querySelector('#user_time_minutes');
             let userDurationSecondsField = document.querySelector('#user_time_seconds');
 
-            userDurationMinutesField.value = (userDurationMinutes);
+            userDurationMinutesField.value = String(userDurationMinutes).padStart(2,'0');
             userDurationSecondsField.value = String(userDurationSeconds).padStart(2,'0');
         }
 }
