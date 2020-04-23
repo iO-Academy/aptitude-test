@@ -8,16 +8,22 @@ async function displayPageBtns(paginatedArray) {
     let buttonsTemplate = await getTemplateAjax('js/templates/paginationButtons.hbs');
     let template = Handlebars.compile(buttonsTemplate);
     document.querySelector('.pageSelectors').innerHTML = template({pages});
-    let selectedPage = pageSelectorFunctionality();
-    return selectedPage;
 }
 
-function pageSelectorFunctionality() {
+function pageSelectorFunctionality(HBTemplate, paginatedArrays) {
+    const pages = paginatedArrays.length;
     let page = 1;
     document.querySelectorAll('.pageBtn').forEach((btn) => {
         btn.addEventListener('click', (evt => {
-            page = btn.dataset.page;
+            if (btn.dataset.page > 0) {
+                page = btn.dataset.page;
+            } else if ((btn.dataset.page === 'next')&&(page !== pages)){
+                page++;
+            } else if ((btn.dataset.page === 'back')&&(page !== 1)){
+                page--;
+            }
+            printFilteredResultsToScreen(HBTemplate, paginatedArrays[page - 1])
         }));
     });
-    return (page - 1);
 }
+
