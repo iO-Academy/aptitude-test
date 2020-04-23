@@ -137,3 +137,8 @@ select:not([multiple]) {
   display: block;
   margin-top: 30px;
 }
+
+.pageSelectors {
+  display: flex;
+  justify-content: center;
+}
