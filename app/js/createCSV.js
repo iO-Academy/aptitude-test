@@ -14,17 +14,7 @@ function createCSV(info, userId) {
 
 
   
-function getInfoForCSV() {
 
-    var data = getData("result").then((data) => {
-        return data
-    })
-        .then((data) => {
 
-            var result = data
-
-            createCSV(result, 2) 
-    })
-}
 
      
