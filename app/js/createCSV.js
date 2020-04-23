@@ -8,10 +8,11 @@
  */
 
 function createCSV(info, userId, userName, userPercentage) {
+    console.log(userPercentage);
     let csv = 'Name,Score,%,Answers\n';
     info.data.forEach(function(row) {
         if (row.id == userId) {
-        row.answers = row.answers.replace('/','');
+        row.answers = row.answers.replace(/\\/g,"");
             csv += `${userName}, ${row.score}, ${userPercentage}, ${row.answers}`;
             csv += "\n";
         }
