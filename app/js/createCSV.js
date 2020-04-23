@@ -1,9 +1,10 @@
 /**
- * 
- * @param {info} json with stuff in 
- * @param {userId} is userId 
+ * @param {*} info 
+ * @param {*} userId 
  * @param {*} userName 
  * @param {*} userPercentage 
+ * Gets test data
+ * converts the json into csv and returns out
  */
 
 function createCSV(info, userId, userName, userPercentage) {
@@ -17,5 +18,4 @@ function createCSV(info, userId, userName, userPercentage) {
     });
 
     return csv
- 
 }
