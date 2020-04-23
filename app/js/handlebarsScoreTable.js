@@ -91,6 +91,17 @@ function addEditEventListeners() {
     })
 }
 
+function testFunction(e) {
+
+    e.preventDefault()
+
+    let userInfo = createObjectFromParentElement(e)
+            getData("user").then((data) => {
+                return data
+            })
+            console.log(data);
+}
+
 /**
  * Adds event listener to the delete buttons.
  */
