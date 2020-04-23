@@ -18,11 +18,6 @@ function createCSV(info, userId, userName, userPercentage) {
         questionsAndAnswers = questionsAndAnswers.replace(expression, '')
     })
 
-<<<<<<< Updated upstream
-        })
-        
-        let csv = 'Name,Score,%,'
-=======
     questionsAndAnswers = questionsAndAnswers.split(',')
 
     questionsAndAnswers.forEach((answer) => {
@@ -30,7 +25,6 @@ function createCSV(info, userId, userName, userPercentage) {
     })
     
     questionNumbersAndAnswers.forEach((eachQuestion) => {
->>>>>>> Stashed changes
 
         csv += eachQuestion[0]
         
