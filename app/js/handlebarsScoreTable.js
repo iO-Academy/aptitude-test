@@ -32,14 +32,13 @@ function updateScoreTable() {
                     getData("result")
 
                     .then((data) => {
-
+                        let parentElement = e.target.parentElement
                         let userId = parentElement.getAttribute("dataId")
                         let userName = parentElement.getAttribute("dataname")
                         let userPercentage = parentElement.getAttribute("percentage")
                         let result = data
 
-                        createCSV(result, userId, userName, userPercentage)
-                        
+                        downloadFile(`${userName}_aptitude_test_results`, createCSV(result, userId, userName, userPercentage))
                     })
                 })
             })
