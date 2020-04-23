@@ -8,7 +8,7 @@ function toggleGraphDisplay(e) {
     e.preventDefault();
     let graphOnPage = document.querySelector('.show-graph');
     graphOnPage.classList.toggle('hidden');
-    let tableOnPage = document.querySelector('.user-table');
+    let tableOnPage = document.querySelector('.table');
     tableOnPage.classList.toggle('hidden');
     let viewGraphButton =document.querySelector('#viewGraph');
     viewGraphButton.classList.toggle('hidden');
