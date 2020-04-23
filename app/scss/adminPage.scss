@@ -49,6 +49,9 @@ select:not([multiple]) {
   }
 }
 
+input {
+  margin: 0 0.5rem;
+}
 
 .tableContainer {
   margin-top: 5rem;
@@ -130,7 +133,7 @@ select:not([multiple]) {
   margin-top: 30px;
 }
 
-#message-target {
+.message-target {
   margin-top: 10px;
 }
 
@@ -141,4 +144,14 @@ select:not([multiple]) {
 .editmodal label, #editSubmit {
   display: block;
   margin-top: 30px;
+}
+
+input[type="number"] {
+  width: 50px;
+}
+
+#testForm {
+  .submit {
+    margin-left: 1rem;
+  }
 }

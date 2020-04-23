@@ -54,22 +54,27 @@ function printFilteredResultsToScreen(HBTemplate, scoresDataArray) {
  * @param event is the event fired off by the function
  */
 function createObjectFromParentElement(event) {
-    let parentElement = event.target.parentElement
-    let userInfo = {}
-    userInfo.name = parentElement.getAttribute("dataName")
-    userInfo.email = parentElement.getAttribute("dataEmail")
-    userInfo.id = parentElement.getAttribute("dataId")
-    userInfo.time = parentElement.getAttribute("dataTimeAllowed")
-    userInfo.canRetake = parseInt(parentElement.getAttribute("dataCanRetake"))
-    userInfo.dataTestId = parentElement.getAttribute("dataTestId")
-    return userInfo
+    let parentElement = event.target.parentElement;
+    let userTime = parentElement.getAttribute("dataTimeAllowed");
+    let userInfo = {};
+    let [ userTimeMinutes, userTimeSeconds ] = userTime.split(":");
+
+    userInfo.name = parentElement.getAttribute("dataName");
+    userInfo.email = parentElement.getAttribute("dataEmail");
+    userInfo.id = parentElement.getAttribute("dataId");
+    userInfo.timeMinutes = userTimeMinutes;
+    userInfo.timeSeconds = userTimeSeconds;
+    userInfo.canRetake = parseInt(parentElement.getAttribute("dataCanRetake"));
+    userInfo.dataTestId = parentElement.getAttribute("dataTestId");
+  
+    return userInfo;
 }
 
 /**
  * Adds event listener to the edit buttons.
  */
 function addEditEventListeners() {
-    let editButtons = document.querySelectorAll(".modalBtn")
+    let editButtons = document.querySelectorAll(".modalBtn");
     editButtons.forEach(function(editButton) {
         editButton.addEventListener('click', function (e) {
             openDialog()
