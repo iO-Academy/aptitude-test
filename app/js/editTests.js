@@ -27,7 +27,7 @@ function populateQuestions(testId) {
 populateHandlebars('#filterTests', 'js/templates/testAllocatedFilter.hbs', 'test').then(() => {
     document.querySelector('#filterTests').value = testId;
     document.querySelector('#filterTests').addEventListener('change', (testFilter) => {
-        const {filteredTestId} = testFilter.target;
+        const filteredTestId = testFilter.target.value;
 
         window.location.href = `editTests.html#${filteredTestId}`;
         document.querySelector('.tableBody').innerHTML = "";
