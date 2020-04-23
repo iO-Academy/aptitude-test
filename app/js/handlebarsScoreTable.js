@@ -26,7 +26,7 @@ async function updateScoreTable() {
     let paginatedArrays = splitArray(filteredUserArray, 20);
 
     printFilteredResultsToScreen(HBTemplate, paginatedArrays[0]);
-    await displayPageBtns(paginatedArrays);
+    displayPageBtns(paginatedArrays);
 }
 
 /**
