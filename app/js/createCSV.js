@@ -11,10 +11,3 @@ function createCSV(info, userId) {
     return csv
  
 }
-
-
-  
-
-
-
-     
