@@ -1,3 +1,11 @@
+/**
+ * 
+ * @param {info} json with stuff in 
+ * @param {userId} is userId 
+ * @param {*} userName 
+ * @param {*} userPercentage 
+ */
+
 function createCSV(info, userId, userName, userPercentage) {
     var csv = 'Name,Score,%,Answers\n';
     info.data.forEach(function(row) {
