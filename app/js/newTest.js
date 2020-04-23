@@ -21,18 +21,9 @@ testForm.addEventListener('submit', async function(e) {
         testData = jsonToFormData(testData);
 
         let response = await sendData(testData, 'test');
-        responseMsg.innerText = response.message;
-        if (response.success) {
-            populateHandlebars('#test_id', 'js/templates/testDropdown.hbs', 'test');
-            populateHandlebars('#testAllocated', 'js/templates/testAllocatedFilter.hbs', 'test');
-            responseMsg.classList.add('alert-success');
-            responseMsg.classList.remove('alert-danger');
-            document.querySelector('#testName').value = ''
-        } else {
-            responseMsg.classList.remove('alert-success');
-            responseMsg.classList.add('alert-danger');
-        }
-    } else if (inputLength > 0 && inputLength < 256) {
+        ajaxResponseCheck(response.success, response.message, responseMsg, true);
+
+    } else if (inputLengthIsValid) {
         responseMsg.classList.remove('alert-success');
         responseMsg.classList.add('alert-danger');
         responseMsg.innerHTML = 'Test duration must be below an hour and minutes and seconds must be between 0 and 60.';

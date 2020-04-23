@@ -3,17 +3,20 @@
  *
  * @param jsonInput the JSON object to be converted.
  *
- * @returns a form data object.
+ * @returns FormData form data object.
  */
 function jsonToFormData(jsonInput) {
-    let formData = new FormData()
+    let formData = new FormData();
 
     Object.keys(jsonInput).forEach(function(key) {
-        let value = jsonInput[key]
-        if  (typeof  value  === 'object') {
-            jsonInput[key] = JSON.stringify(value)
+        let value = jsonInput[key];
+
+        if (typeof value === 'object') {
+            jsonInput[key] = JSON.stringify(value);
         }
-        formData.append(key, jsonInput[key])
-    })
-    return formData
+
+        formData.append(key, jsonInput[key]);
+    });
+
+    return formData;
 }

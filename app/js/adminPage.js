@@ -1,4 +1,10 @@
-populateHandlebars('#test_id', 'js/templates/testDropdown.hbs', 'test');
+getData('test').then((testsObject)=>{
+    getTemplateAjax('js/templates/testDropdown.hbs').then((HBTemplate)=> {
+        let template = Handlebars.compile(HBTemplate);
+        document.querySelector('#test_id').innerHTML = template(testsObject);
+        document.querySelector('#linkToEditTestsBtn').setAttribute('href', `editTests.html#${testsObject.data[0].id}`);
+    });
+});
 populateHandlebars('#testAllocated', 'js/templates/testAllocatedFilter.hbs', 'test');
 populateUserDuration();
 
