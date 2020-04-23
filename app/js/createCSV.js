@@ -1,14 +1,14 @@
 /**
- * @param {*} info 
- * @param {*} userId 
- * @param {*} userName 
- * @param {*} userPercentage 
  * Gets test data
  * converts the json into csv and returns out
+ * @param {*} info - object of user data
+ * @param {*} userId - id of user in database
+ * @param {*} userName  - name of user in database
+ * @param {*} userPercentage -user percentage score on taken test
  */
 
 function createCSV(info, userId, userName, userPercentage) {
-    var csv = 'Name,Score,%,Answers\n';
+    let csv = 'Name,Score,%,Answers\n';
     info.data.forEach(function(row) {
         if (row.id == userId) {
         row.answers = row.answers.replace('/','');
@@ -16,6 +16,5 @@ function createCSV(info, userId, userName, userPercentage) {
             csv += "\n";
         }
     });
-
     return csv
 }

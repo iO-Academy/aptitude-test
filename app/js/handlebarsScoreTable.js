@@ -40,7 +40,6 @@ function updateScoreTable() {
 
                         createCSV(result, userId, userName, userPercentage)
                         
-                    
                     })
                 })
             })
