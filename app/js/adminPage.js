@@ -1,17 +1,4 @@
-getData('test').then((testsObject)=>{
-    getTemplateAjax('js/templates/testDropdown.hbs').then((HBTemplate)=> {
-        let template = Handlebars.compile(HBTemplate);
-        document.querySelector('#test_id').innerHTML = template(testsObject);
-        document.querySelector('#linkToEditTestsBtn').setAttribute('href', `editTests.html#${testsObject.data[0].id}`);
-    });
-});
-populateHandlebars('#testAllocated', 'js/templates/testAllocatedFilter.hbs', 'test');
-populateUserDuration();
-
-document.querySelector('#test_id').addEventListener('change', () => {
-    let testFieldValue = document.querySelector('#test_id').value;
-    populateUserDuration(testFieldValue);
-});
+populateTestDropdowns();
 
 /**
  * Save the JSON object using an AJAX request.
@@ -132,7 +119,7 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
                     nameField.value = '';
                     emailField.value = '';
                     testField.value = '1';
-                    populateUserDuration();
+                    populateTestDropdowns();
                     updateScoreTable();
                 } else {
                     errorField.classList.remove('alert-success');

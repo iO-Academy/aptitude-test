@@ -12,8 +12,7 @@ function ajaxResponseCheck(success, message, responseMsgLocation, isTest = false
         responseMsgLocation.classList.add('alert-success');
         responseMsgLocation.classList.remove('alert-danger');
         if (isTest){
-            populateHandlebars('#test_id', 'js/templates/testDropdown.hbs', 'test');
-            populateHandlebars('#testAllocated', 'js/templates/testAllocatedFilter.hbs', 'test');
+            populateTestDropdowns();
             document.querySelector('#testName').value = '';
         }
     } else {
