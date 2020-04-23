@@ -49,6 +49,9 @@ select:not([multiple]) {
   }
 }
 
+input {
+  margin: 0 0.5rem;
+}
 
 .tableContainer {
   margin-top: 5rem;
@@ -60,11 +63,16 @@ select:not([multiple]) {
     flex-direction: column;
     justify-content: space-between;
 
-    label {
-      font-weight: 400;
-      font-size: 1.5rem;
-    }
+    .filterContainer {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
 
+      label {
+        font-weight: 400;
+        font-size: 1.5rem;
+      }
+    }
   }
 }
 
@@ -125,7 +133,7 @@ select:not([multiple]) {
   margin-top: 30px;
 }
 
-#message-target {
+.message-target {
   margin-top: 10px;
 }
 
@@ -145,4 +153,14 @@ select:not([multiple]) {
 
 .greyedOutBtn {
   opacity: 0.2;
+}
+
+input[type="number"] {
+  width: 50px;
+}
+
+#testForm {
+  .submit {
+    margin-left: 1rem;
+  }
 }
