@@ -6,6 +6,7 @@
     <link href="css/bootstrap.css" type="text/css" rel="stylesheet">
     <link href="css/styles.css" type="text/css" rel="stylesheet">
     <link href="css/adminPage.css" type="text/css" rel="stylesheet">
+    <link href="css/graph.css" type="text/css" rel="stylesheet">
     <script src="js/handlebars-v4.0.11.js"></script>
     <script src="js/utils.js"></script>
     <script src="js/userLogIn.js"></script>
@@ -22,11 +23,15 @@
     <script src="js/searchFunction.js" defer></script>
     <script src="js/filterFunctions.js" defer></script>
     <script src="js/searchAndFilter.js" defer></script>
+    <script src="js/displayHideGraph.js" defer></script>
     <script src="js/handlebarsScoreTable.js" defer></script>
     <script src="js/modal.js" defer></script>
     <script src="js/questionCount.js" defer></script>
     <script src="js/newTest.js" defer></script>
     <script src="js/sendData.js" defer></script>
+    <script src="js/sendToChart.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
+    <script src="js/scoreChart.js" defer></script>
     <script src="js/ajaxResponseCheck.js" defer></script>
     <title>Admin Page</title>
 </head>
@@ -66,20 +71,27 @@
                             <input type="submit" id="searchReset" value="Clear Search" class="btn primary-button">
                         </div>
                         <h4 class="search-heading">Filter Results</h4>
-                        <div class="display-flex">
-                            <select name="filterScorePercentage" id="filterScorePercentage" class="dropdown">
-                                <option value="" disabled selected>Score Percentage</option>
-                                <option value="3">-none-</option>
-                                <option value="1">+70%</option>
-                                <option value="2">-69%</option>
-                            </select>
-                            <select id="testAllocated" class="dropdown">
-                            </select>
-                            <label for="startDate">Start</label>
-                            <input id="startDate" type="date">
-                            <label for="endDate">End</label>
-                            <input id="endDate" type="date">
-                        </div>
+                            <div class="filterContainer">
+                                <div class="filters">
+                                    <select name="filterScorePercentage" id="filterScorePercentage" class="dropdown">
+                                        <option value="" disabled selected>Score Percentage</option>
+                                        <option value="1">-none-</option>
+                                        <option value="2">&lt;70%</option>
+                                        <option value="3">70% - 96%</option>
+                                        <option value="4">&#8805;97%</option>
+                                    </select>
+                                    <select id="testAllocated" class="dropdown">
+                                    </select>
+                                    <label for="startDate">Start</label>
+                                    <input id="startDate" type="date">
+                                    <label for="endDate">End</label>
+                                    <input id="endDate" type="date">
+                                </div>
+                                <div class="graphButtons">
+                                    <button id="viewGraph" class="btn primary-button">View Graph</button>
+                                    <button id="viewTable" class="btn primary-button hidden">View Table</button>
+                                </div>
+                            </div>
                     </div>
                     <table class="table">
                         <thead>
@@ -97,6 +109,9 @@
                         </thead>
                         <tbody class="tableList user-table score_list"></tbody>
                     </table>
+                    <div class="show-graph hidden">
+                        <canvas id="myChart" width="100" height="100"></canvas>
+                    </div>
                 </div>
                 <form class="new-test-container" id="testForm" method="post">
                     <h2>Add new test</h2>

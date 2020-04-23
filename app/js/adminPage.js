@@ -4,8 +4,11 @@ getData('test').then((testsObject)=>{
         document.querySelector('#test_id').innerHTML = template(testsObject);
         document.querySelector('#linkToEditTestsBtn').setAttribute('href', `editTests.html#${testsObject.data[0].id}`);
     });
+    getTemplateAjax('js/templates/testAllocatedFilter.hbs').then((HBTemplate)=> {
+        let template = Handlebars.compile(HBTemplate);
+        document.querySelector('#testAllocated').innerHTML = template(testsObject);
+    });
 });
-populateHandlebars('#testAllocated', 'js/templates/testAllocatedFilter.hbs', 'test')
 
 /**
  * Save the JSON object using an AJAX request.
