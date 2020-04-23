@@ -28,8 +28,16 @@ function updateScoreTable() {
             document.querySelectorAll('.download-user-results-button').forEach((button) => {
                 button.addEventListener('click', (e) => {
                     e.preventDefault()
-                
-                
+
+                    getData("result")
+
+                    .then((data) => {
+
+                        let userId = parentElement.getAttribute("dataId")
+                        let result = data
+
+                        createCSV(result, userId) 
+                    })
                 })
             })
         })
@@ -86,6 +94,17 @@ function addEditEventListeners() {
             })
         })
     })
+}
+
+function testFunction(e) {
+
+    e.preventDefault()
+
+    let userInfo = createObjectFromParentElement(e)
+            getData("user").then((data) => {
+                return data
+            })
+            console.log(data);
 }
 
 /**
@@ -148,6 +167,7 @@ function produceTable (HBTemplate, scoresDataObject) {
 
     addEditEventListeners()
     addDeleteEventListeners()
+    
 }
 
 updateScoreTable()
