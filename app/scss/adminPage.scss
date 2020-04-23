@@ -70,6 +70,7 @@ select:not([multiple]) {
 
 .table {
   font-size: 1.5rem;
+  margin-top: 4rem;
 
   .edit-user-button, .delete-user-button {
     color: $main-background-color;
@@ -87,13 +88,10 @@ select:not([multiple]) {
     border-right: 1px solid $score-table-border;
   }
 
-  &.tableStyles {
-    margin-top: 4rem;
-
-    td {
-      vertical-align: middle;
-    }
+  td {
+    vertical-align: middle;
   }
+
 }
 
 
