@@ -142,3 +142,7 @@ select:not([multiple]) {
   display: flex;
   justify-content: center;
 }
+
+.greyedOutBtn {
+  opacity: 0.2;
+}
