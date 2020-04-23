@@ -19,16 +19,22 @@ async function sortUsersObjectByDate() {
  * Get the handlebars template for table rows (adminTable.hbs), combine
  * with user objects and send this to searching and filtering.
  */
-function updateScoreTable() {
-    let users = sortUsersObjectByDate()
-    users.then(function (userInfo) {
-        getTemplateAjax('js/templates/adminTable.hbs').then(function (HBTemplate) {
-            let filteredUserArray = searchAndFilter(userInfo.data)
-            updateChart(filteredUserArray)
-            printFilteredResultsToScreen(HBTemplate, filteredUserArray)
-            addEventListenersForDownloadButtons()
-        })
-    })
+async function updateScoreTable() {
+    let userInfo = await sortUsersObjectByDate();
+    let HBTemplate = await getTemplateAjax('js/templates/adminTable.hbs');
+    let filteredUserArray = searchAndFilter(userInfo.data);
+    let paginatedArrays = splitArray(filteredUserArray, 20);
+
+    updateChart(filteredUserArray);
+    if (paginatedArrays.length >= 1 ){
+        printFilteredResultsToScreen(HBTemplate, paginatedArrays[0]);
+    } else {
+        //This only happens when there are no users to be displayed, cannot pass paginatedArrays[0] when paginatedArrays is empty.
+        printFilteredResultsToScreen(HBTemplate, paginatedArrays);
+    }
+    await displayPageBtns(paginatedArrays);
+    pageSelectorFunctionality(HBTemplate, paginatedArrays);
+    addEventListenersForDownloadButtons()
 }
 
 /**
@@ -168,3 +174,4 @@ function addEventListenersForDownloadButtons(){
 }
 
 updateScoreTable();
+

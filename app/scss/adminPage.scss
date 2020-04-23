@@ -157,6 +157,19 @@ input {
   margin-top: 30px;
 }
 
+.pageSelectors {
+  display: flex;
+  justify-content: center;
+
+  .primary-button.active {
+    background-color: $results-headings;
+  }
+
+  .greyedOutBtn {
+    opacity: 0.2;
+  }
+}
+
 input[type="number"] {
   width: 50px;
 }
@@ -166,3 +179,4 @@ input[type="number"] {
     margin-left: 1rem;
   }
 }
+

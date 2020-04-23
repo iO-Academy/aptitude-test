@@ -28,6 +28,7 @@
     <script src="js/searchFunction.js" defer></script>
     <script src="js/filterFunctions.js" defer></script>
     <script src="js/searchAndFilter.js" defer></script>
+    <script src="js/displayPageButtons.js" defer></script>
     <script src="js/displayHideGraph.js" defer></script>
     <script src="js/handlebarsScoreTable.js" defer></script>
     <script src="js/modal.js" defer></script>
@@ -35,6 +36,7 @@
     <script src="js/newTest.js" defer></script>
     <script src="js/sendData.js" defer></script>
     <script src="js/createCSV.js" defer></script>
+    <script src="js/splitArray.js" defer></script>
     <script src="js/sendToChart.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
     <script src="js/scoreChart.js" defer></script>
@@ -42,7 +44,6 @@
     <script src="js/downloadFile.js" defer></script>
     <title>Admin Page</title>
 </head>
-
 <body>
     <!-- Modal -->
     <div class="overlay"></div>
@@ -120,6 +121,7 @@
                         </thead>
                         <tbody class="tableList user-table score_list"></tbody>
                     </table>
+                    <div class="pageSelectors"></div>
                     <div class="show-graph hidden">
                         <canvas id="myChart" width="100" height="100"></canvas>
                     </div>
