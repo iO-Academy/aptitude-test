@@ -2,10 +2,7 @@
  * function to generate the data object for the chart displayed on the front end.
  * @returns the data object for graph.js
  */
-async function sendToChart() { 
-    let users = await createUsersObject();
-    users = searchAndFilter(users.data);
-    
+async function sendToChart(users) { 
     let dataForChart = {};
     let labels = await generateLabels(users);
     let dubiousGrade = await generateDataset("Under 70%", labels, users, 0, 70, "#f27324");
