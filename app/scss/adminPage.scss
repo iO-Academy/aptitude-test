@@ -149,10 +149,14 @@ input {
 .pageSelectors {
   display: flex;
   justify-content: center;
-}
 
-.greyedOutBtn {
-  opacity: 0.2;
+  .primary-button.active {
+    background-color: $results-headings;
+  }
+
+  .greyedOutBtn {
+    opacity: 0.2;
+  }
 }
 
 input[type="number"] {
@@ -164,3 +168,4 @@ input[type="number"] {
     margin-left: 1rem;
   }
 }
+

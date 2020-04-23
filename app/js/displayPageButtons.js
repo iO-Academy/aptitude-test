@@ -8,6 +8,7 @@ async function displayPageBtns(paginatedArray) {
     let buttonsTemplate = await getTemplateAjax('js/templates/paginationButtons.hbs');
     let template = Handlebars.compile(buttonsTemplate);
     document.querySelector('.pageSelectors').innerHTML = template({pages});
+    document.querySelectorAll('.pageBtn')[1].classList.add('active');
 }
 
 /**
@@ -23,6 +24,9 @@ function pageSelectorFunctionality(HBTemplate, paginatedArrays) {
 
     document.querySelectorAll('.pageBtn').forEach((btn) => {
         btn.addEventListener('click', (() => {
+            document.querySelectorAll('.pageBtn').forEach((allBtn) => {
+                allBtn.classList.remove("active")
+            });
             if (page > 0 && page <= pages) {
                 if (!isNaN(btn.dataset.page)) {
                     page = parseInt(btn.dataset.page);
@@ -31,6 +35,7 @@ function pageSelectorFunctionality(HBTemplate, paginatedArrays) {
                 } else if ((btn.dataset.page === 'back') && (page > 1)) {
                     page--;
                 }
+                document.querySelector(`.pageBtn[data-page="${page}"]`).classList.add('active');
             }
 
             printFilteredResultsToScreen(HBTemplate, paginatedArrays[page - 1]);
