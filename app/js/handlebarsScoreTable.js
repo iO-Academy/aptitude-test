@@ -29,7 +29,7 @@ async function updateScoreTable() {
     if (paginatedArrays.length >= 1 ){
         printFilteredResultsToScreen(HBTemplate, paginatedArrays[0]);
     } else {
-        printFilteredResultsToScreen(HBTemplate, paginatedArrays);
+        printFilteredResultsToScreen(HBTemplate, paginatedArrays); //This only happens when there are no users to be displayed, cannot pass paginatedArrays[0] when paginatedArrays is empty.
     }
     await displayPageBtns(paginatedArrays);
     pageSelectorFunctionality(HBTemplate, paginatedArrays);
