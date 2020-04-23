@@ -18,7 +18,3 @@ async function populateHandlebars(targetElement, handlebarsPath, APIpath) {
         score_list.innerHTML = template(dataToInsert);
     }
 }
-
-
-
-
