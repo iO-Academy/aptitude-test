@@ -26,7 +26,7 @@ async function updateScoreTable() {
     let paginatedArrays = splitArray(filteredUserArray, 20);
 
     updateChart(filteredUserArray);
-    if (paginatedArrays.length > 1 ){
+    if (paginatedArrays.length >= 1 ){
         printFilteredResultsToScreen(HBTemplate, paginatedArrays[0]);
     } else {
         printFilteredResultsToScreen(HBTemplate, paginatedArrays);
