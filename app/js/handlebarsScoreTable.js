@@ -23,7 +23,7 @@ async function updateScoreTable() {
     let userInfo = await sortUsersObjectByDate();
     let HBTemplate = await getTemplateAjax('js/templates/adminTable.hbs');
     let filteredUserArray = searchAndFilter(userInfo.data);
-    let paginatedArrays = splitArray(filteredUserArray, 2);
+    let paginatedArrays = splitArray(filteredUserArray, 20);
 
     printFilteredResultsToScreen(HBTemplate, paginatedArrays[0]);
     await displayPageBtns(paginatedArrays);
