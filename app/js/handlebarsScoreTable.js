@@ -29,17 +29,15 @@ function updateScoreTable() {
                 button.addEventListener('click', (e) => {
                     e.preventDefault()
 
-                    getData("result")
+                    getData("result?id=" + e.target.parentElement.getAttribute("dataId"))
 
                     .then((data) => {
-
+                        let parentElement = e.target.parentElement
                         let userId = parentElement.getAttribute("dataId")
                         let userName = parentElement.getAttribute("dataname")
-                        let userPercentage = parentElement.getAttribute("percentage")
+                        let userPercentage = parentElement.getAttribute("datapercentage")
                         let result = data
-
-                        createCSV(result, userId, userName, userPercentage)
-                        
+                        downloadFile(`${userName}_aptitude_test_results`, createCSV(result, userId, userName, userPercentage))
                     })
                 })
             })
