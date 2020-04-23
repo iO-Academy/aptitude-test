@@ -1,5 +1,4 @@
-populateHandlebars('#test_id', 'js/templates/testDropdown.hbs', 'test')
-populateHandlebars('#testAllocated', 'js/templates/testAllocatedFilter.hbs', 'test')
+populateTestDropdowns();
 
 /**
  * Save the JSON object using an AJAX request.
@@ -9,18 +8,18 @@ populateHandlebars('#testAllocated', 'js/templates/testAllocatedFilter.hbs', 'te
  * @returns A promise containing the response, which includes the boolean success property.
  */
 async function saveNewUser(user) {
-    let baseUrl = getBaseUrl()
-    let formData = jsonToFormData(user) // API does not work with JSON - needs form data
+    let baseUrl = getBaseUrl();
+    let formData = jsonToFormData(user); // API does not work with JSON - needs form data
     let apiData = await fetch(
         baseUrl + 'user',
         {
             method: 'post',
             body: formData
         }
-    )
+    );
 
-    apiData = await apiData.json()
-    return apiData
+    apiData = await apiData.json();
+    return apiData;
 }
 
 /**
@@ -29,23 +28,23 @@ async function saveNewUser(user) {
  * @return  An array of user data.
  */
 async function getExistingUsers() {
-    let baseUrl = getBaseUrl()
-    let result = []
+    let baseUrl = getBaseUrl();
+    let result = [];
     let apiData = await fetch(
         baseUrl +  'user',
         {method: 'get'}
-    )
-    apiData = await apiData.json()
+    );
+    apiData = await apiData.json();
     if (apiData.success) {
-        let users = apiData.data
+        let users = apiData.data;
         users.forEach(function(user) {
             if (user.deleted == 0) {
-                result.push(user)
+                result.push(user);
             }
         })
     }
 
-    return result
+    return result;
 }
 
 /**
@@ -57,11 +56,11 @@ async function getExistingUsers() {
  * @returns {boolean} - Is the email valid.
  */
 function isEmailValid(email) {
-    const regexEmail = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/
+    const regexEmail = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
     if (regexEmail.test(email)) {
-        return true
+        return true;
     } else {
-        return false
+        return false;
     }
 }
 
@@ -74,51 +73,60 @@ function isEmailValid(email) {
  * @returns {boolean} - Does the user already exist.
  */
 function userExists(emailToAdd, existingUsers) {
-    var result = false
+    let result = false;
     existingUsers.forEach(function(user) {
         if (user.email === emailToAdd) {
-            result = true
+            result = true;
         }
-    })
+    });
 
-    return result
+    return result;
 }
 
 document.querySelector('#addNewUserForm').addEventListener('submit', function(event) {
-    event.preventDefault()
-    let emailField = document.querySelector('#email')
-    let nameField = document.querySelector('#name')
-    let testField = document.querySelector('#test_id')
-    let errorField = document.querySelector('#error')
-    let timeField = document.querySelector('#time')
+    event.preventDefault();
+    let emailField = document.querySelector('#email');
+    let nameField = document.querySelector('#name');
+    let testField = document.querySelector('#test_id');
+    let errorField = document.querySelector('#error');
+    let timeMinutes = document.querySelector('#user_time_minutes').value;
+    let timeSeconds = document.querySelector('#user_time_seconds').value;
+    let timeTotal = convertToTotalTimeSeconds(timeMinutes, timeSeconds);
 
     getExistingUsers().then(function(existingUsers) {
-
-        let emailIsValid = true
-        let timeIsValid = true
-
         if (!isEmailValid(emailField.value) || userExists(emailField.value, existingUsers)) {
-            emailIsValid = false
-            errorField.innerHTML = "Your email is not valid or already exists: Please provide a correct email"
-        }
-        if (timeField.value <=1 || timeField.value == null || isNaN(timeField.value) === true ) {
-            timeIsValid = false
-            errorField.innerHTML += 'This is not a good number!'
-        }
-
-        if (emailIsValid && timeIsValid) {
-            errorField.innerHTML = ''
-            var setTime = timeField.value * 60
-            saveNewUser({'name': nameField.value, 'email': emailField.value, 'test_id': testField.value, 'time': setTime}).then(function(response) {
+            errorField.classList.remove('alert-success');
+            errorField.classList.add('alert-danger');
+            errorField.innerHTML = "Your email is not valid or already exists: Please provide a correct email";
+        } else if (!isTimeTotalValid(timeTotal) ||
+            !isTimeMinutesValid(timeMinutes) ||
+            !isTimeSecondsValid(timeSeconds)) {
+            errorField.classList.remove('alert-success');
+            errorField.classList.add('alert-danger');
+            errorField.innerHTML = 'Test duration must be below an hour and minutes and seconds must be between 0 and 60.';
+        } else {
+            errorField.innerHTML = '';
+            saveNewUser({
+                    name: nameField.value,
+                    email: emailField.value,
+                    test_id: testField.value,
+                    time: timeTotal
+                }).then(function(response) {
                 if (response.success) {
-                    nameField.value = ''
-                    emailField.value = ''
-                    timeField.value = 30
-                    updateScoreTable()
+                    errorField.classList.add('alert-success');
+                    errorField.classList.remove('alert-danger');
+                    errorField.innerHTML = "User added successfully.";
+                    nameField.value = '';
+                    emailField.value = '';
+                    testField.value = '1';
+                    populateTestDropdowns();
+                    updateScoreTable();
                 } else {
-                    errorField.innerHTML = response.message
+                    errorField.classList.remove('alert-success');
+                    errorField.classList.add('alert-danger');
+                    errorField.innerHTML = response.message;
                 }
             })
         }
     })
-})
+});

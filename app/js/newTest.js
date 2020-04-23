@@ -1,26 +1,35 @@
-let testForm = document.querySelector('#testForm')
-let responseMsg = document.querySelector('#inputSubmissionConfirmation')
+let testForm = document.querySelector('#testForm');
+let responseMsg = document.querySelector('#inputSubmissionConfirmation');
 
 testForm.addEventListener('submit', async function(e) {
-    e.preventDefault()
-    let inputLength = document.querySelector('#testName').value.length
-    if (inputLength > 0 && inputLength < 256) {
-        let testData = {}
-        testData.name = testForm.testName.value
-        testData = jsonToFormData(testData)
-        let response = await sendData(testData, 'test')
-        responseMsg.innerText = response.message
-        if (response.success) {
-            responseMsg.classList.add('alert-success')
-            responseMsg.classList.remove('alert-danger')
-            document.querySelector('#testName').value = ''
-        } else {
-            responseMsg.classList.remove('alert-success')
-            responseMsg.classList.add('alert-danger')
-        }
+    e.preventDefault();
+
+    const inputLength = document.querySelector('#testName').value.length;
+    const testTimeMinutes = document.querySelector('#test_time_minutes').value;
+    const testTimeSeconds = document.querySelector('#test_time_seconds').value;
+    const totalTime = convertToTotalTimeSeconds(testTimeMinutes, testTimeSeconds);
+    const inputLengthIsValid = inputLength > 0 && inputLength < 256;
+    const inputTotalTimeIsValid = isTimeTotalValid(totalTime);
+    const inputMinutesIsValid = isTimeMinutesValid(testTimeMinutes);
+    const inputSecondsIsValid = isTimeSecondsValid(testTimeSeconds);
+
+    if (inputLengthIsValid && inputTotalTimeIsValid && inputMinutesIsValid && inputSecondsIsValid) {
+        let testData = {};
+
+        testData.name = testForm.testName.value;
+        testData.time = totalTime;
+        testData = jsonToFormData(testData);
+
+        let response = await sendData(testData, 'test');
+        ajaxResponseCheck(response.success, response.message, responseMsg, true);
+
+    } else if (inputLengthIsValid) {
+        responseMsg.classList.remove('alert-success');
+        responseMsg.classList.add('alert-danger');
+        responseMsg.innerHTML = 'Test duration must be below an hour and minutes and seconds must be between 0 and 60.';
     } else {
-        responseMsg.classList.remove('alert-success')
-        responseMsg.classList.add('alert-danger')
-        responseMsg.innerHTML = 'Test name must be between 1 and 255 characters.'
+        responseMsg.classList.remove('alert-success');
+        responseMsg.classList.add('alert-danger');
+        responseMsg.innerHTML = 'Test name must be between 1 and 255 characters.';
     }
-})
+});
