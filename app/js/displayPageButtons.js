@@ -25,7 +25,6 @@ function pageSelectorFunctionality(HBTemplate, paginatedArrays) {
                     page--;
                 }
             }
-            console.log(page)
             printFilteredResultsToScreen(HBTemplate, paginatedArrays[page - 1])
             pageButtonCheck(page, pages);
         }));
