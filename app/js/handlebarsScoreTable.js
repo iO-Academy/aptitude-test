@@ -29,7 +29,7 @@ function updateScoreTable() {
                 button.addEventListener('click', (e) => {
                     e.preventDefault()
 
-                    getData("result")
+                    getData("result?id=" + e.target.parentElement.getAttribute("dataId"))
 
                     .then((data) => {
                         let parentElement = e.target.parentElement

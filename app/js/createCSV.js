@@ -8,14 +8,44 @@
  */
 
 function createCSV(info, userId, userName, userPercentage) {
-    console.log(userPercentage);
-    let csv = 'Name,Score,%,Answers\n';
-    info.data.forEach(function(row) {
-        if (row.id == userId) {
-        row.answers = row.answers.replace(/\\/g,"");
-            csv += `${userName}, ${row.score}, ${userPercentage}, ${row.answers}`;
-            csv += "\n";
-        }
-    });
+    
+   
+    let arrayOfReplaces = [/\\/g, /"/g, /{/g, /}/g,]
+        let questionsAndAnswers = info.data.answers
+        console.log(info)
+        console.log(questionsAndAnswers)
+
+        arrayOfReplaces.forEach((expression) => {
+
+            questionsAndAnswers = questionsAndAnswers.replace(expression, '')
+
+        })
+
+        questionsAndAnswers = questionsAndAnswers.split(',');
+
+        let questionNumbersAndAnswers = [];
+
+        questionsAndAnswers.forEach((answer) => {
+
+            questionNumbersAndAnswers.push(answer.split(':'))
+
+        })
+
+        console.log(questionNumbersAndAnswers)
+        
+        let csv = 'Name,Score,%,' 
+        
+        questionNumbersAndAnswers.forEach((eachQuestion) => {
+            csv += eachQuestion[0] + ','
+         })
+        
+         csv += '\n';
+
+
+        csv += `${userName}, ${info.data.score}, ${userPercentage}, ${info.data.answers}`;
+        csv += "\n";
+        
+        
     return csv
 }
+
