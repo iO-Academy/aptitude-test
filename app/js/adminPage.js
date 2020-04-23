@@ -96,18 +96,18 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
     let nameField = document.querySelector('#name');
     let testField = document.querySelector('#test_id');
     let errorField = document.querySelector('#error');
-    let timeMinutes = parseInt(document.querySelector('#user_time_minutes').value);
-    let timeSeconds = parseInt(document.querySelector('#user_time_seconds').value);
-    let timeTotal = (timeMinutes * 60) + timeSeconds;
+    let timeMinutes = document.querySelector('#user_time_minutes').value;
+    let timeSeconds = document.querySelector('#user_time_seconds').value;
+    let timeTotal = convertToTotalTimeSeconds(timeMinutes, timeSeconds);
 
     getExistingUsers().then(function(existingUsers) {
         if (!isEmailValid(emailField.value) || userExists(emailField.value, existingUsers)) {
             errorField.classList.remove('alert-success');
             errorField.classList.add('alert-danger');
             errorField.innerHTML = "Your email is not valid or already exists: Please provide a correct email";
-        } else if (timeTotal <= 1 || timeTotal > 3600 ||
-            (timeMinutes > 60 || timeMinutes < 0) ||
-            (timeSeconds > 59 || timeSeconds < 0)) {
+        } else if (!isTimeTotalValid(timeTotal) ||
+            !isTimeMinutesValid(timeMinutes) ||
+            !isTimeSecondsValid(timeSeconds)) {
             errorField.classList.remove('alert-success');
             errorField.classList.add('alert-danger');
             errorField.innerHTML = 'Test duration must be below an hour and minutes and seconds must be between 0 and 60.';

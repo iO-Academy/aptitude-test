@@ -66,36 +66,6 @@ function fillEditModalFields(HBTemplate, userInfo) {
 }
 
 /**
- * Takes time and returns true if passed validation or false otherwise.
- * @param time
- * @returns boolean
- */
-function isTimeTotalValid(time) {
-    let intTime = parseInt(time);
-    return (intTime > 0 && intTime <= 3600);
-}
-
-/**
- * Takes time and returns true if passed validation or false otherwise.
- * @param time
- * @returns boolean
- */
-function isTimeMinutesValid(time) {
-    let intTime = parseInt(time);
-    return (intTime >= 0 && intTime <= 60);
-}
-
-/**
- * Takes time and returns true if passed validation or false otherwise.
- * @param time
- * @returns boolean
- */
-function isTimeSecondsValid(time) {
-    let intTime = parseInt(time);
-    return (intTime >= 0 && intTime < 60);
-}
-
-/**
  * this is an event listener on the submit button (listens for click), 
  * it sends the object values through our validation functions.
  * If email exists in db then submit is not allowed. If original email 
@@ -111,7 +81,7 @@ function addEditModalSubmitEventListener() {
         let originalEmail = document.querySelector("#originalEmail").value;
         let errorField = document.querySelector('#modal_error');
 
-        timeTotal.value = parseInt(timeMinutes * 60) + parseInt(timeSeconds);
+        timeTotal.value = convertToTotalTimeSeconds(timeMinutes, timeSeconds);
 
         getExistingUsers().then(function (existingUsers) {
             if (isEmpty(name) &&

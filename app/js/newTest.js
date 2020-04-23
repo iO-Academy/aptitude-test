@@ -5,9 +5,9 @@ testForm.addEventListener('submit', async function(e) {
     e.preventDefault();
 
     const inputLength = document.querySelector('#testName').value.length;
-    const testTimeMinutes = parseInt(document.querySelector('#test_time_minutes').value);
-    const testTimeSeconds = parseInt(document.querySelector('#test_time_seconds').value);
-    const totalTime = testTimeMinutes * 60 + testTimeSeconds;
+    const testTimeMinutes = document.querySelector('#test_time_minutes').value;
+    const testTimeSeconds = document.querySelector('#test_time_seconds').value;
+    const totalTime = convertToTotalTimeSeconds(testTimeMinutes, testTimeSeconds);
     const inputLengthIsValid = inputLength > 0 && inputLength < 256;
     const inputTotalTimeIsValid = totalTime <= 3600 && totalTime >= 0;
     const inputMinutesIsValid = testTimeMinutes <= 60 && testTimeMinutes >= 0;
