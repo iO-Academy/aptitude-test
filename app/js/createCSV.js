@@ -1,9 +1,9 @@
-function createCSV(info, userId) {
-    var csv = 'Name,Title\n';
+function createCSV(info, userId, userName, userPercentage) {
+    var csv = 'Name,Score,%,Answers\n';
     info.data.forEach(function(row) {
         if (row.id == userId) {
-        console.log(row)
-            csv += `${row.id}, ${row.answers}`;
+        row.answers = row.answers.replace('/','');
+            csv += `${userName}, ${row.score}, ${userPercentage}, ${row.answers}`;
             csv += "\n";
         }
     });

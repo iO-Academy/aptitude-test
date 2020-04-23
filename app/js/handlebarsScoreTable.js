@@ -34,9 +34,13 @@ function updateScoreTable() {
                     .then((data) => {
 
                         let userId = parentElement.getAttribute("dataId")
+                        let userName = parentElement.getAttribute("dataname")
+                        let userPercentage = parentElement.getAttribute("percentage")
                         let result = data
 
-                        createCSV(result, userId) 
+                        createCSV(result, userId, userName, userPercentage)
+                        
+                    
                     })
                 })
             })
