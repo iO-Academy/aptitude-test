@@ -107,10 +107,9 @@ function testFunction(e) {
     e.preventDefault()
 
     let userInfo = createObjectFromParentElement(e)
-            getData("user").then((data) => {
-                return data
-            })
-            console.log(data);
+    getData("user").then((data) => {
+        return data
+    })
 }
 
 /**
