@@ -26,8 +26,9 @@ function updateScoreTable() {
             let filteredUserArray = searchAndFilter(userInfo.data);
             let paginatedArrays = splitArray(filteredUserArray, 20);
 
-            printFilteredResultsToScreen(HBTemplate, paginatedArrays[0]);
-            displayPageBtns(paginatedArrays);
+            displayPageBtns(paginatedArrays).then((pageSelected) =>{
+                printFilteredResultsToScreen(HBTemplate, paginatedArrays[pageSelected]);
+            })
         })
     })
 }

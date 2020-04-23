@@ -8,14 +8,16 @@ async function displayPageBtns(paginatedArray) {
     let buttonsTemplate = await getTemplateAjax('js/templates/paginationButtons.hbs');
     let template = Handlebars.compile(buttonsTemplate);
     document.querySelector('.pageSelectors').innerHTML = template({pages});
-    pageSelectorFunctionality();
+    let selectedPage = pageSelectorFunctionality();
+    return selectedPage;
 }
 
 function pageSelectorFunctionality() {
+    let page = 1;
     document.querySelectorAll('.pageBtn').forEach((btn) => {
         btn.addEventListener('click', (evt => {
-            let page = btn.dataset.page;
-            console.log(page)
-        }))
-    })
+            page = btn.dataset.page;
+        }));
+    });
+    return (page - 1);
 }
