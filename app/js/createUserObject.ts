@@ -60,7 +60,8 @@ function calculatePercentage(score, numOfQuestions) {
  * @return {number} Time in MM:SS format
  */
 function secondsToMinutes(time) {
-    return String(Math.floor(time / 60)).padStart(2,'0') + ':' + String((time % 60)).padStart(2,'0')
+    // typecasting to any ad padStart is too new for TS to recognise - should we remove it?
+    return (String(Math.floor(time / 60)) as any).padStart(2,'0') + ':' + (String((time % 60)) as any).padStart(2,'0')
 }
 
 /**

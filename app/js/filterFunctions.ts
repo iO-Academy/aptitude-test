@@ -13,9 +13,9 @@ document.getElementById('testAllocated').addEventListener('change', () => {
  * @returns array of start and end date
  */
 function setDate() {
-    let startDateInput = document.getElementById('startDate').value
+    let startDateInput = document.querySelector<HTMLInputElement>('#startDate').value
     let startDate = '1970-01-01'
-    let endDateInput = document.getElementById('endDate').value
+    let endDateInput = document.querySelector<HTMLInputElement>('#endDate').value
     let endDate = new Date().toISOString().slice(0,10)
     if (startDateInput !== "") {
         startDate = startDateInput
@@ -37,7 +37,7 @@ document.getElementById('startDate').addEventListener("change", ()=>{
         updateScoreTable()
     } else {
         alert("Please enter a valid date range")
-        document.getElementById('startDate').value = ''
+        document.querySelector<HTMLInputElement>('#startDate').value = ''
     }
 })
 
@@ -52,7 +52,7 @@ document.getElementById('endDate').addEventListener("change", ()=> {
         updateScoreTable()
     } else {
         alert("Please enter a valid date range")
-        document.getElementById('endDate').value = ''
+        document.querySelector<HTMLInputElement>('#endDate').value = ''
     }
 })
 
@@ -83,7 +83,7 @@ function dateFilter(resultArray) {
  * @returns will return the result based on the chosen percentage
  */
 function percentageFilter (resultArray){
-    let filterScorePercentage = document.getElementById('filterScorePercentage')
+    let filterScorePercentage = document.querySelector<HTMLInputElement>('#filterScorePercentage')
     let newResultArray =[]
     if (parseInt(filterScorePercentage.value) === 4){
         resultArray.forEach((data)=>{
@@ -118,7 +118,7 @@ function percentageFilter (resultArray){
  * @return Array the filtered array of users
  */
 function testAllocatedFilter(resultArray) {
-    let filterTestAllocated = document.getElementById('testAllocated')
+    let filterTestAllocated = document.querySelector<HTMLInputElement>('#testAllocated')
     let newResultArray = resultArray;
     let chosenTestAllocated = filterTestAllocated.value;
     if (chosenTestAllocated) {

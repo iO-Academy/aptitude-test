@@ -3,7 +3,7 @@ function getQuestionCount() {
     fetch(baseUrl + "question")
         .then(result => result.json())
         .then(questions => {
-            document.querySelector('#question-count').innerText = questions.data.length
+            document.querySelector<HTMLElement>('#question-count').innerText = questions.data.length
         })
 }
 

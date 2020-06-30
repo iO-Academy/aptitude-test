@@ -13,7 +13,7 @@ function ajaxResponseCheck(success, message, responseMsgLocation, isTest = false
         responseMsgLocation.classList.remove('alert-danger');
         if (isTest){
             populateTestDropdowns();
-            document.querySelector('#testName').value = '';
+            document.querySelector<HTMLInputElement>('#testName').value = '';
         }
     } else {
         responseMsgLocation.classList.remove('alert-success');

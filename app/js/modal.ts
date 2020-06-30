@@ -2,16 +2,16 @@
  * Opens the modal dialog box.
  */
 function openDialog() {
-    document.querySelector('#modal').style.display = 'block'
-    document.querySelector('.overlay').style.display = 'block'
+    document.querySelector<HTMLElement>('#modal').style.display = 'block'
+    document.querySelector<HTMLElement>('.overlay').style.display = 'block'
 }
 
 /**
  * Closes the modal dialog box.
  */
 function closeDialog() {
-    document.querySelector('#modal').style.display = 'none';
-    document.querySelector('.overlay').style.display = 'none'
+    document.querySelector<HTMLElement>('#modal').style.display = 'none';
+    document.querySelector<HTMLElement>('.overlay').style.display = 'none'
 }
 
 /**
@@ -73,15 +73,15 @@ function fillEditModalFields(HBTemplate, userInfo) {
  */
 function addEditModalSubmitEventListener() {
     document.querySelector('#editSubmit').addEventListener('click', function() {
-        let name = document.querySelector("#firstName").value;
-        let email = document.querySelector("#email").value;
-        let timeMinutes = document.querySelector('#userMinutes').value;
-        let timeSeconds = document.querySelector('#userSeconds').value;
-        let timeTotal = document.querySelector('#time');
-        let originalEmail = document.querySelector("#originalEmail").value;
+        let name = document.querySelector<HTMLInputElement>("#firstName").value;
+        let email = document.querySelector<HTMLInputElement>("#email").value;
+        let timeMinutes = document.querySelector<HTMLInputElement>('#userMinutes').value;
+        let timeSeconds = document.querySelector<HTMLInputElement>('#userSeconds').value;
+        let timeTotal = document.querySelector<HTMLInputElement>('#time');
+        let originalEmail = document.querySelector<HTMLInputElement>("#originalEmail").value;
         let errorField = document.querySelector('#modal_error');
 
-        timeTotal.value = convertToTotalTimeSeconds(timeMinutes, timeSeconds);
+        timeTotal.value = (convertToTotalTimeSeconds(timeMinutes, timeSeconds) as any as string);
 
         getExistingUsers().then(function (existingUsers) {
             if (isEmpty(name) &&

@@ -8,10 +8,10 @@ function populateUserDuration(test_option, testFieldValue) {
             const test_duration = test_option.dataset.time;
             let userDurationMinutes = Math.floor(test_duration / 60);
             let userDurationSeconds = test_duration % 60;
-            let userDurationMinutesField = document.querySelector('#user_time_minutes');
-            let userDurationSecondsField = document.querySelector('#user_time_seconds');
+            let userDurationMinutesField = document.querySelector<HTMLInputElement>('#user_time_minutes');
+            let userDurationSecondsField = document.querySelector<HTMLInputElement>('#user_time_seconds');
 
-            userDurationMinutesField.value = String(userDurationMinutes).padStart(2,'0');
-            userDurationSecondsField.value = String(userDurationSeconds).padStart(2,'0');
+            userDurationMinutesField.value = (String(userDurationMinutes) as any).padStart(2,'0');
+            userDurationSecondsField.value = (String(userDurationSeconds) as any).padStart(2,'0');
         }
 }

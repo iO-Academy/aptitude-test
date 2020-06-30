@@ -1,6 +1,6 @@
 let authorised = false
 let user = getCookie('userEmail');
-getUser(user).then(function(user) {
+getUser(user).then(function(user: any) {
     if ( user.data.isAdmin == '1' ) {
         authorised = true
     }

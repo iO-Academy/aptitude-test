@@ -8,17 +8,13 @@
  */
 function createObjectForDatabase(inputClass) {
     let formData = document.querySelectorAll(inputClass);
-    let canRetake = document.querySelector('#canRetake');
-    let result = {'canRetake': '0'};
+    let result = {'canRetake': document.querySelector<HTMLInputElement>('#canRetake').checked};
 
-    if (canRetake.checked) {
-        result = {'canRetake': '1'}
-    }
-        formData.forEach(function (input) {
-            result[input.name] = input.value;
-        });
-        return result
-    }
+    formData.forEach(function (input) {
+        result[input.name] = input.value;
+    });
+    return result
+}
 
 
 /**

@@ -10,7 +10,7 @@ populateTestDropdowns();
 async function saveNewUser(user) {
     let baseUrl = getBaseUrl();
     let formData = jsonToFormData(user); // API does not work with JSON - needs form data
-    let apiData = await fetch(
+    let apiResponse: Response = await fetch(
         baseUrl + 'user',
         {
             method: 'post',
@@ -18,7 +18,7 @@ async function saveNewUser(user) {
         }
     );
 
-    apiData = await apiData.json();
+    let apiData = await apiResponse.json();
     return apiData;
 }
 
@@ -30,11 +30,11 @@ async function saveNewUser(user) {
 async function getExistingUsers() {
     let baseUrl = getBaseUrl();
     let result = [];
-    let apiData = await fetch(
+    const apiResponse: Response = await fetch(
         baseUrl +  'user',
         {method: 'get'}
     );
-    apiData = await apiData.json();
+    const apiData = await apiResponse.json();
     if (apiData.success) {
         let users = apiData.data;
         users.forEach(function(user) {
@@ -85,12 +85,12 @@ function userExists(emailToAdd, existingUsers) {
 
 document.querySelector('#addNewUserForm').addEventListener('submit', function(event) {
     event.preventDefault();
-    let emailField = document.querySelector('#email');
-    let nameField = document.querySelector('#name');
-    let testField = document.querySelector('#test_id');
+    let emailField = document.querySelector<HTMLInputElement>('#email');
+    let nameField = document.querySelector<HTMLInputElement>('#name');
+    let testField = document.querySelector<HTMLInputElement>('#test_id');
     let errorField = document.querySelector('#error');
-    let timeMinutes = document.querySelector('#user_time_minutes').value;
-    let timeSeconds = document.querySelector('#user_time_seconds').value;
+    let timeMinutes = document.querySelector<HTMLInputElement>('#user_time_minutes').value;
+    let timeSeconds = document.querySelector<HTMLInputElement>('#user_time_seconds').value;
     let timeTotal = convertToTotalTimeSeconds(timeMinutes, timeSeconds);
 
     getExistingUsers().then(function(existingUsers) {
@@ -107,11 +107,11 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
         } else {
             errorField.innerHTML = '';
             saveNewUser({
-                    name: nameField.value,
-                    email: emailField.value,
-                    test_id: testField.value,
-                    time: timeTotal
-                }).then(function(response) {
+                name: nameField.value,
+                email: emailField.value,
+                test_id: testField.value,
+                time: timeTotal
+            }).then(function(response) {
                 if (response.success) {
                     errorField.classList.add('alert-success');
                     errorField.classList.remove('alert-danger');

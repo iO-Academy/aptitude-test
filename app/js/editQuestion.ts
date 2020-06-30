@@ -31,26 +31,24 @@ async function getAnswerByQuestionId(id) {
     return data.answer;
 }
 
+// @ts-ignore
 (async () => {
     const form = document.querySelector("#edit-question");
     const questionId = location.hash.replace("#", "");
     const question = await getQuestionById(questionId);
     const answer = await getAnswerByQuestionId(questionId);
 
-    document.querySelector("#questionText").value = question.text;
-    document.querySelector("#option1").value = question.option1;
-    document.querySelector("#option2").value = question.option2;
-    document.querySelector("#option3").value = question.option3;
-    document.querySelector("#option4").value = question.option4;
-    document.querySelector("#option5").value = question.option5;
-    document.querySelector("#test_id").value = question.test_id;
-    document.querySelector(`input[data-question-id="${answer}"]`).checked = 1;
+    document.querySelector<HTMLInputElement>("#questionText").value = question.text;
+    document.querySelector<HTMLInputElement>("#option1").value = question.option1;
+    document.querySelector<HTMLInputElement>("#option2").value = question.option2;
+    document.querySelector<HTMLInputElement>("#option3").value = question.option3;
+    document.querySelector<HTMLInputElement>("#option4").value = question.option4;
+    document.querySelector<HTMLInputElement>("#option5").value = question.option5;
+    document.querySelector<HTMLInputElement>("#test_id").value = question.test_id;
+    document.querySelector<HTMLInputElement>(`input[data-question-id="${answer}"]`).checked = true;
     document.querySelector('#questionBackBtn').setAttribute('href',`editTests.html#${question.test_id}`);
 
     form.addEventListener("submit", (event) => {
         sendQuestionForm(event, form, true, questionId);
     });
 })();
-
-
-

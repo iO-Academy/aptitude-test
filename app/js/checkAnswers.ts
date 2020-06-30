@@ -1,4 +1,4 @@
-var questionAmount
+ var questionAmount
 
 document.querySelector('#finish').addEventListener('click', finishTest)
 /**
@@ -6,8 +6,8 @@ document.querySelector('#finish').addEventListener('click', finishTest)
  */
 function finishTest() {
     showResults()
-    document.querySelector('#overview_page').style.display = 'none'
-    document.querySelector('#result_page').style.display = 'none'
+    document.querySelector<HTMLElement>('#overview_page').style.display = 'none'
+    document.querySelector<HTMLElement>('#result_page').style.display = 'none'
 }
 
 /**
@@ -29,7 +29,7 @@ async function checkAnswers(userAnswers) {
             }
         })
         let result = {
-            uid: parseInt(getCookie('uid'), 10),
+            uid: parseInt(getCookie('uid') as string, 10), // typecast to string as getCookie shouldnt ever return false
             answers: userAnswers,
             score: userScore,
             time: parseFloat(getTimeForApi()),
@@ -61,7 +61,7 @@ function getUserAnswers() {
     let checkedInputs = document.querySelectorAll('#questions .question .answers input:checked')
     let answers = {}
 
-    checkedInputs.forEach(function(input) {
+    checkedInputs.forEach(function(input: HTMLInputElement) {
         let id = input.name.split("_")[1]
         answers[id] = input.value
     })
@@ -101,7 +101,7 @@ function displayResult(earnedPoints, earnedPercentage, answeredQuestions) {
  */
 function addAnswerEventListeners() {
     document.querySelectorAll('.question').forEach(function (input) {
-        input.addEventListener('click', function(e) {
+        input.addEventListener('click', function(e: any) {
             if (e.target.tagName == 'INPUT') {
                 let id = parseInt(this.dataset['questionOrderId']) - 1
                 document.querySelector('#question-nav').children[id].classList.add('answered-nav-box')
@@ -130,14 +130,14 @@ function trackActiveQuestion(id) {
 function showResults() {
     resetReapplyCounter()
     clearInterval(interval)
-    const userAnswers = getUserAnswers(questionAmount)
+    const userAnswers = getUserAnswers()
     checkAnswers(userAnswers).then(function (result) {
         let percentResult
         let answered
         if (result.score || result.score === 0) {
-            document.querySelector('#question_page').style.display = 'none'
-            document.querySelector('#overview_page').style.display = 'none'
-            document.querySelector('#result_page').style.display = 'block'
+            document.querySelector<HTMLElement>('#question_page').style.display = 'none'
+            document.querySelector<HTMLElement>('#overview_page').style.display = 'none'
+            document.querySelector<HTMLElement>('#result_page').style.display = 'block'
             percentResult = getPercentResult(result.score, questionAmount)
             answered = document.querySelectorAll('#questions .question .answers input:checked').length
             displayResult(result.score, percentResult, answered)

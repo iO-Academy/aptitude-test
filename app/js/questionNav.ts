@@ -1,5 +1,5 @@
 var current = 1
-document.querySelector(".prev").style.visibility = "hidden"
+document.querySelector<HTMLElement>(".prev").style.visibility = "hidden"
 
 /**
  * adds the active class to the first question
@@ -35,10 +35,10 @@ function prev() {
  * Updates the the flag status of the current question
  */
 function updateFlagStatus() {
-    let question = document.querySelector('.question.active')
-    let qId = question.dataset.questionOrderId
+    let question = document.querySelector<HTMLElement>('.question.active')
+    let qId: number = parseInt(question.dataset.questionOrderId)
     let navItem = document.querySelector('#question-nav').children[qId - 1]
-    document.querySelector('#flag-checkbox').checked = flaggedQuestions[qId]
+    document.querySelector<HTMLInputElement>('#flag-checkbox').checked = flaggedQuestions[qId]
     if (flaggedQuestions[qId]) {
         navItem.querySelector('.flag').classList.add('glyphicon', 'glyphicon-flag')
         document.querySelector('#flag-button').classList.add('pressed')
@@ -55,11 +55,11 @@ function updateFlagStatus() {
  */
 function changeQuestion(destinationPage) {
     current = destinationPage
-    let destinationQuestion = document.querySelector(".q_" + destinationPage)
+    let destinationQuestion = document.querySelector<HTMLElement>(".q_" + destinationPage)
     let questionCount = document.querySelectorAll('#questions .question').length
-    let nextButton = document.querySelector(".next")
-    let prevButton = document.querySelector(".prev")
-    let overviewButton = document.querySelector(".overview")
+    let nextButton = document.querySelector<HTMLElement>(".next")
+    let prevButton = document.querySelector<HTMLElement>(".prev")
+    let overviewButton = document.querySelector<HTMLElement>(".overview")
     document.querySelector("#question-counter").textContent = destinationPage + "/" + questionCount
 
     switch (parseInt(destinationPage)) { // parseInt() in case a string is passed
@@ -94,7 +94,7 @@ function changeQuestion(destinationPage) {
 function fillNav() {
     let nav = document.querySelector("#question-nav")
     let questions = document.querySelectorAll('.question')
-    questions.forEach(function (question, id) {
+    questions.forEach(function (question: HTMLElement, id) {
         let navItem = document.createElement('div')
         let qNumber = '<p>' + ++id + '</p>'
         let flagBox = '<span class="flag"></span>'
@@ -111,5 +111,5 @@ document.querySelector(".next").addEventListener("click", next)
 document.querySelector(".prev").addEventListener("click", prev)
 document.querySelector('#flag-checkbox').addEventListener('change', updateFlagStatus)
 document.querySelector('#flag-button').addEventListener('click', () => {
-    document.querySelector('#flag-checkbox').click()
+    document.querySelector<HTMLElement>('#flag-checkbox').click()
 } )

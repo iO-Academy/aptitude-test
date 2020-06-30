@@ -63,13 +63,13 @@ function redirectAdmin(user) {
 if (document.querySelector('#logInForm')) {
     document.querySelector('#logInForm').addEventListener('submit', function(e) {
         e.preventDefault()
-        let email = document.getElementById('email')
+        let email = document.querySelector<HTMLInputElement>('email')
 
-        getUser(email.value).then(function(user) {
+        getUser(email.value).then(function(user: any) {
             if(user.success && user.data.id) {
                 let retakeValue = user.data.canRetake
                 redirectAdmin(user.data)
-                checkIfTestIsTaken(user.data.id).then(function(idData) {
+                checkIfTestIsTaken(user.data.id).then(function(idData: any) {
                     if (idData.success && retakeValue == 0) {
                         email.insertAdjacentHTML('afterend', '<p>You cannot take the test twice!</p>')
                     } else {
@@ -97,12 +97,7 @@ if (document.querySelector('#logInForm')) {
  * @return boolean - true if authorised and admin/non-admin respectively
  */
 function isAuthorised(user, needsAdmin = null) {
-    if (
-        (user.isAdmin != 0 && needsAdmin != null) ||
-        (user.isAdmin == 0 && needsAdmin == null)
-    ) {
-        return true
-    }
-    return false
+    return (user.isAdmin != 0 && needsAdmin != null) ||
+        (user.isAdmin == 0 && needsAdmin == null);
 }
 

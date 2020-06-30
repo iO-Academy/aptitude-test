@@ -4,7 +4,8 @@
  * @returns {Promise<void>}
  */
 async function displayPageBtns(paginatedArray) {
-    let pages = Array.from(paginatedArray.keys()).map(page => ({pageNumber: page + 1}));
+    // typecasting as TS doesnt know about Array.from
+    let pages = (Array as any).from(paginatedArray.keys()).map(page => ({pageNumber: page + 1}));
     let buttonsTemplate = await getTemplateAjax('js/templates/paginationButtons.hbs');
     let template = Handlebars.compile(buttonsTemplate);
     document.querySelector('.pageSelectors').innerHTML = template({pages});
@@ -22,13 +23,13 @@ function pageSelectorFunctionality(HBTemplate, paginatedArrays) {
 
     pageButtonCheck(page, pages);
 
-    document.querySelectorAll('.pageBtn').forEach((btn) => {
+    document.querySelectorAll('.pageBtn').forEach((btn: HTMLButtonElement) => {
         btn.addEventListener('click', (() => {
             document.querySelectorAll('.pageBtn').forEach((allBtn) => {
                 allBtn.classList.remove("active")
             });
             if (page > 0 && page <= pages) {
-                if (!isNaN(btn.dataset.page)) {
+                if (!isNaN(btn.dataset.page as any)) {
                     page = parseInt(btn.dataset.page);
                 } else if ((btn.dataset.page === 'next') && (page < pages)) {
                     page++;

@@ -1,12 +1,12 @@
-let testForm = document.querySelector('#testForm');
+let testForm = document.querySelector<HTMLFormElement>('#testForm');
 let responseMsg = document.querySelector('#inputSubmissionConfirmation');
 
 testForm.addEventListener('submit', async function(e) {
     e.preventDefault();
 
-    const inputLength = document.querySelector('#testName').value.length;
-    const testTimeMinutes = document.querySelector('#test_time_minutes').value;
-    const testTimeSeconds = document.querySelector('#test_time_seconds').value;
+    const inputLength = document.querySelector<HTMLInputElement>('#testName').value.length;
+    const testTimeMinutes = document.querySelector<HTMLInputElement>('#test_time_minutes').value;
+    const testTimeSeconds = document.querySelector<HTMLInputElement>('#test_time_seconds').value;
     const totalTime = convertToTotalTimeSeconds(testTimeMinutes, testTimeSeconds);
     const inputLengthIsValid = inputLength > 0 && inputLength < 256;
     const inputTotalTimeIsValid = isTimeTotalValid(totalTime);
@@ -14,11 +14,13 @@ testForm.addEventListener('submit', async function(e) {
     const inputSecondsIsValid = isTimeSecondsValid(testTimeSeconds);
 
     if (inputLengthIsValid && inputTotalTimeIsValid && inputMinutesIsValid && inputSecondsIsValid) {
-        let testData = {};
 
-        testData.name = testForm.testName.value;
-        testData.time = totalTime;
-        testData = jsonToFormData(testData);
+        let testInfo = {
+            name: testForm.testName.value,
+            time: totalTime
+        };
+
+        let testData = jsonToFormData(testInfo);
 
         let response = await sendData(testData, 'test');
         ajaxResponseCheck(response.success, response.message, responseMsg, true);

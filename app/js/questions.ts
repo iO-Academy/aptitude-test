@@ -7,7 +7,7 @@ let flaggedQuestions = {}
 function fillUserTable(HBTemplate) {
     let template = Handlebars.compile(HBTemplate)
     let counter = 0;
-    let cookie = getCookie ('userEmail');
+    let cookie = getCookie('userEmail');
     getData(`user?email=${cookie}`)
         .then((data) => {getData(`question?test_id=${data.data.test_id}`)
             .then((result) => {
@@ -34,6 +34,6 @@ getTemplateAjax('js/templates/questions.hbs').then(function(HBTemplate) {
 })
 
 document.querySelector('#flag-checkbox').addEventListener('change', function() {
-    let qid  = document.querySelector('#questions .question.active').dataset.questionOrderId
-    flaggedQuestions[qid] = document.querySelector('#flag-checkbox').checked
+    let qid  = document.querySelector<HTMLElement>('#questions .question.active').dataset.questionOrderId
+    flaggedQuestions[qid] = document.querySelector<HTMLInputElement>('#flag-checkbox').checked
 })

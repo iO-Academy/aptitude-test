@@ -61,18 +61,29 @@ function printFilteredResultsToScreen(HBTemplate, scoresDataArray) {
  * @param event is the event fired off by the function
  */
 function createObjectFromParentElement(event) {
+
+    interface User {
+        name: string,
+        email: string,
+        id: string,
+        timeMinutes: string,
+        timeSeconds: string,
+        canRetake: Number,
+        dataTestId: string,
+    }
+
     let parentElement = event.target.parentElement;
     let userTime = parentElement.getAttribute("dataTimeAllowed");
-    let userInfo = {};
     let [ userTimeMinutes, userTimeSeconds ] = userTime.split(":");
-
-    userInfo.name = parentElement.getAttribute("dataName");
-    userInfo.email = parentElement.getAttribute("dataEmail");
-    userInfo.id = parentElement.getAttribute("dataId");
-    userInfo.timeMinutes = userTimeMinutes;
-    userInfo.timeSeconds = userTimeSeconds;
-    userInfo.canRetake = parseInt(parentElement.getAttribute("dataCanRetake"));
-    userInfo.dataTestId = parentElement.getAttribute("dataTestId");
+    const userInfo: User = {
+        name: parentElement.getAttribute("dataName"),
+        email: parentElement.getAttribute("dataEmail"),
+        id: parentElement.getAttribute("dataId"),
+        timeMinutes: userTimeMinutes,
+        timeSeconds: userTimeSeconds,
+        canRetake: parseInt(parentElement.getAttribute("dataCanRetake")),
+        dataTestId: parentElement.getAttribute("dataTestId"),
+    }
   
     return userInfo;
 }
@@ -99,7 +110,7 @@ function addEditEventListeners() {
 function addDeleteEventListeners() {
     let userItems = document.querySelectorAll(".delete-user-button")
     userItems.forEach(function (userItem) {
-        userItem.addEventListener('click', function (e) {
+        userItem.addEventListener('click', function (e: any) {
             let userId = e.target.parentElement.getAttribute("dataId")
             deleteUser(userId)
         })
@@ -158,7 +169,7 @@ function produceTable (HBTemplate, scoresDataObject) {
 
 function addEventListenersForDownloadButtons(){
     document.querySelectorAll('.download-user-results-button').forEach((button) => {
-        button.addEventListener('click', (e) => {
+        button.addEventListener('click', (e: any) => {
             e.preventDefault()
 
             getData("result?id=" + e.target.parentElement.getAttribute("dataId"))

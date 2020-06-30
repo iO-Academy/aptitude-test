@@ -7,7 +7,7 @@
  * parameters date stamp value
  */
 function timeElapsed(dateStamp){
-    let timeNow = Date.now()
+    let timeNow: any = Date.now()
     return  timeNow - dateStamp
 }
 
@@ -16,8 +16,8 @@ function timeElapsed(dateStamp){
  * time elapsed from the time limit.
  */
 function timeRemainingCalc () {
-    let dateStamp = getCookie("dateStamp")
-    return Math.floor((timeLimit*1000 - timeElapsed(dateStamp))/1000)
+    let dateStamp: any = getCookie("dateStamp")
+    return Math.floor((timeLimit * 1000 - timeElapsed(dateStamp))/1000)
 }
 
 /**
@@ -44,15 +44,14 @@ function timer() {
  *  @return string in format Minutes.Seconds
  */
 function getTimeForApi() {
-    let timeTaken = timeLimit - timeRemaining
-    let minutes = ("00" + Math.floor(timeTaken / 60)).slice(-2)
-    let seconds = ("00" + Math.floor(timeTaken - minutes * 60)).slice(-2)
-    let time = minutes + '.' + seconds
-    return time
+    let timeTaken: any = timeLimit - timeRemaining
+    let minutes: any = ("00" + Math.floor(timeTaken / 60)).slice(-2)
+    let seconds: any = ("00" + Math.floor(timeTaken - minutes * 60)).slice(-2)
+    return minutes + '.' + seconds
 }
 
 //Logged in users time limit in seconds.
-let timeLimit = getCookie("userTime")
+let timeLimit: any = getCookie("userTime")
 timeLimit++
-let timeRemaining = timeRemainingCalc()
+let timeRemaining: any = timeRemainingCalc()
 let interval = setInterval(timer, 1000)

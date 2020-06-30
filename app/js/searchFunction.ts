@@ -36,7 +36,7 @@ function sanitizeInput (input) {
  */
 function searchByTextAndEmail (resultArray) {
     let newResultArray = []
-    let searchInput = sanitizeInput(document.getElementById('searchInput').value)
+    let searchInput = sanitizeInput(document.querySelector<HTMLInputElement>('#searchInput').value)
     let regex = '[\\w@]*' + searchInput + '[\\w@]*'
     let regexSearch = new RegExp(regex)
     if (searchInput.length !== 0) {
@@ -52,7 +52,7 @@ function searchByTextAndEmail (resultArray) {
 }
 
 document.getElementById('searchSubmit').addEventListener('click', ()=>{
-    let searchContent = document.getElementById('searchInput').value
+    let searchContent = document.querySelector<HTMLInputElement>('#searchInput').value
     if (validateSearchInput(searchContent)) {
         updateScoreTable()
     } else {
@@ -60,8 +60,7 @@ document.getElementById('searchSubmit').addEventListener('click', ()=>{
     }
 })
 
-document.getElementById('searchReset').addEventListener('click', ()=>{
-    const input = document.getElementById('searchInput')
-    input.value = ''
+document.getElementById('searchReset').addEventListener('click', () => {
+    document.querySelector<HTMLInputElement>('#searchInput').value = ''
     updateScoreTable()
 })

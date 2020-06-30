@@ -6,10 +6,10 @@
  * @param questionId
  * @returns {Promise<void>}
  */
-async function sendQuestionForm(event, form, isEdit, questionId) {
+async function sendQuestionForm(event, form, isEdit, questionId = null) {
     event.preventDefault();
 
-    const responseMsg = document.querySelector('#inputSubmissionConfirmation');
+    const responseMsg = document.querySelector<HTMLElement>('#inputSubmissionConfirmation');
     const hasQuestions = formHasQuestion(form);
     const hasAnswers = formHasBetweenTwoAndFiveAnswers(form);
     const isValid = answerHasValidValue(form);
@@ -17,20 +17,20 @@ async function sendQuestionForm(event, form, isEdit, questionId) {
     if (hasQuestions && hasAnswers && isValid) {
         let answer;
 
-        document.querySelectorAll('.answer-check').forEach((answerCheck, index) => {
+        document.querySelectorAll('.answer-check').forEach((answerCheck: HTMLInputElement, index) => {
             if (answerCheck.checked) {
                 answer = index + 1;
             }
         });
 
         const data = {
-            text: document.querySelector("#questionText").value,
-            option1: document.querySelector("#option1").value,
-            option2: document.querySelector("#option2").value,
-            option3: document.querySelector("#option3").value,
-            option4: document.querySelector("#option4").value,
-            option5: document.querySelector("#option5").value,
-            test_id: document.querySelector("#test_id").value,
+            text: document.querySelector<HTMLInputElement>("#questionText").value,
+            option1: document.querySelector<HTMLInputElement>("#option1").value,
+            option2: document.querySelector<HTMLInputElement>("#option2").value,
+            option3: document.querySelector<HTMLInputElement>("#option3").value,
+            option4: document.querySelector<HTMLInputElement>("#option4").value,
+            option5: document.querySelector<HTMLInputElement>("#option5").value,
+            test_id: document.querySelector<HTMLInputElement>("#test_id").value,
             answer
         };
         let success;
