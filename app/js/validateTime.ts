@@ -3,7 +3,7 @@
  * @param time
  * @returns boolean
  */
-function isTimeTotalValid(time) {
+function isTimeTotalValid(time: any) {
     let intTime = parseInt(time);
     return (intTime > 0 && intTime <= 3600);
 }
@@ -13,7 +13,7 @@ function isTimeTotalValid(time) {
  * @param time
  * @returns boolean
  */
-function isTimeMinutesValid(time) {
+function isTimeMinutesValid(time: any) {
     let intTime = parseInt(time);
     return (intTime >= 0 && intTime <= 60);
 }
@@ -23,7 +23,7 @@ function isTimeMinutesValid(time) {
  * @param time
  * @returns boolean
  */
-function isTimeSecondsValid(time) {
+function isTimeSecondsValid(time: any) {
     let intTime = parseInt(time);
     return (intTime >= 0 && intTime < 60);
 }

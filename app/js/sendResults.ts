@@ -3,7 +3,7 @@
  *
  * @return object - user results
  */
-function sendUserResults(userResults) {
+function sendUserResults(userResults: Object) {
     let baseUrl = getBaseUrl()
     let userResultsForm = jsonToFormData(userResults)
 
@@ -28,7 +28,7 @@ function sendUserResults(userResults) {
  *
  * @param promise -  response from resultsPost
  */
-async function handleResponseFromAPI (response) {
+async function handleResponseFromAPI(response: Promise<any>) {
     let messageToTestTaker = ""
 
     await response.then(function(data)  {

@@ -6,14 +6,14 @@ getUser(user).then(function(user: any) {
     }
 });
 
-let newQuestionForm = document.getElementById("new-question");
+let newQuestionForm = document.querySelector<HTMLFormElement>("#new-question");
 
 /**
  * Adds new question to API
  * @param newQuestionData
  * @returns {Promise<*>}
  */
-async function addQuestion(newQuestionData) {
+async function addQuestion(newQuestionData: Object) {
     return await sendData(jsonToFormData(newQuestionData), `/question`);
 }
 

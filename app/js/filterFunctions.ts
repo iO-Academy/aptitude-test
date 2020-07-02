@@ -1,4 +1,3 @@
-
 document.getElementById('filterScorePercentage').addEventListener('change', () => {
     updateScoreTable()
 })
@@ -63,7 +62,7 @@ document.getElementById('endDate').addEventListener("change", ()=> {
  *
  * @return newResultArray containing the filtered data
  */
-function dateFilter(resultArray) {
+function dateFilter(resultArray: Array<any>) {
     let dates = setDate()
     let newResultArray = []
     resultArray.forEach(data => {
@@ -82,7 +81,7 @@ function dateFilter(resultArray) {
  *
  * @returns will return the result based on the chosen percentage
  */
-function percentageFilter (resultArray){
+function percentageFilter(resultArray: Array<any>) {
     let filterScorePercentage = document.querySelector<HTMLInputElement>('#filterScorePercentage')
     let newResultArray =[]
     if (parseInt(filterScorePercentage.value) === 4){
@@ -117,7 +116,7 @@ function percentageFilter (resultArray){
  * 
  * @return Array the filtered array of users
  */
-function testAllocatedFilter(resultArray) {
+function testAllocatedFilter(resultArray: Array<any>) {
     let filterTestAllocated = document.querySelector<HTMLInputElement>('#testAllocated')
     let newResultArray = resultArray;
     let chosenTestAllocated = filterTestAllocated.value;

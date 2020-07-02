@@ -1,8 +1,10 @@
+import {BaseUser} from "./interfaces/User";
+
 /**
  * Function to update the chart. Due to how chart.js works, the only effective way to do
  * this seems to be completely resetting the graph container every time.
  */
-function updateChart(users) {
+function updateChart(users: Array<BaseUser>) {
     document.querySelector('.show-graph').innerHTML = '<canvas id="myChart"></canvas>';
     drawChart(users);
 }
@@ -10,7 +12,7 @@ function updateChart(users) {
 /**
  * script for graph using chart.js, links to canvas id=myChart in adminPage.html
  */
-function drawChart(users) {
+function drawChart(users: Array<BaseUser>) {
     sendToChart(users).then((chartData) => {
         let ctx = document.getElementById('myChart');
         // sets global font size and font family for the chart

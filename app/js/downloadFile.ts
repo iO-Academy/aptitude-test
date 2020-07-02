@@ -6,7 +6,7 @@
  * @param filename- the filename that you want to download  
  * @param csv- the data that you want to download  
  */
-function downloadFile(filename, csv) {
+function downloadFile(filename: string, csv: string) {
   let hiddenElement = document.createElement('a');
   hiddenElement.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
   hiddenElement.download = filename;

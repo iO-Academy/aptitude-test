@@ -6,10 +6,10 @@
  * @param APIpath the API path
  * @returns {Promise<void>}
  */
-async function populateHandlebars(targetElement, handlebarsPath, APIpath) {
+async function populateHandlebars(targetElement: string, handlebarsPath: string, APIpath: string) {
     let dataToInsert = await getData(APIpath);
     let HBTemplate = await getTemplateAjax(handlebarsPath);
-    let template = Handlebars.compile(HBTemplate);
+    let template: Function = Handlebars.compile(HBTemplate);
     let score_list = document.querySelector(targetElement);
 
     if (dataToInsert.data.length < 1) {

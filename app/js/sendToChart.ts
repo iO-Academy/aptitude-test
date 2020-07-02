@@ -2,7 +2,9 @@
  * function to generate the data object for the chart displayed on the front end.
  * @returns the data object for graph.js
  */
-async function sendToChart(users) { 
+import {BaseUser} from "./interfaces/User";
+
+async function sendToChart(users: Array<BaseUser>) {
     let labels = await generateLabels(users);
     let dubiousGrade = await generateDataset("Under 70%", labels, users, 0, 70, "#f27324");
     let passingGrade = await generateDataset("70% to 97%", labels, users,  70, 97, "#94ba66");
@@ -29,7 +31,14 @@ async function sendToChart(users) {
  * @return Object a dataset object containing: A label, an array of data, and an array of background
  *                colors for that data (all set to the same value, passed in as color) 
  */
-async function generateDataset(datasetLabel, testLabels, users, minPercentage, maxPercentage, color) {
+async function generateDataset(
+    datasetLabel: string,
+    testLabels: Array<string>,
+    users: Array<BaseUser>,
+    minPercentage: number,
+    maxPercentage: number,
+    color: string
+): Promise<Object> {
 
     let dataset = {
         data: [],
@@ -50,8 +59,7 @@ async function generateDataset(datasetLabel, testLabels, users, minPercentage, m
         dataset.backgroundColor.push(color);
     });
 
-    return dataset;   
-
+    return dataset;
 };
 
 /**

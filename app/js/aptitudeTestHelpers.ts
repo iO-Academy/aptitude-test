@@ -5,7 +5,7 @@
  *
  * @returns FormData form data object.
  */
-function jsonToFormData(jsonInput) {
+function jsonToFormData(jsonInput: Object) {
     let formData = new FormData();
 
     Object.keys(jsonInput).forEach(function(key) {

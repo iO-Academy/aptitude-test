@@ -5,7 +5,9 @@
  *
  * @returns {boolean} true or false if the input is valid or not
  */
-function validateSearchInput (input) {
+import {BaseUser} from "./interfaces/User";
+
+function validateSearchInput(input: string): boolean {
     const checkValue = /^[\w-_.@' ]*$/
     if (!input.match(checkValue)) {
         return false
@@ -22,7 +24,7 @@ function validateSearchInput (input) {
  *
  * @returns {string} string without whitespaces
  */
-function sanitizeInput (input) {
+function sanitizeInput(input: string): string {
     return input.trim()
 }
 
@@ -34,7 +36,7 @@ function sanitizeInput (input) {
  *
  * @returns array of objects
  */
-function searchByTextAndEmail (resultArray) {
+function searchByTextAndEmail(resultArray: Array<BaseUser>): Array<any> {
     let newResultArray = []
     let searchInput = sanitizeInput(document.querySelector<HTMLInputElement>('#searchInput').value)
     let regex = '[\\w@]*' + searchInput + '[\\w@]*'

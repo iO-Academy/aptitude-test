@@ -1,11 +1,11 @@
 const testId = location.hash.replace('#', '');
 
-function populateQuestions(testId) {
+function populateQuestions(testId: string) {
     populateHandlebars('.tableBody', 'js/templates/questionTable.hbs', `question?test_id=${testId}`).then(() => {
         document.querySelectorAll(".delete-question").forEach((btn) => {
             btn.addEventListener('click', async (clickedBtn: any) => {
                 const {id} = clickedBtn.target.parentElement.dataset;
-                const responseMsg = document.querySelector('#error');
+                const responseMsg = document.querySelector<HTMLElement>('#error');
                 let response = await deleteQuestion(id);
 
                 ajaxResponseCheck(response.success, response.message, responseMsg, false);

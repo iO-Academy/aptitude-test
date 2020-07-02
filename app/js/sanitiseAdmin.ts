@@ -6,8 +6,8 @@
  *
  * @return Will return false else will return true depending if the the field is typed.
  */
-function isEmpty (field) {
-    if (field.value === "") {
+function isEmpty (fieldValue: string) {
+    if (fieldValue === "") {
         return false
     } else {
         return true
@@ -20,7 +20,7 @@ function isEmpty (field) {
  *
  * @return Will return true if field has been validated with correct characters else will return false.
  */
-function nameValidation (field) {
+function nameValidation (field: string) {
     var regexLetters = /[A-Za-z]+$/
     if (field.match(regexLetters) && field.length < 255 ) {
         return true

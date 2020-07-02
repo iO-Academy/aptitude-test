@@ -7,7 +7,7 @@ populateHandlebars('#test_id', 'js/templates/testDropdown.hbs', 'test');
  * @param {object} newQuestionData The data you are changing
  * @returns {Promise<void>}
  */
-async function editQuestion(id, newQuestionData) {
+async function editQuestion(id: number, newQuestionData: Object) {
     return await sendData(jsonToFormData(newQuestionData), `/question/${id}/edit`);
 }
 
@@ -16,7 +16,7 @@ async function editQuestion(id, newQuestionData) {
  * @param {string} id The question you want to get
  * @returns {Promise<object>} the question data
  **/
-async function getQuestionById(id) {
+async function getQuestionById(id: number) {
     const { data } = await getData(`/question/${id}`);
     return data;
 }
@@ -26,15 +26,14 @@ async function getQuestionById(id) {
  * @param {string} id The question you would like the answer of
  * @returns {Promise<string>} the answer number
  */
-async function getAnswerByQuestionId(id) {
+async function getAnswerByQuestionId(id: number) {
     const { data } = await getData(`/answer/${id}`);
     return data.answer;
 }
 
-// @ts-ignore
 (async () => {
-    const form = document.querySelector("#edit-question");
-    const questionId = location.hash.replace("#", "");
+    const form = document.querySelector<HTMLFormElement>("#edit-question");
+    const questionId: number = location.hash.replace("#", "") as any as number;
     const question = await getQuestionById(questionId);
     const answer = await getAnswerByQuestionId(questionId);
 

@@ -5,7 +5,7 @@
  *
  * @returns the template as text inside a promise
  */
-async function getTemplateAjax(path) {
+async function getTemplateAjax(path: string) {
     let response = await fetch(
         path,
         {method: 'get'}

@@ -5,7 +5,7 @@
  * @param {userName} string  - name of user in database
  * @param {userPercentage} number -user percentage score on taken test
  */
-function createCSV(info, userName, userPercentage) {
+function createCSV(info: any, userName: string, userPercentage: number) {
     
     //declare regular expressions for characters to remove from the csv
     let arrayOfReplaces = [/\\/g, /"/g, /{/g, /}/g,]

@@ -1,3 +1,6 @@
+import {BaseUser, User} from "./interfaces/User";
+import {Scores} from "./interfaces/Scores";
+
 /**
  * Sorts the array of user objects by their 'dateCreated' with the 
  * newest at the top
@@ -45,8 +48,8 @@ async function updateScoreTable() {
  * @param HBTemplate the handlebars template for creating a table of results
  * @param scoresDataArray an array of data objects returned from the API 
  * and filtered by user settings
- */
-function printFilteredResultsToScreen(HBTemplate, scoresDataArray) {
+*/
+function printFilteredResultsToScreen(HBTemplate: string, scoresDataArray: Array<any>) {
     if (scoresDataArray.length < 1) {
         let score_list = document.querySelector('.score_list');
         score_list.innerHTML = 'No results!';
@@ -60,19 +63,8 @@ function printFilteredResultsToScreen(HBTemplate, scoresDataArray) {
  *
  * @param event is the event fired off by the function
  */
-function createObjectFromParentElement(event) {
-
-    interface User {
-        name: string,
-        email: string,
-        id: string,
-        timeMinutes: string,
-        timeSeconds: string,
-        canRetake: Number,
-        dataTestId: string,
-    }
-
-    let parentElement = event.target.parentElement;
+function createObjectFromParentElement(event: Event) {
+    let parentElement = (event.target as HTMLElement).parentElement;
     let userTime = parentElement.getAttribute("dataTimeAllowed");
     let [ userTimeMinutes, userTimeSeconds ] = userTime.split(":");
     const userInfo: User = {
@@ -122,7 +114,7 @@ function addDeleteEventListeners() {
  *
  * @param userId 
  */
-function deleteUser(userId) {
+function deleteUser(userId: number) {
     let baseUrl = getBaseUrl()
     let url = baseUrl + "user/delete/" + userId
     fetch(url, {"method": "post"})
@@ -138,8 +130,8 @@ function deleteUser(userId) {
  * @param scoresDataObject an array of data objects returned from the API 
  * and filtered by user settings
  */
-function produceTable (HBTemplate, scoresDataObject) {
-    scoresDataObject.data.forEach(function (scoreData) {
+function produceTable (HBTemplate: string, scoresDataObject) {
+    scoresDataObject.data.forEach(function (scoreData: Scores) {
         switch (true) {
             case scoreData.percentage >= 97:
                 scoreData.topGrade = true
@@ -147,7 +139,7 @@ function produceTable (HBTemplate, scoresDataObject) {
             case scoreData.percentage >= 70:
                 scoreData.passingGrade = true
                 break
-            case scoreData.percentage === '0.00' || scoreData.percentage > 0:
+            case scoreData.percentage > 0 || scoreData.percentage == '0.00':
                 scoreData.fail = true
                 break
             default:
@@ -156,7 +148,7 @@ function produceTable (HBTemplate, scoresDataObject) {
         }
     })
 
-    let template = Handlebars.compile(HBTemplate);
+    let template: Function = Handlebars.compile(HBTemplate);
     let score_list = document.querySelector(".score_list");
     score_list.innerHTML = "";
     let html = template(scoresDataObject);
@@ -164,7 +156,6 @@ function produceTable (HBTemplate, scoresDataObject) {
 
     addEditEventListeners();
     addDeleteEventListeners()
-    
 }
 
 function addEventListenersForDownloadButtons(){

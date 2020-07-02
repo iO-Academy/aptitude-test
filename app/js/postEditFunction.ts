@@ -1,3 +1,5 @@
+import {BaseUser} from "./interfaces/User";
+
 /**
  * Creates an object of the user from the data in the input fields.
  * Should be called within the submit event listener.
@@ -6,11 +8,11 @@
  *
  * @return Returns an object that can be used as the parameter in postUserData() function.
  */
-function createObjectForDatabase(inputClass) {
+function createObjectForDatabase(inputClass: string) {
     let formData = document.querySelectorAll(inputClass);
     let result = {'canRetake': document.querySelector<HTMLInputElement>('#canRetake').checked};
 
-    formData.forEach(function (input) {
+    formData.forEach(function (input: HTMLInputElement) {
         result[input.name] = input.value;
     });
     return result
@@ -24,7 +26,7 @@ function createObjectForDatabase(inputClass) {
  *
  * @return object apiData stating posts success and whether user data has been updated.
  */
-async function postUserEdit(formData) {
+async function postUserEdit(formData: BaseUser) {
     let baseUrl = getBaseUrl();
 
     if (formData.name && formData.email && formData.id && formData.time) {

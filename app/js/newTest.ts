@@ -1,5 +1,5 @@
 let testForm = document.querySelector<HTMLFormElement>('#testForm');
-let responseMsg = document.querySelector('#inputSubmissionConfirmation');
+let responseMsg = document.querySelector<HTMLElement>('#inputSubmissionConfirmation');
 
 testForm.addEventListener('submit', async function(e) {
     e.preventDefault();

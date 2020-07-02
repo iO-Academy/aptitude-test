@@ -1,4 +1,6 @@
- var questionAmount
+import {UserAnswers} from "./interfaces/UserAnswers";
+
+var questionAmount
 
 document.querySelector('#finish').addEventListener('click', finishTest)
 /**
@@ -17,7 +19,7 @@ function finishTest() {
  *
  * @return Promise - containing the result object ready for the api
  */
-async function checkAnswers(userAnswers) {
+async function checkAnswers(userAnswers: UserAnswers): Promise<any> {
     let userScore = 0
     let answers = await getAnswers()
 
@@ -56,7 +58,7 @@ async function getAnswers() {
  *
  * @return Object of users answers
  */
-function getUserAnswers() {
+function getUserAnswers(): UserAnswers {
     questionAmount = document.querySelectorAll('#questions .question').length
     let checkedInputs = document.querySelectorAll('#questions .question .answers input:checked')
     let answers = {}
@@ -77,7 +79,7 @@ function getUserAnswers() {
  *
  * @return Integer percentage of user score
  */
-function getPercentResult(userScore, questionAmount) {
+function getPercentResult(userScore: number, questionAmount: number): number {
     return Math.round(userScore / questionAmount * 100)
 }
 
@@ -88,10 +90,10 @@ function getPercentResult(userScore, questionAmount) {
  * @param earnedPercentage percentage of total number of right questions
  * @param answeredQuestions total number of questions that have an answer
  */
-function displayResult(earnedPoints, earnedPercentage, answeredQuestions) {
-    document.querySelector(".score").innerHTML = earnedPoints
-    document.querySelector(".answered_questions").innerHTML = answeredQuestions
-    document.querySelector(".score_percentage").innerHTML = earnedPercentage
+function displayResult(earnedPoints: number, earnedPercentage: number, answeredQuestions: number) {
+    document.querySelector(".score").innerHTML = earnedPoints as any as string
+    document.querySelector(".answered_questions").innerHTML = answeredQuestions as any as string
+    document.querySelector(".score_percentage").innerHTML = earnedPercentage as any as string
 }
 
 /**
@@ -116,7 +118,7 @@ function addAnswerEventListeners() {
  *
  * @param id is the id of the active question
  */
-function trackActiveQuestion(id) {
+function trackActiveQuestion(id: number) {
     let activeQuestion = document.querySelector('.nav-item.current-nav-box')
     if (activeQuestion) {
         activeQuestion.classList.remove('current-nav-box')

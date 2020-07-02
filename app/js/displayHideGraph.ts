@@ -4,7 +4,7 @@
  *
  */
 
-function toggleGraphDisplay(e) {
+function toggleGraphDisplay(e: Event) {
     e.preventDefault();
     let graphOnPage = document.querySelector('.show-graph');
     graphOnPage.classList.toggle('hidden');
@@ -17,7 +17,7 @@ function toggleGraphDisplay(e) {
 }
 
 var displayGraphButton = document.querySelector('#viewGraph');
-displayGraphButton.addEventListener ('click', toggleGraphDisplay);
+displayGraphButton.addEventListener('click', toggleGraphDisplay);
 
 var displayTableButton = document.querySelector('#viewTable');
-displayTableButton.addEventListener ('click', toggleGraphDisplay);
+displayTableButton.addEventListener('click', toggleGraphDisplay);

@@ -4,7 +4,6 @@
   ],
   "compilerOptions": {
     "removeComments": true,
-    "module": "commonjs",
     "noImplicitAny": false,
     "target": "es5",
     "lib": [

@@ -6,7 +6,7 @@
  * @return returns the difference between the date stamp of the moment the function is called and the
  * parameters date stamp value
  */
-function timeElapsed(dateStamp){
+function timeElapsed(dateStamp: DOMTimeStamp){
     let timeNow: any = Date.now()
     return  timeNow - dateStamp
 }

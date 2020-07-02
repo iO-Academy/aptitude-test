@@ -4,8 +4,8 @@ let flaggedQuestions = {}
  *
  * @param HBTemplate the handlebars template
  */
-function fillUserTable(HBTemplate) {
-    let template = Handlebars.compile(HBTemplate)
+function fillUserTable(HBTemplate: string) {
+    let template: Function = Handlebars.compile(HBTemplate)
     let counter = 0;
     let cookie = getCookie('userEmail');
     getData(`user?email=${cookie}`)

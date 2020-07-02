@@ -2,12 +2,11 @@
 /**
  * gets the value of a given cookie by name
  *
- * @param String name the name of the cookie
- *
+ * @param name string
  * @return String the value of the cookie
  */
 
-function getCookie(name) {
+function getCookie(name: string) {
     var value = "; " + document.cookie;
     var parts = value.split("; " + name + "=");
 

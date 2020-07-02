@@ -1,6 +1,9 @@
-/** 
+/**
  * Opens the modal dialog box.
  */
+import {BaseUser} from "./interfaces/User";
+import {Test} from "./interfaces/Tests";
+
 function openDialog() {
     document.querySelector<HTMLElement>('#modal').style.display = 'block'
     document.querySelector<HTMLElement>('.overlay').style.display = 'block'
@@ -22,7 +25,7 @@ function closeDialog() {
  * @param userInfo Object containing info of the user to edit.
  * @param tests Object containing the array returned by the /test api endpoint
  */
-function createEditModal(userInfo, tests) {
+function createEditModal(userInfo: BaseUser, tests: Array<Test>) {
     let infoForTemplate = {
         tests: tests,
         user: userInfo,
@@ -51,8 +54,8 @@ function createEditModal(userInfo, tests) {
  * @param HBTemplate the handlebars template.
  * @param userInfo the object of all fields required in scores page.
  */
-function fillEditModalFields(HBTemplate, userInfo) {
-    let template = Handlebars.compile(HBTemplate);
+function fillEditModalFields(HBTemplate: string, userInfo: any) {
+    let template: Function = Handlebars.compile(HBTemplate);
     let modal_content = document.querySelector("#modal-content");
     
     modal_content.innerHTML = "";

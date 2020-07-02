@@ -6,7 +6,7 @@
  * @param questionId
  * @returns {Promise<void>}
  */
-async function sendQuestionForm(event, form, isEdit, questionId = null) {
+async function sendQuestionForm(event: Event, form: HTMLFormElement, isEdit: boolean, questionId: number = null) {
     event.preventDefault();
 
     const responseMsg = document.querySelector<HTMLElement>('#inputSubmissionConfirmation');

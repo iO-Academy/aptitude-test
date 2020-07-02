@@ -1,3 +1,5 @@
+import {BaseUser} from "./interfaces/User";
+
 populateTestDropdowns();
 
 /**
@@ -7,8 +9,8 @@ populateTestDropdowns();
  *
  * @returns A promise containing the response, which includes the boolean success property.
  */
-async function saveNewUser(user) {
-    let baseUrl = getBaseUrl();
+async function saveNewUser(user: BaseUser) {
+    let baseUrl: string = getBaseUrl();
     let formData = jsonToFormData(user); // API does not work with JSON - needs form data
     let apiResponse: Response = await fetch(
         baseUrl + 'user',
@@ -55,7 +57,7 @@ async function getExistingUsers() {
  *
  * @returns {boolean} - Is the email valid.
  */
-function isEmailValid(email) {
+function isEmailValid(email: string) {
     const regexEmail = /\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*/;
     if (regexEmail.test(email)) {
         return true;
@@ -72,7 +74,7 @@ function isEmailValid(email) {
  *
  * @returns {boolean} - Does the user already exist.
  */
-function userExists(emailToAdd, existingUsers) {
+function userExists(emailToAdd: string, existingUsers: Array<BaseUser>) {
     let result = false;
     existingUsers.forEach(function(user) {
         if (user.email === emailToAdd) {

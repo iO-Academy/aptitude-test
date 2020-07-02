@@ -1,9 +1,9 @@
 /**
- *inserts the question type and the question description above the question
- *
+ * inserts the question type and the question description above the question
+ * why is this not in the DB? who knows!
  * @param counter - question number
  */
-function putDescription(counter) {
+function putDescription(counter: number) {
 
     for (let i = 1; i <= counter; i++) {
         let descriptionLabel = ".description_label_" + i

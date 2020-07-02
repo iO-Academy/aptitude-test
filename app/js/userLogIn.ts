@@ -5,7 +5,9 @@
  *
  * @return a promise with the user object requested
  */
-async function getUser(userEmail) {
+import {BaseUser} from "./interfaces/User";
+
+async function getUser(userEmail: string|false) {
     let baseUrl = getBaseUrl()
     let apiData = await fetch(
         baseUrl + 'user?email=' + userEmail,
@@ -23,7 +25,7 @@ async function getUser(userEmail) {
  *
  * @return Promise containing data on whether the test has been taken before
  */
-async function checkIfTestIsTaken(userId) {
+async function checkIfTestIsTaken(userId: number) {
     let baseUrl = getBaseUrl()
     let idData = await fetch(
         baseUrl +'result?uid=' + userId,
@@ -39,7 +41,7 @@ async function checkIfTestIsTaken(userId) {
  * @param user - checks to see status , user or admin.
  *
  */
-function redirectUser(user) {
+function redirectUser(user: BaseUser) {
     if (user.isAdmin == "1") {
         window.location.replace("adminPage.html")
     } else {
@@ -53,7 +55,7 @@ function redirectUser(user) {
  * @param user - checks to see status , user or admin.
  *
  */
-function redirectAdmin(user) {
+function redirectAdmin(user: BaseUser) {
     if (user.isAdmin == "1") {
         document.cookie = "userEmail=" + user.email
         window.location.replace("adminPage.html")
@@ -96,7 +98,7 @@ if (document.querySelector('#logInForm')) {
  *
  * @return boolean - true if authorised and admin/non-admin respectively
  */
-function isAuthorised(user, needsAdmin = null) {
+function isAuthorised(user: BaseUser, needsAdmin: boolean|null = null) {
     return (user.isAdmin != 0 && needsAdmin != null) ||
         (user.isAdmin == 0 && needsAdmin == null);
 }

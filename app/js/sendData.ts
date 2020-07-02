@@ -7,7 +7,7 @@
  * @return object Success or fail API response message
  */
 
-async function sendData(data, path) {
+async function sendData(data: FormData, path: string) {
     let baseUrl = getBaseUrl();
     let response =  await fetch(baseUrl + path, {
         method: 'POST',

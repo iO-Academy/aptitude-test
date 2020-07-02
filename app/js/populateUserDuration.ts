@@ -3,9 +3,9 @@
  * @param test_option the test_option to check against
  * @param testFieldValue the test selected
  */
-function populateUserDuration(test_option, testFieldValue) {
+function populateUserDuration(test_option: HTMLInputElement, testFieldValue: string) {
         if (test_option.value === testFieldValue) {
-            const test_duration = test_option.dataset.time;
+            const test_duration: number = parseInt(test_option.dataset.time);
             let userDurationMinutes = Math.floor(test_duration / 60);
             let userDurationSeconds = test_duration % 60;
             let userDurationMinutesField = document.querySelector<HTMLInputElement>('#user_time_minutes');

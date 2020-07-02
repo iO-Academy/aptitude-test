@@ -1,12 +1,12 @@
-function formHasQuestion(form) {
+function formHasQuestion(form: HTMLFormElement): boolean {
     return form.question.value.length !== 0;
 }
 
-function formHasBetweenTwoAndFiveAnswers(form) {
+function formHasBetweenTwoAndFiveAnswers(form: HTMLFormElement): boolean {
     const answers = form.querySelectorAll('.answer');
     let fieldsThatHaveValues = 0;
 
-    answers.forEach((answer) => {
+    answers.forEach((answer: HTMLInputElement) => {
         if (answer.value.length > 0) {
             fieldsThatHaveValues++;
         }
@@ -15,12 +15,12 @@ function formHasBetweenTwoAndFiveAnswers(form) {
     return fieldsThatHaveValues >= 2;
 }
 
-function answerHasValidValue(form) {
+function answerHasValidValue(form: HTMLFormElement): boolean {
     let result = false;
 
-    form.querySelectorAll('.answer-check').forEach((checkbox) => {
-        const isOptionNotEmpty = typeof checkbox.previousElementSibling.value != 'undefined';
-        const optionHasLength = checkbox.previousElementSibling.value.length > 0;
+    form.querySelectorAll('.answer-check').forEach((checkbox: HTMLInputElement) => {
+        const isOptionNotEmpty = typeof (checkbox.previousElementSibling as HTMLInputElement).value != 'undefined';
+        const optionHasLength = (checkbox.previousElementSibling as HTMLInputElement).value.length > 0;
         const isChecked = checkbox.checked === true;
 
         if (isOptionNotEmpty && optionHasLength && isChecked) {

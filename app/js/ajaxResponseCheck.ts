@@ -5,7 +5,7 @@
  * @param responseMsgLocation, where on the HTML page you want the response to be display
  * @param isTest, a true/false param of whether you are adding a new test or not
  */
-function ajaxResponseCheck(success, message, responseMsgLocation, isTest = false) {
+function ajaxResponseCheck(success: boolean, message: string, responseMsgLocation: HTMLElement, isTest: boolean = false) {
     responseMsgLocation.textContent = message;
 
     if (success) {

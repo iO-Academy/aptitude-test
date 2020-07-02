@@ -3,11 +3,10 @@
  * @param paginatedArray
  * @returns {Promise<void>}
  */
-async function displayPageBtns(paginatedArray) {
-    // typecasting as TS doesnt know about Array.from
-    let pages = (Array as any).from(paginatedArray.keys()).map(page => ({pageNumber: page + 1}));
+async function displayPageBtns(paginatedArray: Array<number>) {
+    let pages = Array.from(paginatedArray.keys()).map(page => ({pageNumber: page + 1}));
     let buttonsTemplate = await getTemplateAjax('js/templates/paginationButtons.hbs');
-    let template = Handlebars.compile(buttonsTemplate);
+    let template: Function = Handlebars.compile(buttonsTemplate);
     document.querySelector('.pageSelectors').innerHTML = template({pages});
     document.querySelectorAll('.pageBtn')[1].classList.add('active');
 }
@@ -17,7 +16,7 @@ async function displayPageBtns(paginatedArray) {
  * @param HBTemplate
  * @param paginatedArrays
  */
-function pageSelectorFunctionality(HBTemplate, paginatedArrays) {
+function pageSelectorFunctionality(HBTemplate: string, paginatedArrays: Array<unknown>) {
     const pages = paginatedArrays.length;
     let page = 1;
 
@@ -51,7 +50,7 @@ function pageSelectorFunctionality(HBTemplate, paginatedArrays) {
  * @param page
  * @param pages
  */
-function pageButtonCheck(page, pages) {
+function pageButtonCheck(page: number, pages: number) {
     if (pages < 2) {
         document.querySelector('.pageSelectors').classList.add('hidden');
     } else {

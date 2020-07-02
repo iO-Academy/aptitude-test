@@ -53,7 +53,7 @@ function updateFlagStatus() {
  *
  * @param destinationPage is question to load
  */
-function changeQuestion(destinationPage) {
+function changeQuestion(destinationPage: number) {
     current = destinationPage
     let destinationQuestion = document.querySelector<HTMLElement>(".q_" + destinationPage)
     let questionCount = document.querySelectorAll('#questions .question').length
@@ -62,7 +62,7 @@ function changeQuestion(destinationPage) {
     let overviewButton = document.querySelector<HTMLElement>(".overview")
     document.querySelector("#question-counter").textContent = destinationPage + "/" + questionCount
 
-    switch (parseInt(destinationPage)) { // parseInt() in case a string is passed
+    switch (destinationPage) {
         case 1:
             if(questionCount === 1){
                 overviewButton.style.visibility = "visible"
@@ -101,7 +101,7 @@ function fillNav() {
         navItem.classList.add('nav-item', 'unanswered-nav-box')
         navItem.innerHTML += qNumber + flagBox
         navItem.addEventListener('click', function () {
-            changeQuestion(question.dataset.questionOrderId)
+            changeQuestion(parseInt(question.dataset.questionOrderId))
         })
         nav.appendChild(navItem)
     })

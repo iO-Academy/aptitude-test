@@ -6,7 +6,7 @@
  *
  * @returns A multi-dimensional array of the smaller arrays
  */
-function splitArray(initialArray, newArrayLength) {
+function splitArray(initialArray: Array<any>, newArrayLength: number) {
     const numOfNewArrays = Math.ceil(initialArray.length / newArrayLength);
     let newArray = [];
     if (initialArray.length > 1 ) {

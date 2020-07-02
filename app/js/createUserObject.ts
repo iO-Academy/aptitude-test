@@ -1,3 +1,6 @@
+import {Test} from "./interfaces/Tests";
+import {BaseUser} from "./interfaces/User";
+
 /**
  * Get all the test results from the API.
  */
@@ -50,7 +53,7 @@ async function getTests() {
  * @param {number} numOfQuestions The number of questions on the test
  * @return {number} The score represented as a percentage
  */
-function calculatePercentage(score, numOfQuestions) {
+function calculatePercentage(score: number, numOfQuestions: number) {
     return ((score / numOfQuestions) * 100).toFixed(2)
 }
 
@@ -59,9 +62,8 @@ function calculatePercentage(score, numOfQuestions) {
  * @param {number} time time in seconds
  * @return {number} Time in MM:SS format
  */
-function secondsToMinutes(time) {
-    // typecasting to any ad padStart is too new for TS to recognise - should we remove it?
-    return (String(Math.floor(time / 60)) as any).padStart(2,'0') + ':' + (String((time % 60)) as any).padStart(2,'0')
+function secondsToMinutes(time: number) {
+    return String(Math.floor(time / 60)).padStart(2,'0') + ':' + String((time % 60)).padStart(2,'0')
 }
 
 /**
@@ -72,7 +74,7 @@ function secondsToMinutes(time) {
  * 
  * @return string the name of the test with the given id, as it appears in the database
  */
-function findTestName(tests, testId) {
+function findTestName(tests: Array<Test>, testId: number) {
     let testName = "None Assigned"
     tests.forEach(function(test) {
         if (testId == test.id) {
@@ -87,21 +89,22 @@ function findTestName(tests, testId) {
  *
  * @return Array - containing the user objects
  */
-async function getNameAndEmail() {
+async function getNameAndEmail(): Promise<Array<BaseUser>> {
     let users = await getUsers()
     let tests = await getTests()
-    let userObjectArray = []
-    users.forEach(function(user) {
-        let obj = {}
+    let userObjectArray: Array<BaseUser> = []
+    users.forEach(function(user: any) {
         let {id, email, name, time, test_id, canRetake} = user
         let testName = findTestName(tests, test_id)
-        obj['id'] = id
-        obj['name'] = name
-        obj['email'] = email
-        obj['timeAllowed'] = time
-        obj['testAllocated'] = testName
-        obj['testId'] = test_id
-        obj['canRetake'] = canRetake
+        let obj: BaseUser = {
+            id: id,
+            name: name,
+            email: email,
+            timeAllowed: time,
+            testAllocated: testName,
+            testId: test_id,
+            canRetake: canRetake
+        }
         userObjectArray.push(obj)
     })
     return userObjectArray
