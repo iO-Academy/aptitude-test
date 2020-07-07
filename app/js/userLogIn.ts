@@ -65,7 +65,7 @@ function redirectAdmin(user: BaseUser) {
 if (document.querySelector('#logInForm')) {
     document.querySelector('#logInForm').addEventListener('submit', function(e) {
         e.preventDefault()
-        let email = document.querySelector<HTMLInputElement>('email')
+        let email = document.querySelector<HTMLInputElement>('#email')
 
         getUser(email.value).then(function(user: any) {
             if(user.success && user.data.id) {
