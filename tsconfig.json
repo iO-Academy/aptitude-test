@@ -1,0 +1,16 @@
+{
+  "files": [
+    "app/js/*.ts"
+  ],
+  "compilerOptions": {
+    "removeComments": true,
+    "noImplicitAny": false,
+    "target": "es5",
+    "lib": [
+      "es2015",
+      "es2017",
+      "es2018",
+      "dom"
+    ]
+  }
+}

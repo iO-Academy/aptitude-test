@@ -4,6 +4,9 @@
 node_modules
 *.css
 *.css.map
+app/js/dist/*.map
+app/js/dist/*.js
+!app/js/dist/handlebars-v4.0.11.js
 !app/css/bootstrap.css
 !app/css/bootstrap.css.map
 !app/css/bootstrap.min.css
