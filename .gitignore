@@ -12,3 +12,4 @@ app/js/dist/*.js
 !app/css/bootstrap.min.css
 !app/css/bootstrap.min.css.map
 api/db/aptitude-test-backup.sql
+*.zip
