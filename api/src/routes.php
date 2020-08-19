@@ -675,8 +675,28 @@ $app->post('/category', function ($request, $response, $args) {
 
 });
 
+$app->get('/category', function ($request, $response, $args) {
+    $data = ['success' => false, 'message' => 'An unexpected error occured.', 'data' => []];
 
+    try {
+        $query = "SELECT * FROM category;";
+        $query = $this->db->prepare($query);
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
+    } catch(Exception $e) {
+        $data['message'] = $e->getMessage();
+        $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+        return $response->withJson($data, 500);
+    }
+
+    $data['success'] = true;
+    $data['message'] = 'Successfully retrieved categories.';
+    $data['data'] = $result;
+    $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+    return $response->withJson($data);
+
+});
 
 
 

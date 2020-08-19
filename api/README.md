@@ -153,6 +153,13 @@ POST
 
 **/category**
 
+GET 
+- Get all category data
+- No request data
+- Returns array of category objects.
+    - `[{"id" : "1", "name": "example"  }]`
+
+
 POST
 - Add new category
 - Send an object containing the category name:
