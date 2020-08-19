@@ -698,6 +698,33 @@ $app->get('/category', function ($request, $response, $args) {
 
 });
 
+$app->post('/category/delete/{id}', function ($request, $response, $args) {
+    $data = ['success' => false, 'message' => 'An unexpected error occured.', 'data' => []];
+    $postData = $request->getParsedBody();
+
+    if (empty($args['id']) || !is_numeric($args['id'])) {
+        $data['message'] = 'Must provide a category ID';
+        $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+        return $response->withJson($data, 200);
+    }
+
+    try {
+        $query = "DELETE FROM category WHERE `id` = ?";
+        $query = $this->db->prepare($query);
+        $query->execute([$args['id']]);
+    } catch(Exception $e) {
+        $data['message'] = $e->getMessage();
+        $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+        return $response->withJson($data, 500);
+    }
+
+    $data['success'] = true;
+    $data['message'] = 'Successfully removed category.';
+    $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+    return $response->withJson($data);
+
+});
+
 
 
 

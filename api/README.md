@@ -166,3 +166,10 @@ POST
     - `{"name": "Category Name"}`
 - Returns a success/fail state.
    
+   
+**/category/delete/{id}**
+
+POST
+- Remove an existing category
+- No request data - category ID in URL
+- Returns a success/fail state.
