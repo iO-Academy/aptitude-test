@@ -149,3 +149,13 @@ POST
     - `{"name": "Example"}`
     - `{"name": "Example", "time": 2100}`
 - Returns success/fail state.
+
+
+**/category**
+
+POST
+- Add new category
+- Send an object containing the category name:
+    - `{"name": "Category Name"}`
+- Returns a success/fail state.
+   

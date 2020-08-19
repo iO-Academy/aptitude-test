@@ -618,7 +618,7 @@ $app->post('/test', function ($request, $response, $args) {
     $data = ['success' => false, 'message' => 'An unexpected error occured.', 'data' => []];
     $postData = $request->getParsedBody();
 
-    if (empty($postData['name']) && count($postData['name']) < 256) {
+    if (empty($postData['name']) || strlen($postData['name']) > 255) {
         $data['message'] = 'Must provide a valid test name';
         $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
         return $response->withJson($data, 200);
@@ -647,3 +647,41 @@ $app->post('/test', function ($request, $response, $args) {
     $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
     return $response->withJson($data);
 });
+
+$app->post('/category', function ($request, $response, $args) {
+    $data = ['success' => false, 'message' => 'An unexpected error occured.', 'data' => []];
+    $postData = $request->getParsedBody();
+
+    if (empty($postData['name']) || strlen($postData['name']) > 255) {
+        $data['message'] = 'Must provide a valid category name';
+        $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+        return $response->withJson($data, 200);
+    }
+
+    try {
+        $query = "INSERT INTO category (`name`) VALUES (?)";
+        $query = $this->db->prepare($query);
+        $query->execute([$postData['name']]);
+    } catch(Exception $e) {
+        $data['message'] = $e->getMessage();
+        $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+        return $response->withJson($data, 500);
+    }
+
+    $data['success'] = true;
+    $data['message'] = 'Successfully added category.';
+    $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+    return $response->withJson($data);
+
+});
+
+
+
+
+
+
+
+
+
+
+
