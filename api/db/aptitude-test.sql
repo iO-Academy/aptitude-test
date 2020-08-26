@@ -7,7 +7,7 @@
 #
 # Host: 127.0.0.1 (MySQL 5.7.30)
 # Database: aptitude-test
-# Generation Time: 2020-08-19 15:57:41 +0000
+# Generation Time: 2020-08-26 07:51:36 +0000
 # ************************************************************
 
 
@@ -206,28 +206,31 @@ CREATE TABLE `user` (
   `canRetake` tinyint(1) NOT NULL DEFAULT '1',
   `time` int(11) NOT NULL DEFAULT '1800',
   `test_id` int(11) unsigned NOT NULL DEFAULT '1',
+  `category_id` int(11) unsigned NOT NULL DEFAULT '1',
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `user-testId` (`test_id`),
+  KEY `user-catId` (`category_id`),
+  CONSTRAINT `user-catId` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),
   CONSTRAINT `user-testId` FOREIGN KEY (`test_id`) REFERENCES `test` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 
-INSERT INTO `user` (`id`, `email`, `name`, `dateCreated`, `isAdmin`, `canRetake`, `time`, `test_id`, `deleted`)
+INSERT INTO `user` (`id`, `email`, `name`, `dateCreated`, `isAdmin`, `canRetake`, `time`, `test_id`, `category_id`, `deleted`)
 VALUES
-	(1,'hello@mayden.academy','Admin','2019-10-19 14:43:43',1,0,0,1,0),
-	(2,'test@test.co.uk','test223','2019-10-19 14:51:42',0,1,1800,1,0),
-	(3,'test2@test.com','test2','2019-10-19 14:43:40',0,1,1800,1,1),
-	(4,'op@op.com','opopo','2019-10-19 13:13:12',0,1,1800,1,0),
-	(5,'rtst@rtgs2.com','test hghv','2019-10-19 13:13:12',0,0,1800,1,0),
-	(6,'rtst@rtgs.com','test','2019-10-19 13:13:12',0,1,1800,1,0),
-	(7,'rtst@rtgs.com','test','2019-10-19 13:13:12',0,1,1800,1,0),
-	(8,'rtst@rtgs.com','test','2019-10-19 13:13:12',0,1,1800,1,0),
-	(9,'test@test.com','example','2019-10-19 13:13:12',0,1,2040,1,0),
-	(10,'test2@test.com','test 2 edited','2019-10-19 15:03:29',0,0,2880,1,0),
-	(11,'anton@example.com','Anton','2019-10-24 13:33:08',0,0,1800,2,0);
+	(1,'hello@mayden.academy','Admin','2019-10-19 14:43:43',1,0,0,1,1,0),
+	(2,'test@test.co.uk','test223','2019-10-19 14:51:42',0,1,1800,1,1,0),
+	(3,'test2@test.com','test2','2019-10-19 14:43:40',0,1,1800,1,1,1),
+	(4,'op@op.com','opopo','2019-10-19 13:13:12',0,1,1800,1,1,0),
+	(5,'rtst@rtgs2.com','test hghv','2019-10-19 13:13:12',0,0,1800,1,1,0),
+	(6,'rtst@rtgs.com','test','2019-10-19 13:13:12',0,1,1800,1,1,0),
+	(7,'rtst@rtgs.com','test','2019-10-19 13:13:12',0,1,1800,1,1,0),
+	(8,'rtst@rtgs.com','test','2019-10-19 13:13:12',0,1,1800,1,1,0),
+	(9,'test@test.com','example','2019-10-19 13:13:12',0,1,2040,1,1,0),
+	(10,'test2@test.com','test 2 edited','2019-10-19 15:03:29',0,0,2880,1,1,0),
+	(11,'anton@example.com','Anton','2020-08-20 09:46:26',0,0,1800,2,1,0);
 
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;

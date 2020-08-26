@@ -17,9 +17,10 @@
 
 POST
 - Create new user.
-- `{"email":"example@email.com", "name":"Fred Smith", "time":"1800", "test_id":"1"}`
+- `{"email":"example@email.com", "name":"Fred Smith", "time":"1800", "test_id":"1", "category_id":"1"}`
     - `test_id` is optional, will default to test id 1
-    - Time is optional, will default to 1800
+    - `category_id` is optional, will default to category id 1
+    - `time` is optional, will default to 1800
 - Returns user object.
 
 GET 
@@ -46,6 +47,8 @@ POST
 POST
 - Update a user.
 - `{"email":"example@email.com", "name":"Fred Smith", "canRetake":"0", "id":"1", "test_id":"1"}` - all required
+    - Additionally `time` and `category_id` can be provided optionally. If they are not, they will default to 1800 and 1 respectively
+    - **Careful with this, as the time/category could change unintentionally**
 - Returns result of user update.
 
 **/question**

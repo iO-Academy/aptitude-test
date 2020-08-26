@@ -23,22 +23,28 @@ $app->post('/user', function ($request, $response, $args) {
 
     try {
         $user['test_id'] = $user['test_id'] ?? 1;
+        $user['category_id'] = $user['category_id'] ?? 1;
 
         if (!empty($user['time'])) {
-            $query = "INSERT INTO `user` (`email`, `name`, `time`, `test_id`) VALUES (:email, :name, :time, :testId);";
+            $query = "INSERT INTO `user` (`email`, `name`, `time`, `test_id`, `category_id`) VALUES (:email, :name, :time, :testId, :categoryId);";
             $query = $this->db->prepare($query);
             $query->bindParam(':time', $user['time']);
         } else {
-            $query = "INSERT INTO `user` (`email`, `name`, `test_id`) VALUES (:email, :name, :testId);";
+            $query = "INSERT INTO `user` (`email`, `name`, `test_id`, `category_id`) VALUES (:email, :name, :testId, :categoryId);";
             $query = $this->db->prepare($query);
         }
 
         $query->bindParam(':testId', $user['test_id']);
+        $query->bindParam(':categoryId', $user['category_id']);
         $query->bindParam(':email', $user['email']);
         $query->bindParam(':name', $user['name']);
         $query->execute();
 
-        $query = "SELECT * from `user` WHERE `id` = :id";
+        $query = "
+SELECT `user`.*, `category`.`name` AS 'category_name' 
+FROM `user` 
+LEFT JOIN `category` ON `user`.`category_id` = `category`.`id` 
+WHERE `user`.`id` = :id";
         $query = $this->db->prepare($query);
         $id = $this->db->lastInsertId();
         $query->bindParam(':id', $id);
@@ -59,7 +65,7 @@ $app->post('/user', function ($request, $response, $args) {
 });
 
 $app->post('/user/edit', function ($request, $response, $args) {
-    $data = ['success' => false, 'message' => 'An unexpected error occured.', 'data' => []];
+    $data = ['success' => false, 'message' => 'An unexpected error occurred.', 'data' => []];
     $user = $request->getParsedBody();
 
     if (
@@ -78,14 +84,16 @@ $app->post('/user/edit', function ($request, $response, $args) {
     try {
 
         $user['time'] = $user['time'] ?? 1800;
+        $user['category_id'] = $user['category_id'] ?? 1;
 
-        $query = "UPDATE `user` SET `email` = :email, `name` = :name, `canRetake` = :retake, `time` = :time, `test_id` = :test_id WHERE `id` = :id;";
+        $query = "UPDATE `user` SET `email` = :email, `name` = :name, `canRetake` = :retake, `time` = :time, `test_id` = :test_id, `category_id` = :category_id WHERE `id` = :id;";
         $query = $this->db->prepare($query);
         $query->bindParam(':email', $user['email']);
         $query->bindParam(':name', $user['name']);
         $query->bindParam(':retake', $user['canRetake']);
         $query->bindParam(':time', $user['time']);
         $query->bindParam(':test_id', $user['test_id']);
+        $query->bindParam(':category_id', $user['category_id']);
         $query->bindParam(':id', $user['id']);
         $query->execute();
     } catch(Exception $e) {
@@ -107,7 +115,11 @@ $app->get('/user', function ($request, $response, $args) {
 
     if (empty($email)) {
         try {
-            $query = "SELECT `id`, `email`, `name`, `dateCreated`, `isAdmin`, `canRetake`, `time`, `test_id`, `deleted` from `user` ORDER BY `dateCreated` DESC;";
+            $query = "
+SELECT `user`.`id`, `email`, `user`.`name`, `dateCreated`, `isAdmin`, `canRetake`, `time`, `test_id`, `category_id`, 
+`category`.`name` AS 'category_name', `deleted` from `user` 
+LEFT JOIN `category` ON `user`.`category_id` = `category`.`id` 
+ORDER BY `dateCreated` DESC;";
             $query = $this->db->prepare($query);
             $query->execute();
             $result = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -122,7 +134,10 @@ $app->get('/user', function ($request, $response, $args) {
     } else {
 
         try {
-            $query = "SELECT `id`, `email`, `name`, `dateCreated`, `isAdmin`, `canRetake`, `time`, `test_id` from `user` WHERE `email` = :email AND `deleted` <> 1";
+            $query = "SELECT `user`.`id`, `email`, `user`.`name`, `dateCreated`, `isAdmin`, `canRetake`, `time`, `test_id`, `category_id`, 
+`category`.`name` AS 'category_name' from `user`
+ LEFT JOIN `category` ON `user`.`category_id` = `category`.`id` 
+ WHERE `email` = :email AND `deleted` <> 1";
             $query = $this->db->prepare($query);
             $query->bindParam(':email', $email);
             $query->execute();
@@ -706,6 +721,12 @@ $app->post('/category/delete/{id}', function ($request, $response, $args) {
         $data['message'] = 'Must provide a category ID';
         $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
         return $response->withJson($data, 200);
+    }
+
+    if ($args['id'] == 1) {
+        $data['message'] = 'Cannot delete category 1';
+        $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+        return $response->withJson($data, 400);
     }
 
     try {
