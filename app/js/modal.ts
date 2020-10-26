@@ -1,9 +1,9 @@
-/**
- * Opens the modal dialog box.
- */
 import {BaseUser} from "./interfaces/User";
 import {Test} from "./interfaces/Tests";
 
+/**
+ * Opens the modal dialog box.
+ */
 function openDialog() {
     document.querySelector<HTMLElement>('#modal').style.display = 'block'
     document.querySelector<HTMLElement>('.overlay').style.display = 'block'
@@ -15,6 +15,14 @@ function openDialog() {
 function closeDialog() {
     document.querySelector<HTMLElement>('#modal').style.display = 'none';
     document.querySelector<HTMLElement>('.overlay').style.display = 'none'
+}
+
+/**
+ * Opens viewResultsModal box
+ */
+function openViewResultsModal() {
+    document.querySelector<HTMLElement>('#viewResultsModal').style.display = 'block';
+    document.querySelector<HTMLElement>('.overlay').style.display = 'block';
 }
 
 /**

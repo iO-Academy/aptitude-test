@@ -24,6 +24,20 @@ $modal-background: #ffffff;
   z-index: 501;
 }
 
+#viewResultsModal {
+  display: none;
+  background: $modal-background;
+  width: 80vw;
+  height: 90vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 501;
+  margin: auto;
+}
+
 .list-container {
   margin: 0 70px 0;
   float: left;

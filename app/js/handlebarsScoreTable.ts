@@ -38,6 +38,7 @@ async function updateScoreTable() {
     await displayPageBtns(paginatedArrays);
     pageSelectorFunctionality(HBTemplate, paginatedArrays);
     addEventListenersForDownloadButtons()
+    addEventListenersForViewResults()
 }
 
 /**
@@ -155,7 +156,7 @@ function produceTable (HBTemplate: string, scoresDataObject) {
     score_list.innerHTML += html;
 
     addEditEventListeners();
-    addDeleteEventListeners()
+    addDeleteEventListeners();
 }
 
 function addEventListenersForDownloadButtons(){
@@ -171,6 +172,17 @@ function addEventListenersForDownloadButtons(){
                 let userPercentage = parentElement.getAttribute("datapercentage")
                 downloadFile(`${userName}_aptitude_test_results`, createCSV(data, userName, userPercentage))
             })
+        })
+    })
+}
+
+/**
+ * Add listener for click on view-results-button and open viewResultsModal on click
+ */
+function addEventListenersForViewResults(){
+    document.querySelectorAll('.view-results-button').forEach((button) => {
+        button.addEventListener('click', () => {
+            openViewResultsModal();
         })
     })
 }
