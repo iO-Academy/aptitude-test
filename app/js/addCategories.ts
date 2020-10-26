@@ -1,14 +1,26 @@
-// on click of submit on add-form
-// contact the api (POST req fetch) and we add a new category with the name that was in the input
 
-let newCategory = document.querySelector<HTMLFormElement>('#addCategoryForm');
+let newCategory: HTMLFormElement = document.querySelector<HTMLFormElement>('#addCategoryForm');
 
+document.querySelector<HTMLFormElement>('form').addEventListener('submit', (e) => {
+    e.preventDefault()
 
-document.querySelector('form').addEventListener('submit', () => {
+    if (newCategory.length > 255) {
+        document.querySelector('#categorySubmissionConfirmation').textContent = "Error - Category Name Too Long"
+    } else {
 
-    fetch('localhost:8080/category', {
-        method: 'post',
-        body: JSON.stringify({"name": "${newCategory}"})
-    }).then()
+    let dataToSend = JSON.stringify({"name": newCategory})
+        //possibly this does not want a stringify
 
-})
+    sendData(dataToSend, '/category').then((response) => {
+        return response.json()
+    }).then((data) => {
+        if (data.success === 'true'){
+        document.querySelector('#categorySubmissionConfirmation').textContent = "Success! Category added"
+        } else {
+            document.querySelector('#categorySubmissionConfirmation').textContent = "Error - Category Not Added"
+        }
+    })
+
+    }
+});
+
