@@ -8,8 +8,9 @@ document.querySelector<HTMLFormElement>('form').addEventListener('submit', (e) =
         document.querySelector('#categorySubmissionConfirmation').textContent = "Error - Category Name Too Long"
     } else {
 
-    let dataToSend = JSON.stringify({"name": newCategory})
-        //possibly this does not want a stringify
+    let data = {"name": newCategory};
+    let dataToSend = jsonToFormData(data);
+
 
     sendData(dataToSend, '/category').then((response) => {
         return response.json()
