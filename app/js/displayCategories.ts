@@ -23,9 +23,9 @@ function populateCategories() {
                     if (response) {
                         location.reload();
                     }
-                });
+                })
             })
         })
-    }
+}
 
 populateCategories();
