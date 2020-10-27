@@ -1,5 +1,6 @@
 import {BaseUser, User} from "./interfaces/User";
 import {Scores} from "./interfaces/Scores";
+import {UserAnswers} from "./interfaces/UserAnswers";
 
 /**
  * Sorts the array of user objects by their 'dateCreated' with the 
@@ -181,15 +182,43 @@ function addEventListenersForDownloadButtons(){
  */
 function addEventListenersForViewResults(){
     document.querySelectorAll('.view-results-button').forEach((button) => {
-        button.addEventListener('click', () => {
+        button.addEventListener('click', (e: any) => {
+
             openViewResultsModal();
+
+            getData("result?id=" + e.target.parentElement.getAttribute("dataId"))
+                .then(resultData => {
+                    getData("answer").then(questionData => {
+                        let resultsTable = document.querySelector('#view-results-modal-content tbody'),
+                            resultParsed = JSON.parse(resultData.data.answers);
+console.log('*', questionData);
+console.log('**', resultParsed);
+                        questionData.data.forEach(function (item, i) {
+                            console.log(item.answer);
+                            if (item.answer == resultParsed[i]) {
+                                resultsTable.innerHTML += `<tr class="rightAnswer">
+                                            <td>${item.id}</td>
+                                            <td>${item.text}</td>
+                                            <td>✔</td>
+                                           </tr>`;
+                            } else {
+                                resultsTable.innerHTML += `<tr class="wrongAnswer">
+                                            <td>${item.id}</td>
+                                            <td>${item.text}</td>
+                                            <td>✕</td>
+                                           </tr>`;
+                            }
+                        });
+
+                    });
+                })
         })
     });
     document.querySelector('.close-view-results').addEventListener('click', () => {
         closeViewResultsModal();
+        document.querySelector('#view-results-modal-content tbody').innerHTML = "";
     });
 }
-
 
 updateScoreTable();
 

@@ -8,6 +8,7 @@ declare var printFilteredResultsToScreen: Function;
 declare var getExistingUsers: Function;
 declare var isEmailValid: Function;
 declare var userExists: Function;
+declare var getAnswers: Function;
 declare var getUserAnswers: Function;
 declare var trackActiveQuestion: Function;
 declare var addAnswerEventListeners: Function;

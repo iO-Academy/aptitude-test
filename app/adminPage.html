@@ -46,15 +46,24 @@
 </head>
 <body>
     <!-- Modal -->
-    <div class="overlay"></div>
+    <div class="overlay close-view-results"></div>
     <div id="modal">
         <h3 id="modal-title"></h3>
         <div id="modal-content"></div>
     </div>
     <div id="viewResultsModal">
-        <h3 id="view-results-modal-title"></h3>
-        <div id="view-results-modal-content"></div>
         <button class="close-view-results">Close</button>
+        <div id="view-results-modal-content">
+            <table class="table">
+                <thead>
+                    <tr class="d-flex">
+                        <th scope="col" class="col-1">Question</th>
+                        <th scope="col" class="col-2">Correct/incorrect</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
     </div>
     <section class="container">
         <img class="logo" alt="Mayden Logo" src="images/branding-icons/maydenacademy_logotype_05.18_web.svg">
