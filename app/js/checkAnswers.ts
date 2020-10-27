@@ -3,6 +3,7 @@ import {UserAnswers} from "./interfaces/UserAnswers";
 var questionAmount
 
 document.querySelector('#finish').addEventListener('click', finishTest)
+
 /**
  * called when clicking finish button in dialogue box
  */
@@ -10,6 +11,8 @@ function finishTest() {
     showResults()
     document.querySelector<HTMLElement>('#overview_page').style.display = 'none'
     document.querySelector<HTMLElement>('#result_page').style.display = 'none'
+    document.removeEventListener("mouseleave", pageLeaveAlert);
+    document.removeEventListener("visibilitychange", cancelTest);
 }
 
 /**
