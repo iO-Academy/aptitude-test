@@ -8,7 +8,7 @@
         let userEmail = getCookie('userEmail')
         getUser(userEmail).then(function (user) {
             if (!user.success || !isAuthorised(user.data) || user.data.canRetake === '0') {
-                window.location.replace("index.html")
+                window.location.replace("index.hstml")
             }
         })
     </script>
@@ -31,6 +31,7 @@
     <script src="js/dist/sendResults.js" defer></script>
     <script src="js/dist/overview.js" defer></script>
     <script src="https://kit.fontawesome.com/2373a66060.js" defer></script>
+    <script async defer src="js/dist/endTest.js"></script>
 </head>
 <body>
 <!--question number and time -->
