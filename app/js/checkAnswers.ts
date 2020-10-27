@@ -126,13 +126,13 @@ function showResults() {
                 document.querySelector<HTMLElement>('.greetings').innerHTML = `<p>Test cancelled!</p>`
                 document.querySelector<HTMLElement>('.email_for_results').innerHTML = `
                 <h1>This test has ended because you clicked away from the page</h1>
-            <h3>Please contact the office to discuss further</h3>`
+                <h3>Please contact the office to discuss further</h3>`
                 result.score = 0
             } else {
                 document.querySelector<HTMLElement>('.greetings').innerHTML = `<p>Thank You!</p>`
                 document.querySelector<HTMLElement>('.email_for_results').innerHTML = `
                 <h1>You have completed the test!</h1>
-            <h3>Please contact the office if you would like to find out your results</h3>`
+                <h3>Please contact the office if you would like to find out your results</h3>`
             }
             document.querySelector<HTMLElement>('#question_page').style.display = 'none'
             document.querySelector<HTMLElement>('#overview_page').style.display = 'none'
