@@ -186,37 +186,38 @@ function addEventListenersForViewResults(){
 
             openViewResultsModal();
 
-            getData("result?id=" + e.target.parentElement.getAttribute("dataId"))
-                .then(resultData => {
-                    getData("answer").then(questionData => {
+            getData("result?id=" + e.target.parentElement.getAttribute("dataId")).then(resultData => {
+                getData("answer").then(answerData => {
+                    getData("question").then(questionData => {
                         let resultsTable = document.querySelector('#view-results-modal-content tbody'),
-                            resultParsed = JSON.parse(resultData.data.answers);
-console.log('*', questionData);
-console.log('**', resultParsed);
-                        questionData.data.forEach(function (item, i) {
-                            console.log(item.answer);
-                            if (item.answer == resultParsed[i]) {
-                                resultsTable.innerHTML += `<tr class="rightAnswer">
+                            resultParsed = JSON.parse(JSON.parse(resultData.data.answers));
+                        answerData.data.forEach(function (item) {
+                            if (resultParsed[item.id]) {
+                                if (item.answer == resultParsed[item.id]) {
+                                    resultsTable.innerHTML += `<tr class="rightAnswer">
                                             <td>${item.id}</td>
-                                            <td>${item.text}</td>
+                                            <td>${questionData.data[item.id].text.substring(0,49)}</td>
                                             <td>✔</td>
                                            </tr>`;
-                            } else {
-                                resultsTable.innerHTML += `<tr class="wrongAnswer">
+                                } else {
+                                    resultsTable.innerHTML += `<tr class="wrongAnswer">
                                             <td>${item.id}</td>
-                                            <td>${item.text}</td>
+                                            <td>${questionData.data[item.id].text.substring(0,49)}</td>
                                             <td>✕</td>
                                            </tr>`;
+                                }
                             }
                         });
-
                     });
-                })
+                });
+            })
         })
     });
-    document.querySelector('.close-view-results').addEventListener('click', () => {
-        closeViewResultsModal();
-        document.querySelector('#view-results-modal-content tbody').innerHTML = "";
+    document.querySelectorAll('.close-view-results').forEach(item => {
+        item.addEventListener('click', () => {
+            closeViewResultsModal();
+            document.querySelector('#view-results-modal-content tbody').innerHTML = "";
+        });
     });
 }
 
