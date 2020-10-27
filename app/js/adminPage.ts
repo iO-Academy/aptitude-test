@@ -132,3 +132,14 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
         }
     })
 });
+
+document.querySelectorAll('.deleteCategory').forEach((button: HTMLElement) => {
+    button.addEventListener('click', async(clickedBtn: any) => {
+        const {id} = clickedBtn.target.dataset;
+        let response = await deleteCategory(id);
+        if (response) {
+            console.log('success');
+        }
+    });
+})
+
