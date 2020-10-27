@@ -127,6 +127,7 @@ function showResults() {
                 document.querySelector<HTMLElement>('.email_for_results').innerHTML = `
                 <h1>This test has ended because you clicked away from the page</h1>
             <h3>Please contact the office to discuss further</h3>`
+                result.score = 0
             } else {
                 document.querySelector<HTMLElement>('.greetings').innerHTML = `<p>Thank You!</p>`
                 document.querySelector<HTMLElement>('.email_for_results').innerHTML = `

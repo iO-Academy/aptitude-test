@@ -5,3 +5,4 @@ document.addEventListener("visibilitychange", event => {
         finishTest()
     }
 })
+
