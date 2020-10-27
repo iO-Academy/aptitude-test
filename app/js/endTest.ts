@@ -4,7 +4,8 @@ function pageLeaveAlert() {
 
 function cancelTest() {
     if (document.visibilityState === "hidden") {
-        let pageLeft = true
+        console.log('cancel')
+        let pageLeft: boolean = true
         finishTest(pageLeft)
     }
 }

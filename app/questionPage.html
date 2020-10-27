@@ -8,7 +8,7 @@
         let userEmail = getCookie('userEmail')
         getUser(userEmail).then(function (user) {
             if (!user.success || !isAuthorised(user.data) || user.data.canRetake === '0') {
-                window.location.replace("index.hstml")
+                window.location.replace("index.html")
             }
         })
     </script>
@@ -133,7 +133,6 @@
         </div>
         <div class="result_card">
             <div class="greetings">
-                <p>Your score</p>
             </div>
             <div class="result">
                 <div class="answered col-xs-6">

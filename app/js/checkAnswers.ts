@@ -2,7 +2,10 @@ import {UserAnswers} from "./interfaces/UserAnswers";
 
 var questionAmount
 
-document.querySelector('#finish').addEventListener('click', finishTest)
+
+document.querySelector('#finish').addEventListener('click', () => {
+    finishTest(false)
+})
 
 /**
  * called when clicking finish button in dialogue box
@@ -141,14 +144,12 @@ function showResults(pageLeft) {
         let answered
         if (result.score || result.score === 0) {
             if (pageLeft) {
-                document.querySelector<HTMLElement>('.greetings').innerHTML = `<p>Test cancelled!</p>`
-                document.querySelector<HTMLElement>('.email_for_results').innerHTML = `
+                document.querySelector<HTMLElement>('.userMessage').innerHTML = `<p>Test cancelled!</p>
                 <h1>This test has ended because you clicked away from the page</h1>
                 <h3>Please contact the office to discuss further</h3>`
                 result.score = 0
             } else {
-                document.querySelector<HTMLElement>('.greetings').innerHTML = `<p>Thank You!</p>`
-                document.querySelector<HTMLElement>('.email_for_results').innerHTML = `
+                document.querySelector<HTMLElement>('.userMessage').innerHTML = `<p>Thank You!</p>
                 <h1>You have completed the test!</h1>
                 <h3>Please contact the office if you would like to find out your results</h3>`
             }
