@@ -39,6 +39,13 @@ function BrowserifyTS(cb) {
 }
 
 gulp.task('watch', gulp.series('sass', function (done){
+    gulp.series('sass')
+    console.log('Compiling TypeScript')
+    typescript()
+    console.log('TypeScript done')
+    console.log('Browserifying Typescript')
+    BrowserifyTS()
+    console.log('Browserifying Typescript done')
     gulp.watch('app/scss/**/*.scss', gulp.series('sass'))
     gulp.watch('app/js/**/*.ts', gulp.series(typescript, BrowserifyTS))
     // gulp.watch('app/js/dist/*.js', BrowserifyTS)
