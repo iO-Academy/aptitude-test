@@ -1,6 +1,8 @@
-<div class="categoryItem">
-    <p>{{name}}</p>
-    {{#if id !== "1"}}
-        <button class="deleteCategory btn btn_height" data-id="{{id}}">Delete Category</button>
-    {{/if}}
-</div>
+{{#each data}}
+    <div class="categoryItem">
+        <p>{{name}}</p>
+        {{#ifNotEquals id "1"}}
+            <button class="deleteCategory primary-button btn btn_height" data-id="{{this.id}}">Delete Category</button>
+        {{/ifNotEquals}}
+    </div>
+{{/each}}
