@@ -13,5 +13,19 @@ Handlebars.registerHelper('ifNotEquals', function(arg1, arg2, options) {
     }
 });
 
-populateHandlebars('#categoriesContainer', 'js/templates/categoryItem.hbs', 'category');
+function populateCategories() {
+    populateHandlebars('#categoriesContainer', 'js/templates/categoryItem.hbs', 'category')
+        .then(() => {
+            document.querySelectorAll('.deleteCategory').forEach((button: HTMLElement) => {
+                button.addEventListener('click', async(clickedBtn: any) => {
+                    const {id} = clickedBtn.target.dataset;
+                    let response = await deleteCategory(id);
+                    if (response) {
+                        location.reload();
+                    }
+                })
+            })
+        })
+}
 
+populateCategories();
