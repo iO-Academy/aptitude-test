@@ -1,10 +1,10 @@
-async function addCategory ():Promise<void> {
+async function addCategory():Promise<void> {
     let categoriesObject = await getData('/category');
+    let newCategory: string = document.querySelector<HTMLFormElement>('#categoryName').value;
+    let responseMessage = document.querySelector('#addedCategoryConfirmation');
+    let listOfCategories = [];
     document.querySelector<HTMLFormElement>('.categoriesForm').addEventListener('submit', (e) => {
         e.preventDefault();
-        let newCategory: string = document.querySelector<HTMLFormElement>('#categoryName').value;
-        let responseMessage = document.querySelector('#addedCategoryConfirmation');
-        let listOfCategories = [];
         categoriesObject.data.forEach((category) => {
             listOfCategories.push(category.name);
         })
@@ -12,7 +12,7 @@ async function addCategory ():Promise<void> {
         if (!listOfCategories.includes(newCategory)) {
 
             if (newCategory.length > 255) {
-                responseMessage.textContent = 'Error - Category Name Too Long.';
+                responseMessage.textContent = 'Error - Category Name Exceeds 255 characters.';
             } else {
 
                 let data: object = {"name": newCategory};
@@ -25,7 +25,8 @@ async function addCategory ():Promise<void> {
                         responseMessage.textContent = 'Success! Category added';
                         responseMessage.classList.remove('alert-danger');
                         responseMessage.classList.add('alert-success');
-                        location.reload();
+                        document.querySelector('#categoriesContainer').innerHTML = '';
+                        populateCategories();
 
                     } else {
                         responseMessage.textContent = 'Error - Category Not Added';
@@ -35,7 +36,7 @@ async function addCategory ():Promise<void> {
                 });
             }
         } else {
-            responseMessage.textContent = 'Error - Category Not Added';
+            responseMessage.textContent = 'Error - Cannot Duplicate Category';
             responseMessage.classList.add('alert-danger');
             responseMessage.classList.remove('alert-success');
         }
