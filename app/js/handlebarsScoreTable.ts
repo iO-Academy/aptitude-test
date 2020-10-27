@@ -1,5 +1,6 @@
 import {BaseUser, User} from "./interfaces/User";
 import {Scores} from "./interfaces/Scores";
+import {UserAnswers} from "./interfaces/UserAnswers";
 
 /**
  * Sorts the array of user objects by their 'dateCreated' with the 
@@ -181,15 +182,44 @@ function addEventListenersForDownloadButtons(){
  */
 function addEventListenersForViewResults(){
     document.querySelectorAll('.view-results-button').forEach((button) => {
-        button.addEventListener('click', () => {
+        button.addEventListener('click', (e: any) => {
+
             openViewResultsModal();
+
+            getData("result?id=" + e.target.parentElement.getAttribute("dataId")).then(resultData => {
+                getData("answer").then(answerData => {
+                    getData("question").then(questionData => {
+                        let resultsTable = document.querySelector('#view-results-modal-content tbody'),
+                            resultParsed = JSON.parse(JSON.parse(resultData.data.answers));
+                        answerData.data.forEach(function (item) {
+                            if (resultParsed[item.id]) {
+                                if (item.answer == resultParsed[item.id]) {
+                                    resultsTable.innerHTML += `<tr class="rightAnswer">
+                                            <td>${item.id}</td>
+                                            <td>${questionData.data[item.id].text.substring(0,49)}</td>
+                                            <td>✔</td>
+                                           </tr>`;
+                                } else {
+                                    resultsTable.innerHTML += `<tr class="wrongAnswer">
+                                            <td>${item.id}</td>
+                                            <td>${questionData.data[item.id].text.substring(0,49)}</td>
+                                            <td>✕</td>
+                                           </tr>`;
+                                }
+                            }
+                        });
+                    });
+                });
+            })
         })
     });
-    document.querySelector('.close-view-results').addEventListener('click', () => {
-        closeViewResultsModal();
+    document.querySelectorAll('.close-view-results').forEach(item => {
+        item.addEventListener('click', () => {
+            closeViewResultsModal();
+            document.querySelector('#view-results-modal-content tbody').innerHTML = "";
+        });
     });
 }
-
 
 updateScoreTable();
 
