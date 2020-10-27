@@ -15,6 +15,7 @@
     <script src="js/dist/ajaxHandlebarsTemplate.js" defer></script>
     <script src="js/dist/getData.js"></script>
     <script src="js/dist/populateTestDropdowns.js" defer></script>
+    <script src="js/dist/populateCategoryDropdowns.js" defer></script>
     <script src="js/dist/scoreChart.js" defer></script>
     <script src="js/dist/populateHandlebars.js"></script>
     <script src="js/dist/getTestDuration.js" defer></script>
@@ -61,9 +62,12 @@
                     <div class="container_input display-flex">
                         <input type="text" id="name" name="name" placeholder="Type new user's name">
                         <input type="text" id="email" name="email" placeholder="Type new user's email">
-                            <label for="test_id">Assign to test:</label>
-                            <select class="custom-select" id="test_id">
-                            </select>
+                        <label for="test_id">Assign to test:</label>
+                        <select class="custom-select" id="test_id">
+                        </select>
+                        <label for="category_id">Category:</label>
+                        <select class="custom-select" id="category_id">
+                        </select>
                         <label for="test_time_minutes">Test Duration (min/sec) :</label>
                         <input type="number" id="user_time_minutes" name="time">
                         <span class="time-colon">:</span>
