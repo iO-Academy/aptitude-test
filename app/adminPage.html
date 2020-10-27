@@ -126,6 +126,25 @@
                         <canvas id="myChart" width="100" height="100"></canvas>
                     </div>
                 </div>
+                <section class="categorySection">
+                    <form class="categoriesForm">
+                        <h2>Add New Category</h2>
+                        <div class="display-flex">
+                            <label for="categoryName">Category Name :</label>
+                            <input name="categoryName" type="text" id="categoryName">
+                            <input id="addCategory" type="submit" class="btn primary-button submit" value="Add new category">
+                        </div>
+                        <div class="message-target">
+                            <div id="addedCategoryConfirmation" class="alert" role="alert"></div>
+                        </div>
+                    </form>
+                    <div class="displayCategories">
+                        <h2>Categories</h2>
+                        <div id="categoriesContainer">
+
+                        </div>
+                    </div>
+                </section>
                 <form class="new-test-container" id="testForm" method="post">
                     <h2>Add new test</h2>
                     <div class="display-flex">
