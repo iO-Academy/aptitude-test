@@ -184,8 +184,12 @@ function addEventListenersForViewResults(){
         button.addEventListener('click', () => {
             openViewResultsModal();
         })
-    })
+    });
+    document.querySelector('.close-view-results').addEventListener('click', () => {
+        closeViewResultsModal();
+    });
 }
+
 
 updateScoreTable();
 

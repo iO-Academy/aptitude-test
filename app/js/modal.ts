@@ -24,8 +24,15 @@ function openViewResultsModal() {
     document.querySelector<HTMLElement>('#viewResultsModal').style.display = 'block';
     document.querySelector<HTMLElement>('.overlay').style.display = 'block';
 }
-
 /**
+ * Closes viewResultsModal box
+ */
+function closeViewResultsModal() {
+    document.querySelector<HTMLElement>('#viewResultsModal').style.display = 'none';
+    document.querySelector<HTMLElement>('.overlay').style.display = 'none';
+}
+/**
+ *
  * Creates the modal with editModal handlebars template. 
  * Then calls function to fill modal fields with the users' data.
  * Then adds the submit button's event listener.
