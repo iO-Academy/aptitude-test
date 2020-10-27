@@ -76,6 +76,7 @@ $app->post('/user/edit', function ($request, $response, $args) {
         !isset($user['canRetake'])
     ) {
         $data['message'] = 'Invalid parameters.';
+        $data['message'] = 'Invalid parameters.';
         $data['data'] = $user;
         $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
         return $response->withJson($data, 400);
@@ -730,9 +731,14 @@ $app->post('/category/delete/{id}', function ($request, $response, $args) {
     }
 
     try {
-        $query = "DELETE FROM category WHERE `id` = ?";
-        $query = $this->db->prepare($query);
-        $query->execute([$args['id']]);
+        $updateUserQuery = "UPDATE `user` SET `category_id` = 1 WHERE `category_id` = ?";
+        $updateUserQuery = $this->db->prepare($updateUserQuery);
+        $updateUserQuery->execute([$args['id']]);
+
+        $deleteQuery = "DELETE FROM category WHERE `id` = ?";
+        $deleteQuery = $this->db->prepare($deleteQuery);
+        $deleteQuery->execute([$args['id']]);
+
     } catch(Exception $e) {
         $data['message'] = $e->getMessage();
         $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
