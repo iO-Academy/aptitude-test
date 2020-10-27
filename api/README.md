@@ -174,5 +174,7 @@ POST
 
 POST
 - Remove an existing category
+    - Prevents you deleting category 1
+    - Sets all users assigned to this category to category 1
 - No request data - category ID in URL
 - Returns a success/fail state.
