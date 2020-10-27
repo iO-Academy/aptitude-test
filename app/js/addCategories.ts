@@ -1,10 +1,10 @@
 async function addCategory():Promise<void> {
     let categoriesObject = await getData('/category');
-    let newCategory: string = document.querySelector<HTMLFormElement>('#categoryName').value;
-    let responseMessage = document.querySelector('#addedCategoryConfirmation');
-    let listOfCategories = [];
+    const responseMessage = document.querySelector('#addedCategoryConfirmation');
     document.querySelector<HTMLFormElement>('.categoriesForm').addEventListener('submit', (e) => {
         e.preventDefault();
+        let newCategory: string = document.querySelector<HTMLFormElement>('#categoryName').value;
+        let listOfCategories = [];
         categoriesObject.data.forEach((category) => {
             listOfCategories.push(category.name);
         })
@@ -25,8 +25,7 @@ async function addCategory():Promise<void> {
                         responseMessage.textContent = 'Success! Category added';
                         responseMessage.classList.remove('alert-danger');
                         responseMessage.classList.add('alert-success');
-                        document.querySelector('#categoriesContainer').innerHTML = '';
-                        populateCategories();
+                        location.reload();
 
                     } else {
                         responseMessage.textContent = 'Error - Category Not Added';
