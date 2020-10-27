@@ -18,6 +18,7 @@ document.querySelector<HTMLFormElement>('.categoriesForm').addEventListener('sub
                 responseMessage.textContent = 'Success! Category added';
                 responseMessage.classList.remove('alert-danger');
                 responseMessage.classList.add('alert-success');
+                location.reload();
 
             } else {
                 responseMessage.textContent = 'Error - Category Not Added';
