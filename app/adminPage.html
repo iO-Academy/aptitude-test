@@ -129,9 +129,14 @@
                 <section class="categorySection">
                     <form class="categoriesForm">
                         <h2>Add New Category</h2>
-                        <label for="categoryName">Category Name :</label>
-                        <input name="categoryName" type="text" id="categoryName">
-                        <input id="addCategory" type="submit" class="btn primary-button submit" value="Add new category">
+                        <div class="display-flex">
+                            <label for="categoryName">Category Name :</label>
+                            <input name="categoryName" type="text" id="categoryName">
+                            <input id="addCategory" type="submit" class="btn primary-button submit" value="Add new category">
+                        </div>
+                        <div class="message-target">
+                            <div id="addedCategoryConfirmation" class="alert" role="alert"></div>
+                        </div>
                     </form>
                     <div class="displayCategories">
                         <h2>Categories</h2>
