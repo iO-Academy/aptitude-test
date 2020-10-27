@@ -150,7 +150,8 @@ function categoryFilter(resultArray: Array<any>) {
     if (chosenCategory) {
         newResultArray = [];
         resultArray.forEach( (data) => {
-            if (data.id === chosenCategory) { //need to check that data.id is the category id
+            console.log(data);
+            if (data.category_id === chosenCategory) { //need to check that data.category_id is the category id and that it exists in data object
                 newResultArray.push(data);
             }
         })
