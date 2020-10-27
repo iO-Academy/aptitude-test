@@ -9,7 +9,7 @@
 function splitArray(initialArray: Array<any>, newArrayLength: number) {
     const numOfNewArrays = Math.ceil(initialArray.length / newArrayLength);
     let newArray = [];
-    if (initialArray.length > 1 ) {
+    if (initialArray.length >= 1 ) {
         for (let i = 0; i < numOfNewArrays; i++) {
             let smallArray = initialArray.slice((i * newArrayLength), ((i * newArrayLength) + newArrayLength));
 
