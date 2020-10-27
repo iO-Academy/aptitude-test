@@ -10,11 +10,8 @@ import {BaseUser} from "./interfaces/User";
  */
 function createObjectForDatabase(inputClass: string) {
     let formData = document.querySelectorAll(inputClass);
-    if (document.querySelector<HTMLInputElement>('#canRetake').checked) {
-        var result = {'canRetake': 1}
-    } else {
-         result = {'canRetake': 0}
-    }
+    let result = {'canRetake': (document.querySelector<HTMLInputElement>('#canRetake').checked ? 1 : 0)}
+
     formData.forEach(function (input: HTMLInputElement) {
         result[input.name] = input.value;
     });
