@@ -15,6 +15,8 @@ declare var showResults: Function;
 declare var createUsersObject: Function;
 declare var getTests: Function;
 declare var openDialog: Function;
+declare var openViewResultsModal: Function;
+declare var closeViewResultsModal: Function;
 declare var createEditModal: Function;
 declare var postUserEdit: Function;
 declare var createObjectForDatabase: Function;
