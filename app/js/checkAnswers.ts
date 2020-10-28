@@ -146,14 +146,14 @@ function showResults(pageLeft) {
             if (pageLeft) {
                 document.querySelector<HTMLElement>('.greetings').innerHTML = `<p>Test cancelled!</p>`
                 document.querySelector<HTMLElement>('.email_for_results').innerHTML = `
-                <h1>This test has ended because you clicked away from the page</h1>
-                <h3>Please contact the office at <a href="mailto:hello@mayden.academy">hello@mayden.academy</a> to discuss further</h3>`
+                <p>This test has ended because you clicked away from the page</p>
+                <p>Please contact the office at <a href="mailto:hello@mayden.academy">hello@mayden.academy</a> to discuss further</p>`
                 result.score = 0
             } else {
                 document.querySelector<HTMLElement>('.greetings').innerHTML = `<p>Thank You!</p>`
                 document.querySelector<HTMLElement>('.email_for_results').innerHTML = `
-                <h1>You have completed the test!</h1>
-                <h3>Please contact the office at <a href="mailto:hello@mayden.academy">hello@mayden.academy</a> if you would like to find out your results</h3>`
+                <p id="completedMessage">You have completed the test!</p>
+                <p>Please contact the office at <a href="mailto:hello@mayden.academy">hello@mayden.academy</a> if you would like to find out your results</p>`
             }
             document.querySelector<HTMLElement>('#question_page').style.display = 'none'
             document.querySelector<HTMLElement>('#overview_page').style.display = 'none'
