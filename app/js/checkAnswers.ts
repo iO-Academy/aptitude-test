@@ -2,14 +2,20 @@ import {UserAnswers} from "./interfaces/UserAnswers";
 
 var questionAmount
 
-document.querySelector('#finish').addEventListener('click', finishTest)
+
+document.querySelector('#finish').addEventListener('click', () => {
+    finishTest(false)
+})
+
 /**
  * called when clicking finish button in dialogue box
  */
-function finishTest() {
-    showResults()
+function finishTest(pageLeft) {
+    showResults(pageLeft)
     document.querySelector<HTMLElement>('#overview_page').style.display = 'none'
     document.querySelector<HTMLElement>('#result_page').style.display = 'none'
+    document.removeEventListener("mouseleave", pageLeaveAlert);
+    document.removeEventListener("visibilitychange", cancelTest);
 }
 
 /**
@@ -129,7 +135,7 @@ function trackActiveQuestion(id: number) {
 /**
  * this checks the answers and marks them to show the finishing page
  */
-function showResults() {
+function showResults(pageLeft) {
     resetReapplyCounter()
     clearInterval(interval)
     const userAnswers = getUserAnswers()
@@ -137,6 +143,16 @@ function showResults() {
         let percentResult
         let answered
         if (result.score || result.score === 0) {
+            if (pageLeft) {
+                document.querySelector<HTMLElement>('.userMessage').innerHTML = `<h1>Test cancelled!</h1>
+                <p>This test has ended because you clicked away from the page</p>
+                <p>Please contact the office to discuss further</p>`
+                result.score = 0
+            } else {
+                document.querySelector<HTMLElement>('.userMessage').innerHTML = `<h1>Thank You!</h1>
+                <p>You have completed the test!</p>
+                <p>Please contact the office if you would like to find out your results</p>`
+            }
             document.querySelector<HTMLElement>('#question_page').style.display = 'none'
             document.querySelector<HTMLElement>('#overview_page').style.display = 'none'
             document.querySelector<HTMLElement>('#result_page').style.display = 'block'
