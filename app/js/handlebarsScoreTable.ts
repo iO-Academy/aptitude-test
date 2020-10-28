@@ -189,20 +189,26 @@ function addEventListenersForViewResults(){
             getData("result?id=" + e.target.parentElement.getAttribute("dataId")).then(resultData => {
                     getData("question").then(questionData => {
                         let resultsTable = document.querySelector("#view-results-modal-content tbody"),
-                            resultParsed = JSON.parse(JSON.parse(resultData.data.answers));
-                        for(let result in resultParsed){
-                            console.log(resultParsed);
-                            console.log(questionData);
-                            if (resultParsed[result]["isCorrect"]== "correct") {
+                            resultParsed = JSON.parse(JSON.parse(resultData.data.answers)),
+                            questionObj = {};
+                        function createQuestionObj(questionData){
+                            questionData.data.forEach(item => {
+                                questionObj[item.id] = item.text;
+                            });
+                        }
+                        createQuestionObj(questionData);
+                        console.log(questionObj)
+                        for (let result in resultParsed){
+                            if (resultParsed[result]["isCorrect"] == "correct") {
                                 resultsTable.innerHTML += `<tr class="rightAnswer">
                                             <td>${result}</td>
-                                            <td>${questionData.data[result].text.substring(0,49)}</td>
+                                            <td>${questionObj[result].substring(0,49)}</td>
                                             <td>✔</td>
                                            </tr>`;
                             } else {
                                 resultsTable.innerHTML += `<tr class="wrongAnswer">
                                             <td>${result}</td>
-                                            <td>${questionData.data[result].text.substring(0,49)}</td>
+                                            <td>${questionObj[result].substring(0,49)}</td>
                                             <td>✕</td>
                                            </tr>`;
                             }
