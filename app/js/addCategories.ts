@@ -25,7 +25,8 @@ async function addCategory():Promise<void> {
                         responseMessage.textContent = 'Success! Category added';
                         responseMessage.classList.remove('alert-danger');
                         responseMessage.classList.add('alert-success');
-                        location.reload();
+                        document.querySelector('#categoriesContainer').innerHTML = '';
+                        populateCategories();
 
                     } else {
                         responseMessage.textContent = 'Error - Category Not Added';
