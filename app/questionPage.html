@@ -8,7 +8,7 @@
         let userEmail = getCookie('userEmail')
         getUser(userEmail).then(function (user) {
             if (!user.success || !isAuthorised(user.data) || user.data.canRetake === '0') {
-                window.location.replace("index.hstml")
+                window.location.replace("index.html")
             }
         })
     </script>
@@ -27,11 +27,11 @@
     <script src="js/dist/question_desc.js" defer></script>
     <script src="js/dist/questionNav.js" defer></script>
     <script src="js/dist/timer.js" defer></script>
+    <script src="js/dist/endTest.js" defer></script>
     <script src="js/dist/checkAnswers.js" defer></script>
     <script src="js/dist/sendResults.js" defer></script>
     <script src="js/dist/overview.js" defer></script>
     <script src="https://kit.fontawesome.com/2373a66060.js" defer></script>
-    <script async defer src="js/dist/endTest.js"></script>
 </head>
 <body>
 <!--question number and time -->
@@ -133,12 +133,40 @@
         </div>
         <div class="result_card">
             <div class="greetings">
-                <p>Thank You!</p>
+                <p>Your score</p>
             </div>
             <div class="email_for_results">
             </div>
+                <div class="result">
+                    <div class="answered col-xs-6">
+                        <div class="answered_label">
+                            <h3>Answered</h3>
+                        </div>
+                        <div class="answered_number">
+                            <p><span class="answered_questions"></span></p>
+                        </div>
+                    </div>
+                    <div class="points col-xs-6">
+                        <div class="points_label">
+                            <h3>Points</h3>
+                        </div>
+                        <div class="points_number">
+                            <p><span class="score"></span></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="result">
+                    <div class="percentage col-xs-12">
+                        <div class="percentage_label">
+                            <h3>Percentage</h3>
+                        </div>
+                        <div class="percentage_number">
+                            <p><span class="score_percentage"></span>%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</div>
 </body>
 </html>

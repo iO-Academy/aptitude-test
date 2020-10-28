@@ -37,11 +37,69 @@ body {
   }
 }
 
-.email_for_results {
-  h1 {
-    color: #3c763d;
+.result {
+  display: flex;
+  justify-content: space-around;
+  height: 250px;
+
+  .points {
+    display: inline-block;
+    padding: 0;
+    background-color: #fff;
+    border: 2px solid $score-table-border;
+    margin: 4px;
+
+    .points_label {
+      height: 70px;
+      width: 100%;
+      background-color: $results-headings;
+
+      h3 {
+        margin: 0;
+        line-height: 70px;
+        text-align: center;
+        color: #fff;
+      }
+    }
+
+    .points_number {
+      height: 180px;
+      width: 100%;
+
+      p {
+        line-height: 180px;
+        text-align: center;
+        font-size: 4rem;
+        color: #94ba66;
+
+        span {
+          font-size: 7rem;
+        }
+      }
+    }
   }
-  h3 {
-    padding-bottom: 50px;
+}
+
+.percentage {
+  @extend .points;
+
+  .percentage_label {
+    @extend .points_label;
+  }
+
+  .percentage_number {
+    @extend .points_number;
+  }
+}
+
+.answered {
+  @extend .points;
+
+  .answered_label {
+    @extend .points_label;
+  }
+
+  .answered_number {
+    @extend .points_number;
   }
 }

@@ -1,14 +1,15 @@
-var pageLeft = false
-document.addEventListener("mouseleave", () => {
-    if (!pageLeft) {
-        alert ('Beware, if you leave the page the test will end!')
-    }
-})
+function pageLeaveAlert() {
+    alert ('Beware, if you leave the page the test will end!')
+}
 
-document.addEventListener("visibilitychange", event => {
+function cancelTest() {
     if (document.visibilityState === "hidden") {
-        pageLeft = true
-        finishTest()
+        console.log('cancel')
+        let pageLeft: boolean = true
+        finishTest(pageLeft)
     }
-})
+}
+
+document.addEventListener("mouseleave", pageLeaveAlert);
+document.addEventListener("visibilitychange", cancelTest);
 
