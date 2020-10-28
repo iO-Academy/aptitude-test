@@ -1,11 +1,3 @@
-function getBaseUrl(): string {
-    let isProd = false
-    if(isProd) {
-        return 'http://dev.maydenacademy.co.uk/projects/2017/aptitude-test/api/public/'
-    } else {
-        return 'http://localhost:8080/'
-    }
-}
 /**
  * Compares 2 values and allows us to check a conditional statement in HBS
  *
@@ -20,3 +12,13 @@ Handlebars.registerHelper('ifNotEquals', function(arg1, arg2, options) {
         return options.inverse(this);
     }
 });
+
+function getBaseUrl(): string {
+    let isProd = false
+    if(isProd) {
+        return 'http://dev.maydenacademy.co.uk/projects/2017/aptitude-test/api/public/'
+    } else {
+        return 'http://localhost:8080/'
+    }
+}
+
