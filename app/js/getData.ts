@@ -8,5 +8,5 @@
 async function getData(APIpath: string): Promise<any> {
     let data = await fetch(getBaseUrl() + APIpath);
 
-    return await data.json();
+    return data.json();
 }

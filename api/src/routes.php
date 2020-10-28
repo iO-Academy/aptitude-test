@@ -76,7 +76,6 @@ $app->post('/user/edit', function ($request, $response, $args) {
         !isset($user['canRetake'])
     ) {
         $data['message'] = 'Invalid parameters.';
-        $data['message'] = 'Invalid parameters.';
         $data['data'] = $user;
         $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
         return $response->withJson($data, 400);
@@ -518,7 +517,7 @@ $app->get('/result', function ($request, $response, $args) {
 
     if (!empty($uid)) {
         try {
-            $query = "SELECT `uid` as 'id', `answers`, `score`, `testLength`, `time`, `dateCreated` from `result` WHERE `uid` = :uid;";
+            $query = "SELECT `uid` as 'id', `id` as `resultId`, `answers`, `userTestNotes`, `score`, `testLength`, `time`, `dateCreated` from `result` WHERE `uid` = :uid;";
             $query = $this->db->prepare($query);
             $query->bindParam(':uid', $uid);
             $query->execute();
@@ -531,7 +530,7 @@ $app->get('/result', function ($request, $response, $args) {
         }
     } else {
         try {
-            $query = "SELECT `uid` as 'id', `answers`, `score`, `testLength`, `time`, `dateCreated` from `result`;";
+            $query = "SELECT `uid` as 'id', `id` as `resultId`, `answers`, `userTestNotes`, `score`, `testLength`, `time`, `dateCreated` from `result`;";
             $query = $this->db->prepare($query);
             $query->execute();
             $result = $query->fetchAll(PDO::FETCH_ASSOC);
@@ -556,6 +555,43 @@ $app->get('/result', function ($request, $response, $args) {
     return $response->withJson($data);
 });
 
+$app->post('/result/{id}/notes/edit', function ($request, $response, $args) {
+    $data = ['success' => false, 'message' => 'An unexpected error occured.', 'data' => []];
+    $rId = $args['id'];
+
+    $postData = $request->getParsedBody();
+
+    if (
+        empty($postData['notes']) ||
+        empty($rId) ||
+        !is_numeric($rId)
+    ) {
+        $data['message'] = 'Missing post data, required keys: notes and result id must be numerical.';
+        $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+        return $response->withJson($data, 400);
+    }
+
+    try {
+        $query = "UPDATE `result` SET `userTestNotes` = :notes WHERE `id` = :id";
+        $query = $this->db->prepare($query);
+        $result = $query->execute(['notes' => $postData['notes'], 'id' => $rId]);
+    } catch(Exception $e) {
+        $data['message'] = $e->getMessage();
+        $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+        return $response->withJson($data, 500);
+    }
+
+    if (!$result) {
+        $data['message'] = 'Unable to update notes. Unexpected error.';
+        $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+        return $response->withJson($data, 500);
+    }
+
+    $data['success'] = true;
+    $data['message'] = 'Successfully updated notes.';
+    $response = $response->withAddedHeader('Access-Control-Allow-Origin', '*');
+    return $response->withJson($data);
+});
 
 $app->get('/setting', function ($request, $response, $args) {
     $data = ['success' => false, 'message' => 'An unexpected error occured.', 'data' => []];
