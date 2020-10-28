@@ -123,6 +123,14 @@ GET
 - Send users id as a GET parameter using the key of `id`.
 - Returns users result object.
 
+**/result/{id}/notes/edit**
+
+POST
+- Edit the notes for a users result
+    - `id` in the URL should be the result id, not the user `id`
+- `{"notes": "The result notes here"}`
+- Returns success/fail state.
+
 **/setting**
 
 GET 

@@ -24,3 +24,4 @@ declare var searchByTextAndEmail: Function;
 declare var sendToChart: Function;
 declare var getUser: Function;
 declare var isAuthorised: Function;
+declare var finishTest: Function;

@@ -2,6 +2,7 @@ import {BaseUser} from "./interfaces/User";
 
 populateTestDropdowns();
 populateCategoryDropdown();
+ 
 
 /**
  * Save the JSON object using an AJAX request.
@@ -91,6 +92,7 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
     let emailField = document.querySelector<HTMLInputElement>('#email');
     let nameField = document.querySelector<HTMLInputElement>('#name');
     let testField = document.querySelector<HTMLInputElement>('#test_id');
+    let categoryField = document.querySelector<HTMLInputElement>('#category_id');
     let errorField = document.querySelector('#error');
     let timeMinutes = document.querySelector<HTMLInputElement>('#user_time_minutes').value;
     let timeSeconds = document.querySelector<HTMLInputElement>('#user_time_seconds').value;
@@ -113,6 +115,7 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
                 name: nameField.value,
                 email: emailField.value,
                 test_id: testField.value,
+                category_id: categoryField.value,
                 time: timeTotal
             }).then(function(response) {
                 if (response.success) {
@@ -133,3 +136,6 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
         }
     })
 });
+
+
+

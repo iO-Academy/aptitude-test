@@ -19,6 +19,8 @@ body {
   background-color: #fff;
   margin: 0 auto 10px;
   width: 700px;
+  text-align: center;
+
 }
 
 .greetings {
@@ -76,29 +78,28 @@ body {
       }
     }
   }
+}
 
-  .percentage {
-    @extend .points;
+.percentage {
+  @extend .points;
 
-    .percentage_label {
-      @extend .points_label;
-    }
-
-    .percentage_number {
-      @extend .points_number;
-    }
+  .percentage_label {
+    @extend .points_label;
   }
 
-  .answered {
-    @extend .points;
+  .percentage_number {
+    @extend .points_number;
+  }
+}
 
-    .answered_label {
-      @extend .points_label;
-    }
+.answered {
+  @extend .points;
 
-    .answered_number {
-      @extend .points_number;
-    }
+  .answered_label {
+    @extend .points_label;
   }
 
+  .answered_number {
+    @extend .points_number;
+  }
 }

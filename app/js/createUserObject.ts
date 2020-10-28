@@ -1,17 +1,18 @@
 import {Test} from "./interfaces/Tests";
 import {BaseUser} from "./interfaces/User";
+import {Categories} from "./interfaces/Categories";
 
 /**
  * Get all the test results from the API.
  */
 async function getResults() {
-    let baseUrl = getBaseUrl()
+    let baseUrl = getBaseUrl();
     let resultsArr = await fetch(baseUrl + "result", {method: 'get'})
     .then(function (data) {
         return data.json()
-    })
+    });
     return resultsArr.data
-}
+};
 
 /**
  * Gets users from the API.
@@ -19,16 +20,16 @@ async function getResults() {
  * @return Array of user objects
  */
 async function getUsers() {
-    let baseUrl = getBaseUrl()
+    let baseUrl = getBaseUrl();
     let users = await fetch(baseUrl + "user", {method: 'get'})
         .then(function (data) {
             return data.json()
-        })
+        });
     let filteredUsersArray = users.data.filter( function(value, index, arr) {
         return value.deleted == 0;
-    })
+    });
     return filteredUsersArray
-}
+};
 
 /**
  * Gets tests from the API.
@@ -36,15 +37,31 @@ async function getUsers() {
  * @return Array of test objects
  */
 async function getTests() {
-    let baseUrl = getBaseUrl()
+    let baseUrl = getBaseUrl();
     let tests = await fetch(baseUrl + "test", {method: 'get'})
         .then(function (response) {
             return response.json()
         }).then(function(response) {
             return response.data
-        })
+        });
     return tests
-}
+};
+
+/**
+ * Get all categories from the API.
+ *
+ * @return Array of category objects
+ */
+async function getCategories() {
+    let baseUrl = getBaseUrl();
+    let categories = await fetch(baseUrl + "category", {method: 'get'})
+        .then(function (response) {
+            return response.json()
+        }).then(function(response) {
+            return response.data
+        });
+    return categories
+};
 
 /**
  * Take a score and a total number of questions and calculate the score 
@@ -55,7 +72,7 @@ async function getTests() {
  */
 function calculatePercentage(score: number, numOfQuestions: number) {
     return ((score / numOfQuestions) * 100).toFixed(2)
-}
+};
 
 /**
  * Take a time in seconds and convert it into minutes and seconds.
@@ -64,7 +81,7 @@ function calculatePercentage(score: number, numOfQuestions: number) {
  */
 function secondsToMinutes(time: number) {
     return String(Math.floor(time / 60)).padStart(2,'0') + ':' + String((time % 60)).padStart(2,'0')
-}
+};
 
 /**
  * This function finds the name of a test given its id and the list of tests from the db
@@ -75,14 +92,24 @@ function secondsToMinutes(time: number) {
  * @return string the name of the test with the given id, as it appears in the database
  */
 function findTestName(tests: Array<Test>, testId: number) {
-    let testName = "None Assigned"
+    let testName = "None Assigned";
     tests.forEach(function(test) {
-        if (testId == test.id) {
-            testName = test.name
+        if (testId === test.id) {
+            testName = test.name;
         }
-    })
-    return testName
-}
+    });
+    return testName;
+};
+
+function findCategoryName(categories: Array<Categories>, categoryId: number) {
+    let categoryName = "None Assigned";
+    categories.forEach(function(category) {
+        if (categoryId === category.id) {
+            categoryName = category.name;
+        }
+    });
+    return categoryName;
+};
 
 /**
  * Prepares user objects for next step, createUserObject
@@ -90,25 +117,29 @@ function findTestName(tests: Array<Test>, testId: number) {
  * @return Array - containing the user objects
  */
 async function getNameAndEmail(): Promise<Array<BaseUser>> {
-    let users = await getUsers()
-    let tests = await getTests()
-    let userObjectArray: Array<BaseUser> = []
+    let users = await getUsers();
+    let tests = await getTests();
+    let categories = await getCategories();
+    let userObjectArray: Array<BaseUser> = [];
     users.forEach(function(user: any) {
-        let {id, email, name, time, test_id, canRetake} = user
+        let {id, email, name, time, test_id, canRetake, category_id} = user
         let testName = findTestName(tests, test_id)
+        let categoryName = findCategoryName(categories, category_id)
         let obj: BaseUser = {
             id: id,
             name: name,
             email: email,
+            categoryName: categoryName,
+            categoryId: category_id,
             timeAllowed: time,
             testAllocated: testName,
             testId: test_id,
-            canRetake: canRetake
+            canRetake: canRetake,
         }
         userObjectArray.push(obj)
-    })
+    });
     return userObjectArray
-}
+};
 
 /**
  * Combines the information used in a table row into a new object.
@@ -132,6 +163,8 @@ async function createUsersObject() {
                 obj['name'] = user.name;
                 obj['email'] = user.email;
                 obj['score'] = result.score;
+                obj['categoryName'] = user.categoryName;
+                obj['categoryId'] = user.categoryId;
                 obj['percentage'] = calculatePercentage(result.score, result.testLength);
                 obj['testAllocated'] = user.testAllocated;
                 obj['testId'] = user.testId;
@@ -151,6 +184,8 @@ async function createUsersObject() {
             obj['id'] = user.id;
             obj['name'] = user.name;
             obj['email'] = user.email;
+            obj['categoryName'] = user.categoryName;
+            obj['categoryId'] = user.categoryId;
             obj['score'] = '';
             obj['percentage'] = '';
             obj['testAllocated'] = user.testAllocated;
@@ -164,4 +199,4 @@ async function createUsersObject() {
         }
     });
     return await {success: true, data: userDisplayArray}
-}
+};
