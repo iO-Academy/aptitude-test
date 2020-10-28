@@ -44,8 +44,10 @@ body {
   display: flex;
   flex-direction: column;
   margin-top: 40px;
+
   textarea {
-  resize: none;
+    resize: none;
+  }
 }
 
 h4 {
