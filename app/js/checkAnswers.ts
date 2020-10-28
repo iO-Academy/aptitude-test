@@ -144,14 +144,14 @@ function showResults(pageLeft) {
         let answered
         if (result.score || result.score === 0) {
             if (pageLeft) {
-                document.querySelector<HTMLElement>('.userMessage').innerHTML = `<p>Test cancelled!</p>
-                <h1>This test has ended because you clicked away from the page</h1>
-                <h3>Please contact the office to discuss further</h3>`
+                document.querySelector<HTMLElement>('.userMessage').innerHTML = `<h1>Test cancelled!</h1>
+                <p>This test has ended because you clicked away from the page</p>
+                <p>Please contact the office to discuss further</p>`
                 result.score = 0
             } else {
-                document.querySelector<HTMLElement>('.userMessage').innerHTML = `<p>Thank You!</p>
-                <h1>You have completed the test!</h1>
-                <h3>Please contact the office if you would like to find out your results</h3>`
+                document.querySelector<HTMLElement>('.userMessage').innerHTML = `<h1>Thank You!</h1>
+                <p>You have completed the test!</p>
+                <p>Please contact the office if you would like to find out your results</p>`
             }
             document.querySelector<HTMLElement>('#question_page').style.display = 'none'
             document.querySelector<HTMLElement>('#overview_page').style.display = 'none'
