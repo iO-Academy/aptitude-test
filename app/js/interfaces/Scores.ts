@@ -5,3 +5,4 @@ export interface Scores {
     fail?: boolean,
     notTakenYet?: boolean
 }
+
