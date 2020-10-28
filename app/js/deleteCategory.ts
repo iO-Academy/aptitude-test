@@ -4,6 +4,6 @@
  * @returns {Promise<*>} response from api
  */
 async function deleteCategory(id: number) {
-    return await sendData(undefined, `/category/delete/${id}`);
+    return sendData(undefined, `/category/delete/${id}`);
 }
 
