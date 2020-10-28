@@ -4,7 +4,8 @@ function populateCategories() {
         .then(() => {
             document.querySelectorAll('.deleteCategory').forEach((button: HTMLElement) => {
                 button.addEventListener('click', async(clickedBtn: MouseEvent) => {
-                    const id = clickedBtn.target.dataset.id;
+                    const button = clickedBtn.target as HTMLButtonElement
+                    const id = parseInt(button.dataset.id);
                     let response = await deleteCategory(id);
                     if (response) {
                         document.querySelector('#categoriesContainer').innerHTML = '';
