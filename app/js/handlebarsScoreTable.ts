@@ -37,7 +37,6 @@ async function updateScoreTable() {
     }
     await displayPageBtns(paginatedArrays);
     pageSelectorFunctionality(HBTemplate, paginatedArrays);
-    addEventListenersForDownloadButtons()
 }
 
 /**
@@ -155,7 +154,8 @@ function produceTable (HBTemplate: string, scoresDataObject) {
     score_list.innerHTML += html;
 
     addEditEventListeners();
-    addDeleteEventListeners()
+    addDeleteEventListeners();
+    addEventListenersForDownloadButtons();
 }
 
 function addEventListenersForDownloadButtons(){
