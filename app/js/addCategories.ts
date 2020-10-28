@@ -25,7 +25,10 @@ async function addCategory():Promise<void> {
                         responseMessage.classList.remove('alert-danger');
                         responseMessage.classList.add('alert-success');
                         populateCategories();
-
+                        setTimeout(() => {
+                            responseMessage.textContent = '';
+                            responseMessage.classList.remove('alert-success');
+                        }, 3000)
                     } else {
                         responseMessage.textContent = 'Error - Category Not Added';
                         responseMessage.classList.add('alert-danger');
