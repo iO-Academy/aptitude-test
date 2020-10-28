@@ -187,29 +187,27 @@ function addEventListenersForViewResults(){
             openViewResultsModal();
 
             getData("result?id=" + e.target.parentElement.getAttribute("dataId")).then(resultData => {
-                getData("answer").then(answerData => {
                     getData("question").then(questionData => {
-                        let resultsTable = document.querySelector('#view-results-modal-content tbody'),
+                        let resultsTable = document.querySelector("#view-results-modal-content tbody"),
                             resultParsed = JSON.parse(JSON.parse(resultData.data.answers));
-                        answerData.data.forEach(function (item) {
-                            if (resultParsed[item.id]) {
-                                if (item.answer == resultParsed[item.id]) {
-                                    resultsTable.innerHTML += `<tr class="rightAnswer">
-                                            <td>${item.id}</td>
-                                            <td>${questionData.data[item.id].text.substring(0,49)}</td>
+                        for(let result in resultParsed){
+                            console.log(resultParsed);
+                            console.log(questionData);
+                            if (resultParsed[result]["isCorrect"]== "correct") {
+                                resultsTable.innerHTML += `<tr class="rightAnswer">
+                                            <td>${result}</td>
+                                            <td>${questionData.data[result].text.substring(0,49)}</td>
                                             <td>✔</td>
                                            </tr>`;
-                                } else {
-                                    resultsTable.innerHTML += `<tr class="wrongAnswer">
-                                            <td>${item.id}</td>
-                                            <td>${questionData.data[item.id].text.substring(0,49)}</td>
+                            } else {
+                                resultsTable.innerHTML += `<tr class="wrongAnswer">
+                                            <td>${result}</td>
+                                            <td>${questionData.data[result].text.substring(0,49)}</td>
                                             <td>✕</td>
                                            </tr>`;
-                                }
                             }
-                        });
+                        }
                     });
-                });
             })
         })
     });
