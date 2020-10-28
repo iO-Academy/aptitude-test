@@ -1,4 +1,5 @@
 function populateCategories() {
+    document.querySelector('#categoriesContainer').innerHTML = '';
     populateHandlebars('#categoriesContainer', 'js/templates/categoryItem.hbs', 'category')
         .then(() => {
             document.querySelectorAll('.deleteCategory').forEach((button: HTMLElement) => {
