@@ -92,23 +92,23 @@ function secondsToMinutes(time: number) {
  * @return string the name of the test with the given id, as it appears in the database
  */
 function findTestName(tests: Array<Test>, testId: number) {
-    let testName = "None Assigned"
+    let testName = "None Assigned";
     tests.forEach(function(test) {
         if (testId === test.id) {
-            testName = test.name
+            testName = test.name;
         }
     });
-    return testName
+    return testName;
 };
 
-function findCategoryName(categories: Array<Categories>, categoriesId: number) {
-    let categoriesName = "None Assigned"
+function findCategoryName(categories: Array<Categories>, categoryId: number) {
+    let categoryName = "None Assigned";
     categories.forEach(function(category) {
-        if (categoriesId === category.id) {
-            categoriesName = category.name
+        if (categoryId === category.id) {
+            categoryName = category.name;
         }
     });
-    return categoriesName
+    return categoryName;
 };
 
 /**
