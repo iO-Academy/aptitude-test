@@ -180,41 +180,35 @@ function addEventListenersForDownloadButtons(){
 /**
  * Add listener for click on view-results-button and open viewResultsModal on click
  */
-function addEventListenersForViewResults(){
+function addEventListenersForViewResults() {
     document.querySelectorAll('.view-results-button').forEach((button) => {
         button.addEventListener('click', (e: any) => {
-
             openViewResultsModal();
-
             getData("result?id=" + e.target.parentElement.getAttribute("dataId")).then(resultData => {
-                    getData("question").then(questionData => {
-                        let resultsTable = document.querySelector("#view-results-modal-content tbody"),
-                            resultParsed = JSON.parse(JSON.parse(resultData.data.answers)),
-                            questionObj = {};
-                        function createQuestionObj(questionData){
-                            questionData.data.forEach(item => {
-                                questionObj[item.id] = item.text;
-                            });
-                        }
-                        createQuestionObj(questionData);
-                        console.log(questionObj)
-                        for (let result in resultParsed){
-                            if (resultParsed[result]["isCorrect"] == "correct") {
-                                resultsTable.innerHTML += `<tr class="rightAnswer">
+                getData("question").then(questionData => {
+                    let questionObj = {};
+                    questionData.data.forEach(item => {
+                        questionObj[item.id] = item.text;
+                    });
+                    let resultsTable = document.querySelector("#view-results-modal-content tbody"),
+                        resultParsed = JSON.parse(JSON.parse(resultData.data.answers));
+                    for (let result in resultParsed) {
+                        if (resultParsed[result]["isCorrect"] == "correct") {
+                            resultsTable.innerHTML += `<tr class="rightAnswer">
                                             <td>${result}</td>
-                                            <td>${questionObj[result].substring(0,49)}</td>
+                                            <td>${questionObj[result].substring(0, 49)}</td>
                                             <td>✔</td>
                                            </tr>`;
-                            } else {
-                                resultsTable.innerHTML += `<tr class="wrongAnswer">
+                        } else {
+                            resultsTable.innerHTML += `<tr class="wrongAnswer">
                                             <td>${result}</td>
-                                            <td>${questionObj[result].substring(0,49)}</td>
+                                            <td>${questionObj[result].substring(0, 49)}</td>
                                             <td>✕</td>
                                            </tr>`;
-                            }
                         }
-                    });
-            })
+                    }
+                });
+            });
         })
     });
     document.querySelectorAll('.close-view-results').forEach(item => {
