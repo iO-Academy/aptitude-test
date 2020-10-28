@@ -103,9 +103,9 @@ function findTestName(tests: Array<Test>, testId: number) {
 
 function findCategoryName(categories: Array<Categories>, categoriesId: number) {
     let categoriesName = "None Assigned"
-    categories.forEach(function(categories) {
-        if (categoriesId === categories.id) {
-            categoriesName = categories.name
+    categories.forEach(function(category) {
+        if (categoriesId === category.id) {
+            categoriesName = category.name
         }
     });
     return categoriesName
