@@ -90,19 +90,6 @@ function getPercentResult(userScore: number, questionAmount: number): number {
 }
 
 /**
- * showing and calculating result in points and percents
- *
- * @param earnedPoints total amount of right questions
- * @param earnedPercentage percentage of total number of right questions
- * @param answeredQuestions total number of questions that have an answer
- */
-function displayResult(earnedPoints: number, earnedPercentage: number, answeredQuestions: number) {
-    document.querySelector(".score").innerHTML = earnedPoints as any as string
-    document.querySelector(".answered_questions").innerHTML = answeredQuestions as any as string
-    document.querySelector(".score_percentage").innerHTML = earnedPercentage as any as string
-}
-
-/**
  * function adds event listeners to .question and listens for click event within here
  * it then updates the class of the span containing the question number allowing styling to be applied
  *
@@ -140,8 +127,6 @@ function showResults(pageLeft) {
     clearInterval(interval)
     const userAnswers = getUserAnswers()
     checkAnswers(userAnswers).then(function (result) {
-        let percentResult
-        let answered
         if (result.score || result.score === 0) {
             if (pageLeft) {
                 document.querySelector<HTMLElement>('.greetings').innerHTML = `<p>Test cancelled!</p>`
@@ -158,9 +143,6 @@ function showResults(pageLeft) {
             document.querySelector<HTMLElement>('#question_page').style.display = 'none'
             document.querySelector<HTMLElement>('#overview_page').style.display = 'none'
             document.querySelector<HTMLElement>('#result_page').style.display = 'block'
-            percentResult = getPercentResult(result.score, questionAmount)
-            answered = document.querySelectorAll('#questions .question .answers input:checked').length
-            displayResult(result.score, percentResult, answered)
             handleResponseFromAPI(sendUserResults(result))
         } else {
             let body = document.querySelector('body')
