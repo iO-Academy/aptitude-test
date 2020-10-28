@@ -2,4 +2,4 @@
 
 - cd to the root `aptitude-test` folder
 - run `npm install`
-- Run `gulp watch` to run the application
+- Run `npm run watch` to run the gulp compiler
