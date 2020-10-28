@@ -144,7 +144,6 @@ function showResults(pageLeft) {
         let answered
         if (result.score || result.score === 0) {
             if (pageLeft) {
-<<<<<<< HEAD
                 document.querySelector<HTMLElement>('.greetings').innerHTML = `<p>Test cancelled!</p>`
                 document.querySelector<HTMLElement>('.email_for_results').innerHTML = `
                 <h1>This test has ended because you clicked away from the page</h1>
