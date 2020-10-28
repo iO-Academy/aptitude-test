@@ -40,6 +40,15 @@ body {
   display: none;
 }
 
+.textBox {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  textarea {
+    resize: none;
+  }
+}
+
 h4 {
   font-size: 24px;
 }
