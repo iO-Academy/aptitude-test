@@ -6,6 +6,10 @@ document.getElementById('testAllocated').addEventListener('change', () => {
     updateScoreTable()
 })
 
+document.querySelector('#categoryFilter').addEventListener('change', () => {
+    updateScoreTable()
+})
+
 /**
  * checks the start and end date input on admin page and assigns a default value if no value set
  *
@@ -117,7 +121,7 @@ function percentageFilter(resultArray: Array<any>) {
  * @return Array the filtered array of users
  */
 function testAllocatedFilter(resultArray: Array<any>) {
-    let filterTestAllocated = document.querySelector<HTMLInputElement>('#testAllocated')
+    let filterTestAllocated = document.querySelector<HTMLInputElement>('#testAllocated');
     let newResultArray = resultArray;
     let chosenTestAllocated = filterTestAllocated.value;
     if (chosenTestAllocated) {
@@ -127,6 +131,29 @@ function testAllocatedFilter(resultArray: Array<any>) {
                 newResultArray.push(data)
             }
         });
+    }
+    return newResultArray
+}
+
+/**
+ * This function filters the list of users to be displayed in the table based on the category
+ * allocated to that user
+ *
+ * @param {resultArray} Array array of users to be filtered
+ *
+ * @return Array the filtered array of users
+ */
+function categoryFilter(resultArray: Array<any>) {
+    let filterCategory = document.querySelector<HTMLInputElement>('#categoryFilter');
+    let newResultArray = resultArray;
+    let chosenCategory = filterCategory.value;
+    if (chosenCategory) {
+        newResultArray = [];
+        resultArray.forEach( (data) => {
+            if (data.categoryId === chosenCategory) { //need to check that data.category_id is the category id and that it exists in data object
+                newResultArray.push(data);
+            }
+        })
     }
     return newResultArray
 }

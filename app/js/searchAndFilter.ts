@@ -13,6 +13,6 @@ function searchAndFilter(resultArray: Array<BaseUser>) {
     resultArray = percentageFilter(resultArray);
     resultArray = dateFilter(resultArray);
     resultArray = testAllocatedFilter(resultArray);
-
+    resultArray = categoryFilter(resultArray);
     return resultArray;
 }
