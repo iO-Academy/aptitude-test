@@ -192,17 +192,20 @@ function addEventListenersForViewResults() {
                     });
                     let resultsTable = document.querySelector("#view-results-modal-content tbody"),
                         resultParsed = JSON.parse(JSON.parse(resultData.data.answers));
+                    console.log(resultParsed);
                     for (let result in resultParsed) {
                         if (resultParsed[result]["isCorrect"] == "correct") {
                             resultsTable.innerHTML += `<tr class="rightAnswer">
                                             <td>${result}</td>
                                             <td>${questionObj[result].substring(0, 49)}</td>
+                                            <td>${resultParsed[result].answerID}</td>
                                             <td>✔</td>
                                            </tr>`;
                         } else {
                             resultsTable.innerHTML += `<tr class="wrongAnswer">
                                             <td>${result}</td>
                                             <td>${questionObj[result].substring(0, 49)}</td>
+                                            <td>${resultParsed[result].answerID}</td>
                                             <td>✕</td>
                                            </tr>`;
                         }
