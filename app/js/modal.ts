@@ -18,12 +18,12 @@ function closeDialog() {
 }
 
 function openViewResultsModal() {
-    document.querySelector<HTMLElement>('#viewResultsModal').style.display = 'block';
+    document.querySelector<HTMLElement>('#view-results-modal').style.display = 'block';
     document.querySelector<HTMLElement>('.overlay').style.display = 'block';
 }
 
 function closeViewResultsModal() {
-    document.querySelector<HTMLElement>('#viewResultsModal').style.display = 'none';
+    document.querySelector<HTMLElement>('#view-results-modal').style.display = 'none';
     document.querySelector<HTMLElement>('.overlay').style.display = 'none';
 }
 
