@@ -23,7 +23,6 @@ async function populateViewQuestionsTables() {
     document.querySelectorAll(".edit-question").forEach((btn) => {
         btn.addEventListener('click', async (clickedBtn: any) => {
             const {id} = clickedBtn.target.parentElement.dataset;
-
             window.location.href = `editQuestion.html#${id}`;
         });
     });
@@ -31,17 +30,15 @@ async function populateViewQuestionsTables() {
         panel.querySelector('a').addEventListener('click', (e)=> {
             let arrow = panel.querySelector('span');
             let table = panel.querySelector('.panel-collapse');
-            if ( table.classList.contains('in') ) {
+            if (table.classList.contains('in')) {
                 arrow.classList.remove('glyphicon-menu-down');
                 arrow.classList.add('glyphicon-menu-up');
-
             } else {
                 arrow.classList.remove('glyphicon-menu-up');
                 arrow.classList.add('glyphicon-menu-down');
-
             }
-        })
-    })
+        });
+    });
 }
 
 populateViewQuestionsTables();
