@@ -39,7 +39,6 @@ async function updateScoreTable() {
     await displayPageBtns(paginatedArrays);
     pageSelectorFunctionality(HBTemplate, paginatedArrays);
     addEventListenersForDownloadButtons()
-    addEventListenersForViewResults()
 }
 
 /**
@@ -158,6 +157,7 @@ function produceTable (HBTemplate: string, scoresDataObject) {
 
     addEditEventListeners();
     addDeleteEventListeners();
+    addEventListenersForViewResults();
 }
 
 function addEventListenersForDownloadButtons() {
@@ -178,26 +178,37 @@ function addEventListenersForDownloadButtons() {
 }
 
 /**
- * Add listener for click on view-results-button and close-view-results button, and open viewResultsModal on click
+ * Add listener for click on view-results-button, to open viewResultsModal
  * Get and compile HBS template for user results table
  * Get user's results and test questions, create new object from questions, and loop through both to create object for populating HBS table
  */
 async function addEventListenersForViewResults() {
-    let userResultsTemplate = await getTemplateAjax('js/templates/userResults.hbs');
+    let userResultsTemplate = await getTemplateAjax("js/templates/userResults.hbs");
     let template: Function = Handlebars.compile(userResultsTemplate);
     let resultsTable: Element = document.querySelector("#view-results-modal-content");
     let userResultsTable: Object = {};
-    document.querySelectorAll('.view-results-button').forEach((button) => {
-        button.addEventListener('click', (e: any) => {
+    document.querySelectorAll(".view-results-button").forEach((button) => {
+        button.addEventListener("click", (e: any) => {
             openViewResultsModal();
             addEventListenersForCloseResults();
             getData("result?id=" + e.target.parentElement.getAttribute("dataId")).then(resultData => {
                 getData("question").then(questionData => {
                     let userResults: Object = JSON.parse(JSON.parse(resultData.data.answers));
                     let questionObj: Object = {};
-                    questionData.data.forEach(item => questionObj[item.id] = item.text);
+                    questionData.data.forEach(item => {
+                        if (item.text.length > 49) {
+                            questionObj[item.id] = item.text.substring(0, 49) + "...";
+                        } else {
+                            questionObj[item.id] = item.text;
+                        }
+                    });
                     for (let result in userResults) {
-                        userResultsTable[result] = { result: result, question: questionObj[result], userAnswer: userResults[result].answerID, correct: false };
+                        userResultsTable[result] = {
+                            result: result,
+                            question: questionObj[result],
+                            userAnswer: userResults[result].answerID,
+                            correct: false
+                        };
                         userResultsTable[result].correct = userResults[result]["isCorrect"] === true;
                     }
                     resultsTable.innerHTML = template(userResultsTable);
@@ -207,13 +218,15 @@ async function addEventListenersForViewResults() {
     });
 }
 
+/**
+ * Add listener for close-view-results button and overlay div to close modal on click
+ */
 function addEventListenersForCloseResults() {
-    document.querySelectorAll('.close-view-results').forEach(item => {
-        item.addEventListener('click', () => {
+    document.querySelectorAll(".close-view-results").forEach(item => {
+        item.addEventListener("click", () => {
             closeViewResultsModal();
         });
     });
 }
-
 
 updateScoreTable();
