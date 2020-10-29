@@ -158,6 +158,7 @@ function produceTable (HBTemplate: string, scoresDataObject) {
     addEditEventListeners();
     addDeleteEventListeners();
     addEventListenersForViewResults();
+    addEventListenersForScoreBreakdownButtons();
 }
 
 function addEventListenersForDownloadButtons() {
@@ -226,6 +227,106 @@ function addEventListenersForCloseResults() {
         item.addEventListener("click", () => {
             closeViewResultsModal();
         });
+    });
+}
+
+async function addEventListenersForScoreBreakdownButtons() {
+    let userResultsTemplate = await getTemplateAjax("js/templates/scoreBreakdown.hbs");
+    let template: Function = Handlebars.compile(userResultsTemplate);
+    let resultsTable: Element = document.querySelector("#view-results-modal-content");
+    let userResultsTable: Object = {};
+    let categories: Array<Object> = [
+        {
+            category: "Q1-3: Starter",
+            percentage: 0
+        },
+        {
+            category: "Q4-8: Comparison",
+            percentage: 0
+        },
+        {
+            category: "Q9-13: Syntax",
+            percentage: 0
+        },
+        {
+            category: "Q14-18: Procedure",
+            percentage: 0
+        },
+        {
+            category: "Q19-23: Logic",
+            percentage: 0
+        },
+        {
+            category: "Q24-30: Sequence",
+            percentage: 0
+        }
+    ]
+    document.querySelectorAll(".score-breakdown-button").forEach((button) => {
+        button.addEventListener("click", (e: any) => {
+            openViewResultsModal();
+            addEventListenersForCloseResults();
+            getData("result?id=" + e.target.parentElement.getAttribute("dataId")).then(resultData => {
+                let scoreBreakdownTable: Object = {};
+                let userResults: Object = JSON.parse(JSON.parse(resultData.data.answers));
+                let userResultsArray = []
+                let category1Score = 0
+                let category2Score = 0
+                let category3Score = 0
+                let category4Score = 0
+                let category5Score = 0
+                let category6Score = 0
+                for (let result in userResults) {
+                    userResultsArray.push({
+                        "answerID": userResults[result].answerID,
+                        "isCorrect": userResults[result].isCorrect
+                    })
+                }
+                userResultsArray.forEach(result => {
+                    if (result.isCorrect === true) {
+                        switch (true) {
+                            case userResultsArray.indexOf(result) < 4:
+                                category1Score++
+                                break
+                            case userResultsArray.indexOf(result) < 8:
+                                category2Score++
+                                break
+                            case userResultsArray.indexOf(result) < 13:
+                                category3Score++
+                                break
+                            case userResultsArray.indexOf(result) < 18:
+                                category4Score++
+                                break
+                            case userResultsArray.indexOf(result) < 23:
+                                category5Score++
+                                break
+                            case userResultsArray.indexOf(result) < 30:
+                                category6Score++
+                                break
+                        }
+                    }
+                })
+
+                categories[0]['percentage'] = Math.round(category1Score/3 * 100)
+                categories[1]['percentage'] = Math.round(category2Score/3 * 100)
+                categories[2]['percentage'] = Math.round(category3Score/3 * 100)
+                categories[3]['percentage'] = Math.round(category4Score/3 * 100)
+                categories[4]['percentage'] = Math.round(category5Score/3 * 100)
+                categories[5]['percentage'] = Math.round(category6Score/3 * 100)
+
+                scoreBreakdownTable = {
+
+                }
+                categories.forEach(category => {
+                    let index = categories.indexOf(category)
+                    scoreBreakdownTable[index] = {
+                        category: category['category'],
+                        percentage: category['percentage']
+                    }
+                })
+
+                resultsTable.innerHTML = template(scoreBreakdownTable);
+            });
+        })
     });
 }
 
