@@ -18,7 +18,7 @@ function toggleGraphDisplay(e: Event) {
 var displayGraphButton = document.querySelector('#viewGraph');
 displayGraphButton.addEventListener('click', (e) => {
     toggleGraphDisplay(e);
-    showPaginationButtons(true); // was isVisible and false
+    showPaginationButtons(true); 
 });
 
 var displayTableButton = document.querySelector('#viewTable');
