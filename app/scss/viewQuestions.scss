@@ -1,4 +1,16 @@
-.testTitle {
-  font-size: 2rem;
-  cursor: pointer;
+.panel-title {
+  display: flex;
+  justify-content: space-between;
+  .testTitle {
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  button {
+    font-size: 2rem;
+    cursor: pointer;
+    a {
+      text-decoration: none;
+      color: white;
+    }
+  }
 }
