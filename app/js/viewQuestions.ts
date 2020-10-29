@@ -12,11 +12,12 @@ async function getTestDataById(testId: string): Promise<any> {
 async function populateViewQuestionsTables() {
     let HBTemplate = await getTemplateAjax('js/templates/questionsByTestTable.hbs');
     let template: Function = Handlebars.compile(HBTemplate);
-    let tableContainer = document.querySelector('#allQuestionsTable');
+    let tableContainer = document.querySelector('#accordion');
     let testData = await getData('/test');
     for (let i = 0; i < testData.data.length ; i++) {
         let tests = await getTestDataById(testData.data[i].id);
         tests.testname = testData.data[i].name;
+        tests.testId = testData.data[i].id;
         tableContainer.innerHTML += template(tests);
     }
     document.querySelectorAll(".edit-question").forEach((btn) => {
