@@ -25,7 +25,8 @@ async function addCategory():Promise<void> {
                         responseMessage.classList.remove('alert-danger');
                         responseMessage.classList.add('alert-success');
                         populateCategories();
-                        populateCategoryDropdown();
+                        populateTableCategoryDropdown();
+                        populateNewUserCategoryDropdown();
                         setTimeout(() => {
                             responseMessage.textContent = '';
                             responseMessage.classList.remove('alert-success');

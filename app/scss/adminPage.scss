@@ -83,6 +83,14 @@ input {
 .table {
   font-size: 1.5rem;
 
+  .table-buttons {
+    width: 25%;
+  }
+
+  .table-columns {
+    width: 10%;
+  }
+
   button {
     color: $main-background-color;
   }

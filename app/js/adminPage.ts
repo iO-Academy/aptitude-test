@@ -1,7 +1,8 @@
 import {BaseUser} from "./interfaces/User";
 
 populateTestDropdowns();
-populateCategoryDropdown();
+populateTableCategoryDropdown();
+populateNewUserCategoryDropdown();
  
 
 /**

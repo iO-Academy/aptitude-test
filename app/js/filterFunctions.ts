@@ -1,14 +1,15 @@
-document.getElementById('filterScorePercentage').addEventListener('change', () => {
+document.querySelector('#filterScorePercentage').addEventListener('change', () => {
     updateScoreTable()
 })
 
-document.getElementById('testAllocated').addEventListener('change', () => {
+document.querySelector('#testAllocated').addEventListener('change', () => {
     updateScoreTable()
 })
 
 document.querySelector('#categoryFilter').addEventListener('change', () => {
     updateScoreTable()
 })
+
 
 /**
  * checks the start and end date input on admin page and assigns a default value if no value set
@@ -122,17 +123,14 @@ function percentageFilter(resultArray: Array<any>) {
  */
 function testAllocatedFilter(resultArray: Array<any>) {
     let filterTestAllocated = document.querySelector<HTMLInputElement>('#testAllocated');
-    let newResultArray = resultArray;
     let chosenTestAllocated = filterTestAllocated.value;
     if (chosenTestAllocated) {
-        newResultArray = [];
-        resultArray.forEach((data)=>{
-            if(data.testId === chosenTestAllocated) {
-                newResultArray.push(data)
-            }
-        });
+        let newResultArray = resultArray.filter((data) => {
+            return data.testId === chosenTestAllocated;
+        })
+        return newResultArray;
     }
-    return newResultArray
+    return resultArray;
 }
 
 /**
@@ -145,15 +143,12 @@ function testAllocatedFilter(resultArray: Array<any>) {
  */
 function categoryFilter(resultArray: Array<any>) {
     let filterCategory = document.querySelector<HTMLInputElement>('#categoryFilter');
-    let newResultArray = resultArray;
     let chosenCategory = filterCategory.value;
     if (chosenCategory) {
-        newResultArray = [];
-        resultArray.forEach( (data) => {
-            if (data.categoryId === chosenCategory) { //need to check that data.category_id is the category id and that it exists in data object
-                newResultArray.push(data);
-            }
+        let newResultArray = resultArray.filter((data) => {
+            return data.categoryId === chosenCategory;
         })
+        return newResultArray
     }
-    return newResultArray
+    return resultArray
 }
