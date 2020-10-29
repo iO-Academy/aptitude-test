@@ -17,17 +17,11 @@ function closeDialog() {
     document.querySelector<HTMLElement>('.overlay').style.display = 'none'
 }
 
-/**
- * Opens viewResultsModal box
- */
 function openViewResultsModal() {
     document.querySelector<HTMLElement>('#viewResultsModal').style.display = 'block';
     document.querySelector<HTMLElement>('.overlay').style.display = 'block';
 }
 
-/**
- * Closes viewResultsModal box
- */
 function closeViewResultsModal() {
     document.querySelector<HTMLElement>('#viewResultsModal').style.display = 'none';
     document.querySelector<HTMLElement>('.overlay').style.display = 'none';
