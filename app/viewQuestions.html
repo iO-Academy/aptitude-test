@@ -18,7 +18,6 @@
     <script src="js/dist/sendData.js" defer></script>
     <script src="js/dist/ajaxHandlebarsTemplate.js" defer></script>
     <script src="js/dist/populateHandlebars.js" defer></script>
-    <script src="js/dist/deleteQuestion.js" defer></script>
     <script src="js/dist/editTests.js" defer></script>
     <script src="js/dist/ajaxResponseCheck.js" defer></script>
 </head>
@@ -30,15 +29,7 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="tableContainer">
-                <h2>Select Test</h2>
-                <div class="search-filter-container">
-                    <div class="display-flex">
-                        <select name="testFilter" id="filterTests" class="dropdown">
-                        </select>
-                    </div>
-                    <h2>Questions</h2>
-                    <div id='error' class='title_input'></div>
-                </div>
+                <h2>Questions</h2>
                 <table class="table">
                     <thead>
                     <tr>
@@ -49,12 +40,17 @@
                     </thead>
                     <tbody class="tableBody tableList"></tbody>
                 </table>
-                <div class="buttons">
-                    <a href="adminPage.html">
-                        <div class="return btn primary-button">Back</div>
-                    </a>
-                    <a class="btn new-question-button primary-button" href="addQuestion.html">Add new question</a>
-                </div>
+                <h2>Questions</h2>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th class="colBtn">Modify Question</th>
+                        <th class="colNum">Number</th>
+                        <th>Question</th>
+                    </tr>
+                    </thead>
+                    <tbody class="tableBody tableList"></tbody>
+                </table>
             </div>
         </div>
     </div>
