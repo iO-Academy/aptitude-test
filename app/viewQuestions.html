@@ -5,9 +5,12 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <title>Edit Tests</title>
     <link href="css/bootstrap.css" type="text/css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <link href="css/styles.css" type="text/css" rel="stylesheet">
     <link href="css/adminPage.css" type="text/css" rel="stylesheet">
     <link href="css/editTests.css" type="text/css" rel="stylesheet">
+    <link href="css/viewQuestions.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="css/resultPage.css">
     <script src="js/dist/handlebars-v4.0.11.js"></script>
     <script src="js/dist/utils.js"></script>
@@ -19,6 +22,7 @@
     <script src="js/dist/ajaxHandlebarsTemplate.js" defer></script>
     <script src="js/dist/populateHandlebars.js" defer></script>
     <script src="js/dist/editTests.js" defer></script>
+    <script src="js/dist/viewQuestions.js" defer></script>
     <script src="js/dist/ajaxResponseCheck.js" defer></script>
 </head>
 <body>
@@ -28,33 +32,18 @@
     </div>
     <div class="row">
         <div class="col-xs-12">
-            <div class="tableContainer">
-                <h2>Questions</h2>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th class="colBtn">Modify Question</th>
-                        <th class="colNum">Number</th>
-                        <th>Question</th>
-                    </tr>
-                    </thead>
-                    <tbody class="tableBody tableList"></tbody>
-                </table>
-                <h2>Questions</h2>
-                <table class="table">
-                    <thead>
-                    <tr>
-                        <th class="colBtn">Modify Question</th>
-                        <th class="colNum">Number</th>
-                        <th>Question</th>
-                    </tr>
-                    </thead>
-                    <tbody class="tableBody tableList"></tbody>
-                </table>
+            <div id="allQuestionsTable" class="tableContainer">
+                <div class="panel-group" id="accordion" role="tablist">
+
+                </div>
             </div>
         </div>
     </div>
+    <div class="buttons">
+        <a href="adminPage.html">
+            <div class="return btn primary-button">Back</div>
+        </a>
+    </div>
 </section>
-
 </body>
 </html>
