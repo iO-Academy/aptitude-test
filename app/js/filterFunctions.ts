@@ -125,10 +125,9 @@ function testAllocatedFilter(resultArray: Array<any>) {
     let filterTestAllocated = document.querySelector<HTMLInputElement>('#testAllocated');
     let chosenTestAllocated = filterTestAllocated.value;
     if (chosenTestAllocated) {
-        let newResultArray = resultArray.filter((data) => {
+        return resultArray.filter((data) => {
             return data.testId === chosenTestAllocated;
         })
-        return newResultArray;
     }
     return resultArray;
 }
@@ -145,10 +144,9 @@ function categoryFilter(resultArray: Array<any>) {
     let filterCategory = document.querySelector<HTMLInputElement>('#categoryFilter');
     let chosenCategory = filterCategory.value;
     if (chosenCategory) {
-        let newResultArray = resultArray.filter((data) => {
+        return resultArray.filter((data) => {
             return data.categoryId === chosenCategory;
         })
-        return newResultArray
     }
     return resultArray
 }
