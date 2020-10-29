@@ -103,6 +103,10 @@ input {
     background-color: $primary-button-hover;
   }
 
+  .view-results-button {
+    background-color: $view-results-button-color;
+  }
+
   .email {
     border-right: 1px solid $score-table-border;
   }
