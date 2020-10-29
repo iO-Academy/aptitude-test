@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <title>Edit Tests</title>
+    <link href="css/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="css/styles.css" type="text/css" rel="stylesheet">
+    <link href="css/adminPage.css" type="text/css" rel="stylesheet">
+    <link href="css/editTests.css" type="text/css" rel="stylesheet">
+    <link rel="stylesheet" href="css/resultPage.css">
+    <script src="js/dist/handlebars-v4.0.11.js"></script>
+    <script src="js/dist/utils.js"></script>
+    <script src="js/dist/userLogIn.js"></script>
+    <script src="js/dist/cookies.js"></script>
+    <script src="js/dist/userAuthorisedCheck.js"></script>
+    <script src="js/dist/getData.js" defer></script>
+    <script src="js/dist/sendData.js" defer></script>
+    <script src="js/dist/ajaxHandlebarsTemplate.js" defer></script>
+    <script src="js/dist/populateHandlebars.js" defer></script>
+    <script src="js/dist/deleteQuestion.js" defer></script>
+    <script src="js/dist/editTests.js" defer></script>
+    <script src="js/dist/ajaxResponseCheck.js" defer></script>
+</head>
+<body>
+<section class="container">
+    <div class="row logoContainer">
+        <img class="logo" alt="Mayden Logo" src="images/branding-icons/maydenacademy_logotype_05.18_web.svg">
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="tableContainer">
+                <h2>Select Test</h2>
+                <div class="search-filter-container">
+                    <div class="display-flex">
+                        <select name="testFilter" id="filterTests" class="dropdown">
+                        </select>
+                    </div>
+                    <h2>Questions</h2>
+                    <div id='error' class='title_input'></div>
+                </div>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th class="colBtn">Modify Question</th>
+                        <th class="colNum">Number</th>
+                        <th>Question</th>
+                    </tr>
+                    </thead>
+                    <tbody class="tableBody tableList"></tbody>
+                </table>
+                <div class="buttons">
+                    <a href="adminPage.html">
+                        <div class="return btn primary-button">Back</div>
+                    </a>
+                    <a class="btn new-question-button primary-button" href="addQuestion.html">Add new question</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
