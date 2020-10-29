@@ -1,0 +1,21 @@
+<h2>{{this.testname}}</h2>
+<table class="table">
+    <thead>
+    <tr>
+        <th class="colBtn">Modify Question</th>
+        <th class="colNum">Number</th>
+        <th>Question</th>
+    </tr>
+
+    {{#each data}}
+        <tr>
+            <td data-id="{{id}}" data-question="{{text}}" class="btnContainer">
+                <button class="btn btn_height edit-question">Edit</button>
+            </td>
+            <td class="questionNumber">{{this.id}}</td>
+            <td class="questionText">{{this.text}}</td>
+        </tr>
+    {{/each}}
+    </thead>
+    <tbody class="tableBody tableList"></tbody>
+</table>
