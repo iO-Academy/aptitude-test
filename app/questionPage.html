@@ -8,7 +8,7 @@
         let userEmail = getCookie('userEmail')
         getUser(userEmail).then(function (user) {
             if (!user.success || !isAuthorised(user.data) || user.data.canRetake === '0') {
-                window.location.replace("index.hstml")
+                window.location.replace("index.html")
             }
         })
     </script>
@@ -27,11 +27,11 @@
     <script src="js/dist/question_desc.js" defer></script>
     <script src="js/dist/questionNav.js" defer></script>
     <script src="js/dist/timer.js" defer></script>
+    <script src="js/dist/endTest.js" defer></script>
     <script src="js/dist/checkAnswers.js" defer></script>
     <script src="js/dist/sendResults.js" defer></script>
     <script src="js/dist/overview.js" defer></script>
     <script src="https://kit.fontawesome.com/2373a66060.js" defer></script>
-    <script async defer src="js/dist/endTest.js"></script>
 </head>
 <body>
 <!--question number and time -->
@@ -133,14 +133,11 @@
         </div>
         <div class="result_card">
             <div class="greetings">
-                <p>Thank You!</p>
+                <p>Your score</p>
             </div>
             <div class="email_for_results">
-                <h1>You have completed the test!</h1>
-                <h3>Please contact the office at <a href="mailto:hello@mayden.academy">hello@mayden.academy</a> if you would like to find out your results</h3>
             </div>
         </div>
     </div>
-</div>
 </body>
 </html>

@@ -15,6 +15,7 @@
     <script src="js/dist/ajaxHandlebarsTemplate.js" defer></script>
     <script src="js/dist/getData.js"></script>
     <script src="js/dist/populateTestDropdowns.js" defer></script>
+    <script src="js/dist/populateCategoryDropdowns.js" defer></script>
     <script src="js/dist/scoreChart.js" defer></script>
     <script src="js/dist/populateHandlebars.js"></script>
     <script src="js/dist/getTestDuration.js" defer></script>
@@ -31,17 +32,20 @@
     <script src="js/dist/searchAndFilter.js" defer></script>
     <script src="js/dist/displayPageButtons.js" defer></script>
     <script src="js/dist/displayHideGraph.js" defer></script>
+    <script src="js/dist/splitArray.js" defer></script>
     <script src="js/dist/handlebarsScoreTable.js" defer></script>
     <script src="js/dist/modal.js" defer></script>
     <script src="js/dist/questionCount.js" defer></script>
     <script src="js/dist/newTest.js" defer></script>
+    <script src="js/dist/addCategories.js" defer></script>
     <script src="js/dist/sendData.js" defer></script>
     <script src="js/dist/createCSV.js" defer></script>
-    <script src="js/dist/splitArray.js" defer></script>
     <script src="js/dist/sendToChart.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
     <script src="js/dist/ajaxResponseCheck.js" defer></script>
     <script src="js/dist/downloadFile.js" defer></script>
+    <script src="js/dist/deleteCategory.js" defer></script>
+    <script src="js/dist/displayCategories.js" defer></script>
     <title>Admin Page</title>
 </head>
 <body>
@@ -60,9 +64,12 @@
                     <div class="container_input display-flex">
                         <input type="text" id="name" name="name" placeholder="Type new user's name">
                         <input type="text" id="email" name="email" placeholder="Type new user's email">
-                            <label for="test_id">Assign to test:</label>
-                            <select class="custom-select" id="test_id">
-                            </select>
+                        <label for="test_id">Assign to test:</label>
+                        <select class="custom-select" id="test_id">
+                        </select>
+                        <label for="category_id">Category:</label>
+                        <select class="custom-select" id="category_id">
+                        </select>
                         <label for="test_time_minutes">Test Duration (min/sec) :</label>
                         <input type="number" id="user_time_minutes" name="time">
                         <span class="time-colon">:</span>
@@ -111,6 +118,7 @@
                                 <th></th>
                                 <th>Name</th>
                                 <th>Email</th>
+                                <th>User Category</th>
                                 <th>Score (num)</th>
                                 <th>Percentage (%)</th>
                                 <th>Test Allocated</th>
@@ -126,6 +134,25 @@
                         <canvas id="myChart" width="100" height="100"></canvas>
                     </div>
                 </div>
+                <section class="categorySection">
+                    <form class="categoriesForm">
+                        <h2>Add New Category</h2>
+                        <div class="display-flex">
+                            <label for="categoryName">Category Name :</label>
+                            <input name="categoryName" type="text" id="categoryName">
+                            <input id="addCategory" type="submit" class="btn primary-button submit" value="Add new category">
+                        </div>
+                        <div class="message-target">
+                            <div id="addedCategoryConfirmation" class="alert" role="alert"></div>
+                        </div>
+                    </form>
+                    <div class="displayCategories">
+                        <h2>Categories</h2>
+                        <div id="categoriesContainer" class="list-group list-group-flush">
+
+                        </div>
+                    </div>
+                </section>
                 <form class="new-test-container" id="testForm" method="post">
                     <h2>Add new test</h2>
                     <div class="display-flex">

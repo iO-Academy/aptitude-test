@@ -20,6 +20,10 @@ body {
   margin: 0 auto 10px;
   width: 700px;
   text-align: center;
+  #completedMessage {
+    color: #4cae4c;
+    font-size: 4em;
+  }
 
 }
 
@@ -34,14 +38,5 @@ body {
     font-size: 4rem;
     letter-spacing: 1px;
     margin-bottom: 30px;
-  }
-}
-
-.email_for_results {
-  h1 {
-    color: #3c763d;
-  }
-  h3 {
-    padding-bottom: 50px;
   }
 }
