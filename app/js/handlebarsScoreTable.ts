@@ -160,21 +160,44 @@ function produceTable (HBTemplate: string, scoresDataObject) {
     addEventListenersForViewResults();
 }
 
-function addEventListenersForDownloadButtons() {
+function createUserResults(resultData, questionData): Object {
+    let userResults: Object = JSON.parse(JSON.parse(resultData.data.answers));
+    let questionObj: Object = {};
+    let userResultsTable: Object = {};
+    questionData.data.forEach(item => {
+        if (item.text.length > 49) {
+            questionObj[item.id] = item.text.substring(0, 49) + "...";
+        } else {
+            questionObj[item.id] = item.text;
+        }
+    });
+    for (let result in userResults) {
+        userResultsTable[result] = {
+            result: result,
+            question: questionObj[result],
+            userAnswer: userResults[result].answerID
+        };
+        if (userResults[result]["isCorrect"]) {
+            userResultsTable[result].correct = "correct";
+        }
+    }
+    return userResultsTable;
+}
+
+async function addEventListenersForDownloadButtons() {
     document.querySelectorAll('.download-user-results-button').forEach((button) => {
         button.addEventListener('click', (e: any) => {
-            e.preventDefault()
-
-            getData("result?id=" + e.target.parentElement.getAttribute("dataId"))
-
-                .then((data) => {
-                    let parentElement = e.target.parentElement
-                    let userName = parentElement.getAttribute("dataname")
-                    let userPercentage = parentElement.getAttribute("datapercentage")
-                    downloadFile(`${userName}_aptitude_test_results`, createCSV(data, userName, userPercentage))
-                })
-        })
-    })
+            e.preventDefault();
+            getData("result?id=" + e.target.parentElement.getAttribute("dataId")).then(resultData => {
+                getData("question").then(questionData => {
+                    let parentElement: Element = e.target.parentElement;
+                    let userName: string = parentElement.getAttribute("dataname");
+                    let userPercentage: number = +parentElement.getAttribute("datapercentage");
+                    downloadFile(`${userName}_aptitude_test_results`, createCSV(createUserResults(resultData, questionData), userName, userPercentage, resultData.data.score))
+                });
+            });
+        });
+    });
 }
 
 /**
@@ -186,35 +209,16 @@ async function addEventListenersForViewResults() {
     let userResultsTemplate = await getTemplateAjax("js/templates/userResults.hbs");
     let template: Function = Handlebars.compile(userResultsTemplate);
     let resultsTable: Element = document.querySelector("#view-results-modal-content");
-    let userResultsTable: Object = {};
     document.querySelectorAll(".view-results-button").forEach((button) => {
         button.addEventListener("click", (e: any) => {
             openViewResultsModal();
             addEventListenersForCloseResults();
             getData("result?id=" + e.target.parentElement.getAttribute("dataId")).then(resultData => {
                 getData("question").then(questionData => {
-                    let userResults: Object = JSON.parse(JSON.parse(resultData.data.answers));
-                    let questionObj: Object = {};
-                    questionData.data.forEach(item => {
-                        if (item.text.length > 49) {
-                            questionObj[item.id] = item.text.substring(0, 49) + "...";
-                        } else {
-                            questionObj[item.id] = item.text;
-                        }
-                    });
-                    for (let result in userResults) {
-                        userResultsTable[result] = {
-                            result: result,
-                            question: questionObj[result],
-                            userAnswer: userResults[result].answerID,
-                            correct: false
-                        };
-                        userResultsTable[result].correct = userResults[result]["isCorrect"] === true;
-                    }
-                    resultsTable.innerHTML = template(userResultsTable);
+                    resultsTable.innerHTML = template(createUserResults(resultData, questionData));
                 });
             });
-        })
+        });
     });
 }
 
