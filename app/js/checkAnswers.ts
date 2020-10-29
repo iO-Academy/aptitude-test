@@ -1,19 +1,18 @@
 import {UserAnswers} from "./interfaces/UserAnswers";
 
-var questionAmount
-
+var questionAmount;
 
 document.querySelector('#finish').addEventListener('click', () => {
-    finishTest(false)
+    finishTest(false);
 })
 
 /**
  * called when clicking finish button in dialogue box
  */
 function finishTest(pageLeft) {
-    showResults(pageLeft)
-    document.querySelector<HTMLElement>('#overview_page').style.display = 'none'
-    document.querySelector<HTMLElement>('#result_page').style.display = 'none'
+    showResults(pageLeft);
+    document.querySelector<HTMLElement>('#overview_page').style.display = 'none';
+    document.querySelector<HTMLElement>('#result_page').style.display = 'none';
     document.body.removeEventListener("mouseleave", pageLeaveAlert);
     document.removeEventListener("visibilitychange", cancelTest);
 }
@@ -26,8 +25,8 @@ function finishTest(pageLeft) {
  * @return Promise - containing the result object ready for the api
  */
 async function checkAnswers(userAnswers: UserAnswers): Promise<any> {
-    let userScore = 0
-    let answers = await getAnswers()
+    let userScore = 0;
+    let answers = await getAnswers();
 
     if (answers.success) {
         answers = answers.data;
@@ -48,9 +47,9 @@ async function checkAnswers(userAnswers: UserAnswers): Promise<any> {
             time: parseFloat(getTimeForApi()),
             testLength: questionAmount
         }
-        return result
+        return result;
     }
-    return answers
+    return answers;
 }
 
 /**
@@ -59,9 +58,9 @@ async function checkAnswers(userAnswers: UserAnswers): Promise<any> {
  * @return Promise - containing the correct answers
  */
 async function getAnswers() {
-    let baseUrl = getBaseUrl()
-    let data = await fetch(baseUrl + "answer", {method: 'get'})
-    return data.json()
+    let baseUrl = getBaseUrl();
+    let data = await fetch(baseUrl + "answer", {method: 'get'});
+    return data.json();
 }
 
 /**
@@ -70,20 +69,17 @@ async function getAnswers() {
  * @return Object of users answers
  */
 function getUserAnswers(): UserAnswers {
-    questionAmount = document.querySelectorAll('#questions .question').length
-    let checkedInputs = document.querySelectorAll('#questions .question .answers input:checked')
-    let answers = {}
+    questionAmount = document.querySelectorAll('#questions .question').length;
+    let checkedInputs = document.querySelectorAll('#questions .question .answers input:checked');
+    let answers = {};
 
     checkedInputs.forEach(function(input: HTMLInputElement) {
-        let id = input.name.split("_")[1]
-        answers[id] = {answerID: input.value}
+        let id = input.name.split("_")[1];
+        answers[id] = {answerID: input.value};
     })
 
-    return answers
+    return answers;
 }
-
-
-
 
 /**
  * gets percentage of user score
@@ -94,7 +90,7 @@ function getUserAnswers(): UserAnswers {
  * @return Integer percentage of user score
  */
 function getPercentResult(userScore: number, questionAmount: number): number {
-    return Math.round(userScore / questionAmount * 100)
+    return Math.round(userScore / questionAmount * 100);
 }
 
 /**
@@ -106,8 +102,8 @@ function addAnswerEventListeners() {
     document.querySelectorAll('.question').forEach(function (input) {
         input.addEventListener('click', function(e: any) {
             if (e.target.tagName == 'INPUT') {
-                let id = parseInt(this.dataset['questionOrderId']) - 1
-                document.querySelector('#question-nav').children[id].classList.add('answered-nav-box')
+                let id = parseInt(this.dataset['questionOrderId']) - 1;
+                document.querySelector('#question-nav').children[id].classList.add('answered-nav-box');
             }
         })
     })
@@ -120,43 +116,43 @@ function addAnswerEventListeners() {
  * @param id is the id of the active question
  */
 function trackActiveQuestion(id: number) {
-    let activeQuestion = document.querySelector('.nav-item.current-nav-box')
+    let activeQuestion = document.querySelector('.nav-item.current-nav-box');
     if (activeQuestion) {
-        activeQuestion.classList.remove('current-nav-box')
+        activeQuestion.classList.remove('current-nav-box');
     }
-    document.querySelector('#question-nav').children[id - 1].classList.add('current-nav-box')
+    document.querySelector('#question-nav').children[id - 1].classList.add('current-nav-box');
 }
 
 /**
  * this checks the answers and marks them to show the finishing page
  */
 function showResults(pageLeft) {
-    resetReapplyCounter()
-    clearInterval(interval)
-    const userAnswers = getUserAnswers()
+    resetReapplyCounter();
+    clearInterval(interval);
+    const userAnswers = getUserAnswers();
     checkAnswers(userAnswers).then(function (result) {
         if (result.score || result.score === 0) {
             if (pageLeft) {
-                document.querySelector<HTMLElement>('.greetings').innerHTML = '<p>Test cancelled!</p>'
+                document.querySelector<HTMLElement>('.greetings').innerHTML = '<p>Test cancelled!</p>';
                 document.querySelector<HTMLElement>('.email_for_results').innerHTML = `
                 <p>This test has ended because you clicked away from the page</p>
-                <p>Please contact the office at <a href="mailto:hello@mayden.academy">hello@mayden.academy</a> to discuss further</p>`
-                result.score = 0
+                <p>Please contact the office at <a href="mailto:hello@mayden.academy">hello@mayden.academy</a> to discuss further</p>`;
+                result.score = 0;
             } else {
-                document.querySelector<HTMLElement>('.greetings').innerHTML = '<p>Thank You!</p>'
+                document.querySelector<HTMLElement>('.greetings').innerHTML = '<p>Thank You!</p>';
                 document.querySelector<HTMLElement>('.email_for_results').innerHTML = `
                 <p id="completedMessage">You have completed the test!</p>
-                <p>Please contact the office at <a href="mailto:hello@mayden.academy">hello@mayden.academy</a> if you would like to find out your results</p>`
+                <p>Please contact the office at <a href="mailto:hello@mayden.academy">hello@mayden.academy</a> if you would like to find out your results</p>`;
             }
-            document.querySelector<HTMLElement>('#question_page').style.display = 'none'
-            document.querySelector<HTMLElement>('#overview_page').style.display = 'none'
-            document.querySelector<HTMLElement>('#result_page').style.display = 'block'
-            handleResponseFromAPI(sendUserResults(result))
+            document.querySelector<HTMLElement>('#question_page').style.display = 'none';
+            document.querySelector<HTMLElement>('#overview_page').style.display = 'none';
+            document.querySelector<HTMLElement>('#result_page').style.display = 'block';
+            handleResponseFromAPI(sendUserResults(result));
         } else {
-            let body = document.querySelector('body')
-            let html = body.innerHTML
-            html += '<p class="error_message text-danger">Please contact admin. Answers cannot be checked at present.</p>'
-            body.innerHTML = html
+            let body = document.querySelector('body');
+            let html = body.innerHTML;
+            html += '<p class="error_message text-danger">Please contact admin. Answers cannot be checked at present.</p>';
+            body.innerHTML = html;
         }
-    })
+    });
 }
