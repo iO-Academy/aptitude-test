@@ -40,3 +40,27 @@ $modal-background: #ffffff;
 .list-wrapper {
   overflow: auto;
 }
+
+#view-results-modal {
+  display: none;
+  background: $modal-background;
+  width: 70vw;
+  height: 90vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 501;
+  margin: auto;
+  padding: 10px 50px;
+  overflow-y: scroll;
+
+  .rightAnswer {
+    background: #84de84;
+  }
+  .wrongAnswer {
+    background: #dd6664;
+  }
+}
+

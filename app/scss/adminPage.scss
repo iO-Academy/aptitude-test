@@ -83,6 +83,14 @@ input {
 .table {
   font-size: 1.5rem;
 
+  .table-buttons {
+    width: 20%;
+  }
+
+  .table-columns {
+    width: auto;
+  }
+
   button {
     color: $main-background-color;
   }
@@ -101,6 +109,10 @@ input {
 
   .delete-user-button {
     background-color: $primary-button-hover;
+  }
+
+  .view-results-button {
+    background-color: $view-results-button-color;
   }
 
   .email {

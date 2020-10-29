@@ -1,9 +1,9 @@
-/**
- * Opens the modal dialog box.
- */
 import {BaseUser} from "./interfaces/User";
 import {Test} from "./interfaces/Tests";
 
+/**
+ * Opens the modal dialog box.
+ */
 function openDialog() {
     document.querySelector<HTMLElement>('#modal').style.display = 'block'
     document.querySelector<HTMLElement>('.overlay').style.display = 'block'
@@ -17,7 +17,18 @@ function closeDialog() {
     document.querySelector<HTMLElement>('.overlay').style.display = 'none'
 }
 
+function openViewResultsModal() {
+    document.querySelector<HTMLElement>('#view-results-modal').style.display = 'block';
+    document.querySelector<HTMLElement>('.overlay').style.display = 'block';
+}
+
+function closeViewResultsModal() {
+    document.querySelector<HTMLElement>('#view-results-modal').style.display = 'none';
+    document.querySelector<HTMLElement>('.overlay').style.display = 'none';
+}
+
 /**
+ *
  * Creates the modal with editModal handlebars template. 
  * Then calls function to fill modal fields with the users' data.
  * Then adds the submit button's event listener.
