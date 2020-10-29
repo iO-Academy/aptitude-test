@@ -23,8 +23,10 @@ function createCSV(info: Object, userName: string, userPercentage: number, score
     csv += `${userName},${score},${userPercentage}`
 
     //add the question answer under the relevant heading in the csv
-    for(let eachQuestion in info) {
-        csv += `,User Response: ${info[eachQuestion].userAnswer} - ${info[eachQuestion].correct}`
+    for (let eachQuestion in info) {
+        let isCorrect = info[eachQuestion].correct === "correct" ? "correct" : "incorrect";
+        csv += `,${info[eachQuestion].userAnswer} - ${isCorrect}`;
+        console.log(isCorrect)
     }
 
     return csv

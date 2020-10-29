@@ -175,12 +175,10 @@ function createUserResults(resultData, questionData): Object {
         userResultsTable[result] = {
             result: result,
             question: questionObj[result],
-            userAnswer: userResults[result].answerID,
-            correct: "incorrect"
+            userAnswer: userResults[result].answerID
         };
         if (userResults[result]["isCorrect"]) {
             userResultsTable[result].correct = "correct";
-            console.log('merde');
         }
     }
     return userResultsTable;
