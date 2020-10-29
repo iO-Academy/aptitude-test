@@ -30,10 +30,14 @@ async function checkAnswers(userAnswers: UserAnswers): Promise<any> {
     let answers = await getAnswers()
 
     if (answers.success) {
-        answers = answers.data
+        answers = answers.data;
         answers.forEach(function (answerItem) {
-            if (answerItem.answer == userAnswers[answerItem.id]) {
-                userScore++
+            if (!userAnswers[answerItem.id]) {
+                userAnswers[answerItem.id] = {answerID: 'unanswered'}
+            }
+            if (answerItem.answer == userAnswers[answerItem.id]['answerID']) {
+                userScore++;
+                userAnswers[answerItem.id]['isCorrect'] = true;
             }
         })
         let result = {
@@ -71,7 +75,7 @@ function getUserAnswers(): UserAnswers {
 
     checkedInputs.forEach(function(input: HTMLInputElement) {
         let id = input.name.split("_")[1]
-        answers[id] = input.value
+        answers[id] = {answerID: input.value}
     })
 
     return answers

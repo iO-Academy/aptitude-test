@@ -1,3 +1,3 @@
 export interface UserAnswers {
-    [key: number]: string
+    [key: number]: object
 }
