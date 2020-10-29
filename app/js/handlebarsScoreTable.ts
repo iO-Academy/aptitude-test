@@ -183,12 +183,17 @@ function addEventListenersForDownloadButtons() {
                             result: result,
                             question: questionObj[result],
                             userAnswer: userResults[result].answerID,
-                            correct: false
+
                         };
-                        userResultsTable[result].correct = userResults[result]["isCorrect"] === true;
+                        if (userResults[result]["isCorrect"]) {
+                            userResultsTable[result].correct = "correct"
+                        } else {
+                            userResultsTable[result].correct = "incorrect"
+
+                        }
+                         // = userResults[result]["isCorrect"] === 'correct';
                     }
-                    console.log(userResultsTable);
-                    downloadFile(`${userName}_aptitude_test_results`, createCSV(userResultsTable, userName, userPercentage, resultData))
+                    downloadFile(`${userName}_aptitude_test_results`, createCSV(userResultsTable, userName, userPercentage, resultData.data.score))
                 })
             })
         })
