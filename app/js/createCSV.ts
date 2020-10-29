@@ -6,28 +6,24 @@
  * @param {userPercentage} number -user percentage score on taken test
  */
 function createCSV(info: any, userName: string, userPercentage: number, resultData) {
-    console.log(info);
 
     let csv = 'Name,Score,%'
 
     //add each question to the titles of the csv
    for(let eachQuestion in info) {
-
-
-        csv += `, ${eachQuestion}: ${info[eachQuestion].question}`
-
+       let questionString = info[eachQuestion].question
+       let replacedString = questionString.replace(/,/g,'')
+        csv += `, ${eachQuestion}: ${replacedString}`
     }
 
     csv += '\n'
 
     //enter the username, score and percentage under the relevant heading
-    csv += `${userName},${info.data.score},${userPercentage}`
+    csv += `${userName},${resultData.data.score},${userPercentage}`
+
    //add the question answer under the relevant heading in the csv
     for(let eachQuestion in info) {
-
-
-        csv += `, ${eachQuestion}: ${info[eachQuestion].question}`
-
+        csv += `, ${eachQuestion}: ${info[eachQuestion].answer}`
     }
     return csv
 }
