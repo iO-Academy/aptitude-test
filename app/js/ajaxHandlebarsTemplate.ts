@@ -13,3 +13,4 @@ async function getTemplateAjax(path: string) {
 
     return response.text()
 }
+

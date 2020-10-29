@@ -10,6 +10,6 @@ function cancelTest() {
     }
 }
 
-document.addEventListener("mouseleave", pageLeaveAlert);
+document.body.addEventListener("mouseleave", pageLeaveAlert);
 document.addEventListener("visibilitychange", cancelTest);
 

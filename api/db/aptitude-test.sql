@@ -1,13 +1,13 @@
 # ************************************************************
 # Sequel Pro SQL dump
-# Version 5446
+# Version 4541
 #
-# https://www.sequelpro.com/
+# http://www.sequelpro.com/
 # https://github.com/sequelpro/sequelpro
 #
-# Host: 127.0.0.1 (MySQL 5.7.30)
+# Host: 127.0.0.1 (MySQL 5.7.31)
 # Database: aptitude-test
-# Generation Time: 2020-10-28 09:15:49 +0000
+# Generation Time: 2020-10-29 08:50:43 +0000
 # ************************************************************
 
 
@@ -15,7 +15,6 @@
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-SET NAMES utf8mb4;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
@@ -133,15 +132,8 @@ LOCK TABLES `result` WRITE;
 
 INSERT INTO `result` (`id`, `uid`, `answers`, `userTestNotes`, `score`, `time`, `dateCreated`, `testLength`)
 VALUES
-	(10,2,'\"{\\\"1\\\":\\\"unanswered\\\",\\\"2\\\":\\\"unanswered\\\",\\\"3\\\":\\\"unanswered\\\",\\\"4\\\":\\\"unanswered\\\",\\\"5\\\":\\\"unanswered\\\",\\\"6\\\":\\\"unanswered\\\",\\\"7\\\":\\\"unanswered\\\",\\\"8\\\":\\\"unanswered\\\",\\\"9\\\":\\\"unanswered\\\",\\\"10\\\":\\\"unanswered\\\",\\\"11\\\":\\\"unanswered\\\",\\\"12\\\":\\\"unanswered\\\",\\\"13\\\":\\\"unanswered\\\",\\\"14\\\":\\\"unanswered\\\",\\\"15\\\":\\\"unanswered\\\",\\\"16\\\":\\\"unanswered\\\",\\\"17\\\":\\\"unanswered\\\",\\\"18\\\":\\\"unanswered\\\",\\\"19\\\":\\\"unanswered\\\",\\\"20\\\":\\\"unanswered\\\",\\\"21\\\":\\\"unanswered\\\",\\\"22\\\":\\\"unanswered\\\",\\\"23\\\":\\\"unanswered\\\",\\\"24\\\":\\\"unanswered\\\",\\\"25\\\":\\\"unanswered\\\",\\\"26\\\":\\\"unanswered\\\",\\\"27\\\":\\\"unanswered\\\",\\\"28\\\":\\\"unanswered\\\",\\\"29\\\":\\\"unanswered\\\",\\\"30\\\":\\\"unanswered\\\"}\"','Example',0,30.02,'2020-10-28 09:13:06',35),
-	(11,4,'\"{\\\"1\\\":\\\"2\\\",\\\"2\\\":\\\"unanswered\\\",\\\"3\\\":\\\"unanswered\\\",\\\"4\\\":\\\"unanswered\\\",\\\"5\\\":\\\"unanswered\\\",\\\"6\\\":\\\"unanswered\\\",\\\"7\\\":\\\"unanswered\\\",\\\"8\\\":\\\"unanswered\\\",\\\"9\\\":\\\"unanswered\\\",\\\"10\\\":\\\"unanswered\\\",\\\"11\\\":\\\"unanswered\\\",\\\"12\\\":\\\"unanswered\\\",\\\"13\\\":\\\"unanswered\\\",\\\"14\\\":\\\"unanswered\\\",\\\"15\\\":\\\"unanswered\\\",\\\"16\\\":\\\"unanswered\\\",\\\"17\\\":\\\"unanswered\\\",\\\"18\\\":\\\"unanswered\\\",\\\"19\\\":\\\"unanswered\\\",\\\"20\\\":\\\"unanswered\\\",\\\"21\\\":\\\"unanswered\\\",\\\"22\\\":\\\"unanswered\\\",\\\"23\\\":\\\"unanswered\\\",\\\"24\\\":\\\"unanswered\\\",\\\"25\\\":\\\"unanswered\\\",\\\"26\\\":\\\"unanswered\\\",\\\"27\\\":\\\"unanswered\\\",\\\"28\\\":\\\"unanswered\\\",\\\"29\\\":\\\"unanswered\\\",\\\"30\\\":\\\"unanswered\\\"}\"',NULL,1,4.13,'2020-04-20 13:04:18',30),
-	(12,5,'\"{\\\"1\\\":\\\"unanswered\\\",\\\"2\\\":\\\"unanswered\\\",\\\"3\\\":\\\"unanswered\\\",\\\"4\\\":\\\"unanswered\\\",\\\"5\\\":\\\"unanswered\\\",\\\"6\\\":\\\"unanswered\\\",\\\"7\\\":\\\"unanswered\\\",\\\"8\\\":\\\"unanswered\\\",\\\"9\\\":\\\"unanswered\\\",\\\"10\\\":\\\"unanswered\\\",\\\"11\\\":\\\"unanswered\\\",\\\"12\\\":\\\"unanswered\\\",\\\"13\\\":\\\"unanswered\\\",\\\"14\\\":\\\"unanswered\\\",\\\"15\\\":\\\"unanswered\\\",\\\"16\\\":\\\"unanswered\\\",\\\"17\\\":\\\"unanswered\\\",\\\"18\\\":\\\"unanswered\\\",\\\"19\\\":\\\"unanswered\\\",\\\"20\\\":\\\"unanswered\\\",\\\"21\\\":\\\"unanswered\\\",\\\"22\\\":\\\"unanswered\\\",\\\"23\\\":\\\"unanswered\\\",\\\"24\\\":\\\"unanswered\\\",\\\"25\\\":\\\"unanswered\\\",\\\"26\\\":\\\"unanswered\\\",\\\"27\\\":\\\"unanswered\\\",\\\"28\\\":\\\"unanswered\\\",\\\"29\\\":\\\"unanswered\\\",\\\"30\\\":\\\"unanswered\\\"}\"',NULL,0,6.29,'2020-04-20 13:04:19',30),
-	(13,10,'\"{\\\"1\\\":\\\"unanswered\\\",\\\"2\\\":\\\"unanswered\\\",\\\"3\\\":\\\"unanswered\\\",\\\"4\\\":\\\"unanswered\\\",\\\"5\\\":\\\"unanswered\\\",\\\"6\\\":\\\"unanswered\\\",\\\"7\\\":\\\"unanswered\\\",\\\"8\\\":\\\"unanswered\\\",\\\"9\\\":\\\"unanswered\\\",\\\"10\\\":\\\"unanswered\\\",\\\"11\\\":\\\"unanswered\\\",\\\"12\\\":\\\"unanswered\\\",\\\"13\\\":\\\"unanswered\\\",\\\"14\\\":\\\"unanswered\\\",\\\"15\\\":\\\"unanswered\\\",\\\"16\\\":\\\"unanswered\\\",\\\"17\\\":\\\"unanswered\\\",\\\"18\\\":\\\"unanswered\\\",\\\"19\\\":\\\"unanswered\\\",\\\"20\\\":\\\"unanswered\\\",\\\"21\\\":\\\"unanswered\\\",\\\"22\\\":\\\"unanswered\\\",\\\"23\\\":\\\"unanswered\\\",\\\"24\\\":\\\"unanswered\\\",\\\"25\\\":\\\"unanswered\\\",\\\"26\\\":\\\"unanswered\\\",\\\"27\\\":\\\"unanswered\\\",\\\"28\\\":\\\"unanswered\\\",\\\"29\\\":\\\"unanswered\\\",\\\"30\\\":\\\"unanswered\\\"}\"',NULL,0,48.01,'2020-04-20 13:04:43',50),
-	(14,9,'\"{\\\"1\\\":\\\"unanswered\\\",\\\"2\\\":\\\"unanswered\\\",\\\"3\\\":\\\"unanswered\\\",\\\"4\\\":\\\"unanswered\\\",\\\"5\\\":\\\"unanswered\\\",\\\"6\\\":\\\"unanswered\\\",\\\"7\\\":\\\"unanswered\\\",\\\"8\\\":\\\"unanswered\\\",\\\"9\\\":\\\"unanswered\\\",\\\"10\\\":\\\"unanswered\\\",\\\"11\\\":\\\"unanswered\\\",\\\"12\\\":\\\"unanswered\\\",\\\"13\\\":\\\"unanswered\\\",\\\"14\\\":\\\"unanswered\\\",\\\"15\\\":\\\"unanswered\\\",\\\"16\\\":\\\"unanswered\\\",\\\"17\\\":\\\"unanswered\\\",\\\"18\\\":\\\"unanswered\\\",\\\"19\\\":\\\"unanswered\\\",\\\"20\\\":\\\"unanswered\\\",\\\"21\\\":\\\"unanswered\\\",\\\"22\\\":\\\"unanswered\\\",\\\"23\\\":\\\"unanswered\\\",\\\"24\\\":\\\"unanswered\\\",\\\"25\\\":\\\"unanswered\\\",\\\"26\\\":\\\"unanswered\\\",\\\"27\\\":\\\"unanswered\\\",\\\"28\\\":\\\"unanswered\\\",\\\"29\\\":\\\"unanswered\\\",\\\"30\\\":\\\"unanswered\\\"}\"',NULL,0,34.02,'2020-04-20 13:04:49',35),
-	(15,2,'\"{\\\"1\\\":\\\"unanswered\\\",\\\"2\\\":\\\"unanswered\\\",\\\"3\\\":\\\"unanswered\\\",\\\"4\\\":\\\"unanswered\\\",\\\"5\\\":\\\"unanswered\\\",\\\"6\\\":\\\"unanswered\\\",\\\"7\\\":\\\"unanswered\\\",\\\"8\\\":\\\"unanswered\\\",\\\"9\\\":\\\"unanswered\\\",\\\"10\\\":\\\"unanswered\\\",\\\"11\\\":\\\"unanswered\\\",\\\"12\\\":\\\"unanswered\\\",\\\"13\\\":\\\"unanswered\\\",\\\"14\\\":\\\"unanswered\\\",\\\"15\\\":\\\"unanswered\\\",\\\"16\\\":\\\"unanswered\\\",\\\"17\\\":\\\"unanswered\\\",\\\"18\\\":\\\"unanswered\\\",\\\"19\\\":\\\"unanswered\\\",\\\"20\\\":\\\"unanswered\\\",\\\"21\\\":\\\"unanswered\\\",\\\"22\\\":\\\"unanswered\\\",\\\"23\\\":\\\"unanswered\\\",\\\"24\\\":\\\"unanswered\\\",\\\"25\\\":\\\"unanswered\\\",\\\"26\\\":\\\"unanswered\\\",\\\"27\\\":\\\"unanswered\\\",\\\"28\\\":\\\"unanswered\\\",\\\"29\\\":\\\"unanswered\\\",\\\"30\\\":\\\"unanswered\\\"}\"',NULL,0,7.14,'2020-04-20 13:04:21',30),
-	(16,12,'\"{\\\"1\\\":\\\"3\\\",\\\"8\\\":\\\"2\\\",\\\"23\\\":\\\"4\\\"}\"',NULL,1,0.12,'2020-10-27 13:39:16',33),
-	(17,13,'\"{\\\"1\\\":\\\"1\\\",\\\"11\\\":\\\"1\\\"}\"',NULL,0,0.15,'2020-10-27 13:40:52',33),
-	(18,14,'\"{\\\"1\\\":\\\"2\\\"}\"',NULL,0,30.02,'2020-10-27 14:20:56',33);
+	(19,21,'\"{\\\"1\\\":{\\\"answerID\\\":\\\"5\\\",\\\"isCorrect\\\":true},\\\"2\\\":{\\\"answerID\\\":\\\"3\\\",\\\"isCorrect\\\":true},\\\"3\\\":{\\\"answerID\\\":\\\"3\\\"},\\\"4\\\":{\\\"answerID\\\":\\\"2\\\"},\\\"5\\\":{\\\"answerID\\\":\\\"5\\\"},\\\"6\\\":{\\\"answerID\\\":\\\"2\\\",\\\"isCorrect\\\":true},\\\"7\\\":{\\\"answerID\\\":\\\"5\\\",\\\"isCorrect\\\":true},\\\"8\\\":{\\\"answerID\\\":\\\"2\\\",\\\"isCorrect\\\":true},\\\"9\\\":{\\\"answerID\\\":\\\"3\\\",\\\"isCorrect\\\":true},\\\"10\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"11\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"12\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"13\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"14\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"15\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"16\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"17\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"18\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"19\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"20\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"21\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"22\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"23\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"24\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"25\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"26\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"27\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"28\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"29\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"30\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"31\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"34\\\":{\\\"answerID\\\":\\\"2\\\",\\\"isCorrect\\\":true},\\\"35\\\":{\\\"answerID\\\":\\\"5\\\"}}\"',NULL,7,1.15,'2020-10-29 08:45:02',33),
+	(20,19,'\"{\\\"1\\\":{\\\"answerID\\\":\\\"1\\\"},\\\"2\\\":{\\\"answerID\\\":\\\"1\\\"},\\\"3\\\":{\\\"answerID\\\":\\\"2\\\",\\\"isCorrect\\\":true},\\\"4\\\":{\\\"answerID\\\":\\\"2\\\"},\\\"5\\\":{\\\"answerID\\\":\\\"2\\\",\\\"isCorrect\\\":true},\\\"6\\\":{\\\"answerID\\\":\\\"2\\\",\\\"isCorrect\\\":true},\\\"7\\\":{\\\"answerID\\\":\\\"5\\\",\\\"isCorrect\\\":true},\\\"8\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"9\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"10\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"11\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"12\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"13\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"14\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"15\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"16\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"17\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"18\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"19\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"20\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"21\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"22\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"23\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"24\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"25\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"26\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"27\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"28\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"29\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"30\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"31\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"34\\\":{\\\"answerID\\\":\\\"unanswered\\\"},\\\"35\\\":{\\\"answerID\\\":\\\"2\\\",\\\"isCorrect\\\":true}}\"',NULL,5,0.34,'2020-10-29 08:46:45',33);
 
 /*!40000 ALTER TABLE `result` ENABLE KEYS */;
 UNLOCK TABLES;
@@ -227,19 +219,13 @@ LOCK TABLES `user` WRITE;
 INSERT INTO `user` (`id`, `email`, `name`, `dateCreated`, `isAdmin`, `canRetake`, `time`, `test_id`, `category_id`, `deleted`)
 VALUES
 	(1,'hello@mayden.academy','Admin','2019-10-19 14:43:43',1,0,0,1,1,0),
-	(2,'test@test.co.uk','test223','2019-10-19 14:51:42',0,1,1800,1,1,0),
-	(3,'test2@test.com','test2','2019-10-19 14:43:40',0,1,1800,1,1,1),
-	(4,'op@op.com','opopo','2019-10-19 13:13:12',0,1,1800,1,1,0),
-	(5,'rtst@rtgs2.com','test hghv','2019-10-19 13:13:12',0,0,1800,1,1,0),
-	(6,'rtst@rtgs.com','test','2019-10-19 13:13:12',0,1,1800,1,1,0),
-	(7,'rtst@rtgs.com','test','2019-10-19 13:13:12',0,1,1800,1,1,0),
-	(8,'rtst@rtgs.com','test','2019-10-19 13:13:12',0,1,1800,1,1,0),
-	(9,'test@test.com','example','2019-10-19 13:13:12',0,1,2040,1,1,0),
-	(10,'test2@test.com','test 2 edited','2019-10-19 15:03:29',0,0,2880,1,1,0),
-	(11,'anton@example.com','Anton','2020-10-26 11:43:14',0,0,1800,2,1,0),
-	(12,'sgrt@srtg.com','example','2020-10-27 13:39:16',0,0,1800,1,1,0),
-	(13,'dgst@rtgt.com','sdfgst','2020-10-27 13:40:51',0,0,1800,1,1,0),
-	(14,'fgnbxgf@rtsht.com','fgbsg','2020-10-27 14:20:56',0,0,1800,1,1,0);
+	(15,'aaa@aaaa.com','aa','2020-10-29 08:42:38',0,1,1800,1,1,0),
+	(16,'billy@nilly.com','Billy','2020-10-29 08:42:56',0,1,1800,1,1,0),
+	(17,'bob@bob.com','bob','2020-10-29 08:43:02',0,1,1800,1,1,0),
+	(18,'burble@murble.com','burble','2020-10-29 08:43:10',0,1,1800,1,1,0),
+	(19,'user@face.co.uk','userface','2020-10-29 08:46:45',0,0,1800,1,1,0),
+	(20,'ddd@ddd.com','ddd','2020-10-29 08:43:27',0,1,1800,1,1,0),
+	(21,'yous@mes.com','yous','2020-10-29 08:45:02',0,0,1800,1,1,0);
 
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
