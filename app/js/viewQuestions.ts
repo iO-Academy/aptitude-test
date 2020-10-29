@@ -20,12 +20,13 @@ async function populateViewQuestionsTables() {
         tableContainer.innerHTML += template(tests);
     }
     document.querySelectorAll(".edit-question").forEach((btn) => {
-        btn.addEventListener('click', async (clickedBtn: any) => {
-            const {id} = clickedBtn.target.parentElement.dataset;
+        btn.addEventListener('click', async(clickedBtn: MouseEvent) => {
+            const button = clickedBtn.target as HTMLButtonElement
+            const {id} = button.parentElement.dataset;
             window.location.href = `editQuestion.html#${id}`;
         });
     });
-    document.querySelectorAll('.panel').forEach( (panel) => {
+    document.querySelectorAll('.panel').forEach((panel) => {
         panel.querySelector('a').addEventListener('click', (e)=> {
             let arrow = panel.querySelector('span');
             let table = panel.querySelector('.panel-collapse');
