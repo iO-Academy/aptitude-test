@@ -27,6 +27,21 @@ async function populateViewQuestionsTables() {
             window.location.href = `editQuestion.html#${id}`;
         });
     });
+    document.querySelectorAll('.panel').forEach( (panel) => {
+        panel.querySelector('a').addEventListener('click', (e)=> {
+            let arrow = panel.querySelector('span');
+            let table = panel.querySelector('.panel-collapse');
+            if ( table.classList.contains('in') ) {
+                arrow.classList.remove('glyphicon-menu-down');
+                arrow.classList.add('glyphicon-menu-up');
+
+            } else {
+                arrow.classList.remove('glyphicon-menu-up');
+                arrow.classList.add('glyphicon-menu-down');
+
+            }
+        })
+    })
 }
 
 populateViewQuestionsTables();
