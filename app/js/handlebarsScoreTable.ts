@@ -1,8 +1,9 @@
 import {BaseUser, User} from "./interfaces/User";
 import {Scores} from "./interfaces/Scores";
+import {UserAnswers} from "./interfaces/UserAnswers";
 
 /**
- * Sorts the array of user objects by their 'dateCreated' with the 
+ * Sorts the array of user objects by their 'dateCreated' with the
  * newest at the top
  *
  * @return array of user objects in the desired order
@@ -10,9 +11,9 @@ import {Scores} from "./interfaces/Scores";
 async function sortUsersObjectByDate() {
     let usersObject = await createUsersObject()
     usersObject.data.sort(function(a, b){
-            let dateA = a.dateCreated
-            let dateB = b.dateCreated
-            return dateB - dateA //sort by date descending
+        let dateA = a.dateCreated
+        let dateB = b.dateCreated
+        return dateB - dateA //sort by date descending
     })
 
     return usersObject
@@ -40,14 +41,14 @@ async function updateScoreTable() {
 }
 
 /**
- * Checks the length of an array of data objects. 
+ * Checks the length of an array of data objects.
  * If greater than 0, calls function to print them to the table
  * If 0, gives 'no valid results message'
  *
  * @param HBTemplate the handlebars template for creating a table of results
- * @param scoresDataArray an array of data objects returned from the API 
+ * @param scoresDataArray an array of data objects returned from the API
  * and filtered by user settings
-*/
+ */
 function printFilteredResultsToScreen(HBTemplate: string, scoresDataArray: Array<any>) {
     if (scoresDataArray.length < 1) {
         let score_list = document.querySelector('.score_list');
@@ -75,7 +76,7 @@ function createObjectFromParentElement(event: Event) {
         canRetake: parseInt(parentElement.getAttribute("dataCanRetake")),
         dataTestId: parentElement.getAttribute("dataTestId"),
     }
-  
+
     return userInfo;
 }
 
@@ -111,7 +112,7 @@ function addDeleteEventListeners() {
 /**
  * Sends the API call to delete a user with the specified ID
  *
- * @param userId 
+ * @param userId
  */
 function deleteUser(userId: number) {
     let baseUrl = getBaseUrl()
@@ -126,7 +127,7 @@ function deleteUser(userId: number) {
  * Compiles the data object with the handlebars template
  *
  * @param HBTemplate the handlebars template for creating a table of results
- * @param scoresDataObject an array of data objects returned from the API 
+ * @param scoresDataObject an array of data objects returned from the API
  * and filtered by user settings
  */
 function produceTable (HBTemplate: string, scoresDataObject) {
@@ -156,24 +157,76 @@ function produceTable (HBTemplate: string, scoresDataObject) {
     addEditEventListeners();
     addDeleteEventListeners();
     addEventListenersForDownloadButtons();
+    addEventListenersForViewResults();
 }
 
-function addEventListenersForDownloadButtons(){
+function addEventListenersForDownloadButtons() {
     document.querySelectorAll('.download-user-results-button').forEach((button) => {
         button.addEventListener('click', (e: any) => {
             e.preventDefault()
 
             getData("result?id=" + e.target.parentElement.getAttribute("dataId"))
 
-            .then((data) => {
-                let parentElement = e.target.parentElement
-                let userName = parentElement.getAttribute("dataname")
-                let userPercentage = parentElement.getAttribute("datapercentage")
-                downloadFile(`${userName}_aptitude_test_results`, createCSV(data, userName, userPercentage))
-            })
+                .then((data) => {
+                    let parentElement = e.target.parentElement
+                    let userName = parentElement.getAttribute("dataname")
+                    let userPercentage = parentElement.getAttribute("datapercentage")
+                    downloadFile(`${userName}_aptitude_test_results`, createCSV(data, userName, userPercentage))
+                })
         })
     })
 }
 
-updateScoreTable();
+/**
+ * Add listener for click on view-results-button, to open viewResultsModal
+ * Get and compile HBS template for user results table
+ * Get user's results and test questions, create new object from questions, and loop through both to create object for populating HBS table
+ */
+async function addEventListenersForViewResults() {
+    let userResultsTemplate = await getTemplateAjax("js/templates/userResults.hbs");
+    let template: Function = Handlebars.compile(userResultsTemplate);
+    let resultsTable: Element = document.querySelector("#view-results-modal-content");
+    let userResultsTable: Object = {};
+    document.querySelectorAll(".view-results-button").forEach((button) => {
+        button.addEventListener("click", (e: any) => {
+            openViewResultsModal();
+            addEventListenersForCloseResults();
+            getData("result?id=" + e.target.parentElement.getAttribute("dataId")).then(resultData => {
+                getData("question").then(questionData => {
+                    let userResults: Object = JSON.parse(JSON.parse(resultData.data.answers));
+                    let questionObj: Object = {};
+                    questionData.data.forEach(item => {
+                        if (item.text.length > 49) {
+                            questionObj[item.id] = item.text.substring(0, 49) + "...";
+                        } else {
+                            questionObj[item.id] = item.text;
+                        }
+                    });
+                    for (let result in userResults) {
+                        userResultsTable[result] = {
+                            result: result,
+                            question: questionObj[result],
+                            userAnswer: userResults[result].answerID,
+                            correct: false
+                        };
+                        userResultsTable[result].correct = userResults[result]["isCorrect"] === true;
+                    }
+                    resultsTable.innerHTML = template(userResultsTable);
+                });
+            });
+        })
+    });
+}
 
+/**
+ * Add listener for close-view-results button and overlay div to close modal on click
+ */
+function addEventListenersForCloseResults() {
+    document.querySelectorAll(".close-view-results").forEach(item => {
+        item.addEventListener("click", () => {
+            closeViewResultsModal();
+        });
+    });
+}
+
+updateScoreTable();

@@ -71,7 +71,7 @@ async function getCategories() {
  * @return {number} The score represented as a percentage
  */
 function calculatePercentage(score: number, numOfQuestions: number) {
-    return ((score / numOfQuestions) * 100).toFixed(2)
+    return Math.round((score / numOfQuestions) * 100)
 };
 
 /**
