@@ -10,7 +10,8 @@ function populateCategories() {
                     if (response) {
                         document.querySelector('#categoriesContainer').innerHTML = '';
                         populateCategories();
-                        populateCategoryDropdowns();
+                        populateTableCategoryDropdown();
+                        populateNewUserCategoryDropdown();
                         updateScoreTable();
                     }
                 })

@@ -1,7 +1,9 @@
 import {BaseUser} from "./interfaces/User";
 
 populateTestDropdowns();
-populateCategoryDropdowns();
+populateTableCategoryDropdown();
+populateNewUserCategoryDropdown();
+ 
 
 /**
  * Save the JSON object using an AJAX request.
