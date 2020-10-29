@@ -72,15 +72,15 @@ function pageButtonCheck(page: number, pages: number) {
  * @param setToHidden boolean that determines if the Page Buttons are to be hidden or not
  */
 function showPaginationButtons(setToHidden: boolean) {
-    let viewPageSelectors = document.querySelector('.pageSelectors');
+    const viewPageButtons = document.querySelector('.pageSelectors');
     if (setToHidden) {
-        viewPageSelectors.classList.add('hidden');
+        viewPageButtons.classList.add('hidden');
     }
     else {
         // when there are over 20 users per page, then 4 Page Buttons are displayed (Previous, First Page, Second Page, Last) and in this case we show the whole pageSelectors class which contains those 4 buttons - without this the buttons are still displayed when there are less than 20 users - cannot use logic of number of user rows in table as that will  never be over 20
         let pageBtnLength = document.querySelectorAll('.pageBtn').length;
         if (pageBtnLength >= 4) {
-            viewPageSelectors.classList.remove('hidden');
+            viewPageButtons.classList.remove('hidden');
         }
     }
 }
