@@ -11,10 +11,10 @@ function createCSV(info: Object, userName: string, userPercentage: number, score
     let csv = "Name,Score,%"
 
     //add each question to the titles of the csv
-    for(let eachQuestion in info) {
-        let questionString = info[eachQuestion].question
-        let replacedString = questionString.replace(/,/g,"")
-        csv += `, ${eachQuestion}: ${replacedString}`
+   for(let eachQuestion in info) {
+       let questionString = info[eachQuestion].question
+       let replacedString = questionString.replace(/,/g,"")
+       csv += `, ${eachQuestion}: ${replacedString}`
     }
 
     csv += "\n"
@@ -26,8 +26,8 @@ function createCSV(info: Object, userName: string, userPercentage: number, score
     for (let eachQuestion in info) {
         let isCorrect = info[eachQuestion].correct === "correct" ? "correct" : "incorrect";
         csv += `,${info[eachQuestion].userAnswer} - ${isCorrect}`;
-        console.log(isCorrect)
     }
 
     return csv
 }
+
