@@ -39,6 +39,7 @@ async function checkAnswers(userAnswers: UserAnswers): Promise<any> {
                 userScore++;
                 userAnswers[answerItem.id]['isCorrect'] = true;
             }
+            userAnswers[answerItem.id]['notes'] = document.querySelector<HTMLInputElement>(`textarea[name=answer_${answerItem.id}]`).value;
         })
         let result = {
             uid: parseInt(getCookie('uid') as string, 10), // typecast to string as getCookie shouldnt ever return false
@@ -80,6 +81,9 @@ function getUserAnswers(): UserAnswers {
 
     return answers
 }
+
+
+
 
 /**
  * gets percentage of user score
