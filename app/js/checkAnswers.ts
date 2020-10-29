@@ -24,20 +24,16 @@ async function checkAnswers(userAnswers: UserAnswers): Promise<any> {
     let answers = await getAnswers()
 
     if (answers.success) {
-        answers = answers.data
-
+        answers = answers.data;
         answers.forEach(function (answerItem) {
             if (!userAnswers[answerItem.id]) {
                 userAnswers[answerItem.id] = {answerID: 'unanswered'}
             }
             if (answerItem.answer == userAnswers[answerItem.id]['answerID']) {
-                userScore++
-                userAnswers[answerItem.id]['isCorrect'] = 'correct'
-            } else {
-                userAnswers[answerItem.id]['isCorrect'] = 'incorrect'
+                userScore++;
+                userAnswers[answerItem.id]['isCorrect'] = true;
             }
         })
-
         let result = {
             uid: parseInt(getCookie('uid') as string, 10), // typecast to string as getCookie shouldnt ever return false
             answers: userAnswers,
