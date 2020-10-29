@@ -19,6 +19,13 @@ async function populateViewQuestionsTables() {
         tests.testname = testData.data[i].name;
         tableContainer.innerHTML += template(tests);
     }
+    document.querySelectorAll(".edit-question").forEach((btn) => {
+        btn.addEventListener('click', async (clickedBtn: any) => {
+            const {id} = clickedBtn.target.parentElement.dataset;
+
+            window.location.href = `editQuestion.html#${id}`;
+        });
+    });
 }
 
 populateViewQuestionsTables();
