@@ -14,7 +14,7 @@ function finishTest(pageLeft) {
     showResults(pageLeft)
     document.querySelector<HTMLElement>('#overview_page').style.display = 'none'
     document.querySelector<HTMLElement>('#result_page').style.display = 'none'
-    document.removeEventListener("mouseleave", pageLeaveAlert);
+    document.body.removeEventListener("mouseleave", pageLeaveAlert);
     document.removeEventListener("visibilitychange", cancelTest);
 }
 
