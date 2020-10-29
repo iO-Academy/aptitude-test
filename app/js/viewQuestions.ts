@@ -8,7 +8,6 @@ async function getTestDataById(testId: string): Promise<any> {
    return getData(`question?test_id=${testId}`);
 }
 
-
 async function populateViewQuestionsTables() {
     let HBTemplate = await getTemplateAjax('js/templates/questionsByTestTable.hbs');
     let template: Function = Handlebars.compile(HBTemplate);
