@@ -257,7 +257,6 @@ async function addEventListenersForScoreBreakdownButtons() {
     let userResultsTemplate = await getTemplateAjax("js/templates/scoreBreakdown.hbs");
     let template: Function = Handlebars.compile(userResultsTemplate);
     let resultsTable: Element = document.querySelector("#view-results-modal-content");
-    let userResultsTable: Object = {};
     let categories: Array<Object> = [
         {
             category: "Q1-3: Starter",
@@ -310,19 +309,19 @@ async function addEventListenersForScoreBreakdownButtons() {
                             case userResultsArray.indexOf(result) < 4:
                                 category1Score++
                                 break
-                            case userResultsArray.indexOf(result) < 8:
+                            case userResultsArray.indexOf(result) < 9:
                                 category2Score++
                                 break
-                            case userResultsArray.indexOf(result) < 13:
+                            case userResultsArray.indexOf(result) < 14:
                                 category3Score++
                                 break
-                            case userResultsArray.indexOf(result) < 18:
+                            case userResultsArray.indexOf(result) < 19:
                                 category4Score++
                                 break
-                            case userResultsArray.indexOf(result) < 23:
+                            case userResultsArray.indexOf(result) < 24:
                                 category5Score++
                                 break
-                            case userResultsArray.indexOf(result) < 30:
+                            case userResultsArray.indexOf(result) < 31:
                                 category6Score++
                                 break
                         }
@@ -330,11 +329,11 @@ async function addEventListenersForScoreBreakdownButtons() {
                 })
 
                 categories[0]['percentage'] = Math.round(category1Score/3 * 100)
-                categories[1]['percentage'] = Math.round(category2Score/3 * 100)
-                categories[2]['percentage'] = Math.round(category3Score/3 * 100)
-                categories[3]['percentage'] = Math.round(category4Score/3 * 100)
-                categories[4]['percentage'] = Math.round(category5Score/3 * 100)
-                categories[5]['percentage'] = Math.round(category6Score/3 * 100)
+                categories[1]['percentage'] = Math.round(category2Score/5 * 100)
+                categories[2]['percentage'] = Math.round(category3Score/5 * 100)
+                categories[3]['percentage'] = Math.round(category4Score/5 * 100)
+                categories[4]['percentage'] = Math.round(category5Score/5 * 100)
+                categories[5]['percentage'] = Math.round(category6Score/7 * 100)
 
                 scoreBreakdownTable = {
 
