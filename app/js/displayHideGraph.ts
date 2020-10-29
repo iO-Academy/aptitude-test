@@ -3,7 +3,6 @@
  * It also toggles the class on the buttons to display the button with the correct text on it.
  *
  */
-
 function toggleGraphDisplay(e: Event) {
     e.preventDefault();
     let graphOnPage = document.querySelector('.show-graph');
@@ -17,7 +16,13 @@ function toggleGraphDisplay(e: Event) {
 }
 
 var displayGraphButton = document.querySelector('#viewGraph');
-displayGraphButton.addEventListener('click', toggleGraphDisplay);
+displayGraphButton.addEventListener('click', (e) => {
+    toggleGraphDisplay(e);
+    showPaginationButtons(true); // was isVisible and false
+});
 
 var displayTableButton = document.querySelector('#viewTable');
-displayTableButton.addEventListener('click', toggleGraphDisplay);
+displayTableButton.addEventListener('click', (e) => {
+    toggleGraphDisplay(e);
+    showPaginationButtons(false);
+});
