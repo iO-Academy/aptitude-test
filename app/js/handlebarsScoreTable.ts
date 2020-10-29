@@ -158,22 +158,41 @@ function produceTable (HBTemplate: string, scoresDataObject) {
     addDeleteEventListeners()
 }
 
-function addEventListenersForDownloadButtons(){
+function addEventListenersForDownloadButtons() {
     document.querySelectorAll('.download-user-results-button').forEach((button) => {
         button.addEventListener('click', (e: any) => {
             e.preventDefault()
 
-            getData("result?id=" + e.target.parentElement.getAttribute("dataId"))
-
-            .then((data) => {
-                let parentElement = e.target.parentElement
-                let userName = parentElement.getAttribute("dataname")
-                let userPercentage = parentElement.getAttribute("datapercentage")
-                downloadFile(`${userName}_aptitude_test_results`, createCSV(data, userName, userPercentage))
+            getData("result?id=" + e.target.parentElement.getAttribute("dataId")).then(resultData => {
+                getData("question").then(questionData => {
+                    let userResults: Object = JSON.parse(JSON.parse(resultData.data.answers));
+                    let questionObj: Object = {};
+                    let parentElement: Element = e.target.parentElement
+                    let userName: string = parentElement.getAttribute("dataname")
+                    let userPercentage: number = +parentElement.getAttribute("datapercentage")
+                    let userResultsTable: Object = {};
+                    questionData.data.forEach(item => {
+                        if (item.text.length > 49) {
+                            questionObj[item.id] = item.text.substring(0, 49) + "...";
+                        } else {
+                            questionObj[item.id] = item.text;
+                        }
+                    });
+                    for (let result in userResults) {
+                        userResultsTable[result] = {
+                            result: result,
+                            question: questionObj[result],
+                            userAnswer: userResults[result].answerID,
+                            correct: false
+                        };
+                        userResultsTable[result].correct = userResults[result]["isCorrect"] === true;
+                    }
+                    console.log(userResultsTable);
+                    downloadFile(`${userName}_aptitude_test_results`, createCSV(userResultsTable, userName, userPercentage, resultData))
+                })
             })
         })
     })
 }
 
 updateScoreTable();
-

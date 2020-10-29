@@ -5,46 +5,30 @@
  * @param {userName} string  - name of user in database
  * @param {userPercentage} number -user percentage score on taken test
  */
-function createCSV(info: any, userName: string, userPercentage: number) {
-    
-    //declare regular expressions for characters to remove from the csv
-    let arrayOfReplaces = [/\\/g, /"/g, /{/g, /}/g,]
-    let questionsAndAnswers = info.data.answers
-    let questionNumbersAndAnswers = []
+function createCSV(info: any, userName: string, userPercentage: number, resultData) {
+    console.log(info);
+
     let csv = 'Name,Score,%'
-    
-    //iterate over the users answers and remove unwanted characters
-    arrayOfReplaces.forEach((expression) => {
-        questionsAndAnswers = questionsAndAnswers.replace(expression, '')
-    })
-
-    //split the stripped file by the commas
-    questionsAndAnswers = questionsAndAnswers.split(',')
-
-    //split the stripped file by the seperator between question number and the answer
-    questionsAndAnswers.forEach((answer) => {
-        questionNumbersAndAnswers.push(answer.split(':'))
-    })
-    
 
     //add each question to the titles of the csv
-    questionNumbersAndAnswers.forEach((eachQuestion) => {
+   for(let eachQuestion in info) {
 
-        csv += `, ${eachQuestion[0]}`
-        
-    })
-    
+
+        csv += `, ${eachQuestion}: ${info[eachQuestion].question}`
+
+    }
+
     csv += '\n'
 
     //enter the username, score and percentage under the relevant heading
     csv += `${userName},${info.data.score},${userPercentage}`
+   //add the question answer under the relevant heading in the csv
+    for(let eachQuestion in info) {
 
-    //add the question answer under the relevant heading in the csv
-    questionNumbersAndAnswers.forEach((eachQuestion) => {
 
-        csv += `, ${eachQuestion[1]}`
+        csv += `, ${eachQuestion}: ${info[eachQuestion].question}`
 
-    })
-
+    }
     return csv
 }
+
