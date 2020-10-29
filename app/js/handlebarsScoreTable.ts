@@ -191,7 +191,6 @@ function addEventListenersForDownloadButtons() {
                             userResultsTable[result].correct = "incorrect"
 
                         }
-                         // = userResults[result]["isCorrect"] === 'correct';
                     }
                     downloadFile(`${userName}_aptitude_test_results`, createCSV(userResultsTable, userName, userPercentage, resultData.data.score))
                 })
