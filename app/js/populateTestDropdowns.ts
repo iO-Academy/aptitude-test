@@ -26,6 +26,8 @@ function populateTestDropdowns () {
             document.querySelector<HTMLElement>('#testAllocated').innerHTML = template(testsObject);
         });
 
+
+
         document.querySelector('#test_id').addEventListener('change', () => {
             testFieldValue = document.querySelector<HTMLInputElement>('#test_id').value;
 
