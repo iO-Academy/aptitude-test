@@ -1,10 +1,15 @@
-document.getElementById('filterScorePercentage').addEventListener('change', () => {
+document.querySelector('#filterScorePercentage').addEventListener('change', () => {
     updateScoreTable()
 })
 
-document.getElementById('testAllocated').addEventListener('change', () => {
+document.querySelector('#testAllocated').addEventListener('change', () => {
     updateScoreTable()
 })
+
+document.querySelector('#categoryFilter').addEventListener('change', () => {
+    updateScoreTable()
+})
+
 
 /**
  * checks the start and end date input on admin page and assigns a default value if no value set
@@ -117,16 +122,31 @@ function percentageFilter(resultArray: Array<any>) {
  * @return Array the filtered array of users
  */
 function testAllocatedFilter(resultArray: Array<any>) {
-    let filterTestAllocated = document.querySelector<HTMLInputElement>('#testAllocated')
-    let newResultArray = resultArray;
+    let filterTestAllocated = document.querySelector<HTMLInputElement>('#testAllocated');
     let chosenTestAllocated = filterTestAllocated.value;
     if (chosenTestAllocated) {
-        newResultArray = [];
-        resultArray.forEach((data)=>{
-            if(data.testId === chosenTestAllocated) {
-                newResultArray.push(data)
-            }
-        });
+        return resultArray.filter((data) => {
+            return data.testId === chosenTestAllocated;
+        })
     }
-    return newResultArray
+    return resultArray;
+}
+
+/**
+ * This function filters the list of users to be displayed in the table based on the category
+ * allocated to that user
+ *
+ * @param {resultArray} Array array of users to be filtered
+ *
+ * @return Array the filtered array of users
+ */
+function categoryFilter(resultArray: Array<any>) {
+    let filterCategory = document.querySelector<HTMLInputElement>('#categoryFilter');
+    let chosenCategory = filterCategory.value;
+    if (chosenCategory) {
+        return resultArray.filter((data) => {
+            return data.categoryId === chosenCategory;
+        })
+    }
+    return resultArray
 }

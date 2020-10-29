@@ -15,11 +15,13 @@
     <script src="js/dist/ajaxHandlebarsTemplate.js" defer></script>
     <script src="js/dist/getData.js"></script>
     <script src="js/dist/populateTestDropdowns.js" defer></script>
-    <script src="js/dist/populateCategoryDropdowns.js" defer></script>
+    <script src="js/dist/populateCategoryDropdown.js" defer></script>
     <script src="js/dist/scoreChart.js" defer></script>
     <script src="js/dist/populateHandlebars.js"></script>
     <script src="js/dist/getTestDuration.js" defer></script>
     <script src="js/dist/populateUserDuration.js" defer></script>
+    <script src="js/dist/deleteCategory.js" defer></script>
+    <script src="js/dist/displayCategories.js" defer></script>
     <script src="js/dist/adminPage.js" defer></script>
     <script src="js/dist/validateTime.js" defer></script>
     <script src="js/dist/convertTime.js"></script>
@@ -44,8 +46,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
     <script src="js/dist/ajaxResponseCheck.js" defer></script>
     <script src="js/dist/downloadFile.js" defer></script>
-    <script src="js/dist/deleteCategory.js" defer></script>
-    <script src="js/dist/displayCategories.js" defer></script>
     <title>Admin Page</title>
 </head>
 <body>
@@ -105,6 +105,8 @@
                                     </select>
                                     <select id="testAllocated" class="dropdown">
                                     </select>
+                                    <select id="categoryFilter" class="dropdown">
+                                    </select>
                                     <label for="startDate">Start</label>
                                     <input id="startDate" type="date">
                                     <label for="endDate">End</label>
@@ -119,16 +121,16 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th></th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>User Category</th>
-                                <th>Score (num)</th>
-                                <th>Percentage (%)</th>
-                                <th>Test Allocated</th>
-                                <th>Time Allowed</th>
-                                <th>Time Taken</th>
-                                <th>Date of Test</th>
+                                <th class="table-buttons"></th>
+                                <th class="table-columns">Name</th>
+                                <th class="table-columns">Email</th>
+                                <th class="table-columns">User Category</th>
+                                <th class="table-columns">Score (num)</th>
+                                <th class="table-columns">Percentage (%)</th>
+                                <th class="table-columns">Test Allocated</th>
+                                <th class="table-columns">Time Allowed</th>
+                                <th class="table-columns">Time Taken</th>
+                                <th class="table-columns">Date of Test</th>
                             </tr>
                         </thead>
                         <tbody class="tableList user-table score_list"></tbody>
