@@ -45,4 +45,4 @@ async function addCategory():Promise<void> {
     });
 }
 
-addCategory();
+addCategory(); 
