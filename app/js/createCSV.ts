@@ -14,7 +14,7 @@ function createCSV(info: Object, userName: string, userPercentage: number, score
    for(let eachQuestion in info) {
        let questionString = info[eachQuestion].question
        let replacedString = questionString.replace(/,/g,"")
-        csv += `, ${eachQuestion}: ${replacedString}`
+       csv += `, ${eachQuestion}: ${replacedString}`
     }
 
     csv += "\n"
@@ -22,9 +22,10 @@ function createCSV(info: Object, userName: string, userPercentage: number, score
     //enter the username, score and percentage under the relevant heading
     csv += `${userName},${score},${userPercentage}`
 
-   //add the question answer under the relevant heading in the csv
-    for(let eachQuestion in info) {
-        csv += `,${info[eachQuestion].userAnswer} - ${info[eachQuestion].correct}`
+    //add the question answer under the relevant heading in the csv
+    for (let eachQuestion in info) {
+        let isCorrect = info[eachQuestion].correct === "correct" ? "correct" : "incorrect";
+        csv += `,${info[eachQuestion].userAnswer} - ${isCorrect}`;
     }
 
     return csv
