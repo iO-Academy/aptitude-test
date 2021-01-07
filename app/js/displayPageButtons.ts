@@ -44,7 +44,6 @@ function pageSelectorFunctionality(HBTemplate: string, paginatedArrays: Array<un
     });
 }
 
-
 /**
  * Checks if the next or previous buttons are required for the page.
  * @param page
@@ -60,11 +59,28 @@ function pageButtonCheck(page: number, pages: number) {
         } else {
             document.querySelector('.backBtn').classList.remove('greyedOutBtn');
         }
-
         if (page === pages) {
             document.querySelector('.nextBtn').classList.add('greyedOutBtn');
         } else {
             document.querySelector('.nextBtn').classList.remove('greyedOutBtn');
+        }
+    }
+}
+
+/**
+ * Shows or Hides the Pagination Buttons based on the boolean value passed in
+ * @param setToHidden boolean that determines if the Page Buttons are to be hidden or not
+ */
+function showPaginationButtons(setToHidden: boolean) {
+    const viewPageButtons = document.querySelector('.pageSelectors');
+    if (setToHidden) {
+        viewPageButtons.classList.add('hidden');
+    }
+    else {
+        //if >=4 Page Buttons are present (Prev, First, Second, Last) ie >20 users, show the class that contains them
+        let paginationButtonCount = document.querySelectorAll('.pageBtn').length;
+        if (paginationButtonCount >= 4) {
+            viewPageButtons.classList.remove('hidden');
         }
     }
 }
