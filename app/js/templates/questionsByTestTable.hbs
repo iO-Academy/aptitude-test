@@ -1,0 +1,34 @@
+<div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+        <h2 class="panel-title">
+            <a class="testTitle" role="button" data-toggle="collapse"  href="#{{this.testId}}">{{this.testname}}<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
+            </a>
+            <button class="btn btn_height primary-button">
+                <a class="editTestsLink" href="editTests.html#{{this.testId}}">Edit Test</a>
+            </button>
+        </h2>
+    </div>
+    <div id="{{this.testId}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" >
+        <div class="panel-body">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th class="colBtn">Modify Question</th>
+                    <th class="colNum">Number</th>
+                    <th>Question</th>
+                </tr>
+                {{#each data}}
+                    <tr>
+                        <td data-id="{{id}}" data-question="{{text}}" class="btnContainer">
+                            <button class="btn btn_height edit-question">Edit</button>
+                        </td>
+                        <td class="questionNumber">{{this.id}}</td>
+                        <td class="questionText">{{this.text}}</td>
+                    </tr>
+                {{/each}}
+                </thead>
+                <tbody class="tableBody tableList"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
