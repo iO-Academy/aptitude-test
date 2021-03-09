@@ -1,26 +1,71 @@
-@import url("https://fonts.googleapis.com/css?family=Asap&display=swap");
-$unanswered-color: #298fb0;
-$answered-color: #94ba66;
-$main-background-color: #ffffff;
-$table-border: #8d0377;
-$score-table-border: #f2f2f2;
-$table-box-shadow: #000;
-$light-red: #ff6340;
-$light-orange: #f27324;
-$light-green: #94ba66;
-$light-purple: #d2b4f9;
-$primary-button: #8d0377;
-$primary-button-hover: #c63806;
-$view-results-button-color: #2e7a00;
-$secondary-button: #94ba66;
-$secondary-button-hover: #f27324;
-$overview-button: #53a00a;
-$overview-button-hover: #94ba66;
-$flag-color: #f27324;
-$flag-pressed: #ffffff;
-$results-headings:  #085e8e;
-$font-color: #2b2c2c;
-$question-nav-border: #000000;
-$edit-button: #085e8e;
-$failure-message: #c63806;
-$success-message: #53a00a;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@600;700&display=swap');
+
+$unanswered-color: rgba(116, 61, 251, 1);
+$answered-color: rgba(95, 255, 180, 1);
+$main-background-color: rgba(255, 255, 255, 1);
+$table-border: rgba(255, 51, 102, 1);
+$score-table-border: rgba(224, 232, 242, 1);
+$table-box-shadow: rgba(15, 0, 40, 1);
+$light-red: rgba(255, 51, 102, 0.4);
+$light-orange: rgba(254, 214, 49, 1);
+$light-green: rgba(95, 255, 180, 0.8);
+$light-purple: rgba(116, 61, 251, 1);
+$primary-button: rgba(255, 51, 102, 1);
+$primary-button-hover: rgba(116, 61, 251, 1);
+$view-results-button-color: rgba(95, 255, 180, 0.8);
+$secondary-button: rgba(116, 61, 251, 1);
+$secondary-button-hover: rgba(254, 214, 49, 1);
+$overview-button: rgba(95, 255, 180, 0.8);
+$overview-button-hover: rgba(95, 255, 180, 0.4);
+$flag-color: rgba(116, 61, 251, 1);
+$flag-pressed: rgba(224, 232, 242, 1);
+$results-headings: rgba(116, 61, 251, 1);
+$font-color: rgba(15, 0, 40, 1);
+$question-nav-border: rgba(15, 0,40 , 1);
+$edit-button: rgba(116, 61, 251, 1);
+$failure-message: rgba(198, 56, 6, 1);
+$success-message: rgba(83, 160, 10, 1);
+$black: rgba(0, 0, 0, 1);
+
+@mixin headingOneFontStyles {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 4.8rem;
+}
+
+@mixin headingTwoFontStyles {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 4rem;
+}
+
+@mixin headingThreeFontStyles {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
+  font-size: 3.5rem;
+}
+
+@mixin headingFourFontStyles {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 2.5rem;
+}
+
+@mixin bodyFontStyles {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 2.8rem;
+}
+
+@mixin buttonsMetaCapsFontStyles {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  font-size: 2rem;
+  text-transform: uppercase;
+}
+
+@mixin buttonsMetaFontStyles {
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 500;
+  font-size: 2rem;
+}
