@@ -2,7 +2,7 @@
 
 $unanswered-color: rgba(116,61,251, 1);
 $answered-color: rgba(95,255,180, 1);
-$main-background-color: rgba(255, 255, 255, 1);
+$main-background-color: rgba(224, 232, 242, 1);
 $table-border: rgba(255,51,102, 1);
 $score-table-border: rgba(224, 232, 242, 1);
 $table-box-shadow: rgba(15,0,40, 1);
@@ -25,7 +25,7 @@ $question-nav-border: rgba(15,0,40, 1);
 $edit-button: rgba(116,61,251, 1);
 $failure-message: rgba(198, 56, 6, 1);
 $success-message: rgba(83, 160, 10, 1);
-$black: rgba (0, 0, 0, 1);
+$black: rgba(0, 0, 0, 1);
 $test-not-taken-button: rgba(116, 61, 251, 0.40);
 $test-not-taken: rgba(255, 255, 255, 1);
 $delete-user-button: rgba(116, 61, 251, 1);
@@ -33,6 +33,10 @@ $energyGreen: rgba(95,255,180, 1);
 $energyGreen80: rgba(95,255,180, 0.80);
 $energyGreen40: rgba(95,255,180, 0.40);
 $energyGreen15: rgba(95,255,180, 0.15);
+$coolGrey: rgba(224, 232, 242, 1);
+$coolGrey80: rgba(224, 232, 242, 0.80);
+$coolGrey40: rgba(224, 232, 242, 0.40);
+$coolGrey15: rgba(224, 232, 242, 0.15);
 
 @mixin headingOneFontStyles {
   font-family: 'Space Grotesk', sans-serif;
