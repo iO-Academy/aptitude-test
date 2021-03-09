@@ -3,109 +3,106 @@
 
 html {
   font-size: 62.5%;
-}
 
-body {
-  color: $font-color;
-  background-color: $main-background-color;
-  @include bodyFontStyles;
-}
+  body {
+    color: $font-color;
+    background-color: $main-background-color;
+    @include bodyFontStyles;
 
-h1 {
-  color: $font-color;
-  @include headingOneFontStyles;
-}
+    h1 {
+      color: $font-color;
+      @include headingOneFontStyles;
+    }
 
-h2 {
-  color: $font-color;
-  @include headingTwoFontStyles;
-}
+    h2 {
+      color: $font-color;
+      @include headingTwoFontStyles;
+    }
 
-h3 {
-  color: $font-color;
-  @include headingThreeFontStyles;
-}
+    h3 {
+      color: $font-color;
+      @include headingThreeFontStyles;
+    }
 
-h4 {
-  color: $font-color;
-  @include headingFourFontStyles;
-}
+    h4 {
+      color: $font-color;
+      @include headingFourFontStyles;
+    }
 
-.container {
-  input {
-    font-size: 1.4rem;
-    padding: 3.5px 0;
+    .container {
+
+      input {
+        font-size: 1.4rem;
+        padding: 3.5px 0;
+      }
+
+      .labelDropdown {
+        font-size: 2rem;
+      }
+
+      .dropdown {
+        font-size: 1.5rem;
+      }
+
+      .user_list {
+        padding: 20px;
+      }
+    }
+
+    .score_list {
+      padding: 20px;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    .logo {
+      width: 300px;
+      height: 100px;
+      padding: 30px;
+      float: right;
+      margin: 10px;
+    }
+
+    p {
+      display: inline;
+      margin: 10px;
+    }
+
+    .primary-button {
+      background-color: $primary-button;
+      color: $main-background-color;
+      transition: .5s;
+      border-radius: 4px;
+      padding: 6px 12px;
+      @include buttonsMetaCapsFontStyles;
+
+      &:hover {
+        background-color: $primary-button-hover;
+      }
+    }
+
+
+    .edit-user-button:hover,
+    .view-results-button:hover,
+    .download-user-results-button:hover {
+      background-color: $energyGreen;
+      color: $font-color;
+      transition-duration: .5s;
+    }
+
+    .delete-user-button:hover {
+      background-color: $test-not-taken;
+      color: $font-color;
+      transition-duration: .5s;
+    }
+
+    .search-heading {
+      font-size: 1.5rem;
+      margin: 0;
+    }
   }
-
-  .labelDropdown {
-    font-size: 2rem;
-  }
-
-  .dropdown {
-    font-size: 1.5rem;
-  }
-
-  .user_list {
-    padding: 20px;
-  }
-
-  .btn_height {
-    padding: 0 1px 0 1px;
-  }
-}
-
-.score_list {
-  padding: 20px;
-}
-
-img {
-  width: 100%;
-}
-
-.logo {
-  width: 300px;
-  height: 100px;
-  padding: 30px;
-  float: right;
-  margin: 10px;
-}
-
-p {
-  display: inline;
-  margin: 10px;
-}
-
-.primary-button {
-  background-color: $primary-button;
-  color: $main-background-color;
-  transition: .5s;
-  border-radius: 4px;
-  padding: 6px 12px;
-  @include buttonsMetaCapsFontStyles;
-
-  &:hover {
-    background-color: $primary-button-hover;
-  }
-}
-
-
-.edit-user-button:hover,
-.view-results-button:hover,
-.download-user-results-button:hover {
-  background-color: $energyGreen;
-  color: $font-color;
-  transition-duration: .5s;
-}
-
-.delete-user-button:hover {
-  background-color: $flag-color;
-  color: $energyGreen;
-  transition-duration: .5s;
-}
-
-.search-heading {
-  font-size: 1.5rem;
-  margin: 0;
 }
 
 
