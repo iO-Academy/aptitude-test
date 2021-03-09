@@ -60,12 +60,27 @@ html {
         background-color: $primary-button;
         color: $main-background-color;
         transition: .5s;
-        border-radius: 0;
+        border-radius: 4px;
         padding: 6px 12px;
 
         &:hover {
           background-color: $primary-button-hover;
         }
+      }
+
+    .edit-user-button:hover,
+    .view-results-button:hover,
+    .download-user-results-button:hover
+    {
+        background-color: $energyGreen;
+        color: $font-color;
+        transition-duration: .5s;
+    }
+
+      .delete-user-button:hover {
+        background-color: $flag-color;
+        color: $energyGreen;
+        transition-duration: .5s;
       }
 
       .search-heading {

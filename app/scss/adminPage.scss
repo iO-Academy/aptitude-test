@@ -28,6 +28,7 @@
     &.primary-button {
       font-size: 1.4rem;
       color: $main-background-color;
+      border-radius: 4px;
     }
   }
 }
@@ -81,9 +82,7 @@ input {
 }
 
 .table {
-  font-size: 1.5rem;
-
-  .table-buttons {
+  font-size: 1.5rem;                                                                                    able-buttons {
     width: 20%;
   }
 
@@ -104,15 +103,15 @@ input {
   }
 
   .download-user-results-button {
-    background-color: $primary-button;
+    background-color: $delete-user-button;
   }
 
   .delete-user-button {
-    background-color: $primary-button-hover;
+    background-color: $primary-button;
   }
 
   .view-results-button {
-    background-color: $view-results-button-color;
+    background-color: $delete-user-button;
   }
 
   .email {
@@ -140,10 +139,10 @@ input {
 }
 
 .test-not-taken {
-  background-color: #ffffff;
+  background-color: $test-not-taken;
 }
 .dubious-grade {
-  background-color: $light-orange;
+  background-color: $test-not-taken-button;
 }
 .passing-grade {
   background-color: $light-green;

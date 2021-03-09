@@ -26,6 +26,13 @@ $edit-button: rgba(116,61,251, 1);
 $failure-message: rgba(198, 56, 6, 1);
 $success-message: rgba(83, 160, 10, 1);
 $black: rgba (0, 0, 0, 1);
+$test-not-taken-button: rgba(116, 61, 251, 0.40);
+$test-not-taken: rgba(255, 255, 255, 1);
+$delete-user-button: rgba(116, 61, 251, 1);
+$energyGreen: rgba(95,255,180, 1);
+$energyGreen80: rgba(95,255,180, 0.80);
+$energyGreen40: rgba(95,255,180, 0.40);
+$energyGreen15: rgba(95,255,180, 0.15);
 
 @mixin headingOneFontStyles {
   font-family: 'Space Grotesk', sans-serif;
@@ -63,3 +70,4 @@ $black: rgba (0, 0, 0, 1);
   font-weight: 500;
   font-size: 2rem;
 }
+
