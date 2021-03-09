@@ -82,46 +82,47 @@ input {
 
 .table {
   font-size: 1.5rem;
+  border: none;
 
-  .table-buttons {
-    width: 20%;
-  }
+    .table-buttons {
+      width: 20%;
+    }
 
-  .table-columns {
-    width: auto;
-  }
+    .table-columns {
+      width: auto;
+    }
 
-  button {
-    color: $main-background-color;
-  }
+    button {
+      color: $main-background-color;
+    }
 
-  .edit-user-button, .delete-user-button {
-    color: $main-background-color;
-  }
+    .edit-user-button, .delete-user-button {
+      color: $main-background-color;
+    }
 
-  .edit-user-button {
-    background-color: $edit-button;
-  }
+    .edit-user-button {
+      background-color: $edit-button;
+    }
 
-  .download-user-results-button {
-    background-color: $primary-button;
-  }
+    .download-user-results-button {
+      background-color: $primary-button;
+    }
 
-  .delete-user-button {
-    background-color: $primary-button-hover;
-  }
+    .delete-user-button {
+      background-color: $primary-button-hover;
+    }
 
-  .view-results-button {
-    background-color: $view-results-button-color;
-  }
+    .view-results-button {
+      background-color: $view-results-button-color;
+    }
 
-  .email {
-    border-right: 1px solid $score-table-border;
-  }
+    .email {
+      border-right: none;
+    }
 
-  td {
-    vertical-align: middle;
-  }
+    td {
+      vertical-align: middle;
+    }
 
 }
 
@@ -199,3 +200,16 @@ input[type="number"] {
   }
 }
 
+.drop-down-info-panel {
+  display: flex;
+  flex-flow: row nowrap;
+  background-color: purple;
+}
+
+.more-info-data {
+  width: 100%;
+}
+
+.first-row {
+  border-top: 2px solid white;
+}

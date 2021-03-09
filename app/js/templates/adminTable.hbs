@@ -1,34 +1,115 @@
 {{#each data}}
 <tr
     {{#if this.topGrade}}
-         class="top-grade"
+         class="top-grade first-row"
     {{else if this.passingGrade}}
-         class="passing-grade"
+         class="passing-grade first-row"
     {{else if this.fail}}
-         class="dubious-grade"
+         class="dubious-grade first-row"
     {{else if this.notTakenYet}}
-         class="test-not-taken"
+         class="test-not-taken first-row"
     {{/if}}>
-        <td dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}"  dataPercentage="{{percentage}}" dataTime="{{time}}" dataTimeAllowed="{{timeAllowed}}" dataCanRetake="{{canRetake}}" dataTestId="{{this.testId}}">
-            <button class="btn edit-user-button btn_height modalBtn">Edit User</button>
-            <button class="btn delete-user-button btn_height">Delete User</button>
-            {{#unless testNotTaken}}
-               <button class="btn download-user-results-button btn_height">Download Results</button>
-               <button class="btn view-results-button btn_height">View Results</button>
-            {{/unless}}
+    <td dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}"  dataPercentage="{{percentage}}" dataTime="{{time}}" dataTimeAllowed="{{timeAllowed}}" dataCanRetake="{{canRetake}}" dataTestId="{{this.testId}}">
+       <button class="btn more-info-button btn_height">More Info</button>
+     </td>
+     <td class="name">{{name}}</td>
+     <td class="email">{{email}}</td>
+     <td class="percentage">{{percentage}}</td>
+     <td class="date"></td>
+</tr>
+<tr {{#if this.topGrade}}
+            class="top-grade"
+        {{else if this.passingGrade}}
+             class="passing-grade"
+        {{else if this.fail}}
+             class="dubious-grade"
+        {{else if this.notTakenYet}}
+             class="test-not-taken"
+        {{/if}}>
+        <td>
+{{!--          first column --}}
+            <table>
+                <tr>
+                    <button class="btn edit-user-button btn_height modalBtn">Edit User</button>
+                </tr>
+                <tr>
+                    <button class="btn delete-user-button btn_height">Delete User</button>
+                </tr>
+                    {{#unless testNotTaken}}
+                           <button class="btn download-user-results-button btn_height">Download Results</button>
+                     {{/unless}}
+                <tr>
+                </tr>
+                <tr>
+                    {{#unless testNotTaken}}
+                           <button class="btn view-results-button btn_height">View Results</button>
+                     {{/unless}}
+                </tr>
+            </table>
         </td>
-        <td class="name">{{name}}</td>
-        <td class="email">{{email}}</td>
-        <td class="categoryName">{{categoryName}}</td>
-        <td class="score">{{score}}</td>
-        <td class="percentage">{{percentage}}</td>
-        <td class="testAllocated">{{testAllocated}}</td>
-        <td class="time">{{timeAllowed}}</td>
-        <td class="time">{{time}}</td>
-        <td class="date">{{#if testNotTaken}}
-                              {{testNotTaken}}
-                         {{else}}
-                              {{dateCreated}}
-                         {{/if}}</td>
+        <td>
+{{!--          second column --}}
+            <table>
+                <tr>
+                    <th>Category Name:</th>
+                </tr>
+                <tr>
+                    <td>Score:</td>
+                </tr>
+                <tr>
+                    <td>Test Allocated:</td>
+                </tr>
+            </table>
+        </td>
+        <td>
+{{!--          third column --}}
+            <table>
+                <tr>
+                    <td class="categoryName">{{categoryName}}</td>
+                </tr>
+                <tr>
+                    <td class="score">{{score}}</td>
+
+
+                </tr>
+                <tr>
+                    <td class="testAllocated">{{testAllocated}}</td>
+                </tr>
+            </table>
+        </td>
+        <td>
+{{!--          forth column --}}
+            <table>
+                <tr>
+                    <td>Date:</td>
+                </tr>
+                <tr>
+                    <td>Time Allowed:</td>
+                </tr>
+                <tr>
+                    <td>Time Taken:</td>
+                </tr>
+
+            </table>
+        </td>
+        <td>
+{{!--          fifth column --}}
+            <table>
+                <tr>
+                    <td class="date">{{#if testNotTaken}}
+                                          {{testNotTaken}}
+                                      {{else}}
+                                           {{dateCreated}}
+                                      {{/if}}</td>
+                </tr>
+                <tr>
+                    <td class="time">{{timeAllowed}}</td>
+                </tr>
+                <tr>
+                    <td class="time">{{time}}</td>
+                </tr>
+            </table>
+        </td>
+</table>
 </tr>
 {{/each}}
