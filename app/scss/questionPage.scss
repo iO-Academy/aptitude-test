@@ -59,7 +59,7 @@ h4 {
 
 .modify-question-container {
   height: 100%;
-  border: $primary-button solid 2px;
+  border: $pink-primary-button solid 2px;
 }
 
 .question-nav {
@@ -104,7 +104,7 @@ img {
 
 .prev {
   width: 60%;
-  background-color: $primary-button;
+  background-color: $pink-primary-button;
   border: none;
 
   &:hover {
@@ -114,7 +114,7 @@ img {
 
 .next {
   width: 60%;
-  background-color: $primary-button;
+  background-color: $pink-primary-button;
   border: none;
 
   &:hover {
@@ -130,7 +130,7 @@ img {
   width: 100%;
 
   .container {
-    border:  2px solid $primary-button;
+    border:  2px solid $pink-primary-button;
     padding: 20px 0;
   }
 }
@@ -189,7 +189,7 @@ img {
 
 .overview_page_table {
   width: 100%;
-  border: solid 2px $primary-button;
+  border: solid 2px $pink-primary-button;
 
   th, td {
     border: 1px solid darken($table-border, 10%);
@@ -237,7 +237,7 @@ img {
   width: 100%;
   display: flex;
   justify-content: center;
-  background-color: $primary-button;
+  background-color: $pink-primary-button;
   color: $flag-pressed;
   pointer-events: none;
 }
@@ -255,7 +255,7 @@ img {
   color: $flag-pressed;
 
   &:hover {
-    background-color: $primary-button;
+    background-color: $pink-primary-button;
     color: $flag-pressed;
   }
 }

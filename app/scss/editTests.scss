@@ -53,8 +53,8 @@
 .container .buttons .btn {
   align-content: center;
   width: 15%;
-  background-color: #8d0377;
-  color: #fff;
+  background-color: $pink-primary-button;
+  color: $coolGrey;
   transition: .5s;
   font-size: 1.5rem;
   border-style: none;
@@ -63,5 +63,5 @@
 }
 
 .container .buttons .return:hover {
-  background-color: #c63806;
+  background-color: $primary-button-hover;
 }

@@ -40,8 +40,7 @@ select:not([multiple]) {
   background-position: right 50%;
   background-repeat: no-repeat;
   background-image: url("../images/output-onlinepngtools.png");
-  padding: .5rem;
-  padding-right: 1.5rem;
+  padding: 0.5rem 1.5rem 0.5rem 0.5rem;
   background-color: $main-background-color;
 }
 
@@ -104,7 +103,7 @@ input {
   }
 
   .edit-user-button {
-    background-color: $edit-button;
+    background-color: $purple-button-color;
   }
 
   .download-user-results-button {
@@ -112,7 +111,7 @@ input {
   }
 
   .delete-user-button {
-    background-color: $primary-button;
+    background-color: $pink-primary-button;
   }
 
   .view-results-button {
@@ -142,13 +141,13 @@ input {
 }
 
 .test-not-taken {
-  background-color: $test-not-taken;
+  background-color: $coolGrey80;
 }
 .dubious-grade {
   background-color: $test-not-taken-button;
 }
 .passing-grade {
-  background-color: $light-green;
+  background-color: $energyGreen80;
 }
 .top-grade {
   background-color: $light-purple;
@@ -176,7 +175,7 @@ input {
   justify-content: center;
 
   .primary-button.active {
-    background-color: $results-headings;
+    background-color: $purple-button-color;
   }
 
   .greyedOutBtn {
