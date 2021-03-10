@@ -29,6 +29,10 @@ html {
       @include headingFourFontStyles;
     }
 
+    label{
+      @include headingFourFontStyles
+    }
+
     .container {
 
       input {
@@ -68,6 +72,11 @@ html {
     p {
       display: inline;
       margin: 10px;
+    }
+
+    .custom-select{
+      background-color: white;
+      font-size: 1.5rem;
     }
 
     .primary-button {
