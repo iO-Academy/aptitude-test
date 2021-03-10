@@ -17,7 +17,7 @@
      <td class="percentage">{{percentage}}</td>
      <td class="date"></td>
 </tr>
-<tr data-id={{id}}
+<tr data-id="{{id}}"
         {{#if this.topGrade}}
             class="top-grade secondRow hide"
         {{else if this.passingGrade}}
@@ -31,20 +31,28 @@
 {{!--          first column --}}
             <table>
                 <tr>
-                    <button class="btn edit-user-button btn_height modalBtn">Edit User</button>
+                    <td>
+                        <button dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}"  dataPercentage="{{percentage}}" dataTime="{{time}}" dataTimeAllowed="{{timeAllowed}}" dataCanRetake="{{canRetake}}" dataTestId="{{this.testId}}" class="btn edit-user-button btn_height modalBtn">Edit User</button>
+                    </td>
                 </tr>
                 <tr>
-                    <button class="btn delete-user-button btn_height">Delete User</button>
+                    <td>
+                        <button dataId="{{id}}" class="btn delete-user-button btn_height">Delete User</button>
+                    </td>
                 </tr>
                     {{#unless testNotTaken}}
-                           <button class="btn download-user-results-button btn_height">Download Results</button>
+                           <td dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}"  dataPercentage="{{percentage}}" dataTime="{{time}}" dataTimeAllowed="{{timeAllowed}}" dataCanRetake="{{canRetake}}" dataTestId="{{this.testId}}">
+                                    <button dataId="{{id}}" class="btn download-user-results-button btn_height">Download Results</button>
+                                </td>
                      {{/unless}}
                 <tr>
                 </tr>
                 <tr>
+                    <td>
                     {{#unless testNotTaken}}
-                           <button class="btn view-results-button btn_height">View Results</button>
+                           <button dataId="{{id}}" class="btn view-results-button btn_height">View Results</button>
                      {{/unless}}
+                    </td>
                 </tr>
             </table>
         </td>

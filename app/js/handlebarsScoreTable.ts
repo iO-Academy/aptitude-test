@@ -65,7 +65,7 @@ function printFilteredResultsToScreen(HBTemplate: string, scoresDataArray: Array
  * @param event is the event fired off by the function
  */
 function createObjectFromParentElement(event: Event) {
-    let parentElement = (event.target as HTMLElement).parentElement;
+    let parentElement = (event.target as HTMLElement);
     let userTime = parentElement.getAttribute("dataTimeAllowed");
     let [ userTimeMinutes, userTimeSeconds ] = userTime.split(":");
     const userInfo: User = {
@@ -104,7 +104,7 @@ function addDeleteEventListeners() {
     let userItems = document.querySelectorAll(".delete-user-button")
     userItems.forEach(function (userItem) {
         userItem.addEventListener('click', function (e: any) {
-            let userId = e.target.parentElement.getAttribute("dataId")
+            let userId = this.getAttribute("dataId")
             deleteUser(userId)
         })
     })
@@ -159,8 +159,7 @@ function produceTable (HBTemplate: string, scoresDataObject) {
     addDeleteEventListeners();
     addEventListenersForDownloadButtons();
     addEventListenersForViewResults();
-    addEventListerForDropDownMenu();
-    collapseDropDownListener()
+    showMoreInfoData()
 }
 
 function createUserResults(resultData, questionData): Object {
@@ -216,11 +215,11 @@ async function addEventListenersForViewResults() {
         button.addEventListener("click", (e: any) => {
             openViewResultsModal();
             addEventListenersForCloseResults();
-            getData("result?id=" + e.target.parentElement.getAttribute("dataId")).then(resultData => {
+            getData("result?id=" + e.target.getAttribute("dataId")).then(resultData => {
                 getData("question").then(questionData => {
                     resultsTable.innerHTML = template(createUserResults(resultData, questionData));
                 });
-            });
+            }); 
         });
     });
 }
@@ -236,50 +235,13 @@ function addEventListenersForCloseResults() {
     });
 }
 
-function addEventListerForDropDownMenu() {
-    let buttons = document.querySelectorAll('.more-info-button');
-    buttons.forEach(button => {
-        let userIdButton = button.getAttribute('data-id');
-        button.addEventListener('click', (e) => {
-            e.preventDefault()
-
-            let secondRowSelector = document.querySelectorAll('.secondRow')
-            secondRowSelector.forEach((row) =>{
-                let userIdRow = row.getAttribute('data-id');
-
-                if(userIdButton == userIdRow){
-                    row.classList.remove('hide')
-                    row.classList.add('clicked')
-                    console.log('this still works')
-                    if (row.classList.contains('hide')) {
-                        row.classList.add('hide')
-                        console.log('is it a bird')
-                    }
-                }
-            })
-
-
-
-            // console.log(.classList.contains('.hide'));
-            // if (display===none){ display: block;}
-            //else { display: none;}
-            console.log('click')
+function showMoreInfoData() {
+    let moreInfoButtons = document.querySelectorAll(".more-info-button")
+    moreInfoButtons.forEach(function (moreInfoButton) {
+        moreInfoButton.addEventListener('click', function (e: any) {
+            let userId = e.target.parentElement.getAttribute("dataId")
+            document.querySelector('tr[data-id="' + userId + '"]').classList.toggle('hide')
         })
     })
 }
-
-// function collapseDropDownListener() {
-//
-//         let buttons = document.querySelectorAll('.clicked');
-//         buttons.forEach(button => {
-//             button.addEventListener('click',(e) => {
-//                 console.log('does this work?')
-//                 this.classList.add('hide')
-//                 this.classList.remove('clicked')
-//             })
-//         })
-//
-// }
-
-
 updateScoreTable();

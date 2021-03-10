@@ -137,10 +137,3 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
         }
     })
 });
-
-
-
-
-
-
-//handlebars loaded with ajax, find out when and how template loaded, add event listeners after page load, find in path
