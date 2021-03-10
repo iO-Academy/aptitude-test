@@ -29,6 +29,10 @@ html {
       @include headingFourFontStyles;
     }
 
+    label{
+      @include headingFourFontStyles
+    }
+
     .container {
 
       input {
