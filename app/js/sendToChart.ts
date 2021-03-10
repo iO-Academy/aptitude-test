@@ -6,7 +6,7 @@ import {BaseUser} from "./interfaces/User";
 
 async function sendToChart(users: Array<BaseUser>) {
     let labels = await generateLabels(users);
-    let dubiousGrade = await generateDataset("Under 70%", labels, users, 0, 70, "rgba(255, 51, 102, 1)");
+    let dubiousGrade = await generateDataset("Under 70%", labels, users, 0, 69, "rgba(255, 51, 102, 1)");
     let passingGrade = await generateDataset("70% to 97%", labels, users,  70, 97, "rgba(95, 255, 180, 1)");
     let topGrade = await generateDataset("97% and above", labels, users, 97, 101, "rgba(116, 61, 251, 1)");
 
