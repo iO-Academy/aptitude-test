@@ -160,6 +160,7 @@ function produceTable (HBTemplate: string, scoresDataObject) {
     addEventListenersForDownloadButtons();
     addEventListenersForViewResults();
     addEventListerForDropDownMenu();
+    collapseDropDownListener()
 }
 
 function createUserResults(resultData, questionData): Object {
@@ -242,11 +243,18 @@ function addEventListerForDropDownMenu() {
         button.addEventListener('click', (e) => {
             e.preventDefault()
 
-            let secondRowSelector= document.querySelectorAll('.secondRow')
+            let secondRowSelector = document.querySelectorAll('.secondRow')
             secondRowSelector.forEach((row) =>{
                 let userIdRow = row.getAttribute('data-id');
+
                 if(userIdButton == userIdRow){
-                    console.log('compare true');
+                    row.classList.remove('hide')
+                    row.classList.add('clicked')
+                    console.log('this still works')
+                    if (row.classList.contains('hide')) {
+                        row.classList.add('hide')
+                        console.log('is it a bird')
+                    }
                 }
             })
 
@@ -259,5 +267,19 @@ function addEventListerForDropDownMenu() {
         })
     })
 }
+
+// function collapseDropDownListener() {
+//
+//         let buttons = document.querySelectorAll('.clicked');
+//         buttons.forEach(button => {
+//             button.addEventListener('click',(e) => {
+//                 console.log('does this work?')
+//                 this.classList.add('hide')
+//                 this.classList.remove('clicked')
+//             })
+//         })
+//
+// }
+
 
 updateScoreTable();

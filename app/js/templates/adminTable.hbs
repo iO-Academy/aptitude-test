@@ -17,14 +17,15 @@
      <td class="percentage">{{percentage}}</td>
      <td class="date"></td>
 </tr>
-<tr {{#if this.topGrade}}
-            class="top-grade"
+<tr data-id={{id}}
+        {{#if this.topGrade}}
+            class="top-grade secondRow hide"
         {{else if this.passingGrade}}
-             class="passing-grade"
+             class="passing-grade secondRow hide"
         {{else if this.fail}}
-             class="dubious-grade"
+             class="dubious-grade secondRow hide"
         {{else if this.notTakenYet}}
-             class="test-not-taken"
+             class="test-not-taken secondRow hide"
         {{/if}}>
         <td>
 {{!--          first column --}}
