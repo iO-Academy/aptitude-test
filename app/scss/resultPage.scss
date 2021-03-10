@@ -6,13 +6,14 @@
 }
 
 .result_card {
-  background-color: $modal-pale-purple;
+  background-color: $modal-pink-results-card;
   margin: 0 auto 10px;
   width: 700px;
   text-align: center;
   #completedMessage {
     color: $success-message;
-    font-size: 4em;
+    @include headingThreeFontStyles;
+    display: block;
   }
 
 }
@@ -25,7 +26,7 @@
     width: 100%;
     text-align: center;
     color: $font-color;
-    font-size: 4rem;
+    @include bodyFontStyles;
     letter-spacing: 1px;
     margin-bottom: 30px;
   }
