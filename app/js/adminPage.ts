@@ -139,4 +139,22 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
 });
 
 
+function click(buttons) {
+
+    buttons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault()
+            console.log('click')
+        })
+    })
+}
+
+window.addEventListener('load', function () {
+    console.log('page loaded')
+    setTimeout(function() {
+        let moreInfoButton = document.querySelectorAll('.more-info-button');
+        console.log(moreInfoButton)
+        click(moreInfoButton)
+        }, 500)
+})
 
