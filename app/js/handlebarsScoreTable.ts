@@ -2,6 +2,7 @@ import {BaseUser, User} from "./interfaces/User";
 import {Scores} from "./interfaces/Scores";
 import {UserAnswers} from "./interfaces/UserAnswers";
 
+
 /**
  * Sorts the array of user objects by their 'dateCreated' with the
  * newest at the top
@@ -158,6 +159,7 @@ function produceTable (HBTemplate: string, scoresDataObject) {
     addDeleteEventListeners();
     addEventListenersForDownloadButtons();
     addEventListenersForViewResults();
+    addEventListerForDropDownMenu();
 }
 
 function createUserResults(resultData, questionData): Object {
@@ -233,5 +235,29 @@ function addEventListenersForCloseResults() {
     });
 }
 
-updateScoreTable();
+function addEventListerForDropDownMenu() {
+    let buttons = document.querySelectorAll('.more-info-button');
+    buttons.forEach(button => {
+        let userIdButton = button.getAttribute('data-id');
+        button.addEventListener('click', (e) => {
+            e.preventDefault()
 
+            let secondRowSelector= document.querySelectorAll('.secondRow')
+            secondRowSelector.forEach((row) =>{
+                let userIdRow = row.getAttribute('data-id');
+                if(userIdButton == userIdRow){
+                    console.log('compare true');
+                }
+            })
+
+
+
+            // console.log(.classList.contains('.hide'));
+            // if (display===none){ display: block;}
+            //else { display: none;}
+            console.log('click')
+        })
+    })
+}
+
+updateScoreTable();
