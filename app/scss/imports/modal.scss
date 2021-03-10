@@ -56,10 +56,10 @@
   overflow-y: scroll;
 
   .rightAnswer {
-    background: #84de84;
+    background: $success-message;
   }
   .wrongAnswer {
-    background: #dd6664;
+    background: $failure-message;
   }
 }
 
