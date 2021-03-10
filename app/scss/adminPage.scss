@@ -14,7 +14,7 @@
 
   label {
     font-size: 1.5rem;
-    font-weight: 400;
+    font-weight: 600;
     margin: 0 0.5rem 0 0;
   }
 
@@ -28,6 +28,8 @@
     &.primary-button {
       font-size: 1.4rem;
       color: $main-background-color;
+      border-radius: 4px;
+      padding: 6px 12px;
     }
   }
 }
@@ -38,8 +40,7 @@ select:not([multiple]) {
   background-position: right 50%;
   background-repeat: no-repeat;
   background-image: url("../images/output-onlinepngtools.png");
-  padding: .5rem;
-  padding-right: 1.5rem;
+  padding: 0.5rem 1.5rem 0.5rem 0.5rem;
   background-color: $main-background-color;
 }
 
@@ -51,6 +52,10 @@ select:not([multiple]) {
   option {
     font-size: 1.5rem;
   }
+}
+
+.dropdown-option {
+  font-size: 1.5rem;
 }
 
 input {
@@ -81,18 +86,12 @@ input {
 }
 
 .table {
-  font-size: 1.5rem;
-
-  .table-buttons {
     width: 20%;
+    font-size: 1.5rem;
   }
 
   .table-columns {
     width: auto;
-  }
-
-  button {
-    color: $main-background-color;
   }
 
   .edit-user-button, .delete-user-button {
@@ -100,19 +99,19 @@ input {
   }
 
   .edit-user-button {
-    background-color: $edit-button;
+    background-color: $purple-button-color;
   }
 
   .download-user-results-button {
-    background-color: $primary-button;
+    background-color: $purple-button-color;
   }
 
   .delete-user-button {
-    background-color: $primary-button-hover;
+    background-color: $pink-primary-button;
   }
 
   .view-results-button {
-    background-color: $view-results-button-color;
+    background-color: $purple-button-color;
   }
 
   .email {
@@ -122,8 +121,6 @@ input {
   td {
     vertical-align: middle;
   }
-
-}
 
 
 .modify-question-container {
@@ -140,13 +137,13 @@ input {
 }
 
 .test-not-taken {
-  background-color: #ffffff;
+  background-color: $coolGrey80;
 }
 .dubious-grade {
-  background-color: $light-orange;
+  background-color: $test-not-taken-button;
 }
 .passing-grade {
-  background-color: $light-green;
+  background-color: $energyGreen80;
 }
 .top-grade {
   background-color: $light-purple;
@@ -174,7 +171,7 @@ input {
   justify-content: center;
 
   .primary-button.active {
-    background-color: $results-headings;
+    background-color: $purple-button-color;
   }
 
   .greyedOutBtn {

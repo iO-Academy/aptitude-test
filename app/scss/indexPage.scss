@@ -8,13 +8,14 @@
 
       .start-button {
         width: 110px;
-        background: $primary-button;
+        background: $pink-primary-button;
         border: 1px solid $main-background-color;
         color: $main-background-color;
-        font-size: 15px;
         padding: 6px 20px;
         text-decoration: none;
         transition: .5s;
+        border-radius: 6px;
+        @include buttonsMetaCapsFontStyles;
 
         &:hover {
           background-color: $primary-button-hover;
@@ -27,7 +28,7 @@
       }
 
       .warning {
-        color : #ff0000;
+        color : $warning-text;
         font-weight: bold;
       }
 

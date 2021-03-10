@@ -6,10 +6,31 @@ html {
 
   body {
     color: $font-color;
-    font-family: 'Asap', sans-serif;
+    background-color: $main-background-color;
+    @include bodyFontStyles;
 
-    h1, h2, h3, h4 {
+    h1 {
       color: $font-color;
+      @include headingOneFontStyles;
+    }
+
+    h2 {
+      color: $font-color;
+      @include headingTwoFontStyles;
+    }
+
+    h3 {
+      color: $font-color;
+      @include headingThreeFontStyles;
+    }
+
+    h4 {
+      color: $font-color;
+      @include headingFourFontStyles;
+    }
+
+    label{
+      @include headingFourFontStyles
     }
 
     .container {
@@ -29,50 +50,68 @@ html {
 
       .user_list {
         padding: 20px;
-
-        .btn_height {
-          padding: 0 1px 0 1px;
-        }
       }
+    }
 
-      .score_list {
-        padding: 20px;
+    .score_list {
+      padding: 20px;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    .logo {
+      width: 300px;
+      height: 100px;
+      padding: 30px;
+      float: right;
+      margin: 10px;
+    }
+
+    p {
+      display: inline;
+      margin: 10px;
+    }
+
+    .custom-select{
+      background-color: white;
+      font-size: 1.5rem;
+    }
+
+    .primary-button {
+      background-color: $pink-primary-button;
+      color: $main-background-color;
+      transition: .5s;
+      border-radius: 4px;
+      padding: 6px 12px;
+      @include buttonsMetaCapsFontStyles;
+
+      &:hover {
+        background-color: $primary-button-hover;
       }
+    }
 
-      img {
-        width: 100%;
-      }
 
-      .logo {
-        width: 300px;
-        height: 100px;
-        padding: 25px;
-        float: right;
-        margin: 10px;
-      }
+    .edit-user-button:hover,
+    .view-results-button:hover,
+    .download-user-results-button:hover {
+      background-color: $energyGreen;
+      color: $font-color;
+      transition-duration: .5s;
+    }
 
-      p {
-        display: inline;
-        margin: 10px;
-      }
+    .delete-user-button:hover {
+      background-color: $test-not-taken;
+      color: $font-color;
+      transition-duration: .5s;
+    }
 
-      .primary-button {
-        background-color: $primary-button;
-        color: $main-background-color;
-        transition: .5s;
-        border-radius: 0;
-        padding: 6px 12px;
-
-        &:hover {
-          background-color: $primary-button-hover;
-        }
-      }
-
-      .search-heading {
-        font-size: 1.5rem;
-        margin: 0;
-      }
-
+    .search-heading {
+      font-size: 1.5rem;
+      margin: 0;
     }
   }
 }
+
+
