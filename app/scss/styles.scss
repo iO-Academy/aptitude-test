@@ -33,6 +33,10 @@ html {
       @include headingFourFontStyles
     }
 
+    input, select, select:not([multiple]) {
+      border-radius: 4px;
+    }
+
     .container {
 
       input {
@@ -92,8 +96,8 @@ html {
       }
     }
 
-
     .edit-user-button:hover,
+    .more-info-button:hover,
     .view-results-button:hover,
     .download-user-results-button:hover {
       background-color: $energyGreen;
