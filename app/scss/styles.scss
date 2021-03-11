@@ -86,7 +86,7 @@ html {
     .primary-button {
       background-color: $pink-primary-button;
       color: $main-background-color;
-      transition: .5s;
+      transition: .25s;
       border-radius: 4px;
       padding: 6px 12px;
       @include buttonsMetaCapsFontStyles;
@@ -102,13 +102,13 @@ html {
     .download-user-results-button:hover {
       background-color: $energyGreen;
       color: $font-color;
-      transition-duration: .5s;
+      transition-duration: .25s;
     }
 
     .delete-user-button:hover {
       background-color: $test-not-taken;
       color: $font-color;
-      transition-duration: .5s;
+      transition-duration: .25s;
     }
 
     .search-heading {
