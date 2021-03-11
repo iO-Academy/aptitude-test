@@ -41,7 +41,7 @@ select:not([multiple]) {
   background-repeat: no-repeat;
   background-image: url("../images/output-onlinepngtools.png");
   padding: 0.5rem 1.5rem 0.5rem 0.5rem;
-  background-color: $main-background-color;
+  background-color: $white;
 }
 
 .dropdown {
@@ -86,18 +86,13 @@ input {
 }
 
 .table {
-    width: 95%;
-    font-size: 1.5rem;
-    background-color: $white;
+  width: 95%;
+  font-size: 1.5rem;
+  background-color: $white;
 
   .table-columns {
     width: auto;
   }
-}
-
-td {
-  background-color: $white;
-}
 
   .edit-user-button, .delete-user-button, .more-info-button {
     color: $main-background-color;
@@ -122,13 +117,14 @@ td {
     font-size: 1.5rem;
   }
 
-    .email {
-      border-right: none;
-    }
+  .email {
+    border-right: none;
+  }
 
-    td {
-      vertical-align: middle;
-    }
+  td {
+    vertical-align: middle;
+  }
+}
 
 .modify-question-container {
   overflow: auto;
@@ -144,16 +140,16 @@ td {
 }
 
 .test-not-taken {
-  background-color: $coolGrey80;
+  background-color: $white;
 }
 .dubious-grade {
-  background-color: $test-not-taken-button;
+  background-color: $pink-table-grade;
 }
 .passing-grade {
-  background-color: $energyGreen80;
+  background-color: $green-table-grade;
 }
 .top-grade {
-  background-color: $light-purple;
+  background-color: $purple-table-grade;
 }
 
 .new-test-container {
@@ -206,7 +202,7 @@ input[type="number"] {
 .drop-down-info-panel {
   display: flex;
   flex-flow: row nowrap;
-  background-color: purple;
+  //background-color: purple;
 }
 
 .more-info-data {
