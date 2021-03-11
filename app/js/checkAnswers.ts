@@ -136,18 +136,18 @@ function showResults(pageLeft) {
                 document.querySelector<HTMLElement>('.greetings').innerHTML = '<p>Test cancelled!</p>';
                 document.querySelector<HTMLElement>('.email_for_results').innerHTML = `
                 <p>This test has ended because you clicked away from the page</p>
-                <p>Please contact the office at <a href="mailto:hello@mayden.academy">hello@mayden.academy</a> to discuss further</p>`;
+                <p>Please contact the office at <a href="mailto:hello@io-academy.uk">hello@io-academy.uk</a> to discuss further</p>`;
                 result.score = 0;
             } else {
                 document.querySelector<HTMLElement>('.greetings').innerHTML = '<p>Thank You!</p>';
                 document.querySelector<HTMLElement>('.email_for_results').innerHTML = `
                 <p id="completedMessage">You have completed the test!</p>
-                <p>Please contact the office at <a href="mailto:hello@mayden.academy">hello@mayden.academy</a> if you would like to find out your results</p>`;
+                <p>Please contact the office at <a href="mailto:hello@io-academy.uk">hello@io-academy.uk</a> if you would like to find out your results</p>`;
             }
             document.querySelector<HTMLElement>('#question_page').style.display = 'none';
             document.querySelector<HTMLElement>('#overview_page').style.display = 'none';
             document.querySelector<HTMLElement>('#result_page').style.display = 'block';
-            handleResponseFromAPI(sendUserResults(result));
+            handleResponseFromAPI(sendUserResults(result), pageLeft);
         } else {
             let body = document.querySelector('body');
             let html = body.innerHTML;
