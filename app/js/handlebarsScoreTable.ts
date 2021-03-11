@@ -2,7 +2,6 @@ import {BaseUser, User} from "./interfaces/User";
 import {Scores} from "./interfaces/Scores";
 import {UserAnswers} from "./interfaces/UserAnswers";
 
-
 /**
  * Sorts the array of user objects by their 'dateCreated' with the
  * newest at the top
