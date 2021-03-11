@@ -158,7 +158,7 @@ function produceTable (HBTemplate: string, scoresDataObject) {
     addDeleteEventListeners();
     addEventListenersForDownloadButtons();
     addEventListenersForViewResults();
-    showMoreInfoData()
+    addEventListenersForMoreInfoButtons()
 }
 
 function createUserResults(resultData, questionData): Object {
@@ -234,7 +234,7 @@ function addEventListenersForCloseResults() {
     });
 }
 
-function showMoreInfoData() {
+function addEventListenersForMoreInfoButtons() {
     let moreInfoButtons = document.querySelectorAll(".more-info-button")
     moreInfoButtons.forEach(function (moreInfoButton) {
         moreInfoButton.addEventListener('click', function (e: any) {
@@ -247,5 +247,6 @@ function showMoreInfoData() {
             }
         })
     })
+
 }
 updateScoreTable();
