@@ -63,18 +63,18 @@ function printFilteredResultsToScreen(HBTemplate: string, scoresDataArray: Array
  *
  * @param event is the event fired off by the function
  */
-function createObjectFromParentElement(event: Event) {
-    let parentElement = (event.target as HTMLElement);
-    let userTime = parentElement.getAttribute("dataTimeAllowed");
+function createObjectFromElement(event: Event) {
+    let element = (event.target as HTMLElement);
+    let userTime = element.getAttribute("dataTimeAllowed");
     let [ userTimeMinutes, userTimeSeconds ] = userTime.split(":");
     const userInfo: User = {
-        name: parentElement.getAttribute("dataName"),
-        email: parentElement.getAttribute("dataEmail"),
-        id: parentElement.getAttribute("dataId"),
+        name: element.getAttribute("dataName"),
+        email: element.getAttribute("dataEmail"),
+        id: element.getAttribute("dataId"),
         timeMinutes: userTimeMinutes,
         timeSeconds: userTimeSeconds,
-        canRetake: parseInt(parentElement.getAttribute("dataCanRetake")),
-        dataTestId: parentElement.getAttribute("dataTestId"),
+        canRetake: parseInt(element.getAttribute("dataCanRetake")),
+        dataTestId: element.getAttribute("dataTestId"),
     }
 
     return userInfo;
@@ -88,13 +88,14 @@ function addEditEventListeners() {
     editButtons.forEach(function(editButton) {
         editButton.addEventListener('click', function (e) {
             openDialog()
-            let userInfo = createObjectFromParentElement(e)
+            let userInfo = createObjectFromElement(e)
             getData("test").then((data) => {
                 createEditModal(userInfo, data.data)
             })
         })
     })
 }
+
 
 /**
  * Adds event listener to the delete buttons.
