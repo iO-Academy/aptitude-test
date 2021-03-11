@@ -26,10 +26,10 @@ $font-color: rgb(15, 0, 40);
 $question-nav-border: rgba(15, 0, 40, 1);
 $edit-button: rgba(116, 61, 251, 1);
 $failure-message: rgba(198, 56, 6, 1);
-$success-message: rgba(83, 160, 10, 1);
+$success-message: rgba(95, 255, 180, 1);
 $black: rgba(0, 0, 0, 1);
 $test-not-taken-button: rgba(116, 61, 251, 0.40);
-$modal-pale-purple: rgba(116, 61, 251, 0.40);
+$modal-pink-results-card: rgba(255, 51, 102, 1);
 $test-not-taken: rgb(255, 255, 255);
 $purple-button-color: rgba(116, 61, 251, 1);
 $energyGreen: rgba(95, 255, 180, 1);
@@ -43,6 +43,7 @@ $coolGrey15: rgba(224, 232, 242, 0.15);
 $modal-background: rgba(95, 255, 180, 0.15);
 $overlay-background: rgba(0,0,0,0.15);
 $warning-text: rgba(255, 51, 102, 1);
+$purple-error-message: rgba(15, 0, 40, 1);
 
 @mixin headingOneFontStyles {
   font-family: 'Space Grotesk', sans-serif;
