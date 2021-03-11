@@ -1,18 +1,18 @@
 <div class="editmodal" dataId="{{user.id}}">
-    <label>Name:</label>
+    <label class="editUserData">Name:</label>
     <input id="firstName" class="editUserData" type="text" name="name" value="{{user.name}}">
-    <label>Email:</label>
+    <label class="editUserData">Email:</label>
     <input id="email" class="editUserData" type="text" name="email" value="{{user.email}}">
-    <label>Time allowed for test:</label>
+    <label class="editUserData">Time allowed for test:</label>
 
-    <input id="userMinutes" type="number" name="timeMinutes" value="{{user.timeMinutes}}">
-    <input id="userSeconds" type="number" name="timeSeconds" value="{{user.timeSeconds}}">
+    <input id="userMinutes" class="editUserData" type="number" name="timeMinutes" value="{{user.timeMinutes}}">
+    <input id="userSeconds" class="editUserData" type="number" name="timeSeconds" value="{{user.timeSeconds}}">
 
     <input id="id" class="editUserData" type="hidden" name="id" value="{{user.id}}">
     <input id="originalEmail" type="hidden" name="originalEmail" value="{{user.email}}">
     <input id="time" class="editUserData" type="hidden" name="time">
 
-    <label>ID of test allocated</label>
+    <label class="editUserData">ID of test allocated</label>
     <select id="testID" class="editUserData" name="test_id">
         {{#each tests}}
                 <option value="{{id}}">{{name}}</option>
@@ -20,12 +20,14 @@
         <option value="{{defaultTest.id}}" selected>{{defaultTest.name}}</option>
     </select>
 
-    <label>Allow retake (tick to allow):</label>
+    <label class="editUserData">Allow retake (tick to allow):</label>
     <input id="canRetake" type="checkbox" {{#if user.canRetake}}checked{{/if}}>
     
     <div class="message-target">
         <div id="modal_error" class="alert title_input text-wrap" role="alert"></div>
     </div>
 
-    <button id="editSubmit">Submit changes</button>
+    <button class="primary-button" id="editSubmit">Submit changes</button>
 </div>
+
+
