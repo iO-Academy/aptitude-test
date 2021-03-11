@@ -41,7 +41,7 @@ select:not([multiple]) {
   background-repeat: no-repeat;
   background-image: url("../images/output-onlinepngtools.png");
   padding: 0.5rem 1.5rem 0.5rem 0.5rem;
-  background-color: $main-background-color;
+  background-color: $white;
 }
 
 .dropdown {
@@ -86,41 +86,45 @@ input {
 }
 
 .table {
-    font-size: 1.5rem;
-  }
+  width: 95%;
+  font-size: 1.5rem;
+  background-color: $white;
 
   .table-columns {
     width: auto;
   }
 
-  .edit-user-button, .delete-user-button {
+  .edit-user-button, .delete-user-button, .more-info-button {
     color: $main-background-color;
   }
 
-  .edit-user-button {
+  .edit-user-button, .more-info-button {
     background-color: $purple-button-color;
+    @include buttonsMetaFontStyles;
+    font-size: 1.5rem;
   }
 
-  .download-user-results-button {
+  .download-user-results-button, .view-results-button {
+    color: $main-background-color;
     background-color: $purple-button-color;
+    @include buttonsMetaFontStyles;
+    font-size: 1.5rem;
   }
 
   .delete-user-button {
     background-color: $pink-primary-button;
-  }
-
-  .view-results-button {
-    background-color: $purple-button-color;
+    @include buttonsMetaFontStyles;
+    font-size: 1.5rem;
   }
 
   .email {
-    border-right: 1px solid $score-table-border;
+    border-right: none;
   }
 
   td {
     vertical-align: middle;
   }
-
+}
 
 .modify-question-container {
   overflow: auto;
@@ -136,16 +140,16 @@ input {
 }
 
 .test-not-taken {
-  background-color: $coolGrey80;
+  background-color: $white;
 }
 .dubious-grade {
-  background-color: $test-not-taken-button;
+  background-color: $pink-table-grade;
 }
 .passing-grade {
-  background-color: $energyGreen80;
+  background-color: $green-table-grade;
 }
 .top-grade {
-  background-color: $light-purple;
+  background-color: $purple-table-grade;
 }
 
 .new-test-container {
@@ -195,3 +199,16 @@ input[type="number"] {
   }
 }
 
+.drop-down-info-panel {
+  display: flex;
+  flex-flow: row nowrap;
+  //background-color: purple;
+}
+
+.more-info-data {
+  width: 100%;
+}
+
+.unShow {
+    display: none;
+}

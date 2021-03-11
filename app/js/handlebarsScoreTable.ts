@@ -64,7 +64,7 @@ function printFilteredResultsToScreen(HBTemplate: string, scoresDataArray: Array
  * @param event is the event fired off by the function
  */
 function createObjectFromParentElement(event: Event) {
-    let parentElement = (event.target as HTMLElement).parentElement;
+    let parentElement = (event.target as HTMLElement);
     let userTime = parentElement.getAttribute("dataTimeAllowed");
     let [ userTimeMinutes, userTimeSeconds ] = userTime.split(":");
     const userInfo: User = {
@@ -103,7 +103,7 @@ function addDeleteEventListeners() {
     let userItems = document.querySelectorAll(".delete-user-button")
     userItems.forEach(function (userItem) {
         userItem.addEventListener('click', function (e: any) {
-            let userId = e.target.parentElement.getAttribute("dataId")
+            let userId = this.getAttribute("dataId")
             deleteUser(userId)
         })
     })
@@ -158,6 +158,7 @@ function produceTable (HBTemplate: string, scoresDataObject) {
     addDeleteEventListeners();
     addEventListenersForDownloadButtons();
     addEventListenersForViewResults();
+    showMoreInfoData()
 }
 
 function createUserResults(resultData, questionData): Object {
@@ -213,11 +214,11 @@ async function addEventListenersForViewResults() {
         button.addEventListener("click", (e: any) => {
             openViewResultsModal();
             addEventListenersForCloseResults();
-            getData("result?id=" + e.target.parentElement.getAttribute("dataId")).then(resultData => {
+            getData("result?id=" + e.target.getAttribute("dataId")).then(resultData => {
                 getData("question").then(questionData => {
                     resultsTable.innerHTML = template(createUserResults(resultData, questionData));
                 });
-            });
+            }); 
         });
     });
 }
@@ -233,5 +234,13 @@ function addEventListenersForCloseResults() {
     });
 }
 
+function showMoreInfoData() {
+    let moreInfoButtons = document.querySelectorAll(".more-info-button")
+    moreInfoButtons.forEach(function (moreInfoButton) {
+        moreInfoButton.addEventListener('click', function (e: any) {
+            let userId = e.target.parentElement.getAttribute("dataId")
+            document.querySelector('tr[data-id="' + userId + '"]').classList.toggle('hide')
+        })
+    })
+}
 updateScoreTable();
-
