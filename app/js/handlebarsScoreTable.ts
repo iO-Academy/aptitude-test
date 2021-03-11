@@ -240,6 +240,11 @@ function showMoreInfoData() {
         moreInfoButton.addEventListener('click', function (e: any) {
             let userId = e.target.parentElement.getAttribute("dataId")
             document.querySelector('tr[data-id="' + userId + '"]').classList.toggle('hide')
+            if(this.textContent == 'More Info') {
+                this.textContent = 'Less Info';
+            } else {
+                this.textContent = 'More Info';
+            }
         })
     })
 }
