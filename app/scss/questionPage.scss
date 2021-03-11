@@ -209,10 +209,10 @@ img {
 
 .overview_page_table {
   width: 100%;
-  border: solid 2px $pink-primary-button;
+  border: 2px solid $black;
 
   th, td {
-    border: 1px solid darken($table-border, 10%);
+    border: 1px solid $black;
     padding: 2px;
   }
 
@@ -239,6 +239,10 @@ img {
     top: auto;
     display: table-cell;
 
+    .glyphicon-arrow-left {
+      color: $black;
+    }
+
     &-flag:before {
       color: $unanswered-color;
     }
@@ -248,7 +252,7 @@ img {
     }
 
     &-ok:before {
-      color: $answered-color;
+      color: $pink-primary-button;
     }
   }
 }
