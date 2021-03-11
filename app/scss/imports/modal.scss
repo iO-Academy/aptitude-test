@@ -56,10 +56,10 @@
   overflow-y: scroll;
 
   .rightAnswer {
-    background: $success-message;
+    background: $energyGreen;
   }
   .wrongAnswer {
-    background: $failure-message;
+    background: $pink-primary-button;
   }
 }
 
