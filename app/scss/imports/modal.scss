@@ -1,5 +1,4 @@
-$overlay-background: rgba(0,0,0,0.6);
-$modal-background: #ffffff;
+@import "variables";
 
 .overlay {
   background: $overlay-background;
@@ -57,10 +56,10 @@ $modal-background: #ffffff;
   overflow-y: scroll;
 
   .rightAnswer {
-    background: #84de84;
+    background: $success-message;
   }
   .wrongAnswer {
-    background: #dd6664;
+    background: $failure-message;
   }
 }
 

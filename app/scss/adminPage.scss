@@ -14,7 +14,7 @@
 
   label {
     font-size: 1.5rem;
-    font-weight: 400;
+    font-weight: 600;
     margin: 0 0.5rem 0 0;
   }
 
@@ -28,6 +28,8 @@
     &.primary-button {
       font-size: 1.4rem;
       color: $main-background-color;
+      border-radius: 4px;
+      padding: 6px 12px;
     }
   }
 }
@@ -38,8 +40,7 @@ select:not([multiple]) {
   background-position: right 50%;
   background-repeat: no-repeat;
   background-image: url("../images/output-onlinepngtools.png");
-  padding: .5rem;
-  padding-right: 1.5rem;
+  padding: 0.5rem 1.5rem 0.5rem 0.5rem;
   background-color: $main-background-color;
 }
 
@@ -51,6 +52,10 @@ select:not([multiple]) {
   option {
     font-size: 1.5rem;
   }
+}
+
+.dropdown-option {
+  font-size: 1.5rem;
 }
 
 input {
@@ -81,40 +86,68 @@ input {
 }
 
 .table {
-  font-size: 1.5rem;
-  border: none;
-
-    .table-buttons {
-      width: 20%;
-    }
+//<<<<<<< HEAD
+//  font-size: 1.5rem;
+//  border: none;
+//
+//    .table-buttons {
+//      width: 20%;
+//    }
+//=======
+    width: 90%;
+    font-size: 1.5rem;
+  }
+//>>>>>>> c16e80f3182c8aff9018c0fbb72826b38a7d979f
 
     .table-columns {
       width: auto;
     }
 
-    button {
-      color: $main-background-color;
-    }
+//<<<<<<< HEAD
+//    button {
+//      color: $main-background-color;
+//    }
+//
+//    .edit-user-button, .delete-user-button {
+//      color: $main-background-color;
+//    }
+//
+//    .edit-user-button {
+//      background-color: $edit-button;
+//    }
+//
+//    .download-user-results-button {
+//      background-color: $primary-button;
+//    }
+//
+//    .delete-user-button {
+//      background-color: $primary-button-hover;
+//    }
+//
+//    .view-results-button {
+//      background-color: $view-results-button-color;
+//    }
+//=======
+  .edit-user-button, .delete-user-button {
+    color: $main-background-color;
+  }
 
-    .edit-user-button, .delete-user-button {
-      color: $main-background-color;
-    }
+  .edit-user-button {
+    background-color: $purple-button-color;
+  }
 
-    .edit-user-button {
-      background-color: $edit-button;
-    }
+  .download-user-results-button {
+    background-color: $purple-button-color;
+  }
 
-    .download-user-results-button {
-      background-color: $primary-button;
-    }
+  .delete-user-button {
+    background-color: $pink-primary-button;
+  }
 
-    .delete-user-button {
-      background-color: $primary-button-hover;
-    }
-
-    .view-results-button {
-      background-color: $view-results-button-color;
-    }
+  .view-results-button {
+    background-color: $purple-button-color;
+  }
+//>>>>>>> c16e80f3182c8aff9018c0fbb72826b38a7d979f
 
     .email {
       border-right: none;
@@ -123,8 +156,6 @@ input {
     td {
       vertical-align: middle;
     }
-
-}
 
 
 .modify-question-container {
@@ -141,13 +172,13 @@ input {
 }
 
 .test-not-taken {
-  background-color: #ffffff;
+  background-color: $coolGrey80;
 }
 .dubious-grade {
-  background-color: $light-orange;
+  background-color: $test-not-taken-button;
 }
 .passing-grade {
-  background-color: $light-green;
+  background-color: $energyGreen80;
 }
 .top-grade {
   background-color: $light-purple;
@@ -175,7 +206,7 @@ input {
   justify-content: center;
 
   .primary-button.active {
-    background-color: $results-headings;
+    background-color: $purple-button-color;
   }
 
   .greyedOutBtn {
