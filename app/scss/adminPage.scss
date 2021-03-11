@@ -109,12 +109,15 @@ input {
     background-color: $purple-button-color;
     @include buttonsMetaFontStyles;
     font-size: 1.5rem;
+    margin-bottom: 5px;
   }
 
   .delete-user-button {
     background-color: $pink-primary-button;
     @include buttonsMetaFontStyles;
     font-size: 1.5rem;
+    margin-bottom: 5px;
+    margin-top: 5px;
   }
 
   .email {
