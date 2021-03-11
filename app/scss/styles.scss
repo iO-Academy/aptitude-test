@@ -93,6 +93,7 @@ html {
 
       &:hover {
         background-color: $primary-button-hover;
+        color: $main-background-color;
       }
     }
 
@@ -106,7 +107,7 @@ html {
     }
 
     .delete-user-button:hover {
-      background-color: $test-not-taken;
+      background-color: $energyGreen;
       color: $font-color;
       transition-duration: .25s;
     }
