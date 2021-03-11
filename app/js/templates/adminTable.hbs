@@ -1,13 +1,13 @@
 {{#each data}}
 <tr
     {{#if this.topGrade}}
-         class="top-grade first-row"
+         class="top-grade key-user-information-data-row"
     {{else if this.passingGrade}}
-         class="passing-grade first-row"
+         class="passing-grade key-user-information-data-row"
     {{else if this.fail}}
-         class="dubious-grade first-row"
+         class="dubious-grade key-user-information-data-row"
     {{else if this.notTakenYet}}
-         class="test-not-taken first-row"
+         class="test-not-taken key-user-information-data-row"
     {{/if}}>
     <td dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}"  dataPercentage="{{percentage}}" dataTime="{{time}}" dataTimeAllowed="{{timeAllowed}}" dataCanRetake="{{canRetake}}" dataTestId="{{this.testId}}">
        <button class="btn more-info-button btn_height" data-id="{{id}}">More Info</button>
@@ -19,13 +19,13 @@
 </tr>
 <tr data-id="{{id}}"
         {{#if this.topGrade}}
-            class="top-grade secondRow hide"
+            class="top-grade user-information-secondary-data-row hide"
         {{else if this.passingGrade}}
-             class="passing-grade secondRow hide"
+             class="passing-grade user-information-secondary-data-row hide"
         {{else if this.fail}}
-             class="dubious-grade secondRow hide"
+             class="dubious-grade user-information-secondary-data-row hide"
         {{else if this.notTakenYet}}
-             class="test-not-taken secondRow hide"
+             class="test-not-taken user-information-secondary-data-row hide"
         {{/if}}>
         <td>
 {{!--          first column --}}
@@ -77,9 +77,11 @@
                     <td class="categoryName">{{categoryName}}</td>
                 </tr>
                 <tr>
-                    <td class="score">{{score}}</td>
-
-
+                    <td class="score">{{#if testNotTaken}}
+                                          {{testNotTaken}}
+                                      {{else}}
+                                           {{score}}
+                                      {{/if}}</td>
                 </tr>
                 <tr>
                     <td class="testAllocated">{{testAllocated}}</td>
