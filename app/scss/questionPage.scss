@@ -40,6 +40,12 @@ body {
   display: none;
 }
 
+.answers {
+  p {
+    display: block;
+  }
+}
+
 .textBox {
   display: flex;
   flex-direction: column;
