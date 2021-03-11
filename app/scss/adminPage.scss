@@ -86,18 +86,9 @@ input {
 }
 
 .table {
-//<<<<<<< HEAD
-//  font-size: 1.5rem;
-//  border: none;
-//
-//    .table-buttons {
-//      width: 20%;
-//    }
-//=======
     width: 95%;
     font-size: 1.5rem;
-    background-color: #FFFFFF;
-    border: 2px solid $black;
+    background-color: $white;
 
   .table-columns {
     width: auto;
@@ -138,7 +129,6 @@ td {
     td {
       vertical-align: middle;
     }
-
 
 .modify-question-container {
   overflow: auto;
@@ -221,14 +211,6 @@ input[type="number"] {
 
 .more-info-data {
   width: 100%;
-}
-
-.first-row {
-  border-top: 2px solid black;
-}
-
-thead {
-  border-bottom: 2px solid black;
 }
 
 .unShow {
