@@ -158,6 +158,8 @@ img {
   text-align: center;
   font-size: large;
   color: $purple-error-message;
+  display: flex;
+  flex-direction: column;
 }
 
 #flag-checkbox {

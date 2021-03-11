@@ -147,7 +147,7 @@ function showResults(pageLeft) {
             document.querySelector<HTMLElement>('#question_page').style.display = 'none';
             document.querySelector<HTMLElement>('#overview_page').style.display = 'none';
             document.querySelector<HTMLElement>('#result_page').style.display = 'block';
-            handleResponseFromAPI(sendUserResults(result));
+            handleResponseFromAPI(sendUserResults(result), pageLeft);
         } else {
             let body = document.querySelector('body');
             let html = body.innerHTML;

@@ -31,3 +31,10 @@
     margin-bottom: 30px;
   }
 }
+
+.email_for_results {
+  display: flex;
+  flex-direction: column;
+  @include bodyFontStyles;
+  padding-bottom: 25px;
+}

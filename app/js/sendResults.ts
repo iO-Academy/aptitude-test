@@ -28,11 +28,13 @@ function sendUserResults(userResults: Object) {
  *
  * @param promise -  response from resultsPost
  */
-async function handleResponseFromAPI(response: Promise<any>) {
+async function handleResponseFromAPI(response: Promise<any>, pageLeft) {
     let messageToTestTaker = ""
 
     await response.then(function(data)  {
-        if (data.success) {
+        if (data.success && pageLeft) {
+            messageToTestTaker = 'Result of zero has been logged'
+        } else if (data.success) {
             messageToTestTaker = 'Your results have been successfully logged'
         } else {
             messageToTestTaker = 'Error sending your results: Do not close browser! Please find the' +
