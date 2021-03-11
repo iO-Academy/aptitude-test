@@ -33,7 +33,7 @@
                 <h2>Select Test</h2>
                 <div class="search-filter-container">
                     <div class="display-flex">
-                        <select name="testFilter" id="filterTests" class="dropdown">
+                        <select name="testFilter" id="filterTests" class="dropdown custom-select">
                         </select>
                     </div>
                     <h2>Questions</h2>
@@ -44,14 +44,14 @@
                     <tr>
                         <th class="colBtn">Modify Question</th>
                         <th class="colNum">Number</th>
-                        <th>Question</th>
+                        <th class="colBtn" >Question</th>
                     </tr>
                     </thead>
                     <tbody class="tableBody tableList"></tbody>
                 </table>
                 <div class="buttons">
-                    <a id="questionBackBtn" href="javascript:window.history.back();">
-                        <div class="return btn primary-button">Back</div>
+                    <a id="questionBackBtn" class="return btn primary-button" href="javascript:window.history.back();">
+                        Back
                     </a>
                     <a class="btn new-question-button primary-button" href="addQuestion.html">Add new question</a>
                 </div>
