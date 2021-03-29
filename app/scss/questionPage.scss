@@ -69,7 +69,7 @@ html body h2 {
 
 .modify-question-container {
   height: 100%;
-  border: $pink-primary-button solid 2px;
+  border: $primary-button solid 2px;
 }
 
 .question-nav {
@@ -117,7 +117,7 @@ img {
 .prev,
 .next {
   width: 60%;
-  background-color: $pink-primary-button;
+  background-color: $primary-button;
   transition: .5s;
   border: none;
 
@@ -134,7 +134,7 @@ img {
   width: 100%;
 
   .container {
-    border:  2px solid $pink-primary-button;
+    border:  2px solid $primary-button;
     padding: 20px 0;
   }
 }
@@ -155,7 +155,10 @@ img {
   border: none;
   background-color: $overview-button;
 
-  &:hover {
+  &:hover,
+  &:focus,
+  &:active:hover,
+  &:active {
     background-color: $overview-button-hover;
   }
 }
@@ -213,7 +216,7 @@ img {
 
   th, td {
     border: 1px solid $black;
-    padding: 2px;
+    padding: 10px;
   }
 
   .question_id {
@@ -226,33 +229,32 @@ img {
 
   tr:hover {
     cursor: pointer;
-    font-weight: bold;
-    transition: font-weight 0.5s;
+    color: rgba(15,0,40, 0.8);
 
-    td {
-      background-color: lighten($answered-color, 20%);
-      transition: background-color 0.5s;
+    .btn {
+      background: $primary-button-hover;
     }
   }
 
   .glyphicon {
     top: auto;
     display: table-cell;
+    text-align: center;
 
     .glyphicon-arrow-left {
       color: $black;
     }
 
     &-flag:before {
-      color: $unanswered-color;
+      color: $flag-pressed;
     }
 
     &-remove:before {
-      color: $unanswered-color;
+      color: rgba(198, 56, 6, 1);
     }
 
     &-ok:before {
-      color: $pink-primary-button;
+      color: $primary-button;
     }
   }
 }
@@ -261,8 +263,8 @@ img {
   width: 100%;
   display: flex;
   justify-content: center;
-  background-color: $pink-primary-button;
-  color: $flag-pressed;
+  background-color: $primary-button;
+  color: $primary-button-font;
   pointer-events: none;
 }
 
@@ -270,17 +272,19 @@ img {
   text-align: center;
   color: $primary-button-hover;
   margin-top: 50px;
+  display: block;
 }
 
 .finish {
   width: 100%;
-  margin: 50px 0;
-  background-color: $primary-button-hover;
-  color: $flag-pressed;
+  margin: 20px 0;
+  background-color: $energyGreen;
+  color: $black;
+  transition: color .5s;
+  @include buttonsMetaCapsFontStyles;
 
   &:hover {
-    background-color: $pink-primary-button;
-    color: $flag-pressed;
+    color: $white;
   }
 }
 

@@ -51,8 +51,8 @@
       .return {
         align-content: center;
         width: 10%;
-        background-color: $pink-primary-button;
-        color: $main-background-color;
+        background-color: $primary-button;
+        color: $primary-button-font;
         transition: .5s;
         font-size: 1.5rem;
         border-style: none;
@@ -65,7 +65,7 @@
 
       .submit {
         width: 10%;
-        background-color: $pink-primary-button;
+        background-color: $primary-button;
         color: $main-background-color;
         transition: .5s;
         font-size: 1.5rem;

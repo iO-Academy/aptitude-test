@@ -3,48 +3,50 @@
 * {
   box-sizing: border-box;
   font-size: 100%;
+}
+.container {
 
-    .container {
+  .start-button {
+    width: 110px;
+    background: $primary-button;
+    border: none;
+    color: $primary-button-font;
+    padding: 6px 20px;
+    text-decoration: none;
+    transition: .5s;
+    border-radius: 6px;
+    @include buttonsMetaCapsFontStyles;
+    margin-top: 10px;
 
-      .start-button {
-        width: 110px;
-        background: $pink-primary-button;
-        border: 1px solid $main-background-color;
-        color: $main-background-color;
-        padding: 6px 20px;
-        text-decoration: none;
-        transition: .5s;
-        border-radius: 6px;
-        @include buttonsMetaCapsFontStyles;
-
-        &:hover {
-          background-color: $primary-button-hover;
-        }
-      }
-
-      .text-center p {
-        display: block;
-        margin-top: 10px;
-      }
-
-      .warning {
-        color : $warning-text;
-        font-weight: bold;
-      }
-
-      #warningCheckboxLabel {
-        font-size: 0.8em;
-      }
-
-      #email {
-        margin-top: 5%;
-      }
-
-      @media only screen and (max-width: 767px) {
-        .header {
-          margin-top: 85px;
-        }
-      }
+    &:hover {
+      background-color: $primary-button-hover;
     }
   }
+
+  .text-center p {
+    display: block;
+    margin-top: 10px;
+  }
+
+  #warningCheckbox {
+    transform: scale(2);
+    position: relative;
+    top: -10px;
+  }
+
+  #warningCheckboxLabel {
+    font-size: 0.8em;
+  }
+
+  #email {
+    margin-top: 5%;
+  }
+
+  @media only screen and (max-width: 767px) {
+    .header {
+      margin-top: 85px;
+    }
+  }
+}
+
 

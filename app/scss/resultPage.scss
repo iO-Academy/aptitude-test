@@ -6,12 +6,11 @@
 }
 
 .result_card {
-  background-color: $modal-pink-results-card;
   margin: 0 auto 10px;
   width: 700px;
   text-align: center;
+
   #completedMessage {
-    color: $success-message;
     @include headingThreeFontStyles;
     display: block;
   }

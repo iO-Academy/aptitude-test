@@ -74,7 +74,7 @@ html {
     }
 
     p {
-      display: inline;
+      display: inline; // WHY!? im too afraid to change this...
       margin: 10px;
     }
 
@@ -84,16 +84,17 @@ html {
     }
 
     .primary-button {
-      background-color: $pink-primary-button;
-      color: $main-background-color;
+      background-color: $primary-button;
+      color: $primary-button-font;
       transition: .25s;
       border-radius: 4px;
       padding: 6px 12px;
+      border-style: none;
       @include buttonsMetaCapsFontStyles;
 
       &:hover {
         background-color: $primary-button-hover;
-        color: $main-background-color;
+        color: $primary-button-font;
       }
     }
 

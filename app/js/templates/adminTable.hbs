@@ -28,7 +28,6 @@
              class="test-not-taken user-information-secondary-data-row hide"
         {{/if}}>
         <td>
-{{!--          first column --}}
             <table>
                 <tr>
                     <td>
@@ -56,71 +55,45 @@
                 </tr>
             </table>
         </td>
-        <td>
-{{!--          second column --}}
-            <table>
+        <td colspan="4">
+            <table class="col-xs-4">
                 <tr>
-                    <th>Category Name:</th>
-                </tr>
-                <tr>
-                    <th>Score:</td>
-                </tr>
-                <tr>
-                    <th>Test Allocated:</td>
-                </tr>
-            </table>
-        </td>
-        <td>
-{{!--          third column --}}
-            <table>
-                <tr>
+                    <th>Category:</th>
                     <td class="categoryName">{{categoryName}}</td>
                 </tr>
                 <tr>
+                    <th>Score:</th>
                     <td class="score">{{#if testNotTaken}}
-                                          {{testNotTaken}}
-                                      {{else}}
-                                           {{score}}
-                                      {{/if}}</td>
+                        {{testNotTaken}}
+                    {{else}}
+                        {{score}}
+                    {{/if}}</td>
                 </tr>
                 <tr>
+                    <th>Test Allocated:</th>
                     <td class="testAllocated">{{testAllocated}}</td>
                 </tr>
             </table>
-        </td>
-        <td>
-{{!--          forth column --}}
-            <table>
+            <table class="col-xs-4">
                 <tr>
-                    <th>Date:</td>
-                </tr>
-                <tr>
-                    <th>Time Allowed:</td>
-                </tr>
-                <tr>
-                    <th>Time Taken:</td>
-                </tr>
-
-            </table>
-        </td>
-        <td>
-{{!--          fifth column --}}
-            <table>
-                <tr>
+                    <th>Date:</th>
                     <td class="date">{{#if testNotTaken}}
-                                          {{testNotTaken}}
-                                      {{else}}
-                                           {{dateCreated}}
-                                      {{/if}}</td>
+                        {{testNotTaken}}
+                    {{else}}
+                        {{dateCreated}}
+                    {{/if}}</td>
                 </tr>
                 <tr>
+                    <th>Time Allowed:</th>
                     <td class="time">{{timeAllowed}}</td>
                 </tr>
+                {{#if time}}
                 <tr>
+                    <th>Time Taken:</th>
                     <td class="time">{{time}}</td>
                 </tr>
+                {{/if}}
             </table>
         </td>
-</table>
 </tr>
 {{/each}}

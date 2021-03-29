@@ -2,7 +2,7 @@
 
 $unanswered-color: rgba(116, 61, 251, 1);
 $answered-color: rgba(95, 255, 180, 1);
-$main-background-color: rgba(224, 232, 242, 1);
+$main-background-color: #e6edf5;
 $table-border: rgba(255, 51, 102, 1);
 $score-table-border: rgba(224, 232, 242, 1);
 $table-box-shadow: rgba(15, 0, 40, 1);
@@ -10,13 +10,14 @@ $light-red: rgba(255, 51, 102, 0.40);
 $light-orange: rgba(254, 214, 49, 1);
 $light-green: rgba(95, 255, 180, 0.80);
 $light-purple: rgba(116, 61, 251, 1);
-$pink-primary-button: rgba(255, 51, 102, 1);
-$primary-button-hover: rgba(116, 61, 251, 1);
+$primary-button: rgba(116, 61, 251, 1);
+$primary-button-hover: #2b1266;
+$primary-button-font: #fff;
 $view-results-button-color: rgba(95, 255, 180, 0.80);
 $secondary-button: rgba(116, 61, 251, 1);
 $secondary-button-hover: rgba(254, 214, 49, 1);
 $overview-button: rgba(255, 51, 102, 1);
-$overview-button-hover: rgba(116, 61, 251, 1);
+$overview-button-hover: rgba(255, 51, 102, 0.8);
 $flag-color: rgba(116, 61, 251, 1);
 $flag-hover-color: rgba(255, 51, 102, 1);
 $flag-hover-bg-color: rgba(255, 255, 255, 1);
