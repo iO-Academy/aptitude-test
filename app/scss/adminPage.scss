@@ -103,6 +103,7 @@ input {
     color: $primary-button-font;
     @include buttonsMetaFontStyles;
     font-size: 1.5rem;
+    margin-bottom: 5px;
   }
 
   .download-user-results-button, .view-results-button {
@@ -119,7 +120,6 @@ input {
     @include buttonsMetaFontStyles;
     font-size: 1.5rem;
     margin-bottom: 5px;
-    margin-top: 5px;
   }
 
   .email {

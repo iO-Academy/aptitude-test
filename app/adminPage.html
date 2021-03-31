@@ -74,7 +74,7 @@
                         <label for="category_id">Category:</label>
                         <select class="custom-select dropdown-option" id="category_id">
                         </select>
-                        <label for="test_time_minutes">Test Duration (min/sec) :</label>
+                        <label for="test_time_minutes">Test duration (min/sec) :</label>
                         <input type="number" id="user_time_minutes" name="time" value="30">
                         <span class="time-colon">:</span>
                         <input type="number" id="user_time_seconds" name="time" value="00">
@@ -87,17 +87,17 @@
                 <div class="tableContainer">
                     <h2>Scores</h2>
                     <div class="search-filter-container">
-                        <h4 class="search-heading">Search User</h4>
+                        <h4 class="search-heading">Search users</h4>
                         <div class="display-flex">
                             <input type="text" id="searchInput" placeholder="Type name or email">
                             <input type="submit" id="searchSubmit" value="Search" class="btn primary-button">
-                            <input type="submit" id="searchReset" value="Clear Search" class="btn primary-button">
+                            <input type="submit" id="searchReset" value="Clear search" class="btn primary-button">
                         </div>
-                        <h4 class="search-heading">Filter Results</h4>
+                        <h4 class="search-heading">Filter results</h4>
                             <div class="filterContainer">
                                 <div class="filters">
                                     <select name="filterScorePercentage" id="filterScorePercentage" class="dropdown">
-                                        <option value="" disabled selected>Score Percentage</option>
+                                        <option value="" disabled selected>Score percentage</option>
                                         <option value="1">-none-</option>
                                         <option value="2">&lt;70%</option>
                                         <option value="3">70% - 96%</option>
@@ -113,8 +113,8 @@
                                     <input id="endDate" type="date">
                                 </div>
                                 <div class="graphButtons">
-                                    <button id="viewGraph" class="btn primary-button">View Graph</button>
-                                    <button id="viewTable" class="btn primary-button hidden">View Table</button>
+                                    <button id="viewGraph" class="btn primary-button">View graph</button>
+                                    <button id="viewTable" class="btn primary-button hidden">View table</button>
                                 </div>
                             </div>
                     </div>
@@ -137,9 +137,9 @@
                 </div>
                 <section class="categorySection">
                     <form class="categoriesForm">
-                        <h2>Add New Category</h2>
+                        <h2>Add new category</h2>
                         <div class="display-flex">
-                            <label for="categoryName">Category Name :</label>
+                            <label for="categoryName">Category name:</label>
                             <input name="categoryName" type="text" id="categoryName">
                             <input id="addCategory" type="submit" class="btn primary-button submit" value="Add new category">
                         </div>
@@ -157,9 +157,9 @@
                 <form class="new-test-container" id="testForm" method="post">
                     <h2>Add new test</h2>
                     <div class="display-flex">
-                        <label for="testName">Test Name :</label>
+                        <label for="testName">Test name:</label>
                         <input name="testName" type="text" id="testName">
-                        <label for="test_time_minutes">Test Duration (min/sec) :</label>
+                        <label for="test_time_minutes">Test duration (min/sec) :</label>
                         <input type="number" id="test_time_minutes" name="time" value="30">
                         <span class="time-colon">:</span>
                         <input type="number" id="test_time_seconds" name="time" value="00">
@@ -171,9 +171,9 @@
                 </form>
                 <div class="modify-question-container">
                     <h2>Modify questions</h2>
-                    <h4 class="search-heading">Current Question Count: <span id="question-count"></span></h4>
+                    <h4 class="search-heading">Current question count: <span id="question-count"></span></h4>
                     <a class="btn primary-button new-question-button" href="addQuestion.html">Add new question</a>
-                    <a class="btn primary-button new-question-button" id="linkToViewQuestions" href="viewQuestions.html">View All Questions</a>
+                    <a class="btn primary-button new-question-button" id="linkToViewQuestions" href="viewQuestions.html">View all questions</a>
                 </div>
             </div>
         </div>

@@ -241,10 +241,10 @@ function addEventListenersForMoreInfoButtons() {
         moreInfoButton.addEventListener('click', function (e: any) {
             let userId = e.target.parentElement.getAttribute("dataId")
             document.querySelector('tr[data-id="' + userId + '"]').classList.toggle('hide')
-            if(this.textContent == 'More Info') {
-                this.textContent = 'Less Info';
+            if(this.textContent == 'More info') {
+                this.textContent = 'Less info';
             } else {
-                this.textContent = 'More Info';
+                this.textContent = 'More info';
             }
         })
     })

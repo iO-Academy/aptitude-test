@@ -7,7 +7,6 @@
 .container {
 
   .start-button {
-    width: 110px;
     background: $primary-button;
     border: none;
     color: $primary-button-font;
@@ -15,7 +14,7 @@
     text-decoration: none;
     transition: .5s;
     border-radius: 6px;
-    @include buttonsMetaCapsFontStyles;
+    @include buttonsMetaFontStyles;
     margin-top: 10px;
 
     &:hover {
@@ -28,14 +27,23 @@
     margin-top: 10px;
   }
 
+  .text-danger.warning {
+    margin: 40px 0;
+  }
+
   #warningCheckbox {
-    transform: scale(2);
+    transform: scale(1.5);
     position: relative;
-    top: -10px;
+    left: 5px;
   }
 
   #warningCheckboxLabel {
-    font-size: 0.8em;
+    font-size: 0.6em;
+    font-weight: normal;
+  }
+
+  #logInForm label {
+    font-weight: normal;
   }
 
   #email {

@@ -10,7 +10,7 @@
          class="test-not-taken key-user-information-data-row"
     {{/if}}>
     <td dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}"  dataPercentage="{{percentage}}" dataTime="{{time}}" dataTimeAllowed="{{timeAllowed}}" dataCanRetake="{{canRetake}}" dataTestId="{{this.testId}}">
-       <button class="btn more-info-button btn_height" data-id="{{id}}">More Info</button>
+       <button class="btn more-info-button btn_height" data-id="{{id}}">More info</button>
      </td>
      <td class="name">{{name}}</td>
      <td class="email">{{email}}</td>
@@ -31,26 +31,26 @@
             <table>
                 <tr>
                     <td>
-                        <button dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}"  dataPercentage="{{percentage}}" dataTime="{{time}}" dataTimeAllowed="{{timeAllowed}}" dataCanRetake="{{canRetake}}" dataTestId="{{this.testId}}" class="btn edit-user-button btn_height modalBtn">Edit User</button>
+                        <button dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}"  dataPercentage="{{percentage}}" dataTime="{{time}}" dataTimeAllowed="{{timeAllowed}}" dataCanRetake="{{canRetake}}" dataTestId="{{this.testId}}" class="btn edit-user-button btn_height modalBtn">Edit user</button>
                     </td>
                 </tr>
+                {{#unless testNotTaken}}
                 <tr>
-                    <td>
-                        <button dataId="{{id}}" class="btn delete-user-button btn_height">Delete User</button>
+                    <td dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}"  dataPercentage="{{percentage}}" dataTime="{{time}}" dataTimeAllowed="{{timeAllowed}}" dataCanRetake="{{canRetake}}" dataTestId="{{this.testId}}">
+                        <button dataId="{{id}}" class="btn download-user-results-button btn_height">Download results</button>
                     </td>
                 </tr>
-                    {{#unless testNotTaken}}
-                           <td dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}"  dataPercentage="{{percentage}}" dataTime="{{time}}" dataTimeAllowed="{{timeAllowed}}" dataCanRetake="{{canRetake}}" dataTestId="{{this.testId}}">
-                                    <button dataId="{{id}}" class="btn download-user-results-button btn_height">Download Results</button>
-                                </td>
-                     {{/unless}}
-                <tr>
-                </tr>
+                {{/unless}}
+                {{#unless testNotTaken}}
                 <tr>
                     <td>
-                    {{#unless testNotTaken}}
-                           <button dataId="{{id}}" class="btn view-results-button btn_height">View Results</button>
-                     {{/unless}}
+                       <button dataId="{{id}}" class="btn view-results-button btn_height">View results</button>
+                    </td>
+                </tr>
+                {{/unless}}
+                <tr>
+                    <td>
+                        <button dataId="{{id}}" class="btn delete-user-button btn_height">Delete user</button>
                     </td>
                 </tr>
             </table>
@@ -70,7 +70,7 @@
                     {{/if}}</td>
                 </tr>
                 <tr>
-                    <th>Test Allocated:</th>
+                    <th>Test allocated:</th>
                     <td class="testAllocated">{{testAllocated}}</td>
                 </tr>
             </table>
@@ -84,12 +84,12 @@
                     {{/if}}</td>
                 </tr>
                 <tr>
-                    <th>Time Allowed:</th>
+                    <th>Time allowed:</th>
                     <td class="time">{{timeAllowed}}</td>
                 </tr>
                 {{#if time}}
                 <tr>
-                    <th>Time Taken:</th>
+                    <th>Time taken:</th>
                     <td class="time">{{time}}</td>
                 </tr>
                 {{/if}}

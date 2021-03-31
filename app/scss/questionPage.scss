@@ -268,10 +268,13 @@ img {
   pointer-events: none;
 }
 
+.overview_footer .col-md-4 {
+  margin-top: 50px;
+}
+
 .overview_footer p {
   text-align: center;
   color: $primary-button-hover;
-  margin-top: 50px;
   display: block;
 }
 
@@ -281,7 +284,8 @@ img {
   background-color: $energyGreen;
   color: $black;
   transition: color .5s;
-  @include buttonsMetaCapsFontStyles;
+  @include buttonsMetaFontStyles;
+  font-size: 2em;
 
   &:hover {
     color: $white;

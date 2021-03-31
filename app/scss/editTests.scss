@@ -22,7 +22,7 @@
     background-color: $primary-button;
     color: $primary-button-font;
     border: none;
-    @include buttonsMetaCapsFontStyles;
+    @include buttonsMetaFontStyles;
 
     &:hover {
       background: $primary-button-hover;
@@ -74,7 +74,7 @@
   border-style: none;
   padding: 1rem;
   margin: 0 1rem;
-  @include buttonsMetaCapsFontStyles;
+  @include buttonsMetaFontStyles;
 
   &:hover {
     background: $primary-button-hover;
