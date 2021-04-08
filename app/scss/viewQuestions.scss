@@ -1,13 +1,20 @@
 .panel-title {
   display: flex;
   justify-content: space-between;
+
   .testTitle {
     font-size: 2rem;
     cursor: pointer;
+
+    span {
+      margin-left: 5px;
+    }
   }
+
   button {
     font-size: 2rem;
     cursor: pointer;
+
     a {
       text-decoration: none;
       color: white;

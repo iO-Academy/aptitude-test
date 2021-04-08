@@ -3,47 +3,58 @@
 * {
   box-sizing: border-box;
   font-size: 100%;
+}
+.container {
 
-    .container {
+  .start-button {
+    background: $primary-button;
+    border: none;
+    color: $primary-button-font;
+    padding: 6px 20px;
+    text-decoration: none;
+    transition: .5s;
+    border-radius: 6px;
+    @include buttonsMetaFontStyles;
+    margin-top: 10px;
 
-      .start-button {
-        width: 110px;
-        background: $primary-button;
-        border: 1px solid $main-background-color;
-        color: $main-background-color;
-        font-size: 15px;
-        padding: 6px 20px;
-        text-decoration: none;
-        transition: .5s;
-
-        &:hover {
-          background-color: $primary-button-hover;
-        }
-      }
-
-      .text-center p {
-        display: block;
-        margin-top: 10px;
-      }
-
-      .warning {
-        color : #ff0000;
-        font-weight: bold;
-      }
-
-      #warningCheckboxLabel {
-        font-size: 0.8em;
-      }
-
-      #email {
-        margin-top: 5%;
-      }
-
-      @media only screen and (max-width: 767px) {
-        .header {
-          margin-top: 85px;
-        }
-      }
+    &:hover {
+      background-color: $primary-button-hover;
     }
   }
+
+  .text-center p {
+    display: block;
+    margin-top: 10px;
+  }
+
+  .text-danger.warning {
+    margin: 40px 0;
+  }
+
+  #warningCheckbox {
+    transform: scale(1.5);
+    position: relative;
+    left: 5px;
+  }
+
+  #warningCheckboxLabel {
+    font-size: 0.6em;
+    font-weight: normal;
+  }
+
+  #logInForm label {
+    font-weight: normal;
+  }
+
+  #email {
+    margin-top: 5%;
+  }
+
+  @media only screen and (max-width: 767px) {
+    .header {
+      margin-top: 85px;
+    }
+  }
+}
+
 

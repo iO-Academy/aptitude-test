@@ -14,16 +14,30 @@
 .table {
   table-layout: fixed;
 
-  .edit-question, .delete-question {
-    color: $main-background-color;
+  .colBtn {
+    width: 250px;
   }
 
   .edit-question {
-    background-color: $edit-button;
+    background-color: $primary-button;
+    color: $primary-button-font;
+    border: none;
+    @include buttonsMetaFontStyles;
+
+    &:hover {
+      background: $primary-button-hover;
+    }
   }
 
   .delete-question {
-    background-color: $primary-button-hover;
+    background-color: $primary-button;
+    color: $primary-button-font;
+    border: none;
+    @include buttonsMetaCapsFontStyles;
+
+    &:hover {
+      background: $primary-button-hover;
+    }
   }
 }
 
@@ -53,15 +67,20 @@
 .container .buttons .btn {
   align-content: center;
   width: 15%;
-  background-color: #8d0377;
-  color: #fff;
+  background-color: $primary-button;
+  color: $primary-button-font;
   transition: .5s;
   font-size: 1.5rem;
   border-style: none;
   padding: 1rem;
   margin: 0 1rem;
+  @include buttonsMetaFontStyles;
+
+  &:hover {
+    background: $primary-button-hover;
+  }
 }
 
 .container .buttons .return:hover {
-  background-color: #c63806;
+  background-color: $primary-button-hover;
 }

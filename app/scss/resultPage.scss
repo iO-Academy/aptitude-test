@@ -1,28 +1,18 @@
 @import "imports/variables";
-
-html {
-  font-size: 62.5%;
-  font-family: asap, sans-serif;
-}
-
-body {
-  background-color: $main-background-color;
-  font-size: 14px;
-  font-size: 1.4rem;
-}
+@import "styles";
 
 #result_page {
   display: none;
 }
 
 .result_card {
-  background-color: #fff;
   margin: 0 auto 10px;
   width: 700px;
   text-align: center;
+
   #completedMessage {
-    color: #4cae4c;
-    font-size: 4em;
+    @include headingThreeFontStyles;
+    display: block;
   }
 
 }
@@ -35,8 +25,15 @@ body {
     width: 100%;
     text-align: center;
     color: $font-color;
-    font-size: 4rem;
+    @include bodyFontStyles;
     letter-spacing: 1px;
     margin-bottom: 30px;
   }
+}
+
+.email_for_results {
+  display: flex;
+  flex-direction: column;
+  @include bodyFontStyles;
+  padding-bottom: 25px;
 }

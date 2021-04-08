@@ -16,7 +16,7 @@ Handlebars.registerHelper('ifNotEquals', function(arg1, arg2, options) {
 function getBaseUrl(): string {
     let isProd = false
     if(isProd) {
-        return 'http://dev.maydenacademy.co.uk/projects/2017/aptitude-test/api/public/'
+        return 'https://api.aptitude-test.dev.io-academy.uk/'
     } else {
         return 'http://localhost:8080/'
     }

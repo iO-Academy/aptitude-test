@@ -2,8 +2,8 @@
 @import "imports/modal";
 
 body {
-  font-family: asap, sans-serif;
   padding-bottom: 150px;
+  @include bodyFontStyles;
 }
 
 .left {
@@ -40,6 +40,12 @@ body {
   display: none;
 }
 
+.answers {
+  p {
+    display: block;
+  }
+}
+
 .textBox {
   display: flex;
   flex-direction: column;
@@ -49,8 +55,12 @@ body {
   }
 }
 
-h4 {
-  font-size: 24px;
+h4, p {
+  font-size: 1.5rem;
+}
+
+html body h2 {
+  font-size: 2.8rem;
 }
 
 #question-counter {
@@ -66,14 +76,16 @@ h4 {
   height: 60px;
   margin: 20px 0 20px;
   text-align: center;
+  display: flex;
+  flex-direction: row;
 }
 
 .question-nav div {
   position: relative;
-  width: 25px;
+  width: 90%;
   padding: 8px 0 32px;
-  display: inline-block;
-  color: #000000;
+  color: $white;
+  font-size: 1.5rem;
   text-decoration: none;
   cursor: pointer;
 }
@@ -102,19 +114,11 @@ img {
   margin: 0 10px;
 }
 
-.prev {
-  width: 60%;
-  background-color: $primary-button;
-  border: none;
-
-  &:hover {
-    background-color: $primary-button-hover;
-  }
-}
-
+.prev,
 .next {
   width: 60%;
   background-color: $primary-button;
+  transition: .5s;
   border: none;
 
   &:hover {
@@ -139,7 +143,8 @@ img {
   text-align: center;
 
   button {
-    width: 90%
+    width: 90%;
+    @include buttonsMetaCapsFontStyles;
   }
 }
 
@@ -150,7 +155,10 @@ img {
   border: none;
   background-color: $overview-button;
 
-  &:hover {
+  &:hover,
+  &:focus,
+  &:active:hover,
+  &:active {
     background-color: $overview-button-hover;
   }
 }
@@ -158,6 +166,9 @@ img {
 .error_message {
   text-align: center;
   font-size: large;
+  color: $purple-error-message;
+  display: flex;
+  flex-direction: column;
 }
 
 #flag-checkbox {
@@ -166,20 +177,32 @@ img {
 
 #flag-button {
   color: $flag-color;
-  border: 2px solid $flag-color
+  border: 2px solid $flag-color;
+  transition: .2s;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: $flag-hover-color;
+    color: $flag-hover-bg-color;
+    border: 2px solid $flag-hover-bg-color;
+    border-radius: 4px;
+  }
 }
 
 .pressed {
   background-color: $flag-color;
 
   i {
-    color: $flag-pressed;
+    color: $flag-hover-bg-color;
   }
 
   &:hover {
     color: darken($flag-pressed, 10%);
+    border: 2px solid $flag-pressed;
+    border-radius: 4px;
   }
 }
+
 
 //======== O V E R V I E W    P A G E ========//
 #overview_page {
@@ -189,11 +212,11 @@ img {
 
 .overview_page_table {
   width: 100%;
-  border: solid 2px $primary-button;
+  border: 2px solid $black;
 
   th, td {
-    border: 1px solid darken($table-border, 10%);
-    padding: 2px;
+    border: 1px solid $black;
+    padding: 10px;
   }
 
   .question_id {
@@ -206,29 +229,32 @@ img {
 
   tr:hover {
     cursor: pointer;
-    font-weight: bold;
-    transition: font-weight 0.5s;
+    color: rgba(15,0,40, 0.8);
 
-    td {
-      background-color: lighten($answered-color, 20%);
-      transition: background-color 0.5s;
+    .btn {
+      background: $primary-button-hover;
     }
   }
 
   .glyphicon {
     top: auto;
     display: table-cell;
+    text-align: center;
+
+    .glyphicon-arrow-left {
+      color: $black;
+    }
 
     &-flag:before {
-      color: $unanswered-color;
+      color: $flag-pressed;
     }
 
     &-remove:before {
-      color: $unanswered-color;
+      color: rgba(198, 56, 6, 1);
     }
 
     &-ok:before {
-      color: $answered-color;
+      color: $primary-button;
     }
   }
 }
@@ -238,25 +264,31 @@ img {
   display: flex;
   justify-content: center;
   background-color: $primary-button;
-  color: $flag-pressed;
+  color: $primary-button-font;
   pointer-events: none;
+}
+
+.overview_footer .col-md-4 {
+  margin-top: 50px;
 }
 
 .overview_footer p {
   text-align: center;
   color: $primary-button-hover;
-  margin-top: 50px;
+  display: block;
 }
 
 .finish {
   width: 100%;
-  margin: 50px 0;
-  background-color: $primary-button-hover;
-  color: $flag-pressed;
+  margin: 20px 0;
+  background-color: $energyGreen;
+  color: $black;
+  transition: color .5s;
+  @include buttonsMetaFontStyles;
+  font-size: 2em;
 
   &:hover {
-    background-color: $primary-button;
-    color: $flag-pressed;
+    color: $white;
   }
 }
 
@@ -271,6 +303,9 @@ img {
 
 .answered-nav-box {
   background-color: $answered-color;
+  p {
+    color: $font-color;
+  }
 }
 
 .question-nav .current-nav-box {

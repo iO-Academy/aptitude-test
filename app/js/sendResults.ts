@@ -28,15 +28,17 @@ function sendUserResults(userResults: Object) {
  *
  * @param promise -  response from resultsPost
  */
-async function handleResponseFromAPI(response: Promise<any>) {
+async function handleResponseFromAPI(response: Promise<any>, pageLeft) {
     let messageToTestTaker = ""
 
     await response.then(function(data)  {
-        if (data.success) {
-            messageToTestTaker = 'Your results have been successfully logged'
+        if (data.success && pageLeft) {
+            messageToTestTaker = '' // show no message
+        } else if (data.success) {
+            messageToTestTaker = '' // show no message
         } else {
-            messageToTestTaker = 'Error sending your results: Do not close browser! Please find the' +
-                ' nearest member of staff and show them this screen'
+            messageToTestTaker = 'Error saving your results: <strong>Do not close the browser!</strong> Please contact us' +
+                ' and show us this screen.'
         }
     })
     document.querySelector('body').innerHTML += '<p class="error_message text-danger">' + messageToTestTaker +'</p>'

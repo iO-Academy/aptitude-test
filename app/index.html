@@ -16,33 +16,32 @@
 </head>
 <body>
 <div class="container">
-    <img class="logo" alt="Mayden Logo" src="images/branding-icons/maydenacademy_logotype_05.18_web.svg">
+    <img class="logo" alt="iO Academy Logo" src="./images/logos/SVGs/iO_Logo_Alt.svg">
     <div class="col-sm-12 text-center">
-        <div class="col-sm-offset-34col-sm-9 text-center">
-            <h3 class="index-header">Welcome to the Mayden<sup>®</sup> Academy Aptitude Test</h3>
-            <span class="warning">
-                <p>-WARNING-</p>
-                <p>Please do not refresh or move away from the page while you are taking the test.</p>
-                <p>If you don't stay on the page, the test will end and your score will be set to 0.</p>
-            </span>
-            <em>Please enter your email address </em>
+        <h3 class="index-header">Welcome to the iO Academy aptitude test</h3>
+        <div class="text-danger warning">
+            <p>-WARNING-</p>
+            <p>Please do not refresh or move away from the page while you are taking the test.</p>
+            <p>If you don't stay on the page, the test will end and your score will be set to 0.</p>
         </div>
-        <form class="col-sm-4 col-sm-offset-4 form-horizontal" id="logInForm">
+        <form class="form-horizontal" id="logInForm">
             <div class="form-group">
-                <div class="col-sm-12">
+                <div class="col-sm-6 col-sm-offset-3">
+                    <label for="email">Please enter your email address</label>
+                </div>
+                <div class="col-sm-4 col-sm-offset-4">
                     <input type="email" class="form-control" id="email" placeholder="Email">
                 </div>
             </div>
             <p class="invalidLogin"></p>
 
-
             <div class="form-group">
                 <div>
-                    <label id="warningCheckboxLabel" for="warningCheckbox">Please check the box to confirm that you have read and understood the warning message.</label>
+                    <label id="warningCheckboxLabel" for="warningCheckbox">Please check the box to confirm that you have read and understood the warning message</label>
                     <input type="checkbox" id="warningCheckbox" value="yes" required>
                 </div>
-                <div class="col-sm-offset-4 col-sm-1">
-                    <button type="submit" class="start-button">Start Test</button>
+                <div>
+                    <button type="submit" class="start-button">Start test</button>
                 </div>
             </div>
         </form>

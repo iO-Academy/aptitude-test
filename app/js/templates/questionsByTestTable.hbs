@@ -4,7 +4,7 @@
             <a class="testTitle" role="button" data-toggle="collapse"  href="#{{this.testId}}">{{this.testname}}<span class="glyphicon glyphicon-menu-down" aria-hidden="true"></span>
             </a>
             <button class="btn btn_height primary-button">
-                <a class="editTestsLink" href="editTests.html#{{this.testId}}">Edit Test</a>
+                <a class="editTestsLink" href="editTests.html#{{this.testId}}">Edit test</a>
             </button>
         </h2>
     </div>
@@ -20,7 +20,7 @@
                 {{#each data}}
                     <tr>
                         <td data-id="{{id}}" data-question="{{text}}" class="btnContainer">
-                            <button class="btn btn_height edit-question">Edit</button>
+                            <button class="btn btn-primary edit-question">Edit</button>
                         </td>
                         <td class="questionNumber">{{this.id}}</td>
                         <td class="questionText">{{this.text}}</td>

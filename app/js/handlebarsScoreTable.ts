@@ -63,18 +63,18 @@ function printFilteredResultsToScreen(HBTemplate: string, scoresDataArray: Array
  *
  * @param event is the event fired off by the function
  */
-function createObjectFromParentElement(event: Event) {
-    let parentElement = (event.target as HTMLElement).parentElement;
-    let userTime = parentElement.getAttribute("dataTimeAllowed");
+function createObjectFromElement(event: Event) {
+    let element = (event.target as HTMLElement);
+    let userTime = element.getAttribute("dataTimeAllowed");
     let [ userTimeMinutes, userTimeSeconds ] = userTime.split(":");
     const userInfo: User = {
-        name: parentElement.getAttribute("dataName"),
-        email: parentElement.getAttribute("dataEmail"),
-        id: parentElement.getAttribute("dataId"),
+        name: element.getAttribute("dataName"),
+        email: element.getAttribute("dataEmail"),
+        id: element.getAttribute("dataId"),
         timeMinutes: userTimeMinutes,
         timeSeconds: userTimeSeconds,
-        canRetake: parseInt(parentElement.getAttribute("dataCanRetake")),
-        dataTestId: parentElement.getAttribute("dataTestId"),
+        canRetake: parseInt(element.getAttribute("dataCanRetake")),
+        dataTestId: element.getAttribute("dataTestId"),
     }
 
     return userInfo;
@@ -88,13 +88,14 @@ function addEditEventListeners() {
     editButtons.forEach(function(editButton) {
         editButton.addEventListener('click', function (e) {
             openDialog()
-            let userInfo = createObjectFromParentElement(e)
+            let userInfo = createObjectFromElement(e)
             getData("test").then((data) => {
                 createEditModal(userInfo, data.data)
             })
         })
     })
 }
+
 
 /**
  * Adds event listener to the delete buttons.
@@ -103,7 +104,7 @@ function addDeleteEventListeners() {
     let userItems = document.querySelectorAll(".delete-user-button")
     userItems.forEach(function (userItem) {
         userItem.addEventListener('click', function (e: any) {
-            let userId = e.target.parentElement.getAttribute("dataId")
+            let userId = this.getAttribute("dataId")
             deleteUser(userId)
         })
     })
@@ -158,6 +159,7 @@ function produceTable (HBTemplate: string, scoresDataObject) {
     addDeleteEventListeners();
     addEventListenersForDownloadButtons();
     addEventListenersForViewResults();
+    addEventListenersForMoreInfoButtons()
 }
 
 function createUserResults(resultData, questionData): Object {
@@ -213,11 +215,11 @@ async function addEventListenersForViewResults() {
         button.addEventListener("click", (e: any) => {
             openViewResultsModal();
             addEventListenersForCloseResults();
-            getData("result?id=" + e.target.parentElement.getAttribute("dataId")).then(resultData => {
+            getData("result?id=" + e.target.getAttribute("dataId")).then(resultData => {
                 getData("question").then(questionData => {
                     resultsTable.innerHTML = template(createUserResults(resultData, questionData));
                 });
-            });
+            }); 
         });
     });
 }
@@ -233,5 +235,19 @@ function addEventListenersForCloseResults() {
     });
 }
 
-updateScoreTable();
+function addEventListenersForMoreInfoButtons() {
+    let moreInfoButtons = document.querySelectorAll(".more-info-button")
+    moreInfoButtons.forEach(function (moreInfoButton) {
+        moreInfoButton.addEventListener('click', function (e: any) {
+            let userId = e.target.parentElement.getAttribute("dataId")
+            document.querySelector('tr[data-id="' + userId + '"]').classList.toggle('hide')
+            if(this.textContent == 'More info') {
+                this.textContent = 'Less info';
+            } else {
+                this.textContent = 'More info';
+            }
+        })
+    })
 
+}
+updateScoreTable();
