@@ -195,7 +195,8 @@ input[type="number"] {
 }
 
 .categoryItem {
-  min-height: 56px;
+  font-size: 2rem;
+
   .deleteCategory {
     margin-left: 30px;
   }
@@ -208,4 +209,8 @@ input[type="number"] {
 
 .more-info-data {
   width: 100%;
+}
+
+.user-information-secondary-data-row {
+  border-bottom: 3px solid #ddd;
 }
