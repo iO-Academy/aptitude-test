@@ -102,6 +102,8 @@ GET
 POST
 - Save question answers.
 - `{"uid":"1", "answers": {"1": "4", "2": "3"}, "score":"24", "testLength":"30", "time":"29.55"}`.
+  - Optionally you can add the "autoCompleted" property to the object with a value of 1, to signal that a test has been auto-finished by the cheat detection
+  - `{"uid":"1", "answers": {"1": "4", "2": "3"}, "score":"24", "testLength":"30", "time":"29.55", "autoCompleted":1}`
 - Returns success/fail state.
 
 **/answer/{qid}**

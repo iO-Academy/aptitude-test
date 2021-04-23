@@ -124,6 +124,7 @@ CREATE TABLE `result` (
   `time` float(4,2) NOT NULL,
   `dateCreated` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `testLength` int(11) NOT NULL,
+  `autoCompleted` int(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

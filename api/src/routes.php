@@ -488,14 +488,19 @@ $app->post('/answer', function ($request, $response, $args) {
 
     $answers = json_encode($postData['answers']);
 
+    if (!isset($postData['autoCompleted']) || $postData['autoCompleted'] != 1) {
+        $postData['autoCompleted'] = 0;
+    }
+
     try {
-        $query = "INSERT INTO `result` (`uid`, `answers`, `score`, `testLength`, `time`) VALUES (:uid, :answers, :score, :testLength, :time);";
+        $query = "INSERT INTO `result` (`uid`, `answers`, `score`, `testLength`, `time`, `autoCompleted`) VALUES (:uid, :answers, :score, :testLength, :time, :autoCompleted);";
         $query = $this->db->prepare($query);
         $query->bindParam(':uid', $postData['uid']);
         $query->bindParam(':answers', $answers);
         $query->bindParam(':score', $postData['score']);
         $query->bindParam(':testLength', $postData['testLength']);
         $query->bindParam(':time', $postData['time']);
+        $query->bindParam(':autoCompleted', $postData['autoCompleted']);
         $query->execute();
 
     } catch(Exception $e) {
@@ -517,7 +522,7 @@ $app->get('/result', function ($request, $response, $args) {
 
     if (!empty($uid)) {
         try {
-            $query = "SELECT `uid` as 'id', `id` as `resultId`, `answers`, `userTestNotes`, `score`, `testLength`, `time`, `dateCreated` from `result` WHERE `uid` = :uid;";
+            $query = "SELECT `uid` as 'id', `id` as `resultId`, `answers`, `userTestNotes`, `score`, `testLength`, `time`, `dateCreated`, `autoCompleted` from `result` WHERE `uid` = :uid;";
             $query = $this->db->prepare($query);
             $query->bindParam(':uid', $uid);
             $query->execute();
@@ -530,7 +535,7 @@ $app->get('/result', function ($request, $response, $args) {
         }
     } else {
         try {
-            $query = "SELECT `uid` as 'id', `id` as `resultId`, `answers`, `userTestNotes`, `score`, `testLength`, `time`, `dateCreated` from `result`;";
+            $query = "SELECT `uid` as 'id', `id` as `resultId`, `answers`, `userTestNotes`, `score`, `testLength`, `time`, `dateCreated`, `autoCompleted` from `result`;";
             $query = $this->db->prepare($query);
             $query->execute();
             $result = $query->fetchAll(PDO::FETCH_ASSOC);
