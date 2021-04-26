@@ -1,10 +1,14 @@
+let count: number = 0;
+
 function pageLeaveAlert() {
-    alert ('Beware, if you leave the page the test will end!')
+    if (count < 2) {
+        count ++;
+        alert ('WARNING, stay in this window or you will fail the test!')
+    }
 }
 
 function cancelTest() {
     if (document.visibilityState === "hidden") {
-        console.log('cancel')
         let pageLeft: boolean = true
         finishTest(pageLeft)
     }
@@ -12,4 +16,5 @@ function cancelTest() {
 
 document.body.addEventListener("mouseleave", pageLeaveAlert);
 document.addEventListener("visibilitychange", cancelTest);
+
 
