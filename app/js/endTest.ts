@@ -13,7 +13,6 @@ function alertTimes() {
 
 function cancelTest() {
     if (document.visibilityState === "hidden") {
-        console.log('cancel')
         let pageLeft: boolean = true
         finishTest(pageLeft)
     }
