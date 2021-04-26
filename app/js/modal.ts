@@ -56,6 +56,7 @@ function createEditModal(userInfo: BaseUser, tests: Array<Test>) {
     })
     .then(() => {
         addEditModalSubmitEventListener()
+        changeNewUserCategoryDropdown()
     })
 }
 
@@ -93,6 +94,7 @@ function addEditModalSubmitEventListener() {
         let timeSeconds = document.querySelector<HTMLInputElement>('#userSeconds').value;
         let timeTotal = document.querySelector<HTMLInputElement>('#time');
         let originalEmail = document.querySelector<HTMLInputElement>("#originalEmail").value;
+        let changeCategory = document.querySelector<HTMLInputElement>("#changeCategory").value;
         let errorField = document.querySelector('#modal_error');
 
         timeTotal.value = (convertToTotalTimeSeconds(timeMinutes, timeSeconds) as any as string);

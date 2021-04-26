@@ -14,6 +14,7 @@ function populateTestDropdowns () {
         getTemplateAjax('js/templates/testDropdown.hbs').then((HBTemplate) => {
             let template: Function = Handlebars.compile(HBTemplate);
             document.querySelector<HTMLElement>('#test_id').innerHTML = template(testsObject);
+
             document.querySelector<HTMLElement>('#linkToEditTestsBtn').setAttribute('href', `editTests.html#${testsObject.data[0].id}`);
 
             document.querySelectorAll(".test_options").forEach((test_option: HTMLInputElement) => {
