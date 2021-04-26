@@ -1,13 +1,9 @@
-let count = 0;
+let count: number = 0;
 
 function pageLeaveAlert() {
-    count ++;
-    alert ('WARNING, stay in this window or you will fail the test!')
-}
-
-function alertTimes() {
     if (count < 2) {
-        pageLeaveAlert();
+        count ++;
+        alert ('WARNING, stay in this window or you will fail the test!')
     }
 }
 
@@ -18,7 +14,7 @@ function cancelTest() {
     }
 }
 
-document.body.addEventListener("mouseleave", alertTimes);
+document.body.addEventListener("mouseleave", pageLeaveAlert);
 document.addEventListener("visibilitychange", cancelTest);
 
 
