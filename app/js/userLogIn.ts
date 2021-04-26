@@ -62,8 +62,14 @@ function redirectAdmin(user: BaseUser) {
     }
 }
 
-async function preventRetake(user) {
-    let baseUrl = getBaseUrl()
+/**
+ * this updates user's canRetake value to 0 to prevent multiple accesses to test
+ * canRetake is a boolean stored as a tinyInt
+ *
+ * @param user
+ */
+async function preventRetake(user: BaseUser) {
+    let baseUrl: string = getBaseUrl()
     user.data.canRetake = 0
 
     await fetch(baseUrl + 'user/edit', {
