@@ -3,6 +3,7 @@
 <head>
     <script src="js/dist/utils.js" async></script>
     <script src="js/dist/cookies.js"></script>
+    <script src="js/dist/aptitudeTestHelpers.js"></script>
     <script src="js/dist/userLogIn.js"></script>
     <script>
         let userEmail = getCookie('userEmail')
@@ -10,7 +11,9 @@
             if (!user.success || !isAuthorised(user.data) || user.data.canRetake === '0') {
                 window.location.replace("index.html")
             }
+            preventRetake(user)
         })
+
     </script>
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
