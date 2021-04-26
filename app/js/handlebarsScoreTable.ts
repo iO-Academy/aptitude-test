@@ -195,7 +195,7 @@ async function addEventListenersForDownloadButtons() {
                     let parentElement: Element = e.target.parentElement;
                     let userName: string = parentElement.getAttribute("dataname");
                     let userPercentage: number = +parentElement.getAttribute("datapercentage");
-                    downloadFile(`${userName}_aptitude_test_results`, createCSV(createUserResults(resultData, questionData), userName, userPercentage, resultData.data.score))
+                    downloadFile(`${userName}_aptitude_test_results.csv`, createCSV(createUserResults(resultData, questionData), userName, userPercentage, resultData.data.score))
                 });
             });
         });
