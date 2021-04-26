@@ -2,7 +2,7 @@ let count = 0;
 
 function pageLeaveAlert() {
     count ++;
-    alert ('Beware, if you leave the page the test will end!')
+    alert ('WARNING, stay in this window or you will fail the test!')
 }
 
 function alertTimes() {
