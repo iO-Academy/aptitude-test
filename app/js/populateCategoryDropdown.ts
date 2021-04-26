@@ -21,3 +21,13 @@ function populateNewUserCategoryDropdown () {
         });
     })
 }
+
+function changeNewUserCategoryDropdown() {
+    getData('category').then(function (testsObject) {
+        getTemplateAjax('js/templates/categoryDropdown.hbs').then(function (HBTemplate) {
+            let template = Handlebars.compile(HBTemplate);
+            console.log(testsObject)
+            document.querySelector<HTMLElement>('#changeCategory').innerHTML = template(testsObject)
+        });
+    })
+}
