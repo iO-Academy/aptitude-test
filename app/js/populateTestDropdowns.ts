@@ -17,6 +17,7 @@ function populateTestDropdowns () {
 
             document.querySelector<HTMLElement>('#linkToEditTestsBtn').setAttribute('href', `editTests.html#${testsObject.data[0].id}`);
 
+
             document.querySelectorAll(".test_options").forEach((test_option: HTMLInputElement) => {
                 populateUserDuration(test_option, testFieldValue);
             });

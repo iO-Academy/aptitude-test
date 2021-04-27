@@ -87,7 +87,7 @@ function fillEditModalFields(HBTemplate: string, userInfo: any) {
  * matches current or email does not exist is db then user data is updated.
  */
 function addEditModalSubmitEventListener() {
-    document.querySelector('#editSubmit').addEventListener('click', function() {
+    document.querySelector('#editSubmit').addEventListener('click', function () {
         let name = document.querySelector<HTMLInputElement>("#firstName").value;
         let email = document.querySelector<HTMLInputElement>("#email").value;
         let timeMinutes = document.querySelector<HTMLInputElement>('#userMinutes').value;
@@ -106,7 +106,7 @@ function addEditModalSubmitEventListener() {
                 isTimeMinutesValid(timeMinutes) &&
                 isTimeSecondsValid(timeSeconds) &&
                 isEmailValid(email)) {
-                if(originalEmail == email || userExists(email, existingUsers) == false) {
+                if (originalEmail == email || userExists(email, existingUsers) == false) {
                     errorField.innerHTML = '';
                     errorField.classList.add('alert-success');
                     errorField.classList.remove('alert-danger');
@@ -124,5 +124,5 @@ function addEditModalSubmitEventListener() {
                 errorField.innerHTML = 'Test duration must be below an hour and minutes and seconds must be between 0 and 60.';
             }
         })
-    })
-}
+    });
+};
