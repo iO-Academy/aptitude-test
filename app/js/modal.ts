@@ -59,6 +59,19 @@ function createEditModal(userInfo: BaseUser, tests: Array<Test>) {
     })
 }
 
+function createDeleteModal(userId: number) {
+    let infoForTemplate = {
+        userId: userId,
+    };
+
+    getTemplateAjax('js/templates/deleteModal.hbs').then(function (HBTemplate) {
+        fillDeleteModalFields(HBTemplate, infoForTemplate)
+    })
+        .then(() => {
+            // addEditModalSubmitEventListener()
+        })
+}
+
 /**
  * Fills the input fields in the edit modal with the current data of the 
  * user to be edited.
@@ -72,6 +85,20 @@ function fillEditModalFields(HBTemplate: string, userInfo: any) {
     modal_content.innerHTML = "";
 
     if (userInfo.user.name && userInfo.user.email && userInfo.user.id && userInfo.user.timeMinutes && userInfo.user.timeSeconds) {
+        let html = template(userInfo);
+        modal_content.innerHTML += html
+    } else {
+        modal_content.innerHTML = "Please contact Admin, user list unavailable";
+    }
+}
+
+function fillDeleteModalFields(HBTemplate: string, userInfo: any) {
+    let template: Function = Handlebars.compile(HBTemplate);
+    let modal_content = document.querySelector("#modal-content");
+
+    modal_content.innerHTML = "";
+
+    if (userInfo.userId) {
         let html = template(userInfo);
         modal_content.innerHTML += html
     } else {
@@ -131,3 +158,41 @@ This query selector closes the edit user function if you don't want to save the 
  */
 
 document.querySelector(".close-edit-user").addEventListener('click', closeDialog);
+
+
+// event listener on the delete user click
+// document.querySelector().addEventListener('click')
+// generate a modal with are you sure message
+function deleteUserModal() {
+    document.querySelector<HTMLElement>('#delete-user-modal').style.display = 'block';
+    document.querySelector<HTMLElement>('.overlay').style.display = 'block';
+
+
+// function deleteUserModal(userInfo: BaseUser) {
+//
+//
+//
+//
+// getTemplateAjax('js/templates/deleteModal.hbs').then(function (HBTemplate) {
+//
+// })
+//     .then(() => {
+//         addEditModalSubmitEventListener()
+//     })
+// }
+
+function deleteUserModal(userInfo: BaseUser) {
+    getTemplateAjax('js/templates/deleteModal.hbs').then(function (HBTemplate));
+}
+
+// yes and no buttons
+// if yes,
+// function deleteUser(userId: number) {
+//     let baseUrl = getBaseUrl()
+//     let url = baseUrl + "user/delete/" + userId
+//     fetch(url, {"method": "post"})
+//         .then(function () {
+//             updateScoreTable()
+//         })
+// }
+// remove the user. if no close modal
