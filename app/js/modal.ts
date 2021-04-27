@@ -133,4 +133,4 @@ This query selector closes the edit user function if you don't want to save the 
  */
 
 document.querySelector(".close-edit-user").addEventListener('click', closeDialog);
->>>>>>> d1138143e42a73c692b433434d248fc572d1becc
+
