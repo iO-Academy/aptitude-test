@@ -174,10 +174,12 @@ function createUserResults(resultData, questionData): Object {
         }
     });
     for (let result in userResults) {
+        let optionNumber = "option" + userResults[result].answerID
         userResultsTable[result] = {
             result: result,
             question: questionObj[result],
-            userAnswer: userResults[result].answerID
+            userAnswer: userResults[result].answerID,
+            answerOption: optionNumber
         };
         if (userResults[result]["isCorrect"]) {
             userResultsTable[result].correct = "correct";

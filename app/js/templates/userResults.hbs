@@ -1,33 +1,34 @@
- <table class="table">
-     <thead>
-         <tr class="d-flex">
-             <th scope="col" class="col-1">#</th>
-             <th scope="col" class="col-2">Question</th>
-             <th scope="col" class="col-2">Answer</th>
-             <th scope="col" class="col-2">Correct?</th>
-             <th scope="col" class="col-2">Correct Answer</th>
-         </tr>
-     </thead>
-     <tbody>
-         {{#each this}}
-         <tr
-             {{#if correct}}
-                 class="rightAnswer"
-             {{else}}
-                 class="wrongAnswer"
-             {{/if}}>
-             <td>{{result}}</td>
-             <td>{{question}}</td>
-             <td>{{userAnswer}}</td>
-             <td>
-                 {{#if correct}}
-                     ✔
-                 {{else}}
-                     ✕
-                 {{/if}}
-             </td>
-             <td>{{correct}}</td>
-         </tr>
-         {{/each}}
-     </tbody>
- </table>
+	<table class="table">
+		     <thead>
+		         <tr class="d-flex">
+		             <th scope="col" class="col-1">#</th>
+		             <th scope="col" class="col-2">Question</th>
+		             <th scope="col" class="col-2">Answer</th>
+		             <th scope="col" class="col-2">Option</th>
+		             <th scope="col" class="col-2">Correct</th>
+		         </tr>
+		     </thead>
+		     <tbody>
+		         {{#each this}}
+		         <tr
+		             {{#if correct}}
+		                 class="rightAnswer"
+		             {{else}}
+		                 class="wrongAnswer"
+		             {{/if}}>
+		             <td>{{result}}</td>
+		             <td>{{question}}</td>
+		             <td>{{userAnswer}}</td>
+		             <td>{{answerOption}}</td>
+		             <td>
+		                 {{#if correct}}
+		                     ✔
+		                 {{else}}
+		                     ✕
+		                 {{/if}}
+		             </td>
+		         </tr>
+		         {{/each}}
+		     </tbody>
+		 </table>
+		
