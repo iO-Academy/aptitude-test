@@ -5,17 +5,7 @@
     <script src="js/dist/utils.js"></script>
     <script src="js/dist/cookies.js"></script>
     <script src="js/dist/aptitudeTestHelpers.js"></script>
-    <script src="js/dist/userLogIn.js"></script>
-    <script>
-        let userEmail = getCookie('userEmail')
-        getUser(userEmail).then(function (user) {
-            if (!user.success || !isAuthorised(user.data) || user.data.canRetake === '0') {
-                window.location.replace("index.html")
-            }
-            preventRetake(user)
-        })
 
-    </script>
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <title>iO Academy Aptitude Test</title>
@@ -29,11 +19,6 @@
     <script src="js/dist/questions.js" defer></script>
     <script src="js/dist/question_desc.js" defer></script>
     <script src="js/dist/questionNav.js" defer></script>
-    <script src="js/dist/timer.js" defer></script>
-    <script src="js/dist/endTest.js" defer></script>
-    <script src="js/dist/checkAnswers.js" defer></script>
-    <script src="js/dist/sendResults.js" defer></script>
-    <script src="js/dist/overview.js" defer></script>
     <script src="https://kit.fontawesome.com/2373a66060.js" defer></script>
 </head>
 <body>
@@ -41,7 +26,9 @@
 <div id="question_page">
     <div class="container">
         <div class="row">
-            <button type="button" id="instructions" class="instructions btn btn-info left">Instructions</button>
+            <div class="col-6">
+                <button type="button" id="instructions" class="instructions btn btn-info left">Instructions</button>
+            </div>
             <img class="logo" alt="iO Academy Logo" src="./images/logos/SVGs/iO_Logo_Alt.svg">
         </div>
         <div class="row">
