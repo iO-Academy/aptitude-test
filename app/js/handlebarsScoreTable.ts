@@ -245,7 +245,7 @@ async function createUserResultsBreakdown(resultData, test_id: string): Promise<
         questionNumber++;
     }
     breakdown.sections.forEach(section => {
-        section.percentage = 100 * section.score / section.questions;
+        section.percentage = Math.round(100 * section.score / section.questions);
     })
     return breakdown;
 }
@@ -273,8 +273,11 @@ async function addEventListenersForDownloadButtons() {
  */
 async function addEventListenersForViewResults() {
     let userResultsTemplate = await getTemplateAjax("js/templates/userResults.hbs");
+    let userResultsBreakdownTemplate = await getTemplateAjax("js/templates/userResultsBreakdown.hbs");
     let template: Function = Handlebars.compile(userResultsTemplate);
+    let breakdownTemplate: Function = Handlebars.compile(userResultsBreakdownTemplate);
     let resultsTable: Element = document.querySelector("#view-results-modal-content");
+    let resultsBreakdownTable: Element = document.querySelector("#view-results-breakdown-modal-content");
     document.querySelectorAll(".view-results-button").forEach((button) => {
         button.addEventListener("click", (e: any) => {
             openViewResultsModal();
@@ -287,6 +290,10 @@ async function addEventListenersForViewResults() {
                             getData("question?test_id=" + testId).then(questionData => {
                                 resultsTable.innerHTML = template(createUserResults(resultData, questionData));
                             })
+                            createUserResultsBreakdown(resultData, testId)
+                                .then(breakdown => {
+                                    resultsBreakdownTable.innerHTML = breakdownTemplate(breakdown);
+                                })
                         }
                     })
                 });
