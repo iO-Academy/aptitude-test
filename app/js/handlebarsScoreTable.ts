@@ -159,7 +159,9 @@ function produceTable (HBTemplate: string, scoresDataObject) {
     addDeleteEventListeners();
     addEventListenersForDownloadButtons();
     addEventListenersForViewResults();
-    addEventListenersForMoreInfoButtons()
+    addEventListenersForMoreInfoButtons();
+    addEventListenerForAnswersTabButton();
+    addEventListenerForBreakdownTabButton();
 }
 
 function createUserResults(resultData, questionData): Object {
@@ -311,6 +313,26 @@ function addEventListenersForCloseResults() {
             closeViewResultsModal();
         });
     });
+}
+
+/**
+ * function to add a click event listener to the view results modal answers tab button that displays the results table in the modal
+ */
+function addEventListenerForAnswersTabButton(): void {
+    document.querySelector(".open-view-answers-tab").addEventListener("click", () => {
+        document.querySelector<HTMLElement>("#view-results-modal-content").style.display = "block"
+        document.querySelector<HTMLElement>("#view-results-breakdown-modal-content").style.display = "none"
+    })
+}
+
+/**
+ * function to add a click event listener to the view results modal answers tab button that displays the results breakdown table in the modal
+ */
+function addEventListenerForBreakdownTabButton(): void {
+    document.querySelector(".open-view-breakdown-tab").addEventListener("click", () => {
+        document.querySelector<HTMLElement>("#view-results-modal-content").style.display = "none"
+        document.querySelector<HTMLElement>("#view-results-breakdown-modal-content").style.display = "block"
+    })
 }
 
 function addEventListenersForMoreInfoButtons() {
