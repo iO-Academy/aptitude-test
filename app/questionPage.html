@@ -6,19 +6,6 @@
     <script src="js/dist/aptitudeTestHelpers.js"></script>
     <script src="js/dist/userLogIn.js"></script>
     <script>
-        // enable fullscreen
-        function enterFullscreen() {
-            if (!document.fullscreen){
-                document.documentElement.requestFullscreen()
-                document.onfullscreenchange = function (event) {
-                    document.documentElement.removeEventListener('mousemove', enterFullscreen)
-                };
-            }
-        }
-
-        document.documentElement.addEventListener('mousemove', enterFullscreen);
-
-
         let userEmail = getCookie('userEmail')
         getUser(userEmail).then(function (user) {
             if (!user.success || !isAuthorised(user.data) || user.data.canRetake === '0') {
@@ -35,6 +22,7 @@
     <link href="css/questionPage.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="css/resultPage.css">
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/dist/fullscreen.js" defer></script>
     <script src="js/dist/utils.js" defer></script>
     <script src="js/dist/getData.js" defer></script>
     <script src="js/dist/handlebars-v4.0.11.js"></script>
