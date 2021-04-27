@@ -1,15 +1,26 @@
+let count: number = 0;
+let alertActive: boolean = true;
+
+
 function pageLeaveAlert() {
-    alert ('Beware, if you leave the page the test will end!')
+    if (count < 2 && alertActive) {
+        count ++;
+        alert ('WARNING, stay in this window or you will fail the test!')
+        alertActive = false;
+        setTimeout(()=> {
+            alertActive = true;
+        }, 5000)
+    }
 }
 
 function cancelTest() {
     if (document.visibilityState === "hidden") {
-        console.log('cancel')
-        let pageLeft: boolean = true
-        finishTest(pageLeft)
+        let pageLeft: boolean = true;
+        finishTest(pageLeft);
     }
 }
 
 document.body.addEventListener("mouseleave", pageLeaveAlert);
 document.addEventListener("visibilitychange", cancelTest);
+
 
