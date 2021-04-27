@@ -284,15 +284,6 @@ async function addEventListenersForViewResults() {
                     userData.data.forEach(user =>{
                         if (user.id === resultData.data.id) {
                             let testId = user.test_id
-                            // Removes Answers/Breakdown tab buttons from view results modal if not test 1
-                            // Remove this if you ever want to display a breakdown for a test with test_id that isn't 1
-                            if (testId != 1) {
-                                document.querySelector<HTMLButtonElement>('.open-view-answers-tab').style.display = 'none';
-                                document.querySelector<HTMLButtonElement>('.open-view-breakdown-tab').style.display = 'none';
-                            } else {
-                                document.querySelector<HTMLButtonElement>('.open-view-answers-tab').style.display = 'inline-block';
-                                document.querySelector<HTMLButtonElement>('.open-view-breakdown-tab').style.display = 'inline-block';
-                            }
                             getData("question?test_id=" + testId).then(questionData => {
                                 resultsTable.innerHTML = template(createUserResults(resultData, questionData));
                             })
