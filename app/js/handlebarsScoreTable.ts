@@ -186,6 +186,70 @@ function createUserResults(resultData, questionData): Object {
     return userResultsTable;
 }
 
+interface ResultsBreakdownSection {
+    name: string;
+    score: number;
+    questions: number;
+    percentage: number;
+    startingQuestionNumber?: number;
+    finalQuestionNumber?: number;
+}
+
+interface ResultsBreakdown {
+    sections: ResultsBreakdownSection[];
+}
+
+/**
+ * function to create a ResultsBreakdown object for a user using their result data object for use in creating a user results breakdown table
+ *
+ * @param {object} resultData object containing retrieved result data for the user
+ * @param {string} test_id test_id for the test the user's been assigned
+ *
+ * @returns {Promise<ResultsBreakdown>} object containing the results breakdown
+ */
+async function createUserResultsBreakdown(resultData, test_id: string): Promise<ResultsBreakdown> {
+    let breakdown: ResultsBreakdown = {
+        sections: []
+    };
+
+    // Remove this if statement if you ever want to display a breakdown for a test with test_id that isn't 1
+    if (test_id == "1") {
+        breakdown.sections.push({name: 'Starter', score: 0, questions: 0, percentage: 0, startingQuestionNumber: 1, finalQuestionNumber: 3});
+        breakdown.sections.push({name: 'Comparison', score: 0, questions: 0, percentage: 0, startingQuestionNumber: 4, finalQuestionNumber: 8});
+        breakdown.sections.push({name: 'Syntax', score: 0, questions: 0, percentage: 0, startingQuestionNumber: 9, finalQuestionNumber: 13});
+        breakdown.sections.push({name: 'Procedure', score: 0, questions: 0, percentage: 0, startingQuestionNumber: 14, finalQuestionNumber: 18});
+        breakdown.sections.push({name: 'Logic', score: 0, questions: 0, percentage: 0, startingQuestionNumber: 19, finalQuestionNumber: 23});
+        breakdown.sections.push({name: 'Sequence', score: 0, questions: 0, percentage: 0, startingQuestionNumber: 24, finalQuestionNumber: 30});
+    }
+
+    let testName = 'Test'
+    let testData = await getData("test")
+    testData.data.forEach(test => {
+        if (test.id == test_id) {
+            testName = test.name
+        }
+    })
+    breakdown.sections.push({name: testName, score: 0, questions: 0, percentage: 0});
+    let userResults: Object = JSON.parse(JSON.parse(resultData.data.answers));
+    let questionNumber = 1;
+    for (let result in userResults) {
+        breakdown.sections.forEach(section => {
+            if ((!section.startingQuestionNumber || !section.finalQuestionNumber)
+                || (questionNumber >= section.startingQuestionNumber && questionNumber <= section.finalQuestionNumber)) {
+                section.questions++;
+                if (userResults[result]["isCorrect"]) {
+                    section.score++;
+                }
+            }
+        })
+        questionNumber++;
+    }
+    breakdown.sections.forEach(section => {
+        section.percentage = 100 * section.score / section.questions;
+    })
+    return breakdown;
+}
+
 async function addEventListenersForDownloadButtons() {
     document.querySelectorAll('.download-user-results-button').forEach((button) => {
         button.addEventListener("click", (e: any) => {
