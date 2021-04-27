@@ -282,6 +282,7 @@ async function addEventListenersForViewResults() {
     let resultsBreakdownTable: Element = document.querySelector("#view-results-breakdown-modal-content");
     document.querySelectorAll(".view-results-button").forEach((button) => {
         button.addEventListener("click", (e: any) => {
+            displayResultsTableTab();
             openViewResultsModal();
             addEventListenersForCloseResults();
             getData("result?id=" + e.target.getAttribute("dataId")).then(resultData => {
@@ -319,10 +320,15 @@ function addEventListenersForCloseResults() {
  * function to add a click event listener to the view results modal answers tab button that displays the results table in the modal
  */
 function addEventListenerForAnswersTabButton(): void {
-    document.querySelector(".open-view-answers-tab").addEventListener("click", () => {
-        document.querySelector<HTMLElement>("#view-results-modal-content").style.display = "block"
-        document.querySelector<HTMLElement>("#view-results-breakdown-modal-content").style.display = "none"
-    })
+    document.querySelector(".open-view-answers-tab").addEventListener("click", displayResultsTableTab);
+}
+
+/**
+ * function to display the results table in the view results modal
+ */
+function displayResultsTableTab(): void {
+    document.querySelector<HTMLElement>("#view-results-modal-content").style.display = "block";
+    document.querySelector<HTMLElement>("#view-results-breakdown-modal-content").style.display = "none";
 }
 
 /**
@@ -330,9 +336,9 @@ function addEventListenerForAnswersTabButton(): void {
  */
 function addEventListenerForBreakdownTabButton(): void {
     document.querySelector(".open-view-breakdown-tab").addEventListener("click", () => {
-        document.querySelector<HTMLElement>("#view-results-modal-content").style.display = "none"
-        document.querySelector<HTMLElement>("#view-results-breakdown-modal-content").style.display = "block"
-    })
+        document.querySelector<HTMLElement>("#view-results-modal-content").style.display = "none";
+        document.querySelector<HTMLElement>("#view-results-breakdown-modal-content").style.display = "block";
+    });
 }
 
 function addEventListenersForMoreInfoButtons() {
