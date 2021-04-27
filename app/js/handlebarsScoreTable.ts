@@ -329,6 +329,8 @@ function addEventListenerForAnswersTabButton(): void {
 function displayResultsTableTab(): void {
     document.querySelector<HTMLElement>("#view-results-modal-content").style.display = "block";
     document.querySelector<HTMLElement>("#view-results-breakdown-modal-content").style.display = "none";
+    document.querySelector<HTMLElement>(".open-view-answers-tab").classList.add("active-tab");
+    document.querySelector<HTMLElement>(".open-view-breakdown-tab").classList.remove("active-tab");
 }
 
 /**
@@ -338,6 +340,8 @@ function addEventListenerForBreakdownTabButton(): void {
     document.querySelector(".open-view-breakdown-tab").addEventListener("click", () => {
         document.querySelector<HTMLElement>("#view-results-modal-content").style.display = "none";
         document.querySelector<HTMLElement>("#view-results-breakdown-modal-content").style.display = "block";
+        document.querySelector<HTMLElement>(".open-view-answers-tab").classList.remove("active-tab");
+        document.querySelector<HTMLElement>(".open-view-breakdown-tab").classList.add("active-tab");
     });
 }
 
