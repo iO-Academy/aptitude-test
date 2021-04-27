@@ -154,6 +154,7 @@ async function createUsersObject() {
     users.forEach(function(user) {
         let didTest = [];
         results.forEach(function(result) {
+            console.log(result)
             let testEntryFound = [];
             if (result.id === user.id ) {
                 let answers = JSON.parse(JSON.parse(result.answers));
@@ -172,7 +173,7 @@ async function createUsersObject() {
                 obj['timeAllowed'] = secondsToMinutes(user.timeAllowed);
                 obj['dateCreated'] = result.dateCreated;
                 obj['canRetake'] = user.canRetake;
-                obj['autoCompleted'] = result.autoCompleted;
+                obj['autoCompleted'] = parseInt(result.autoCompleted);
                 userDisplayArray.push(obj);
                 testEntryFound.push('yes');
             }

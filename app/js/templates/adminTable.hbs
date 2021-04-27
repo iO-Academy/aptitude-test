@@ -93,6 +93,12 @@
                     <td class="time">{{time}}</td>
                 </tr>
                 {{/if}}
+                    {{#if this.autoCompleted}}
+                <tr>
+                    <th>Auto completed:</th>
+                    <td class="autoComplete">Yes</td>
+                </tr>
+                    {{/if}}
             </table>
         </td>
 </tr>

@@ -63,10 +63,9 @@ async function resetReapplyCounter() {
     })
 }
 
-//-------------------- testing
-
-// a function to add a 1 to auto complete column in the result table
-//in order to do this we want it to target the result table (using UserId?)
+/** Function to add a 1 to auto complete column in the result table
+ * @param object - result object
+ */
 async function autoCompleted(result) {
     result.autoCompleted = 1
     await fetch(baseUrl + 'user/edit', {
