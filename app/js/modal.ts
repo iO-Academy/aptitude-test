@@ -70,7 +70,7 @@ function fillEditModalFields(HBTemplate: string, userInfo: any) {
     let modal_content = document.querySelector("#modal-content");
     
     modal_content.innerHTML = "";
-      
+
     if (userInfo.user.name && userInfo.user.email && userInfo.user.id && userInfo.user.timeMinutes && userInfo.user.timeSeconds) {
         let html = template(userInfo);
         modal_content.innerHTML += html
@@ -125,3 +125,9 @@ function addEditModalSubmitEventListener() {
         })
     })
 }
+
+/*
+This query selector closes the edit user function if you don't want to save the results
+ */
+
+document.querySelector(".close-edit-user").addEventListener('click', closeDialog);
