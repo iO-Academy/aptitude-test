@@ -6,6 +6,16 @@
     <script src="js/dist/aptitudeTestHelpers.js"></script>
     <script src="js/dist/userLogIn.js"></script>
     <script>
+        // enable fullscreen
+        function enterFullscreen() {
+            if (!document.fullscreen){
+                document.documentElement.requestFullscreen()
+            }
+        }
+
+        document.documentElement.addEventListener('mousedown', enterFullscreen);
+    
+
         let userEmail = getCookie('userEmail')
         getUser(userEmail).then(function (user) {
             if (!user.success || !isAuthorised(user.data) || user.data.canRetake === '0') {
