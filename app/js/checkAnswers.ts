@@ -38,7 +38,7 @@ async function checkAnswers(userAnswers: UserAnswers): Promise<any> {
                 userScore++;
                 userAnswers[answerItem.id]['isCorrect'] = true;
             }
-            userAnswers[answerItem.id]['notes'] = document.querySelector<HTMLInputElement>(`textarea[name=answer_${answerItem.id}]`).value;
+            userAnswers[answerItem.id]['notes'] = document.querySelector<HTMLTextAreaElement>(`textarea[name='answer_${answerItem.id}']`).value;
         })
         let result = {
             uid: parseInt(getCookie('uid') as string, 10), // typecast to string as getCookie shouldnt ever return false
@@ -59,7 +59,10 @@ async function checkAnswers(userAnswers: UserAnswers): Promise<any> {
  */
 async function getAnswers() {
     let baseUrl = getBaseUrl();
-    let data = await fetch(baseUrl + "answer", {method: 'get'});
+    let cookie = getCookie('userEmail');
+    let userData = await getData(`user?email=${cookie}`)
+    let testId =  userData.data.test_id;
+    let data = await fetch(baseUrl + "answer?test_id=" + testId, {method: 'get'});
     return data.json();
 }
 
