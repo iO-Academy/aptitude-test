@@ -40,7 +40,7 @@ function searchByTextAndEmail(resultArray: Array<BaseUser>): Array<any> {
     let newResultArray = []
     let searchInput = sanitizeInput(document.querySelector<HTMLInputElement>('#searchInput').value)
     let regex = '[\\w@]*' + searchInput + '[\\w@]*'
-    let regexSearch = new RegExp(regex)
+    let regexSearch = new RegExp(regex, 'i')
     if (searchInput.length !== 0) {
         resultArray.forEach(data => {
             if (regexSearch.test(data.name) || regexSearch.test(data.email)) {
