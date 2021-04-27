@@ -222,11 +222,11 @@ async function createUserResultsBreakdown(resultData, test_id: string): Promise<
         breakdown.sections.push({name: 'Sequence', score: 0, questions: 0, percentage: 0, startingQuestionNumber: 24, finalQuestionNumber: 30});
     }
 
-    let testName = 'Test'
+    let testName = 'Total'
     let testData = await getData("test")
     testData.data.forEach(test => {
         if (test.id == test_id) {
-            testName = test.name
+            testName += ` (${test.name})`
         }
     })
     breakdown.sections.push({name: testName, score: 0, questions: 0, percentage: 0});
