@@ -14,7 +14,7 @@ body {
   float: right;
 }
 
-#instructions {
+.instructions-button {
   @include buttonsMetaCapsFontStyles;
   margin-top: 49px;
   background-color: $primary-button;
