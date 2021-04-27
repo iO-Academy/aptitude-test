@@ -62,3 +62,17 @@ async function resetReapplyCounter() {
         body: jsonToFormData(userObject.data)
     })
 }
+
+//-------------------- testing
+
+// a function to add a 1 to auto complete column in the result table
+//in order to do this we want it to target the result table (using UserId?)
+async function autoCompleted(result) {
+    result.autoCompleted = 1
+    await fetch(baseUrl + 'user/edit', {
+        method: "post",
+        body: jsonToFormData(result.autoCompleted)
+    })
+}
+
+
