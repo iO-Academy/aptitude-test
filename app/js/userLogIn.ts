@@ -62,6 +62,22 @@ function redirectAdmin(user: BaseUser) {
     }
 }
 
+/**
+ * this updates user's canRetake value to 0 to prevent multiple accesses to test
+ * canRetake is a boolean stored as a tinyInt
+ *
+ * @param user
+ */
+async function preventRetake(user: BaseUser) {
+    let baseUrl: string = getBaseUrl()
+    user.data.canRetake = 0
+
+    await fetch(baseUrl + 'user/edit', {
+        method: "post",
+        body: jsonToFormData(user.data)
+    })
+}
+
 if (document.querySelector('#logInForm')) {
     document.querySelector('#logInForm').addEventListener('submit', function(e) {
         e.preventDefault()
@@ -99,7 +115,5 @@ if (document.querySelector('#logInForm')) {
  * @return boolean - true if authorised and admin/non-admin respectively
  */
 function isAuthorised(user: BaseUser, needsAdmin: boolean|null = null) {
-    return (user.isAdmin != 0 && needsAdmin != null) ||
-        (user.isAdmin == 0 && needsAdmin == null);
+    return (user.isAdmin != 0 && needsAdmin != null) || (user.isAdmin == 0 && needsAdmin == null);
 }
-
