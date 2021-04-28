@@ -56,6 +56,7 @@ function createEditModal(userInfo: BaseUser, tests: Array<Test>) {
     })
     .then(() => {
         addEditModalSubmitEventListener()
+        document.querySelectorAll(".close-edit-user").forEach(button => button.addEventListener('click', closeDialog));
     })
 }
 
@@ -125,9 +126,3 @@ function addEditModalSubmitEventListener() {
         })
     })
 }
-
-/*
-This query selector closes the edit user function if you don't want to save the results
- */
-
-document.querySelector(".close-edit-user").addEventListener('click', closeDialog);

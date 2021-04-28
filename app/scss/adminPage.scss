@@ -1,5 +1,10 @@
 @import "imports/variables";
 
+
+.bg-transparent {
+  background-color: transparent;
+}
+
 .container {
   width: 95%;
 }
@@ -166,7 +171,11 @@ input {
   margin-bottom: 10px;
 }
 
-.editmodal label, #editSubmit {
+#editSubmit {
+  margin-top: 30px;
+}
+
+.editmodal label {
   display: block;
   margin-top: 30px;
 }
