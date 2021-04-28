@@ -1,15 +1,11 @@
 let count: number = 0;
-let alertActive: boolean = true;
-
 
 function pageLeaveAlert() {
-    if (count < 2 && alertActive) {
+    if (count < 2) {
         count ++;
-        alert ('WARNING, stay in this window or you will fail the test!')
-        alertActive = false;
-        setTimeout(()=> {
-            alertActive = true;
-        }, 5000)
+        let modal = document.querySelector('#exampleModal');
+        //@ts-ignore;
+        modal.style.display = 'block !important';
     }
 }
 
@@ -22,5 +18,4 @@ function cancelTest() {
 
 document.body.addEventListener("mouseleave", pageLeaveAlert);
 document.addEventListener("visibilitychange", cancelTest);
-
 

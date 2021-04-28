@@ -5,12 +5,12 @@
     <script src="js/dist/cookies.js"></script>
     <script src="js/dist/userLogIn.js"></script>
     <script>
-        let userEmail = getCookie('userEmail')
-        getUser(userEmail).then(function (user) {
-            if (!user.success || !isAuthorised(user.data) || user.data.canRetake === '0') {
-                window.location.replace("index.html")
-            }
-        })
+        // let userEmail = getCookie('userEmail')
+        // getUser(userEmail).then(function (user) {
+        //     if (!user.success || !isAuthorised(user.data) || user.data.canRetake === '0') {
+        //         window.location.replace("index.html")
+        //     }
+        // })
     </script>
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
@@ -24,10 +24,10 @@
     <script src="js/dist/handlebars-v4.0.11.js"></script>
     <script src="js/dist/aptitudeTestHelpers.js" async></script>
     <script src="js/dist/ajaxHandlebarsTemplate.js" defer></script>
-    <script src="js/dist/questions.js" defer></script>
+<!--    <script src="js/dist/questions.js" defer></script>-->
     <script src="js/dist/question_desc.js" defer></script>
     <script src="js/dist/questionNav.js" defer></script>
-    <script src="js/dist/timer.js" defer></script>
+<!--    <script src="js/dist/timer.js" defer></script>-->
     <script src="js/dist/endTest.js" defer></script>
     <script src="js/dist/checkAnswers.js" defer></script>
     <script src="js/dist/sendResults.js" defer></script>
@@ -38,10 +38,6 @@
 
 </head>
 <body>
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-    Launch demo modal
-</button>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
