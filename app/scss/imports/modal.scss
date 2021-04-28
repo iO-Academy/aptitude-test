@@ -13,7 +13,6 @@
 
 #modal {
   display: none;
-  background: $modal-background;
   width: 650px;
   position: fixed;
   top: 30px;
@@ -42,7 +41,6 @@
 
 #view-results-modal {
   display: none;
-  background: $modal-background;
   width: 70vw;
   height: 90vh;
   position: fixed;
