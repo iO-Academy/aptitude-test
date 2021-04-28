@@ -1,3 +1,28 @@
+<head>
+        <style>
+            .notesActivate {
+              background-color: #eee;
+              color: #444;
+              cursor: pointer;
+              padding: 12px;
+              width: 100%;
+              text-align: left;
+              border: none;
+              outline: none;
+              transition: 0.4s;
+            }
+            .active, .notesActivate:hover {
+              background-color: #ccc;
+            }
+            .panel {
+              padding: 0 18px;
+              background-color: white;
+            }
+        </style>
+    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+</head>
+<body>
 	<table class="table">
 		     <thead>
 		         <tr class="d-flex">
@@ -28,9 +53,16 @@
 		                     ✕
 		                 {{/if}}
 		             </td>
-		             <td>{{notes}}</td>
+		             <td>
+		                <div class="notesButton">
+		                    <button class="notesActivate">Notes</button>
+                            <div class="panel">
+                                <p>notes: {{notes}}</p>
+                            </div>
+		                </div>
+		             </td>
 		         </tr>
 		         {{/each}}
 		     </tbody>
 		 </table>
-		
+</body>
