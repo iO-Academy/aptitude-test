@@ -41,7 +41,7 @@
 
 #view-results-modal {
   display: none;
-  width: 70vw;
+  width: fit-content;
   height: 90vh;
   position: fixed;
   top: 0;
@@ -50,7 +50,6 @@
   right: 0;
   z-index: 501;
   margin: auto;
-  padding: 10px 50px;
   overflow-y: scroll;
 
   .rightAnswer {
