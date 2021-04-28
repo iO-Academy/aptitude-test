@@ -173,8 +173,13 @@ function createUserResults(resultData, questionData): Object {
             questionObj[item.id] = item.text
         }
     });
-    console.log(userResults)
+    console.log(userResults);
+    // let numberOfQuestions = document.querySelectorAll('#questions .question').length
+    // console.log(numberOfQuestions)
+    let i: number = 0;
+
     for (let result in userResults) {
+        i++;
         let optionNumber = "option" + userResults[result].answerID
         userResultsTable[result] = {
             result: result,
@@ -187,13 +192,17 @@ function createUserResults(resultData, questionData): Object {
         if (userResults[result]["isCorrect"]) {
             userResultsTable[result].correct = "correct";
         }
-
+        if (i > 30) {
+            break;
+        }
     }
+
+
     //console.log(questionData[optionNumber]);
     return userResultsTable;
     //console.log(userResultsTable);
+}
 
-};
 
 async function addEventListenersForDownloadButtons() {
     document.querySelectorAll('.download-user-results-button').forEach((button) => {
