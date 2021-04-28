@@ -175,15 +175,17 @@ function createUserResults(resultData, questionData): Object {
             questionObj[item.id] = item.text;
         }
     });
-    console.log(questionData);
+    //console.log(questionData);
     // let numberOfQuestions = document.querySelectorAll('#questions .question').length
     // console.log(numberOfQuestions)
     let i: number = 0;
-
+    //console.log(questionData)
+    //console.log(resultData)
     for (let result in userResults) {
         i++;
         let optionNumber = "option" + userResults[result].answerID
-        let answer = questionData.data[result]
+        let answer = "option" + questionData[result].answer
+        console.log(answer)
         userResultsTable[result] = {
             result: result,
             question: questionObj[result],
@@ -193,14 +195,15 @@ function createUserResults(resultData, questionData): Object {
             rightAnswer: questionData.data[result][answer]
         };
         // console.log(questionData.data[result])
-        console.log(questionData.data[result][optionNumber])
         if (userResults[result]["isCorrect"]) {
             userResultsTable[result].correct = "correct";
         }
         if (i > 30) {
             break
         }
+        console.log(10)
     }
+
     //console.log(questionData[optionNumber]);
     return userResultsTable;
     //console.log(userResultsTable);
