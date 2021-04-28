@@ -170,18 +170,20 @@ function createUserResults(resultData, questionData): Object {
         if (item.text.length > 49) {
             questionObj[item.id] = item.text.substring(0, 49) + "...";
         } else {
-            questionObj[item.id] = item.text;
+            questionObj[item.id] = item.text
         }
     });
+    console.log(userResults)
     for (let result in userResults) {
         let optionNumber = "option" + userResults[result].answerID
         userResultsTable[result] = {
             result: result,
             question: questionObj[result],
             userAnswer: userResults[result].answerID,
-            answerOption: questionData[optionNumber]
+            answerOption: questionData.data[result][optionNumber]
         };
-        //console.log(questionData[optionNumber])
+        // console.log(questionData.data[result])
+        console.log(questionData.data[result][optionNumber])
         if (userResults[result]["isCorrect"]) {
             userResultsTable[result].correct = "correct";
         }
@@ -191,7 +193,7 @@ function createUserResults(resultData, questionData): Object {
     return userResultsTable;
     //console.log(userResultsTable);
 
-}
+};
 
 async function addEventListenersForDownloadButtons() {
     document.querySelectorAll('.download-user-results-button').forEach((button) => {
