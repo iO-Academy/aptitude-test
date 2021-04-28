@@ -168,7 +168,6 @@ function produceTable (HBTemplate: string, scoresDataObject) {
 
     addEditEventListeners();
     // addDeleteEventListeners();
-    // retrieve the styling for the delete button
     // hook up existing delete functionality to the modal button
     // find a way to get access to the user id and pass into handlebars smush
     addNathanEventListeners()
