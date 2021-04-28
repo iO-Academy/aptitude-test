@@ -154,7 +154,6 @@ async function createUsersObject() {
     users.forEach(function(user) {
         let didTest = [];
         results.forEach(function(result) {
-            console.log(result)
             let testEntryFound = [];
             if (result.id === user.id ) {
                 let answers = JSON.parse(JSON.parse(result.answers));

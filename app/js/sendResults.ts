@@ -66,7 +66,7 @@ async function resetReapplyCounter() {
 /** Function to add a 1 to auto complete column in the result table
  * @param object - result object
  */
-async function autoCompleted(result) {
+async function autoCompleted(result, baseUrl) {
     result.autoCompleted = 1
     await fetch(baseUrl + 'user/edit', {
         method: "post",
