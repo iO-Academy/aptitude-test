@@ -219,10 +219,17 @@ async function addEventListenersForViewResults() {
             openViewResultsModal();
             addEventListenersForCloseResults();
             getData("result?id=" + e.target.getAttribute("dataId")).then(resultData => {
-                getData("question").then(questionData => {
-                    resultsTable.innerHTML = template(createUserResults(resultData, questionData));
+                getData("user").then(userData => {
+                    userData.data.forEach(user =>{
+                        if (user.id === resultData.data.id) {
+                            let testId = user.test_id
+                            getData("question?test_id=" + testId).then(questionData => {
+                                resultsTable.innerHTML = template(createUserResults(resultData, questionData));
+                            })
+                        }
+                    })
                 });
-            }); 
+            });
         });
     });
 }
