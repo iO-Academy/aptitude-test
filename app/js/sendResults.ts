@@ -63,15 +63,5 @@ async function resetReapplyCounter() {
     })
 }
 
-/** Function to add a 1 to auto complete column in the result table
- * @param object - result object
- */
-async function autoCompleted(result):Promise<void> {
-    result.autoCompleted = 1
-    await fetch(getBaseUrl() + 'user/edit', {
-        method: "post",
-        body: jsonToFormData(result.autoCompleted)
-    })
-}
 
 
