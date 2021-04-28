@@ -68,7 +68,7 @@ async function resetReapplyCounter() {
  */
 async function autoCompleted(result):Promise<void> {
     result.autoCompleted = 1
-    await fetch(baseUrl + 'user/edit', {
+    await fetch(getBaseUrl() + 'user/edit', {
         method: "post",
         body: jsonToFormData(result.autoCompleted)
     })
