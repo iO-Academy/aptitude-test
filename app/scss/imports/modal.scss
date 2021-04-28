@@ -41,7 +41,7 @@
 
 #view-results-modal {
   display: none;
-  width: fit-content;
+  width: 87%;
   height: 90vh;
   position: fixed;
   top: 0;
@@ -51,6 +51,7 @@
   z-index: 501;
   margin: auto;
   overflow-y: scroll;
+  background-color: white;
 
   .rightAnswer {
     background: $green-table-grade;

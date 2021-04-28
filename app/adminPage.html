@@ -55,9 +55,14 @@
 
     <div class="overlay close-view-results"></div>
 
-    <div class="modal bg-transparent" id="modal" tabindex="-1" role="dialog" data-toggle="modal">
+    <div class="modal" id="modal" tabindex="-1" role="dialog" data-toggle="modal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close-edit-user">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
                 <div class="modal-body">
                     <div id="modal-content"></div>
                 </div>
@@ -69,18 +74,14 @@
         </div>
     </div>
 
-    <div class="modal bg-transparent" id="view-results-modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button class="close-view-results primary-button">Close</button>
-                </div>
-                <div class="modal-body">
-                    <div id="view-results-modal-content"></div>
-                </div>
-                <div class="modal-footer">
-                </div>
-            </div>
+    <div class="modal" id="view-results-modal" tabindex="-1" role="dialog">
+        <div class="modal-header">
+            <button type="button" class="close-view-results">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div id="view-results-modal-content"></div>
         </div>
     </div>
 
