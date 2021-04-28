@@ -96,17 +96,31 @@ function addEditEventListeners() {
     })
 }
 
-
 /**
- * Adds event listener to the delete buttons.
+ * Adds event listener to the delete user buttons.
  */
 function addDeleteEventListeners() {
-    let userItems = document.querySelectorAll(".delete-user-button")
-    userItems.forEach(function (userItem) {
-        userItem.addEventListener('click', function (e: any) {
-            let userId = this.getAttribute("dataId")
-            deleteUser(userId)
+    let deleteButtons = document.querySelectorAll(".delete-user-btn");
+    deleteButtons.forEach(function(deleteButton) {
+        deleteButton.addEventListener('click', function (e) {
+            // @ts-ignore
+            let elem: HTMLElement = e.target
+            let id: number = parseInt(elem.getAttribute('dataid'))
+            openDialog()
+            createDeleteModal(id)
         })
+    })
+}
+
+/**
+ * Adds event listener to the yes button in the delete user modal.
+ */
+function addConfirmDeleteEventListeners() {
+    let userItem = document.querySelector<HTMLButtonElement>("#confirmDelete")
+    userItem.addEventListener('click', function (e: any) {
+        let userId = userItem.dataset.id
+        deleteUser(parseInt(userId))
+        closeDialog()
     })
 }
 
@@ -159,7 +173,7 @@ function produceTable (HBTemplate: string, scoresDataObject) {
     addDeleteEventListeners();
     addEventListenersForDownloadButtons();
     addEventListenersForViewResults();
-    addEventListenersForMoreInfoButtons()
+    addEventListenersForMoreInfoButtons();
 }
 
 function createUserResults(resultData, questionData): Object {
