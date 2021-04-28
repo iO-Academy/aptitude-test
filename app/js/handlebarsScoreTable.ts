@@ -175,7 +175,7 @@ function createUserResults(resultData, questionData): Object {
             questionObj[item.id] = item.text;
         }
     });
-    console.log(userResults);
+    console.log(questionData);
     // let numberOfQuestions = document.querySelectorAll('#questions .question').length
     // console.log(numberOfQuestions)
     let i: number = 0;
@@ -187,7 +187,8 @@ function createUserResults(resultData, questionData): Object {
             result: result,
             question: questionObj[result],
             userAnswer: userResults[result].answerID,
-            answerOption: questionData.data[result][optionNumber]
+            answerOption: questionData.data[result][optionNumber],
+            notes: userResults[result].notes
         };
         // console.log(questionData.data[result])
         console.log(questionData.data[result][optionNumber])
@@ -195,7 +196,7 @@ function createUserResults(resultData, questionData): Object {
             userResultsTable[result].correct = "correct";
         }
         if (i > 30) {
-            break;
+            break
         }
     }
     //console.log(questionData[optionNumber]);
