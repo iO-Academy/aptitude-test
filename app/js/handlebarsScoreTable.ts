@@ -96,9 +96,11 @@ function addEditEventListeners() {
     })
 }
 
-function addNathanEventListeners() {
-    let deleteButtons = document.querySelectorAll(".nathanDelete");
-    console.log(deleteButtons)
+/**
+ * Adds event listener to the delete user buttons.
+ */
+function addDeleteEventListeners() {
+    let deleteButtons = document.querySelectorAll(".delete-user-btn");
     deleteButtons.forEach(function(deleteButton) {
         deleteButton.addEventListener('click', function (e) {
             openDialog()
@@ -109,10 +111,10 @@ function addNathanEventListeners() {
 
 
 /**
- * Adds event listener to the delete buttons.
+ * Adds event listener to the yes buttons in the delete user modal.
  */
-function addDeleteEventListeners() {
-    let userItems = document.querySelectorAll(".delete-user-button")
+function addConfirmDeleteEventListeners() {
+    let userItems = document.querySelectorAll("#confirmDelete")
     userItems.forEach(function (userItem) {
         userItem.addEventListener('click', function (e: any) {
             let userId = this.getAttribute("dataId")
@@ -167,14 +169,11 @@ function produceTable (HBTemplate: string, scoresDataObject) {
     score_list.innerHTML += html;
 
     addEditEventListeners();
-    // addDeleteEventListeners();
-    // hook up existing delete functionality to the modal button
-    // find a way to get access to the user id and pass into handlebars smush
-    addNathanEventListeners()
-    console.log('HI')
+    addDeleteEventListeners();
+    addConfirmDeleteEventListeners();
     addEventListenersForDownloadButtons();
     addEventListenersForViewResults();
-    addEventListenersForMoreInfoButtons()
+    addEventListenersForMoreInfoButtons();
 }
 
 function createUserResults(resultData, questionData): Object {
