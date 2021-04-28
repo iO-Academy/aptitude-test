@@ -183,12 +183,14 @@ function createUserResults(resultData, questionData): Object {
     for (let result in userResults) {
         i++;
         let optionNumber = "option" + userResults[result].answerID
+        let answer = questionData.data[result]
         userResultsTable[result] = {
             result: result,
             question: questionObj[result],
             userAnswer: userResults[result].answerID,
             answerOption: questionData.data[result][optionNumber],
-            notes: userResults[result].notes
+            notes: userResults[result].notes,
+            rightAnswer: questionData.data[result][answer]
         };
         // console.log(questionData.data[result])
         console.log(questionData.data[result][optionNumber])
