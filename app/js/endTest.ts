@@ -13,8 +13,6 @@ function pageLeaveAlert() {
     }
 }
 
-
-
 function cancelTest() {
     if (document.visibilityState === "hidden") {
         let pageLeft: boolean = true;
