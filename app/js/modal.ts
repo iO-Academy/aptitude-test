@@ -133,9 +133,9 @@ This query selector closes the edit user function if you don't want to save the 
 document.querySelector(".close-edit-user").addEventListener('click', closeDialog);
 
 /**
- *
  * Creates the modal with deleteModal handlebars template.
- * Then adds the submit button's event listener.
+ * User id from the delete user button is passed to the modal.
+ * Listens for the functions relating to the 'yes' and 'no' buttons.
  * @param userId Object containing id to identify the user.
  */
 function createDeleteModal(userId: number) {
@@ -147,7 +147,9 @@ function createDeleteModal(userId: number) {
         fillDeleteModalFields(HBTemplate, infoForTemplate)
     })
         .then(() => {
+            //@ts-ignore
             addConfirmDeleteEventListeners();
+            document.querySelector<HTMLButtonElement>("#cancelDelete").addEventListener('click', closeDialog);
         })
 }
 
@@ -169,8 +171,3 @@ function fillDeleteModalFields(HBTemplate: string, userInfo: any) {
         modal_content.innerHTML = "Please contact Admin, user list unavailable";
     }
 }
-
-/*
-This query selector closes the delete user function if you don't want to delete the user
- */
-document.querySelector(".cancelDelete").addEventListener('click', closeDialog);
