@@ -160,12 +160,13 @@ This query selector closes the edit user function if you don't want to save the 
 document.querySelector(".close-edit-user").addEventListener('click', closeDialog);
 
 
+
 // event listener on the delete user click
 // document.querySelector().addEventListener('click')
 // generate a modal with are you sure message
-function deleteUserModal() {
-    document.querySelector<HTMLElement>('#delete-user-modal').style.display = 'block';
-    document.querySelector<HTMLElement>('.overlay').style.display = 'block';
+// function deleteUserModal() {
+//     document.querySelector<HTMLElement>('#delete-user-modal').style.display = 'block';
+//     document.querySelector<HTMLElement>('.overlay').style.display = 'block';
 
 
 // function deleteUserModal(userInfo: BaseUser) {
@@ -181,9 +182,9 @@ function deleteUserModal() {
 //     })
 // }
 
-function deleteUserModal(userInfo: BaseUser) {
-    getTemplateAjax('js/templates/deleteModal.hbs').then(function (HBTemplate));
-}
+// function deleteUserModal(userInfo: BaseUser) {
+//     getTemplateAjax('js/templates/deleteModal.hbs').then(function (HBTemplate));
+// }
 
 // yes and no buttons
 // if yes,

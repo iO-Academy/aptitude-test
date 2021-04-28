@@ -96,6 +96,17 @@ function addEditEventListeners() {
     })
 }
 
+function addNathanEventListeners() {
+    let deleteButtons = document.querySelectorAll(".nathanDelete");
+    console.log(deleteButtons)
+    deleteButtons.forEach(function(deleteButton) {
+        deleteButton.addEventListener('click', function (e) {
+            openDialog()
+            createDeleteModal(9)
+        })
+    })
+}
+
 
 /**
  * Adds event listener to the delete buttons.
@@ -156,7 +167,12 @@ function produceTable (HBTemplate: string, scoresDataObject) {
     score_list.innerHTML += html;
 
     addEditEventListeners();
-    addDeleteEventListeners();
+    // addDeleteEventListeners();
+    // retrieve the styling for the delete button
+    // hook up existing delete functionality to the modal button
+    // find a way to get access to the user id and pass into handlebars smush
+    addNathanEventListeners()
+    console.log('HI')
     addEventListenersForDownloadButtons();
     addEventListenersForViewResults();
     addEventListenersForMoreInfoButtons()

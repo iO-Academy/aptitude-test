@@ -114,7 +114,15 @@ input {
     margin-bottom: 5px;
   }
 
-  .delete-user-button {
+  //.delete-user-button {
+  //  background-color: $primary-button;
+  //  color: $primary-button-font;
+  //  @include buttonsMetaFontStyles;
+  //  font-size: 1.5rem;
+  //  margin-bottom: 5px;
+  //}
+
+  .nathanDelete {
     background-color: $primary-button;
     color: $primary-button-font;
     @include buttonsMetaFontStyles;
