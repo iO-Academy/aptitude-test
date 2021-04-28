@@ -181,10 +181,11 @@ function createUserResults(resultData, questionData): Object {
     let i: number = 0;
     //console.log(questionData)
     //console.log(resultData)
+    console.log(questionData)
     for (let result in userResults) {
         i++;
         let optionNumber = "option" + userResults[result].answerID
-        let answer = "option" + questionData[result].answer
+        let answer = "option" + questionData.data[result].answer
         console.log(answer)
         userResultsTable[result] = {
             result: result,
