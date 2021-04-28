@@ -219,3 +219,9 @@ input[type="number"] {
 .user-information-secondary-data-row {
   border-bottom: 3px solid #ddd;
 }
+
+#view-results-modal {
+  .active-tab {
+    background-color: $primary-button-hover;
+  }
+}
