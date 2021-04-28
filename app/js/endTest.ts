@@ -3,7 +3,7 @@ let count: number = 0;
 function pageLeaveAlert() {
     if (count < 2) {
         count ++;
-        let modal = document.querySelector('#exampleModal');
+        let modal = document.querySelector('#warningModal');
         modal.classList.add('show');
         modal.classList.remove('fade');
         document.querySelector("#closeWarning").addEventListener('click', ()=>{

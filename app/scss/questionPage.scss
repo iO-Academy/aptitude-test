@@ -313,6 +313,9 @@ img {
   padding: 7px 0 31px;
 }
 
-.visibilityModal {
-  display: block;
+#warningModal {
+  background: rgba(0, 0, 0, 0.5);
+  h5 {
+    font-size: 2rem;
+  }
 }
