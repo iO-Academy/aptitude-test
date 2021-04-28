@@ -179,13 +179,18 @@ function createUserResults(resultData, questionData): Object {
             result: result,
             question: questionObj[result],
             userAnswer: userResults[result].answerID,
-            answerOption: optionNumber
+            answerOption: questionData[optionNumber]
         };
+        //console.log(questionData[optionNumber])
         if (userResults[result]["isCorrect"]) {
             userResultsTable[result].correct = "correct";
         }
+
     }
+    //console.log(questionData[optionNumber]);
     return userResultsTable;
+    //console.log(userResultsTable);
+
 }
 
 async function addEventListenersForDownloadButtons() {
