@@ -52,16 +52,10 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous" defer></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous" defer></script>
-    <!-- Modal -->
+
     <div class="overlay close-view-results"></div>
 
-<!--    <div id="modal">-->
-
-<!--        <button class="close-edit-user primary-button">Close</button>-->
-<!--        <div id="modal-content"></div>-->
-<!--    </div>-->
-
-    <div class="modal" id="modal" tabindex="-1" role="dialog" data-toggle="modal" style="background-color: transparent">
+    <div class="modal bg-transparent" id="modal" tabindex="-1" role="dialog" data-toggle="modal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -81,10 +75,21 @@
         </div>
     </div>
 
-    <div id="view-results-modal">
-        <button class="close-view-results primary-button">Close</button>
-        <div id="view-results-modal-content"></div>
+<!-- Modal -->
+<div class="modal bg-transparent" id="view-results-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close-view-results primary-button">Close</button>
+            </div>
+            <div class="modal-body">
+                <div id="view-results-modal-content"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
     </div>
+</div>
 
     <section class="container">
         <img class="logo" alt="iO Academy Logo" src="./images/logos/SVGs/iO_Logo_Alt.svg">

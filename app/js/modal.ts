@@ -52,7 +52,6 @@ function createEditModal(userInfo: BaseUser, tests: Array<Test>) {
     });
 
     getTemplateAjax('js/templates/editmodal.hbs').then(function (HBTemplate) {
-        console.log(HBTemplate)
         fillEditModalFields(HBTemplate, infoForTemplate)
     })
     .then(() => {
