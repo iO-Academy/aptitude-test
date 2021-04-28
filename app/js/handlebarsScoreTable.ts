@@ -36,11 +36,8 @@ async function updateScoreTable() {
         //This only happens when there are no users to be displayed, cannot pass paginatedArrays[0] when paginatedArrays is empty.
         printFilteredResultsToScreen(HBTemplate, paginatedArrays);
     }
-    let tableOnPage = document.querySelector('.table');
-    if(!tableOnPage.classList.contains('hidden')) {
-        await displayPageBtns(paginatedArrays);
-        pageSelectorFunctionality(HBTemplate, paginatedArrays);
-    }
+    await displayPageBtns(paginatedArrays);
+    pageSelectorFunctionality(HBTemplate, paginatedArrays);
 }
 
 /**
