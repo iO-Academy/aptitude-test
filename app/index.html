@@ -12,6 +12,8 @@
     <script defer id="handle_bars" type="text/x-handlebars-template"></script>
     <script src="js/dist/utils.js"></script>
     <script defer src="js/dist/userLogIn.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
     <title>Login page</title>
 </head>
 <body>
@@ -42,10 +44,25 @@
                 </div>
                 <div>
                     <button type="submit" class="start-button">Start test</button>
-                    <button type="button" class="instructions-button">Instructions</button>
+                    <button type="button" class="instructions-button" data-toggle="modal" data-target="#instructionsModal">Instructions</button>
                 </div>
             </div>
         </form>
+        <div class="modal fade" id="instructionsModal" tabindex="-1" role="dialog" aria-labelledby="purchaseLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Instructions</h4>
+                    </div>
+                    <div class="modal-body">
+                        <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</span>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="primary-button close-edit-use" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 </body>

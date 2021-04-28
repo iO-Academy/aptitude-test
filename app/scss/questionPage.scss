@@ -14,10 +14,11 @@ body {
   float: right;
 }
 
-#instructions {
+.instructions-button {
   @include buttonsMetaCapsFontStyles;
   margin-top: 49px;
   background-color: $primary-button;
+  border: none;
   &:hover{
     background-color: $primary-button-hover;
   }
