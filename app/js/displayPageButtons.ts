@@ -46,11 +46,12 @@ function pageSelectorFunctionality(HBTemplate: string, paginatedArrays: Array<un
 
 /**
  * Checks if the next or previous buttons are required for the page.
- * @param page
- * @param pages
+ * @param page the current page the user is on
+ * @param pages the total number of pages
  */
 function pageButtonCheck(page: number, pages: number) {
-    if (pages < 2) {
+    let tableOnPage = document.querySelector('.table');
+    if (pages < 2 || tableOnPage.classList.contains('hidden')) {
         document.querySelector('.pageSelectors').classList.add('hidden');
     } else {
         document.querySelector('.pageSelectors').classList.remove('hidden');
