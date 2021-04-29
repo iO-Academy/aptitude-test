@@ -1,3 +1,11 @@
+<head>
+    <style>
+        .card {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
 	<table class="table">
 		     <thead>
 		         <tr class="d-flex">
@@ -28,9 +36,19 @@
 		                     ✕
 		                 {{/if}}
 		             </td>
-		             <td>{{notes}}</td>
+		             <td>
+		             {{#if notes}}
+		                <button class="primary-button" type="button" data-toggle="collapse" data-target="#collapseNotes{{result}}" aria-expanded="false" aria-controls="collapseNotes">
+                        Notes </button>
+                        <div class="collapse" id="collapseNotes{{result}}">
+                          <div class="card card-body">
+                            {{notes}}
+                          </div>
+                        </div>
+		             </td>
 		         </tr>
+		         {{/if}}
 		         {{/each}}
 		     </tbody>
 		 </table>
-		
+</body>
