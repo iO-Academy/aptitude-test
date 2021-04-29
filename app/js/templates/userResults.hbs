@@ -1,10 +1,7 @@
 <head>
     <style>
-        .modal-backdrop.in {
-          opacity: 0;
-        }
-        .modal-backdrop {
-          z-index: -1;
+        .card {
+            margin: 10px;
         }
     </style>
 </head>
@@ -41,30 +38,13 @@
 		             </td>
 		             <td>
 		             {{result}}
-		                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#notesCollapse">Notes</button>
-                        <!-- Collapse -->
-                        <div class="collapse fade" id="notesCollapse" aria-labelledby="notesModalLabel" aria-hidden="true">
-                            <div class="modal-body">
-                              <p>{{notes}} {{result}}</p>
-                            </div>
+		                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample{{result}}" aria-expanded="false" aria-controls="collapseExample">
+                        Notes </button>
+                        <div class="collapse" id="collapseExample{{result}}">
+                          <div class="card card-body">
+                            {{notes}}
+                          </div>
                         </div>
-                        <script>
-                            function addEventListenersForMoreInfoButtons() {
-                                let moreInfoButtons = document.querySelectorAll(".more-info-button")
-                                moreInfoButtons.forEach(function (moreInfoButton) {
-                                    moreInfoButton.addEventListener('click', function (e: any) {
-                                        let userId = e.target.parentElement.getAttribute("dataId")
-                                        document.querySelector('tr[data-id="' + userId + '"]').classList.toggle('hide')
-                                        if(this.textContent == 'More info') {
-                                            this.textContent = 'Less info';
-                                        } else {
-                                            this.textContent = 'More info';
-                                        }
-                                    })
-                                })
-
-                            }
-                        </script>
 		             </td>
 		         </tr>
 		         {{/each}}
