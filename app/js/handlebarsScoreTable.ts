@@ -178,41 +178,34 @@ function produceTable (HBTemplate: string, scoresDataObject) {
     addEventListenerForBreakdownTabButton();
 }
 
+
 function createUserResults(resultData, questionData): Object {
     let userResults: Object = JSON.parse(JSON.parse(resultData.data.answers))
     let userResultsTable: Object = {}
-    let questions = []
-    questionData.data.forEach(item => {
-        let itemId: number = item.id
-        questions[itemId-1] = item
-
-        if (item.text.length > 49) {
-            questions[itemId-1] = item.text.substring(0, 49) + "..."
+    questionData = questionData.data
+    let questionNumber = 0;
+    let questionText = "";
+    let questionAnswer = "";
+    questionData.forEach(item => {
+        questionNumber = item.id
+        questionText = item.text
+        let answered = userResults[questionNumber].answerID
+        if (answered == "unanswered") {
+            questionAnswer = "not answered"
         } else {
-        questions[itemId-1]= item.text
-        };
-    });
-    console.log(questionData)
-    for (let result in userResults) {
-        let optionNumber = "option" + userResults[result].answerID
-        let answer = "option" + questionData.data[result].answer
-        let userResultIndex = Number(result)-1
-        userResultsTable[result] = {
-            result: result,
-            userAnswer: userResults[result].answerID,
-            question: questions[userResultIndex],
-            answerOption: questionData.data[userResultIndex][optionNumber],
-            notes: userResults[result].notes,
-            rightAnswer: questionData.data[result][answer]
-        };
-
-        if (userResults[result].isCorrect) {
-            userResultsTable[result].correct = "correct"
+            questionAnswer = item['option' + answered]
         }
-        if (Number(result) > 33) {
-            break
+        userResultsTable[questionNumber] = {
+            result: questionNumber,
+            question: questionText,
+            answerOption: questionAnswer,
+            notes: userResults[questionNumber].notes,
+            rightAnswer: item['option' + item.answer]
         }
-    }
+        if (userResults[questionNumber].isCorrect) {
+            userResultsTable[questionNumber].correct = "correct"
+        }
+    })
     return userResultsTable
 }
 
