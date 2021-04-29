@@ -192,6 +192,7 @@ function createUserResults(resultData, questionData): Object {
     let questionAnswer: string = "";
 
     question.forEach(item => {
+        console.log(item)
         let rightAnswerText = item['option' + item.answer];
         questionNumber = item.id
         let answered: string = userResults[questionNumber].answerID
@@ -205,10 +206,10 @@ function createUserResults(resultData, questionData): Object {
         } else {
             questionText = item.text
         };
-        if (item.text.length > 49) {
-            rightAnswerText = item.text.substring(0, 49) + "..."
+        if (rightAnswerText > 15) {
+            rightAnswerText = item.answer.substring(0, 15) + "..."
         } else {
-            rightAnswerText = item.text
+            rightAnswerText = item.answer;
         }
         userResultsTable[questionNumber] = {
             result: questionNumber,
