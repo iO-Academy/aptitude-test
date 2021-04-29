@@ -312,3 +312,14 @@ img {
   border: 1px solid $question-nav-border;
   padding: 7px 0 31px;
 }
+
+#warningModal {
+  background: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  p {
+    font-size: 2rem;
+  }
+  h5 {
+    font-size: 3rem;
+  }
+}

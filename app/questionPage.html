@@ -35,8 +35,28 @@
     <script src="js/dist/sendResults.js" defer></script>
     <script src="js/dist/overview.js" defer></script>
     <script src="https://kit.fontawesome.com/2373a66060.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </head>
 <body>
+    <!-- Modal Warning when attempting to leave window -->
+    <div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="warningModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="warningModalLabel">WARNING</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Stay on this tab or you will fail the test!</p>
+                </div>
+                <div class="modal-footer">
+                    <button id="closeWarning" type="button" class="btn btn-secondary" >Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 <!--question number and time -->
 <div id="question_page">
     <div class="container">
