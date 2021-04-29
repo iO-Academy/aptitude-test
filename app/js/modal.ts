@@ -143,7 +143,6 @@ document.querySelector(".close-edit-user").addEventListener('click', closeDialog
  */
 function createDeleteModal(dataId: number, type: 'user'|'category'  = 'user') {
     let infoForTemplate = {
-        dataId: dataId,
         type: type,
     };
 
@@ -151,9 +150,8 @@ function createDeleteModal(dataId: number, type: 'user'|'category'  = 'user') {
         fillDeleteModalFields(HBTemplate, infoForTemplate)
     })
         .then(() => {
-            //@ts-ignore
-            addConfirmDeleteEventListeners(infoForTemplate.type);
-            document.querySelector<HTMLButtonElement>("#cancelDelete").addEventListener('click', closeDialog);
+            addConfirmDeleteEventListeners(type, dataId);
+            document.querySelector<HTMLButtonElement>("#close-modal").addEventListener('click', closeDialog);
         })
 }
 
@@ -168,7 +166,7 @@ function fillDeleteModalFields(HBTemplate: string, userInfo: any) {
 
     modal_content.innerHTML = "";
 
-    if (userInfo.dataId) {
+    if (userInfo.type) {
         let html = template(userInfo);
         modal_content.innerHTML += html
     } else {
