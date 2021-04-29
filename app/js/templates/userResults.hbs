@@ -1,31 +1,36 @@
- <table class="table">
-     <thead>
-         <tr class="d-flex">
-             <th scope="col" class="col-1">#</th>
-             <th scope="col" class="col-2">Question</th>
-             <th scope="col" class="col-2">Answer</th>
-             <th scope="col" class="col-2">Correct?</th>
-         </tr>
-     </thead>
-     <tbody>
-         {{#each this}}
-         <tr
-             {{#if correct}}
-                 class="rightAnswer"
-             {{else}}
-                 class="wrongAnswer"
-             {{/if}}>
-             <td>{{result}}</td>
-             <td>{{question}}</td>
-             <td>{{userAnswer}}</td>
-             <td>
-                 {{#if correct}}
-                     ✔
-                 {{else}}
-                     ✕
-                 {{/if}}
-             </td>
-         </tr>
-         {{/each}}
-     </tbody>
- </table>
+	<table class="table">
+		     <thead>
+		         <tr class="d-flex">
+		             <th scope="col" class="col-1">#</th>
+		             <th scope="col" class="col-2">Question</th>
+		             <th scope="col" class="col-2">Answer</th>
+		             <th scope="col" class="col-2">Right Answer</th>
+		             <th scope="col" class="col-2">Correct</th>
+		             <th scope="col" class="col-2">Notes</th>
+		         </tr>
+		     </thead>
+		     <tbody>
+		         {{#each this}}
+		         <tr
+		             {{#if correct}}
+		                 class="rightAnswer"
+		             {{else}}
+		                 class="wrongAnswer"
+		             {{/if}}>
+		             <td>{{result}}</td>
+		             <td>{{question}}</td>
+		             <td>{{answerOption}}</td>
+		             <td>{{rightAnswer}}</td>
+		             <td>
+		                 {{#if correct}}
+		                     ✔
+		                 {{else}}
+		                     ✕
+		                 {{/if}}
+		             </td>
+		             <td>{{notes}}</td>
+		         </tr>
+		         {{/each}}
+		     </tbody>
+		 </table>
+		

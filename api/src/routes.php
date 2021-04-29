@@ -190,7 +190,7 @@ $app->get('/question', function ($request, $response, $args) {
     $get = $request->getQueryParams();
 
     try {
-        $query = "SELECT `id`, `text`, `option1`, `option2`, `option3`, `option4`, `option5`, `test_id` FROM `question` WHERE `deleted` <> 1 AND `test_id` = :testId;";
+        $query = "SELECT `id`, `text`, `option1`, `option2`, `option3`, `option4`, `option5`, `answer`, `test_id` FROM `question` WHERE `deleted` <> 1 AND `test_id` = :testId;";
 
         $testId = $get['test_id'] ?? 1;
 

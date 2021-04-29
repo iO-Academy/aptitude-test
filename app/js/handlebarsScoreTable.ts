@@ -179,27 +179,41 @@ function produceTable (HBTemplate: string, scoresDataObject) {
 }
 
 function createUserResults(resultData, questionData): Object {
-    let userResults: Object = JSON.parse(JSON.parse(resultData.data.answers));
-    let questionObj: Object = {};
-    let userResultsTable: Object = {};
+    let userResults: Object = JSON.parse(JSON.parse(resultData.data.answers))
+    let userResultsTable: Object = {}
+    let questions = []
     questionData.data.forEach(item => {
+        let itemId: number = item.id
+        questions[itemId-1] = item
+
         if (item.text.length > 49) {
-            questionObj[item.id] = item.text.substring(0, 49) + "...";
+            questions[itemId-1] = item.text.substring(0, 49) + "..."
         } else {
-            questionObj[item.id] = item.text;
-        }
+        questions[itemId-1]= item.text
+        };
     });
+    console.log(questionData)
     for (let result in userResults) {
+        let optionNumber = "option" + userResults[result].answerID
+        let answer = "option" + questionData.data[result].answer
+        let userResultIndex = Number(result)-1
         userResultsTable[result] = {
             result: result,
-            question: questionObj[result],
-            userAnswer: userResults[result].answerID
+            userAnswer: userResults[result].answerID,
+            question: questions[userResultIndex],
+            answerOption: questionData.data[userResultIndex][optionNumber],
+            notes: userResults[result].notes,
+            rightAnswer: questionData.data[result][answer]
         };
-        if (userResults[result]["isCorrect"]) {
-            userResultsTable[result].correct = "correct";
+
+        if (userResults[result].isCorrect) {
+            userResultsTable[result].correct = "correct"
+        }
+        if (Number(result) > 33) {
+            break
         }
     }
-    return userResultsTable;
+    return userResultsTable
 }
 
 interface ResultsBreakdownSection {
