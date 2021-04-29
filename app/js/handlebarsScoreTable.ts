@@ -96,17 +96,31 @@ function addEditEventListeners() {
     })
 }
 
-
 /**
- * Adds event listener to the delete buttons.
+ * Adds event listener to the delete user buttons.
  */
 function addDeleteEventListeners() {
-    let userItems = document.querySelectorAll(".delete-user-button")
-    userItems.forEach(function (userItem) {
-        userItem.addEventListener('click', function (e: any) {
-            let userId = this.getAttribute("dataId")
-            deleteUser(userId)
+    let deleteButtons = document.querySelectorAll(".delete-user-btn");
+    deleteButtons.forEach(function(deleteButton) {
+        deleteButton.addEventListener('click', function (e) {
+            // @ts-ignore
+            let elem: HTMLElement = e.target
+            let id: number = parseInt(elem.getAttribute('dataid'))
+            openDialog()
+            createDeleteModal(id)
         })
+    })
+}
+
+/**
+ * Adds event listener to the yes button in the delete user modal.
+ */
+function addConfirmDeleteEventListeners() {
+    let userItem = document.querySelector<HTMLButtonElement>("#confirmDelete")
+    userItem.addEventListener('click', function (e: any) {
+        let userId = userItem.dataset.id
+        deleteUser(parseInt(userId))
+        closeDialog()
     })
 }
 
@@ -159,7 +173,9 @@ function produceTable (HBTemplate: string, scoresDataObject) {
     addDeleteEventListeners();
     addEventListenersForDownloadButtons();
     addEventListenersForViewResults();
-    addEventListenersForMoreInfoButtons()
+    addEventListenersForMoreInfoButtons();
+    addEventListenerForAnswersTabButton();
+    addEventListenerForBreakdownTabButton();
 }
 
 function createUserResults(resultData, questionData): Object {
@@ -186,6 +202,70 @@ function createUserResults(resultData, questionData): Object {
     return userResultsTable;
 }
 
+interface ResultsBreakdownSection {
+    name: string;
+    score: number;
+    questions: number;
+    percentage: number;
+    startingQuestionNumber?: number;
+    finalQuestionNumber?: number;
+}
+
+interface ResultsBreakdown {
+    sections: ResultsBreakdownSection[];
+}
+
+/**
+ * function to create a ResultsBreakdown object for a user using their result data object for use in creating a user results breakdown table
+ *
+ * @param {object} resultData object containing retrieved result data for the user
+ * @param {string} test_id test_id for the test the user's been assigned
+ *
+ * @returns {Promise<ResultsBreakdown>} object containing the results breakdown
+ */
+async function createUserResultsBreakdown(resultData, test_id: string): Promise<ResultsBreakdown> {
+    let breakdown: ResultsBreakdown = {
+        sections: []
+    };
+
+    // Remove this if statement if you ever want to display a breakdown for a test with test_id that isn't 1
+    if (test_id == "1") {
+        breakdown.sections.push({name: 'Starter', score: 0, questions: 0, percentage: 0, startingQuestionNumber: 1, finalQuestionNumber: 3});
+        breakdown.sections.push({name: 'Comparison', score: 0, questions: 0, percentage: 0, startingQuestionNumber: 4, finalQuestionNumber: 8});
+        breakdown.sections.push({name: 'Syntax', score: 0, questions: 0, percentage: 0, startingQuestionNumber: 9, finalQuestionNumber: 13});
+        breakdown.sections.push({name: 'Procedure', score: 0, questions: 0, percentage: 0, startingQuestionNumber: 14, finalQuestionNumber: 18});
+        breakdown.sections.push({name: 'Logic', score: 0, questions: 0, percentage: 0, startingQuestionNumber: 19, finalQuestionNumber: 23});
+        breakdown.sections.push({name: 'Sequence', score: 0, questions: 0, percentage: 0, startingQuestionNumber: 24, finalQuestionNumber: 30});
+    }
+
+    let testName = 'Total'
+    let testData = await getData("test")
+    testData.data.forEach(test => {
+        if (test.id == test_id) {
+            testName += ` (${test.name})`
+        }
+    })
+    breakdown.sections.push({name: testName, score: 0, questions: 0, percentage: 0});
+    let userResults: Object = JSON.parse(JSON.parse(resultData.data.answers));
+    let questionNumber = 1;
+    for (let result in userResults) {
+        breakdown.sections.forEach(section => {
+            if ((!section.startingQuestionNumber || !section.finalQuestionNumber)
+                || (questionNumber >= section.startingQuestionNumber && questionNumber <= section.finalQuestionNumber)) {
+                section.questions++;
+                if (userResults[result]["isCorrect"]) {
+                    section.score++;
+                }
+            }
+        })
+        questionNumber++;
+    }
+    breakdown.sections.forEach(section => {
+        section.percentage = Math.round(100 * section.score / section.questions);
+    })
+    return breakdown;
+}
+
 async function addEventListenersForDownloadButtons() {
     document.querySelectorAll('.download-user-results-button').forEach((button) => {
         button.addEventListener("click", (e: any) => {
@@ -209,10 +289,14 @@ async function addEventListenersForDownloadButtons() {
  */
 async function addEventListenersForViewResults() {
     let userResultsTemplate = await getTemplateAjax("js/templates/userResults.hbs");
+    let userResultsBreakdownTemplate = await getTemplateAjax("js/templates/userResultsBreakdown.hbs");
     let template: Function = Handlebars.compile(userResultsTemplate);
+    let breakdownTemplate: Function = Handlebars.compile(userResultsBreakdownTemplate);
     let resultsTable: Element = document.querySelector("#view-results-modal-content");
+    let resultsBreakdownTable: Element = document.querySelector("#view-results-breakdown-modal-content");
     document.querySelectorAll(".view-results-button").forEach((button) => {
         button.addEventListener("click", (e: any) => {
+            displayResultsTableTab();
             openViewResultsModal();
             addEventListenersForCloseResults();
             getData("result?id=" + e.target.getAttribute("dataId")).then(resultData => {
@@ -223,6 +307,10 @@ async function addEventListenersForViewResults() {
                             getData("question?test_id=" + testId).then(questionData => {
                                 resultsTable.innerHTML = template(createUserResults(resultData, questionData));
                             })
+                            createUserResultsBreakdown(resultData, testId)
+                                .then(breakdown => {
+                                    resultsBreakdownTable.innerHTML = breakdownTemplate(breakdown);
+                                })
                         }
                     })
                 });
@@ -239,6 +327,35 @@ function addEventListenersForCloseResults() {
         item.addEventListener("click", () => {
             closeViewResultsModal();
         });
+    });
+}
+
+/**
+ * function to add a click event listener to the view results modal answers tab button that displays the results table in the modal
+ */
+function addEventListenerForAnswersTabButton(): void {
+    document.querySelector(".open-view-answers-tab").addEventListener("click", displayResultsTableTab);
+}
+
+/**
+ * function to display the results table in the view results modal
+ */
+function displayResultsTableTab(): void {
+    document.querySelector<HTMLElement>("#view-results-modal-content").style.display = "block";
+    document.querySelector<HTMLElement>("#view-results-breakdown-modal-content").style.display = "none";
+    document.querySelector<HTMLElement>(".open-view-answers-tab").classList.add("active-tab");
+    document.querySelector<HTMLElement>(".open-view-breakdown-tab").classList.remove("active-tab");
+}
+
+/**
+ * function to add a click event listener to the view results modal answers tab button that displays the results breakdown table in the modal
+ */
+function addEventListenerForBreakdownTabButton(): void {
+    document.querySelector(".open-view-breakdown-tab").addEventListener("click", () => {
+        document.querySelector<HTMLElement>("#view-results-modal-content").style.display = "none";
+        document.querySelector<HTMLElement>("#view-results-breakdown-modal-content").style.display = "block";
+        document.querySelector<HTMLElement>(".open-view-answers-tab").classList.remove("active-tab");
+        document.querySelector<HTMLElement>(".open-view-breakdown-tab").classList.add("active-tab");
     });
 }
 

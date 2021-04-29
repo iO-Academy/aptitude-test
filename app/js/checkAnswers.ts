@@ -130,6 +130,7 @@ function trackActiveQuestion(id: number) {
  * this checks the answers and marks them to show the finishing page
  */
 function showResults(pageLeft) {
+    document.exitFullscreen();
     resetReapplyCounter();
     clearInterval(interval);
     const userAnswers = getUserAnswers();
@@ -140,7 +141,7 @@ function showResults(pageLeft) {
                 document.querySelector<HTMLElement>('.email_for_results').innerHTML = `
                 <p>This test has ended because you clicked away from the page</p>
                 <p>Please contact us at <a href="mailto:hello@io-academy.uk">hello@io-academy.uk</a> to discuss further</p>`;
-                result.score = 0;
+               result.autoCompleted = 1
             } else {
                 document.querySelector<HTMLElement>('.greetings').innerHTML = '';
                 document.querySelector<HTMLElement>('.email_for_results').innerHTML = `

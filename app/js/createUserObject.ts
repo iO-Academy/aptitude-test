@@ -171,7 +171,8 @@ async function createUsersObject() {
                 obj['time'] = result.time;
                 obj['timeAllowed'] = secondsToMinutes(user.timeAllowed);
                 obj['dateCreated'] = result.dateCreated;
-                obj['canRetake'] = user.canRetake;              
+                obj['canRetake'] = user.canRetake;
+                obj['autoCompleted'] = parseInt(result.autoCompleted);
                 userDisplayArray.push(obj);
                 testEntryFound.push('yes');
             }

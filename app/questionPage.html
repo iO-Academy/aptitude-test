@@ -6,6 +6,8 @@
     <script src="js/dist/cookies.js"></script>
     <script src="js/dist/aptitudeTestHelpers.js"></script>
     <script src="js/dist/userLogIn.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
     <script>
         let userEmail = getCookie('userEmail')
         getUser(userEmail).then(function (user) {
@@ -36,12 +38,69 @@
     <script src="js/dist/sendResults.js" defer></script>
     <script src="js/dist/overview.js" defer></script>
     <script src="https://kit.fontawesome.com/2373a66060.js" defer></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
 </head>
 <body>
+    <!-- Modal Warning when attempting to leave window -->
+    <div class="modal fade" id="warningModal" tabindex="-1" role="dialog" aria-labelledby="warningModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="warningModalLabel">WARNING</h5>
+                </div>
+                <div class="modal-body">
+                    <p>Stay on this tab or you will fail the test!</p>
+                </div>
+                <div class="modal-footer">
+                    <button id="closeWarning" type="button" class="btn btn-secondary" >Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
 <!--question number and time -->
 <div id="question_page">
     <div class="container">
         <div class="row">
+            <button type="button" class="btn btn-info left instructions-button" data-toggle="modal" data-target="#instructionsModal">Instructions</button>
+            <div class="modal fade" id="instructionsModal" tabindex="-1" role="dialog" aria-labelledby="instructionsLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="instructionsLabel">Instructions</h4>
+                        </div>
+                        <div class="modal-body">
+                            <p>Welcome to the iO Academy Aptitude test.</p>
+                            <p>
+                                This test is multiple-choice. Each question has only one correct answer, all questions are worth 1 mark, with no deductions for getting a question wrong.
+                            </p>
+                            <p>
+                                You can navigate through the questions using the “NEXT” and “PREVIOUS” buttons at the bottom. You can also use the question navigation bar to skip to any question in the test.
+                            </p>
+                            <p>
+                                Once you answer a question, the question number in the navigation bar will turn green, this does not indicate a correct or incorrect answer.
+                            </p>
+                            <p>
+                                The flag button allows you to mark questions to come back to later. Questions you mark with a flag will show in the question navigation bar.
+                            </p>
+                            <p>
+                                When you reach the last question, an “overview” button will appear, clicking this will take you to a summary of the test where you can see all the questions, which ones you have/have not answered and any remaining flags.
+                            </p>
+                            <p>
+                                You can navigate back to any question from the overview.
+                            </p>
+                            <p>
+                                At the bottom of the overview, is the “FINISH” button. This will end the test and save your score. You will not be able to change your answers after clicking this.
+                            </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="primary-button close-edit-use" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <img class="logo" alt="iO Academy Logo" src="./images/logos/SVGs/iO_Logo_Alt.svg">
         </div>
         <div class="row">
