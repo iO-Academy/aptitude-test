@@ -25,6 +25,7 @@
     <link href="css/questionPage.css" type="text/css" rel="stylesheet">
     <link rel="stylesheet" href="css/resultPage.css">
     <link rel="stylesheet" href="css/styles.css">
+    <script src="js/dist/fullscreen.js" defer></script>
     <script src="js/dist/getData.js" defer></script>
     <script src="js/dist/aptitudeTestHelpers.js" async></script>
     <script src="js/dist/ajaxHandlebarsTemplate.js" defer></script>
@@ -63,6 +64,7 @@
 <div id="question_page">
     <div class="container">
         <div class="row">
+            <button type="button" class="btn btn-info left" id="toggle-fullscreen">Toggle fullscreen</button>
             <button type="button" class="btn btn-info left instructions-button" data-toggle="modal" data-target="#instructionsModal">Instructions</button>
             <div class="modal fade" id="instructionsModal" tabindex="-1" role="dialog" aria-labelledby="instructionsLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
