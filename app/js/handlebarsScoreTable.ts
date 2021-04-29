@@ -190,7 +190,9 @@ function createUserResults(resultData, questionData): Object {
     let questionNumber: number = 0;
     let questionText: string = "";
     let questionAnswer: string = "";
+
     question.forEach(item => {
+        let rightAnswerText = item['option' + item.answer];
         questionNumber = item.id
         let answered: string = userResults[questionNumber].answerID
         if (answered == "unanswered") {
@@ -203,12 +205,17 @@ function createUserResults(resultData, questionData): Object {
         } else {
             questionText = item.text
         };
+        if (item.text.length > 49) {
+            rightAnswerText = item.text.substring(0, 49) + "..."
+        } else {
+            rightAnswerText = item.text
+        }
         userResultsTable[questionNumber] = {
             result: questionNumber,
             question: questionText,
             answerOption: questionAnswer,
             notes: userResults[questionNumber].notes,
-            rightAnswer: item['option' + item.answer]
+            rightAnswer: rightAnswerText
         }
         if (userResults[questionNumber].isCorrect) {
             userResultsTable[questionNumber].correct = "correct"
