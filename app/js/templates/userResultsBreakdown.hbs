@@ -1,0 +1,18 @@
+ <table class="table">
+     <thead>
+         <tr class="d-flex">
+             <th scope="col" class="col-4">Section</th>
+             <th scope="col" class="col-1">Questions</th>
+             <th scope="col" class="col-1">Percentage</th>
+         </tr>
+     </thead>
+     <tbody>
+         {{#each sections}}
+         <tr>
+             <td>{{name}}</td>
+             <td>{{questions}}</td>
+             <td>{{percentage}}%</td>
+         </tr>
+         {{/each}}
+     </tbody>
+ </table>

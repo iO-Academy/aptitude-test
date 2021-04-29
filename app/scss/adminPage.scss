@@ -114,7 +114,7 @@ input {
     margin-bottom: 5px;
   }
 
-  .delete-user-button {
+  .delete-user-btn {
     background-color: $primary-button;
     color: $primary-button-font;
     @include buttonsMetaFontStyles;
@@ -166,9 +166,14 @@ input {
   margin-bottom: 10px;
 }
 
-.editmodal label, #editSubmit {
+.editmodal label, #editSubmit, .deleteModal {
   display: block;
   margin-top: 30px;
+}
+
+.delete-message {
+  font-size: 1.5rem;
+  margin: 0;
 }
 
 .pageSelectors {
@@ -213,4 +218,10 @@ input[type="number"] {
 
 .user-information-secondary-data-row {
   border-bottom: 3px solid #ddd;
+}
+
+#view-results-modal {
+  .active-tab {
+    background-color: $primary-button-hover;
+  }
 }
