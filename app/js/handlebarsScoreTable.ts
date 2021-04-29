@@ -106,7 +106,7 @@ function addDeleteEventListeners() {
             // @ts-ignore
             let elem: HTMLElement = e.target
             let id: number = parseInt(elem.getAttribute('dataid'))
-            openDialog()
+            openDeleteUserModal()
             createDeleteModal(id)
         })
     })
@@ -118,7 +118,7 @@ function addDeleteEventListeners() {
  * @param {number} dataId the id of the data that identifies 'user' or 'category'
  */
 function addConfirmDeleteEventListeners(type: 'user'|'category',dataId: number) {
-    let item = document.querySelector<HTMLButtonElement>("#editSubmit")
+    let item = document.querySelector<HTMLButtonElement>("#confirmDelete")
     item.addEventListener('click', function (e: any) {
         switch(type) {
             default:
@@ -135,7 +135,7 @@ function addConfirmDeleteEventListeners(type: 'user'|'category',dataId: number) 
             })
                 break;
         }
-        closeDialog()
+        closeDeleteUserModal()
     })
 }
 

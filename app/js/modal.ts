@@ -17,6 +17,16 @@ function closeDialog() {
     document.querySelector<HTMLElement>('.overlay').style.display = 'none'
 }
 
+function openDeleteUserModal() {
+    document.querySelector<HTMLElement>('#delete_user_modal').style.display = 'block'
+    document.querySelector<HTMLElement>('.overlay').style.display = 'block'
+}
+
+function closeDeleteUserModal() {
+    document.querySelector<HTMLElement>('#delete_user_modal').style.display = 'none'
+    document.querySelector<HTMLElement>('.overlay').style.display = 'none'
+}
+
 function openViewResultsModal() {
     document.querySelector<HTMLElement>('#view-results-modal').style.display = 'block';
     document.querySelector<HTMLElement>('.overlay').style.display = 'block';
@@ -151,7 +161,7 @@ function createDeleteModal(dataId: number, type: 'user'|'category'  = 'user') {
     })
         .then(() => {
             addConfirmDeleteEventListeners(type, dataId);
-            document.querySelector<HTMLButtonElement>("#close-modal").addEventListener('click', closeDialog);
+            document.querySelector<HTMLButtonElement>("#cancelDelete").addEventListener('click', closeDeleteUserModal);
         })
 }
 
@@ -162,7 +172,7 @@ function createDeleteModal(dataId: number, type: 'user'|'category'  = 'user') {
  */
 function fillDeleteModalFields(HBTemplate: string, userInfo: any) {
     let template: Function = Handlebars.compile(HBTemplate);
-    let modal_content = document.querySelector("#modal-content");
+    let modal_content = document.querySelector("#delete_user_modal_content");
 
     modal_content.innerHTML = "";
 
