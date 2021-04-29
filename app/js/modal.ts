@@ -154,14 +154,9 @@ function createDeleteModal(dataId: number, type: 'user'|'category'  = 'user') { 
             //@ts-ignore
             addConfirmDeleteEventListeners(infoForTemplate.type);
             document.querySelector<HTMLButtonElement>("#cancelDelete").addEventListener('click', closeDialog);
+            console.log(dataId)
         })
 }
-
-// we have a delete modal already
-// change it so when we press delete on the delete category
-// brings up the existing modal and we change the action on the 'yes' button
-// it checks whether it has been handed a user Id or a category Id and carries out action accordingly
-// the modal can then be re-used in the future
 
 /**
  * Compiles the handlebars template based on the userId
@@ -174,7 +169,7 @@ function fillDeleteModalFields(HBTemplate: string, userInfo: any) {
 
     modal_content.innerHTML = "";
 
-    if (userInfo.userId) {
+    if (userInfo.dataId) {
         let html = template(userInfo);
         modal_content.innerHTML += html
     } else {
