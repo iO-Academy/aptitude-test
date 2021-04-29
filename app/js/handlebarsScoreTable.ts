@@ -166,48 +166,52 @@ function produceTable (HBTemplate: string, scoresDataObject) {
 
 function createUserResults(resultData, questionData): Object {
     let userResults: Object = JSON.parse(JSON.parse(resultData.data.answers));
-    let questionObj: Object = {};
     let userResultsTable: Object = {};
     questionData.data.forEach(item => {
+        console.log(item)
         if (item.text.length > 49) {
-            questionObj[item.id] = item.text.substring(0, 49) + "...";
+            userResultsTable[item.id] = {
+                question: item.text.substring(0, 49) + "..."
+            };
         } else {
-            questionObj[item.id] = item.text;
-        }
+            userResultsTable[item.id] = {
+                question: item.text
+            }
+        };
     });
-    //console.log(questionData);
-    // let numberOfQuestions = document.querySelectorAll('#questions .question').length
-    // console.log(numberOfQuestions)
-    let i: number = 0;
-    //console.log(questionData)
-    //console.log(resultData)
+    console.log(userResultsTable)
     console.log(questionData)
+    //console.log(questionData);
+
+
+    console.log(userResults)
+    //console.log(questionData)
     for (let result in userResults) {
-        i++;
+        console.log(result)
+
+        let resultZero: number = Number(result) - 1
+        let resultOne: number = Number(result) + 1
         let optionNumber = "option" + userResults[result].answerID
         let answer = "option" + questionData.data[result].answer
-        console.log(answer)
         userResultsTable[result] = {
             result: result,
-            question: questionObj[result],
             userAnswer: userResults[result].answerID,
             answerOption: questionData.data[result][optionNumber],
             notes: userResults[result].notes,
             rightAnswer: questionData.data[result][answer]
         };
-        // console.log(questionData.data[result])
-        if (userResults[result]["isCorrect"]) {
+        //console.log(userResults[result].isCorrect)
+         //console.log(questionData.data[result][answer]
+        if (userResults[result].isCorrect) {
             userResultsTable[result].correct = "correct";
         }
-        if (i > 30) {
-            break
+        if (Number(result) > 33) {
+            break;
         }
-        console.log(10)
     }
-
-    //console.log(questionData[optionNumber]);
+    //console.log(questionData)
     return userResultsTable;
-    //console.log(userResultsTable);
+
 }
 
 interface ResultsBreakdownSection {
