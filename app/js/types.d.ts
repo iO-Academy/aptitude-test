@@ -21,6 +21,7 @@ declare var openViewResultsModal: Function;
 declare var closeViewResultsModal: Function;
 declare var createEditModal: Function;
 declare var createDeleteModal: Function;
+declare var createDeleteCategoryModal: Function;
 declare var postUserEdit: Function;
 declare var createObjectForDatabase: Function;
 declare var updateChart: Function;

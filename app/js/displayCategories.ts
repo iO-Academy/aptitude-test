@@ -6,17 +6,12 @@ function populateCategories() {
                 button.addEventListener('click', async(clickedBtn: MouseEvent) => {
                     const button = clickedBtn.target as HTMLButtonElement
                     const id = parseInt(button.dataset.id);
-                    let response = await deleteCategory(id);
-                    if (response) {
-                        document.querySelector('#categoriesContainer').innerHTML = '';
-                        populateCategories();
-                        populateTableCategoryDropdown();
-                        populateNewUserCategoryDropdown();
-                        updateScoreTable();
-                    }
+                    createDeleteModal(id, 'category')
                 })
             })
         })
 }
 
 populateCategories();
+
+
