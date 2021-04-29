@@ -13,7 +13,6 @@
 
 #modal {
   display: none;
-  background: $modal-background;
   width: 650px;
   position: fixed;
   top: 30px;
@@ -42,8 +41,7 @@
 
 #view-results-modal {
   display: none;
-  background: $modal-background;
-  width: 70vw;
+  width: 87%;
   height: 90vh;
   position: fixed;
   top: 0;
@@ -52,8 +50,8 @@
   right: 0;
   z-index: 501;
   margin: auto;
-  padding: 10px 50px;
   overflow-y: scroll;
+  background-color: white;
 
   .rightAnswer {
     background: $green-table-grade;
@@ -63,3 +61,17 @@
   }
 }
 
+.modal-close-cross {
+  float: right;
+  transition-duration: 250ms;
+  transition-timing-function: ease-in;
+  border: none;
+  background-color: transparent;
+  opacity: .5;
+  &:hover {
+    opacity: 1;
+  }
+  &:focus {
+    outline: none;
+  }
+}

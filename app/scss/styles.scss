@@ -73,8 +73,9 @@ html {
     }
 
     p {
-      display: inline; // WHY!? im too afraid to change this...
+      display: block;
       margin: 10px;
+      font-size: 2rem;
     }
 
     .custom-select {

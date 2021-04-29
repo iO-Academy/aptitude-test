@@ -56,6 +56,7 @@ function createEditModal(userInfo: BaseUser, tests: Array<Test>) {
     })
     .then(() => {
         addEditModalSubmitEventListener()
+        document.querySelectorAll(".close-edit-user").forEach(button => button.addEventListener('click', closeDialog));
         changeNewUserCategoryDropdown()
     })
 }
@@ -124,9 +125,8 @@ function addEditModalSubmitEventListener() {
                 errorField.innerHTML = 'Test duration must be below an hour and minutes and seconds must be between 0 and 60.';
             }
         })
-    });
-}; 
-
+    })
+}
 
 /*
 This query selector closes the edit user function if you don't want to save the results
