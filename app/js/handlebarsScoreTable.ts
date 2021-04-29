@@ -114,12 +114,27 @@ function addDeleteEventListeners() {
 
 /**
  * Adds event listener to the yes button in the delete user modal.
+ * @param {string} type String containing either 'user' or 'category' to determine what button deletes
+ * @param {number} dataId the id of the data that identifies 'user' or 'category'
  */
-function addConfirmDeleteEventListeners() {
-    let userItem = document.querySelector<HTMLButtonElement>("#confirmDelete")
-    userItem.addEventListener('click', function (e: any) {
-        let userId = userItem.dataset.id
-        deleteUser(parseInt(userId))
+function addConfirmDeleteEventListeners(type: 'user'|'category',dataId: number) {
+    let item = document.querySelector<HTMLButtonElement>("#confirmDelete")
+    item.addEventListener('click', function (e: any) {
+        switch(type) {
+            default:
+            case 'user':
+                deleteUser(dataId)
+                break;
+            case 'category':
+                deleteCategory(dataId).then(function(){
+                    document.querySelector('#categoriesContainer').innerHTML = '';
+                    populateCategories();
+                    populateTableCategoryDropdown();
+                    populateNewUserCategoryDropdown();
+                    updateScoreTable();
+            })
+                break;
+        }
         closeDeleteUserModal()
     })
 }
