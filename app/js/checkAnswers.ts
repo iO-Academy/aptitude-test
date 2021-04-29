@@ -130,6 +130,7 @@ function trackActiveQuestion(id: number) {
  * this checks the answers and marks them to show the finishing page
  */
 function showResults(pageLeft) {
+    document.exitFullscreen();
     resetReapplyCounter();
     clearInterval(interval);
     const userAnswers = getUserAnswers();
