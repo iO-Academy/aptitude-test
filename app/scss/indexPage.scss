@@ -2,11 +2,11 @@
 
 * {
   box-sizing: border-box;
-  font-size: 100%;
 }
-.container {
 
-  .start-button {
+
+.container {
+  .start-button, .instructions-button {
     background: $primary-button;
     border: none;
     color: $primary-button-font;
