@@ -1,26 +1,12 @@
 <head>
-        <style>
-            .notesActivate {
-              background-color: #eee;
-              color: #444;
-              cursor: pointer;
-              padding: 12px;
-              width: 100%;
-              text-align: left;
-              border: none;
-              outline: none;
-              transition: 0.4s;
-            }
-            .active, .notesActivate:hover {
-              background-color: #ccc;
-            }
-            .panel {
-              padding: 0 18px;
-              background-color: white;
-            }
-        </style>
-    <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+    <style>
+        .modal-backdrop.in {
+          opacity: 0;
+        }
+        .modal-backdrop {
+          z-index: -1;
+        }
+    </style>
 </head>
 <body>
 	<table class="table">
@@ -54,12 +40,25 @@
 		                 {{/if}}
 		             </td>
 		             <td>
-		                <div class="notesButton">
-		                    <button class="notesActivate">Notes</button>
-                            <div class="panel">
-                                <p>notes: {{notes}}</p>
+		                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#notesModal">
+                          Notes
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="notesModal" tabindex="-1" aria-labelledby="notesModalLabel" aria-hidden="true">
+                          <div class="modal-dialog">
+                            <div class="modal-content">
+                              <div class="modal-header">
+                                <h5 class="modal-title" id="notesModalLabel">Notes</h5>
+                              </div>
+                              <div class="modal-body">
+                                <p>{{notes}}</p>
+                              </div>
+                              <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              </div>
                             </div>
-		                </div>
+                          </div>
+                        </div>
 		             </td>
 		         </tr>
 		         {{/each}}
