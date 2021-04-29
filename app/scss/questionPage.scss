@@ -315,7 +315,11 @@ img {
 
 #warningModal {
   background: rgba(0, 0, 0, 0.5);
-  h5 {
+  text-align: center;
+  p {
     font-size: 2rem;
+  }
+  h5 {
+    font-size: 3rem;
   }
 }
