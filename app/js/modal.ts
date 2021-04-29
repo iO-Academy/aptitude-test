@@ -17,16 +17,6 @@ function closeDialog() {
     document.querySelector<HTMLElement>('.overlay').style.display = 'none'
 }
 
-function openDeleteUserModal() {
-    document.querySelector<HTMLElement>('#delete_user_modal').style.display = 'block'
-    document.querySelector<HTMLElement>('.overlay').style.display = 'block'
-}
-
-function closeDeleteUserModal() {
-    document.querySelector<HTMLElement>('#delete_user_modal').style.display = 'none'
-    document.querySelector<HTMLElement>('.overlay').style.display = 'none'
-}
-
 function openViewResultsModal() {
     document.querySelector<HTMLElement>('#view-results-modal').style.display = 'block';
     document.querySelector<HTMLElement>('.overlay').style.display = 'block';

@@ -17,8 +17,6 @@ declare var createUsersObject: Function;
 declare var getTests: Function;
 declare var openDialog: Function;
 declare var closeDialog: Function;
-declare var openDeleteUserModal: Function;
-declare var closeDeleteUserModal: Function;
 declare var openViewResultsModal: Function;
 declare var closeViewResultsModal: Function;
 declare var createEditModal: Function;
