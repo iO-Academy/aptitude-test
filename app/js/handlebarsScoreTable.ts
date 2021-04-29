@@ -106,7 +106,7 @@ function addDeleteEventListeners() {
             // @ts-ignore
             let elem: HTMLElement = e.target
             let id: number = parseInt(elem.getAttribute('dataid'))
-            openDialog()
+            openDeleteUserModal()
             createDeleteModal(id)
         })
     })
@@ -120,7 +120,7 @@ function addConfirmDeleteEventListeners() {
     userItem.addEventListener('click', function (e: any) {
         let userId = userItem.dataset.id
         deleteUser(parseInt(userId))
-        closeDialog()
+        closeDeleteUserModal()
     })
 }
 

@@ -17,6 +17,16 @@ function closeDialog() {
     document.querySelector<HTMLElement>('.overlay').style.display = 'none'
 }
 
+function openDeleteUserModal() {
+    document.querySelector<HTMLElement>('#delete_user_modal').style.display = 'block'
+    document.querySelector<HTMLElement>('.overlay').style.display = 'block'
+}
+
+function closeDeleteUserModal() {
+    document.querySelector<HTMLElement>('#delete_user_modal').style.display = 'none'
+    document.querySelector<HTMLElement>('.overlay').style.display = 'none'
+}
+
 function openViewResultsModal() {
     document.querySelector<HTMLElement>('#view-results-modal').style.display = 'block';
     document.querySelector<HTMLElement>('.overlay').style.display = 'block';
@@ -56,6 +66,7 @@ function createEditModal(userInfo: BaseUser, tests: Array<Test>) {
     })
     .then(() => {
         addEditModalSubmitEventListener()
+        document.querySelectorAll(".close-edit-user").forEach(button => button.addEventListener('click', closeDialog));
         changeNewUserCategoryDropdown()
     })
 }
@@ -124,9 +135,8 @@ function addEditModalSubmitEventListener() {
                 errorField.innerHTML = 'Test duration must be below an hour and minutes and seconds must be between 0 and 60.';
             }
         })
-    });
-}; 
-
+    })
+}
 
 /*
 This query selector closes the edit user function if you don't want to save the results
@@ -151,7 +161,8 @@ function createDeleteModal(userId: number) {
         .then(() => {
             //@ts-ignore
             addConfirmDeleteEventListeners();
-            document.querySelector<HTMLButtonElement>("#cancelDelete").addEventListener('click', closeDialog);
+            document.querySelector<HTMLButtonElement>("#cancelDelete").addEventListener('click', closeDeleteUserModal);
+            document.querySelector<HTMLButtonElement>(".close-delete-user").addEventListener('click', closeDeleteUserModal);
         })
 }
 
@@ -162,7 +173,7 @@ function createDeleteModal(userId: number) {
  */
 function fillDeleteModalFields(HBTemplate: string, userInfo: any) {
     let template: Function = Handlebars.compile(HBTemplate);
-    let modal_content = document.querySelector("#modal-content");
+    let modal_content = document.querySelector("#delete_user_modal_content");
 
     modal_content.innerHTML = "";
 
