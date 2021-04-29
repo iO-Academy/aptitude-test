@@ -190,30 +190,22 @@ function createUserResults(resultData, questionData): Object {
     let questionNumber: number = 0;
     let questionText: string = "";
     let questionAnswer: string = "";
-    let questions: Array<string> = [];
-    question.forEach(item => {
-        let itemId: number = item.id
-        questions[itemId-1] = item
-
-        if (item.text.length > 49) {
-            questions[itemId-1] = item.text.substring(0, 49) + "..."
-        } else {
-            questions[itemId-1]= item.text
-        };
-
-    });
     question.forEach(item => {
         questionNumber = item.id
-        questionText = item.text
         let answered: string = userResults[questionNumber].answerID
         if (answered == "unanswered") {
             questionAnswer = "not answered"
         } else {
             questionAnswer = item['option' + answered]
         }
+        if (item.text.length > 49) {
+            questionText = item.text.substring(0, 49) + "..."
+        } else {
+            questionText = item.text
+        };
         userResultsTable[questionNumber] = {
             result: questionNumber,
-            question: questions[questionNumber],
+            question: questionText,
             answerOption: questionAnswer,
             notes: userResults[questionNumber].notes,
             rightAnswer: item['option' + item.answer]
