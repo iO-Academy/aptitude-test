@@ -167,41 +167,30 @@ function produceTable (HBTemplate: string, scoresDataObject) {
 function createUserResults(resultData, questionData): Object {
     let userResults: Object = JSON.parse(JSON.parse(resultData.data.answers));
     let userResultsTable: Object = {};
+    let questions = []
     questionData.data.forEach(item => {
-        console.log(item)
+        let itemId: number = item.id
+        questions[itemId-1] = item
+
         if (item.text.length > 49) {
-            userResultsTable[item.id] = {
-                question: item.text.substring(0, 49) + "..."
-            };
+            questions[itemId-1] = item.text.substring(0, 49) + "..."
         } else {
-            userResultsTable[item.id] = {
-                question: item.text
-            }
+        questions[itemId-1]= item.text
         };
     });
-    console.log(userResultsTable)
     console.log(questionData)
-    //console.log(questionData);
-
-
-    console.log(userResults)
-    //console.log(questionData)
     for (let result in userResults) {
-        console.log(result)
-
-        let resultZero: number = Number(result) - 1
-        let resultOne: number = Number(result) + 1
         let optionNumber = "option" + userResults[result].answerID
         let answer = "option" + questionData.data[result].answer
         userResultsTable[result] = {
             result: result,
             userAnswer: userResults[result].answerID,
-            answerOption: questionData.data[result][optionNumber],
+            question: questions[result],
+            answerOption: questionData.data[Number(result)-1][optionNumber],
             notes: userResults[result].notes,
             rightAnswer: questionData.data[result][answer]
         };
-        //console.log(userResults[result].isCorrect)
-         //console.log(questionData.data[result][answer]
+
         if (userResults[result].isCorrect) {
             userResultsTable[result].correct = "correct";
         }
@@ -209,9 +198,7 @@ function createUserResults(resultData, questionData): Object {
             break;
         }
     }
-    //console.log(questionData)
     return userResultsTable;
-
 }
 
 interface ResultsBreakdownSection {
