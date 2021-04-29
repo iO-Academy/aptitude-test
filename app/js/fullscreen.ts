@@ -1,13 +1,9 @@
-// function enterFullscreen() {
-//   if (!document.fullscreen) {
-//     document.documentElement.requestFullscreen();
-//     document.onfullscreenchange = function () {
-//       document.documentElement.removeEventListener(
-//         "mousemove",
-//         enterFullscreen
-//       );
-//     };
-//   }
-// }
 
-// document.documentElement.addEventListener("mousemove", enterFullscreen);
+const fullscreenButton = document.querySelector('#toggle-fullscreen');
+fullscreenButton.addEventListener('click', toggleFullscreen);
+
+function toggleFullscreen() {
+    if (!document.fullscreen) {
+        document.documentElement.requestFullscreen();
+    } document.exitFullscreen()
+}
