@@ -40,25 +40,31 @@
 		                 {{/if}}
 		             </td>
 		             <td>
-		                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#notesModal">
-                          Notes
-                        </button>
-                        <!-- Modal -->
-                        <div class="modal fade" id="notesModal" tabindex="-1" aria-labelledby="notesModalLabel" aria-hidden="true">
-                          <div class="modal-dialog">
-                            <div class="modal-content">
-                              <div class="modal-header">
-                                <h5 class="modal-title" id="notesModalLabel">Notes</h5>
-                              </div>
-                              <div class="modal-body">
-                                <p>{{notes}}</p>
-                              </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                              </div>
+		             {{result}}
+		                <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#notesCollapse">Notes</button>
+                        <!-- Collapse -->
+                        <div class="collapse fade" id="notesCollapse" aria-labelledby="notesModalLabel" aria-hidden="true">
+                            <div class="modal-body">
+                              <p>{{notes}} {{result}}</p>
                             </div>
-                          </div>
                         </div>
+                        <script>
+                            function addEventListenersForMoreInfoButtons() {
+                                let moreInfoButtons = document.querySelectorAll(".more-info-button")
+                                moreInfoButtons.forEach(function (moreInfoButton) {
+                                    moreInfoButton.addEventListener('click', function (e: any) {
+                                        let userId = e.target.parentElement.getAttribute("dataId")
+                                        document.querySelector('tr[data-id="' + userId + '"]').classList.toggle('hide')
+                                        if(this.textContent == 'More info') {
+                                            this.textContent = 'Less info';
+                                        } else {
+                                            this.textContent = 'More info';
+                                        }
+                                    })
+                                })
+
+                            }
+                        </script>
 		             </td>
 		         </tr>
 		         {{/each}}
