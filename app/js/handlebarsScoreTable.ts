@@ -182,11 +182,22 @@ function produceTable (HBTemplate: string, scoresDataObject) {
 function createUserResults(resultData, questionData): Object {
     let userResults: Object = JSON.parse(JSON.parse(resultData.data.answers))
     let userResultsTable: Object = {}
-    questionData = questionData.data
+    let questionDataData = questionData.data
     let questionNumber = 0;
     let questionText = "";
     let questionAnswer = "";
-    questionData.forEach(item => {
+    let questions = [];
+    questionData.data.forEach(item => {
+        let itemId: number = item.id
+        questions[itemId-1] = item
+
+        if (item.text.length > 49) {
+            questions[itemId-1] = item.text.substring(0, 49) + "..."
+        } else {
+            questions[itemId-1]= item.text
+        };
+    });
+    questionDataData.forEach(item => {
         questionNumber = item.id
         questionText = item.text
         let answered = userResults[questionNumber].answerID
@@ -197,7 +208,7 @@ function createUserResults(resultData, questionData): Object {
         }
         userResultsTable[questionNumber] = {
             result: questionNumber,
-            question: questionText,
+            question: questions[questionNumber],
             answerOption: questionAnswer,
             notes: userResults[questionNumber].notes,
             rightAnswer: item['option' + item.answer]
