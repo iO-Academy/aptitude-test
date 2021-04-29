@@ -21,3 +21,15 @@ function populateNewUserCategoryDropdown () {
         });
     })
 }
+
+/**
+ * gives the ability to change the category in the category dropdown
+ */
+function changeNewUserCategoryDropdown() {
+    getData('category').then(function (testsObject) {
+        getTemplateAjax('js/templates/categoryDropdown.hbs').then(function (HBTemplate) {
+            let template = Handlebars.compile(HBTemplate);
+            document.querySelector<HTMLElement>('#changeCategory').innerHTML = template(testsObject)
+        });
+    });
+}
