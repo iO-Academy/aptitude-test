@@ -37,16 +37,17 @@
 		                 {{/if}}
 		             </td>
 		             <td>
-		             {{result}}
-		                <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample{{result}}" aria-expanded="false" aria-controls="collapseExample">
+		             {{#if notes}}
+		                <button class="primary-button" type="button" data-toggle="collapse" data-target="#collapseNotes{{result}}" aria-expanded="false" aria-controls="collapseNotes">
                         Notes </button>
-                        <div class="collapse" id="collapseExample{{result}}">
+                        <div class="collapse" id="collapseNotes{{result}}">
                           <div class="card card-body">
                             {{notes}}
                           </div>
                         </div>
 		             </td>
 		         </tr>
+		         {{/if}}
 		         {{/each}}
 		     </tbody>
 		 </table>
