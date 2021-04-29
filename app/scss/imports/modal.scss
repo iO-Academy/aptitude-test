@@ -62,8 +62,9 @@
 }
 
 .modal-close-cross {
-  position: relative;
-  left: 94%;
+  float: right;
+  transition-duration: 250ms;
+  transition-timing-function: ease-in;
   border: none;
   background-color: transparent;
   opacity: .5;
