@@ -165,8 +165,8 @@ function produceTable (HBTemplate: string, scoresDataObject) {
 }
 
 function createUserResults(resultData, questionData): Object {
-    let userResults: Object = JSON.parse(JSON.parse(resultData.data.answers));
-    let userResultsTable: Object = {};
+    let userResults: Object = JSON.parse(JSON.parse(resultData.data.answers))
+    let userResultsTable: Object = {}
     let questions = []
     questionData.data.forEach(item => {
         let itemId: number = item.id
@@ -182,24 +182,24 @@ function createUserResults(resultData, questionData): Object {
     for (let result in userResults) {
         let optionNumber = "option" + userResults[result].answerID
         let answer = "option" + questionData.data[result].answer
-        console.log(Number(result)-1)
+        let userResultIndex = Number(result)-1
         userResultsTable[result] = {
             result: result,
             userAnswer: userResults[result].answerID,
-            question: questions[Number(result)-1],
-            answerOption: questionData.data[result][optionNumber],
+            question: questions[userResultIndex],
+            answerOption: questionData.data[userResultIndex][optionNumber],
             notes: userResults[result].notes,
             rightAnswer: questionData.data[result][answer]
         };
 
         if (userResults[result].isCorrect) {
-            userResultsTable[result].correct = "correct";
+            userResultsTable[result].correct = "correct"
         }
         if (Number(result) > 33) {
-            break;
+            break
         }
     }
-    return userResultsTable;
+    return userResultsTable
 }
 
 interface ResultsBreakdownSection {
