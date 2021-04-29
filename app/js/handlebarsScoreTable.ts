@@ -115,7 +115,7 @@ function addDeleteEventListeners() {
 /**
  * Adds event listener to the yes button in the delete user modal.
  * @param {string} type String containing either 'user' or 'category' to determine what button deletes
- * @param {number} dataId
+ * @param {number} dataId the id of the data that identifies 'user' or 'category'
  */
 function addConfirmDeleteEventListeners(type: 'user'|'category',dataId: number) {
     let item = document.querySelector<HTMLButtonElement>("#editSubmit")
