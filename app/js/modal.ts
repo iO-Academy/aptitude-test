@@ -143,6 +143,7 @@ This query selector closes the edit user function if you don't want to save the 
  */
 
 document.querySelector(".close-edit-user").addEventListener('click', closeDialog);
+document.querySelector(".close-delete-user").addEventListener('click', closeDeleteUserModal);
 
 /**
  * Creates the modal with deleteModal handlebars template.

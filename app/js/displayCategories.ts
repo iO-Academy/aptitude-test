@@ -9,7 +9,7 @@ function populateCategories() {
                 button.addEventListener('click', async(clickedBtn: MouseEvent) => {
                     const button = clickedBtn.target as HTMLButtonElement
                     const id = parseInt(button.dataset.id);
-                    openDialog()
+                    openDeleteUserModal()
                     createDeleteModal(id, 'category')
                 })
             })
