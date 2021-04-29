@@ -14,12 +14,28 @@ body {
   float: right;
 }
 
+.instructions-button {
+  @include buttonsMetaCapsFontStyles;
+  margin-top: 49px;
+  background-color: $primary-button;
+  border: none;
+  &:hover{
+    background-color: $primary-button-hover;
+  }
+}
+
 .logo {
   width: 300px;
   height: 100px;
   padding: 25px;
   float: right;
   margin: 10px;
+}
+
+.modal-body {
+  p {
+    text-align: center;
+  }
 }
 
 .timer {
@@ -311,4 +327,15 @@ img {
 .question-nav .current-nav-box {
   border: 1px solid $question-nav-border;
   padding: 7px 0 31px;
+}
+
+#warningModal {
+  background: rgba(0, 0, 0, 0.5);
+  text-align: center;
+  p {
+    font-size: 2rem;
+  }
+  h5 {
+    font-size: 3rem;
+  }
 }
