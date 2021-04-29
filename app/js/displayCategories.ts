@@ -1,3 +1,6 @@
+/**
+ * Function to populate the categories section on the Admin page, adds event listeners to delete buttons once populated
+ */
 function populateCategories() {
     document.querySelector('#categoriesContainer').innerHTML = '';
     populateHandlebars('#categoriesContainer', 'js/templates/categoryItem.hbs', 'category')
@@ -6,17 +9,12 @@ function populateCategories() {
                 button.addEventListener('click', async(clickedBtn: MouseEvent) => {
                     const button = clickedBtn.target as HTMLButtonElement
                     const id = parseInt(button.dataset.id);
-                    let response = await deleteCategory(id);
-                    if (response) {
-                        document.querySelector('#categoriesContainer').innerHTML = '';
-                        populateCategories();
-                        populateTableCategoryDropdown();
-                        populateNewUserCategoryDropdown();
-                        updateScoreTable();
-                    }
+                    openDialog()
+                    createDeleteModal(id, 'category')
                 })
             })
         })
 }
 
 populateCategories();
+
