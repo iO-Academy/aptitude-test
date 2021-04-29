@@ -1,3 +1,6 @@
+/**
+ * Function to populate the categories section on the Admin page, adds event listeners to delete buttons once populated
+ */
 function populateCategories() {
     document.querySelector('#categoriesContainer').innerHTML = '';
     populateHandlebars('#categoriesContainer', 'js/templates/categoryItem.hbs', 'category')
