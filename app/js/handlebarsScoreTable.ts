@@ -114,27 +114,12 @@ function addDeleteEventListeners() {
 
 /**
  * Adds event listener to the yes button in the delete user modal.
- * @param {string} type String containing either 'user' or 'category' to determine what button deletes
- * @param {number} dataId the id of the data that identifies 'user' or 'category'
  */
-function addConfirmDeleteEventListeners(type: 'user'|'category',dataId: number) {
-    let item = document.querySelector<HTMLButtonElement>("#confirmDelete")
-    item.addEventListener('click', function (e: any) {
-        switch(type) {
-            default:
-            case 'user':
-                deleteUser(dataId)
-                break;
-            case 'category':
-                deleteCategory(dataId).then(function(){
-                    document.querySelector('#categoriesContainer').innerHTML = '';
-                    populateCategories();
-                    populateTableCategoryDropdown();
-                    populateNewUserCategoryDropdown();
-                    updateScoreTable();
-            })
-                break;
-        }
+function addConfirmDeleteEventListeners() {
+    let userItem = document.querySelector<HTMLButtonElement>("#confirmDelete")
+    userItem.addEventListener('click', function (e: any) {
+        let userId = userItem.dataset.id
+        deleteUser(parseInt(userId))
         closeDeleteUserModal()
     })
 }
@@ -207,7 +192,7 @@ function createUserResults(resultData, questionData): Object {
     let questionAnswer: string = "";
 
     question.forEach(item => {
-        console.log(item)
+        let rightAnswers
         let rightAnswerText = item['option' + item.answer];
         questionNumber = item.id
         let answered: string = userResults[questionNumber].answerID
@@ -221,17 +206,17 @@ function createUserResults(resultData, questionData): Object {
         } else {
             questionText = item.text
         };
-        if (rightAnswerText > 15) {
-            rightAnswerText = item.answer.substring(0, 15) + "..."
+        if (rightAnswerText.length > 15) {
+            rightAnswers = item['option' + item.answer].substring(0, 15) + "..."
         } else {
-            rightAnswerText = item.answer;
+            rightAnswers = item['option' + item.answer]
         }
         userResultsTable[questionNumber] = {
             result: questionNumber,
             question: questionText,
             answerOption: questionAnswer,
             notes: userResults[questionNumber].notes,
-            rightAnswer: rightAnswerText
+            rightAnswer: rightAnswers
         }
         if (userResults[questionNumber].isCorrect) {
             userResultsTable[questionNumber].correct = "correct"
