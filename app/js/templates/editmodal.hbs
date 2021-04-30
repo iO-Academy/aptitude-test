@@ -22,7 +22,10 @@
 
     <label class="editUserData">Change category name</label>
     <select id="changeCategory" class="editUserData" name="category_id">
-
+        {{#each categories}}
+            <option value="{{id}}">{{name}}</option>
+        {{/each}}
+        <option value="{{defaultCategory.id}}" selected>{{defaultCategory.name}}</option>
     </select>
     <label class="editUserData">Allow retake (tick to allow):</label>
     <input id="canRetake" type="checkbox" {{#if user.canRetake}}checked{{/if}}>
