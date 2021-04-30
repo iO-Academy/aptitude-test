@@ -143,26 +143,26 @@ This query selector closes the edit user function if you don't want to save the 
  */
 
 document.querySelector(".close-edit-user").addEventListener('click', closeDialog);
+document.querySelector(".close-delete-user").addEventListener('click', closeDeleteUserModal);
 
 /**
  * Creates the modal with deleteModal handlebars template.
- * User id from the delete user button is passed to the modal.
+ * Data id from the delete button is passed to the modal.
  * Listens for the functions relating to the 'yes' and 'no' buttons.
- * @param userId Object containing id to identify the user.
+ * @param dataId Number containing id to identify the user or category
+ * @param type String containing type of thing we want to delete, user or category
  */
-function createDeleteModal(userId: number) {
+function createDeleteModal(dataId: number, type: 'user'|'category'  = 'user') {
     let infoForTemplate = {
-        userId: userId,
+        type: type,
     };
 
     getTemplateAjax('js/templates/deleteModal.hbs').then(function (HBTemplate) {
         fillDeleteModalFields(HBTemplate, infoForTemplate)
     })
         .then(() => {
-            //@ts-ignore
-            addConfirmDeleteEventListeners();
+            addConfirmDeleteEventListeners(type, dataId);
             document.querySelector<HTMLButtonElement>("#cancelDelete").addEventListener('click', closeDeleteUserModal);
-            document.querySelector<HTMLButtonElement>(".close-delete-user").addEventListener('click', closeDeleteUserModal);
         })
 }
 
@@ -177,7 +177,7 @@ function fillDeleteModalFields(HBTemplate: string, userInfo: any) {
 
     modal_content.innerHTML = "";
 
-    if (userInfo.userId) {
+    if (userInfo.type) {
         let html = template(userInfo);
         modal_content.innerHTML += html
     } else {
