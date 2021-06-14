@@ -1,5 +1,6 @@
 import {BaseUser} from "./interfaces/User";
 import {Test} from "./interfaces/Tests";
+import {Categories} from "./interfaces/Categories";
 
 /**
  * Opens the modal dialog box.
@@ -46,11 +47,13 @@ function closeViewResultsModal() {
  * @param userInfo Object containing info of the user to edit.
  * @param tests Object containing the array returned by the /test api endpoint
  */
-function createEditModal(userInfo: BaseUser, tests: Array<Test>) {
+function createEditModal(userInfo: BaseUser, tests: Array<Test>, categories: Array<Categories>) {
     let infoForTemplate = {
         tests: tests,
+        categories: categories,
         user: userInfo,
-        defaultTest: {}
+        defaultTest: {},
+        defaultCategory: {}
     };
 
     infoForTemplate.tests.forEach(test => {
@@ -61,13 +64,21 @@ function createEditModal(userInfo: BaseUser, tests: Array<Test>) {
         }
     });
 
+    infoForTemplate.categories.forEach(category => {
+        let index = infoForTemplate.categories.indexOf(category);
+        if(category.id == infoForTemplate.user.dataCategoryId){
+            infoForTemplate.defaultCategory = category;
+            infoForTemplate.categories.splice(index, 1)
+        }
+    });
+
     getTemplateAjax('js/templates/editmodal.hbs').then(function (HBTemplate) {
         fillEditModalFields(HBTemplate, infoForTemplate)
     })
     .then(() => {
         addEditModalSubmitEventListener()
         document.querySelectorAll(".close-edit-user").forEach(button => button.addEventListener('click', closeDialog));
-        changeNewUserCategoryDropdown()
+        // changeNewUserCategoryDropdown()
     })
 }
 

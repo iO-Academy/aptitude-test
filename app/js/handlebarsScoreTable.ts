@@ -67,7 +67,7 @@ function createObjectFromElement(event: Event) {
     let element = (event.target as HTMLElement);
     let userTime = element.getAttribute("dataTimeAllowed");
     let [ userTimeMinutes, userTimeSeconds ] = userTime.split(":");
-    const userInfo: User = {
+    const userInfo: BaseUser = {
         name: element.getAttribute("dataName"),
         email: element.getAttribute("dataEmail"),
         id: element.getAttribute("dataId"),
@@ -75,6 +75,7 @@ function createObjectFromElement(event: Event) {
         timeSeconds: userTimeSeconds,
         canRetake: parseInt(element.getAttribute("dataCanRetake")),
         dataTestId: element.getAttribute("dataTestId"),
+        dataCategoryId: element.getAttribute("dataCategoryId")
     }
 
     return userInfo;
@@ -90,7 +91,9 @@ function addEditEventListeners() {
             openDialog()
             let userInfo = createObjectFromElement(e)
             getData("test").then((data) => {
-                createEditModal(userInfo, data.data)
+                getData("category").then((category) => {
+                    createEditModal(userInfo, data.data, category.data)
+                })
             })
         })
     })
