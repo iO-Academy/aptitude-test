@@ -78,7 +78,7 @@ function createEditModal(userInfo: BaseUser, tests: Array<Test>, categories: Arr
     .then(() => {
         addEditModalSubmitEventListener()
         document.querySelectorAll(".close-edit-user").forEach(button => button.addEventListener('click', closeDialog));
-        changeNewUserCategoryDropdown()
+        // changeNewUserCategoryDropdown()
     })
 }
 
