@@ -73,8 +73,9 @@ html {
     }
 
     p {
-      display: inline; // WHY!? im too afraid to change this...
+      display: block;
       margin: 10px;
+      font-size: 2rem;
     }
 
     .custom-select {
@@ -106,7 +107,7 @@ html {
       transition-duration: .25s;
     }
 
-    .delete-user-button:hover {
+    .delete-user-btn:hover {
       background-color: $energyGreen;
       color: $font-color;
       transition-duration: .25s;

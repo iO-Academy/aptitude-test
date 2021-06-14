@@ -18,6 +18,16 @@ function closeDialog() {
     document.querySelector<HTMLElement>('.overlay').style.display = 'none'
 }
 
+function openDeleteUserModal() {
+    document.querySelector<HTMLElement>('#delete_user_modal').style.display = 'block'
+    document.querySelector<HTMLElement>('.overlay').style.display = 'block'
+}
+
+function closeDeleteUserModal() {
+    document.querySelector<HTMLElement>('#delete_user_modal').style.display = 'none'
+    document.querySelector<HTMLElement>('.overlay').style.display = 'none'
+}
+
 function openViewResultsModal() {
     document.querySelector<HTMLElement>('#view-results-modal').style.display = 'block';
     document.querySelector<HTMLElement>('.overlay').style.display = 'block';
@@ -67,6 +77,8 @@ function createEditModal(userInfo: BaseUser, tests: Array<Test>, categories: Arr
     })
     .then(() => {
         addEditModalSubmitEventListener()
+        document.querySelectorAll(".close-edit-user").forEach(button => button.addEventListener('click', closeDialog));
+        changeNewUserCategoryDropdown()
     })
 }
 
@@ -134,13 +146,52 @@ function addEditModalSubmitEventListener() {
                 errorField.innerHTML = 'Test duration must be below an hour and minutes and seconds must be between 0 and 60.';
             }
         })
-    });
-}; 
-
+    })
+}
 
 /*
 This query selector closes the edit user function if you don't want to save the results
  */
 
 document.querySelector(".close-edit-user").addEventListener('click', closeDialog);
+document.querySelector(".close-delete-user").addEventListener('click', closeDeleteUserModal);
 
+/**
+ * Creates the modal with deleteModal handlebars template.
+ * Data id from the delete button is passed to the modal.
+ * Listens for the functions relating to the 'yes' and 'no' buttons.
+ * @param dataId Number containing id to identify the user or category
+ * @param type String containing type of thing we want to delete, user or category
+ */
+function createDeleteModal(dataId: number, type: 'user'|'category'  = 'user') {
+    let infoForTemplate = {
+        type: type,
+    };
+
+    getTemplateAjax('js/templates/deleteModal.hbs').then(function (HBTemplate) {
+        fillDeleteModalFields(HBTemplate, infoForTemplate)
+    })
+        .then(() => {
+            addConfirmDeleteEventListeners(type, dataId);
+            document.querySelector<HTMLButtonElement>("#cancelDelete").addEventListener('click', closeDeleteUserModal);
+        })
+}
+
+/**
+ * Compiles the handlebars template based on the userId
+ * @param HBTemplate the handlebars template.
+ * @param userInfo the object of all fields required in scores page.
+ */
+function fillDeleteModalFields(HBTemplate: string, userInfo: any) {
+    let template: Function = Handlebars.compile(HBTemplate);
+    let modal_content = document.querySelector("#delete_user_modal_content");
+
+    modal_content.innerHTML = "";
+
+    if (userInfo.type) {
+        let html = template(userInfo);
+        modal_content.innerHTML += html
+    } else {
+        modal_content.innerHTML = "Please contact Admin, user list unavailable";
+    }
+}
