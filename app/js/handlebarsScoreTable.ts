@@ -214,11 +214,15 @@ function createUserResults(resultData, questionData): Object {
         userResultsTable[result] = {
             result: result,
             question: questionObj[result],
-            userAnswer: userResults[result].answerID
+            userAnswer: userResults[result].answerID,
+            notes: userResults[result].notes,
+            notesEmpty: userResults[result].notes.length > 1
         };
         if (userResults[result]["isCorrect"]) {
             userResultsTable[result].correct = "correct";
         }
+
+        console.log(userResultsTable)
     }
     return userResultsTable;
 }
