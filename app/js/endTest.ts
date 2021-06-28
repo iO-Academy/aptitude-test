@@ -2,11 +2,15 @@ let count: number = 0;
 
 function pageLeaveAlert() {
     if (count < 2) {
-        count ++;
+        count++;
         let modal = document.querySelector('#warningModal');
         modal.classList.add('show');
         modal.classList.remove('fade');
-        document.querySelector("#closeWarning").addEventListener('click', ()=>{
+        document.querySelector("#closeWarning").addEventListener('click', () => {
+            modal.classList.add('fade');
+            modal.classList.remove('show');
+        });
+        document.querySelector("#closeWarning-cross").addEventListener('click', () => {
             modal.classList.add('fade');
             modal.classList.remove('show');
         });
