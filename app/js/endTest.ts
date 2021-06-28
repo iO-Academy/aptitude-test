@@ -10,6 +10,10 @@ function pageLeaveAlert() {
             modal.classList.add('fade');
             modal.classList.remove('show');
         });
+        document.querySelector("#closeWarning-cross").addEventListener('click', ()=>{
+            modal.classList.add('fade');
+            modal.classList.remove('show');
+        });
     }
 }
 
