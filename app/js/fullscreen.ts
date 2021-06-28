@@ -1,9 +1,10 @@
-
 const fullscreenButton = document.querySelector('#toggle-fullscreen');
 fullscreenButton.addEventListener('click', toggleFullscreen);
 
 function toggleFullscreen() {
-    if (!document.fullscreen) {
+    if (!document.fullscreenElement) {
         document.documentElement.requestFullscreen();
-    } document.exitFullscreen()
+    } else {
+        document.exitFullscreen()
+    }
 }
