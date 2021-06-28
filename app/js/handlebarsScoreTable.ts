@@ -164,6 +164,7 @@ function deleteUser(userId: number) {
  * and filtered by user settings
  */
 function produceTable (HBTemplate: string, scoresDataObject) {
+    console.log(scoresDataObject)
     scoresDataObject.data.forEach(function (scoreData: Scores) {
         switch (true) {
             case scoreData.percentage >= 97:
@@ -174,6 +175,9 @@ function produceTable (HBTemplate: string, scoresDataObject) {
                 break
             case scoreData.percentage > 0 || scoreData.percentage == '0.00':
                 scoreData.fail = true
+                break
+            case scoreData.percentage >= 0 && scoreData.autoCompleted == 1:
+                scoreData.autoCompleted = true
                 break
             default:
                 scoreData.notTakenYet = true

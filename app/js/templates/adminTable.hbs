@@ -1,6 +1,8 @@
 {{#each data}}
 <tr
-    {{#if this.topGrade}}
+    {{#if this.autoCompleted}}
+        class="autocomplete-grade key-user-information-data-row"
+    {{else if this.topGrade}}
          class="top-grade key-user-information-data-row"
     {{else if this.passingGrade}}
          class="passing-grade key-user-information-data-row"
@@ -16,10 +18,17 @@
      <td class="email">{{email}}</td>
      <td class="percentage">{{percentage}}</td>
      <td class="date"></td>
+     {{#if autoCompleted}}
+     <td class="autocomplete-icon"><i class="icon-autocomplete bi bi-exclamation-diamond"></i>
+     {{else}}
+     <td class="autocomplete-icon"></td>
+     {{/if}}
 </tr>
 <tr data-id="{{id}}"
-        {{#if this.topGrade}}
-            class="top-grade user-information-secondary-data-row hide"
+        {{#if this.autoCompleted}}
+            class="autocomplete-grade user-information-secondary-data-row hide"
+        {{else if this.topGrade}}
+             class="top-grade user-information-secondary-data-row hide"
         {{else if this.passingGrade}}
              class="passing-grade user-information-secondary-data-row hide"
         {{else if this.fail}}
@@ -55,7 +64,7 @@
                 </tr>
             </table>
         </td>
-        <td colspan="4">
+        <td colspan="5">
             <table class="col-xs-4">
                 <tr>
                     <th>Category:</th>
@@ -96,7 +105,7 @@
                 {{#if this.autoCompleted}}
                 <tr>
                     <th>Auto completed:</th>
-                    <td class="autoComplete">Yes</td>
+                    <td class="autoComplete">Yes <i class="bi bi-exclamation-diamond"></td>
                 </tr>
                 {{/if}}
             </table>

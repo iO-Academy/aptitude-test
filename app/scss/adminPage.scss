@@ -147,6 +147,9 @@ input {
 .dubious-grade {
   background-color: $pink-table-grade;
 }
+.autocomplete-grade {
+  background-color: $yellow-table-grade;
+}
 .passing-grade {
   background-color: $green-table-grade;
 }
@@ -164,6 +167,10 @@ input {
 
 #addTestName {
   margin-bottom: 10px;
+}
+
+.icon-autocomplete {
+  font-size: 2.5rem;
 }
 
 .editmodal label,
