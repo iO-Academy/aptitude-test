@@ -164,7 +164,6 @@ function deleteUser(userId: number) {
  * and filtered by user settings
  */
 function produceTable (HBTemplate: string, scoresDataObject) {
-    console.log(scoresDataObject)
     scoresDataObject.data.forEach(function (scoreData: Scores) {
         switch (true) {
             case scoreData.percentage >= 97:
