@@ -225,7 +225,6 @@ function createUserResults(resultData, questionData): Object {
     return userResultsTable;
 }
 
-
 interface ResultsBreakdownSection {
     name: string;
     score: number;
@@ -352,7 +351,6 @@ function openingAccordionWithNotes() {
             })
         })
 }
-
 
 /**
  * Add listener for close-view-results button and overlay div to close modal on click
