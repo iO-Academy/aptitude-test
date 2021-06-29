@@ -38,8 +38,12 @@ function closeViewResultsModal() {
     document.querySelector<HTMLElement>('.overlay').style.display = 'none';
 }
 
+function closeWarningModal() {
+    document.querySelector<HTMLElement>('#warningModal').style.display = 'none';
+    document.querySelector<HTMLElement>('.overlay').style.display = 'none';
+}
+
 /**
- *
  * Creates the modal with editModal handlebars template. 
  * Then calls function to fill modal fields with the users' data.
  * Then adds the submit button's event listener.

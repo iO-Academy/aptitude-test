@@ -147,6 +147,9 @@ input {
 .dubious-grade {
   background-color: $pink-table-grade;
 }
+.autocomplete-grade {
+  background-color: $yellow-table-grade;
+}
 .passing-grade {
   background-color: $green-table-grade;
 }
@@ -166,6 +169,10 @@ input {
   margin-bottom: 10px;
 }
 
+.icon-autocomplete {
+  font-size: 2.5rem;
+}
+
 .editmodal label,
 .deleteModal {
   display: block;
@@ -175,6 +182,7 @@ input {
 .delete-message {
   font-size: 1.5rem;
   margin: 0;
+  text-align: start;
 }
 
 .pageSelectors {
