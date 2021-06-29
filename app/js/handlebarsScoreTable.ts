@@ -175,6 +175,9 @@ function produceTable (HBTemplate: string, scoresDataObject) {
             case scoreData.percentage > 0 || scoreData.percentage == '0.00':
                 scoreData.fail = true
                 break
+            case scoreData.percentage >= 0 && scoreData.autoCompleted == true:
+                scoreData.autoCompleted = true
+                break
             default:
                 scoreData.notTakenYet = true
                 break
