@@ -225,6 +225,7 @@ function createUserResults(resultData, questionData): Object {
     return userResultsTable;
 }
 
+
 interface ResultsBreakdownSection {
     name: string;
     score: number;
@@ -329,29 +330,29 @@ async function addEventListenersForViewResults() {
                             let testId = user.test_id
                             getData("question?test_id=" + testId).then(questionData => {
                                 resultsTable.innerHTML = template(createUserResults(resultData, questionData));
+                                openingAccordionWithNotes()
                             })
-                            createUserResul3tsBreakdown(resultData, testId)
+                            createUserResultsBreakdown(resultData, testId)
                                 .then(breakdown => {
                                     resultsBreakdownTable.innerHTML = breakdownTemplate(breakdown);
-                                })
 
-                            const notesButton = document.querySelectorAll('.button-notes')
-
-                            notesButton.forEach(button => {
-                                button.addEventListener('click', e => {
-                                    console.log('HEllooo')
                                 })
-                            })
                         }
-
                     })
                 });
             });
         });
-
     });
-
 }
+function openingAccordionWithNotes() {
+    document.querySelectorAll('.button-notes').forEach(button => {
+        button.addEventListener('click', e => {
+            document.querySelector(`#panel${(button as HTMLElement).dataset.id}`)
+                .classList.toggle('active-panel')
+            })
+        })
+}
+
 
 /**
  * Add listener for close-view-results button and overlay div to close modal on click
