@@ -327,9 +327,13 @@ async function addEventListenersForViewResults() {
             addEventListenersForCloseResults();
             getData("result?id=" + e.target.getAttribute("dataId")).then(resultData => {
                 getData("user").then(userData => {
-                    userData.data.forEach(user =>{
+                    userData.data.forEach(user => {
                         if (user.id === resultData.data.id) {
                             let testId = user.test_id
+                            hideAnswerAndBreakdown()
+                            if (testId == '1') {
+                                displayAnswerAndBreakdown()
+                            }
                             getData("question?test_id=" + testId).then(questionData => {
                                 resultsTable.innerHTML = template(createUserResults(resultData, questionData));
                                 openingAccordionWithNotes()
@@ -344,6 +348,24 @@ async function addEventListenersForViewResults() {
             });
         });
     });
+}
+
+/*
+* function that display button answer and breakdown from view result if
+* the user has taken the test aptitude v1
+ */
+function displayAnswerAndBreakdown() {
+    document.querySelector<HTMLElement>(".open-view-answers-tab ").style.display = "inline-block"
+    document.querySelector<HTMLElement>(".open-view-breakdown-tab ").style.display = "inline-block"
+}
+
+/*
+* function that Hide button answer and breakdown from view result if
+* the user has taken the test aptitude v1
+ */
+function hideAnswerAndBreakdown() {
+    document.querySelector<HTMLElement>(".open-view-answers-tab ").style.display = "none"
+    document.querySelector<HTMLElement>(".open-view-breakdown-tab ").style.display = "none"
 }
 
 function openingAccordionWithNotes() {

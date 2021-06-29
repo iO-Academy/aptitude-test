@@ -235,6 +235,10 @@ input[type="number"] {
   }
 }
 
+.open-view-answers-tab, .open-view-breakdown-tab {
+  display: none;
+}
+
 .panels {
   display: none;
 }
