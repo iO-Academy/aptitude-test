@@ -27,10 +27,16 @@
              </td>
              <td>
              {{#if notesEmpty}}
-             <i class="bi bi-journal-arrow-down"></i>
-             {{/if}}
+             <button class="button-notes"><i class="bi bi-journal-arrow-down"></i></button>
+
              </td>
          </tr>
+         <tr>
+             <td colspan="5" class="panel">
+                <p>{{notes}}</p>
+             </td>
+         </tr>
+         {{/if}}
          {{/each}}
      </tbody>
  </table>

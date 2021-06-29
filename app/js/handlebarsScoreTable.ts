@@ -175,7 +175,7 @@ function produceTable (HBTemplate: string, scoresDataObject) {
             case scoreData.percentage > 0 || scoreData.percentage == '0.00':
                 scoreData.fail = true
                 break
-            case scoreData.percentage >= 0 && scoreData.autoCompleted == 1:
+            case scoreData.percentage >= 0 && scoreData.autoCompleted == true:
                 scoreData.autoCompleted = true
                 break
             default:
@@ -221,8 +221,6 @@ function createUserResults(resultData, questionData): Object {
         if (userResults[result]["isCorrect"]) {
             userResultsTable[result].correct = "correct";
         }
-
-        console.log(userResultsTable)
     }
     return userResultsTable;
 }
@@ -332,16 +330,27 @@ async function addEventListenersForViewResults() {
                             getData("question?test_id=" + testId).then(questionData => {
                                 resultsTable.innerHTML = template(createUserResults(resultData, questionData));
                             })
-                            createUserResultsBreakdown(resultData, testId)
+                            createUserResul3tsBreakdown(resultData, testId)
                                 .then(breakdown => {
                                     resultsBreakdownTable.innerHTML = breakdownTemplate(breakdown);
                                 })
+
+                            const notesButton = document.querySelectorAll('.button-notes')
+
+                            notesButton.forEach(button => {
+                                button.addEventListener('click', e => {
+                                    console.log('HEllooo')
+                                })
+                            })
                         }
+
                     })
                 });
             });
         });
+
     });
+
 }
 
 /**
@@ -400,3 +409,5 @@ function addEventListenersForMoreInfoButtons() {
 
 }
 updateScoreTable();
+
+
