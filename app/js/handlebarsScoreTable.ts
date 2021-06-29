@@ -325,10 +325,8 @@ async function addEventListenersForViewResults() {
                     userData.data.forEach(user => {
                         if (user.id === resultData.data.id) {
                             let testId = user.test_id
-                            if (testId !== '1') {
-                                hideButton()
-                            } else if (testId == '1') {
-                                displayButton()
+                            if (testId == '1') {
+                                displayAnswerAndBreakdown()
                             }
                             getData("question?test_id=" + testId).then(questionData => {
                                 resultsTable.innerHTML = template(createUserResults(resultData, questionData));
@@ -344,23 +342,14 @@ async function addEventListenersForViewResults() {
         });
     });
 }
-/*
-* function that hide button answer and breakdown from view result if
-* the user has not taken the test aptitude v1
- */
-function hideButton(){
-    document.querySelector<HTMLElement>(".open-view-breakdown-tab ").style.display = "none"
-    document.querySelector<HTMLElement>(".open-view-answers-tab ").style.display = "none"
-}
 
 /*
 * function that display button answer and breakdown from view result if
 * the user has taken the test aptitude v1
  */
-function displayButton() {
+function displayAnswerAndBreakdown() {
     document.querySelector<HTMLElement>(".open-view-answers-tab ").style.display = "inline-block"
     document.querySelector<HTMLElement>(".open-view-breakdown-tab ").style.display = "inline-block"
-
 }
 
 /**

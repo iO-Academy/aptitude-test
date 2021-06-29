@@ -234,3 +234,7 @@ input[type="number"] {
     background-color: $primary-button-hover;
   }
 }
+
+.open-view-answers-tab, .open-view-breakdown-tab {
+  display: none;
+}
