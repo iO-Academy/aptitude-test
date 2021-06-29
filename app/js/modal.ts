@@ -44,7 +44,6 @@ function closeWarningModal() {
 }
 
 /**
- *
  * Creates the modal with editModal handlebars template. 
  * Then calls function to fill modal fields with the users' data.
  * Then adds the submit button's event listener.
