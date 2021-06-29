@@ -21,6 +21,9 @@ function cancelTest() {
     if (document.visibilityState === "hidden") {
         let pageLeft: boolean = true;
         finishTest(pageLeft);
+        let modal = document.querySelector('#warningModal');
+        modal.classList.add('fade');
+        modal.classList.remove('show');
     }
 }
 
