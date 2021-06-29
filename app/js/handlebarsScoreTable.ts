@@ -413,5 +413,3 @@ function addEventListenersForMoreInfoButtons() {
 }
 
 updateScoreTable();
-
-
