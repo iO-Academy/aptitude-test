@@ -4,6 +4,7 @@ var questionAmount;
 
 document.querySelector('#finish').addEventListener('click', () => {
     finishTest(false);
+    document.exitFullscreen()
 })
 
 /**
