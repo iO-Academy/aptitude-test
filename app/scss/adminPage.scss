@@ -251,4 +251,8 @@ input[type="number"] {
   text-decoration: none;
   border: none;
   background: none;
+  border-radius: 40%;
+  &:hover {
+    color: #808080;
+  }
 }

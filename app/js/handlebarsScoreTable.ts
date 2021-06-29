@@ -331,8 +331,7 @@ async function addEventListenersForViewResults() {
                         if (user.id === resultData.data.id) {
                             let testId = user.test_id
                             getData("question?test_id=" + testId).then(questionData => {
-                                const html = template(createUserResults(resultData, questionData));
-                                resultsTable.innerHTML = html
+                                resultsTable.innerHTML = template(createUserResults(resultData, questionData));
                                 openingAccordionWithNotes()
                             })
                             createUserResultsBreakdown(resultData, testId)
