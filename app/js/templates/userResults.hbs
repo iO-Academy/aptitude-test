@@ -26,15 +26,18 @@
                      ✕
                  {{/if}}
              </td>
-             <td>
-             {{#if notesEmpty}}
+         {{#if hasNotes}}
+         <td>
              <button data-id="{{result}}" class="button-notes"><i class="bi bi-journal-arrow-down"></i></button>
-             </td>
+         </td>
          </tr>
          <tr>
              <td id="panel{{result}}" colspan="5" class="panels">
-                <p>Notes:<br>{{notes}}</p>
+                <p><b>Notes:</b><br>{{notes}}</p>
              </td>
+         </tr>
+         {{else}}
+         <td></td>
          </tr>
          {{/if}}
          {{/each}}

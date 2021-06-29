@@ -215,11 +215,14 @@ function createUserResults(resultData, questionData): Object {
             result: result,
             question: questionObj[result],
             userAnswer: userResults[result].answerID,
-            notes: userResults[result].notes,
-            notesEmpty: userResults[result].notes.length > 1
+            hasNotes: false
         };
         if (userResults[result]["isCorrect"]) {
             userResultsTable[result].correct = "correct";
+        }
+        if (userResults[result].hasOwnProperty('notes')) {
+            userResultsTable[result].notes = userResults[result].notes
+            userResultsTable[result].hasNotes = userResults[result].notes.length > 0
         }
     }
     return userResultsTable;
@@ -328,13 +331,14 @@ async function addEventListenersForViewResults() {
                         if (user.id === resultData.data.id) {
                             let testId = user.test_id
                             getData("question?test_id=" + testId).then(questionData => {
-                                resultsTable.innerHTML = template(createUserResults(resultData, questionData));
+                                const html = template(createUserResults(resultData, questionData));
+                                resultsTable.innerHTML = html
+                                console.log(html)
                                 openingAccordionWithNotes()
                             })
                             createUserResultsBreakdown(resultData, testId)
                                 .then(breakdown => {
                                     resultsBreakdownTable.innerHTML = breakdownTemplate(breakdown);
-
                                 })
                         }
                     })
@@ -343,6 +347,7 @@ async function addEventListenersForViewResults() {
         });
     });
 }
+
 function openingAccordionWithNotes() {
     document.querySelectorAll('.button-notes').forEach(button => {
         button.addEventListener('click', e => {
@@ -405,8 +410,8 @@ function addEventListenersForMoreInfoButtons() {
             }
         })
     })
-
 }
+
 updateScoreTable();
 
 
