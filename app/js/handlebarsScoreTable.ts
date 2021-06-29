@@ -342,13 +342,18 @@ async function addEventListenersForViewResults() {
     });
 }
 /*
-*
+* function that hide button answer and breakdown from view result if
+* the user has not taken the test aptitude v1
  */
 function hideButton(){
     document.querySelector<HTMLElement>(".open-view-breakdown-tab ").style.display = "none"
     document.querySelector<HTMLElement>(".open-view-answers-tab ").style.display = "none"
 }
 
+/*
+* function that display button answer and breakdown from view result if
+* the user has taken the test aptitude v1
+ */
 function displayButton() {
     document.querySelector<HTMLElement>(".open-view-answers-tab ").style.display = "inline-block"
     document.querySelector<HTMLElement>(".open-view-breakdown-tab ").style.display = "inline-block"
