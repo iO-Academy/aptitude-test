@@ -26,7 +26,17 @@
                      ✕
                  {{/if}}
              </td>
+             <td>
+             {{#if notesEmpty}}
+             <button data-id="{{result}}" class="button-notes"><i class="bi bi-journal-arrow-down"></i></button>
+             </td>
          </tr>
+         <tr>
+             <td id="panel{{result}}" colspan="5" class="panels">
+                <p>Notes:<br>{{notes}}</p>
+             </td>
+         </tr>
+         {{/if}}
          {{/each}}
      </tbody>
  </table>

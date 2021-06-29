@@ -175,6 +175,9 @@ function produceTable (HBTemplate: string, scoresDataObject) {
             case scoreData.percentage > 0 || scoreData.percentage == '0.00':
                 scoreData.fail = true
                 break
+            case scoreData.percentage >= 0 && scoreData.autoCompleted == true:
+                scoreData.autoCompleted = true
+                break
             default:
                 scoreData.notTakenYet = true
                 break
@@ -211,7 +214,9 @@ function createUserResults(resultData, questionData): Object {
         userResultsTable[result] = {
             result: result,
             question: questionObj[result],
-            userAnswer: userResults[result].answerID
+            userAnswer: userResults[result].answerID,
+            notes: userResults[result].notes,
+            notesEmpty: userResults[result].notes.length > 1
         };
         if (userResults[result]["isCorrect"]) {
             userResultsTable[result].correct = "correct";
@@ -324,10 +329,12 @@ async function addEventListenersForViewResults() {
                             let testId = user.test_id
                             getData("question?test_id=" + testId).then(questionData => {
                                 resultsTable.innerHTML = template(createUserResults(resultData, questionData));
+                                openingAccordionWithNotes()
                             })
                             createUserResultsBreakdown(resultData, testId)
                                 .then(breakdown => {
                                     resultsBreakdownTable.innerHTML = breakdownTemplate(breakdown);
+
                                 })
                         }
                     })
@@ -335,6 +342,14 @@ async function addEventListenersForViewResults() {
             });
         });
     });
+}
+function openingAccordionWithNotes() {
+    document.querySelectorAll('.button-notes').forEach(button => {
+        button.addEventListener('click', e => {
+            document.querySelector(`#panel${(button as HTMLElement).dataset.id}`)
+                .classList.toggle('active-panel')
+            })
+        })
 }
 
 /**
@@ -393,3 +408,5 @@ function addEventListenersForMoreInfoButtons() {
 
 }
 updateScoreTable();
+
+
