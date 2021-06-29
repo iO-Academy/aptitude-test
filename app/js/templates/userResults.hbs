@@ -5,6 +5,7 @@
              <th scope="col" class="col-2">Question</th>
              <th scope="col" class="col-2">Answer</th>
              <th scope="col" class="col-2">Correct?</th>
+             <th scope="col" class="col-4">Notes</th>
          </tr>
      </thead>
      <tbody>
@@ -25,7 +26,20 @@
                      ✕
                  {{/if}}
              </td>
+         {{#if hasNotes}}
+         <td>
+             <button data-id="{{result}}" class="button-notes"><i class="bi bi-journal-arrow-down"></i></button>
+         </td>
          </tr>
+         <tr>
+             <td id="panel{{result}}" colspan="5" class="panels">
+                <p><b>Notes:</b><br>{{notes}}</p>
+             </td>
+         </tr>
+         {{else}}
+         <td></td>
+         </tr>
+         {{/if}}
          {{/each}}
      </tbody>
  </table>
