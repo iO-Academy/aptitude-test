@@ -333,7 +333,6 @@ async function addEventListenersForViewResults() {
                             getData("question?test_id=" + testId).then(questionData => {
                                 const html = template(createUserResults(resultData, questionData));
                                 resultsTable.innerHTML = html
-                                console.log(html)
                                 openingAccordionWithNotes()
                             })
                             createUserResultsBreakdown(resultData, testId)
