@@ -12,3 +12,7 @@ export interface User extends BaseUser {
     dataTestId: string,
     dataCategory: string
 }
+
+export interface Test {
+    test_id: number,
+}
