@@ -214,10 +214,15 @@ function createUserResults(resultData, questionData): Object {
         userResultsTable[result] = {
             result: result,
             question: questionObj[result],
-            userAnswer: userResults[result].answerID
+            userAnswer: userResults[result].answerID,
+            hasNotes: false
         };
         if (userResults[result]["isCorrect"]) {
             userResultsTable[result].correct = "correct";
+        }
+        if (userResults[result].hasOwnProperty('notes')) {
+            userResultsTable[result].notes = userResults[result].notes
+            userResultsTable[result].hasNotes = userResults[result].notes.length > 0
         }
     }
     return userResultsTable;
@@ -331,6 +336,7 @@ async function addEventListenersForViewResults() {
                             }
                             getData("question?test_id=" + testId).then(questionData => {
                                 resultsTable.innerHTML = template(createUserResults(resultData, questionData));
+                                openingAccordionWithNotes()
                             })
                             createUserResultsBreakdown(resultData, testId)
                                 .then(breakdown => {
@@ -360,6 +366,15 @@ function displayAnswerAndBreakdown() {
 function hideAnswerAndBreakdown() {
     document.querySelector<HTMLElement>(".open-view-answers-tab ").style.display = "none"
     document.querySelector<HTMLElement>(".open-view-breakdown-tab ").style.display = "none"
+}
+
+function openingAccordionWithNotes() {
+    document.querySelectorAll('.button-notes').forEach(button => {
+        button.addEventListener('click', e => {
+            document.querySelector(`#panel${(button as HTMLElement).dataset.id}`)
+                .classList.toggle('active-panel')
+            })
+        })
 }
 
 /**
@@ -415,6 +430,6 @@ function addEventListenersForMoreInfoButtons() {
             }
         })
     })
-
 }
+
 updateScoreTable();

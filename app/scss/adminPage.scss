@@ -169,7 +169,7 @@ input {
   margin-bottom: 10px;
 }
 
-.icon-autocomplete {
+.icon-autocomplete, .button-notes {
   font-size: 2.5rem;
 }
 
@@ -237,4 +237,26 @@ input[type="number"] {
 
 .open-view-answers-tab, .open-view-breakdown-tab {
   display: none;
+}
+
+.panels {
+  display: none;
+}
+
+.active-panel {
+  display: table-cell;
+}
+
+.active-student-details {
+  background-color: white;
+}
+
+.button-notes {
+  text-decoration: none;
+  border: none;
+  background: none;
+  border-radius: 40%;
+  &:hover {
+    color: #808080;
+  }
 }
