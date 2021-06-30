@@ -18,7 +18,6 @@ function createObjectForDatabase(inputClass: string) {
     formData.forEach(function (input: HTMLInputElement) {
         result[input.name] = input.value;
     });
-    console.log('where the fuck are you')
     return result
 }
 
