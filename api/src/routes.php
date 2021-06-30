@@ -85,12 +85,14 @@ $app->post('/user/edit', function ($request, $response, $args) {
 
         $user['time'] = $user['time'] ?? 1800;
         $user['category_id'] = $user['category_id'] ?? 1;
+        $user['canResume'] = $user['canResume'] ?? 0;
 
-        $query = "UPDATE `user` SET `email` = :email, `name` = :name, `canRetake` = :retake, `time` = :time, `test_id` = :test_id, `category_id` = :category_id WHERE `id` = :id;";
+        $query = "UPDATE `user` SET `email` = :email, `name` = :name, `canRetake` = :retake, `canRetake` = :canResume, `time` = :time, `test_id` = :test_id, `category_id` = :category_id WHERE `id` = :id;";
         $query = $this->db->prepare($query);
         $query->bindParam(':email', $user['email']);
         $query->bindParam(':name', $user['name']);
         $query->bindParam(':retake', $user['canRetake']);
+        $query->bindParam(':canResume', $user['canRetake']);
         $query->bindParam(':time', $user['time']);
         $query->bindParam(':test_id', $user['test_id']);
         $query->bindParam(':category_id', $user['category_id']);
@@ -116,7 +118,7 @@ $app->get('/user', function ($request, $response, $args) {
     if (empty($email)) {
         try {
             $query = "
-SELECT `user`.`id`, `email`, `user`.`name`, `dateCreated`, `isAdmin`, `canRetake`, `time`, `test_id`, `category_id`, 
+SELECT `user`.`id`, `email`, `user`.`name`, `dateCreated`, `isAdmin`, `canRetake`, `canResume`, `time`, `test_id`, `category_id`, 
 `category`.`name` AS 'category_name', `deleted` from `user` 
 LEFT JOIN `category` ON `user`.`category_id` = `category`.`id` 
 ORDER BY `dateCreated` DESC;";
@@ -134,7 +136,7 @@ ORDER BY `dateCreated` DESC;";
     } else {
 
         try {
-            $query = "SELECT `user`.`id`, `email`, `user`.`name`, `dateCreated`, `isAdmin`, `canRetake`, `time`, `test_id`, `category_id`, 
+            $query = "SELECT `user`.`id`, `email`, `user`.`name`, `dateCreated`, `isAdmin`, `canRetake`, `canResume`, `time`, `test_id`, `category_id`, 
 `category`.`name` AS 'category_name' from `user`
  LEFT JOIN `category` ON `user`.`category_id` = `category`.`id` 
  WHERE `email` = :email AND `deleted` <> 1";

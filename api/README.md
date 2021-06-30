@@ -5,6 +5,7 @@
 - Clone this Repo
 - cd into api and run `composer install` or `php composer.phar install` if no composer installed
 - Install the aptitude-test.sql file from /api/db into your docker box database named `aptitude-test`
+- *After* installing the databases, run any `patch-*.sql` files in the same folder, in their numerical order, lowest first
 - cd into the api folder
 - Run: `php -S localhost:8080 -t public/ public/index.php` - DO NOT CLOSE THIS TAB OR TURN THE SERVER OFF
 - Set `isProd` in app/js/utils to `false`
@@ -47,8 +48,11 @@ POST
 POST
 - Update a user.
 - `{"email":"example@email.com", "name":"Fred Smith", "canRetake":"0", "id":"1", "test_id":"1"}` - all required
-    - Additionally `time` and `category_id` can be provided optionally. If they are not, they will default to 1800 and 1 respectively
-    - **Careful with this, as the time/category could change unintentionally**
+    - Additionally there are some optional fields:
+      - `time` - default to `1800`
+      - `category_id` - defaults to `1`
+      - `canResume` - defaults to `0`
+    - **Careful with this, as they could change unintentionally**
 - Returns result of user update.
 
 **/question**
