@@ -89,7 +89,7 @@ if (document.querySelector('#logInForm')) {
                 redirectAdmin(user.data)
                 checkIfTestIsTaken(user.data.id).then(function(idData: any) {
                     if (idData.success && retakeValue == 0) {
-                        email.insertAdjacentHTML('afterend', '<p>You cannot take the test twice!</p>')
+                        document.querySelector('.invalidLogin').innerHTML = 'You cannot take the test twice'
                     } else {
                         document.cookie = "uid=" + user.data.id
                         document.cookie = "userEmail=" + user.data.email
