@@ -75,10 +75,10 @@ function createObjectFromElement(event: Event) {
         timeSeconds: userTimeSeconds,
         canRetake: parseInt(element.getAttribute("dataCanRetake")),
         canResume: parseInt(element.getAttribute("dataCanResume")),
+        autoCompleted: parseInt(element.getAttribute("dataAutoCompleted")),
         dataTestId: element.getAttribute("dataTestId"),
         dataCategoryId: element.getAttribute("dataCategoryId")
     }
-
     return userInfo;
 }
 
