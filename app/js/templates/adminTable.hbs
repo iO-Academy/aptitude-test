@@ -65,26 +65,30 @@
             </table>
         </td>
         <td colspan="5">
-        {{#each results}}
             <table class="col-xs-4">
                 <tr>
                     <th>Category:</th>
                     <td class="categoryName">{{categoryName}}</td>
                 </tr>
                 <tr>
-                    <th>Score:</th>
-                    <td class="score">{{#if testNotTaken}}
-                        {{testNotTaken}}
-                    {{else}}
-                        {{score}}
-                    {{/if}}</td>
-                </tr>
-                <tr>
                     <th>Test allocated:</th>
                     <td class="testAllocated">{{testAllocated}}</td>
                 </tr>
+                <tr>
+                    <th>Time allowed:</th>
+                    <td class="time">{{timeAllowed}}</td>
+                </tr>
             </table>
+        {{#each results}}
             <table class="col-xs-4">
+              <tr>
+                <th>Score:</th>
+                    <td class="score">{{#if testNotTaken}}
+                       {{testNotTaken}}
+                    {{else}}
+                       {{score}}
+                    {{/if}}</td>
+              </tr>
                 <tr>
                     <th>Date:</th>
                     <td class="date">{{#if testNotTaken}}
@@ -92,10 +96,6 @@
                     {{else}}
                         {{dateCreated}}
                     {{/if}}</td>
-                </tr>
-                <tr>
-                    <th>Time allowed:</th>
-                    <td class="time">{{timeAllowed}}</td>
                 </tr>
                 {{#if time}}
                 <tr>
