@@ -87,12 +87,12 @@ $app->post('/user/edit', function ($request, $response, $args) {
         $user['category_id'] = $user['category_id'] ?? 1;
         $user['canResume'] = $user['canResume'] ?? 0;
 
-        $query = "UPDATE `user` SET `email` = :email, `name` = :name, `canRetake` = :retake, `canRetake` = :canResume, `time` = :time, `test_id` = :test_id, `category_id` = :category_id WHERE `id` = :id;";
+        $query = "UPDATE `user` SET `email` = :email, `name` = :name, `canRetake` = :retake, `canResume` = :canResume, `time` = :time, `test_id` = :test_id, `category_id` = :category_id WHERE `id` = :id;";
         $query = $this->db->prepare($query);
         $query->bindParam(':email', $user['email']);
         $query->bindParam(':name', $user['name']);
         $query->bindParam(':retake', $user['canRetake']);
-        $query->bindParam(':canResume', $user['canRetake']);
+        $query->bindParam(':canResume', $user['canResume']);
         $query->bindParam(':time', $user['time']);
         $query->bindParam(':test_id', $user['test_id']);
         $query->bindParam(':category_id', $user['category_id']);
