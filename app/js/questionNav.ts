@@ -18,8 +18,13 @@ function active() {
  * makes the prev and next buttons appear when needed
  */
 function next() {
-    current++
-    changeQuestion(current)
+    let questionCount = document.querySelectorAll('#questions .question').length
+    if (current == questionCount) {
+        changeQuestion(questionCount)
+    } else {
+        current++
+        changeQuestion(current)
+    }
 }
 
 /**
@@ -54,6 +59,7 @@ function updateFlagStatus() {
  * @param destinationPage is question to load
  */
 function changeQuestion(destinationPage: number) {
+    console.log(destinationPage)
     current = destinationPage
     let destinationQuestion = document.querySelector<HTMLElement>(".q_" + destinationPage)
     let questionCount = document.querySelectorAll('#questions .question').length
@@ -82,10 +88,11 @@ function changeQuestion(destinationPage: number) {
             nextButton.style.visibility = "visible"
     }
 
-    document.querySelector("#questions .active").classList.remove("active")
-    destinationQuestion.classList.add("active")
-    trackActiveQuestion(destinationPage)
-    updateFlagStatus()
+        document.querySelector("#questions .active").classList.remove("active")
+        destinationQuestion.classList.add("active")
+        trackActiveQuestion(destinationPage)
+        updateFlagStatus()
+
 }
 
 /**
