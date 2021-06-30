@@ -89,7 +89,7 @@ if (document.querySelector('#logInForm')) {
                 redirectAdmin(user.data)
                 checkIfTestIsTaken(user.data.id).then(function(idData: any) {
                     if (idData.success && retakeValue == 0) {
-                        document.querySelector('.invalidLogin').innerHTML = 'You cannot take the test twice'
+                        document.querySelector('.invalidLogin').textContent = 'You cannot take the test twice'
                     } else {
                         document.cookie = "uid=" + user.data.id
                         document.cookie = "userEmail=" + user.data.email
@@ -100,7 +100,7 @@ if (document.querySelector('#logInForm')) {
                     }
                 })
             } else {
-                document.querySelector('.invalidLogin').innerHTML = 'Please provide valid email'
+                document.querySelector('.invalidLogin').textContent = 'Please provide valid email'
             }
         })
     })
