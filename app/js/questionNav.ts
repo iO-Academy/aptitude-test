@@ -18,7 +18,7 @@ function active() {
  * makes the prev and next buttons appear when needed
  */
 function next() {
-    let questionCount = document.querySelectorAll('#questions .question').length
+    const questionCount = document.querySelectorAll('#questions .question').length
     if (current == questionCount) {
         changeQuestion(questionCount)
     } else {
@@ -87,10 +87,10 @@ function changeQuestion(destinationPage: number) {
             nextButton.style.visibility = "visible"
     }
 
-        document.querySelector("#questions .active").classList.remove("active")
-        destinationQuestion.classList.add("active")
-        trackActiveQuestion(destinationPage)
-        updateFlagStatus()
+    document.querySelector("#questions .active").classList.remove("active")
+    destinationQuestion.classList.add("active")
+    trackActiveQuestion(destinationPage)
+    updateFlagStatus()
 }
 
 /**
