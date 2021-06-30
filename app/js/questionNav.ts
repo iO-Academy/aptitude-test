@@ -59,7 +59,6 @@ function updateFlagStatus() {
  * @param destinationPage is question to load
  */
 function changeQuestion(destinationPage: number) {
-    console.log(destinationPage)
     current = destinationPage
     let destinationQuestion = document.querySelector<HTMLElement>(".q_" + destinationPage)
     let questionCount = document.querySelectorAll('#questions .question').length
@@ -92,7 +91,6 @@ function changeQuestion(destinationPage: number) {
         destinationQuestion.classList.add("active")
         trackActiveQuestion(destinationPage)
         updateFlagStatus()
-
 }
 
 /**
