@@ -122,7 +122,7 @@ async function getNameAndEmail(): Promise<Array<BaseUser>> {
     let categories = await getCategories();
     let userObjectArray: Array<BaseUser> = [];
     users.forEach(function(user: any) {
-        let {id, email, name, time, test_id, canRetake, category_id} = user
+        let {id, email, name, time, test_id, canRetake, canResume, category_id} = user
         let testName = findTestName(tests, test_id)
         let categoryName = findCategoryName(categories, category_id)
         let obj: BaseUser = {
@@ -135,6 +135,7 @@ async function getNameAndEmail(): Promise<Array<BaseUser>> {
             testAllocated: testName,
             testId: test_id,
             canRetake: canRetake,
+            canResume: canResume
         }
         userObjectArray.push(obj)
     });
@@ -147,6 +148,22 @@ async function getNameAndEmail(): Promise<Array<BaseUser>> {
  *
  * @return Object containing a success/fail state and an array of the user-result objects.
  */
+
+// async function getAnswers() {
+//     let results = await getResults();
+//     console.log(results)
+//     results.forEach(function(result) {
+//         let something = []
+//         let answers = JSON.parse(JSON.parse(result.answers));
+//         let userID = result.userID
+//         something.push(answers, userID)
+//         console.log(something)
+//     })
+// }
+
+// getAnswers()
+
+
 async function createUsersObject() {
     let results = await getResults();
     let users = await getNameAndEmail();
@@ -172,9 +189,11 @@ async function createUsersObject() {
                 obj['timeAllowed'] = secondsToMinutes(user.timeAllowed);
                 obj['dateCreated'] = result.dateCreated;
                 obj['canRetake'] = user.canRetake;
+                obj['canResume'] = user.canResume;
                 obj['autoCompleted'] = parseInt(result.autoCompleted);
                 userDisplayArray.push(obj);
                 testEntryFound.push('yes');
+                console.log(userDisplayArray)
             }
             if (testEntryFound.length !== 0) {
                 didTest.push(testEntryFound);
@@ -196,6 +215,7 @@ async function createUsersObject() {
             obj['dateCreated'] = '1970-01-01 00:00:01';
             obj['testNotTaken'] = 'Not Taken';
             obj['canRetake'] = user.canRetake;
+            obj['canResume'] = user.canResume;
             userDisplayArray.push(obj);
         }
     });
