@@ -149,19 +149,19 @@ async function getNameAndEmail(): Promise<Array<BaseUser>> {
  * @return Object containing a success/fail state and an array of the user-result objects.
  */
 
-// async function getAnswers() {
-//     let results = await getResults();
-//     console.log(results)
-//     results.forEach(function(result) {
-//         let something = []
-//         let answers = JSON.parse(JSON.parse(result.answers));
-//         let userID = result.userID
-//         something.push(answers, userID)
-//         console.log(something)
-//     })
-// }
+async function getAnswers() {
+    let results = await getResults();
+    let details = []
+        results.forEach(function (result) {
+            let data = {};
+            data['id'] = result.id;
+            data['answers'] = JSON.parse(JSON.parse(result.answers));
+            details.push(data)
+            console.log(details)
+        })
+}
 
-// getAnswers()
+getAnswers()
 
 
 async function createUsersObject() {
@@ -193,7 +193,6 @@ async function createUsersObject() {
                 obj['autoCompleted'] = parseInt(result.autoCompleted);
                 userDisplayArray.push(obj);
                 testEntryFound.push('yes');
-                console.log(userDisplayArray)
             }
             if (testEntryFound.length !== 0) {
                 didTest.push(testEntryFound);
