@@ -9,7 +9,10 @@ import {BaseUser} from "./interfaces/User";
  * @return returns filtered array.
  */
 function searchAndFilter(resultArray: Array<BaseUser>) {
+    // console.log(resultArray)
     resultArray = searchByTextAndEmail(resultArray);
+    // console.log(resultArray)
+
     resultArray = percentageFilter(resultArray);
     resultArray = dateFilter(resultArray);
     resultArray = testAllocatedFilter(resultArray);

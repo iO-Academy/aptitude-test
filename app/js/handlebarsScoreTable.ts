@@ -10,12 +10,6 @@ import {UserAnswers} from "./interfaces/UserAnswers";
  */
 async function sortUsersObjectByDate() {
     let usersObject = await createUsersObject()
-    usersObject.data.sort(function(a, b){
-        let dateA = a.dateCreated
-        let dateB = b.dateCreated
-        return dateB - dateA //sort by date descending
-    })
-
     return usersObject
 }
 

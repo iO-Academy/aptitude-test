@@ -155,6 +155,11 @@ async function createUsersObject() {
         let usersResults = results.filter( results =>{
             return results.id === user.id
         })
+        usersResults.sort(function(a, b){
+            let dateA = a.dateCreated
+            let dateB = b.dateCreated
+            return dateB - dateA //sort by date descending
+        })
         user.results = usersResults
         user['timeAllowed'] = secondsToMinutes(user.timeAllowed);
         user.results.forEach( result => {
@@ -169,6 +174,7 @@ async function createUsersObject() {
             user['timeAllowed'] = secondsToMinutes(user.timeAllowed);
             user['dateCreated'] = '1970-01-01 00:00:01';
             user['testNotTaken'] = 'Not Taken';
+
         }
     });
     return await {success: true, data: users}
