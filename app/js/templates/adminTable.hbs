@@ -16,7 +16,7 @@
      </td>
      <td class="name">{{name}}</td>
      <td class="email">{{email}}</td>
-     <td class="percentage">{{percentage}}</td>
+     <td class="percentage">{{results.[0].percentage}}</td>
      <td class="date"></td>
      {{#if autoCompleted}}
      <td class="autocomplete-icon"><i title="Autocompleted" class="icon-autocomplete bi bi-exclamation-diamond"></i>
@@ -65,6 +65,7 @@
             </table>
         </td>
         <td colspan="5">
+        {{#each results}}
             <table class="col-xs-4">
                 <tr>
                     <th>Category:</th>
@@ -109,6 +110,7 @@
                 </tr>
                 {{/if}}
             </table>
+        {{/each }}
         </td>
 </tr>
 {{/each}}

@@ -163,8 +163,8 @@ async function createUsersObject() {
         user.results = usersResults
         user['timeAllowed'] = secondsToMinutes(user.timeAllowed);
         user.results.forEach( result => {
-            result['percentage'] = calculatePercentage(results.score, results.testLength);
-            result['autoCompleted'] = parseInt(results.autoCompleted);
+            result['percentage'] = calculatePercentage(result.score, result.testLength);
+            result['autoCompleted'] = parseInt(result.autoCompleted);
         })
 
         if (user.results.length === 0) {
@@ -179,3 +179,4 @@ async function createUsersObject() {
     });
     return await {success: true, data: users}
 };
+
