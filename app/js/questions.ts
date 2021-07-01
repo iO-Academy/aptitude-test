@@ -8,6 +8,8 @@ function fillUserTable(HBTemplate: string) {
     let template: Function = Handlebars.compile(HBTemplate)
     let counter = 0;
     let cookie = getCookie('userEmail');
+    let canResumeCookie = getCookie('canResume')
+    let uid = getCookie('uid')
     getData(`user?email=${cookie}`)
         .then((data) => {getData(`question?test_id=${data.data.test_id}`)
             .then((result) => {
@@ -20,11 +22,19 @@ function fillUserTable(HBTemplate: string) {
                 })
             counter = result.data.length
 
+
             putDescription(counter)
             addAnswerEventListeners()
             fillNav()
             active()
             changeQuestion(current)
+            getAnswersToResume(uid, canResumeCookie).then(details => {
+                console.log(details)
+                document.querySelectorAll('.test').forEach(test => {
+                    test.classList.add('logo')
+                })
+
+            })
         })
     })
 }
@@ -37,3 +47,4 @@ document.querySelector('#flag-checkbox').addEventListener('change', function() {
     let qid  = document.querySelector<HTMLElement>('#questions .question.active').dataset.questionOrderId
     flaggedQuestions[qid] = document.querySelector<HTMLInputElement>('#flag-checkbox').checked
 })
+

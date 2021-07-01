@@ -122,7 +122,7 @@ async function getNameAndEmail(): Promise<Array<BaseUser>> {
     let categories = await getCategories();
     let userObjectArray: Array<BaseUser> = [];
     users.forEach(function(user: any) {
-        let {id, email, name, time, test_id, canRetake, canResume, category_id} = user
+        let {id, email, name, time, test_id, canRetake, canResume, answers, category_id} = user
         let testName = findTestName(tests, test_id)
         let categoryName = findCategoryName(categories, category_id)
         let obj: BaseUser = {
@@ -135,7 +135,8 @@ async function getNameAndEmail(): Promise<Array<BaseUser>> {
             testAllocated: testName,
             testId: test_id,
             canRetake: canRetake,
-            canResume: canResume
+            canResume: canResume,
+            answers: answers
         }
         userObjectArray.push(obj)
     });
@@ -149,19 +150,21 @@ async function getNameAndEmail(): Promise<Array<BaseUser>> {
  * @return Object containing a success/fail state and an array of the user-result objects.
  */
 
-async function getAnswers() {
+async function getAnswersToResume(uid, canResume) {
     let results = await getResults();
     let details = []
         results.forEach(function (result) {
-            let data = {};
-            data['id'] = result.id;
-            data['answers'] = JSON.parse(JSON.parse(result.answers));
-            details.push(data)
-            console.log(details)
+            if (result.id == uid && canResume == 1) {
+                let data = {};
+                data['id'] = result.id;
+                data['answers'] = JSON.parse(JSON.parse(result.answers));
+                details.push(data)
+            }
         })
+    return details
 }
 
-getAnswers()
+getAnswersToResume(19, 1)
 
 
 async function createUsersObject() {

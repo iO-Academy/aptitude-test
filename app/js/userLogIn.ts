@@ -82,21 +82,26 @@ if (document.querySelector('#logInForm')) {
     document.querySelector('#logInForm').addEventListener('submit', function(e) {
         e.preventDefault()
         let email = document.querySelector<HTMLInputElement>('#email')
-
         getUser(email.value).then(function(user: any) {
             if(user.success && user.data.id) {
                 let retakeValue = user.data.canRetake
+                let resumeValue = user.data.canResume
                 redirectAdmin(user.data)
                 checkIfTestIsTaken(user.data.id).then(function(idData: any) {
-                    if (idData.success && retakeValue == 0) {
+                    if (idData.success && resumeValue == 1) {
+                        redirectUser(user.data)
+                    }
+                    if (idData.success && (retakeValue == 0 && resumeValue == 0)) {
                         document.querySelector('.invalidLogin').textContent = 'You cannot take the test twice'
                     } else {
                         document.cookie = "uid=" + user.data.id
                         document.cookie = "userEmail=" + user.data.email
                         document.cookie = "userTime=" + user.data.time
+                        document.cookie = "canResume=" + resumeValue
                         const dateStarted = Date.now()
                         document.cookie = "dateStamp=" + dateStarted.toString()
                         redirectUser(user.data)
+                        console.log(user.data)
                     }
                 })
             } else {
