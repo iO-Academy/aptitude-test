@@ -69,14 +69,22 @@ document.getElementById('endDate').addEventListener("change", ()=> {
  */
 function dateFilter(resultArray: Array<any>) {
     let dates = setDate()
-    let newResultArray = []
-    resultArray.forEach(data => {
-        let dateCreated = data.dateCreated.slice(0,10)
-        if (dateCreated >= dates[0] && dateCreated <= dates[1]) {
-            newResultArray.push(data)
+    let filteredUsers = []
+    resultArray.forEach(user => {
+        if (user.results.length > 0) {
+            user.results.every( result => {
+                let dateCreated = result.dateCreated.slice(0,10)
+                if (dateCreated >= dates[0] && dateCreated <= dates[1]) {
+                    filteredUsers.push(user)
+                    return false
+                }
+                return true
+            })
+        } else {
+            filteredUsers.push(user)
         }
     })
-    return newResultArray
+    return filteredUsers
 }
 
 /**

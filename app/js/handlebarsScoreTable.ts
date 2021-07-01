@@ -10,12 +10,6 @@ import {UserAnswers} from "./interfaces/UserAnswers";
  */
 async function sortUsersObjectByDate() {
     let usersObject = await createUsersObject()
-    usersObject.data.sort(function(a, b){
-        let dateA = a.dateCreated
-        let dateB = b.dateCreated
-        return dateB - dateA //sort by date descending
-    })
-
     return usersObject
 }
 
@@ -28,7 +22,6 @@ async function updateScoreTable() {
     let HBTemplate = await getTemplateAjax('js/templates/adminTable.hbs');
     let filteredUserArray = searchAndFilter(userInfo.data);
     let paginatedArrays = splitArray(filteredUserArray, 20);
-
     updateChart(filteredUserArray);
     if (paginatedArrays.length >= 1 ){
         printFilteredResultsToScreen(HBTemplate, paginatedArrays[0]);
@@ -165,22 +158,26 @@ function deleteUser(userId: number) {
  */
 function produceTable (HBTemplate: string, scoresDataObject) {
     scoresDataObject.data.forEach(function (scoreData: Scores) {
-        switch (true) {
-            case scoreData.percentage >= 97:
-                scoreData.topGrade = true
-                break
-            case scoreData.percentage >= 70:
-                scoreData.passingGrade = true
-                break
-            case scoreData.percentage > 0 || scoreData.percentage == '0.00':
-                scoreData.fail = true
-                break
-            case scoreData.percentage >= 0 && scoreData.autoCompleted == true:
-                scoreData.autoCompleted = true
-                break
-            default:
-                scoreData.notTakenYet = true
-                break
+        if(scoreData.results.length > 0) {
+            switch (true) {
+                case scoreData.results[0].percentage >= 97:
+                    scoreData.topGrade = true
+                    break
+                case scoreData.results[0].percentage >= 70:
+                    scoreData.passingGrade = true
+                    break
+                case scoreData.results[0].percentage > 0 || scoreData.results[0].percentage == '0.00':
+                    scoreData.fail = true
+                    break
+                case scoreData.results[0].percentage >= 0 && scoreData.autoCompleted == true:
+                    scoreData.autoCompleted = true
+                    break
+                default:
+                    scoreData.notTakenYet = true
+                    break
+            }
+        } else {
+            scoreData.notTakenYet = true
         }
     })
 
@@ -214,10 +211,15 @@ function createUserResults(resultData, questionData): Object {
         userResultsTable[result] = {
             result: result,
             question: questionObj[result],
-            userAnswer: userResults[result].answerID
+            userAnswer: userResults[result].answerID,
+            hasNotes: false
         };
         if (userResults[result]["isCorrect"]) {
             userResultsTable[result].correct = "correct";
+        }
+        if (userResults[result].hasOwnProperty('notes')) {
+            userResultsTable[result].notes = userResults[result].notes
+            userResultsTable[result].hasNotes = userResults[result].notes.length > 0
         }
     }
     return userResultsTable;
@@ -322,11 +324,16 @@ async function addEventListenersForViewResults() {
             addEventListenersForCloseResults();
             getData("result?id=" + e.target.getAttribute("dataId")).then(resultData => {
                 getData("user").then(userData => {
-                    userData.data.forEach(user =>{
+                    userData.data.forEach(user => {
                         if (user.id === resultData.data.id) {
                             let testId = user.test_id
+                            hideAnswerAndBreakdown()
+                            if (testId == '1') {
+                                displayAnswerAndBreakdown()
+                            }
                             getData("question?test_id=" + testId).then(questionData => {
                                 resultsTable.innerHTML = template(createUserResults(resultData, questionData));
+                                openingAccordionWithNotes()
                             })
                             createUserResultsBreakdown(resultData, testId)
                                 .then(breakdown => {
@@ -338,6 +345,33 @@ async function addEventListenersForViewResults() {
             });
         });
     });
+}
+
+/*
+* function that display button answer and breakdown from view result if
+* the user has taken the test aptitude v1
+ */
+function displayAnswerAndBreakdown() {
+    document.querySelector<HTMLElement>(".open-view-answers-tab ").style.display = "inline-block"
+    document.querySelector<HTMLElement>(".open-view-breakdown-tab ").style.display = "inline-block"
+}
+
+/*
+* function that Hide button answer and breakdown from view result if
+* the user has taken the test aptitude v1
+ */
+function hideAnswerAndBreakdown() {
+    document.querySelector<HTMLElement>(".open-view-answers-tab ").style.display = "none"
+    document.querySelector<HTMLElement>(".open-view-breakdown-tab ").style.display = "none"
+}
+
+function openingAccordionWithNotes() {
+    document.querySelectorAll('.button-notes').forEach(button => {
+        button.addEventListener('click', e => {
+            document.querySelector(`#panel${(button as HTMLElement).dataset.id}`)
+                .classList.toggle('active-panel')
+            })
+        })
 }
 
 /**
@@ -393,6 +427,6 @@ function addEventListenersForMoreInfoButtons() {
             }
         })
     })
-
 }
+
 updateScoreTable();
