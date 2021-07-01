@@ -27,20 +27,20 @@ function fillUserTable(HBTemplate: string) {
             fillNav()
             active()
             changeQuestion(current)
-            getAnswersToResume(uid,canResumeCookie).then(result => {
-                console.log(result)
-                document.querySelectorAll<HTMLElement>('.question').forEach(question => {
-                    document.querySelectorAll<HTMLInputElement>('.questionValue').forEach(value => {
-                        let data = result.answers[question.dataset.id].answerID
-                        if (data == 'undefined') {
-                            value.checked = false
-                        } else if (value.value == data) {
-                            value.checked = true
-                        }
-
+                if (canResumeCookie == '1') {
+                    getAnswersToResume(uid).then(result => {
+                        console.log(result)
+                        document.querySelectorAll<HTMLElement>('.question').forEach(question => {
+                            question.querySelectorAll<HTMLInputElement>('.questionValue').forEach(questionValue => {
+                                let data = result.answers[question.dataset.id].answerID
+                                if (data !== undefined && questionValue.value == data) {
+                                    question.querySelector('#notes').textContent = result.answers[question.dataset.id].notes
+                                    questionValue.checked = true
+                                }
+                            })
+                        })
                     })
-                })
-            })
+                }
         })
     })
 }

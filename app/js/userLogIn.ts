@@ -78,6 +78,21 @@ async function preventRetake(user: BaseUser) {
     })
 }
 
+/**
+ * this updates user's canResume value to 0 to prevent multiple accesses to test
+ * canResume is a boolean stored as a tinyInt
+ *
+ * @param user
+ */
+async function preventResume(user: BaseUser) {
+    let baseUrl: string = getBaseUrl()
+    user.data.canResume = 0
+    await fetch(baseUrl + 'user/edit', {
+        method: "post",
+        body: jsonToFormData(user.data)
+    })
+}
+
 if (document.querySelector('#logInForm')) {
     document.querySelector('#logInForm').addEventListener('submit', function(e) {
         e.preventDefault()

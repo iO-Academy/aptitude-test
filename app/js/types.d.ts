@@ -35,3 +35,5 @@ declare var isAuthorised: Function;
 declare var finishTest: Function;
 declare var getAnswersToResume: Function;
 declare var getResult: Function;
+declare var preventResume: Function;
+declare var preventRetake: Function;

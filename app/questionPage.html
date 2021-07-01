@@ -15,7 +15,8 @@
             if (!user.success || !isAuthorised(user.data) || (user.data.canRetake === '0' && user.data.canResume === '0')) {
                 window.location.replace("index.html")
             }
-            //preventRetake(user)
+            preventRetake(user)
+            preventResume(user)
         })
 
     </script>
