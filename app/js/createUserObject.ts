@@ -150,54 +150,31 @@ async function getNameAndEmail(): Promise<Array<BaseUser>> {
 async function createUsersObject() {
     let results = await getResults();
     let users = await getNameAndEmail();
-    let userDisplayArray = [];
-    users.forEach(function(user) {
-        let didTest = [];
-        results.forEach(function(result) {
-            let testEntryFound = [];
-            if (result.id === user.id ) {
-                let answers = JSON.parse(JSON.parse(result.answers));
-                let numberOfQuestionsTaken = Object.keys(answers).length;
-                let obj = {};
-                obj['id'] = user.id;
-                obj['name'] = user.name;
-                obj['email'] = user.email;
-                obj['score'] = result.score;
-                obj['categoryName'] = user.categoryName;
-                obj['categoryId'] = user.categoryId;
-                obj['percentage'] = calculatePercentage(result.score, result.testLength);
-                obj['testAllocated'] = user.testAllocated;
-                obj['testId'] = user.testId;
-                obj['time'] = result.time;
-                obj['timeAllowed'] = secondsToMinutes(user.timeAllowed);
-                obj['dateCreated'] = result.dateCreated;
-                obj['canRetake'] = user.canRetake;
-                obj['autoCompleted'] = parseInt(result.autoCompleted);
-                userDisplayArray.push(obj);
-                testEntryFound.push('yes');
-            }
-            if (testEntryFound.length !== 0) {
-                didTest.push(testEntryFound);
-            }
-        });
-        if (didTest.length === 0) {
-            let obj = {};
-            obj['id'] = user.id;
-            obj['name'] = user.name;
-            obj['email'] = user.email;
-            obj['categoryName'] = user.categoryName;
-            obj['categoryId'] = user.categoryId;
-            obj['score'] = '';
-            obj['percentage'] = '';
-            obj['testAllocated'] = user.testAllocated;
-            obj['testId'] = user.testId;
-            obj['time'] = '';
-            obj['timeAllowed'] = secondsToMinutes(user.timeAllowed);
-            obj['dateCreated'] = '1970-01-01 00:00:01';
-            obj['testNotTaken'] = 'Not Taken';
-            obj['canRetake'] = user.canRetake;
-            userDisplayArray.push(obj);
+
+    users.forEach(user => {
+        let usersResults = results.filter(results => {
+            return results.id === user.id
+        })
+        usersResults.sort((a, b) => {
+            const dateA = new Date(a.dateCreated)
+            const dateB = new Date(b.dateCreated)
+            return dateB.getTime() - dateA.getTime() //sort by date descending
+        })
+        user.results = usersResults
+        user['timeAllowed'] = secondsToMinutes(user.timeAllowed);
+        user.results.forEach(result => {
+            result['percentage'] = calculatePercentage(result.score, result.testLength);
+            result['autoCompleted'] = parseInt(result.autoCompleted);
+        })
+
+        if (user.results.length === 0) {
+            user['score'] = '';
+            user['percentage'] = '';
+            user['time'] = '';
+            user['dateCreated'] = '1970-01-01 00:00:01';
+            user['testNotTaken'] = 'Not Taken';
         }
     });
-    return await {success: true, data: userDisplayArray}
+    return await {success: true, data: users}
 };
+

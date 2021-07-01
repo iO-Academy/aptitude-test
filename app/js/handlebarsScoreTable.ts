@@ -3,32 +3,14 @@ import {Scores} from "./interfaces/Scores";
 import {UserAnswers} from "./interfaces/UserAnswers";
 
 /**
- * Sorts the array of user objects by their 'dateCreated' with the
- * newest at the top
- *
- * @return array of user objects in the desired order
- */
-async function sortUsersObjectByDate() {
-    let usersObject = await createUsersObject()
-    usersObject.data.sort(function(a, b){
-        let dateA = a.dateCreated
-        let dateB = b.dateCreated
-        return dateB - dateA //sort by date descending
-    })
-
-    return usersObject
-}
-
-/**
  * Get the handlebars template for table rows (adminTable.hbs), combine
  * with user objects and send this to searching and filtering.
  */
 async function updateScoreTable() {
-    let userInfo = await sortUsersObjectByDate();
+    let userInfo = await createUsersObject();
     let HBTemplate = await getTemplateAjax('js/templates/adminTable.hbs');
     let filteredUserArray = searchAndFilter(userInfo.data);
     let paginatedArrays = splitArray(filteredUserArray, 20);
-
     updateChart(filteredUserArray);
     if (paginatedArrays.length >= 1 ){
         printFilteredResultsToScreen(HBTemplate, paginatedArrays[0]);
@@ -165,22 +147,26 @@ function deleteUser(userId: number) {
  */
 function produceTable (HBTemplate: string, scoresDataObject) {
     scoresDataObject.data.forEach(function (scoreData: Scores) {
-        switch (true) {
-            case scoreData.percentage >= 97:
-                scoreData.topGrade = true
-                break
-            case scoreData.percentage >= 70:
-                scoreData.passingGrade = true
-                break
-            case scoreData.percentage > 0 || scoreData.percentage == '0.00':
-                scoreData.fail = true
-                break
-            case scoreData.percentage >= 0 && scoreData.autoCompleted == true:
-                scoreData.autoCompleted = true
-                break
-            default:
-                scoreData.notTakenYet = true
-                break
+        if(scoreData.results.length > 0) {
+            switch (true) {
+                case scoreData.results[0].percentage >= 97:
+                    scoreData.topGrade = true
+                    break
+                case scoreData.results[0].percentage >= 70:
+                    scoreData.passingGrade = true
+                    break
+                case scoreData.results[0].percentage > 0 || scoreData.results[0].percentage == '0.00':
+                    scoreData.fail = true
+                    break
+                case scoreData.results[0].percentage >= 0 && scoreData.autoCompleted == true:
+                    scoreData.autoCompleted = true
+                    break
+                default:
+                    scoreData.notTakenYet = true
+                    break
+            }
+        } else {
+            scoreData.notTakenYet = true
         }
     })
 

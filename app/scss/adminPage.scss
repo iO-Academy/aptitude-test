@@ -129,6 +129,51 @@ input {
   td {
     vertical-align: middle;
   }
+
+  .table-data-border {
+    margin-top: 20px;
+    border: 1px solid black;
+
+    th {
+      padding: 10px;
+    }
+
+    .score-th-width {
+      width: 10%;
+    }
+
+    .score-td-width {
+      width: 5%;
+    }
+
+    .date-th-width {
+      width: 9%;
+    }
+
+    .time-th-width {
+      width: 16%;
+    }
+
+    .time-td-width{
+      width: 5%;
+    }
+
+    .date-td-width {
+      width: 23%;
+    }
+
+    .empty-cell-width {
+      width: 1%;
+    }
+
+    .autoCompleted-th-width {
+      width: 22%;
+    }
+
+    .autoCompleted-td-width-icon {
+      width: 7%;
+    }
+  }
 }
 
 .modify-question-container {
@@ -170,6 +215,10 @@ input {
 }
 
 .icon-autocomplete, .button-notes {
+  font-size: 2.5rem;
+}
+
+.moretests-icon {
   font-size: 2.5rem;
 }
 

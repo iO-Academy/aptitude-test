@@ -4,6 +4,6 @@ export interface Scores {
     passingGrade?: boolean,
     fail?: boolean,
     notTakenYet?: boolean,
-    autoCompleted?: boolean
+    autoCompleted?: boolean,
+    results?: any
 }
-
