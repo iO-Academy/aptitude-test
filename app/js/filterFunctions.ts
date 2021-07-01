@@ -68,12 +68,12 @@ document.getElementById('endDate').addEventListener("change", ()=> {
  * @return newResultArray containing the filtered data
  */
 function dateFilter(resultArray: Array<any>) {
-    let dates = setDate()
+    const dates = setDate()
     let filteredUsers = []
     resultArray.forEach(user => {
         if (user.results.length > 0) {
-            user.results.every( result => {
-                let dateCreated = result.dateCreated.slice(0,10)
+            user.results.every(result => {
+                const dateCreated = result.dateCreated.slice(0,10)
                 if (dateCreated >= dates[0] && dateCreated <= dates[1]) {
                     filteredUsers.push(user)
                     return false

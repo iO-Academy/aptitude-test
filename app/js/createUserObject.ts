@@ -151,18 +151,18 @@ async function createUsersObject() {
     let results = await getResults();
     let users = await getNameAndEmail();
 
-    users.forEach(function(user) {
-        let usersResults = results.filter( results =>{
+    users.forEach(user => {
+        let usersResults = results.filter(results => {
             return results.id === user.id
         })
-        usersResults.sort(function(a, b){
-            let dateA = new Date(a.dateCreated)
-            let dateB = new Date(b.dateCreated)
+        usersResults.sort((a, b) => {
+            const dateA = new Date(a.dateCreated)
+            const dateB = new Date(b.dateCreated)
             return dateB.getTime() - dateA.getTime() //sort by date descending
         })
         user.results = usersResults
         user['timeAllowed'] = secondsToMinutes(user.timeAllowed);
-        user.results.forEach( result => {
+        user.results.forEach(result => {
             result['percentage'] = calculatePercentage(result.score, result.testLength);
             result['autoCompleted'] = parseInt(result.autoCompleted);
         })

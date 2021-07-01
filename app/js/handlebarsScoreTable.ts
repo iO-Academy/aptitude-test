@@ -3,22 +3,11 @@ import {Scores} from "./interfaces/Scores";
 import {UserAnswers} from "./interfaces/UserAnswers";
 
 /**
- * Sorts the array of user objects by their 'dateCreated' with the
- * newest at the top
- *
- * @return array of user objects in the desired order
- */
-async function sortUsersObjectByDate() {
-    let usersObject = await createUsersObject()
-    return usersObject
-}
-
-/**
  * Get the handlebars template for table rows (adminTable.hbs), combine
  * with user objects and send this to searching and filtering.
  */
 async function updateScoreTable() {
-    let userInfo = await sortUsersObjectByDate();
+    let userInfo = await createUsersObject();
     let HBTemplate = await getTemplateAjax('js/templates/adminTable.hbs');
     let filteredUserArray = searchAndFilter(userInfo.data);
     let paginatedArrays = splitArray(filteredUserArray, 20);

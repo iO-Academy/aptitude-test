@@ -83,34 +83,34 @@
             </table>
         {{#each results}}
         <table class="col-xs-12 table-data-border">
-              <tr>
-                <th class="score-th-width">Score:</th>
-                    <td class="score score-td-width">
-                        {{#if testNotTaken}}
-                                {{testNotTaken}}
-                            {{else}}
-                                {{score}}
-                        {{/if}}
-                    </td>
-                <th class="date-th-width">Date:</th>
-                    <td class="date date-td-width">
-                        {{#if testNotTaken}}
-                              {{testNotTaken}}
-                            {{else}}
-                               {{dateCreated}}
-                        {{/if}}
-                    </td>
-                {{#if time}}
-                <th class="time-th-width">Time taken:</th>
-                    <td class="time time-td-width">{{time}}</td>
-                {{/if}}
-                  <th class="empty-cell-width"></th>
-                  <td></td>
-                {{#if this.autoCompleted}}
-                 <th class="autoCompleted-th-width" >Auto completed:</th>
-                    <td class="autoComplete autoCompleted-td-width-icon">Yes <i class="bi bi-exclamation-diamond"/></td>
-                 {{/if}}
-                </tr>
+           <tr>
+              <th class="score-th-width">Score:</th>
+              <td class="score score-td-width">
+              {{#if testNotTaken}}
+                  {{testNotTaken}}
+              {{else}}
+                  {{score}}
+              {{/if}}
+              </td>
+              <th class="date-th-width">Date:</th>
+              <td class="date date-td-width">
+                  {{#if testNotTaken}}
+                      {{testNotTaken}}
+                  {{else}}
+                      {{dateCreated}}
+                  {{/if}}
+              </td>
+              {{#if time}}
+              <th class="time-th-width">Time taken:</th>
+              <td class="time time-td-width">{{time}}</td>
+              {{/if}}
+                 <th class="empty-cell-width"></th>
+                 <td></td>
+              {{#if this.autoCompleted}}
+              <th class="autoCompleted-th-width" >Auto completed:</th>
+              <td class="autoComplete autoCompleted-td-width-icon">Yes <i class="bi bi-exclamation-diamond"/></td>
+              {{/if}}
+           </tr>
         </table>
         {{/each}}
         </td>
