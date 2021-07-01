@@ -6,6 +6,4 @@ export interface Scores {
     notTakenYet?: boolean,
     autoCompleted?: boolean,
     results?: any
-
 }
-
