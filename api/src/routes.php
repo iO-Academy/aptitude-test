@@ -524,11 +524,11 @@ $app->get('/result', function ($request, $response, $args) {
 
     if (!empty($uid)) {
         try {
-            $query = "SELECT `uid` as 'id', `id` as `resultId`, `answers`, `userTestNotes`, `score`, `testLength`, `time`, `dateCreated`, `autoCompleted` from `result` WHERE `uid` = :uid;";
+            $query = "SELECT `uid` as 'id', `id` as `resultId`, `answers`, `userTestNotes`, `score`, `testLength`, `time`, `dateCreated`, `autoCompleted` from `result` WHERE `uid` = :uid ORDER BY `dateCreated` DESC;";
             $query = $this->db->prepare($query);
             $query->bindParam(':uid', $uid);
             $query->execute();
-            $result = $query->fetch(PDO::FETCH_ASSOC);
+            $result = $query->fetchAll(PDO::FETCH_ASSOC);
 
         } catch(Exception $e) {
             $data['message'] = $e->getMessage();

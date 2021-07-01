@@ -14,6 +14,15 @@ async function getResults() {
     return resultsArr.data
 };
 
+async function getResult(uid) {
+    let baseUrl = getBaseUrl();
+    let resultArr = await fetch(baseUrl + "result?id=" + uid, {method: 'get'})
+        .then(function (data) {
+            return data.json()
+        });
+    return resultArr.data
+};
+
 /**
  * Gets users from the API.
  * Filters out users that have been soft-deleted from the database.
@@ -122,7 +131,7 @@ async function getNameAndEmail(): Promise<Array<BaseUser>> {
     let categories = await getCategories();
     let userObjectArray: Array<BaseUser> = [];
     users.forEach(function(user: any) {
-        let {id, email, name, time, test_id, canRetake, canResume, category_id} = user
+        let {id, email, name, time, test_id, canRetake, canResume, answers, category_id} = user
         let testName = findTestName(tests, test_id)
         let categoryName = findCategoryName(categories, category_id)
         let obj: BaseUser = {
@@ -135,12 +144,23 @@ async function getNameAndEmail(): Promise<Array<BaseUser>> {
             testAllocated: testName,
             testId: test_id,
             canRetake: canRetake,
-            canResume: canResume
+            canResume: canResume,
+            answers: answers
         }
         userObjectArray.push(obj)
     });
     return userObjectArray
 };
+
+async function getAnswersToResume(uid) {
+    let results = await getResult(uid);
+    let data = {};
+        data['id'] = results[0].id
+        data['resultId'] = results[0].resultId
+        data['dateCreated'] = results[0].dateCreated
+        data['answers'] = JSON.parse(JSON.parse(results[0]['answers']))
+        return data
+}
 
 /**
  * Combines the information used in a table row into a new object.
