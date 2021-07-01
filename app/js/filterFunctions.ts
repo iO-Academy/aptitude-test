@@ -71,7 +71,7 @@ function dateFilter(resultArray: Array<any>) {
     let dates = setDate()
     let filteredUsers = []
     resultArray.forEach(user => {
-        if(user.results.length > 0) {
+        if (user.results.length > 0) {
             user.results.every( result => {
                 let dateCreated = result.dateCreated.slice(0,10)
                 if (dateCreated >= dates[0] && dateCreated <= dates[1]) {
@@ -80,7 +80,7 @@ function dateFilter(resultArray: Array<any>) {
                 }
                 return true
             })
-        }else {
+        } else {
             filteredUsers.push(user)
         }
     })
@@ -118,8 +118,6 @@ function percentageFilter(resultArray: Array<any>) {
     } else {
         return resultArray
     }
-
-
     return newResultArray
 }
 
