@@ -65,7 +65,6 @@
             </table>
         </td>
         <td colspan="5">
-<!--          This class was put in table class="col-xs-4 or col-xs-10"-->
             <table class="col-xs-10">
                 <tr>
                     <th>Category:</th>
@@ -76,7 +75,6 @@
                     <td class="time">{{timeAllowed}}</td>
                 </tr>
             </table>
-<!--          This class was put in table class="col-xs-4"-->
         {{#each results}}
         <table class="col-xs-12 table-data-border">
               <tr>
@@ -98,13 +96,13 @@
                     </td>
                 {{#if time}}
                 <th class="time-th-width">Time taken:</th>
-                    <td class="time">{{time}}</td>
+                    <td class="time time-td-width">{{time}}</td>
                 {{/if}}
                   <th class="empty-cell-width"></th>
                   <td></td>
                 {{#if this.autoCompleted}}
-                 <th >Auto completed:</th>
-                    <td class="autoComplete">Yes <i class="bi bi-exclamation-diamond"/></td>
+                 <th class="autoCompleted-th-width" >Auto completed:</th>
+                    <td class="autoComplete autoCompleted-td-width-icon">Yes <i class="bi bi-exclamation-diamond"/></td>
                  {{/if}}
                 </tr>
         </table>
