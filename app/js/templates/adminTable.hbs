@@ -11,6 +11,7 @@
     {{else if this.notTakenYet}}
          class="test-not-taken key-user-information-data-row"
     {{/if}}>
+
     <td dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}"  dataPercentage="{{percentage}}" dataTime="{{time}}" dataTimeAllowed="{{timeAllowed}}" dataCanRetake="{{canRetake}}" dataTestId="{{this.testId}}" dataCategoryId="{{this.categoryId}}">
        <button class="btn more-info-button btn_height" data-id="{{id}}">More info</button>
      </td>
@@ -18,7 +19,11 @@
      <td class="email">{{email}}</td>
      <td class="percentage">{{results.[0].percentage}}</td>
      <td class="date"></td>
-
+    {{#if results.[1]}}
+     <td><i class="moretests-icon bi bi-list-ol"></i></td>
+    {{else}}
+        <td></td>
+    {{/if}}
      {{#if results.[0].autoCompleted}}
      <td class=" autocomplete-icon"><i title="Autocompleted" class="icon-autocomplete bi bi-exclamation-diamond"></i>
      {{else}}
@@ -65,7 +70,7 @@
                 </tr>
             </table>
         </td>
-        <td colspan="5">
+        <td colspan="6">
             <table class="col-xs-10">
                 <tr>
                     <th>Category:</th>
@@ -107,7 +112,7 @@
                  {{/if}}
                 </tr>
         </table>
-        {{/each }}
+        {{/each}}
         </td>
 </tr>
 {{/each}}
