@@ -1,6 +1,6 @@
 {{#each data}}
 <tr
-    {{#if this.autoCompleted}}
+    {{#if results.[0].autoCompleted}}
         class="autocomplete-grade key-user-information-data-row"
     {{else if this.topGrade}}
          class="top-grade key-user-information-data-row"
@@ -20,7 +20,7 @@
      <td class="date"></td>
 
      {{#if results.[0].autoCompleted}}
-     <td class="autocomplete-icon"><i title="Autocompleted" class="icon-autocomplete bi bi-exclamation-diamond"></i>
+     <td class=" autocomplete-icon"><i title="Autocompleted" class="icon-autocomplete bi bi-exclamation-diamond"></i>
      {{else}}
      <td class="autocomplete-icon"></td>
      {{/if}}

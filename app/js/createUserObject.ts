@@ -118,7 +118,6 @@ function findCategoryName(categories: Array<Categories>, categoryId: number) {
  */
 async function getNameAndEmail(): Promise<Array<BaseUser>> {
     let users = await getUsers();
-    console.log(users)
     let tests = await getTests();
     let categories = await getCategories();
     let userObjectArray: Array<BaseUser> = [];
@@ -157,9 +156,9 @@ async function createUsersObject() {
             return results.id === user.id
         })
         usersResults.sort(function(a, b){
-            let dateA = a.dateCreated
-            let dateB = b.dateCreated
-            return dateB - dateA //sort by date descending
+            let dateA = new Date(a.dateCreated)
+            let dateB = new Date(b.dateCreated)
+            return dateB.getTime() - dateA.getTime() //sort by date descending
         })
         user.results = usersResults
         user['timeAllowed'] = secondsToMinutes(user.timeAllowed);
