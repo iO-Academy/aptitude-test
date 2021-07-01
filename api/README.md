@@ -127,7 +127,7 @@ GET
 GET
 - Find specific users results.
 - Send users id as a GET parameter using the key of `id`.
-- Returns users result object.
+- Returns an array of result objects for the specified user.
 
 **/result/{id}/notes/edit**
 
