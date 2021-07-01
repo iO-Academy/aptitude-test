@@ -148,7 +148,6 @@ async function getNameAndEmail(): Promise<Array<BaseUser>> {
  *
  * @return Object containing a success/fail state and an array of the user-result objects.
  */
-
 async function createUsersObject() {
     let results = await getResults();
     let users = await getNameAndEmail();
