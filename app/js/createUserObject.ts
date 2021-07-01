@@ -157,15 +157,13 @@ async function getNameAndEmail(): Promise<Array<BaseUser>> {
 async function getAnswersToResume(uid, canResume) {
     let results = await getResult(uid);
     let details = []
-    console.log(results)
-    // results.forEach(function (result) {
-    //     if (result.id == uid && canResume == 1) {
-    //         let data = {};
-    //         data['id'] = result.id;
-    //         data['answers'] = JSON.parse(JSON.parse(result.answers));
-    //         details.push(data)
-    //     }
-    // })
+        if (results.id == uid && canResume == 1) {
+            let data = {};
+            data['id'] = results.id;
+            data['answers'] = JSON.parse(JSON.parse(results.answers));
+            details.push(data)
+        }
+    console.log(details)
     return details.reverse()
 }
 
