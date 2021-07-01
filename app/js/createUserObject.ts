@@ -14,6 +14,15 @@ async function getResults() {
     return resultsArr.data
 };
 
+async function getResult(uid) {
+    let baseUrl = getBaseUrl();
+    let resultArr = await fetch(baseUrl + "result?id=" + uid, {method: 'get'})
+        .then(function (data) {
+            return data.json()
+        });
+    return resultArr.data
+};
+
 /**
  * Gets users from the API.
  * Filters out users that have been soft-deleted from the database.
@@ -143,30 +152,29 @@ async function getNameAndEmail(): Promise<Array<BaseUser>> {
     return userObjectArray
 };
 
+
+
+async function getAnswersToResume(uid, canResume) {
+    let results = await getResult(uid);
+    let details = []
+    console.log(results)
+    // results.forEach(function (result) {
+    //     if (result.id == uid && canResume == 1) {
+    //         let data = {};
+    //         data['id'] = result.id;
+    //         data['answers'] = JSON.parse(JSON.parse(result.answers));
+    //         details.push(data)
+    //     }
+    // })
+    return details.reverse()
+}
+
 /**
  * Combines the information used in a table row into a new object.
  * Returns a list of all of these user-result objects ready to be put into table rows.
  *
  * @return Object containing a success/fail state and an array of the user-result objects.
  */
-
-async function getAnswersToResume(uid, canResume) {
-    let results = await getResults();
-    let details = []
-        results.forEach(function (result) {
-            if (result.id == uid && canResume == 1) {
-                let data = {};
-                data['id'] = result.id;
-                data['answers'] = JSON.parse(JSON.parse(result.answers));
-                details.push(data)
-            }
-        })
-    return details
-}
-
-getAnswersToResume(19, 1)
-
-
 async function createUsersObject() {
     let results = await getResults();
     let users = await getNameAndEmail();

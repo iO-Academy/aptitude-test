@@ -101,7 +101,6 @@ if (document.querySelector('#logInForm')) {
                         const dateStarted = Date.now()
                         document.cookie = "dateStamp=" + dateStarted.toString()
                         redirectUser(user.data)
-                        console.log(user.data)
                     }
                 })
             } else {

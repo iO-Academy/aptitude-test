@@ -22,7 +22,6 @@ function fillUserTable(HBTemplate: string) {
                 })
             counter = result.data.length
 
-
             putDescription(counter)
             addAnswerEventListeners()
             fillNav()
@@ -30,10 +29,13 @@ function fillUserTable(HBTemplate: string) {
             changeQuestion(current)
             getAnswersToResume(uid, canResumeCookie).then(details => {
                 console.log(details)
-                document.querySelectorAll('.test').forEach(test => {
-                    test.classList.add('logo')
+                document.querySelectorAll<HTMLElement>('.question').forEach(question => {
+                    document.querySelectorAll<HTMLInputElement>('.questionValue').forEach(value => {
+                        if (value.value == details.answers[question.dataset.id].answerID) {
+                            value.checked = true
+                        }
+                    })
                 })
-
             })
         })
     })
