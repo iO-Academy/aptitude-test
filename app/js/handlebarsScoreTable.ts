@@ -22,7 +22,6 @@ async function updateScoreTable() {
     let HBTemplate = await getTemplateAjax('js/templates/adminTable.hbs');
     let filteredUserArray = searchAndFilter(userInfo.data);
     let paginatedArrays = splitArray(filteredUserArray, 20);
-    console.log(paginatedArrays)
     updateChart(filteredUserArray);
     if (paginatedArrays.length >= 1 ){
         printFilteredResultsToScreen(HBTemplate, paginatedArrays[0]);
@@ -158,7 +157,6 @@ function deleteUser(userId: number) {
  * and filtered by user settings
  */
 function produceTable (HBTemplate: string, scoresDataObject) {
-    console.log(scoresDataObject)
     scoresDataObject.data.forEach(function (scoreData: Scores) {
         if(scoreData.results.length > 0) {
             switch (true) {
