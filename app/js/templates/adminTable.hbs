@@ -65,51 +65,52 @@
             </table>
         </td>
         <td colspan="5">
-            <table class="col-xs-4">
+<!--          This class was put in table class="col-xs-4 or col-xs-10"-->
+            <table class="col-xs-10">
                 <tr>
                     <th>Category:</th>
                     <td class="categoryName">{{categoryName}}</td>
-                </tr>
-                <tr>
                     <th>Test allocated:</th>
                     <td class="testAllocated">{{testAllocated}}</td>
-                </tr>
-                <tr>
                     <th>Time allowed:</th>
                     <td class="time">{{timeAllowed}}</td>
                 </tr>
             </table>
+<!--          This class was put in table class="col-xs-4"-->
         {{#each results}}
-            <table class="col-xs-4">
+        <table class="col-xs-12 table-data-border">
               <tr>
-                <th>Score:</th>
-                    <td class="score">{{#if testNotTaken}}
-                       {{testNotTaken}}
-                    {{else}}
-                       {{score}}
-                    {{/if}}</td>
-              </tr>
-                <tr>
-                    <th>Date:</th>
-                    <td class="date">{{#if testNotTaken}}
-                        {{testNotTaken}}
-                    {{else}}
-                        {{dateCreated}}
-                    {{/if}}</td>
-                </tr>
+                <th class="score-th-width">Score:</th>
+                    <td class="score score-td-width">
+                        {{#if testNotTaken}}
+                                {{testNotTaken}}
+                            {{else}}
+                                {{score}}
+                        {{/if}}
+                    </td>
+                <th class="date-th-width">Date:</th>
+                    <td class="date date-td-width">
+                        {{#if testNotTaken}}
+                              {{testNotTaken}}
+                            {{else}}
+                               {{dateCreated}}
+                        {{/if}}
+                    </td>
                 {{#if time}}
-                <tr>
-                    <th>Time taken:</th>
+                <th class="time-th-width">Time taken:</th>
                     <td class="time">{{time}}</td>
-                </tr>
                 {{/if}}
+
+                  <th class="empty-cell-width"></th>
+                  <td></td>
+
+
                 {{#if this.autoCompleted}}
-                <tr>
-                    <th>Auto completed:</th>
-                    <td class="autoComplete">Yes <i class="bi bi-exclamation-diamond"></td>
+                 <th >Auto completed:</th>
+                    <td class="autoComplete">Yes <i class="bi bi-exclamation-diamond"/></td>
+                 {{/if}}
                 </tr>
-                {{/if}}
-            </table>
+        </table>
         {{/each }}
         </td>
 </tr>

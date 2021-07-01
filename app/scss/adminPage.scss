@@ -129,6 +129,41 @@ input {
   td {
     vertical-align: middle;
   }
+
+  .table-data-border {
+    margin-top: 20px;
+    border: 1px solid black;
+
+    th {
+      padding: 10px;
+    }
+
+    .score-th-width {
+      width: 12.5%;
+    }
+
+    .score-td-width {
+      width: 8.5%;
+    }
+
+    .date-th-width {
+      width: 18.7%;
+    }
+
+    .time-th-width {
+      width: 24.3%;
+      padding-left: 69px;
+    }
+
+    .date-td-width {
+      width: 12.5%;
+      padding: 10px;
+    }
+
+    .empty-cell-width {
+      width: 5%;
+    }
+  }
 }
 
 .modify-question-container {
@@ -233,3 +268,4 @@ input[type="number"] {
     background-color: $primary-button-hover;
   }
 }
+

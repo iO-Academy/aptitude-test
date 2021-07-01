@@ -177,7 +177,6 @@ async function createUsersObject() {
 
         }
     });
-    console.log(users)
     return await {success: true, data: users}
 };
 
