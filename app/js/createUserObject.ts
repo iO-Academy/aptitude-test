@@ -152,19 +152,17 @@ async function getNameAndEmail(): Promise<Array<BaseUser>> {
     return userObjectArray
 };
 
-
-
-async function getAnswersToResume(uid, canResume) {
+async function getAnswersToResume(uid,canResume) {
     let results = await getResult(uid);
-    let details = []
-        if (results.id == uid && canResume == 1) {
-            let data = {};
-            data['id'] = results.id;
-            data['answers'] = JSON.parse(JSON.parse(results.answers));
-            details.push(data)
-        }
-    console.log(details)
-    return details.reverse()
+    let data = {};
+
+    if (results.id == uid && canResume == 1) {
+        data['id'] = results[0].id
+        data['resultId'] = results[0].resultId
+        data['dateCreated'] = results[0].dateCreated
+        data['answers'] = JSON.parse(JSON.parse(results[0]['answers']))
+        return data
+    }
 }
 
 /**

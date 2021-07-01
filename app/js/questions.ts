@@ -27,13 +27,17 @@ function fillUserTable(HBTemplate: string) {
             fillNav()
             active()
             changeQuestion(current)
-            getAnswersToResume(uid, canResumeCookie).then(details => {
-                console.log(details)
+            getAnswersToResume(uid,canResumeCookie).then(result => {
+                console.log(result)
                 document.querySelectorAll<HTMLElement>('.question').forEach(question => {
                     document.querySelectorAll<HTMLInputElement>('.questionValue').forEach(value => {
-                        if (value.value == details.answers[question.dataset.id].answerID) {
+                        let data = result.answers[question.dataset.id].answerID
+                        if (data == 'undefined') {
+                            value.checked = false
+                        } else if (value.value == data) {
                             value.checked = true
                         }
+
                     })
                 })
             })
