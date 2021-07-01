@@ -18,8 +18,13 @@ function active() {
  * makes the prev and next buttons appear when needed
  */
 function next() {
-    current++
-    changeQuestion(current)
+    const questionCount = document.querySelectorAll('#questions .question').length
+    if (current == questionCount) {
+        changeQuestion(questionCount)
+    } else {
+        current++
+        changeQuestion(current)
+    }
 }
 
 /**

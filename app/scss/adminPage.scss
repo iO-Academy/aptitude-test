@@ -161,10 +161,6 @@ input {
   margin-top: 30px;
 }
 
-.message-target {
-  margin-top: 10px;
-}
-
 #addTestName {
   margin-bottom: 10px;
 }
@@ -173,10 +169,24 @@ input {
   font-size: 2.5rem;
 }
 
-.editmodal label,
 .deleteModal {
   display: block;
   margin-top: 30px;
+}
+
+.editmodal {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5%;
+}
+
+.editUserData {
+  width: 100%;
+  margin: 1.5%;
+}
+
+.editUserDataMessage {
+  width: 100%;
 }
 
 .delete-message {

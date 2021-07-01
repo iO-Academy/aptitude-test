@@ -6,15 +6,17 @@
     <script src="js/dist/cookies.js"></script>
     <script src="js/dist/aptitudeTestHelpers.js"></script>
     <script src="js/dist/userLogIn.js"></script>
+    <script src="js/dist/createUserObject.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
     <script>
         let userEmail = getCookie('userEmail')
         getUser(userEmail).then(function (user) {
-            if (!user.success || !isAuthorised(user.data) || user.data.canRetake === '0') {
+            if (!user.success || !isAuthorised(user.data) || (user.data.canRetake === '0' && user.data.canResume === '0')) {
                 window.location.replace("index.html")
             }
             preventRetake(user)
+            preventResume(user)
         })
 
     </script>

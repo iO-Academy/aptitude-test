@@ -81,7 +81,6 @@ function getUserAnswers(): UserAnswers {
         let id = input.name.split("_")[1];
         answers[id] = {answerID: input.value};
     })
-
     return answers;
 }
 
