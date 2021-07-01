@@ -22,7 +22,7 @@ async function updateScoreTable() {
     let HBTemplate = await getTemplateAjax('js/templates/adminTable.hbs');
     let filteredUserArray = searchAndFilter(userInfo.data);
     let paginatedArrays = splitArray(filteredUserArray, 20);
-
+    console.log(paginatedArrays)
     updateChart(filteredUserArray);
     if (paginatedArrays.length >= 1 ){
         printFilteredResultsToScreen(HBTemplate, paginatedArrays[0]);
@@ -158,23 +158,28 @@ function deleteUser(userId: number) {
  * and filtered by user settings
  */
 function produceTable (HBTemplate: string, scoresDataObject) {
+    console.log(scoresDataObject)
     scoresDataObject.data.forEach(function (scoreData: Scores) {
-        switch (true) {
-            case scoreData.percentage >= 97:
-                scoreData.topGrade = true
-                break
-            case scoreData.percentage >= 70:
-                scoreData.passingGrade = true
-                break
-            case scoreData.percentage > 0 || scoreData.percentage == '0.00':
-                scoreData.fail = true
-                break
-            case scoreData.percentage >= 0 && scoreData.autoCompleted == true:
-                scoreData.autoCompleted = true
-                break
-            default:
-                scoreData.notTakenYet = true
-                break
+        if(scoreData.results.length > 0) {
+            switch (true) {
+                case scoreData.results[0].percentage >= 97:
+                    scoreData.topGrade = true
+                    break
+                case scoreData.results[0].percentage >= 70:
+                    scoreData.passingGrade = true
+                    break
+                case scoreData.results[0].percentage > 0 || scoreData.results[0].percentage == '0.00':
+                    scoreData.fail = true
+                    break
+                case scoreData.results[0].percentage >= 0 && scoreData.autoCompleted == true:
+                    scoreData.autoCompleted = true
+                    break
+                default:
+                    scoreData.notTakenYet = true
+                    break
+            }
+        } else {
+            scoreData.notTakenYet = true
         }
     })
 
