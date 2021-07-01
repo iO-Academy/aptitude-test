@@ -528,7 +528,7 @@ $app->get('/result', function ($request, $response, $args) {
             $query = $this->db->prepare($query);
             $query->bindParam(':uid', $uid);
             $query->execute();
-            $result = $query->fetchAll(PDO::FETCH_ASSOC);
+            $result = $query->fetch(PDO::FETCH_ASSOC);
 
         } catch(Exception $e) {
             $data['message'] = $e->getMessage();
