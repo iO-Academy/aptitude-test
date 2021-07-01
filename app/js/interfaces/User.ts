@@ -9,6 +9,7 @@ export interface User extends BaseUser {
     timeMinutes: string,
     timeSeconds: string,
     canRetake: number,
+    canResume: number,
     dataTestId: string,
     dataCategory: string
 }
