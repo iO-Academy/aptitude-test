@@ -18,7 +18,8 @@
      <td class="email">{{email}}</td>
      <td class="percentage">{{results.[0].percentage}}</td>
      <td class="date"></td>
-     {{#if autoCompleted}}
+
+     {{#if results.[0].autoCompleted}}
      <td class="autocomplete-icon"><i title="Autocompleted" class="icon-autocomplete bi bi-exclamation-diamond"></i>
      {{else}}
      <td class="autocomplete-icon"></td>

@@ -118,6 +118,7 @@ function findCategoryName(categories: Array<Categories>, categoryId: number) {
  */
 async function getNameAndEmail(): Promise<Array<BaseUser>> {
     let users = await getUsers();
+    console.log(users)
     let tests = await getTests();
     let categories = await getCategories();
     let userObjectArray: Array<BaseUser> = [];
@@ -171,10 +172,8 @@ async function createUsersObject() {
             user['score'] = '';
             user['percentage'] = '';
             user['time'] = '';
-            user['timeAllowed'] = secondsToMinutes(user.timeAllowed);
             user['dateCreated'] = '1970-01-01 00:00:01';
             user['testNotTaken'] = 'Not Taken';
-
         }
     });
     return await {success: true, data: users}
