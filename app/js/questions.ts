@@ -29,7 +29,6 @@ function fillUserTable(HBTemplate: string) {
             changeQuestion(current)
                 if (canResumeCookie == '1') {
                     getAnswersToResume(uid).then(result => {
-                        console.log(result)
                         document.querySelectorAll<HTMLElement>('.question').forEach(question => {
                             question.querySelectorAll<HTMLInputElement>('.questionValue').forEach(questionValue => {
                                 let data = result.answers[question.dataset.id].answerID
