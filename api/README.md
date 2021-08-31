@@ -22,6 +22,9 @@ POST
     - `test_id` is optional, will default to test id 1
     - `category_id` is optional, will default to category id 1
     - `time` is optional, will default to 1800
+      - `time` values should be provided in seconds
+    - `showTimer` is optional, will default to 1
+      - `showTimer` can be set to `1` or `0`
 - Returns user object.
 
 GET 

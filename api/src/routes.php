@@ -24,13 +24,14 @@ $app->post('/user', function ($request, $response, $args) {
     try {
         $user['test_id'] = $user['test_id'] ?? 1;
         $user['category_id'] = $user['category_id'] ?? 1;
+        $user['showTimer'] = $user['showTimer'] ?? 1;
 
         if (!empty($user['time'])) {
-            $query = "INSERT INTO `user` (`email`, `name`, `time`, `test_id`, `category_id`) VALUES (:email, :name, :time, :testId, :categoryId);";
+            $query = "INSERT INTO `user` (`email`, `name`, `time`, `test_id`, `category_id`, `showTimer`) VALUES (:email, :name, :time, :testId, :categoryId, :showTimer);";
             $query = $this->db->prepare($query);
             $query->bindParam(':time', $user['time']);
         } else {
-            $query = "INSERT INTO `user` (`email`, `name`, `test_id`, `category_id`) VALUES (:email, :name, :testId, :categoryId);";
+            $query = "INSERT INTO `user` (`email`, `name`, `test_id`, `category_id`, `showTimer`) VALUES (:email, :name, :testId, :categoryId, :showTimer);";
             $query = $this->db->prepare($query);
         }
 
@@ -38,6 +39,7 @@ $app->post('/user', function ($request, $response, $args) {
         $query->bindParam(':categoryId', $user['category_id']);
         $query->bindParam(':email', $user['email']);
         $query->bindParam(':name', $user['name']);
+        $query->bindParam(':showTimer', $user['showTimer']);
         $query->execute();
 
         $query = "
