@@ -105,11 +105,15 @@
               <td class="time time-td-width">{{time}}</td>
               {{/if}}
                  <th class="empty-cell-width"></th>
-                 <td></td>
+                 <td>
+                    <button dataId="{{id}}" class="btn view-results-button btn_height">View results</button>
+                    <button dataId="{{id}}" class="btn download-user-results-button btn_height">Download results</button>
+                 </td>
               {{#if this.autoCompleted}}
               <th class="autoCompleted-th-width" >Auto completed:</th>
               <td class="autoComplete autoCompleted-td-width-icon">Yes <i class="bi bi-exclamation-diamond"/></td>
               {{/if}}
+
            </tr>
         </table>
         {{/each}}
