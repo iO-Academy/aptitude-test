@@ -120,7 +120,7 @@ $app->get('/user', function ($request, $response, $args) {
     if (empty($email)) {
         try {
             $query = "
-SELECT `user`.`id`, `email`, `user`.`name`, `dateCreated`, `isAdmin`, `canRetake`, `canResume`, `time`, `test_id`, `category_id`, 
+SELECT `user`.`id`, `email`, `user`.`name`, `dateCreated`, `isAdmin`, `canRetake`, `canResume`, `time`, `showTimer`, `test_id`, `category_id`, 
 `category`.`name` AS 'category_name', `deleted` from `user` 
 LEFT JOIN `category` ON `user`.`category_id` = `category`.`id` 
 ORDER BY `dateCreated` DESC;";
@@ -138,7 +138,7 @@ ORDER BY `dateCreated` DESC;";
     } else {
 
         try {
-            $query = "SELECT `user`.`id`, `email`, `user`.`name`, `dateCreated`, `isAdmin`, `canRetake`, `canResume`, `time`, `test_id`, `category_id`, 
+            $query = "SELECT `user`.`id`, `email`, `user`.`name`, `dateCreated`, `isAdmin`, `canRetake`, `canResume`, `time`, `showTimer`, `test_id`, `category_id`, 
 `category`.`name` AS 'category_name' from `user`
  LEFT JOIN `category` ON `user`.`category_id` = `category`.`id` 
  WHERE `email` = :email AND `deleted` <> 1";
