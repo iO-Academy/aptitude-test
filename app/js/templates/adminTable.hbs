@@ -106,8 +106,8 @@
               {{/if}}
                  <th class="empty-cell-width"></th>
                  <td>
-                    <button dataId="{{id}}" class="btn view-results-button btn_height">View results</button>
-                    <button dataId="{{id}}" class="btn download-user-results-button btn_height">Download results</button>
+                    <button datanumber="{{@key}}" dataId="{{id}}" class="btn view-results-button btn_height">View results</button>
+                    <button datanumber="{{@key}}" dataId="{{id}}" class="btn download-user-results-button btn_height">Download results</button>
                  </td>
               {{#if this.autoCompleted}}
               <th class="autoCompleted-th-width" >Auto completed:</th>
