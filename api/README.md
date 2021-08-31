@@ -55,6 +55,7 @@ POST
       - `time` - default to `1800`
       - `category_id` - defaults to `1`
       - `canResume` - defaults to `0`
+      - `showtimer` - defaults to `1`
     - **Careful with this, as they could change unintentionally**
 - Returns result of user update.
 
