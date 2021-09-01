@@ -48,7 +48,6 @@ async function generateDataset(
     testLabels.forEach(function (label: string) {
         let amountInRange = 0;
         users.forEach(function (user: BaseUser) {
-
             for(let i = 0; i < user.results.length; i++) {
                 // minPercentage is beginning of current score category
                 // maxPercentage is beginning of next score category
