@@ -14,6 +14,21 @@
             if (!user.success || !isAuthorised(user.data) || user.data.canRetake === '0') {
                 window.location.replace("index.html")
             }
+            if (user.showTimer){
+                document.querySelectorAll('.timer').forEach(clock => {
+                    clock.hidden = false;
+                })
+                document.querySelectorAll('.hideTimerButton').forEach(hide_timer_button => {
+                    hide_timer_button.textContent = 'Hide Timer';
+                })
+            } else {
+                document.querySelectorAll('.timer').forEach(clock => {
+                    clock.hidden = true;
+                })
+                document.querySelectorAll('.hideTimerButton').forEach(hide_timer_button => {
+                    hide_timer_button.textContent = 'Show Timer';
+                })
+            }
             preventRetake(user)
         })
 
@@ -120,6 +135,7 @@
             </div>
             <div class="col-md-2 right">
                 <h4 class="timer"></h4>
+                <button class="hideTimerButton">TEST</button>
             </div>
         </div>
         <!-- question body -->
@@ -164,7 +180,8 @@
                 <h4>Test Overview</h4>
             </div>
             <div class="col-md-2 right">
-                <h4 class="timer"></h4>
+                <h4 id="timer_1" class="timer"></h4>
+                <button class="hideTimerButton">TEST</button>
             </div>
         </div>
         <div class="row">
