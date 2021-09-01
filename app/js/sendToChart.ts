@@ -47,10 +47,10 @@ async function generateDataset(
     }
 
     testLabels.forEach(function (label) {
-        let amountInRange = 0;
+        let amountInRange: number = 0;
         users.forEach(function (user) {
             for(let i = 0; i < user.results.length; i++) {
-                if (user.results.length > 0 && user.results[i].percentage >= minPercentage && user.results[i].percentage < maxPercentage && user.testAllocated == label) {
+                if (user.results.length > 0 && user.results[i].percentage >= minPercentage && user.results[i].percentage < maxPercentage && user.testAllocated === label) {
                     amountInRange ++;
                 }
             }
