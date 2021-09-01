@@ -22,9 +22,6 @@ async function saveNewUser(user: BaseUser) {
             body: formData
         }
     );
-
-    console.log(formData)
-
     let apiData = await apiResponse.json();
     return apiData;
 }
