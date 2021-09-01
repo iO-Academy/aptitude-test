@@ -9,7 +9,7 @@
     <input id="userSeconds" class="editUserData" type="number" name="timeSeconds" value="{{user.timeSeconds}}">
 
     <label for="showTimer" class="editUserData">Show Timer:{{user.showTimer}}</label>
-    <input type="checkbox" id="showTimer" name="showTimer" class="editUserData" {{#if user.showTimer}}checked{{/if}}>
+    <input type="checkbox" id="showTimer" name="showTimer" {{#if user.showTimer}}checked{{/if}}>
 
     <input id="id" class="editUserData" type="hidden" name="id" value="{{user.id}}">
     <input id="originalEmail" type="hidden" name="originalEmail" value="{{user.email}}">

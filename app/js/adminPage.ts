@@ -97,7 +97,6 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
     let timeMinutes = document.querySelector<HTMLInputElement>('#user_time_minutes').value;
     let timeSeconds = document.querySelector<HTMLInputElement>('#user_time_seconds').value;
     let timeTotal = convertToTotalTimeSeconds(timeMinutes, timeSeconds);
-    let timerIsShown =  document.querySelector<HTMLInputElement>('#timer').checked ? 1 : 0;
 
     getExistingUsers().then(function(existingUsers) {
         if (!isEmailValid(emailField.value) || userExists(emailField.value, existingUsers)) {
@@ -117,8 +116,7 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
                 email: emailField.value,
                 test_id: testField.value,
                 category_id: categoryField.value,
-                time: timeTotal,
-                showTimer: timerIsShown
+                time: timeTotal
             }).then(function(response) {
                 if (response.success) {
                     errorField.classList.add('alert-success');
