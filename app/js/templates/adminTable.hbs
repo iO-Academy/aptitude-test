@@ -13,7 +13,7 @@
     {{/if}}>
 
     <td dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}"  dataPercentage="{{percentage}}" dataTime="{{time}}" dataTimeAllowed="{{timeAllowed}}" dataCanRetake="{{canRetake}}" dataTestId="{{this.testId}}" dataCategoryId="{{this.categoryId}}">
-       <button class="btn more-info-button btn_height" data-id="{{id}}">More info</button>
+       <button class="btn more-info-button btn_height" dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}"  dataPercentage="{{results.[0].percentage}}" dataTime="{{time}}" dataTimeAllowed="{{timeAllowed}}" dataCanRetake="{{canRetake}}" dataTestId="{{this.testId}}" dataCategoryId="{{this.categoryId}}">More info</button>
      </td>
      <td class="name">{{name}}</td>
      <td class="email">{{email}}</td>
@@ -90,11 +90,12 @@
               <th class="time-th-width">Time taken:</th>
               <td class="time time-td-width">{{time}}</td>
               {{/if}}
-              <th class="empty-cell-width"></th>
-              <td>
-                 <button dataId="{{id}}" class="btn view-results-button btn_height">View results</button>
-                 <button dataId="{{id}}" class="btn download-user-results-button btn_height">Download results</button>
-              </td>
+
+                 <th class="empty-cell-width"></th>
+                 <td>
+                    <button datapercentage="{{percentage}}" datanumber="{{@key}}" dataId="{{id}}" class="btn view-results-button btn_height">View results</button>
+                    <button datapercentage="{{percentage}}" datanumber="{{@key}}" dataId="{{id}}" class="btn download-user-results-button btn_height">Download results</button>
+                 </td>
               {{#if this.autoCompleted}}
               <th class="autoCompleted-th-width" >Auto completed:</th>
               <td class="autoComplete autoCompleted-td-width-icon">Yes <i class="bi bi-exclamation-diamond"/></td>
