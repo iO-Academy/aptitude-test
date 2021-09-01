@@ -46,17 +46,17 @@ async function generateDataset(
         backgroundColor: []
     }
     testLabels.forEach(function (label: string) {
-        let amountInRange = 0;
+        let amountInRange: number = 0;
         users.forEach(function (user: BaseUser) {
-            for(let i = 0; i < user.results.length; i++) {
+            user.results.forEach(function (result){
                 // minPercentage is beginning of current score category
                 // maxPercentage is beginning of next score category
-                if (user.results[i].percentage >= minPercentage &&
-                    user.results[i].percentage < maxPercentage &&
+                if (result.percentage >= minPercentage &&
+                    result.percentage < maxPercentage &&
                     user.testAllocated === label) {
                     amountInRange++;
                 }
-            }
+            })
         })
         dataset.data.push(amountInRange);
         dataset.backgroundColor.push(color);
