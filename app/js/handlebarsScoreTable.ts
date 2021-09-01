@@ -289,7 +289,7 @@ async function addEventListenersForDownloadButtons() {
 
                 resultData.data.forEach(obj => {
                     if(obj.id == e.target.getAttribute("dataId")){
-                        resultsObj.data.push(obj)
+                        resultsObj.data.unshift(obj)
                     }
                 })
                 let resultNumber = e.target.getAttribute('datanumber')
@@ -303,6 +303,7 @@ async function addEventListenersForDownloadButtons() {
                 })
 
                 userPercentage = e.target.getAttribute('datapercentage')
+                console.log(userPercentage)
                 getData("question").then(questionData => {
                     downloadFile(`${userName}_aptitude_test_results.csv`, createCSV(createUserResults(individualResult, questionData), userName, userPercentage, individualResult.data.score))
                 });
@@ -330,22 +331,15 @@ async function addEventListenersForViewResults() {
             addEventListenersForCloseResults();
             getData("result").then(resultData => {
                 let resultsObj = {data:[]}
-                let userName = ''
-                let userPercentage = ''
                 resultData.data.forEach(obj => {
                     if(obj.id == e.target.getAttribute("dataId")){
-                        resultsObj.data.push(obj)
+                        resultsObj.data.unshift(obj)
                     }
                 })
                 let resultNumber = e.target.getAttribute('datanumber')
                 let individualResult = {success: true, message: "Successfully retrieved results.",data:{}}
                 individualResult.data = resultsObj.data[resultNumber]
-                let moreInfoButtonsData = document.querySelectorAll('button.more-info-button')
-                moreInfoButtonsData.forEach(buttonWithData => {
-                    if(buttonWithData.getAttribute('dataid') == individualResult.data.id){
-                        userName = buttonWithData.getAttribute('dataname')
-                    }
-                })
+
                 getData("user").then(userData => {
                     userData.data.forEach(user => {
                         if (user.id === individualResult.data.id) {
