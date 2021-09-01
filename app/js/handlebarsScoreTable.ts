@@ -364,45 +364,7 @@ async function addEventListenersForViewResults() {
     });
  }
 
-// async function addEventListenersForViewResults() {
-//     let userResultsTemplate = await getTemplateAjax("js/templates/userResults.hbs");
-//     let userResultsBreakdownTemplate = await getTemplateAjax("js/templates/userResultsBreakdown.hbs");
-//     let template: Function = Handlebars.compile(userResultsTemplate);
-//     let breakdownTemplate: Function = Handlebars.compile(userResultsBreakdownTemplate);
-//     let resultsTable: Element = document.querySelector("#view-results-modal-content");
-//     let resultsBreakdownTable: Element = document.querySelector("#view-results-breakdown-modal-content");
-//     document.querySelectorAll(".view-results-button").forEach((button) => {
-//         button.addEventListener("click", (e: any) => {
-//             displayResultsTableTab();
-//             openViewResultsModal();
-//             addEventListenersForCloseResults();
-//             getData("result?id=" + e.target.getAttribute("dataId")).then(resultData => {
-//
-//                 getData("user").then(userData => {
-//                     userData.data.forEach(user => {
-//                         if (user.id === resultData.data.id) {
-//                             let testId = user.test_id
-//                             hideAnswerAndBreakdown()
-//                             if (testId == '1') {
-//                                 displayAnswerAndBreakdown()
-//                             }
-//                             getData("question?test_id=" + testId).then(questionData => {
-//                                 resultsTable.innerHTML = template(createUserResults(resultData, questionData));
-//                                 openingAccordionWithNotes()
-//                             })
-//                             createUserResultsBreakdown(resultData, testId)
-//                                 .then(breakdown => {
-//                                     resultsBreakdownTable.innerHTML = breakdownTemplate(breakdown);
-//                                 })
-//                         }
-//                     })
-//                 });
-//             });
-//         });
-//     });
-// }
-
-/*
+ /*
 * function that display button answer and breakdown from view result if
 * the user has taken the test aptitude v1
  */
