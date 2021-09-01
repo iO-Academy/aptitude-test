@@ -49,20 +49,6 @@
                         <button dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}"  dataPercentage="{{percentage}}" dataTime="{{time}}" dataTimeAllowed="{{timeAllowed}}" dataCanRetake="{{canRetake}}" dataTestId="{{this.testId}}" dataCategoryId="{{this.categoryId}}" class="btn edit-user-button btn_height modalBtn">Edit user</button>
                     </td>
                 </tr>
-                {{#unless testNotTaken}}
-                <tr>
-                    <td dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}"  dataPercentage="{{percentage}}" dataTime="{{time}}" dataTimeAllowed="{{timeAllowed}}" dataCanRetake="{{canRetake}}" dataTestId="{{this.testId}}" dataCategoryId="{{this.categoryId}}">
-                        <button dataId="{{id}}" class="btn download-user-results-button btn_height">Download results</button>
-                    </td>
-                </tr>
-                {{/unless}}
-                {{#unless testNotTaken}}
-                <tr>
-                    <td>
-                       <button dataId="{{id}}" class="btn view-results-button btn_height">View results</button>
-                    </td>
-                </tr>
-                {{/unless}}
                 <tr>
                     <td>
                         <button dataId="{{id}}" class="btn delete-user-btn btn_height">Delete user</button>
@@ -104,12 +90,16 @@
               <th class="time-th-width">Time taken:</th>
               <td class="time time-td-width">{{time}}</td>
               {{/if}}
-                 <th class="empty-cell-width"></th>
-                 <td></td>
+              <th class="empty-cell-width"></th>
+              <td>
+                 <button dataId="{{id}}" class="btn view-results-button btn_height">View results</button>
+                 <button dataId="{{id}}" class="btn download-user-results-button btn_height">Download results</button>
+              </td>
               {{#if this.autoCompleted}}
               <th class="autoCompleted-th-width" >Auto completed:</th>
               <td class="autoComplete autoCompleted-td-width-icon">Yes <i class="bi bi-exclamation-diamond"/></td>
               {{/if}}
+
            </tr>
         </table>
         {{/each}}
