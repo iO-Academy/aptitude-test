@@ -282,17 +282,61 @@ async function addEventListenersForDownloadButtons() {
     document.querySelectorAll('.download-user-results-button').forEach((button) => {
         button.addEventListener("click", (e: any) => {
             e.preventDefault();
-            getData("result?id=" + e.target.parentElement.getAttribute("dataId")).then(resultData => {
+            getData("result").then(resultData => {
+                let resultsObj = {data:[]}
+                let userName = ''
+                let userPercentage = ''
+
+                resultData.data.forEach(obj => {
+                    if(obj.id == e.target.getAttribute("dataId")){
+                        resultsObj.data.push(obj)
+                    }
+                })
+                let resultNumber = e.target.getAttribute('datanumber')
+                let individualResult = {success: true, message: "Successfully retrieved results.",data:{}}
+                individualResult.data = resultsObj.data[resultNumber]
+                // console.log(resultsObj.data[resultNumber])
+                console.log(individualResult)
+                // console.log(individualResult.data)
+                // console.log(individualResult.data.id)
+                console.log('hi')
+                let moreInfoButtonsData = document.querySelectorAll('button.more-info-button')
+                moreInfoButtonsData.forEach(buttonWithData => {
+                    if(buttonWithData.getAttribute('dataid') == individualResult.data.id){
+                        userName = buttonWithData.getAttribute('dataname')
+                    }
+                })
+
+                userPercentage = e.target.getAttribute('datapercentage')
                 getData("question").then(questionData => {
-                    let parentElement: Element = e.target.parentElement;
-                    let userName: string = parentElement.getAttribute("dataname");
-                    let userPercentage: number = +parentElement.getAttribute("datapercentage");
-                    downloadFile(`${userName}_aptitude_test_results.csv`, createCSV(createUserResults(resultData, questionData), userName, userPercentage, resultData.data.score))
+                    // let parentElement: Element = e.target.parentElement;
+                    // let userName: string = parentElement.getAttribute("dataname");
+                    // let userPercentage: number = +parentElement.getAttribute("datapercentage");
+                    downloadFile(`${userName}_aptitude_test_results.csv`, createCSV(createUserResults(individualResult, questionData), userName, userPercentage, individualResult.data.score))
                 });
             });
         });
     });
 }
+
+
+//
+// async function addEventListenersForDownloadButtons() {
+//     document.querySelectorAll('.download-user-results-button').forEach((button) => {
+//         button.addEventListener("click", (e: any) => {
+//             e.preventDefault();
+//             getData("result?id=" + e.target.parentElement.getAttribute("dataId")).then(resultData => {
+//                 console.log(resultData)
+//                 getData("question").then(questionData => {
+//                     let parentElement: Element = e.target.parentElement;
+//                     let userName: string = parentElement.getAttribute("dataname");
+//                     let userPercentage: number = +parentElement.getAttribute("datapercentage");
+//                     downloadFile(`${userName}_aptitude_test_results.csv`, createCSV(createUserResults(resultData, questionData), userName, userPercentage, resultData.data.score))
+//                 });
+//             });
+//         });
+//     });
+// }
 
 /**
  * Add listener for click on view-results-button, to open viewResultsModal
