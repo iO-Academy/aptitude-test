@@ -14,7 +14,16 @@ function createObjectForDatabase(inputClass: string) {
         'canRetake': (document.querySelector<HTMLInputElement>('#canRetake').checked ? 1 : 0),
         'showTimer': (document.querySelector<HTMLInputElement>('#showTimer').checked ? 1 : 0)}
     formData.forEach(function (input: HTMLInputElement) {
-        result[input.name] = input.value;
+        if (input.name === 'showTimer'){
+            if (input.value === 'on'){
+                result[input.name] = 1;
+            }
+            else {
+                result[input.name] = 0;
+            }
+        } else{
+            result[input.name] = input.value;
+        }
     });
     return result
 }
