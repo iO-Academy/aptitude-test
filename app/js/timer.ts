@@ -57,7 +57,7 @@ let timeRemaining: any = timeRemainingCalc()
 let interval = setInterval(timer, 1000)
 
 // event listeners for hide/show-timer buttons
-document.querySelectorAll('.hideTimerButton').forEach(timer_button => {
+document.querySelectorAll('.toggleTimerButton').forEach(timer_button => {
     timer_button.addEventListener('click', evt => {
         evt.preventDefault();
         document.querySelectorAll<HTMLButtonElement>('.timer').forEach(clock => {

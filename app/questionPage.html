@@ -18,14 +18,14 @@
                 document.querySelectorAll('.timer').forEach(clock => {
                     clock.hidden = false;
                 })
-                document.querySelectorAll('.hideTimerButton').forEach(hide_timer_button => {
+                document.querySelectorAll('.toggleTimerButton').forEach(hide_timer_button => {
                     hide_timer_button.textContent = 'Hide Timer';
                 })
             } else {
                 document.querySelectorAll('.timer').forEach(clock => {
                     clock.hidden = true;
                 })
-                document.querySelectorAll('.hideTimerButton').forEach(hide_timer_button => {
+                document.querySelectorAll('.toggleTimerButton').forEach(hide_timer_button => {
                     hide_timer_button.textContent = 'Show Timer';
                 })
             }
@@ -134,7 +134,7 @@
             </div>
             <div class="col-md-2 right">
                 <h4 class="timer"></h4>
-                <button class="hideTimerButton btn btn-secondary primary-button"></button>
+                <button class="toggleTimerButton btn btn-secondary primary-button"></button>
             </div>
         </div>
         <!-- question body -->
@@ -180,7 +180,7 @@
             </div>
             <div class="col-md-2 right">
                 <h4 class="timer"></h4>
-                <button class="hideTimerButton btn btn-secondary primary-button"></button>
+                <button class="toggleTimerButton btn btn-secondary primary-button"></button>
             </div>
         </div>
         <div class="row">
