@@ -55,3 +55,19 @@ let timeLimit: any = getCookie("userTime")
 timeLimit++
 let timeRemaining: any = timeRemainingCalc()
 let interval = setInterval(timer, 1000)
+
+// event listeners for hide/show-timer buttons
+document.querySelectorAll('.toggleTimerButton').forEach(timer_button => {
+    timer_button.addEventListener('click', evt => {
+        evt.preventDefault();
+        document.querySelectorAll<HTMLButtonElement>('.timer').forEach(clock => {
+            if (clock.hidden === true){
+                clock.hidden = false;
+                timer_button.textContent = 'Hide Timer';
+            } else {
+                clock.hidden = true;
+                timer_button.textContent = 'Show Timer';
+            }
+        })
+    })
+})
