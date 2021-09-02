@@ -128,6 +128,10 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
                     testField.value = '1';
                     populateTestDropdowns();
                     updateScoreTable();
+                    setTimeout(function(){
+                        errorField.classList.remove('alert-success')
+                        errorField.innerHTML = ''
+                    }, 3000);
                 } else {
                     errorField.classList.remove('alert-success');
                     errorField.classList.add('alert-danger');
