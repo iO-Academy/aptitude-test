@@ -12,6 +12,7 @@
          class="test-not-taken key-user-information-data-row"
     {{/if}}>
 
+
     <td dataId="{{id}}" dataName="{{name}}" dataEmail="{{email}}"  dataPercentage="{{percentage}}" dataTime="{{time}}" dataTimeAllowed="{{timeAllowed}}" dataCanRetake="{{canRetake}}" dataTestId="{{this.testId}}" dataCategoryId="{{this.categoryId}}">
        <button class="btn more-info-button btn_height" data-id="{{id}}">More info</button>
      </td>
@@ -83,7 +84,17 @@
             </table>
         {{#each results}}
         <table class="col-xs-12 table-data-border">
-           <tr>
+           <tr data-percentage="{{percentage}}"
+
+{{!--             {{#if percentage > 96}} --}}
+{{!--                 class="top-color" --}}
+{{!--             {{else if percentage > 70}} --}}
+{{!--                 class="passing-color" --}}
+{{!--             {{else}} --}}
+{{!--                 class="bad-color" --}}
+{{!--             {{/if}} --}}
+            >
+
               <th class="score-th-width">Score:</th>
               <td class="score score-td-width">
               {{#if testNotTaken}}
@@ -91,6 +102,7 @@
               {{else}}
                   {{score}}
               {{/if}}
+
               </td>
               <th class="date-th-width">Date:</th>
               <td class="date date-td-width">
