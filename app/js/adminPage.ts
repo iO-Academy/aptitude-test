@@ -100,7 +100,7 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
     let timeTotal = convertToTotalTimeSeconds(timeMinutes, timeSeconds);
 
     getExistingUsers().then(function(existingUsers) {
-        let letters = /^[A-Za-z]+$/;
+        let letters = /^[A-Za-z-' ']+$/;
         if (!isEmailValid(emailField.value) || userExists(emailField.value, existingUsers)) {
             errorField.classList.remove('alert-success');
             errorField.classList.add('alert-danger');
