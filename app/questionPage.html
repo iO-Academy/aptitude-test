@@ -17,27 +17,7 @@
             preventRetake(user)
         })
     </script>
-    <!-- async=false is used to 'defer' the script until after the page has loaded - cannot use defer
-    as the script is inline and not taken from a src="path/to/file" -->
-    <script async=false>
-        getUser(userEmail).then( user => {
-            if (user.data.showTimer === '1'){
-                document.querySelectorAll('.timer').forEach(clock => {
-                    clock.hidden = false;
-                })
-                document.querySelectorAll('.toggleTimerButton').forEach(hideTimerButton => {
-                    hideTimerButton.textContent = 'Hide Timer';
-                })
-            } else {
-                document.querySelectorAll('.timer').forEach(clock => {
-                    clock.hidden = true;
-                })
-                document.querySelectorAll('.toggleTimerButton').forEach(hideTimerButton => {
-                    hideTimerButton.textContent = 'Show Timer';
-                })
-            }
-        })
-    </script>
+    <script defer src="js/dist/setInitialStateOfTimerButtonsOnQuestionScreenAndOverview.js"></script>
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
     <title>iO Academy Aptitude Test</title>
