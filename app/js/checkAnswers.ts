@@ -12,10 +12,10 @@ document.querySelector('#finish').addEventListener('click', () => {
  */
 function finishTest(pageLeft) {
     showResults(pageLeft);
-    document.querySelector<HTMLElement>('#overview_page').style.display = 'none';
-    document.querySelector<HTMLElement>('#result_page').style.display = 'none';
     document.body.removeEventListener("mouseleave", pageLeaveAlert);
     document.removeEventListener("visibilitychange", cancelTest);
+    document.querySelector<HTMLElement>('#overview_page').style.display = 'none';
+    document.querySelector<HTMLElement>('#result_page').style.display = 'none';
 }
 
 /**
