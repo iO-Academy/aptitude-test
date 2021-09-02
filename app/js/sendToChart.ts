@@ -45,20 +45,22 @@ async function generateDataset(
         label: datasetLabel,
         backgroundColor: []
     }
-
-    testLabels.forEach(function (label) {
-
-        let amountInRange = 0;
-
-        users.forEach(function (user) {
-            if (!user.testNotTaken && user.percentage >= minPercentage && user.percentage < maxPercentage && user.testAllocated == label) {
-                amountInRange ++;
-            }
+    testLabels.forEach(function (label: string) {
+        let amountInRange: number = 0;
+        users.forEach(function (user: BaseUser) {
+            user.results.forEach(function (result){
+                // minPercentage is beginning of current score category
+                // maxPercentage is beginning of next score category
+                if (result.percentage >= minPercentage &&
+                    result.percentage < maxPercentage &&
+                    user.testAllocated === label) {
+                    amountInRange++;
+                }
+            })
         })
         dataset.data.push(amountInRange);
         dataset.backgroundColor.push(color);
     });
-
     return dataset;
 };
 
