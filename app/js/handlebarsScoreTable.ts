@@ -411,8 +411,20 @@ function addEventListenersForMoreInfoButtons() {
             document.querySelector('tr[data-id="' + userId + '"]').classList.toggle('hide')
             if(this.textContent == 'More info') {
                 this.textContent = 'Less info';
+                e.target.parentElement.parentElement.style.background = "#fff";
+                let percentageElems = document.querySelectorAll('tr[data-percentage]')
+                percentageElems.forEach(function (percentageElem) {
+                    if (Number(percentageElem.getAttribute("data-percentage")) >= 97) {
+                        percentageElem.classList.add('top-grade')
+                    } else if (Number(percentageElem.getAttribute("data-percentage")) >= 70) {
+                        percentageElem.classList.add('passing-grade')
+                    } else {
+                        percentageElem.classList.add('dubious-grade')
+                    }
+                })
             } else {
                 this.textContent = 'More info';
+                e.target.parentElement.parentElement.removeAttribute("style");
             }
         })
     })
