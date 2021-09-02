@@ -8,7 +8,7 @@
     <script src="js/dist/userLogIn.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
-    <script defer>
+    <script>
         let userEmail = getCookie('userEmail')
         getUser(userEmail).then(function (user) {
             if (!user.success || !isAuthorised(user.data) || user.data.canRetake === '0') {
@@ -31,7 +31,6 @@
             }
             preventRetake(user)
         })
-
     </script>
     <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
