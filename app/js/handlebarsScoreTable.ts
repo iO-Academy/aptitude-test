@@ -57,7 +57,8 @@ function createObjectFromElement(event: Event) {
         timeSeconds: userTimeSeconds,
         canRetake: parseInt(element.getAttribute("dataCanRetake")),
         dataTestId: element.getAttribute("dataTestId"),
-        dataCategoryId: element.getAttribute("dataCategoryId")
+        dataCategoryId: element.getAttribute("dataCategoryId"),
+        showTimer: parseInt(element.getAttribute("dataShowTimer"))
     }
 
     return userInfo;
