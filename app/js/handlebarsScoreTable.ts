@@ -412,25 +412,16 @@ function addEventListenersForMoreInfoButtons() {
             if(this.textContent == 'More info') {
                 this.textContent = 'Less info';
                 e.target.parentElement.parentElement.style.background = "#fff";
-                // let scoreElems = document.querySelectorAll('[data-score]')
-                // scoreElems.style.color = "red"
-                // scoreElems.forEach(function (elem) {
-                //     console.log(elem)
-                // })
-                // let score = e.target.parentElement.getAttribute("dataId")
-                // let scoreElems = document.querySelector('.score')
-                // console.log(scoreElems.innerHTML)
-                // let scoreElements = document.querySelectorAll("[data-test]");
-                // scoreElements.forEach((score) => {
-                //     console.log(score.innerHTML)
-                // })
-                // let individualRows = document.querySelectorAll('tr[data-score]')
-                // console.log(individualRows)
-                // // individualRows.forEach(row => {
-                // //     if(row.getAttribute("data-score") < 25) {
-                // //         row.style.background = "pink";
-                // //     }
-                // // })
+                let percentageElems = document.querySelectorAll('tr[data-percentage]')
+                percentageElems.forEach(function (percentageElem) {
+                    if (Number(percentageElem.getAttribute("data-percentage")) >= 97) {
+                        percentageElem.classList.add('top-grade')
+                    } else if (Number(percentageElem.getAttribute("data-percentage")) >= 70) {
+                        percentageElem.classList.add('passing-grade')
+                    } else {
+                        percentageElem.classList.add('dubious-grade')
+                    }
+                })
             } else {
                 this.textContent = 'More info';
                 e.target.parentElement.parentElement.removeAttribute("style");
