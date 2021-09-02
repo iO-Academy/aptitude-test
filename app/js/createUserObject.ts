@@ -122,7 +122,7 @@ async function getNameAndEmail(): Promise<Array<BaseUser>> {
     let categories = await getCategories();
     let userObjectArray: Array<BaseUser> = [];
     users.forEach(function(user: any) {
-        let {id, email, name, time, test_id, canRetake, category_id} = user
+        let {id, email, name, time, test_id, canRetake, category_id, showTimer} = user
         let testName = findTestName(tests, test_id)
         let categoryName = findCategoryName(categories, category_id)
         let obj: BaseUser = {
@@ -135,6 +135,7 @@ async function getNameAndEmail(): Promise<Array<BaseUser>> {
             testAllocated: testName,
             testId: test_id,
             canRetake: canRetake,
+            showTimer: showTimer
         }
         userObjectArray.push(obj)
     });
