@@ -411,10 +411,10 @@ function addEventListenersForMoreInfoButtons() {
             document.querySelector('tr[data-id="' + userId + '"]').classList.toggle('hide')
             if(this.textContent == 'More info') {
                 this.textContent = 'Less info';
-                e.target.parentElement.parentElement.classList.add('white-background')
+                e.target.parentElement.parentElement.classList.add('white-opened-accordion')
             } else {
                 this.textContent = 'More info';
-                e.target.parentElement.parentElement.classList.remove('white-background')
+                e.target.parentElement.parentElement.classList.remove('white-opened-accordion')
             }
         })
     })
