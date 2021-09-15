@@ -5,7 +5,7 @@ var questionAmount;
 document.querySelector('#finish').addEventListener('click', () => {
     finishTest(false);
     if (document.fullscreenElement) {
-        document.exitFullscreen().catch();
+        document.exitFullscreen();
     }
 })
 
