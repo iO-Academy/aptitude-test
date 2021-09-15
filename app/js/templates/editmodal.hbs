@@ -5,8 +5,8 @@
     <input id="email" class="editUserData" type="text" name="email" value="{{user.email}}">
     <label class="editUserData">Time allowed for test:</label>
 
-    <input id="userMinutes" class="editUserData" type="number" name="timeMinutes" value="{{user.timeMinutes}}">
-    <input id="userSeconds" class="editUserData" type="number" name="timeSeconds" value="{{user.timeSeconds}}">
+    <input id="userMinutes" class="editUserData" type="number" name="timeMinutes" value="{{user.timeMinutes}}" min="0">
+    <input id="userSeconds" class="editUserData" type="number" name="timeSeconds" value="{{user.timeSeconds}}" min="0">
 
     <label for="showTimer" class="editUserData">Show Timer:</label>
     <input type="checkbox" id="showTimer" name="showTimer" {{#if user.showTimer}}checked{{/if}}>
