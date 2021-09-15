@@ -100,10 +100,15 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
     let showTimer = document.querySelector<HTMLInputElement>('#timer').checked ? 1 : 0;
 
     getExistingUsers().then(function(existingUsers) {
+        let letters = /^[A-Za-z-' ']+$/;
         if (!isEmailValid(emailField.value) || userExists(emailField.value, existingUsers)) {
             errorField.classList.remove('alert-success');
             errorField.classList.add('alert-danger');
             errorField.innerHTML = "Your email is not valid or already exists: Please provide a correct email";
+        } else if (!nameField.value.match(letters)) {
+            errorField.classList.remove('alert-success');
+            errorField.classList.add('alert-danger');
+            errorField.innerHTML = "Please use letters only when entering a name";
         } else if (!isTimeTotalValid(timeTotal) ||
             !isTimeMinutesValid(timeMinutes) ||
             !isTimeSecondsValid(timeSeconds)) {
