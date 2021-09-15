@@ -276,6 +276,7 @@ input[type="number"] {
 
 .user-information-secondary-data-row {
   border-bottom: 3px solid #ddd;
+  background-color: #fff;
 }
 
 #view-results-modal {
@@ -308,4 +309,8 @@ input[type="number"] {
   &:hover {
     color: #808080;
   }
+}
+
+.white-opened-accordion {
+  background-color: #fff;
 }
