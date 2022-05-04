@@ -121,12 +121,33 @@ $app->get('/user', function ($request, $response, $args) {
 
     if (empty($email)) {
         try {
-            $query = "
+            $adminEmail = $request->getQueryParam('admin');
+            $query = "SELECT `user`.`category_access` FROM `user` WHERE `email` = :email AND `deleted` <> 1";
+            $query = $this->db->prepare($query);
+            $query->bindParam(':email', $adminEmail);
+            $query->execute();
+            $result = $query->fetch(PDO::FETCH_ASSOC);
+            if (!empty($result['category_access']) && is_numeric($result['category_access'])) {
+                $query = "
+SELECT `user`.`id`, `email`, `user`.`name`, `dateCreated`, `isAdmin`, `canRetake`, `canResume`, `time`, `showTimer`, `test_id`, `category_id`, 
+`category`.`name` AS 'category_name', `deleted` from `user` 
+LEFT JOIN `category` ON `user`.`category_id` = `category`.`id` 
+WHERE `user`.`category_id` = :access
+ORDER BY `dateCreated` DESC;";
+                $query = $this->db->prepare($query);
+                $query->bindParam(':access', $result['category_access']);
+            } else if ($result !== false) {
+                $query = "
 SELECT `user`.`id`, `email`, `user`.`name`, `dateCreated`, `isAdmin`, `canRetake`, `canResume`, `time`, `showTimer`, `test_id`, `category_id`, 
 `category`.`name` AS 'category_name', `deleted` from `user` 
 LEFT JOIN `category` ON `user`.`category_id` = `category`.`id` 
 ORDER BY `dateCreated` DESC;";
-            $query = $this->db->prepare($query);
+                $query = $this->db->prepare($query);
+            } else {
+                throw new Exception('Invalid Admin Email, please re-login');
+            }
+
+
             $query->execute();
             $result = $query->fetchAll(PDO::FETCH_ASSOC);
         } catch (Exception $e) {
@@ -141,7 +162,7 @@ ORDER BY `dateCreated` DESC;";
 
         try {
             $query = "SELECT `user`.`id`, `email`, `user`.`name`, `dateCreated`, `isAdmin`, `canRetake`, `canResume`, `time`, `showTimer`, `test_id`, `category_id`, 
-`category`.`name` AS 'category_name' from `user`
+`category`.`name` AS 'category_name', `user`.`category_access` from `user`
  LEFT JOIN `category` ON `user`.`category_id` = `category`.`id` 
  WHERE `email` = :email AND `deleted` <> 1";
             $query = $this->db->prepare($query);

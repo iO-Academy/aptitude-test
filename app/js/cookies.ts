@@ -11,7 +11,11 @@ function getCookie(name: string) {
     var parts = value.split("; " + name + "=");
 
     if (parts.length == 2) {
-        return parts.pop().split(";").shift();
+        const value = parts.pop().split(";").shift();
+        if (value == 'expired') {
+            return false
+        }
+        return value
     }
     return false
 }

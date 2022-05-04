@@ -58,6 +58,11 @@ function redirectUser(user: BaseUser) {
 function redirectAdmin(user: BaseUser) {
     if (user.isAdmin == "1") {
         document.cookie = "userEmail=" + user.email
+        if (user.category_access !== null) {
+            document.cookie = "access=" + user.category_access
+        } else {
+            document.cookie = "access=expired";
+        }
         window.location.replace("adminPage.html")
     }
 }

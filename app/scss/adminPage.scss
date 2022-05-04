@@ -314,3 +314,39 @@ input[type="number"] {
 .white-opened-accordion {
   background-color: #fff;
 }
+
+.restricted-access {
+
+  #categoryFilter {
+    display: none;
+  }
+
+  #testAllocated {
+    display: none;
+  }
+
+  .categorySection {
+    display: none;
+  }
+
+  .displayCategories {
+    display: none;
+  }
+
+  #testForm {
+    display: none;
+  }
+
+  .modify-question-container {
+    display: none;
+  }
+
+  #editTestID {
+    display: none;
+  }
+  
+  #editCatID {
+    display: none;
+  }
+
+}

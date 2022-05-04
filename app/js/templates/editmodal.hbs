@@ -15,21 +15,26 @@
     <input id="originalEmail" type="hidden" name="originalEmail" value="{{user.email}}">
     <input id="time" class="editUserData" type="hidden" name="time">
 
-    <label class="editUserData">ID of test allocated</label>
-    <select id="testID" class="editUserData" name="test_id">
-        {{#each tests}}
-                <option value="{{id}}">{{name}}</option>
-        {{/each}}
-        <option value="{{defaultTest.id}}" selected>{{defaultTest.name}}</option>
-    </select>
+    <div id="editTestID">
+        <label class="editUserData">ID of test allocated</label>
+        <select id="testID" class="editUserData" name="test_id">
+            {{#each tests}}
+                    <option value="{{id}}">{{name}}</option>
+            {{/each}}
+            <option value="{{defaultTest.id}}" selected>{{defaultTest.name}}</option>
+        </select>
+    </div>
 
-    <label class="editUserData">Change category name</label>
-    <select id="changeCategory" class="editUserData" name="category_id">
-        {{#each categories}}
-            <option value="{{id}}">{{name}}</option>
-        {{/each}}
-        <option value="{{defaultCategory.id}}" selected>{{defaultCategory.name}}</option>
-    </select>
+    <div id="editCatID">
+        <label class="editUserData">Change category name</label>
+        <select id="changeCategory" class="editUserData" name="category_id">
+            {{#each categories}}
+                <option value="{{id}}">{{name}}</option>
+            {{/each}}
+            <option value="{{defaultCategory.id}}" selected>{{defaultCategory.name}}</option>
+        </select>
+    </div>
+
     <label class="editUserData">Allow retake (tick to allow):</label>
     <input id="canRetake" type="checkbox" {{#if user.canRetake}}checked{{/if}}>
 

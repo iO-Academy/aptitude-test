@@ -14,8 +14,13 @@ function populateTestDropdowns () {
         getTemplateAjax('js/templates/testDropdown.hbs').then((HBTemplate) => {
             let template: Function = Handlebars.compile(HBTemplate);
             document.querySelector<HTMLElement>('#test_id').innerHTML = template(testsObject);
-              document.querySelectorAll(".test_options").forEach((test_option: HTMLInputElement) => {
-                populateUserDuration(test_option, testFieldValue);
+            const restrictedAccess = getCookie('access')
+            document.querySelectorAll(".test_options").forEach((test_option: any) => {
+                if (restrictedAccess && test_option.value !== "1") {
+                    test_option.remove()
+                } else {
+                    populateUserDuration(test_option, testFieldValue);
+                }
             });
         });
 

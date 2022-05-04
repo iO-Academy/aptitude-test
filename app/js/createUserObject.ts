@@ -21,7 +21,8 @@ async function getResults() {
  */
 async function getUsers() {
     let baseUrl = getBaseUrl();
-    let users = await fetch(baseUrl + "user", {method: 'get'})
+    let adminEmail = getCookie('userEmail')
+    let users = await fetch(baseUrl + "user?admin=" + adminEmail, {method: 'get'})
         .then(function (data) {
             return data.json()
         });

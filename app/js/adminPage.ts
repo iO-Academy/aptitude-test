@@ -143,3 +143,7 @@ document.querySelector('#addNewUserForm').addEventListener('submit', function(ev
         }
     })
 });
+
+if (getCookie('access')) {
+    document.body.classList.add('restricted-access')
+}
