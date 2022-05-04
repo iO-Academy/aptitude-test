@@ -106,6 +106,10 @@ input {
     margin-bottom: 5px;
   }
 
+  .more-info-button {
+    background: $overview-button;
+  }
+
   .download-user-results-button, .view-results-button {
     color: $primary-button-font;
     background-color: $primary-button;
