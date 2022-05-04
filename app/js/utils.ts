@@ -22,3 +22,13 @@ function getBaseUrl(): string {
     }
 }
 
+function getPublicEmail(): string {
+    const access = getCookie('access')
+    switch(access) {
+        case '4':
+            return 'hello@eyup.com'
+        default:
+            return 'hello@io-academy.uk'
+    }
+}
+
