@@ -198,6 +198,9 @@ input {
 .passing-grade {
   background-color: $green-table-grade;
 }
+.key-user-information-data-row.passing-grade {
+  background-color: $white;
+}
 .top-grade {
   background-color: $purple-table-grade;
 }
