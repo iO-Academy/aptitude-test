@@ -34,8 +34,9 @@ async function saveNewUser(user: BaseUser) {
 async function getExistingUsers() {
     let baseUrl = getBaseUrl();
     let result = [];
+    let adminEmail = getCookie('userEmail')
     const apiResponse: Response = await fetch(
-        baseUrl +  'user',
+        baseUrl + "user?admin=" + adminEmail,
         {method: 'get'}
     );
     const apiData = await apiResponse.json();

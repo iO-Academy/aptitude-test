@@ -99,6 +99,7 @@ if (document.querySelector('#logInForm')) {
                         document.cookie = "uid=" + user.data.id
                         document.cookie = "userEmail=" + user.data.email
                         document.cookie = "userTime=" + user.data.time
+                        document.cookie = "userCat=" + user.data.category_id
                         const dateStarted = Date.now()
                         document.cookie = "dateStamp=" + dateStarted.toString()
                         redirectUser(user.data)

@@ -313,7 +313,8 @@ async function addEventListenersForViewResults() {
             openViewResultsModal();
             addEventListenersForCloseResults();
             getData("result?id=" + e.target.getAttribute("dataId")).then(resultData => {
-                getData("user").then(userData => {
+                let adminEmail = getCookie('userEmail')
+                getData("user?admin=" + adminEmail).then(userData => {
                     userData.data.forEach(user => {
                         if (user.id === resultData.data.id) {
                             let testId = user.test_id

@@ -23,8 +23,8 @@ function getBaseUrl(): string {
 }
 
 function getPublicEmail(): string {
-    const access = getCookie('access')
-    switch(access) {
+    const category = getCookie('userCat')
+    switch(category) {
         case '7':
             return 'contact@eyup.com'
         default:
